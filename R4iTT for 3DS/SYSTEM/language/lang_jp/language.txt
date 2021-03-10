@@ -1,0 +1,194 @@
+[start menu]
+Copy = コピー
+Cut = カット
+Paste = ペースト
+Delete = 削除
+Save Type = セーブ形式設定
+Setting = システム設定
+Info = ファイル詳細
+Help = ヘルプ
+
+[message box]
+yes = はい
+no = いいえ
+ok = 決定
+cancel = 取消し
+
+[progress window]
+processing save = 作業中につき電源を切らないで下さい
+processing copy = ファイルコピー, 電源を落とさないで下さい
+first use sd = メディアの初期チェック
+
+[copy file error]
+title = エラー
+text = ファイルがありません
+
+[copy file exists]
+title = 警告
+text = 同名ファイルが存在する為、別のファイル名に変更して下さい
+
+[move file exists]
+title = 警告
+text = 同名ファイルが存在する為、このファイル名では保存出来ません
+
+[no copy dir]
+title = エラー
+text = ディレクトリのコピーは出来ません
+
+[stop copying file]
+title = ファイルコピーの中止
+text = ファイルのコピーを中止しますか？
+
+[confirm delete file]
+title = 確認
+text = ファイル保存が出来ない為、続行か削除を選択して下さい。"%s"
+
+[do not delete directory]
+title = 警告
+text = ディレクトリが空で無い為に削除出来ません
+
+[unknown save type]
+title = 初期設定
+text = セーブ形式が未設定なので選択して下さい
+
+[no savelist]
+title = 警告
+text = "savelist.bin"からセーブデータを読み込めません
+
+[restore save fail]
+title = 警告
+text = セーブデータの復元に失敗、継続しますか？
+
+[backup save fail]
+title = 警告
+text = 容量不足の為、セーブデータのバックアップ失敗
+
+[language changed]
+title = 確認内容
+text = 言語設定の変更を反映する為に再起動しますか？
+
+[ui style changed]
+title = 確認内容
+text = ローダー設定変更を反映する為に再起動をしますか？
+
+[setting window]
+ok = OK
+savetype = セーブ形式
+cancel = 取消し
+confirm = 確認
+confirm text = 現在の設定を反映しますか？
+
+[save type]
+title = セーブ形式設定
+text = セーブタイプ選択
+Unknown = 未設定/自動
+No Save = No Save
+4K =  4K
+64K = 64K
+512K = 64K/512K
+2M =  2M
+4M =  2M/4M
+
+[system setting]
+title = システム設定
+
+[rom info]
+title = ファイル詳細
+file date = 最終調整: %d/%d/%d %02d:%02d:%02d(GMT)
+file size = ファイルサイズ: %s
+save type = セーブ形式タイプ: %s
+
+[disk info]
+total = 全体容量: %s
+used = 使用容量: %s
+free = 空き容量: %s
+
+[no free space]
+title = エラー
+text = 容量不足の為、ファイルをコピー出来ません
+
+[folder]
+title =ミス
+text =フォルダをす》ことはできませんが、1024以上の数
+[sd speed]
+text = 転送速度設定
+item0 = 超高速
+item1 = 高速
+item2 = 中速
+item3 = 低速
+
+[unsupported sd]
+title = このメディアは利用出来ません
+text = このメディア(Model:%s)は動作に適切では無いので別のものに変更してください
+
+[sd card error]
+title = SD card エラー
+text = メディアを認識出来ない為、アクセス出来ません
+
+[no sd for save]
+title = SD card エラー
+text = 過去のデータを保存する事が出来ません。 file: "%s".
+
+[no gba card]
+title = 通知
+text = スロット２にカートリッジがありません
+
+[filelist type]
+text = リストタイプ選択
+item0 = NDS
+item1 = NDS + SAV
+item2 = ALL
+
+[rom trim]
+text = 容量調整コピー
+item0 = トリム無効
+item1 = トリム有効
+
+[cheat]
+text = チートコード利用
+item0 = 無効
+Item1 = 有効
+
+[autorun]
+text = 自動起動
+item0 = いいえ
+item1 = はい
+
+[language]
+text = 言語
+item0 = English
+item1 = S.Chinese
+item2 = T.Chinese
+item3 = 日本語
+item4 = Francais
+item5 = Italiano
+item6 = Deutsch
+item7 = Espanol
+item8 = オランダ語
+item9 = Korean
+[brightness]
+text = 照度
+
+[ui style]
+text = ユーザー設定 スタイル
+
+[backgound voice]
+text =Musica di sottofondo
+
+[key voice]
+text =Tono dei tasti
+
+[help window]
+title = ヘルプ　インフォメーション
+item0 = %c  プログラム選択
+item1 = %c  開始/OK/はい
+item2 = %c  戻る/キャンセル/いいえ
+item3 = %c  ファイル詳細/セーブタイプ選択
+item4 = %c  SD/FLASH　切り替え
+item5 = %c  親ディレクトリに戻る
+item6 = %c  照度調整
+item7 = %s  スタートメニュー
+item8 = %s  アイコン表示/文字表示
+versions = HW: %02x NDD: %02x
+
+[end]
