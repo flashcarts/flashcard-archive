@@ -1,0 +1,1 @@
+cheats: SYSTEM/usrcheat.dat
