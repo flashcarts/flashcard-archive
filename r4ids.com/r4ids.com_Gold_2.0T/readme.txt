@@ -1,2 +1,0 @@
-cheats:
-__aio/cheats/usrcheat.dat
