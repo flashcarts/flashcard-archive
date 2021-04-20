@@ -1,3 +1,9 @@
+Compatible with:
+Ace3DS+
+Ace3DS X
+r4isdhc.com.cn (all cards)
+r4isdhc.hk (2021)
+
 SNES games MUST be saved in the /ROMs/SNES folder or it WILL NOT show up.
 GameYob is DLDI patched.
 
