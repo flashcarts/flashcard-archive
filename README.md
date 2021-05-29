@@ -16,6 +16,7 @@ Some kernels are in different locations, or have consolidated as they are identi
 
 
 These carts may be identical, but have not been attempted. This information is based on its provided DLDI, which are identical. Please do not attempt cross-loading without knowing what you're doing:
+3dslink.com Blue
 r4i3d.com 2012-2013
 r4igold.cc 3DS
 r4infinity.com Dual-Core
