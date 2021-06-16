@@ -1,0 +1,1 @@
+This boots `_BOOT_DS.NDS` in root. `_BOOT_DS.NDS` must be DLDI patched with any DSTT DLDI.
