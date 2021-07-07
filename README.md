@@ -17,6 +17,7 @@ Some kernels are in different locations, or have consolidated as they are identi
 These carts may support BL2CK OS. Only two carts are confirmed to actually work so far:
 - r4i3d.com 2012
 - r4igold.cc 3DS
+- r4i-gold.me 2014-2015
 
 These carts may support BL2CK OS, but have not been attempted. This information is based on its provided DLDI, which are identical.  
 Please do not attempt cross-loading without knowing what you're doing.
@@ -28,5 +29,5 @@ Please do not attempt cross-loading without knowing what you're doing.
 - r4isdhc.hk 2014-2017
 - r4isdhc.in 2014
 - r4ixds.com 2014-2016 non-white
-- r4i-gold.me carts
+- r4i-gold.me 2013
 - r4i-gold.com 3DS Gold Pro
