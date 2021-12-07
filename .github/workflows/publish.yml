@@ -1,0 +1,39 @@
+name: Deploy site
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - files/**
+      - .github/workflows/publish.yml
+  workflow_dispatch:
+
+jobs:
+  doc-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          submodules: recursive
+
+      - name: Install apindex-v2
+        run: |
+          sudo apt-get update
+          sudo apt-get install curl git -y
+          curl https://raw.githubusercontent.com/jayanta525/apindex/master/install.sh | sudo bash
+
+      - name: Build site
+        run: |
+          apindex files
+          mkdir public
+          cp -r files/* public
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: public # The folder the action should deploy.
+          CLEAN: true # Automatically remove deleted files from the deploy branchimage: ubuntu:bionic
