@@ -29,6 +29,7 @@ jobs:
           apindex files
           mkdir public
           cp -r files/* public
+          cp CNAME public
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
