@@ -31,6 +31,7 @@ jobs:
           mkdir public
           cp -r files/* public
           cp CNAME public
+          cp .nojekyll public
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
