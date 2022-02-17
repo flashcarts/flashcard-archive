@@ -19,16 +19,14 @@ These carts may support BL2CK OS. Only these carts are confirmed to actually wor
 - r4igold.cc 3DS
 - r4i-gold.me 2014-2015
 - r4isdhc.hk 2015
-- r4isdhc.com Dual-Core NEW
-- r4isdhc.com Silver RTS Lite NEW
+- r4isdhc.com NEW/2013 carts
+- r4i-drive.com carts
 
 These carts may support BL2CK OS, but have not been attempted. This information is based on its provided DLDI, which are identical.  
 Please do not attempt cross-loading without knowing what you're doing.
 - 3dslink.com Blue
 - r4i3d.com 2014-2015
 - r4infinity.com Dual-Core
-- r4isdhc.com Dual-Core 2013
-- r4isdhc.com Silver RTS Lite 2013
 - r4isdhc.hk 2014, 2016, 2017
 - r4isdhc.in 2014
 - r4ixds.com 2014-2016 non-white

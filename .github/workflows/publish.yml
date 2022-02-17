@@ -26,6 +26,7 @@ jobs:
 
       - name: Build site
         run: |
+          cp README.md files/README.md
           apindex files
           mkdir public
           cp -r files/* public
