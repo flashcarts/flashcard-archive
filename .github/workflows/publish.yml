@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           persist-credentials: false
           submodules: recursive
@@ -31,7 +31,7 @@ jobs:
           mkdir public
           cp -r files/* public
           cp CNAME public
-          cp .nojekyll public
+          touch public/.nojekyll 
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
