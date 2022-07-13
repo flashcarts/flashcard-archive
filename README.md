@@ -21,6 +21,7 @@ These carts may support BL2CK OS. Only these carts are confirmed to actually wor
 - r4isdhc.hk 2015
 - r4isdhc.com NEW/2013 carts
 - r4i-drive.com carts
+- R4 Ultra and Acekard 2/2.1/2i carts that cannot run AKAIO due to being a clone
 
 These carts may support BL2CK OS, but have not been attempted. This information is based on its provided DLDI, which are identical.  
 Please do not attempt cross-loading without knowing what you're doing.
