@@ -18,6 +18,8 @@ Some kernels are in different locations, or have consolidated as they are identi
 These carts may support BL2CK OS. Only these carts are confirmed to actually work so far:
 - r4i3d.com 2012-2013
 - r4igold.cc 3DS
+- r4igold.cc Wood (use the Amaze3DS version)
+- Amaze3DS (use the Amaze3DS version)
 - r4i-gold.me 2014-2015
 - r4isdhc.hk 2015
 - r4isdhc.com NEW/2013 carts
