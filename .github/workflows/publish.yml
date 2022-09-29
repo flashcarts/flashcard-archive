@@ -3,9 +3,6 @@ name: Deploy site
 on:
   push:
     branches: [ main ]
-    paths:
-      - files/**
-      - .github/workflows/publish.yml
   workflow_dispatch:
 
 jobs:
