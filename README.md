@@ -28,6 +28,7 @@ These carts may support BL2CK OS. Only these carts are confirmed to actually wor
   - R4iTT 3DS NEW, RTS
   - r4infinity.com Dual-Core
   - r4isdhc.in 2014
+  - R4i Gold 3DS Plus with faulty DS mode
 - Amaze3DS version:
   - r4igold.cc Wood 
   - Amaze3DS (use the Amaze3DS version)
