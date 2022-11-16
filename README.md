@@ -39,6 +39,5 @@ Please do not attempt cross-loading without knowing what you're doing.
 - r4ixds.com 2014-2016 non-white
 - r4i-gold.me 2013
 - r4i-gold.com 3DS Gold Pro
-- r4i.ndsi.in cards
 - amazekard.com cards
 - Galaxy Eagle cards (use the Amaze3DS version and rename _DS_MENU.dat to ge.nds)
