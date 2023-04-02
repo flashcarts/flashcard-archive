@@ -14,18 +14,20 @@ jobs:
         with:
           persist-credentials: false
           submodules: recursive
-          fetch-depth: 0
+          fetch-depth: 1
 
-      - name: Install apindex-v2
-        run: |
-          sudo apt-get update
-          sudo apt-get install curl git -y
-          curl https://raw.githubusercontent.com/jayanta525/apindex/master/install.sh | sudo bash
+      # to get README.md to webpage as well as GitHub's UI
+      - name: Pre-generation of directory listing
+        run: cp README.md files/README.md
 
-      - name: Build site
+      - name: Github Pages Directory Listing
+        uses: jayanta525/github-pages-directory-listing@v3
+        with:
+          FOLDER: files
+
+      # these shouldn't be in apindex, but need to be in repo root for GitHub Pages
+      - name: Pre-generation of directory listing
         run: |
-          cp README.md files/README.md
-          apindex files
           mkdir public
           cp -r files/* public
           cp CNAME public
