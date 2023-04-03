@@ -19,7 +19,7 @@ jobs:
         run: cp README.md files/README.md
 
       - name: Github Pages Directory Listing
-        uses: jayanta525/github-pages-directory-listing@v3.0.0
+        uses: jayanta525/github-pages-directory-listing@main
         with:
           FOLDER: files
 
