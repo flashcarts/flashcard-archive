@@ -1,0 +1,79 @@
+Release Notes for CycloDS Evolution Firmware v1.4 BETA 3
+========================================================
+
+BETA Change Log
+---------------
+
+v1.4 BETA 3:
+
+  * Added GBA autopatching
+  * GBA screen selection is taken from system settings
+  * Added support for the GBA frame bitmap
+  * Both NOR and PSRAM mode supported for GBA roms via EZ3in1
+  * GBA saves compatible with GBAExpLoader
+  * Improved homebrew soft reset compatibility (nesDS, lameboy, SNEmulDS)
+  * Restored compatibility with RTS files made with v1.3x
+  * Game compatibility fix (2343)
+  * 16-bit bitmaps now supported (skins + GBA frame)
+  * New design for default CycloDS skin
+  * Miscellaneous other improvements
+
+v1.4 BETA 2:
+
+  * Gameboy Advance software can now be loaded directly from the
+    CycloDS Evolution GUI. Games must be pre-patched using GBATA
+    or similar software. Automatic patching will be added in the
+    future.
+  * Fixed some compatibility issues caused by homebrew soft reset
+  * Added support for new 3in1 cards
+  * Fixed bug preventing RTS from working on filenames containing
+    unicode characters
+  * Game compatibility fixes (2110, ingame menu + 2107)
+  * Added option of booting from slot 2 in either NDS or GBA mode
+
+v1.4 BETA 1:
+
+  * Fixed Pokemon NDS <-> Wii connection for all regions
+  * Added homebrew soft reset
+  * Increased the number of allowed fragments, which should reduce
+    the "filesystem too fragmented" error
+  * Fixed compatibility issues (2203)
+
+GBA Software Loading
+--------------------
+
+GBA software can now be loaded directly from the CycloDS Evolution
+GUI. In order to do this, you must have either a CycloDS Mini/Micro
+or an EZ3in1 cart inserted in slot 2. CycloDS Evolution will now
+automatically patch the ROM's save access so you dont need to use
+any 3rd party tools in order to accomplish this. 1Mbit save types are
+currently unsupported.
+
+Starting with this release, GBA saves are now directly compatible with
+Rudolph's GBAExpLoader software (due to the large amount of requests
+we received). This means that all GBA saves are stored in a directory
+called "GBA_SAVE" in the root of your MicroSD card.
+
+Each time you run a game, the contents of its corresponding .sav file
+will be copied into slot 2 SRAM. In order to backup the contents of
+SRAM to the .sav file, you must reboot the NDS and load the CycloDS
+Evolution GUI, where the SRAM will be backed up automatically.
+
+GBA Frame bitmaps are now supported. CycloDS Evolution will attempt to
+read a GBA frame bitmap from /CycloDS/gbaframe.bmp; the bitmap must be
+either 16-bit or 24-bit colour.
+
+If you are using an EZ3in1 to run GBA games, you may select either
+PSRAM or NOR mode. PSRAM mode generally loads much faster but the ROM
+size in this mode is limited to 16MB. If you wish to use a larger ROM,
+you must use NOR mode. You may switch between PSRAM and NOR mode by
+highlighting a GBA ROM in the game list and pressing the SELECT button
+which will bring up a dialog box.
+
+How to use homebrew soft reset
+------------------------------
+
+Simply launch any homebrew executable and then press "A+B+X+Y+L+R"
+to reset back to the main menu. This is currently working with just
+about all homebrew software tested, and we'll continue to improve
+compatibility.
