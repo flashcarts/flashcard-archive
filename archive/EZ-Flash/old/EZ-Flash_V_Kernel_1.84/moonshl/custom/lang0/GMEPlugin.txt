@@ -1,0 +1,2 @@
+Game_Music_Emu 0.5.2 by Blargg
+各種演奏状態の設定です。
