@@ -1,0 +1,264 @@
+www.acekard.com
+acekard@gmail.com
+skin.acekard.com
+
+****************
+release 4.11
+****************
+整合了bliss的自制内核的主要特性。感谢bliss所做的一切。同时也感谢Smiths,Normmatt,gelu等其他作者的贡献。
+    增强了对使用扩展卡运行gba游戏的功能。
+    内核直接运行mp3,txt,avi,dsm,ogg,wav等多媒体文件！（avi需特殊转换,txt支持书签记忆）
+    金手指支持 dat,.xml格式文件，全触控操作，尽显DS特质！
+    可以分别为每个游戏做单独的配置。
+    同一游戏可以使用不同的存储档案，单独储存互不影响。支持单游戏多存档复制，令人振奋的SL大法再现！
+    支持开机自动运行关机时所运行的游戏(开机时长按b键取消自动运行)。支持设立快捷方式。
+    支持隐藏文件，文件夹；支持隐藏文件扩展名！
+
+修正了大合奏的存档问题。现在可以选择使用8m存档类型。
+
+
+Merged all main features from bliss's firmware. Thanks to bliss. And thanks to Smiths, Normmatt and gelu too.
+    Improved supporting of running GBA games via expansion cards.
+    Support mp3, txxt, avi, dsm, ogg, wav and so on direclty. (avi need convert first. txt support mark)
+    Support AR code in dat and xml format.
+    You can set uniquee settings for every single game.
+    Support multi save slot for one game.
+    Support automatically run after start up. You can long press b button to enter ak2's menu. Support short cut.
+    Support hide files and folders. Support hide extension name.
+
+Fixed save issue of BBDX. Now you can choose 8m save for BBDX.
+
+****************
+release 4.10
+****************
+使用了ak2的soft-reset引擎。软复位更加稳定。
+修正了dq5剧情不能发展和存档不能的问题。
+Using new engine from ak2 and it's more stable.
+Fixed dq5.
+
+****************
+release 4.09
+****************
+修正了2048牧场物语存档死机的问题。
+Fix bug of hanging up when save in rom 2048__Bokujou_Monogatari.
+
+****************
+release 4.08
+****************
+1.修正DSlinux-dldi不能运行的问题。现在可以在flash和sd卡上运行了。
+2.修正了moonshell在6g sd卡上不能正常读取文件的问题。
+3.修正了moonshell不能软复位，不能正常显示中文的问题。请到http://www.acekard.com/index.php?page_id=4下载moonshell for akrpg。请放置此文件到根目录。
+特别感谢: Normmatt
+
+1. Dslinux-dldi can work on both NAND flash and Sd card.
+2. Fixed moonshell can not access to 6G SD card.
+3. Moonshell now support soft-reset and display Chinese characters. Please download moonshell for AK RPG at: http://www.acekard.com/index.php?page_id=4. Please put these file and folder at the root of SD card and flash.
+Special Thanks to Normmatt.
+
+
+
+****************
+release 4.07
+****************
+1.修正日文半角字符的显示问题。
+2.隐藏文件可以选择是否显示。请在/__rpg/globalsettings.ini文件内修改"showHiddenFiles"的值。"0"表示不显示隐藏文件，"1"表示显示隐藏文件。
+3.文件浏览的时候可以调整触摸屏的速度了。请在/__rpg/globalsettings.ini文件内修改"scrollSpeed"的值。有三个选项："fast","medium","slow"。默认是"fast"。
+4.修正了皮肤中显示用户自定义文字和图片的bug。请在/__rpg/ui/xxx/custom.ini文件内修改"custom text"和"custom picture"的值。"show"这项为"0"表示不显示，"1"表示显示。用户图片的路径放在"file"项内。如果是flash内的文件请使用"fat0:/"开头，如果是tf卡内请使用"fat1:/"开头。图片请使用RGB(555)的BMP文件。例如："fat0:/__rpg/ui/Mario/my_pic.bmp"。
+5.修正了如果按住方向键不放浏览文件的时候可能会出现的icon错误问题。
+6.修正了某些游戏的download play的问题。
+7.增加快捷方式的功能。请在希望做快捷方式的游戏或者自制软件上按下"y"，然后按下"x"选择创建快捷方式即可。会在菜单的根目录创建一个快捷方式。目前只能创建一个快捷方式。可以在/__rpg/globalsettings.ini内修改"ShortcutStr"的值来修改快捷方式的显示名字。
+
+特别感谢：Normmatt
+
+作为唯一公开源代码的烧录卡，我们为开发者建立了SVN服务器。你可以通过svn://svn.acekard.com来访问。用户名和密码都是"acekard"。如果你想加入我们的开发，请email给我们申请帐号。acekard@gmail.com。谢谢。
+
+
+1.Fix bug of showing half-character Japanese.
+2.You can choose whether to show hidden files and folders.Please modify the value of "showHiddenFiles" at /__rpg/globalsettings.ini. "0" means do not show hidden files and "1" means show all files.
+3.You can adjust the speed of scrolling when list files. Please modify the value of "scrollSpeed" at /__rpg/globalsettings.ini to "fast", "medium" or "slow". And default value is "fast".
+4.Fix bug of customer text and pictures in skin.Please set the value of "custom text" and "custom picture" at /__rpg/ui/xxx/custom.ini. if "show = 0" means do not show this item. "show = 1" means show the item. You need set the path of customer picture. If the file in flash please use "fat0:/" as the root or "fat1:/" if the picture in TF card. Only RGB(555) BMP picture file is supported. For example you can set the "file" to "fat0:/__rpg/ui/Mario/my_pic.bmp"
+5.Fix bug when holding key to list files and the icon would be display incorrectly.
+6.Fix some game's download play.
+7.Add shortcut function. You can press "y" when select the application which you want to create a shortcut. And press "x" to create it. Then you can find the shortcut at the root of menu. Now only one shorcut can been created. You can change the shortcut display name by modify the value "ShortcutStr" at /__rpg/globalsettings.ini.
+
+Special Thanks to Normmatt.
+
+As the only one flash card who opened all source code we'd like to invite developers to enjoin our SVN server. You can visit it via svn:svn.acekard.com. The password and the account both are "acekard". Please send us a email for developers' account. acekard@gmail.com. Thank you.
+
+
+****************
+release 4.06
+****************
+AK RPG menu 4.06 update
+
+1.Fix a bug when display free space of 6G or more larger SDHC card.
+2.Add translations for soft-reset and so on.
+
+If your RPG prompt that your TF card can't run games on it please try to modify file "sdlist.ini" at /__rpg and enter a smaller number at [SD Card Speed]. It'll make RPG won't display the warnning and run games from TF card. But some games can't run well by this way. You must copy them to flash to run it.
+
+
+更新
+
+1 修正了6G以及以上大容量sdhc卡在菜单中剩余容量显示的错误。
+2 加入了软复位等功能的多语言翻译。
+
+如果你的RPG提示你的TF卡不能运行游戏，请修改/__rpg目录下的"sdlist.ini"文件。把[SD Card Speed]下的数字修改为较小的数字以便RPG不再提示无法从TF卡上运行。但是这样的话可能某些游戏还是无法运行，必须拷贝到到flash中执行。
+
+****************
+release 4.05
+****************
+AK RPG菜单4.05 更新
+
+1.支持软复位。请在进入ak菜单后按下start键，选择“特殊功能”一项，打开软复位功能。
+  在游戏中按下“L+R+A+B+Down”来软复位游戏到ak菜单。
+
+2.ak菜单中按下R键调整亮度不再保存在配置文件中。必须在start呼出菜单中修改或者使用触摸笔修改才会即时保存在配置文件中。这是为了防止关机的时候不小心触碰到R键，导致在写文件的时候关机造成文件系统损坏。
+
+
+已知问题
+
+打开特殊功能中的选项后可能个别游戏可能运行不正常。请关闭某个或者全部功能即可正常运行。
+
+相关代码会在近日放出。
+
+
+AK RPG menu 4.05 update
+
+What's new
+
+1.Support soft-reset now. Please press "start" key when entering ak menu. And enable "soft reset" in "special" item.
+   Please use "L+R+A+B+Down" to reset game to ak menu.
+
+2.Press R to adjust light won't write to config file. But it still will be written to the config file when change it from start menu or touch the icon. This change is to avoid touch R key when you turn off the DSL. And thus will shutdown when write file and crash the file system.
+
+
+Known issues
+
+A few games could run well when enable "special" items. Please disnable it/them to run the game.
+
+
+We need translate the new strings to Spanish, Italian, French, Japanese and Germany. If you can help us please contact us via acekard#gmail.com. Thank you.
+
+The source code will be released in a few days.
+
+
+www.acekard.com
+
+****************
+release 4.04
+****************
+
+
+    更新
+    修复大部分游戏的download play问题。
+
+    目前某些游戏在单卡联机的时候，如果副机没有刷机的话会无法联机。这个更新修复了此问题。
+
+    进入ak rpg菜单后，按下start，然后选择“特殊功能”打开单卡联机兼容性的选项即可。
+    某些游戏可能依然有问题或者无法进入游戏。请向我们报告相关的信息。同时关闭这个功能以便游戏。
+
+    下载后请直接覆盖原文件。
+
+    谢谢。
+
+    What’s new
+    Fixed most single card donwload play issues.
+
+    Enter menu of AK RPG and press "start". Then select "Special" and enable "Single card play".
+    A few games maybe still has some problem of single card download play or even can’t run. Please report to us and disable this feature to run it.
+
+    Please use these files and diretory to replace the old ones directly.
+
+    Thank you.
+
+
+
+
+
+****************
+release 4.03
+****************
+AK RPG menu 4.03发布。
+
+Release of AK RPG menu 4.03.
+
+更新
+
+    * 支持AR码的金手指
+          o 使用方法。创建和rom名字一致的，后缀名为“.cc”的文件，放置到和rom同一目录下。cc文件中拷贝入AR code。在code说明那行文字的最开始添加"@"来打开该code，添加"#"来关闭该code。例如：
+
+      @Infinite Lives--------该code被打开。
+      020973ec 00000063
+
+      # Infinite Health------该code被关闭。
+      1208fce4 00000880
+      1210679c 00000008
+          o 在ak menu中按下start键，在“特殊功能”一项中打开金手指功能。
+          o 在游戏中使用"Start+Select+UP"来打开金手指功能。使用"Start+Select+DOWN"来关闭金手指功能。
+          o 金手指code可以在这里找到一部分：http://us.codejunkies.com/codes.asp?c=US&cr= USD&cs=$&r=0&l=1&p=17。也可以使用网上公开的AR格式的其他金手指。但是要注意和自己rom的版本相同。
+    * 修正了某些游戏在4.02版本中运行不正常的问题。
+
+已知的问题
+
+    * 目前暂时不支持在菜单中开启或关闭某个金手指code。
+    * 金手指相关的部分的提示目前只有简体中文，繁体中文和英文。其他语言等待翻译。
+
+更多特性正在顺利的开发之中。
+
+请到这里下载： http://www.acekard.com/index.php?page_id=4
+
+请直接覆盖 根目录下的原文件和文件夹即可。建议备份记录以免因为存档类型找不到而丢失。
+
+特别感谢：cracker,Slade。
+
+================================================
+
+What's New
+
+    * Support ActionReplay Code.
+          o How to use it. Create a file as the same as rom's name and a suffix name ".cc". Put this "cc" file in the same directory of rom. Copy AR code into this cc file. Add a "@" at the begin of line of the description of code to enable this code. Add a "#" at the begin of line of description of code to disable this code. For example:
+
+      @Infinite Lives--------Enable this code.
+      020973ec 00000063
+
+      # Infinite Health------Disable this code.
+      1208fce4 00000880
+      1210679c 00000008
+          o Please open Cheating System at the "Special" of AK start menu.
+          o Use "Start+Select+UP" to enable Cheating System in game. Use "Start+Select+Down" to disable Cheating System in game.
+          o You can find some AR code at here: http://us.codejunkies.com/codes.asp?c=US&cr=USD&cs=$&r=0&l=1&p=17. And we support all code of AR format. Be ware to make sure the code is meet the version of your game.
+    * Fix bug in menu 4.02 that some game can't run normally.
+
+Known Issues
+
+    * Can't support enable or disable a code at the menu for now.
+    * The prompt strings of new feature are only in Simple Chinese, Traditional Chinese and English. The other languages are not translated now. If you wann help you can translate these strings and email to us. Thanks.
+
+Other features are developing now and everything is going well.
+
+Please download it here: http://www.acekard.com/index.php?page_id=4
+
+Please replace all files and directory at the root of Ak RPG. We suggest you backup your save files first.
+
+Special Thanks: cracker,Slade.
+
+****************
+release 4.02
+****************
+Kmenu4.nds 4.02版本发布。
+修正了FAT32模式下加载2Gbit游戏(目前只有1458-ASH这个游戏)的一个bug。
+使用FAT16格式则无需更新。相关的源代码将在随后放出。请到下载区下载。
+
+Akmenu4.nds version 4.02 released. Fix a bug of loading 2Gbit game(as far as now there are only one game which is 1458-ASH) in FAT32 mode.
+It’s no need to update if you use FAT16. The related source code will be released soon too.
+
+
+
+****************
+release 4.01
+****************
+Please copy the directory "__rpg" and "akmenu4.nds" to the root of NAND flash of AK RPG.
+Use your mini USB cable to connnect AK RPG and copy these files to the root of NAND flash.
+请拷贝压缩包内的"__rpg"和 "akmenu4.nds"到AK RPG的NAND的根目录。你可以使用mini USB连线连接AK RPG到PC。此时认出的移动设备既是AK RPG的NAND flash。
+
+www.acekard.com

@@ -1,0 +1,358 @@
+[start menu]
+Copy = 複製
+Cut = 剪下
+Paste = 貼上
+Delete = 刪除
+Save Type = 存檔類型
+Patches = 特殊功能
+Setting = 系統設定
+Info = 檔案資訊
+Help = 說明
+
+[message box]
+yes = 是
+no = 否
+ok = 確定
+cancel = 取消
+
+[progress window]
+processing save = 正在處理存檔，請不要關機！
+processing copy = 正在複製檔案，請不要關機，按 %c 取消！
+first use sd = 正在為第一次使用 SD 卡做準備
+gba load = 讀取GBA遊戲...
+gba save load = 讀取GBA存檔...
+gba save store = 正在處理GBA存檔，請不要關機！
+erase nor = 消除NOR記憶體中，請不要關機！
+rebuilding cheat data = 重建金手指檔案
+
+[copy file error]
+title = 錯誤
+text = 檔案或資料夾不存在
+
+[copy file exists]
+title = 提示
+text = 有相同檔名的檔案存在，要覆蓋嗎？
+
+[copy dest is directory]
+title = 錯誤
+text = 有相同名字的目錄存在，不能將檔案複製到這裡
+
+[move dest is directory]
+title = 錯誤
+text = 有相同名字的目錄存在，不能將檔案搬移到這裡
+
+[no copy dir]
+title = 錯誤
+text = 不支援複製或剪下一個目錄
+
+[stop copying file]
+title = 確認
+text = 要停止複製這個檔案嗎？
+
+[confirm delete file]
+title = 確認
+text = 刪除檔案後不能恢復，確實要刪除 「%s」 嗎？
+
+[do not delete directory]
+title = 警告
+text = 該目錄下還有檔案或者目錄，不能直接刪除
+
+
+
+[unknown save type]
+title = 提示
+text = 此程序存檔類型未知，按 A 選擇存檔類型
+
+
+
+[no savelist]
+title = 警告
+text = 無法讀取存檔列表, "savelist.bin" 遺失
+
+[restore save fail]
+title = 警告
+text = 恢復存檔錯誤，要繼續嗎？
+
+
+
+[backup save fail]
+title = 警告
+text = 備份存檔失敗，磁碟上可能沒有足夠的空間
+
+
+
+[language changed]
+title = 問題
+text = 改變了系統語言，要現在重啟更換新的語言嗎？選「否」稍後再重啟
+
+
+
+[ui style changed]
+title = 問題
+text = 改變了使用者設定，必須重啟系統才能生效，要現在重啟更換新的設定嗎？選「否」保持當前的設定
+
+[setting window]
+ok = 確定
+savetype = 存檔類型
+cancel = 取消
+confirm = 確認
+confirm text = 要保存當前的設定嗎？
+shortcut = 捷徑
+rominfo = Rom資訊
+
+[save type]
+title = 設定存檔類型
+text = 選擇存檔類型
+
+Unknown = 未知/自動
+No Save = 沒有存檔
+4K = 4K
+64K = 64K
+512K = 64K/512K
+2M = 2M
+4M = 2M/4M
+
+
+
+[scrolling]
+Fast = 快
+Medium = 中
+Slow = 慢
+
+[romnametype]
+Normal = 一般
+HideExtName = 隱藏副檔名
+BannerTitle = 檔頭名稱
+
+[advanced setting]
+title = 進階設定
+Advanced = 進階
+Show Hidden Files = 顯示隱藏檔案
+Hide Extension Name = 隱藏副檔名
+Rom Name Type = ROM列表類型
+Scrolling Speed = 捲動速度
+
+[system setting]
+title = 系統設定
+
+[rom info]
+title = 檔案資訊
+file date = 最後寫入：%d年%d月%d日 %02d:%02d:%02d(GMT)
+file size = 檔案大小：%s
+save type = 存檔類型：%s
+game code = 遊戲代碼：%s
+save slot = 選擇存檔Slot
+title_rominfo = ROM詳細設定
+cheat menu = 金手指選單
+copy slot = Copy Slot
+SaveSlot = Saveslot
+
+[gba info]
+run mode = Run Mode
+Normal = Run
+Linkage = Linkage
+patch sleep = Patch Sleep Mode
+patch sram = Patch SRAM
+
+[saveslot]  
+title = Save Slot
+Slot = Slot 
+title_copyslot = Copy Save Slot
+confirm_copyslot = Are you sure you want to copy save slot?
+target slot = Target SaveSlot
+Default Slot = Default
+Set Slot = Set Slot
+Copy = 複製
+Delete = 刪除
+
+
+[disk info]
+total = 磁碟容量：%s
+used = 已用空間：%s
+free = 剩餘空間：%s
+
+
+
+[no free space]
+title = 錯誤
+text = 磁碟空間不足，無法完成複製
+
+
+
+[sd speed]
+text = 設定SD卡速度
+item0 = 極速
+item1 = 快速
+item2 = 中速
+item3 = 慢速
+
+
+[unsupported sd]
+title = 不相容的SD卡
+text = 您使用的SD卡(型號:%s) 不適合直接執行DS官方程式，請複製到AK內建記憶體中再執行
+
+
+
+[sd card error]
+title = SD卡錯誤
+text = 無法存取SD卡的內容，SD卡可能沒有插好
+
+
+[no sd for save]
+title = SD卡錯誤
+text = 無法存取SD卡，之前的存檔將被備份到內建記憶體的：%s 檔案中
+
+
+[no gba card]
+title = 提示
+text = SLOT2 並沒有插入設備
+
+
+
+[filelist type]
+text = 設定檔案列表方式
+item0 = NDS
+item1 = NDS + SAV
+item2 = ALL
+
+
+[rom trim]
+text = 複製時自動縮減ROM
+item0 = 否
+item1 = 是
+
+
+
+[cheat]
+text = 使用金手指
+item0 = 否
+item1 = 是
+
+
+
+[autorun]
+text = 自動執行
+item0 = 否
+item1 = 是
+
+
+[language]
+text = 系統語言
+item0 = 英語
+item1 = 簡體中文
+item2 = 繁體中文
+item3 = 日語
+item4 = 法語
+item5 = 義大利語
+item6 = 德語
+item7 = 西班牙語
+item8 = 韓語
+item9 = 荷語
+
+
+[brightness]
+text = 螢幕亮度
+
+
+
+[ui style]
+text = 面版
+
+[help window]
+title = 說明主題  繁體化 by s223355
+item0 = %c  選擇檔案
+item1 = %c  是/開始/確定
+item2 = %c  否/後退/取消
+item3 = %c  查詢檔案資訊 / 選擇存檔類型
+item4 = %c  金手指選單
+item5 = %c  上一頁
+item6 = %c  調整亮度：1/2/3/4
+item7 = %s  開始選單
+item8 = %s  切換新列表模式/經典模式
+versions = HW: %02x NDD: %02x
+
+[exp window]
+title = 3合1擴充卡設定
+ram = RAM 
+sram = sRAM 
+off =關閉
+low = 弱
+mid = 中
+high = 強
+strength = 震動等級
+NOR Mode = 使用NOR模式
+auto = 自動
+always = 隨時
+
+[abort save]
+title = 取消存檔
+text = 您確定要取消存檔？
+
+[gba warn]
+title = 警告：GBA ROM 容量
+text = 不支援大於32MB的GBA ROM !
+
+[patches]
+title = 特殊功能設定
+download play = 提升單卡聯機相容性
+cheating system = 金手指
+reset in game = 暖開機
+cheatdb select= 選擇金手指DB
+3in1 = 3合1擴充卡
+
+
+
+
+[switches]
+Default = 預設
+Enable = 啟用
+Disable = 禁用
+auto menu = 自動
+
+[shortcut]
+title_overwrite = 覆蓋現有捷徑？ 
+text_overwrite = 您是否想要建立/覆蓋現有捷徑？ 
+title_delete = 確認
+text_delete = 您確定要刪除捷徑？
+
+[slot2]
+boot mode = 啟動模式
+gbamode = 引導至GBA模式
+passme = 引導至NDS模式(PassMe)
+unknown = 未知的Slot-2擴充卡
+3in1 Expansion Pack = 偵測到EZ 3合1擴充卡
+EWin Expansion Pack = 偵測到EWin GBA擴充卡
+
+[cheats]
+title = 金手指confirm = 確定
+error_title = 錯誤
+error_text = 找不到金手指
+no cheatdb= 找不到金手指DB
+invalid cheatdb= 金手指DB遺失
+notfound = DB中找不到金手指
+confirm_rebuild = 確定重新建立檔案? 原本的金手指檔案將被移除
+Save = 儲存
+Cancel = 取消
+Rebuild = 重建
+DB Select = 選擇DB
+
+[textview]
+confirm = 確定
+exit = 退出txt瀏覽模式？ 
+title = 錯誤
+file open error = 不能打開此txt文件。返回AK系統選單。 
+screen angle = 顯示角度
+normal = 普通
+rotate 90 = 旋轉90度 
+rotate 270 = 旋轉270度 
+screen mode = 顯示模式
+dual = 雙螢幕顯示
+dual copy = 上下螢幕相同
+lower = 只在下螢幕
+upper = 只在上螢幕
+add bookmark = 在此添加一個新的書籤？ 
+remove bookmark = 刪除此書籤？ 
+goto toppage? = 回到首頁？
+line space = Line Space
+
+[end]
