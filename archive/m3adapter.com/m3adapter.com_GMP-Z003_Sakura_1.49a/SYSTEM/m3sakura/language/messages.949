@@ -1,0 +1,308 @@
+﻿; M3Sakura language resource for 'EUC-KR Unified hangul'.
+; Encoding format is UTF-8.
+
+; ----------------------------
+
+CD_CheckDisk_Start=간이 디스크검사를 시작합니다.
+CD_CheckDisk_End=간이 디스크검사를 정상 종료합니다.
+CD_FatalError_Title=!!디스크에서 치명적결함을 발견했습니다
+CD_FatalError_DuplicatedArea0=일부 섹터가 중첩되었습니다.
+CD_FatalError_DuplicatedArea1=폴더의 일부가 파괴되어져 있습니다.
+CD_FatalError_BrokenEntry0=디렉토리 엔트리가 비정상적입니다.
+CD_FatalError_BrokenEntry1=한개 이상의 파일이 파손되었습니다.
+CD_FatalError_IlligalClusterLink0=불량클러스터 링크로 작업이 중단됨.
+CD_FatalError_IlligalClusterLink1=파일 손상이 의심됩니다.
+CD_FatalError_BrokenDirectoryLink0=디렉토리 엔트리가 비정상적입니다.
+CD_FatalError_BrokenDirectoryLink1=폴더가 손상되었습니다.
+CD_FatalError_BrokenUnicode0= 디렉토리 엔트리가 비정상적입니다.
+CD_FatalError_BrokenUnicode1=긴 파일명이 손상되었습니다.
+CD_FatalError_FileSizeError0=디렉토리 엔트리에 기재된 파일크기와,
+CD_FatalError_FileSizeError1=실제 파일크기가 일치하지 않습니다.
+CD_FatalError_UnknownError=알 수 없는 오류가 발생했습니다.
+CD_FatalError_RecoveryMsg0=복구방법: 
+CD_FatalError_RecoveryMsg1=모든 파일을 HDD로 먼저 백업하시고,
+CD_FatalError_RecoveryMsg2=카드 포맷후에 다시 설치해 주세요.
+CD_FatalError_StopApplication=프로그램을 중지 했습니다.
+CD_NotSupportDiskSize_Title=지원하지 않는 디스크 포맷입니다.
+CD_NotSupportDiskSize_Msg0=디스크 전체 용량이 너무 크던지,
+CD_NotSupportDiskSize_Msg1=클러스터 크기가 너무 작습니다.
+CD_NotSupportDiskSize_Msg2=
+CD_NotSupportDiskSize_RecoveryMsg0=복구방법:
+CD_NotSupportDiskSize_RecoveryMsg1=32k,64k 등 큰 클러스터 크기로,
+CD_NotSupportDiskSize_RecoveryMsg2=다시 포맷해 주세요 (/a:32k,/a:64k)
+CD_NotSupportDiskSize_RecoveryMsg3=
+CD_Fragments_Title=경고!! 단편화된 파일이 있습니다.
+CD_Fragments_StringFormat=%d 파일중, %d개의 조각이 있습니다.
+CD_Fragments_Msg00=홈브류 프로그램 실행시엔 상관없겠지만,
+CD_Fragments_Msg01=고속을 요하는 프로그램 및 게임의 경우엔,
+CD_Fragments_Msg02=문제가 발생할 소지가 있습니다.
+CD_Fragments_Msg10=가장 권장할 수 있는 복구수단은,
+CD_Fragments_Msg11=모든 파일을 HDD로 먼저 백업하시고,
+CD_Fragments_Msg12=포맷후에 다시 설치하시길 권장합니다.
+CD_Fragments_Msg13=조각모음은 절대 사용하면 않됩니다.
+CD_Fragments_Ignore=경고창을 닫으려면 아무키나 누르세요
+CD_CheckDuplicateCluster_Title=중복 클러스터/단편화를 조사중
+CD_CheckFATType_Title=FAT 포맷을 조사하고 있습니다.
+CD_FATType_StringFormat=FAT%d가 검출되었습니다. 
+CD_FATType_UnknownFATType=인식할 수 없는 FAT 포맷입니다.
+CD_FATType_WarnMsg00=권장하지않는 FAT 포맷입니다.
+CD_FATType_WarnMsg10=최근에는 문제가 적어졌습니다만,
+CD_FATType_WarnMsg11=FAT16/32 사용을 권장합니다.
+CD_FATType_WarnMsg12=파나소닉 SDFormatter를 추천합니다.
+CD_FATType_WarnMsg20=FAT32를 사용시엔 가급적 자주,
+CD_FATType_WarnMsg21=디스크검사를 시행해 주시기 바랍니다.
+CD_FATType_Ignore=계속하려면 아무 키나 눌러주세요.
+CD_WriteError_Title=디스크 액세스 테스트에 실패했습니다.
+CD_WriteError_Msg0=디스크의 빈 공간이 너무 적습니다.
+CD_WriteError_Msg1=읽고쓰기가 불가능한 DLDI 드라이버
+CD_WriteError_Msg2=카드아답터와 호환불량 및 접촉불량
+CD_WriteError_Msg3=디스크 관리영역의 직접적인 손상 등
+CD_WriteError_Msg4=
+CD_WriteError_Msg5=을 원인으로 의심할 수 있습니다.
+CD_WriteError_Msg6=
+CD_WriteError_Msg7=프로그램을 중단했습니다.
+CD_WriteTest_Title=디스크를 테스트하고 있습니다.
+
+; ----------------------------
+
+SM_FileListMode=1줄/2줄 모드 전환
+SM_Customize=환경설정
+SM_RestoreBG=스킨을 원래대로
+SM_Langauge=언어설정
+SM_BackupSave=전체설정을 초기화
+
+; ----------------------------
+
+CS_Title=M3 SAKURA 환경설정
+
+CS_SkipSetup=처음 동작시 셋업을 실행하지 않음.
+CS_BootCheckDisk=처음 동작시 항상 디스크검사를 수행
+
+CS_ClickSound=메뉴 효과음을 재생함.
+CS_EnableFadeEffect=부드러운 화면 전환
+CS_AutoLastState=파일런쳐를 자동으로 실행함.
+
+CS_MoveFolderLocked=폴더 이동을 하지 않음.
+CS_HiddenFilenameExt=확장자를 표시하지 않음.
+CS_HiddenNotSupportFileType=사용할 수 없는 파일은 표시하지 않음.
+
+CS_ScreenSaver_BlackMode=어두운 배경의 화면보호기를 사용
+CS_EnabledFastStart=즉시 동영상이 재생되도록 함.
+CS_LockLR=재생시 R+L L+R 키 잠금
+
+CS_Cancel=이전메뉴
+CS_Ok=적 용
+
+; ----------------------------
+IT_Message0=● 실시간 세이브 복구
+IT_Message1=
+IT_Message2=실시간 백업된 세이브 백업 파일을 활용해,
+IT_Message3=과거의 세이브 파일을 사용할 수 있습니다.
+IT_Message4=
+IT_Message5=아래 리스트 중 복구할 시간을 선택 후,
+IT_Message6=L+A키 : 현재의 세이브파일에 덮어쓴 후 실행.
+IT_Message7=B  키 : 이전 메뉴로 빠져 나갑니다.
+IT_Message8=
+IT_Message9=주 의 : 현재의 세이브파일은 소거됩니다.
+IT_Message10=최종동작시각은 [%d/%d/%d %d:%02d:%02d] 입니다.
+IT_Message11=충분히 확인한 후에 복구를 실행해 주세요.
+IT_Message12=
+
+IT_NoTouchMessage=오조작 방지를 위해 키입력만 가능합니다.
+IT_Executing=restore 처리를 실행중입니다…
+
+IT_ItemMessageFormat= %dbyte. 기동 시각 %d/%d/%d %d:%02d:%02d
+
+; ----------------------------
+
+ICS_Title=화상 표시모드 환경설정
+
+ICS_ShowInfomation=파일정보 와 도움말을 표시
+ICS_ShowControlIcons=조작 아이콘을 표시
+ICS_DoubleSpeedKey=버튼 반응속도를 빠르게
+ICS_DoubleSpeedTouch=터치 반응속도를 빠르게
+ICS_MultipleResume=확대율을 항상 기억함
+ICS_AutoFitting=너무 큰 Jpeg화상은 적절히 축소
+ICS_EffectTitle=스킨변환 옵션
+ICS_EffectHeightPadding=두 화면의 틈새를 고려해서 변환
+ICS_EffectPastelForTopBG=위쪽 화면에 파스텔가공을 적용
+ICS_EffectPastelForBottomBG=아래쪽 화면에 파스텔가공을 적용
+
+; ----------------------------
+
+TCS_Title=텍스트 표시모드 환경설정
+
+TCS_ShowClockAndFileInfo=시계와 파일정보를 표시
+TCS_ScreenSaver_BlackMode=어두운 배경의 화면보호기를 사용
+
+TCS_FontSizeTitle=글자 크기
+TCS_FontSizeSmall=소
+TCS_FontSizeMiddle=중
+TCS_FontSizeLarge=대
+
+TCS_DetectCharCodeTitle=자동 검출하는 문자코드의 종류
+TCS_DetectCharCode_ANSI=ANSI (8비트 ASCII)
+TCS_DetectCharCode_SJIS=확장완성형(한국어)
+TCS_DetectCharCode_UTF16BE=UTF-16 빅 엔디안
+TCS_DetectCharCode_UTF16LE=UTF-16 리틀 엔디안
+TCS_DetectCharCode_UTF8=UTF-8
+
+; ----------------------------
+
+IV_Help1=START: 스킨생성 / SELECT: 환경설정
+IV_Help2=Ｙ:50% / Ｘ:100% / Ａ:200% / Ｂ:작업취소
+
+; ----------------------------
+
+TV_Help1=Ａ:페이지스크롤 / Ｂ:작업취소
+TV_Help2=Ｘ／Ｙ:북마크 세이브 로드 메뉴
+TV_Help3=SELECT:환경설정 / 형식 : %s
+TV_Info=현재행수 : %d / %d 행 (%.2f%%)
+
+TV_BookmarkText_Empty=%d : 세이브되고 있지 않습니다.
+TV_BookmarkText_Info=%d : %d행 %s %s
+
+; ----------------------------
+
+ERRMSG0_MemoryOverflow_CanRecovery=메모리 부족 에러가 발생해서
+ERRMSG1_MemoryOverflow_CanRecovery=파일을 열 수 없습니다.
+
+ERRMSG0_NotSupportFileFormat=지원하지 않는 파일 포맷이거나,
+ERRMSG1_NotSupportFileFormat=손상이 의심되는 파일입니다.
+
+ERRMSG0_ProgressiveJpeg=프로그레시브 JPEG 파일은,
+ERRMSG1_ProgressiveJpeg=지원하지 않습니다.
+
+ERRMSG0_Text0byte=비어있는 텍스트 파일입니다.
+ERRMSG1_Text0byte=0 byte의 파일은 열지 않습니다.
+
+ERRMSG0_OverflowLargeImage=화상 파일이 너무 큽니다.
+ERRMSG1_OverflowLargeImage=약 500만 화소가 한도입니다.
+
+ERRMSG0_Diskfull=디스크 오류
+ERRMSG1_Diskfull=저장 공간이 없습니다. 전원을 꺼 주십시오.
+
+ERRMSG0_GBAExtNotFind=GBA 확장팩이 없습니다.
+ERRMSG1_GBAExtNotFind=GBA 게임 실행이 불가능합니다.
+
+ERRMSG0_GBAExtNotFind1=GBA 확장팩이 없습니다.
+ERRMSG1_GBAExtNotFind1=GBA 연동 실행이 불가능합니다.
+; ----------------------------
+
+TM_Encode_Auto=자동인식
+TM_Encode_ANSI=ANSI 8비트
+TM_Encode_SJIS=확장완성형
+TM_Encode_UTF16LE=UTF-16 (LE)
+TM_Encode_UTF16BE=UTF-16 (BE)
+TM_Encode_UTF8=UTF-8
+
+; ----------------------------
+
+LCS_Title=언어설정
+
+LCS_GBK=簡體中文版(Simplified Chinese)
+LCS_BIG5=繁體中文版(Traditional Chinese)
+LCS_KO=한국어판(Korean)
+
+; ----------------------------
+
+SU_Title=시작 옵션
+
+SU_CheckDisk=부팅 시마다 체크디스크를 실행
+SU_KeySound=터치 클릭음을 재생
+SU_LineMode=파일 리스트모드 세팅
+SU_SingleLine=1행 모드
+SU_DoubleLine=2행 모드
+SU_ShowDialog=다음엔 이 화면을 보여주지 않음.
+SU_LangVer=언어 설정
+
+;------------------------------
+
+SUR_Title=NDS게임 옵션 설정
+
+SUR_CheatFile=현 NDS 치트파일
+SUR_CheatFileButton=치트 선택...
+SUR_LinkageFile=현 GBA 링크파일
+SUR_LinkageButton=링크 선택...
+SUR_CheatItemButton=치트 설정...
+SUR_GenerateButton=실시간 저장 복구
+SUR_CheatSwitch=치트 활성화 방법
+SUR_CheatSwitch0=사용안함
+SUR_CheatSwitch1=ON/OFF[Sel+←/→]
+SUR_CheatSwitch2=항상 활성화
+SUR_CheatSwitch3=Instant Codes
+SUR_ResetSwitch=리셋/실시간저장
+SUR_ResetSwitch0=사용안함
+SUR_ResetSwitch1=리셋 LR+ABX
+SUR_ResetSwitch2=리셋 LR+ABY
+SUR_ResetSwitch3=리얼 LR+SELECT
+SUR_ResetSwitch4=리얼 LR+Y
+SUR_SlowMode=슬로우모션
+SUR_SlowMode0=사용안함
+SUR_SlowMode1=L+SELECT
+SUR_SlowMode2=R+SELECT
+SUR_SlowModeLevel=슬로우모션 단계
+SUR_SlowModeLevel0=1
+SUR_SlowModeLevel1=2
+SUR_SlowModeLevel2=3
+SUR_SlowModeLevel3=4
+SUR_SlowModeLevel4=5
+SUR_Method=실행 모드
+SUR_Method0=일반실행
+SUR_Method1=다운로드실행
+SUR_Return=취소
+SUR_Run=적용
+
+;------------------------------
+
+SFL_Help1=커스텀 치트파일을 선택하세요.
+SFL_Help2=링크하실 GBA파일을 선택하세요.
+SFL_Help3=A:적용 / B:취소
+
+;------------------------------
+
+CL_Title=치트 리스트
+CL_Help=A:아이템 변경 / B:저장 및 종료
+CL_CheatNumber1=전체
+CL_CheatNumber2= 치트 항목
+
+;------------------------------
+
+SUG_Title=GBA게임옵션 설정
+
+SUG_CheatFile=현 GBA 치트파일
+SUG_CheatFileButton=치트 선택...
+SUG_CheatSwitch=치트 활성화
+SUG_CheatSwitch0=사용안함
+SUG_CheatSwitch1=사용 함
+SUG_RTSwitch=실시간 저장
+SUG_RTSwitch0=사용안함
+SUG_RTSwitch1=사용 함 LR+AB
+SUG_Method=실행 모드
+SUG_Method0=고속로딩 (세이브 저장 없슴) 
+SUG_Method1=패치로딩 (세이브 저장 있슴 : 권장)
+SUG_Return=취소
+SUG_Run=적용
+SUG_Help=A:저장 및 실행 / B:저장 및 종료
+
+;-----------------------------
+
+DM_Confirm=Confirm Delete
+DM_Cancel=Cancel Delete
+
+;-----------------------------
+
+SU_RegionVer=Region Select
+LCS_EUROPE=Europe
+LCS_ASIA=Asia
+
+;-----------------------------
+
+SUR_GlobalButton=Game Global Setting
+SUR_TitleGlobal=Global Setting
+SUR_MethodGlobal=Global Setting Mode
+SUR_GlobalMethod0=Off.
+SUR_GlobalMethod1=Setting for new game only.
+SUR_GlobalMethod2=Setting for all games.
+
+;------------------------------

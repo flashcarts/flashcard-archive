@@ -1,0 +1,320 @@
+﻿; M3Sakura language resource for 'English'.
+; Encoding format is UTF-8.
+All translations by Densetsu3000. 
+; ----------------------------
+
+CD_CheckDisk_Start=Hurtig Diskkontrol Påbegyndt
+CD_CheckDisk_End=Hurtig Diskkontrol Gennemført Uden Fejl
+CD_FatalError_Title=!! En kritisk fejl er opstået !!
+CD_FatalError_DuplicatedArea0=Enkelte filer anvender samme diskområde.
+CD_FatalError_DuplicatedArea1=Enkelte filer er ødelagte.
+CD_FatalError_BrokenEntry0=Direkte adgang er unormal.
+CD_FatalError_BrokenEntry1=Flere filer er ødelagte.
+CD_FatalError_IlligalClusterLink0=Klyngelink er blevet afbrudt.
+CD_FatalError_IlligalClusterLink1=Filen er måske ødelagt.
+CD_FatalError_BrokenDirectoryLink0=Direkte gen-adgang er unormal.
+CD_FatalError_BrokenDirectoryLink1=Langt filnavn er defekt.
+CD_FatalError_BrokenUnicode0=Direkte gen-adgang er unormal.
+CD_FatalError_BrokenUnicode1=Langt filnavn er defekt.
+CD_FatalError_FileSizeError0=Den viste filstørrelse og
+CD_FatalError_FileSizeError1=den virkelige filstørrelse er forskellig.
+CD_FatalError_UnknownError=Ukendt fejl
+CD_FatalError_RecoveryMsg0=Genoprettelsesmetode :
+CD_FatalError_RecoveryMsg1=Backup alle filer til en harddisk,
+CD_FatalError_RecoveryMsg2=og flyt dem tilbage efter kortet er formateret.
+CD_FatalError_StopApplication=Applikationen er afsluttet.
+CD_NotSupportDiskSize_Title=kan ikke håndtere diskformat
+CD_NotSupportDiskSize_Msg0=Diskstørrelse er for stor, eller
+CD_NotSupportDiskSize_Msg1=klyngestørrelse er for lille.
+CD_NotSupportDiskSize_Msg2=
+CD_NotSupportDiskSize_RecoveryMsg0=Genoprettelsesmetode :
+CD_NotSupportDiskSize_RecoveryMsg1=Prøv at formatere kortet igen
+CD_NotSupportDiskSize_RecoveryMsg2=med en større klyngestørrelse
+CD_NotSupportDiskSize_RecoveryMsg3=
+CD_Fragments_Title=Advarsel!! Fandt en fragmenteret fil.
+CD_Fragments_StringFormat=i filen %d %d er der fundet fragmenter
+CD_Fragments_Msg00=Der er ingen problemer med homebrew,
+CD_Fragments_Msg01=men der kan være et problem med
+CD_Fragments_Msg02=hurtige spil og homebrew.
+CD_Fragments_Msg10=Den mest universelle forebyggelsesmetode
+CD_Fragments_Msg11=er at tage backup af alle filer til harddisken,
+CD_Fragments_Msg12=formater kortet, og flyt alle filerne tilbage igen.
+CD_Fragments_Msg13=Brug ikke Windows Defragmentering.
+CD_Fragments_Ignore=Tryk på en vilkårlig tast for at ignorere advarslen.
+CD_CheckDuplicateCluster_Title=Checker for duplikerede klynger og fragmenter
+CD_CheckFATType_Title=Checker FAT type
+CD_FATType_StringFormat=FAT%d fundet.
+CD_FATType_UnknownFATType=Ukendt FAT type.
+CD_FATType_WarnMsg00=Denne FAT type er ikke anbefalet.
+CD_FATType_WarnMsg10=Problemer er reduceret på det seneste, men
+CD_FATType_WarnMsg11=for M3Sakura FAT 16/32 er anbefalet.
+CD_FATType_WarnMsg12=Panasonic SD Formatter anbefalet.
+CD_FATType_WarnMsg20=når du bruger FAT32, venligst
+CD_FATType_WarnMsg21=kør DiskCheck jævnligt
+CD_FATType_Ignore=Tryk på en vilkårlig tast for at fortsætte
+CD_WriteError_Title=Test af adgang til disk fejlede.
+CD_WriteError_Msg0=Der er meget lidt diskplads tilbage.
+CD_WriteError_Msg1=Inkompatibel DLDI driver.
+CD_WriteError_Msg2=CF/SD adapter compatibilitet, dårlig kontakt.
+CD_WriteError_Msg3=Anvendt diskområde er ødelagt.
+CD_WriteError_Msg4=
+CD_WriteError_Msg5=Formentlig en anden kilde.
+CD_WriteError_Msg6=
+CD_WriteError_Msg7=For en sikkerheds skyld, er applikationen stoppet.
+CD_WriteTest_Title=udfører disk læse/skrive test.
+
+; ----------------------------
+
+SM_FileListMode=1/2 Linie Skift
+SM_Customize=GUI Indstillinger
+SM_RestoreBG=Genopret Baggrund
+SM_Langauge=Sprog
+SM_BackupSave=Gem Genopret Menu
+
+; ----------------------------
+
+CS_Title=M3 Sakura GUI Indstilinger
+
+CS_SkipSetup=Vis ikke Opsætning ved opstart.
+CS_BootCheckDisk=Kør altid Diskcheck ved opstart.
+
+CS_ClickSound=Spil tasteklik lyd.
+CS_EnableFadeEffect=Aktiver Enable falme-effekt.
+CS_AutoLastState=Kør automatisk fil-starter.
+
+CS_MoveFolderLocked=Lås mapper.
+CS_HiddenFilenameExt=Skjul fil-efternavne.
+CS_HiddenNotSupportFileType=Skjul ikke-supporterede filer.
+
+CS_ScreenSaver_BlackMode=Anvend mørk baggrunds skærmskåner.
+CS_EnabledFastStart=Aktiver HurtigStart filmafspilning.
+CS_LockLR=Lås L+R R+L taster ved musikafspilning.
+
+CS_Cancel=Fortryd
+CS_Ok=Tilføj
+
+; ----------------------------
+IT_Message0=genopret Gem Fil menu
+IT_Message1=
+IT_Message2=Genopret forrige gemte data
+IT_Message3=fra gem backup filen.
+IT_Message4=
+IT_Message5=Vælg gem fil og tryk L+A
+IT_Message6=for at overskrive nuværende gem fil.
+IT_Message7=Tryk B for at gå tilbage til Filer.
+IT_Message8=
+IT_Message9=Bemærk : Nuværende gem fil vil blive slettet.
+IT_Message10=Nyeste startsted er[%d/%d/%d %d:%02d:%02d].
+IT_Message11=Genopret kun efter grundig bekræftelse.
+IT_Message12=
+
+IT_NoTouchMessage=Ingen touchskærm, kun knapper kan anvendes.
+IT_Executing=Udfører genoprettelse...
+
+IT_ItemMessageFormat= %dbyte. Startup tid %d/%d/%d %d:%02d:%02d
+
+; ----------------------------
+
+ICS_Title=Billed Indstillinger
+
+ICS_ShowInfomation=Vis fil-info og hjælp.
+ICS_ShowControlIcons=Vis kontrol ikoner.
+ICS_DoubleSpeedKey=Forøg knap følsomhed.
+ICS_DoubleSpeedTouch=Forøg touchskærm følsomhed.
+ICS_MultipleResume=Husk zoom.
+ICS_AutoFitting=Auto-tilpas store JPEGs.
+ICS_EffectTitle=Brug falme-effekt.
+ICS_EffectHeightPadding=Tag højde for mellemrum mellem skærme.
+ICS_EffectPastelForTopBG=Transparent billedtilretning til topskærm.
+ICS_EffectPastelForBottomBG=Transparent billedtilretning til nederste skærm.
+
+; ----------------------------
+
+TCS_Title=Tekst Indstillinger
+
+TCS_ShowClockAndFileInfo=Dobbelt skærmtilstand.
+TCS_ScreenSaver_BlackMode=Anvend mørk baggrunds skærmskåner.
+
+TCS_FontSizeTitle=Skriftstørrelse
+TCS_FontSizeSmall=Lille
+TCS_FontSizeMiddle=Medium
+TCS_FontSizeLarge=Stor
+
+TCS_CPTitle=Tegnsætstandard
+TCS_CP437=CP437
+TCS_CP850=CP850
+TCS_CP1252=CP1252
+
+TCS_DetectCharCodeTitle=Auto-opdag indkodning
+TCS_DetectCharCode_ANSI=ANSI (8bit ASCII)
+TCS_DetectCharCode_SJIS=Japanese S-JIS
+TCS_DetectCharCode_UTF16BE=UTF-16 Big Endian
+TCS_DetectCharCode_UTF16LE=UTF-16 Little Endian
+TCS_DetectCharCode_UTF8=UTF-8
+
+; ----------------------------
+
+IV_Help1=START : Angiv Baggrund / VÆLG : Indstillinger
+IV_Help2=Y : 50% / X : 100% / A : 200% / B : Tilbage
+
+; ----------------------------
+
+TV_Help1=A : Skærmrulning / B : Tilbage
+TV_Help2=X/Y : Foretrukne Gem Hent Menu
+TV_Help3=SELECT : Tilpas / Indkodning : %s
+TV_Info=Linier : %d / %d Linie(r) (%.2f%%)
+
+TV_BookmarkText_Empty=%d :  Ikke gemt
+TV_BookmarkText_Info=%d :  %d Linie(r)  %s %s
+
+; ----------------------------
+
+ERRMSG0_MemoryOverflow_CanRecovery=Kunne ikke åbne fil
+ERRMSG1_MemoryOverflow_CanRecovery=pga. lav hukommelse.
+
+ERRMSG0_NotSupportFileFormat=Formatet er ikke understøttet,
+ERRMSG1_NotSupportFileFormat=eller filen kan være ødelagt.
+
+ERRMSG0_ProgressiveJpeg=Progressive JPEG filer
+ERRMSG1_ProgressiveJpeg=er ikke understøttet.
+
+ERRMSG0_Text0byte=Tom tekstfil.
+ERRMSG1_Text0byte=Kan ikke åbne 0byte filer.
+
+ERRMSG0_OverflowLargeImage=Billedet er for stor.
+ERRMSG1_OverflowLargeImage=Max. str. 5 MP.
+
+ERRMSG0_Diskfull=KRITISK FEJL
+ERRMSG1_Diskfull=Disk er FULD. Venligst luk ned.
+
+ERRMSG0_GBAExtNotFind=Ingen GBA Expansion Pack,
+ERRMSG1_GBAExtNotFind=Kan ikke køre GBA spil.
+
+ERRMSG0_GBAExtNotFind1=Ingen GBA Expansion Pack,
+ERRMSG1_GBAExtNotFind1=Lænke er ikke tilgængelig.
+
+; ----------------------------
+
+TM_Encode_Auto=Auto-opdag
+TM_Encode_ANSI=ANSI 8bit
+TM_Encode_SJIS=S-JIS (JP)
+TM_Encode_UTF16LE=UTF-16 (LE)
+TM_Encode_UTF16BE=UTF-16 (BE)
+TM_Encode_UTF8=UTF-8
+
+; ----------------------------
+
+LCS_Title=Sprog Indstillinger
+
+LCS_English=English
+LCS_French=Français
+LCS_German=Deutsch
+LCS_Italian=Italiano
+LCS_Spanish=Español
+LCS_Portuguese=Português(BR)
+LCS_Netherland=Dutch
+LCS_Russian=Russian
+LCS_Danish=Dansk
+
+; ----------------------------
+
+SU_Title=Opstart Indstillinger
+
+SU_CheckDisk=Kør altid DiskCheck ved opstart.
+SU_KeySound=Spil Taske-klik lyd.
+SU_LineMode=Fil-liste visning
+SU_SingleLine=1 linie tilstand.
+SU_DoubleLine=2 linie tilstand.
+SU_ShowDialog=Vis ikke dette vindue ved opstart.
+SU_LangVer=Sprog Indstilling
+
+;------------------------------
+
+SUR_Title=NDS Spil Indstillinger
+
+SUR_CheatFile=Nuværende NDS Snydefil
+SUR_CheatFileButton=Vælg snydekode...
+SUR_LinkageFile=Nuværende GBA lænke fil
+SUR_LinkageButton=Vælg lænke...
+SUR_CheatItemButton=Snyde indstilling...
+SUR_GenerateButton=Skab RT Gem
+SUR_CheatSwitch=Snyde knap
+SUR_CheatSwitch0=Fra
+SUR_CheatSwitch1=PÅ/Fra[Sel+←/→]
+SUR_CheatSwitch2=Altid tændt
+SUR_CheatSwitch3=Instant Codes
+SUR_ResetSwitch=Reset/RT Gem Knap
+SUR_ResetSwitch0=Fra
+SUR_ResetSwitch1=Rst L+R+A+B+X
+SUR_ResetSwitch2=Rst L+R+A+B+Y
+SUR_ResetSwitch3=RT L+R+SELECT
+SUR_ResetSwitch4=RT L+R+Y
+SUR_SlowMode=Slowmotion
+SUR_SlowMode0=Fra
+SUR_SlowMode1=L+SELECT
+SUR_SlowMode2=R+SELECT
+SUR_SlowModeLevel=Slowmotion Niveau
+SUR_SlowModeLevel0=1
+SUR_SlowModeLevel1=2
+SUR_SlowModeLevel2=3
+SUR_SlowModeLevel3=4
+SUR_SlowModeLevel4=5
+SUR_Method=Kør Tilstand
+SUR_Method0=Normal
+SUR_Method1=DownloadPlay
+SUR_Return=Tilbage
+SUR_Run=Kør
+
+;------------------------------
+
+SFL_Help1=Vælg Snydefil.
+SFL_Help2=Vælg lænke GBA Fil.
+SFL_Help3=A:Tilføj / B:Fortryd
+
+;------------------------------
+
+CL_Title=Snyd Liste
+CL_Help=A:Skift / B:Gem og retur
+CL_CheatNumber1=Total 
+CL_CheatNumber2= Snydekoder
+
+;------------------------------
+
+SUG_Title=GBA Spil Indstillinger
+
+SUG_CheatFile=Nuværende GBA Snydefil
+SUG_CheatFileButton=Vælg Snyd...
+SUG_CheatSwitch=Snydeknap
+SUG_CheatSwitch0=Fra
+SUG_CheatSwitch1=Til
+SUG_RTSwitch=Realtid Gem
+SUG_RTSwitch0=Fra
+SUG_RTSwitch1=Til
+SUG_Method=Kør tilstand
+SUG_Method0=Hurtig Load
+SUG_Method1=Patch Load
+SUG_Return=Tilbage
+SUG_Run=Kør
+SUG_Help=A:Gem og kør / B:Gem og retur
+
+;-----------------------------
+
+DM_Confirm=Confirm Delete
+DM_Cancel=Cancel Delete
+
+;-----------------------------
+
+SU_RegionVer=Region Select
+LCS_EUROPE=Europe
+LCS_ASIA=Asia
+
+;-----------------------------
+
+SUR_GlobalButton=Game Global Setting
+SUR_TitleGlobal=Global Setting
+SUR_MethodGlobal=Global Setting Mode
+SUR_GlobalMethod0=Off.
+SUR_GlobalMethod1=Setting for new game only.
+SUR_GlobalMethod2=Setting for all games.
+
+;------------------------------

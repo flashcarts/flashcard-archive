@@ -1,0 +1,322 @@
+﻿; M3Sakura language resource for 'German'.
+; Encoding format is UTF-8.
+Helped translating by powered_by_tux
+; ----------------------------
+
+CD_CheckDisk_Start=CheckDisk gestartet.
+CD_CheckDisk_End=CheckDisk fehlerfrei beendet.
+CD_FatalError_Title=!! Ein schwerer Fehler ist aufgetreten!!
+CD_FatalError_DuplicatedArea0=Dateien nutzen denselben Speicherplatz.
+CD_FatalError_DuplicatedArea1=Einige Dateien sind beschädigt.
+CD_FatalError_BrokenEntry0=Verzeichniseintrag ist beschädigt.
+CD_FatalError_BrokenEntry1=Mehrere Dateien sind beschädigt.
+CD_FatalError_IlligalClusterLink0=Cluster-Link wurde unterbrochen.
+CD_FatalError_IlligalClusterLink1=Datei möglicherweise beschädigt.
+CD_FatalError_BrokenDirectoryLink0=Verzeichniseintrag nicht korrekt.
+CD_FatalError_BrokenDirectoryLink1=Ordner is beschädigt.
+CD_FatalError_BrokenUnicode0=Verzeichnis nicht korrekt.
+CD_FatalError_BrokenUnicode1=Lange Dateinamen wurden zerstört.
+CD_FatalError_FileSizeError0=Die angezeigte Dateigröße und die
+CD_FatalError_FileSizeError1=tatschliche Dateigröße unterscheiden sich.
+CD_FatalError_UnknownError=Unbekannter Fehler
+CD_FatalError_RecoveryMsg0=Wiederherstellungsmethode:
+CD_FatalError_RecoveryMsg1=Alle Daten extern sichern und nach der
+CD_FatalError_RecoveryMsg2=Formatierung der Karte zurückkopieren.
+CD_FatalError_StopApplication=Anwendung gestoppt.
+CD_NotSupportDiskSize_Title=Nicht unterstütztes Disk-Format.
+CD_NotSupportDiskSize_Msg0=Die Disk ist zu groß oder
+CD_NotSupportDiskSize_Msg1= die Clustergröße zu klein.
+CD_NotSupportDiskSize_Msg2=
+CD_NotSupportDiskSize_RecoveryMsg0=Wiederherstellungsmethode:
+CD_NotSupportDiskSize_RecoveryMsg1=Karte mit einem größeren
+CD_NotSupportDiskSize_RecoveryMsg2=Cluster-Format neu formatieren.
+CD_NotSupportDiskSize_RecoveryMsg3=
+CD_Fragments_Title=Achtung!! Fragmentierte Datei gefunden.
+CD_Fragments_StringFormat=In Datei %d gibt es %d Fragmente.
+CD_Fragments_Msg00=Normale Homebrews laufen problemlos,
+CD_Fragments_Msg01=High-Speed-Homebrews können aber
+CD_Fragments_Msg02=Probleme verursachen.
+CD_Fragments_Msg10=Um diesen Problemen vorzubeugen,
+CD_Fragments_Msg11=Dateien extern sichern, Karte formatieren.
+CD_Fragments_Msg12=Dateien nun wieder zurückkopieren.
+CD_Fragments_Msg13=Windows-Defrag nicht nutzen.
+CD_Fragments_Ignore=Taste drücken, um Warnung zu ignorieren.
+CD_CheckDuplicateCluster_Title=Doppelte Cluster und Fragmente suchen.
+CD_CheckFATType_Title=Überprüfe das FAT Format
+CD_FATType_StringFormat=FAT%d Format gefunden.
+CD_FATType_UnknownFATType=Unbekanntes FAT Format.
+CD_FATType_WarnMsg00=Dieses FAT Format wird nicht empfohlen.
+CD_FATType_WarnMsg10=Probleme treten zwar selten auf, aber
+CD_FATType_WarnMsg11=die Nutzung von FAT16/32 wird empfohlen.
+CD_FATType_WarnMsg12=Panasonic SD Formatter wird empfohlen.
+CD_FATType_WarnMsg20=Wenn Sie FAT32 nutzen, führen Sie bitte
+CD_FATType_WarnMsg21=in regelmäßigen Abständen CheckDisk aus.
+CD_FATType_Ignore=Drücken Sie eine Taste zum Fortfahren.
+CD_WriteError_Title=Disk-Zugriffstest fehlgeschlagen.
+CD_WriteError_Msg0=Wenig Speicherplatz auf der Disk vorhanden.
+CD_WriteError_Msg1=Nicht kompatibler DLDI-Treiber.
+CD_WriteError_Msg2=Kontakt von SD-Karte zu Adapter schlecht.
+CD_WriteError_Msg3=Verwalteter Disk-Bereich ist beschädigt.
+CD_WriteError_Msg4=
+CD_WriteError_Msg5=Wahrscheinlich eine andere Quelle.
+CD_WriteError_Msg6=
+CD_WriteError_Msg7=Anwendung zur Sicherheit beendet.
+CD_WriteTest_Title=Durchführung eines Schreib-/Lesetests.
+
+; ----------------------------
+
+SM_FileListMode=1 Zeile/2 Zeilen umschalten
+SM_Customize=M3 Sakura Einstellungen
+SM_RestoreBG=Hintergrund wiederherstellen
+SM_Langauge=Spracheinstellungen
+SM_BackupSave=Standard wiederherstellen
+
+; ----------------------------
+
+CS_Title=M3 Sakura Einstellungen
+
+CS_SkipSetup=Kein Setup beim Booten anzeigen.
+CS_BootCheckDisk=CheckDisk beim Booten ausführen.
+
+CS_ClickSound=Soundeffekte wiedergeben.
+CS_EnableFadeEffect=Ausblend-Effekt benutzen.
+CS_AutoLastState=Sofort in den Datei-Starter booten.
+
+CS_MoveFolderLocked=Ordnernavigation sperren.
+CS_HiddenFilenameExt=Dateiendungen verstecken.
+CS_HiddenNotSupportFileType=Nicht unterstützte Dateien verstecken.
+
+CS_ScreenSaver_BlackMode=Schwarzen Bildschirmschoner nutzen.
+CS_EnabledFastStart=FastStart Videowiedergabe aktivieren.
+CS_LockLR=L/R während Wiedergabe sperren.
+
+CS_Cancel=Abbrechen
+CS_Ok=OK
+
+; ----------------------------
+; Internal text for ENG only.
+
+IT_Message0=Speicherdatei-Wiederherstellungsmenü
+IT_Message1=
+IT_Message2=Vorherige Speicherstände mit Hilfe des
+IT_Message3=gesicherten Speichers wiederherstellen.
+IT_Message4=
+IT_Message5=Gewünschten Speicherstand auswählen und
+IT_Message6=mit L+A den aktuellen Save überschreiben.
+IT_Message7=Zur Dateiliste, drücke B.
+IT_Message8=
+IT_Message9=Achtung: Der Speicherstand wird gelöscht.
+IT_Message10=Neuester Stand ist [%d/%d/%d %02d:%02d:%02d]
+IT_Message11=Wiederherstellung nur nach Bestätigung.
+IT_Message12=
+
+IT_NoTouchMessage=Nur Buttons können genutzt werden.
+IT_Executing=Wiederherstellung wird ausgeführt.
+
+IT_ItemMessageFormat= %dbyte. Datum %d/%d/%d %02d:%02d:%02d
+
+; ----------------------------
+
+ICS_Title=Bildanzeige-Einstellungen
+
+ICS_ShowInfomation=Zeige Datei-Infos und Hilfe.
+ICS_ShowControlIcons=Kontroll-Icons anzeigen.
+ICS_DoubleSpeedKey=Button-Empfindlichkeit erhöhen.
+ICS_DoubleSpeedTouch=Touchscreen-Empfindlichkeit erhöhen.
+ICS_MultipleResume=Zoom beibehalten.
+ICS_AutoFitting=Große JPEG automatisch anpassen.
+ICS_EffectTitle=Hintergrundeinstellungen:
+ICS_EffectHeightPadding=Bildschirm-Zwischenraum bestimmen.
+ICS_EffectPastelForTopBG=Transparenz auf oberem Bildschirm.
+ICS_EffectPastelForBottomBG=Transparenz auf unterem Bildschirm.
+
+; ----------------------------
+
+TCS_Title=Textanzeige-Einstellungen
+
+TCS_ShowClockAndFileInfo=Zeige Datei-Infos und Hilfe.
+TCS_ScreenSaver_BlackMode=Schwarzen Bildschirmschoner nutzen.
+
+TCS_FontSizeTitle=Schriftgröße
+TCS_FontSizeSmall=Klein
+TCS_FontSizeMiddle=Mittel
+TCS_FontSizeLarge=Groß
+
+TCS_CPTitle=Codeseite 
+TCS_CP437=CP437
+TCS_CP850=CP850
+TCS_CP1252=CP1252
+
+TCS_DetectCharCodeTitle=Encodierung automatisch erkennen.
+TCS_DetectCharCode_ANSI=ANSI (8bit ASCII)
+TCS_DetectCharCode_SJIS=Japanese S-JIS
+TCS_DetectCharCode_UTF16BE=UTF-16 Big Endian
+TCS_DetectCharCode_UTF16LE=UTF-16 Little Endian
+TCS_DetectCharCode_UTF8=UTF-8
+
+; ----------------------------
+
+IV_Help1=START: Hintergrund | SELECT: Einstellungen
+IV_Help2=Y: 50% | X: 100% | A: 200% | B: Zurück
+
+; ----------------------------
+
+TV_Help1=A: Seite scrollen | B: Abbrechen
+TV_Help2=X/Y: Lesezeichen-Menü
+TV_Help3=SELECT: Einstellungen | Kodierung: %s
+TV_Info=Zeilen: %d / %d Zeile(n) (%.2f%%)
+
+TV_BookmarkText_Empty=%d: Nicht gesichert
+TV_BookmarkText_Info=%d: %d Zeile(n) %s %s
+
+; ----------------------------
+
+ERRMSG0_MemoryOverflow_CanRecovery=Datei kann wegen zu geringem 
+ERRMSG1_MemoryOverflow_CanRecovery=Speicher nicht geöffnet werden.
+
+ERRMSG0_NotSupportFileFormat=Format nicht unterstützt oder 
+ERRMSG1_NotSupportFileFormat=Datei möglicherweise zerstört.
+
+ERRMSG0_ProgressiveJpeg=Progressive JPEG-Dateien 
+ERRMSG1_ProgressiveJpeg=werden nicht unterstützt.
+
+ERRMSG0_Text0byte=Leere Textdatei.
+ERRMSG1_Text0byte=0Byte Dateien nicht unterstützt.
+
+ERRMSG0_OverflowLargeImage=Das Bild ist zu groß.
+ERRMSG1_OverflowLargeImage=5Mio. Pixel sind das Maximum.
+
+ERRMSG0_Diskfull=Schreibfehler!
+ERRMSG1_Diskfull=Speichermedium ist voll.
+
+ERRMSG0_GBAExtNotFind=Keine Slot-2 Erw. gefunden.
+ERRMSG1_GBAExtNotFind=GBA ROMs nicht spielbar.
+
+ERRMSG0_GBAExtNotFind1=Keine Slot-2 Erw. gefunden.
+ERRMSG1_GBAExtNotFind=NDS-GBA Link nicht möglich.
+
+; ----------------------------
+
+TM_Encode_Auto=Automatische Erkennung
+TM_Encode_ANSI=ANSI 8bit
+TM_Encode_SJIS=S-JIS (JP)
+TM_Encode_UTF16LE=UTF-16 (LE)
+TM_Encode_UTF16BE=UTF-16 (BE)
+TM_Encode_UTF8=UTF-8
+
+; ----------------------------
+
+LCS_Title=Spracheinstellungen
+
+LCS_English=English
+LCS_French=Français
+LCS_German=Deutsch
+LCS_Italian=Italiano
+LCS_Spanish=Español
+LCS_Portuguese=Português(BR)
+LCS_Netherland=Dutch
+LCS_Russian=Russian
+LCS_Danish=Dansk
+
+; ----------------------------
+
+SU_Title=Startup-Einstellungen
+
+SU_CheckDisk=CheckDisk beim Boot-Vorgang ausführen.
+SU_KeySound=Soundeffekte wiedergeben.
+SU_LineMode=Anzeigemodus
+SU_SingleLine=Einzeiliger Modus
+SU_DoubleLine=Zweizeiliger Modus
+SU_ShowDialog=Dieses Fenster beim Booten verstecken.
+SU_LangVer=Spracheinstellungen
+
+;------------------------------
+
+SUR_Title=NDS Spieleinstellungen
+
+SUR_CheatFile=Aktuelle NDS Cheat Datei:
+SUR_CheatFileButton=Cheat Datei...
+SUR_LinkageFile=Aktuell verbundenes GBA ROM:
+SUR_LinkageButton=NDS-GBA Link...
+SUR_CheatItemButton=Cheats auswählen..
+SUR_GenerateButton=RTS Backup
+SUR_CheatSwitch=Cheats umschalten
+SUR_CheatSwitch0=Aus
+SUR_CheatSwitch1=An/Aus[Sel+←/→]
+SUR_CheatSwitch2=Umschalten
+SUR_CheatSwitch3=Instant Codes
+SUR_ResetSwitch=Soft-Reset / Real-Time Save Umschalter
+SUR_ResetSwitch0=Aus
+SUR_ResetSwitch1=SR: LR+ABX
+SUR_ResetSwitch2=SR: LR+ABY
+SUR_ResetSwitch3=RTS: LR+Select
+SUR_ResetSwitch4=RTS: LR+Y
+SUR_SlowMode=Slow-Motion
+SUR_SlowMode0=Off
+SUR_SlowMode1=L+Select
+SUR_SlowMode2=R+Select
+SUR_SlowModeLevel=Slow-Motion Level
+SUR_SlowModeLevel0=1
+SUR_SlowModeLevel1=2
+SUR_SlowModeLevel2=3
+SUR_SlowModeLevel3=4
+SUR_SlowModeLevel4=5
+SUR_Method=Spielmodus
+SUR_Method0=Standart
+SUR_Method1=Download Spiel
+SUR_Return=Abbrechen
+SUR_Run=Starten
+
+;------------------------------
+
+SFL_Help1=Bitte Cheat Datei auswählen.
+SFL_Help2=Bitte GBA ROM zum Verbinden auswählen.
+SFL_Help3=A: OK | B: Abbrechen
+
+;------------------------------
+
+CL_Title=Cheat Liste
+CL_Help=A: OK | B: Abbrechen
+CL_CheatNumber1=Es gibt
+CL_CheatNumber2= verfügbare Cheats.
+
+;------------------------------
+
+SUG_Title=GBA Spieleinstellungen
+
+SUG_CheatFile=Aktuelle GBA Cheat Datei:
+SUG_CheatFileButton=Cheat Datei...
+SUG_CheatSwitch=Cheats umschalten
+SUG_CheatSwitch0=Aus
+SUG_CheatSwitch1=An
+SUG_RTSwitch=Real-Time Save
+SUG_RTSwitch0=Aus
+SUG_RTSwitch1=An
+SUG_Method=Lademodus
+SUG_Method0=Schnell
+SUG_Method1=Patch
+SUG_Return=Abbrechen
+SUG_Run=Starten
+SUG_Help=A: OK / B: Abbrechen
+
+;-----------------------------
+
+DM_Confirm=Confirm Delete
+DM_Cancel=Cancel Delete
+
+;-----------------------------
+
+SU_RegionVer=Region Select
+LCS_EUROPE=Europe
+LCS_ASIA=Asia
+
+;-----------------------------
+
+SUR_GlobalButton=Game Global Setting
+SUR_TitleGlobal=Global Setting
+SUR_MethodGlobal=Global Setting Mode
+SUR_GlobalMethod0=Off.
+SUR_GlobalMethod1=Setting for new game only.
+SUR_GlobalMethod2=Setting for all games.
+
+;------------------------------

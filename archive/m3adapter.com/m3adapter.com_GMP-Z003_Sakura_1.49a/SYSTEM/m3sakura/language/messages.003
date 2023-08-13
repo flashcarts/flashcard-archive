@@ -1,0 +1,318 @@
+﻿; M3Sakura language resource for 'Italian'.    
+; Encoding format is UTF-8. 
+Traduzione italiana by dragonball75 e gosp.
+; ----------------------------
+CD_CheckDisk_Start=Controllo del disco iniziato
+CD_CheckDisk_End=Controllo eseguito correttamente
+CD_FatalError_Title=Si è verificato un errore critico !!
+CD_FatalError_DuplicatedArea0=Alcuni file usano gli stessi settori.
+CD_FatalError_DuplicatedArea1=Alcuni file sono danneggiati.
+CD_FatalError_BrokenEntry0=Inserimento errato.
+CD_FatalError_BrokenEntry1=Alcuni files sono danneggiati.
+CD_FatalError_IlligalClusterLink0=Il collegamento ai settori è stato interrotto.
+CD_FatalError_IlligalClusterLink1=Il file probabilmente è danneggiato.
+CD_FatalError_BrokenDirectoryLink0=Re-inserimento errato.
+CD_FatalError_BrokenDirectoryLink1=La cartella è stata danneggiata.
+CD_FatalError_BrokenUnicode0=Rientro errato.
+CD_FatalError_BrokenUnicode1=Il nome lungo è stato danneggiato.
+CD_FatalError_FileSizeError0=La dimensione mostrata e
+CD_FatalError_FileSizeError1=Le dimensioni reali sono diversi.
+CD_FatalError_UnknownError=Errore sconosciuto
+CD_FatalError_RecoveryMsg0=Modalità di recupero:
+CD_FatalError_RecoveryMsg1=Fare il backup su un hard disk e
+CD_FatalError_RecoveryMsg2=ricopiarli dopo aver formattata la card.
+CD_FatalError_StopApplication=Applicazione interrotta.
+CD_NotSupportDiskSize_Title=Impossibile procedere alla formattazione
+CD_NotSupportDiskSize_Msg0=Le dimensioni del disco sono 
+CD_NotSupportDiskSize_Msg1=troppo grandi o le dimensioni delle
+CD_NotSupportDiskSize_Msg2=unità sono troppo piccole.
+CD_NotSupportDiskSize_RecoveryMsg0=Modalità di recupero:
+CD_NotSupportDiskSize_RecoveryMsg1=Provare a eseguire la formattazione
+CD_NotSupportDiskSize_RecoveryMsg2=specificando una dimensione 
+CD_NotSupportDiskSize_RecoveryMsg3=dei cluster maggiore.
+CD_Fragments_Title=!È stato trovato un file frammentato!
+CD_Fragments_StringFormat=In %d sono stati trovati %d frammenti.
+CD_Fragments_Msg00=Non ci sono problemi con gli homebrew più comuni,
+CD_Fragments_Msg01=ma potrebbero presentarsi nel futuro e con giochi che
+CD_Fragments_Msg02=richiedono accessi ad alta velocità verso il disco.
+CD_Fragments_Msg10=Il metodo migliore di prevenzione consiste nell'
+CD_Fragments_Msg11=effettuare un backup dei files su un Hard Disk,
+CD_Fragments_Msg12=formattare la card, e in seguito ricopiare i file.
+CD_Fragments_Msg13=Non usare l'utilità deframmentazione di Windows!
+CD_Fragments_Ignore=Premi un tasto per ignorare l'avvertimento.
+CD_CheckDuplicateCluster_Title=Controllando i cluster doppi e frammenti.
+CD_CheckFATType_Title=Controllando il formato FAT.
+CD_FATType_StringFormat=FAT %d trovato.
+CD_FATType_UnknownFATType=Formato FAT sconosciuto.
+CD_FATType_WarnMsg00=Questo formato FAT è sconsigliato !
+CD_FATType_WarnMsg10=Per M3Sakura è consigliato usare FAT 16 o 32
+CD_FATType_WarnMsg11=È consigliato l'utilizzo dell'utilità
+CD_FATType_WarnMsg12=di formattazione da Panasonic.
+CD_FATType_WarnMsg20=Se si utilizza il formato FAT32, si consiglia
+CD_FATType_WarnMsg21=di eseguire spesso un controllo del disco.
+CD_FATType_Ignore=Premere un tasto per continuare.
+CD_WriteError_Title=Fallito test di accesso al disco.
+CD_WriteError_Msg0=Lo spazio su disco sta per esaurirsi.
+CD_WriteError_Msg1=Driver DLDI non compatibili.
+CD_WriteError_Msg2=Adattatore CF/SD incompatibile o non è inserito bene.
+CD_WriteError_Msg3=La porzione di disco gestita è danneggiata.
+CD_WriteError_Msg4=
+CD_WriteError_Msg5=Probabilmente alcune altre fonti.
+CD_WriteError_Msg6=
+CD_WriteError_Msg7=Per sicurezza l'applicazione è arrestata.
+CD_WriteTest_Title=Eseguendo il test di lettura/scrittura sul disco.
+
+; ----------------------------
+
+SM_FileListMode= Modalità 1/2 linee
+SM_Customize=Configurazione della GUI
+SM_RestoreBG=Ripristinare Wallpaper
+SM_Langauge=Lingua
+SM_BackupSave= Menù di Ripristino di salvataggi
+
+; ----------------------------
+
+CS_Title=Configurazione GUI per la M3Sakura
+
+CS_SkipSetup=Non mostare il Setup all'avvio.
+CS_BootCheckDisk=Fare il controllo del disco all'avvio.
+
+CS_ClickSound=Suono alla pressione dei tasti.
+CS_EnableFadeEffect=Usare effetto dissolvenza.
+CS_AutoLastState=Avviare dal menù dei file recenti.
+
+CS_MoveFolderLocked=Bloccare cartelle.
+CS_HiddenFilenameExt=Nascondere le estensioni dei file.
+CS_HiddenNotSupportFileType=Nascondere i file non supportati.
+
+CS_ScreenSaver_BlackMode=Utilizzare lo screensaver con sfondo nero.
+CS_EnabledFastStart=Usare l'inizio rapido per guardare i film.
+CS_LockLR=Blocca L/R mentre riproducci la musica.
+
+CS_Cancel=Annulla
+CS_Ok=OK
+
+; ----------------------------
+IT_Message0=Menù Ripristino File di salvataggio
+IT_Message1=
+IT_Message2=Ripristinare i precedenti dati di salvataggio
+IT_Message3=dal file di backup.
+IT_Message4=
+IT_Message5=Selezionare il file desiderato e premere L+A per
+IT_Message6=sovrascrivere quello attualmente in uso.
+IT_Message7=Premere B per tornare alla lista dei files.
+IT_Message8=
+IT_Message9=Attenzione: Il file attualmente in uso verrà eliminato.
+IT_Message10=Il punto più recente di inizio è [%d/%d/%d %d:%02d:%02d]
+IT_Message11=Ripristinare solamente dopo un'accurata conferma.
+IT_Message12=
+
+IT_NoTouchMessage=Operazione senza TouchScreen, usare i tasti.
+IT_Executing=Sto eseguendo il ripristino.
+
+IT_ItemMessageFormat= %dbyte. Tempo di avvio %d/%d/%d %d:%02d:%02d
+
+; ----------------------------
+
+ICS_Title=Impostazioni dell'immagine sul display
+
+ICS_ShowInfomation=Mostrare i file di informazione e aiuto.
+ICS_ShowControlIcons=Mostrare le icone di controllo e zoom.
+ICS_DoubleSpeedKey=Aumentare la sensibilità dei tasti.
+ICS_DoubleSpeedTouch=Aumentare la sensibilità del TouchScreen.
+ICS_MultipleResume=Ricordare il livello di zoom.
+ICS_AutoFitting=Ridimensiona automatico i JPEG troppo grandi.
+ICS_EffectTitle=Usare l'effetto dissolvenza.
+ICS_EffectHeightPadding=Considerare lo spazio tra gli schermi.
+ICS_EffectPastelForTopBG=Usare la trasparenza sullo schermo superiore.
+ICS_EffectPastelForBottomBG=Usare la trasparenza sullo schermo inferiore.
+
+; ----------------------------
+
+TCS_Title=Impostazioni del testo sul display
+
+TCS_ShowClockAndFileInfo=Mostrare ora sullo schermo superiore.
+TCS_ScreenSaver_BlackMode=Utilizzare lo screensaver con sfondo nero.
+
+TCS_FontSizeTitle=Dimesione del font
+TCS_FontSizeSmall=Piccola
+TCS_FontSizeMiddle=Media
+TCS_FontSizeLarge=Grande
+
+TCS_CPTitle=Tabella dei codici
+TCS_CP437=CP437
+TCS_CP850=CP850
+TCS_CP1252=CP1252
+
+TCS_DetectCharCodeTitle=Identificare automaticamente la codifica
+TCS_DetectCharCode_ANSI=ANSI (8bit ASCII)
+TCS_DetectCharCode_SJIS=JPN S-JIS
+TCS_DetectCharCode_UTF16BE=UTF-16 Big Endian
+TCS_DetectCharCode_UTF16LE=UTF-16 Little Endian
+TCS_DetectCharCode_UTF8=UTF-8
+
+; ----------------------------
+
+IV_Help1=START: Sfondo / SEL: GUI
+IV_Help2= Y: 50% / X: 100% / A: 200% / B: Indietro
+
+; ----------------------------
+
+TV_Help1=A: Scorrere Pagina / B : Indietro
+TV_Help2=X/Y: Menu di salvataggio dei segnalibri 
+TV_Help3=SELECT: Configurazione / Codifica:%s
+TV_Info=Linee:%d / %d Linea(e) (%.2f%%)
+
+TV_BookmarkText_Empty=%d: Non salvato.
+TV_BookmarkText_Info=%d: %dLinea(e) %s %s
+
+; ----------------------------
+
+ERRMSG0_MemoryOverflow_CanRecovery=Memoria è insufficiente.
+ERRMSG1_MemoryOverflow_CanRecovery=Impossibile aprire il file,
+
+ERRMSG0_NotSupportFileFormat=Il formato del file non è supportato,
+ERRMSG1_NotSupportFileFormat=o il file potrebbe essere danneggiato.
+
+ERRMSG0_ProgressiveJpeg=I file JPEG progressivi
+ERRMSG1_ProgressiveJpeg=non sono supportati.
+
+ERRMSG0_Text0byte=File di testo vuoto,
+ERRMSG1_Text0byte=Impossibile aprire file di 0 byte.
+
+ERRMSG0_OverflowLargeImage=L'immagine è troppo grande.
+ERRMSG1_OverflowLargeImage=La dimensione massima è 5 MegaPixels.
+
+ERRMSG0_Diskfull=Errore Critico !!
+ERRMSG1_Diskfull=Il disco è pieno.
+
+ERRMSG0_GBAExtNotFind=Card di espansione GBA non rilevata,
+ERRMSG1_GBAExtNotFind=Impossibile eseguire il gioco per GBA.
+
+ERRMSG0_GBAExtNotFind1=Card di espansione GBA non rilevata,
+ERRMSG1_GBAExtNotFind1=Collegamento NDS-GBA non disponibile.
+
+; ----------------------------
+
+TM_Encode_Auto=Identificare automaticamente
+TM_Encode_ANSI=ANSI 8bit
+TM_Encode_SJIS=S-JIS (JP)
+TM_Encode_UTF16LE=UTF-16 (LE)
+TM_Encode_UTF16BE=UTF-16 (BE)
+TM_Encode_UTF8=UTF-8
+
+; ----------------------------
+
+LCS_Title=Impostazioni della Lingua
+
+LCS_English=English
+LCS_French=Français
+LCS_German=Deutsch
+LCS_Italian=Italiano
+LCS_Spanish=Español
+LCS_Portuguese=Português(BR)
+LCS_Netherland=Dutch
+LCS_Russian=Russian
+LCS_Danish=Dansk
+
+; ----------------------------
+
+SU_Title=Impostazioni Iniziali
+
+SU_CheckDisk=Fare sempre il controllo del disco all'avvio.
+SU_KeySound=Suono alla pressione dei tasti.
+SU_LineMode=Impostazioni della lista files
+SU_SingleLine=Modalità ad 1 linea.
+SU_DoubleLine=Modalità a 2 linee.
+SU_ShowDialog=Non mostrare questa scherma all'avvio.
+SU_LangVer=Impostazioni della Lingua
+
+;------------------------------
+
+SUR_Title=Impostazioni dei Giochi NintendoDs
+
+SUR_CheatFile=File dei trucchi attuale.
+SUR_CheatFileButton=Selezionare file...
+SUR_LinkageFile=GBA ROM collegato atuale.
+SUR_LinkageButton=Scegliere NDS-GBA..
+SUR_CheatItemButton=Scegliere trucchi..
+SUR_GenerateButton=Salvataggio in RT
+SUR_CheatSwitch=Interruttore per il trucco
+SUR_CheatSwitch0=Non attivo
+SUR_CheatSwitch1=On/Off[Sel+←/→]
+SUR_CheatSwitch2=Sempre attivo
+SUR_ResetSwitch=Reset/RT Salvare posizione dell'Interruttore
+SUR_ResetSwitch0=Non attivo
+SUR_ResetSwitch1=Rst L+R+A+B+X
+SUR_ResetSwitch2=Rst L+R+A+B+Y
+SUR_ResetSwitch3=RT L+R+SELECT
+SUR_ResetSwitch4=RT L+R+Y
+SUR_SlowMode=Gioco lento
+SUR_SlowMode0=Non attivo
+SUR_SlowMode1=L+SELECT
+SUR_SlowMode2=R+SELECT
+SUR_SlowModeLevel=Intensità di lentezza
+SUR_SlowModeLevel0=1
+SUR_SlowModeLevel1=2
+SUR_SlowModeLevel2=3
+SUR_SlowModeLevel3=4
+SUR_SlowModeLevel4=5
+SUR_Method=Modalità di gioco
+SUR_Method0=Normale
+SUR_Method1=Download-Play
+SUR_Return=Annula
+SUR_Run=OK
+
+;------------------------------
+
+SFL_Help1=Selezionare un file dei trucchi.
+SFL_Help2=Selezionare un GBA ROM da collegare.
+SFL_Help3=A:OK / B:Annulla
+
+;------------------------------
+
+CL_Title=Lista dei trucchi
+CL_Help=A:OK/ B:Annula
+CL_CheatNumber1=Totale
+CL_CheatNumber2= Oggetti dei trucchi
+
+;------------------------------
+
+SUG_Title=Impostazioni dei Giochi GBA
+
+SUG_CheatFile=File dei trucchi GBA attuale.
+SUG_CheatFileButton=Selezionare file...
+SUG_CheatSwitch=Interruttore per il trucco
+SUG_CheatSwitch0=Non attivo
+SUG_CheatSwitch1=Attivo
+SUG_RTSwitch=Salvataggio in tempo reale
+SUG_RTSwitch0=Non attivo
+SUG_RTSwitch1=Attivo
+SUG_Method=Modalità di caricare
+SUG_Method0=Caricamento veloce
+SUG_Method1=Caricamento con patch
+SUG_Return=Anulla
+SUG_Run=OK
+SUG_Help=A:OK / B:Anulla
+
+;-----------------------------
+
+DM_Confirm=Confirm Delete
+DM_Cancel=Cancel Delete
+
+;-----------------------------
+
+SU_RegionVer=Region Select
+LCS_EUROPE=Europe
+LCS_ASIA=Asia
+
+;-----------------------------
+
+SUR_GlobalButton=Game Global Setting
+SUR_TitleGlobal=Global Setting
+SUR_MethodGlobal=Global Setting Mode
+SUR_GlobalMethod0=Off.
+SUR_GlobalMethod1=Setting for new game only.
+SUR_GlobalMethod2=Setting for all games.
+
+;------------------------------
