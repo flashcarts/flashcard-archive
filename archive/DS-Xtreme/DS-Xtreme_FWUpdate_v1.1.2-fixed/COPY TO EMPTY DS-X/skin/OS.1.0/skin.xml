@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone=no>
+<skin>
+	<name>DS-X Skin</name>
+	<version>1.0</version>
+	<author>DS-X</author>
+	
+	<definitions>
+		<media filepath="media/media.xml"/>
+		<script filepath="scripts/PulseFadeEffect.nut"/>
+		<script filepath="scripts/ColorEffect.nut"/>	
+		<script filepath="scripts/PopupMenu.nut"/>	
+		<script filepath="scripts/Spinner.nut"/>
+		<dialog id="testDialog" filepath="dialogs/TestDialog.xml" />
+		<dialog id="aboutDialog" filepath="dialogs/aboutDialog.xml" />
+		<dialog id="PopupMenu" filepath="dialogs/PopupMenu.xml" />
+		<scene id="main" filepath="scenes/MainMenu.xml" start="true"/>
+		<scene id="AppsList" filepath="scenes/AppsList.xml"/>
+		<scene id="Settings" filepath="scenes/Settings.xml" />
+		<scene id="AudioMain" filepath="scenes/AudioMain.xml" />
+		<scene id="SongList" filepath="scenes/SongList.xml" />		
+		<scene id="ArtistList" filepath="scenes/ArtistList.xml" />
+		<scene id="GenreList" filepath="scenes/GenreList.xml" />
+		<scene id="AlbumList" filepath="scenes/AlbumList.xml" />
+		<scene id="NowPlaying" filepath="scenes/NowPlaying.xml" />
+		<scene id="Library" filepath="scenes/Library.xml" />
+	</definitions>
+	
+</skin>

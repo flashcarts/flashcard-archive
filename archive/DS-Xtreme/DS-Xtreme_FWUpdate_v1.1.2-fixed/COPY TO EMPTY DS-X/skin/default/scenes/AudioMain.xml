@@ -1,0 +1,1499 @@
+<scene>
+
+	<script>
+		<![CDATA[
+		
+			// Store some widgets so that we don't have to look them up every time
+			play <- null;
+			prev <- null;
+			next <- null;
+			stop <- null;
+			back <- null;
+			shuffle <- null;
+			repeat <- null;
+			playlist <- null;
+			library <- null;
+			songTitle <- null;
+			songArtist <- null;
+			songAlbum <- null;
+			
+			middlebuttons <- null;
+			bottombuttons <- null;		
+			
+			lasttop <- null;
+			lastmiddle <- null;
+			lastbottom <- null;
+			
+			autoPause <- false;
+
+			backToMain <- null;
+
+			// Store the fade effects
+			FadeEffects <- {
+				label1 = null,
+				label2 = null,
+				label3 = null,
+				panelleft = null,
+				panelright = null,
+				panelcenter = null,
+				button1 = null,
+				button2 = null,
+				button3 = null,
+				button4 = null,
+				button5 = null,
+				button6 = null,
+				button7 = null,
+				button8 = null,
+				button9 = null,
+				button10 = null,
+				backarrow = null,
+				okButtonmap = null,
+				backButtonmap = null,
+				title = null,
+
+				fadeGroup = null,
+			}
+			
+			// Sets the repeat state as well as the repeat button texture
+			function SetRepeatState(state)
+			{
+				local icon = repeat.findWidget("icon");
+				
+				if (state == "enable")
+				{
+					
+					icon.setTexture(27);
+					icon.setPalette(27);
+				}
+				else if (state == "disable")
+				{
+					
+					icon.setTexture(26);
+					icon.setPalette(26);
+				}
+				else
+				{
+					
+					icon.setTexture(26);
+					icon.setPalette(26);
+				}
+			}
+
+			// Sets the shuffle state as well as the shuffle button texture
+			function SetShuffleState(state)
+			{
+				local icon = shuffle.findWidget("icon");			
+				
+				if (state == "enable")
+				{
+					icon.setTexture(29);
+					icon.setPalette(29);
+				}
+				else if (state == "disable")
+				{
+					icon.setTexture(28);
+					icon.setPalette(28);
+				}
+				else
+				{
+					icon.setTexture(28);
+					icon.setPalette(28);
+				}
+			}
+			
+			// Sets the song information in the song info box
+			function SetSongInformation()
+			{
+				local currentSong = NowPlaying.getCurrentSong();
+				if(currentSong != null)
+				{
+					songTitle.setText(currentSong.getName());
+					songArtist.setText(currentSong.getArtist());
+					songAlbum.setText(currentSong.getAlbum());
+				}
+				else
+				{
+					songTitle.setText("");
+					songArtist.setText("");
+					songAlbum.setText("");
+				}
+			}
+			
+			// Called when the song is changed
+			function OnSongChanged(event)
+			{
+				SetSongInformation();
+				SetNextButtonState();
+				SetPrevButtonState();
+			}
+
+			// Called when the playlist completes playing
+			function OnPlaylistDone(event)
+			{
+					local playIcon = play.findWidget("icon");
+
+					// While playing the play button shows the pause texture
+					// so we must swap back to the play texture
+					playIcon.setTexture(23);
+					playIcon.setPalette(23);
+					DisableButton(stop);			
+			}
+			
+			// Disables the given button
+			function DisableButton( button )
+			{
+					button.setAlpha(5);
+					button.setFocusable(false);
+			}
+
+			// Enables the given button
+			function EnableButton( button )
+			{
+					button.setAlpha(31);
+					button.setFocusable(true);
+			}
+
+			// Sets the state of the next button 
+			function SetNextButtonState()
+			{
+				if( NowPlaying.getCurrentIndex() != (NowPlaying.getNumSongs() - 1))
+				{
+					EnableButton(next);
+				}
+				else
+				{
+					DisableButton(next);
+
+					// If the next button is focused we must find a new button to focus
+					if(next.focused)
+					{
+						local button = GetFocusable( middlebuttons, 1, "left", false );
+						if(button != null)
+						{
+								lastmiddle = button;
+								button.focus();
+						}
+					}
+				}			
+			}
+
+			// Sets the stat of the prev button
+			function SetPrevButtonState()
+			{
+				if( NowPlaying.getCurrentIndex() > 0)
+				{
+					EnableButton(prev);
+				}
+				else
+				{
+					DisableButton(prev);
+
+					// If the prev button is focused we must find a new button to focus
+					if(prev.focused)
+					{
+						local button = GetFocusable( middlebuttons, 1, "right", false );
+						if(button != null)
+						{
+								lastmiddle = button;
+								button.focus();
+						}
+					}
+				}			
+			}
+
+			// Increments to the next song
+			function NextSong()
+			{
+				NowPlaying.nextSong();
+				SetNextButtonState();
+				SetPrevButtonState();
+				SetSongInformation();
+			}
+			
+			// Decrements to the previous song
+			function PrevSong()
+			{
+				NowPlaying.prevSong();
+				SetNextButtonState();
+				SetPrevButtonState();
+				SetSongInformation();			
+			}
+			
+			// Called when the playlist button is clicked
+			function OnPlaylistClick(event)
+			{
+				backToMain = false;
+				Application.getSceneManager().selectScene("NowPlaying");			
+			}
+			
+			// Called when the library button is clicked
+			function OnLibraryClick(event)
+			{
+				backToMain = false;
+				Application.getSceneManager().selectScene("Library");			
+			}	
+
+			// Called when the stop button is clicked
+			function OnStopClick(event)
+			{
+				if(NowPlaying.isPlaying())
+				{
+					local playIcon = play.findWidget("icon");
+					NowPlaying.stopPlaying();
+
+					// While playing the play button shows the pause texture
+					// so we must swap back to the play texture
+					playIcon.setTexture(23);
+					playIcon.setPalette(23);
+					DisableButton(stop);
+				}
+			}
+
+			// Called when the repeat button is clicked
+			function OnRepeatClick(event)
+			{
+				NowPlaying.setRepeat(!NowPlaying.isRepeatSet());
+				if (NowPlaying.isRepeatSet())				
+					SetRepeatState("enable");
+				else
+					SetRepeatState("focus");
+			}
+
+			// Called when the shuffle button is clicked
+			function OnShuffleClick(event)
+			{
+				NowPlaying.setShuffle(!NowPlaying.isShuffleSet());
+				SetNextButtonState();
+				SetPrevButtonState();
+				if (NowPlaying.isShuffleSet())
+					SetShuffleState("enable");
+				else
+					SetShuffleState("focus");
+
+			}
+
+			// Called when the next button is clicked			
+			function OnNextClick(event)
+			{
+				NextSong();
+			}
+
+			// Called when the prev button is clicked
+			function OnPrevClick(event)
+			{
+				PrevSong();
+			}
+
+			// Called when the play button is clicked
+			function OnPlayClick(event)
+			{
+				local playButton = event.getTarget();				
+				local playIcon = playButton.findWidget("icon");
+
+				// If the audio player is playing, we pause the audio player
+				// Otherwise, play the selected song
+				if(NowPlaying.isPlaying())
+				{
+					if(NowPlaying.isPaused() && NowPlaying.unpause())
+					{
+						playIcon.setTexture(230);
+						playIcon.setPalette(230);	
+						EnableButton(stop);			
+					}
+					else if(NowPlaying.pause())
+					{
+						playIcon.setTexture(23);
+						playIcon.setPalette(23);
+						DisableButton(stop);							
+					}
+				}
+				else
+				{
+					NowPlaying.startPlaying(NowPlaying.getCurrentIndex());
+					playIcon.setTexture(230);
+					playIcon.setPalette(230);	
+					EnableButton(stop);	
+				}
+			}
+			
+			// Transitions to the main menu scene
+			function GoBack()
+			{
+				if(NowPlaying.isPlaying() && !NowPlaying.isPaused())
+				{
+					NowPlaying.pause();
+					autoPause = true;
+				}
+				
+				Application.getSceneManager().selectScene("main");			
+			}
+			
+			// Called when the back button is clicked
+			function OnBackClick(event)
+			{
+				GoBack();
+			}			
+
+			// Called when a button on the device is pressed
+			function OnButtonPressed(event)
+			{
+				if(event.getButton() == event.B)
+				{
+					GoBack();
+				}
+				else if(event.getButton() == event.L)
+				{
+					PrevSong();
+				}
+				else if(event.getButton() == event.R)
+				{
+					NextSong();
+				}
+			}
+		
+			// Finds a focusable button using the given parameters.
+			// This is done because some buttons may be inactive, and therefore,
+			// we must look around a little to find a button to focus
+			function GetFocusable( row, startIndex, direction, newRow )
+			{
+				local result = null;
+				
+				if(newRow)
+				{
+					if(row == middlebuttons)
+					{
+						if(row[startIndex].focusable)
+						{
+							result = row[startIndex];
+						}
+						else if(lastmiddle.focusable)
+						{
+							result = lastmiddle;
+						}
+						else if(play.focusable)
+						{
+							result = play;
+						}				
+					}
+					else if(row == bottombuttons)
+					{
+						if(row[startIndex].focusable)
+						{
+							result = row[startIndex];
+						}
+						else if(playlist.focusable)
+						{
+							result = playlist;
+						}
+						else if(lastbottom.focusable)
+						{
+							result = lastbottom;
+						}
+						else if(library.focusable)
+						{
+							result = library;
+						}				
+					}
+				}
+				
+				// If we haven't found anything yet, iterate through the array of buttons
+				//  to find a button which can be focused				
+				if(result == null)
+				{
+					if(direction == "left")
+					{
+						for(local i=startIndex;i>=0;i--)
+						{ 
+							if(row[i].focusable)
+							{
+								result = row[i];
+								break;
+							}
+						}
+					}
+					else
+					{
+						foreach(i, button in row)
+						{
+							if (i < startIndex)
+							{
+								continue;
+							}
+							
+							if(button.focusable)
+							{
+								result = button;
+								break;
+							}
+						}
+					}
+				}
+				return result;
+			}
+			
+			// Called when the D-Pad is pressed while playlist button is focused
+			function OnPlaylistDPadPressed(event)
+			{
+				local button = null;
+				
+				local direction = event.getDirection();
+				if(direction == event.Left)
+				{
+					button = GetFocusable( bottombuttons, 2, "left", false );
+				}
+				if(direction == event.Right)
+				{
+					button = GetFocusable( bottombuttons, 4, "right", false );
+				}
+				else if(direction == event.Up)
+				{
+					button = GetFocusable( middlebuttons, 1, "right", true );
+				}
+				
+				if(button != null)
+				{
+					lasttop = playlist;
+					button.focus();
+				}
+			}
+
+			// Called when the D-Pad is pressed while library button is focused
+			function OnLibraryDPadPressed(event)
+			{
+				local button = null;
+							
+				local direction = event.getDirection();
+				if(direction == event.Left)
+				{
+					button = GetFocusable( bottombuttons, 3, "left", false );
+				}			
+				else if(direction == event.Up)
+				{
+					button = GetFocusable( middlebuttons, 2, "right", true );
+				}
+				
+				if(button != null)
+				{
+					lasttop = library;
+					button.focus();
+				}
+			}
+
+			// Called when the D-Pad is pressed while prev button is focused
+			function OnPrevDPadPressed(event)
+			{
+				local button = null;
+				local direction = event.getDirection();
+				
+				if(direction == event.Right)
+				{
+					button = GetFocusable( middlebuttons, 1, "right", false );
+				}
+				else if(direction == event.Down)
+				{
+					button = GetFocusable( bottombuttons, 0, "right", false );
+				}
+				
+				if(button != null)
+				{
+					lastmiddle = prev;
+					button.focus();
+				}
+			}
+
+			// Called when the D-Pad is pressed while play button is focused
+			function OnPlayDPadPressed(event)
+			{
+				local button = null;
+				local direction = event.getDirection();
+				
+				if(direction == event.Right)
+				{
+					button = GetFocusable( middlebuttons, 2, "right", false );
+				}
+				else if(direction == event.Left)
+				{
+					button = GetFocusable( middlebuttons, 0, "left", false );
+				}
+				else if(direction == event.Down)
+				{
+					button = GetFocusable( bottombuttons, 2, "right", true );
+				}
+				
+				if(button != null)
+				{
+					lastmiddle = play;
+					button.focus();
+				}
+			}
+
+			// Called when the D-Pad is pressed while next button is focused
+			function OnNextDPadPressed(event)
+			{
+				local button = null;
+				local direction = event.getDirection();
+				
+				if(direction == event.Left)
+				{
+					button = GetFocusable( middlebuttons, 1, "left", false );
+				}
+				else if(direction == event.Down)
+				{
+					button = GetFocusable( bottombuttons, 4, "left", true );
+				}
+				
+				if(button != null)
+				{
+					lastmiddle = next;
+					button.focus();
+				}
+			}
+
+			// Called when the D-Pad is pressed while shuffle button is focused
+			function OnShuffleDPadPressed(event)
+			{
+				local button = null;
+							
+				local direction = event.getDirection();
+				if(direction == event.Right)
+				{
+					button = GetFocusable( bottombuttons, 1, "right", false );
+				}				
+				else if(direction == event.Up)
+				{
+					button = GetFocusable( middlebuttons, 0, "right", true );
+				}
+				
+				if(button != null)
+				{
+					lastbottom = shuffle;
+					button.focus();
+				}
+			}
+
+			// Called when the D-Pad is pressed while repeat button is focused
+			function OnRepeatDPadPressed(event)
+			{
+				local button = null;
+							
+				local direction = event.getDirection();
+				if(direction == event.Left)
+				{
+					button = GetFocusable( bottombuttons, 0, "left", false );
+				}
+				else if(direction == event.Right)
+				{
+					button = GetFocusable( bottombuttons, 2, "right", false );
+				}				
+				else if(direction == event.Up)
+				{
+					button = GetFocusable( middlebuttons, 1, "right", true );
+				}
+				
+				if(button != null)
+				{
+					lastbottom = repeat;
+					button.focus();
+				}
+			}
+
+			// Called when the D-Pad is pressed while stop button is focused
+			function OnStopDPadPressed(event)
+			{
+				local button = null;
+							
+				local direction = event.getDirection();
+				if(direction == event.Left)
+				{
+					button = GetFocusable( bottombuttons, 1, "left", false );
+				}				
+				if(direction == event.Right)
+				{
+					button = GetFocusable( bottombuttons, 3, "right", false );
+				}
+				else if(direction == event.Up)
+				{
+					button = GetFocusable( middlebuttons, 1, "left", true );
+				}
+				
+				if(button != null)
+				{
+					lastbottom = stop;
+					button.focus();
+				}
+			}
+			
+			// Called when the shuffle button gains focus
+			function OnShuffleFocusGained(event)
+			{
+				SetShuffleState("focus");
+			}
+			
+			// Called when the shuffle button loses focus
+			function OnShuffleFocusLost(event)
+			{
+				if (!NowPlaying.isShuffleSet())
+				{
+					SetShuffleState("disable");
+				}
+				else
+				{
+					SetShuffleState("enable");
+				}
+			}
+			
+			// Called when the repeat button gains focus
+			function OnRepeatFocusGained(event)
+			{
+				SetRepeatState("focus");
+			}
+			
+			// Called when the repeat button loses focus
+			function OnRepeatFocusLost(event)
+			{
+				if (!NowPlaying.isRepeatSet())
+				{
+					SetRepeatState("disable");
+				}
+				else
+				{
+					SetRepeatState("enable");
+				}
+			}	
+			
+			// Called when the stop button gains focus
+			function OnStopFocusGained(event)
+			{
+				local button = event.getTarget();
+				local icon = button.getWidget("background");
+				icon.setTexture(301);	
+				icon.setPalette(301);
+			}
+			
+			// Called when the stop button loses focus
+			function OnStopFocusLost(event)
+			{
+				local button = event.getTarget();
+				local icon = button.getWidget("background");
+				icon.setTexture(302);	
+				icon.setPalette(302);
+			}			
+			
+			// Called when the large button is focused
+			function OnLargeButtonFocusGained(event)
+			{
+				local button = event.getTarget();
+				local edgebg = button.getWidget("backgroundedge");
+				edgebg.setTexture(231);	
+				edgebg.setPalette(231);				
+			}
+			
+			// Called when the large button loses focus
+			function OnLargeButtonFocusLost(event)
+			{
+				local button = event.getTarget();
+				local edgebg = button.getWidget("backgroundedge");
+				edgebg.setTexture(233);	
+				edgebg.setPalette(233);	
+			}			
+			
+			// Called when a small button gains focus
+			function OnMediumButtonFocusGained(event)
+			{
+				local button = event.getTarget();
+				local edgebg = button.getWidget("backgroundedge");
+				edgebg.setTexture(211);	
+				edgebg.setPalette(211);				
+			}
+
+			// Called when a small button loses focus			
+			function OnMediumButtonFocusLost(event)
+			{
+				local button = event.getTarget();
+				local edgebg = button.getWidget("backgroundedge");
+				edgebg.setTexture(213);	
+				edgebg.setPalette(213);	
+			}
+
+			// Called when a medium sized button gains focus
+			function OnSmallButtonFocusGained(event)
+			{
+				local button = event.getTarget();
+				local icon = button.getWidget("background");
+				icon.setTexture(261);	
+				icon.setPalette(261);
+			}
+
+			// Called when a medium sized button loses focus
+			function OnSmallButtonFocusLost(event)
+			{
+				local button = event.getTarget();
+				local icon = button.getWidget("background");
+				icon.setTexture(262);	
+				icon.setPalette(262);
+			}
+
+			// Sets up the begin fade transition
+			function SetupBeginTransition(scene)
+			{
+				FadeEffects.label1.setEndAlpha(31);
+				FadeEffects.label2.setEndAlpha(31);
+				FadeEffects.label3.setEndAlpha(31);
+				FadeEffects.backarrow.setEndAlpha(31);
+				FadeEffects.title.setEndAlpha(31);
+				FadeEffects.backButtonmap.setEndAlpha(31);
+				FadeEffects.okButtonmap.setEndAlpha(31);
+				FadeEffects.button1.setEndAlpha(scene.findWidget("previous").getAlpha());
+				FadeEffects.button2.setEndAlpha(5);
+				FadeEffects.button3.setEndAlpha(scene.findWidget("play").getAlpha());
+				FadeEffects.button4.setEndAlpha(5);
+				FadeEffects.button5.setEndAlpha(scene.findWidget("next").getAlpha());
+				FadeEffects.button6.setEndAlpha(scene.findWidget("shuffle").getAlpha());
+				FadeEffects.button7.setEndAlpha(scene.findWidget("repeat").getAlpha());
+
+				if(stop.focusable)
+					FadeEffects.button8.setEndAlpha(31);
+				else
+					FadeEffects.button8.setEndAlpha(5);
+
+				FadeEffects.button9.setEndAlpha(scene.findWidget("playlist").getAlpha());
+				FadeEffects.button10.setEndAlpha(31);
+				FadeEffects.panelright.setEndAlpha(31);
+				FadeEffects.panelleft.setEndAlpha(31);
+				FadeEffects.panelcenter.setEndAlpha(31);
+
+				if(backToMain)
+				{
+					scene.findWidget("media.buttonmapBack").setAlpha(0);
+					scene.findWidget("media.buttonmapOk").setAlpha(0);
+					scene.findWidget("back").setAlpha(0);
+				}
+				scene.findWidget("songTitle").setAlpha(0);
+				scene.findWidget("songArtist").setAlpha(0);
+				scene.findWidget("songAlbum").setAlpha(0);
+				scene.findWidget("media.title").setAlpha(0);
+				scene.findWidget("previous").setAlpha(0);
+				scene.findWidget("rewind").setAlpha(0);
+				scene.findWidget("play").setAlpha(0);
+				scene.findWidget("forward").setAlpha(0);
+				scene.findWidget("next").setAlpha(0);
+				scene.findWidget("shuffle").setAlpha(0);
+				scene.findWidget("repeat").setAlpha(0);
+				scene.findWidget("stop").setAlpha(0);
+				scene.findWidget("playlist").setAlpha(0);
+				scene.findWidget("library").setAlpha(0);
+				scene.findWidget("media.panelright").setAlpha(0);
+				scene.findWidget("media.panelleft").setAlpha(0);
+				scene.findWidget("media.panelcenter").setAlpha(0);
+			}
+
+			// Sets up the ending fade transition
+			function SetupEndTransition()
+			{
+				if(backToMain)
+				{
+					FadeEffects.backButtonmap.setEndAlpha(0);
+					FadeEffects.okButtonmap.setEndAlpha(0);
+					FadeEffects.backarrow.setEndAlpha(0);
+				}
+
+				FadeEffects.label1.setEndAlpha(0);
+				FadeEffects.label2.setEndAlpha(0);
+				FadeEffects.label3.setEndAlpha(0);
+				FadeEffects.title.setEndAlpha(0);
+				FadeEffects.button1.setEndAlpha(0);
+				FadeEffects.button2.setEndAlpha(0);
+				FadeEffects.button3.setEndAlpha(0);
+				FadeEffects.button4.setEndAlpha(0);
+				FadeEffects.button5.setEndAlpha(0);
+				FadeEffects.button6.setEndAlpha(0);
+				FadeEffects.button7.setEndAlpha(0);
+				FadeEffects.button8.setEndAlpha(0);
+				FadeEffects.button9.setEndAlpha(0);
+				FadeEffects.button10.setEndAlpha(0);
+				FadeEffects.panelright.setEndAlpha(0);
+				FadeEffects.panelleft.setEndAlpha(0);
+				FadeEffects.panelcenter.setEndAlpha(0);
+			}			
+			
+			// Called when the scene begins
+			function OnBegin(event)
+			{
+				local scene = event.getTarget();				
+				local playIcon = play.findWidget("icon");
+
+				// Unpauses the audio player if it is paused
+				if(autoPause && NowPlaying.isPaused())
+				{
+					NowPlaying.unpause();					
+				}
+				
+				autoPause = false;
+
+				SetSongInformation();
+						
+				// Determine which buttons should be enabled					
+				if( NowPlaying.getNumSongs() > 0)
+				{	
+					EnableButton(repeat);
+					EnableButton(shuffle);
+					EnableButton(playlist);
+					EnableButton(play);
+					
+					if(NowPlaying.isPlaying())
+					{
+						EnableButton(stop);	
+						
+						if(NowPlaying.isPaused())
+						{
+							playIcon.setTexture(23);
+							playIcon.setPalette(23);
+						}
+						else
+						{
+							playIcon.setTexture(230);
+							playIcon.setPalette(230);
+						}	
+					}
+					else
+					{
+						playIcon.setTexture(23);
+						playIcon.setPalette(23);
+					}	
+					
+					SetNextButtonState();
+					SetPrevButtonState();
+				}
+				else
+				{
+					DisableButton(play);
+					playIcon.setTexture(23);
+					playIcon.setPalette(23);
+					
+					DisableButton(next);
+					DisableButton(prev);
+					DisableButton(stop);
+					DisableButton(repeat);
+					DisableButton(shuffle);
+					DisableButton(playlist);
+				}
+			
+				if (NowPlaying.isShuffleSet())
+				{
+					SetShuffleState("enable");
+				}
+				else
+				{
+					SetShuffleState("disable");
+				}
+				
+				if (NowPlaying.isRepeatSet())
+				{
+					SetRepeatState("enable");
+				}
+				else
+				{
+					SetRepeatState("disable");
+				}	
+
+				if(play.focusable)
+				{
+					play.focus();
+				}
+				else
+				{
+					library.focus();
+				}
+
+				// Setup the fade effects
+				SetupBeginTransition(scene);
+
+				backToMain = true;
+
+				// Start the fade effects
+				FadeEffects.fadeGroup.start();
+			}
+
+			// Called when the scene ends
+			function OnEnd(event)
+			{
+				// Setup the fade effects
+				SetupEndTransition();
+
+				// Set the fade group as an end effect
+				// This will cause the framework to pause until the effects complete
+				event.setEndEffect(FadeEffects.fadeGroup);
+			}
+	
+			// Called after the XML loads
+			function OnInit()
+			{
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+
+				// Assign the button widgets
+				playlist = scene.findWidget("playlist");
+				library = scene.findWidget("library");
+				shuffle = scene.findWidget("shuffle");
+				repeat = scene.findWidget("repeat");				
+				play = scene.findWidget("play");
+				next = scene.findWidget("next");
+				prev = scene.findWidget("previous");
+				stop = scene.findWidget("stop");
+				back = scene.findWidget("back");
+				
+				// Store the buttons in arrays according to location on-screen
+				middlebuttons <- [prev, play, next];
+				bottombuttons <- [shuffle, repeat, stop, playlist, library];
+				
+				lasttop = library;
+				lastmiddle = play;
+				lastbottom = repeat;
+				
+				// Song info box label widgets
+				songTitle = scene.findWidget("songTitle");
+				songArtist = scene.findWidget("songArtist");
+				songAlbum = scene.findWidget("songAlbum");
+								
+				// Hooks button click events
+				playlist.onButtonClick(OnPlaylistClick.bindenv(this));
+				playlist.onDPadPressed(OnPlaylistDPadPressed);
+				library.onButtonClick(OnLibraryClick.bindenv(this));
+				library.onDPadPressed(OnLibraryDPadPressed);
+				play.onButtonClick(OnPlayClick);
+				play.onDPadPressed(OnPlayDPadPressed);
+				next.onButtonClick(OnNextClick);
+				next.onDPadPressed(OnNextDPadPressed);
+				prev.onButtonClick(OnPrevClick);
+				prev.onDPadPressed(OnPrevDPadPressed);
+				shuffle.onButtonClick(OnShuffleClick);
+				shuffle.onDPadPressed(OnShuffleDPadPressed);
+				repeat.onButtonClick(OnRepeatClick);
+				repeat.onDPadPressed(OnRepeatDPadPressed);
+				stop.onButtonClick(OnStopClick);	
+				stop.onDPadPressed(OnStopDPadPressed);
+				back.onButtonClick(OnBackClick);
+				
+				// Hook button focus events
+				shuffle.onFocusGained(OnSmallButtonFocusGained);
+				shuffle.onFocusLost(OnSmallButtonFocusLost);
+				repeat.onFocusGained(OnSmallButtonFocusGained);
+				repeat.onFocusLost(OnSmallButtonFocusLost);
+				stop.onFocusGained(OnStopFocusGained);
+				stop.onFocusLost(OnStopFocusLost);
+				library.onFocusGained(OnSmallButtonFocusGained);
+				library.onFocusLost(OnSmallButtonFocusLost);
+				playlist.onFocusGained(OnSmallButtonFocusGained);
+				playlist.onFocusLost(OnSmallButtonFocusLost);
+				play.onFocusGained(OnLargeButtonFocusGained);
+				play.onFocusLost(OnLargeButtonFocusLost);
+				next.onFocusGained(OnMediumButtonFocusGained);
+				next.onFocusLost(OnMediumButtonFocusLost);
+				prev.onFocusGained(OnMediumButtonFocusGained);
+				prev.onFocusLost(OnMediumButtonFocusLost);
+
+				// Create the fade effects to be used in the scene
+				FadeEffects.label1 = FadeEffect();
+				FadeEffects.label1.setTarget(scene.findWidget("songTitle"));
+				FadeEffects.label1.setDuration(500);
+
+				FadeEffects.label2 = FadeEffect();
+				FadeEffects.label2.setTarget(scene.findWidget("songArtist"));
+				FadeEffects.label2.setDuration(500);
+
+				FadeEffects.label3 = FadeEffect();
+				FadeEffects.label3.setTarget(scene.findWidget("songAlbum"));
+				FadeEffects.label3.setDuration(500);
+
+				FadeEffects.backarrow = FadeEffect();
+				FadeEffects.backarrow.setTarget(scene.findWidget("back"));
+				FadeEffects.backarrow.setDuration(300);
+
+				FadeEffects.title = FadeEffect();
+				FadeEffects.title.setTarget(scene.findWidget("media.title"));
+				FadeEffects.title.setDuration(300);
+
+				FadeEffects.backButtonmap = FadeEffect();
+				FadeEffects.backButtonmap.setTarget(scene.findWidget("media.buttonmapBack"));
+				FadeEffects.backButtonmap.setDuration(300);
+
+				FadeEffects.okButtonmap = FadeEffect();
+				FadeEffects.okButtonmap.setTarget(scene.findWidget("media.buttonmapOk"));
+				FadeEffects.okButtonmap.setDuration(300);
+
+				FadeEffects.button1 = FadeEffect();
+				FadeEffects.button1.setTarget(scene.findWidget("previous"));
+				FadeEffects.button1.setDuration(300);
+
+				FadeEffects.button2 = FadeEffect();
+				FadeEffects.button2.setTarget(scene.findWidget("rewind"));
+				FadeEffects.button2.setDuration(300);
+
+				FadeEffects.button3 = FadeEffect();
+				FadeEffects.button3.setTarget(scene.findWidget("play"));
+				FadeEffects.button3.setDuration(300);
+
+				FadeEffects.button4 = FadeEffect();
+				FadeEffects.button4.setTarget(scene.findWidget("forward"));
+				FadeEffects.button4.setDuration(300);
+
+				FadeEffects.button5 = FadeEffect();
+				FadeEffects.button5.setTarget(scene.findWidget("next"));
+				FadeEffects.button5.setDuration(300);
+
+				FadeEffects.button6 = FadeEffect();
+				FadeEffects.button6.setTarget(scene.findWidget("shuffle"));
+				FadeEffects.button6.setDuration(300);
+
+				FadeEffects.button7 = FadeEffect();
+				FadeEffects.button7.setTarget(scene.findWidget("repeat"));
+				FadeEffects.button7.setDuration(300);
+
+				FadeEffects.button8 = FadeEffect();
+				FadeEffects.button8.setTarget(scene.findWidget("stop"));
+				FadeEffects.button8.setDuration(300);
+
+				FadeEffects.button9 = FadeEffect();
+				FadeEffects.button9.setTarget(scene.findWidget("playlist"));
+				FadeEffects.button9.setDuration(300);
+
+				FadeEffects.button10 = FadeEffect();
+				FadeEffects.button10.setTarget(scene.findWidget("library"));
+				FadeEffects.button10.setDuration(300);
+
+				FadeEffects.panelleft = FadeEffect();
+				FadeEffects.panelleft.setTarget(scene.findWidget("media.panelleft"));
+				FadeEffects.panelleft.setDuration(300);
+
+				FadeEffects.panelright = FadeEffect();
+				FadeEffects.panelright.setTarget(scene.findWidget("media.panelright"));
+				FadeEffects.panelright.setDuration(300);
+
+				FadeEffects.panelcenter = FadeEffect();
+				FadeEffects.panelcenter.setTarget(scene.findWidget("media.panelcenter"));
+				FadeEffects.panelcenter.setDuration(300);
+
+				// Create an effect group and all all of the fade effects
+				FadeEffects.fadeGroup = EffectGroup();
+				FadeEffects.fadeGroup.addEffect(FadeEffects.label1);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.label2);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.label3);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.backarrow);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.title);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.backButtonmap);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.okButtonmap);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.button1);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.button2);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.button3);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.button4);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.button5);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.button6);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.button7);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.button8);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.button9);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.button10);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.panelleft);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.panelright);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.panelcenter);
+
+				// Keep track of where the scene is transitioning to and from because
+				//   some fades will not need to occur depending on the next scene
+				backToMain = true;
+
+				// Hook scene events
+				scene.onBegin(OnBegin);
+				scene.onEnd(OnEnd);
+				scene.onButtonPressed(OnButtonPressed);
+				
+				// Hook NowPlaying events
+				NowPlaying.onSongChanged(OnSongChanged.bindenv(this));
+				NowPlaying.onPlaylistDone(OnPlaylistDone.bindenv(this));
+			}
+		]]>
+	</script>
+
+	<objects>
+		<image id="media.bg">
+			<properties>
+				<depth>0</depth>
+				<bounds x="0" y="0" width="256" height="192"/>
+				<texture-id>1</texture-id>
+				<palette-id>1</palette-id>
+			</properties>
+		</image>
+		<image id="main.headerGradient">
+			<properties>
+				<depth>2</depth>
+				<bounds x="0" y="0" width="256" height="28"/>
+				<texture-id>7</texture-id>
+				<palette-id>7</palette-id>
+			</properties>
+		</image>
+		<image id="media.colorBlocks">
+			<properties>
+				<depth>10</depth>
+				<bounds x="8" y="9" width="32" height="8"/>
+				<texture-id>3</texture-id>
+				<palette-id>3</palette-id>
+			</properties>
+		</image>
+		<label id="media.title">
+			<properties>
+				<bounds x="44" y="0" width="90" height="25"/>
+				<depth>10</depth>
+				<color red="5" blue="5" green="5"/>
+				<font name="default" size="12"/>
+				<text>Audio Player</text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>middle</vertical-align>
+				<!-- <shadow xoffset="2" yoffset="2"/> -->
+			</properties>
+		</label>
+		<image id="media.buttonmapOk">
+			<properties>
+				<depth>10</depth>
+				<bounds x="6" y="179" width="32" height="16"/>
+				<texture-id>4</texture-id>
+				<palette-id>4</palette-id>
+			</properties>
+		</image>
+		<image id="media.buttonmapBack">
+			<properties>
+				<depth>10</depth>
+				<bounds x="211" y="179" width="40" height="16"/>
+				<texture-id>5</texture-id>
+				<palette-id>5</palette-id>
+			</properties>
+		</image>
+		<image id="media.panelleft">
+			<properties>
+				<depth>1</depth>
+				<bounds x="6" y="28" width="8" height="56"/>
+				<texture-id>94</texture-id>
+				<palette-id>94</palette-id>
+			</properties>
+		</image>
+		<image id="media.panelcenter">
+			<properties>
+				<depth>1</depth>
+				<bounds x="14" y="28" width="228" height="56"/>
+				<texture-id>95</texture-id>
+				<palette-id>95</palette-id>
+			</properties>
+		</image>
+		<image id="media.panelright">
+			<properties>
+				<depth>1</depth>
+				<bounds x="242" y="28" width="8" height="56"/>
+				<texture-id>97</texture-id>
+				<palette-id>97</palette-id>
+			</properties>
+		</image>
+		<label id="songTitle">
+			<properties>
+				<color red="15" blue="15" green="15"/>
+				<bounds x="13" y="34" width="230" height="20"/>
+				<depth>3</depth>
+				<font name="default" size="10"/>
+				<text></text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>top</vertical-align>
+			</properties>
+		</label>
+		<label id="songArtist">
+			<properties>
+				<color red="15" blue="15" green="15"/>
+				<bounds x="13" y="48" width="230" height="20"/>
+				<depth>3</depth>
+				<font name="default" size="10"/>
+				<text></text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>top</vertical-align>
+			</properties>
+		</label>
+		<label id="songAlbum">
+			<properties>
+				<color red="15" blue="15" green="15"/>
+				<bounds x="13" y="59" width="230" height="15"/>
+				<depth>3</depth>
+				<font name="default" size="10"/>
+				<text></text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+
+		<button id="previous">
+			<properties>
+				<bounds x="12" y="90" width="48" height="48"/>
+				<depth>3</depth>
+				<alpha>5</alpha>				
+			</properties>
+			<objects>
+				<image id="backgroundedge">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="40" height="41"/>
+						<texture-id>213</texture-id>
+						<palette-id>213</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>3</depth>
+						<bounds x="5" y="5" width="30" height="31"/>
+						<texture-id>21</texture-id>
+						<palette-id>21</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="rewind">
+			<properties>
+				<focusable>false</focusable>
+				<bounds x="56" y="90" width="48" height="48"/>
+				<depth>3</depth>
+				<alpha>5</alpha>
+			</properties>
+			<objects>
+				<image id="backgroundedge">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="40" height="41"/>
+						<texture-id>213</texture-id>
+						<palette-id>213</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>3</depth>
+						<bounds x="5" y="5" width="30" height="31"/>
+						<texture-id>22</texture-id>
+						<palette-id>22</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="play">
+			<properties>
+				<bounds x="101" y="83" width="56" height="56"/>
+				<depth>3</depth>
+				<alpha>5</alpha>
+			</properties>
+			<objects>
+				<image id="backgroundedge">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="56" height="56"/>
+						<texture-id>233</texture-id>
+						<palette-id>233</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>3</depth>
+						<bounds x="15" y="16" width="24" height="24"/>
+						<texture-id>23</texture-id>
+						<palette-id>23</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="forward">
+			<properties>
+				<focusable>false</focusable>
+				<bounds x="160" y="90" width="48" height="48"/>
+				<depth>3</depth>
+				<alpha>5</alpha>
+			</properties>
+			<objects>
+				<image id="backgroundedge">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="40" height="41"/>
+						<texture-id>213</texture-id>
+						<palette-id>213</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>3</depth>
+						<bounds x="5" y="5" width="30" height="31"/>
+						<texture-id>24</texture-id>
+						<palette-id>24</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="next">
+			<properties>
+				<bounds x="204" y="90" width="48" height="48"/>
+				<depth>3</depth>
+				<alpha>5</alpha>
+			</properties>
+			<objects>
+				<image id="backgroundedge">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="40" height="41"/>
+						<texture-id>213</texture-id>
+						<palette-id>213</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>3</depth>
+						<bounds x="5" y="5" width="30" height="31"/>
+						<texture-id>25</texture-id>
+						<palette-id>25</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="back">
+			<properties>
+				<bounds x="232" y="0" width="24" height="24"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="24" height="24"/>
+						<texture-id>2</texture-id>
+						<palette-id>2</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>		
+		<button id="shuffle">
+			<properties>
+				<bounds x="12" y="145" width="40" height="32"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="40" height="32"/>
+						<texture-id>262</texture-id>
+						<palette-id>262</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>2</depth>
+						<bounds x="5" y="5" width="32" height="24"/>
+						<texture-id>28</texture-id>
+						<palette-id>28</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="repeat">
+			<properties>
+				<bounds x="56" y="145" width="40" height="32"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="40" height="32"/>
+						<texture-id>262</texture-id>
+						<palette-id>262</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>2</depth>
+						<bounds x="5" y="5" width="32" height="24"/>
+						<texture-id>26</texture-id>
+						<palette-id>26</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="stop">
+			<properties>
+				<bounds x="108" y="140" width="40" height="40"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="40" height="40"/>
+						<texture-id>302</texture-id>
+						<palette-id>302</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>2</depth>
+						<bounds x="28" y="4" width="16" height="16"/>
+						<texture-id>81</texture-id>
+						<palette-id>81</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="playlist">
+			<properties>
+				<bounds x="160" y="145" width="40" height="32"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="40" height="32"/>
+						<texture-id>262</texture-id>
+						<palette-id>262</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>2</depth>
+						<bounds x="5" y="5" width="32" height="24"/>
+						<texture-id>31</texture-id>
+						<palette-id>31</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="library">
+			<properties>
+				<bounds x="204" y="145" width="40" height="32"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="40" height="32"/>
+						<texture-id>262</texture-id>
+						<palette-id>262</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>2</depth>
+						<bounds x="5" y="5" width="32" height="24"/>
+						<texture-id>32</texture-id>
+						<palette-id>32</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+
+	</objects>
+
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+</scene>

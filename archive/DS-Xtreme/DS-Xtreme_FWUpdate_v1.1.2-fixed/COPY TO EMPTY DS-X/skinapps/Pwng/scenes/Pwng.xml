@@ -1,0 +1,660 @@
+<scene id="main">
+	<script>
+		<![CDATA[
+						
+			BALL <- null;
+			PADDLECPU <- null;
+			PADDLEHUM <- null;
+			XBALL <- null;
+			INPUT <- null;
+
+			player_score <- null;
+			cpu_score <- null;
+			message <- null;
+			exitDelay <- null;
+
+			THE_GAME <- null;
+
+			class Game
+			{
+				constructor(_scene)
+				{
+					_paddle_hum = _scene.findWidget("pwng.paddleHum");
+					_paddle_cpu = _scene.findWidget("pwng.paddleCpu");
+					_score_label_hum = _scene.findWidget("pwng.score2");
+					_score_label_cpu = _scene.findWidget("pwng.score1");
+					_ball = XWidget(_scene.findWidget("pwng.ball"), 125, 100, 4001, 4001);
+
+					_input_rect = _scene.findWidget("pwng.scroller");
+					_input_rect.onTouchMove(this.TouchInput.bindenv(this));
+
+					_scene.onDPadPressed(this.DPadPress.bindenv(this));
+					_scene.onDPadReleased(this.DPadRelease.bindenv(this));
+
+					_wallSet = [];
+					_wallSet.append(_scene.findWidget("pwng.topWall"));
+					_wallSet.append(_scene.findWidget("pwng.bottomWall"));
+					_wallSet.append(_scene.findWidget("pwng.leftWall"));
+					_wallSet.append(_scene.findWidget("pwng.rightWall"));
+
+					_updateWait = WaitEffect();
+					_updateWait.setTarget(_scene);
+					_updateWait.setDuration(1);
+					_updateWait.onStop(this._update.bindenv(this));
+
+					_prevCollide = false;
+					_prevWallCollide = false;
+
+					_score_hum = 0;
+					_score_cpu = 0;
+
+					_message = _scene.findWidget("pwng.startup");
+
+					_gameInProgress = false;
+				}
+
+				// Initializes data members to start a new game
+				function Init()
+				{
+					_ball._x = 200;
+					_ball._widget.setX(200);
+
+					_ball._y = 25;
+					_ball._widget.setY(25);
+
+					_ball._dx = -6001;
+					_ball._dy = 6001;
+
+					_score_hum = 0;
+					_score_cpu = 0;
+
+					_score_label_cpu.setText("0");
+					_score_label_hum.setText("0");
+
+					_pursue_speed = 6;
+				}
+
+				// Starts a game
+				function Begin()
+				{
+					_gameInProgress = true;
+					_ball.init();
+					_updateWait.start();
+				}
+
+				// Periodic update
+				function _update(event)
+				{
+					CpuPursue();
+					HumPursue();
+
+					local _collide = false;
+					local _wallcollide = false;
+
+					_ball.increment();
+
+					for(local i = 0; i < _wallSet.len(); i++)
+					{
+						// Determines if the ball collided with a wall
+						if(Collide(_ball, _wallSet[i]))
+						{
+
+							// Collision with the top or bottom wall
+							if(i < 2)
+							{
+								if(!_prevWallCollide)
+								{
+									IncreaseSpeed();
+									_ball._dy *= -1;
+									_ball._tick = 1000;
+									_wallcollide = true;
+
+									if(i == 0)
+										_ball._y = 26;
+									else
+										_ball._y = 171;
+								}
+							}
+							// Collision with left or right wall ( a goal )
+							else
+							{
+								if(_ball._x < 100)
+								{
+									Score("hum");
+
+									if( (_score_hum % 2) == 0)
+										_pursue_speed += 1;
+									else if(_score_hum > 16)
+										_pursue_speed += 1;
+
+									SetBall("hum");
+								}
+								else
+								{
+									Score("cpu");
+									SetBall("cpu");
+								}
+
+
+							}	
+						}
+					}
+
+					// Handles collision with a player's paddle
+					if(Collide(_ball, _paddle_hum))
+					{
+						_collide = true;
+
+						if(!_prevCollide)
+						{
+							if(_ball._y <= _paddle_hum.getY() )
+							{
+								if(_ball._dy > 0)
+									_ball._dy *= -1;
+							}
+							else if(_ball._y >= (_paddle_hum.getY() + 20) )
+							{
+								if(_ball._dy < 0)
+									_ball._dy *= -1;
+							}
+								
+
+							_ball._x = 222;	
+							_ball._dx *= -1;
+							_ball._tick = 1000;
+						}
+					}
+					// Handles collision with the cpu's paddle
+					if(Collide(_ball, _paddle_cpu))
+					{
+						_collide = true;
+
+						if(!_prevCollide)
+						{
+							if(_ball._y <= _paddle_cpu.getY())
+							{
+								if(_ball._dy > 0)
+									_ball._dy *= -1;
+							}
+							else if(_ball._y >= (_paddle_cpu.getY() + 20) )
+							{
+								if(_ball._dy < 0)
+									_ball._dy *= -1;
+							}
+									
+							_ball._x = 24;	
+							_ball._dx *= -1;
+							_ball._tick = 1000;
+						}
+					}
+
+					local locX = _ball._x;
+					local locY = _ball._y;
+					_ball._widget.setX(locX);
+					_ball._widget.setY(locY);
+
+
+					if(_collide)
+						_prevCollide = true;
+					else
+						_prevCollide = false;
+
+					if(_wallcollide)
+						_prevWallCollide = true;
+					else
+						_prevWallCollide = false;
+
+					if( (_score_hum < 20) && (_score_cpu < 20) )
+						_updateWait.start();
+					else
+					{
+						Winner();
+					}
+				}
+
+				// Determines if the ball is within a widget
+				function Collide(ball_widget, widget2)
+				{
+
+					if(ball_widget._x < (widget2.getX() + widget2.getWidth()) )
+						if( (ball_widget._x + 10) > widget2.getX() )
+							if(ball_widget._y < (widget2.getY() + widget2.getHeight()) )
+								if( (ball_widget._y + 10) > widget2.getY() )
+									return true;
+
+					return false;
+				}
+
+				// Gathers the touch screen inputs and moves the player's
+				//  paddle accordingly
+				function TouchInput(event)
+				{
+					local pos = event.getY() - 15;
+					if((event.getY() - 15) < 26)
+						pos = 26;
+					else if((event.getY() + 15) > 183)
+						pos = 153;
+					_paddle_hum.setY(pos);
+				}
+
+				// Moves the cpu's paddle towards the ball
+				function CpuPursue()
+				{
+					local ball_pos = _ball._widget.getY() - 10;
+
+					local pos = _paddle_cpu.getY();
+
+					if(pos > ball_pos)
+						pos -= _pursue_speed;
+					else
+						pos += _pursue_speed;
+
+
+					if(pos < 26)
+						pos = 26;
+					else if(pos > 153)
+						pos = 153;
+					_paddle_cpu.setY(pos);
+				}
+
+				// Uses D-Pad input to move the player's paddle
+				function HumPursue()
+				{
+					local pos = _paddle_hum.getY();
+
+					if(_DPad_up_held)
+						pos -= _pursue_speed;
+					else if(_DPad_down_held)
+						pos +=_pursue_speed;
+
+					if(pos < 26)
+						pos = 26;
+					else if(pos > 153)
+						pos = 153;
+
+					_paddle_hum.setY(pos);
+				}
+
+				// Increments the score of the scorer
+				function Score(who)
+				{
+					if(who == "cpu")
+					{
+						_score_cpu++;
+						_score_label_cpu.setText(_score_cpu.tostring());
+					}
+					else if(who == "hum")
+					{
+						_score_hum++;
+						_score_label_hum.setText(_score_hum.tostring());
+					}
+				}
+
+				// Sets the ball ( for a serve )
+				function SetBall(who)
+				{
+					if(who == "hum")
+					{
+						_ball._x = 222;
+						_ball._y = _paddle_hum.getY() + 10;
+
+					}
+					else
+					{
+						_ball._x = 24;
+						_ball._y = _paddle_cpu.getY() + 10;
+
+					}
+				}
+
+				// Increases the speed of the ball
+				function IncreaseSpeed()
+				{
+					if(_ball._dx < 0)
+						_ball._dx -= 40;
+					else
+						_ball._dx += 40;
+
+					if(_ball._dy < 0)
+						_ball._dy -= 40;
+					else
+						_ball._dy += 40;
+				}
+
+				// Declares the winner of the match
+				function Winner()
+				{
+					_gameInProgress = false;
+
+					local messageLabel = _message.getWidget("pwng.message");
+
+					if(_score_hum > 19)
+						messageLabel.setText("You Win!");
+					else
+						messageLabel.setText("You Lose...");
+
+					messageLabel.setVisible(true);
+					_message.setVisible(true);
+				}
+
+				// Called when the D-Pad is pressed on the device
+				function DPadPress(event)
+				{
+					if(event.getDirection() == event.Up)
+					{
+						_DPad_up_held = true;
+						_DPad_down_held = false;
+					}
+					else if(event.getDirection() == event.Down)
+					{
+						_DPad_down_held = true;
+						_DPad_up_held = false;
+					}
+					else
+					{
+						_DPad_up_held = false;
+						_DPad_down_held = false;
+					}
+				}
+
+				// Called when the D-Pad is released on the device
+				function DPadRelease(event)
+				{
+					_DPad_up_held = false;
+					_DPad_down_held = false;
+				}
+
+				_paddle_hum = null;
+				_paddle_cpu = null;
+				_ball = null;
+				_input_rect = null;
+				_updateWait = null;
+				_wallSet = null;
+
+				_prevCollide = null;
+				_prevWallCollide = null;
+
+				_score_label_hum = null;
+				_score_label_cpu = null;
+				_score_hum = null;
+				_score_cpu = null;
+
+				_pursue_speed = null
+
+				_message = null;
+
+				_DPad_up_held = null;
+				_DPad_down_held = null;
+
+				_gameInProgress = null;
+			}
+
+			// Called when a button is pressed on the device
+			function OnButtonPressed(event)
+			{
+				if(event.getButton() == event.B)
+				{
+					message.setFocusable(false);
+					message.findWidget("pwng.startlabel1").setText("EXITING..");
+					message.setVisible(true);
+
+					exitDelay.start();
+				}
+				else if(event.getButton() == event.A)
+				{
+
+					if(!THE_GAME._gameInProgress)
+					{
+						message.setVisible(false);
+						message.getWidget("pwng.message").setVisible(false);
+
+						THE_GAME.Init();
+						THE_GAME.Begin();
+					}
+				}
+			}
+
+			// Exits the application back to the user default skin
+			function Exit(event)
+			{
+				Application.launchSystem();
+			}
+
+			// Called when the the screen is touched while not currently in a game
+			function OnStartupTouch(event)
+			{
+				event.getTarget().setVisible(false);
+				event.getTarget().getWidget("pwng.message").setVisible(false);
+
+				THE_GAME.Init();
+				THE_GAME.Begin();
+
+			}
+			
+			// Called when the scene is initialized ( after the XML is loaded )
+			function OnInit()
+			{
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+
+				exitDelay = WaitEffect();
+				exitDelay.setTarget(scene);
+				exitDelay.setDuration(100);
+				exitDelay.onStop(Exit.bindenv(this));
+
+				THE_GAME = Game(scene);
+
+				message = scene.findWidget("pwng.startup");
+				message.onTouchPress(OnStartupTouch.bindenv(this));
+
+				scene.onButtonPressed(OnButtonPressed.bindenv(this));
+				
+			}
+		]]>
+	</script>
+	
+	<objects>	
+		<image id="main.bg">
+			<properties>
+				<bounds x="0" y="0" width="256" height="192"/>
+				<texture-id>1</texture-id>
+				<palette-id>1</palette-id>
+				<depth>2</depth>
+			</properties>
+		</image>
+		<rect id="pwng.topWall">
+			<properties>
+				<color red="0" green="0" blue="0"/>
+				<bounds x="0" y="-20" width="256" height="45"/>
+				<depth>1</depth>
+			</properties>
+		</rect>
+		<rect id="pwng.bottomWall">
+			<properties>
+				<color red="0" green="0" blue="0"/>
+				<bounds x="0" y="182" width="256" height="50"/>
+				<depth>1</depth>
+			</properties>
+		</rect>
+		<rect id="pwng.leftWall">
+			<properties>
+				<color red="0" green="0" blue="0"/>
+				<bounds x="-50" y="-50" width="60" height="292"/>
+				<depth>1</depth>
+			</properties>
+		</rect>
+		<rect id="pwng.rightWall">
+			<properties>
+				<color red="0" green="0" blue="0"/>
+				<bounds x="246" y="-50" width="60" height="292"/>
+				<depth>1</depth>
+			</properties>
+		</rect>
+		<button id="pwng.paddleCpu">
+			<properties>
+				<bounds x="-14" y="50" width="38" height="30"/>
+				<depth>4</depth>
+			</properties>
+			<objects>
+				<image id="paddleImage">
+					<properties>
+						<bounds x="30" y="0" width="8" height="30"/>
+						<texture-id>3</texture-id>
+						<palette-id>3</palette-id>
+						<depth>1</depth>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="pwng.paddleHum">
+			<properties>
+				<bounds x="232" y="50" width="38" height="30"/>
+				<depth>4</depth>
+			</properties>
+			<objects>
+				<image id="paddleImage">
+					<properties>
+						<bounds x="0" y="0" width="8" height="30"/>
+						<texture-id>3</texture-id>
+						<palette-id>3</palette-id>
+						<depth>1</depth>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<image id="pwng.ball">
+			<properties>
+				<bounds x="200" y="25" width="10" height="10"/>
+				<texture-id>2</texture-id>
+				<palette-id>2</palette-id>
+				<depth>3</depth>
+			</properties>
+		</image>
+		<button id="pwng.scroller">
+			<properties>
+				<bounds x="150" y="20" width="106" height="152"/>
+				<depth>8</depth>
+			</properties>
+		</button>
+		<label id="pwng.score1">
+			<properties>
+				<bounds x="23" y="6" width="100" height="20"/>
+				<depth>5</depth>
+				<color red="15" blue="10" green="10"/>
+				<font name="default" size="14"/>
+				<text>0</text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>top</vertical-align>
+				<shadow xoffset="1" yoffset="1"/>
+			</properties>
+		</label>
+		<label id="pwng.score2">
+			<properties>
+				<bounds x="132" y="6" width="100" height="20"/>
+				<depth>5</depth>
+				<color red="15" blue="10" green="10"/>
+				<font name="default" size="14"/>
+				<text>0</text>
+				<wrap-type>clip</wrap-type>
+				<justify>right</justify>
+				<vertical-align>top</vertical-align>
+				<shadow xoffset="1" yoffset="1"/>
+			</properties>
+		</label>
+		<label id="pwng.title">
+			<properties>
+				<bounds x="0" y="6" width="256" height="20"/>
+				<depth>5</depth>
+				<color red="15" blue="10" green="10"/>
+				<font name="default" size="14"/>
+				<text>PWNG!</text>
+				<wrap-type>clip</wrap-type>
+				<justify>center</justify>
+				<vertical-align>top</vertical-align>
+				<shadow xoffset="1" yoffset="1"/>
+			</properties>
+		</label>
+		<label id="pwng.info">
+			<properties>
+				<bounds x="0" y="182" width="256" height="10"/>
+				<depth>3</depth>
+				<color red="255" blue="255" green="255"/>
+				<font name="default" size="10"/>
+				<text>Press B to exit</text>
+				<wrap-type>clip</wrap-type>
+				<justify>center</justify>
+				<vertical-align>middle</vertical-align>
+				<visible>false</visible>
+			</properties>
+		</label>
+		<button id="pwng.startup">
+			<properties>
+				<bounds x="0" y="0" width="256" height="192"/>
+				<depth>11</depth>
+				<texture-id>9</texture-id>
+				<palette-id>2</palette-id>
+			</properties>
+			<objects>
+				<label id="pwng.message">
+					<properties>
+						<bounds x="0" y="66" width="256" height="20"/>
+						<depth>1</depth>
+						<color red="31" blue="31" green="31"/>
+						<font name="default" size="16"/>
+						<text>0</text>
+						<wrap-type>clip</wrap-type>
+						<justify>center</justify>
+						<vertical-align>middle</vertical-align>
+						<shadow xoffset="1" yoffset="1"/>
+						<visible>false</visible>
+					</properties>
+				</label>
+				<label id="pwng.startlabel1">
+					<properties>
+						<bounds x="0" y="90" width="256" height="20"/>
+						<depth>1</depth>
+						<color red="31" blue="31" green="31"/>
+						<font name="default" size="12"/>
+						<text>TOUCH SCREEN OR</text>
+						<wrap-type>clip</wrap-type>
+						<justify>center</justify>
+						<vertical-align>middle</vertical-align>
+						<shadow xoffset="1" yoffset="1"/>
+					</properties>
+				</label>
+				<label id="pwng.startlabel2">
+					<properties>
+						<bounds x="0" y="110" width="256" height="20"/>
+						<depth>1</depth>
+						<color red="31" blue="31" green="31"/>
+						<font name="default" size="12"/>
+						<text>PRESS A TO START</text>
+						<wrap-type>clip</wrap-type>
+						<justify>center</justify>
+						<vertical-align>middle</vertical-align>
+						<shadow xoffset="1" yoffset="1"/>
+					</properties>
+				</label>
+				<label id="pwng.info">
+					<properties>
+						<bounds x="0" y="150" width="256" height="20"/>
+						<depth>1</depth>
+						<color red="31" blue="31" green="31"/>
+						<font name="default" size="12"/>
+						<text>Press B to Exit</text>
+						<wrap-type>clip</wrap-type>
+						<justify>center</justify>
+						<vertical-align>middle</vertical-align>
+						<shadow xoffset="1" yoffset="1"/>
+					</properties>
+				</label>
+			</objects>
+		</button>		
+	</objects>
+	
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+</scene>
+

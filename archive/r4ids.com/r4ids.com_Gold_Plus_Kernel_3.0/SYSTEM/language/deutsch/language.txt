@@ -1,0 +1,286 @@
+// Thanks to Ralf Friedrich, Klaus P., OzanOs, IcyVeins & Toastbrot for the translation.
+
+[font]
+main = liberation.pcf
+language = 3
+
+[start menu]
+Copy = Kopieren
+Cut = Ausschneiden
+Paste = Einfügen
+Delete = Löschen
+Setting = System Konfig.
+Info = Dateiinfo
+Help = Hilfe
+Tools = ¹¤¾ß
+START = ²Ëµ¥
+WifiUpdata = WifiÄÚºËÉý¼¶
+
+[message box]
+yes = Ja
+no = Nein
+ok = OK
+cancel = Abbruch
+
+[progress window]
+processing save = Arbeite ! Nicht abschalten
+processing copy = Kopiere ! Nicht abschalten, %c zum Abbruch
+first use sd = Prüfe SD-Karte für die erstmalige Nutzung
+gba load = Lade GBA Spiel…
+gba save load = Lade GBA Spielstand…
+gba save store = Speichere GBA Spielstand… nicht ausschalten!
+erase nor = Lösche NOR Flash… nicht ausschalten!
+
+[copy file error]
+title = Fehler
+text = Datei existiert nicht
+
+[copy file exists]
+title = Warnung
+text = Datei mit diesen Namen vorhanden, überschreiben ?
+
+[copy dest is directory]
+title = Fehler
+text = Dieser Ordner enthält einen Ordner mit diesem Namen. Kopieren nicht möglich.
+
+[move dest is directory]
+title = Fehler
+text = Dieser Ordner enthält einen Ordner mit diesem Namen. Verschieben nicht möglich.
+
+[no copy dir]
+title = Fehler
+text = Verzeichnis-Kopieren nicht möglich.
+
+[stop copying file]
+title = Kopieren Abbrechen
+text = Wollen Sie Abbrechen ?
+
+[confirm delete file]
+title = Bestätigen
+text = Datei kann nicht wiederhergestellt werden, "%s" löschen ?
+
+[do not delete directory]
+title = Warnung
+text = Verzeichnis ist nicht leer, Löschen unmöglich.
+
+[restore save fail]
+title = Fehler
+text = Wiederherstellung fehlgeschlagen.
+
+[language changed]
+title = Frage
+text = Systemsprache geändert, Neustarten um Änderungen anzunehmen ? Wählen Sie "Nein" um später neu zu starten.
+
+[ui style changed]
+title = Frage
+text = Benutzerinterface geändert, Neustarten zum anzunehmen ? "Nein" wählen um aktuellen Style zu behalten.
+
+[setting window]
+ok = OK
+savetype = Einstellungen
+cancel = Abbruch
+confirm = Bestätigen
+confirm text = Einstellungen speichern?
+close = Schließen
+system = System
+interface = Oberfläche
+filesystem = Dateisystem
+gba = GBA
+patches = Patches
+
+[save type]
+title = Einstellungen
+text = Wähle Savetype
+Unknown = Auto
+No Save = Keiner
+4K = 4K
+64K = 64K
+512K = 512K
+1M = 1M
+2M = 2M
+4M = 4M
+8M = 8M
+16M = 16M
+32M = 32M
+64M = 64M
+default = Standard
+save slot = Speicher-Slot auswählen
+tab1 = Kompatibilitäts Einstellungen
+tab2 = Zusatzfunktionen
+
+[system setting]
+title = System-Konfig.
+safe mode = Safe Mode
+
+[rom info]
+title = Datei-Information
+file date = l. Änderung: %d/%d/%d %02d:%02d:%02d(GMT)
+file size = Dateigröße: %s
+save type = Speichertyp: %s
+game code = Code: %s
+copy slot = Kopieren
+
+[disk info]
+total = Kapazität: %s
+used = Benutzer S: %s
+free = Freier Sp.: %s
+
+[no free space]
+title = Fehler
+text = Nicht genügend freier Speicher.
+
+[sd card error]
+title = SD card Fehler
+text = Zugriff auf SD nicht möglich, Nicht korrekt eingesetzt ?
+
+[no sd for save]
+title = SD card Fehler
+text = Zugriff auf SD nicht möglich. Speicherung des letzten Programms wird geschrieben nach: "%s".
+
+[no gba card]
+title = Hinweis
+text = Keine Gerät im SLOT-2 vorhanden
+
+[filelist type]
+text = Setze Filelist Typ
+item0 = NDS
+item1 = NDS + SAV
+item2 = ALLE
+
+[rom trim]
+text = ROM trimmen
+item0 = Nein
+item1 = Ja
+
+[language]
+text = Sprache
+ja = japanese
+en = english
+fr = français
+de = deutsch
+it = italiano
+es = español
+
+[ui style]
+text = Benutzerinterface Style
+
+[help window]
+title = Hilfe
+item0 = %c  Programm wählen
+item1 = %c  Start/OK/Ja
+item2 = %c  Zurück / Abbrechen / Nein / Schalter in die Verlängerung (links)
+item3 = %c  Zeige Dateiinfo/Wähle Savetype
+item4 = %c  Wechseln Sie in die Verlängerung (rechts)
+item5 = %c  Ein Verzeichnis zurück
+item6 = %c  Helligkeit einstellen
+item7 = %c+%c  Rufen Sie das System-Setup
+item8 = %s  Menüstyle neu/klassisch
+item9 = %s  Schalter new List-Modus / classic-Modus
+item10 = %s  Soft-Reset Hotkeys im Spiel 
+item11 = %s  Offene Spiel zu betrügen 
+item12 = %s  Spiel betrügen off
+
+[exp window]
+button = 3in1
+title = 3in1 Expansion Pack Einstellungen
+ram = RAM
+sram = sRAM
+off = Aus
+low = Leicht
+mid = Mittel
+high = Stark
+strength = Rumble-Intensität
+flash to nor = in NOR
+copy to psram = in RAM
+
+[abort save]
+title = Abbrechen Speichervorgang
+text = Willst Du wirklich den Speichervorgang abbrechen?
+
+[gba warn]
+title = Warnung GBA ROM Größe
+text = GBA ROM zu groß. Mehr als 32MB werden nicht unterstützt!
+
+[patches]
+download play = Download Play
+cheating system = In-Game Cheats
+reset in game = Menue Softreset
+dma = DMA Modus
+protection = Kopierschutz umgehen
+linkage = Mit GBA-Spiel verbinden
+sd save = Direkt auf SD-Karte speichern
+homebrew reset = Reset in Homebrew
+reset hotkey = Reset Hotkey
+
+[switches]
+Enable = Auf
+Disable = Aus
+Global = Alle(%s)
+
+[ram allocation]
+title = Fehler
+memory allocation error = Memory Zuordnungsfehler
+
+[scrolling]
+fast = Schnell
+medium = Normal
+slow = Langsam
+
+[file settings]
+title = File-System-Einstellungen
+show hidden files = Versteckte Dateien zeigen
+save extension = Spielstand Erweiterung
+
+[interface settings]
+title = Interface-Einstellungen
+scrolling speed = Scrollgeschwindigkeit
+filelist style = Dateiansicht
+oldschool = Klassisch
+modern = Modern
+internal = Übersichtlich
+animation = Animation
+12 hour = 12-Stunden-Zählung
+
+[gba settings]
+mode = Slot-2 模式
+
+[icon]
+icon = Icon anzeigen
+transparent = transparent
+as is = beibehalten
+firmware = Firmware
+
+[cheats]
+title = Cheats
+info = Mehr…
+deselect = Deselect all
+DB Select = Wählen Sie die zu betrügen
+Save = Sparen
+Cancel = Stornieren
+
+[saveslot]
+title = Speicher-Slot kopieren
+confirm = Sind Sie sicher, dass Sie den Speicher-Slot kopieren möchten?
+target slot = Ziel Speicher-Slot
+
+[mainlist]
+flash memory = Flash Memory
+microsd card = microSD Card
+slot2 card = Slot2 Card
+favorites = Favorites
+
+[cheatt]
+Cheat ON = Cheat ON
+Cheat OFF =Cheat OFF
+
+[Wifidsp]
+wifi = wifi内核升级
+wifitext = 系统将进行内核升级,确定要进行内核升级吗？选“否“将退出升级程序
+[hotkeys]
+l-r-a-b-↓ = l-r-a-b-↓
+l-r-b-y-↓ = l-r-b-y-↓
+l-r-a-b-x-y = l-r-a-b-x-y
+b-y-touch = b-y-touch
+start-r-touch = start-r-touch
+
+[end]

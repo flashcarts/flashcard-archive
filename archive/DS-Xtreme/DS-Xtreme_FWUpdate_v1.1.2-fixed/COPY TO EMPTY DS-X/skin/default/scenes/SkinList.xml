@@ -1,0 +1,519 @@
+<scene id="SkinList">
+	<script>
+		<![CDATA[
+		
+			// Store some of the widgets for later use
+			// so we don't have to look them up each time we need them.
+			skinList <- null;
+			scrollbar <- null;
+			defaultSkin <- null;
+			skinArray <- null;
+			
+			// Store the scene effects for easy access or to keep them in scope.
+			SceneEffects <- {
+
+				skinListMove = null, // Move the list in from the right
+				scrollBarMove = null, // Moves the scrollbar
+				
+				transitionEffects = null, // Group of transition effects
+			}
+
+			// Store the fade effects for the scene
+			FadeEffects <- {
+
+				titleFade = null, // Fades the title
+				buttonmapLoadFade = null, // Fades the default buttonmap texture
+			}				
+						
+			// Set the final onscreen locations as the destinations of the effects			
+			function SetupBeginTransition()
+			{	
+				SceneEffects.skinListMove.setDestination(6,31);
+				SceneEffects.scrollBarMove.setDestination(239,31);
+
+				FadeEffects.titleFade.setEndAlpha(31);
+				FadeEffects.buttonmapLoadFade.setEndAlpha(31);
+			}			
+
+			// Set the initial offscreen locations as the destinations of the effects							
+			function SetupEndTransition()
+			{	
+				SceneEffects.skinListMove.setDestination(287,31);
+				SceneEffects.scrollBarMove.setDestination(522,31);
+
+				FadeEffects.titleFade.setEndAlpha(0);				
+				FadeEffects.buttonmapLoadFade.setEndAlpha(0);				
+			}
+			
+			// This is called when the scene is being displayed
+			function OnBegin(event)
+			{
+				local setting = Settings.get("default-skin");
+				if(setting != null)
+				{
+					defaultSkin = setting.getValue();
+				}
+				else
+				{
+					setting = Setting("default-skin", "/dsx/skin/default/");
+					Settings.set(setting);
+					Settings.save();
+					defaultSkin = setting.getValue();
+				}
+				
+				AddSkinsToList();
+				scrollbar.UpdateByListCount();
+
+				// Set the destinations appropriately on the transition 
+				// effects for the starting sequence
+				SetupBeginTransition();
+
+				// Allign scroller to top of scrollbar
+				if(skinList.getSelectedIndex() == 0)
+				{
+					scrollbar._scrollMove.setDestination(1,14);
+					scrollbar._scrollMove.start();
+				}
+				
+				// Play the start transition
+				SceneEffects.transitionEffects.start();
+
+				// If we don't have any apps in the library, search
+				skinList.focus();
+
+			}
+			
+			// This is called before the next scene is displayed
+			function OnEnd(event)
+			{			
+				// Set the destinations appropriately on the transition 
+				// effects for the ending sequence
+				SetupEndTransition();
+
+				// Setting the effect as the end effect on the event
+				// will cause the framework to wait for the effect to 
+				// finish before starting the next scene
+				event.setEndEffect(SceneEffects.transitionEffects);
+			}
+			
+			// Gets all skins held in /dscart/skin/ directory and adds 
+			//  these directories to the skinList
+			function AddSkinsToList()
+			{
+				skinList.clearItems();
+
+				local item = ListItem("skin_0");
+				skinList.applyItemTemplate(item);
+				item.setItem("/dsx/skin/default/")
+				local title = item.findWidget("title");
+
+				if(defaultSkin == "/dsx/skin/default/")
+					title.setText("System Default (default)");
+				else
+					title.setText("System Default");
+
+				skinList.addItem(item);
+
+				local skins = Application.getSkins("/dscart/skin");
+
+				foreach(i, skin in skins)
+				{
+					// Create the item
+					local item = ListItem("skin_" + i);
+					
+					// Apply the template
+					skinList.applyItemTemplate(item);
+					
+					// Set the app
+					item.setItem(skin);
+				
+					// Set the title label text
+					local title = item.findWidget("title");
+					local titleString = skin.getName() + " " + skin.getVersion();
+					if(defaultSkin == skin.getFilepath() + "/")
+					{
+						titleString += " (default)";
+					}
+					title.setText(titleString);
+		
+					// Add it to the list
+					skinList.addItem(item);
+				}
+			}
+			
+			// Sets the selected skin as the default skin
+			function OnItemActivated(event)
+			{
+					UpdateDefaultSkin();
+			}
+
+			// Determines which (if any) of the skins in the list is currently
+			// set as the user default skin
+			function UpdateDefaultSkin()
+			{
+					local selectedSkin = skinList.getSelectedItem().getItem();
+					
+					local defaultSkin = null;
+					if(skinList.getSelectedIndex() == 0)
+					{
+						defaultSkin = selectedSkin;
+					}
+					else
+					{
+						defaultSkin = selectedSkin.getFilepath() + "/";
+					}						
+					
+					local setting = Settings.get("default-skin");
+					setting.setValue(defaultSkin);
+					Settings.set(setting);
+					Settings.save();
+
+					foreach(i, skinItem in skinList.getItems() )
+					{
+						local skinName = null;
+						local skinPath = null;
+						
+						if(i==0)
+						{
+							skinName = "System Default";
+							skinPath = skinItem.getItem();
+						}
+						else
+						{
+							skinName = skinItem.getItem().getName() + " " + skinItem.getItem().getVersion();
+							skinPath = skinItem.getItem().getFilepath() + "/";
+						}
+						
+						if(defaultSkin == skinPath )
+						{
+							skinItem.findWidget("title").setText(skinName + " (default)");
+						}
+						else
+						{
+						  skinItem.findWidget("title").setText(skinName);
+						}
+					}			
+			}
+
+			// Called when a button is pressed while the list is focused
+			function OnListButtonPressed(event)
+			{
+				if(event.getButton() == event.R)
+				{
+					local appItem = skinList.getSelectedItem();
+
+					// Summon the ok/cancel dialog
+					local dialog = Application.getSceneManager().getDialog("testDialog");
+					dialog.setModel("Launch Skin?");
+
+					dialog.show();
+
+					// Use the input gathered from the dialog to determine 
+					//   whether or not to load the skin
+					local model = dialog.getModel();
+
+					if(model == 1)
+					{
+						LoadSkin(appItem.getItem());
+					}
+				}	
+
+			}
+			
+			// Called when a touch hold event occurs on a list item
+			function OnTouchHold(event)
+			{
+				// Summon a pop-up dialog
+				local popup = PopupMenu();
+				popup.addMenuItem("Load");
+				popup.addMenuItem("Set As Default");
+				popup.addMenuItem("Cancel");
+				popup.show(event.getX(), event.getY());			
+				
+				// Use the info gathered from the pop-up dialog to determine whether
+				//   or not to load the skin
+				local result = popup.getSelectedItem();
+				if(result == 0)
+				{
+					LoadSkin(skinList.getSelectedItem().getItem());
+				}
+				else if(result == 1)
+				{
+					UpdateDefaultSkin();
+				}
+			}
+
+			// Loads new skin
+			function LoadSkin(skin)
+			{
+				if("string" == typeof skin)
+				{
+					Application.loadSkin(skin);
+				}
+				else
+				{
+					Application.loadSkin(skin.getFilepath() + "/");
+				}
+			}
+						
+			// This is called when the selected index in the list is changed
+			// We swap the texture which indicates to the user that the item
+			// is selected.
+			function OnSelectedIndexChanged(event)
+			{
+				local newIndex = event.getNewIndex();
+				local oldIndex = event.getOldIndex();
+				
+				if(oldIndex >= 0)
+				{
+					// Set the texture of the old item to show that focus is gone
+					local oldItem = skinList.getItem(oldIndex);
+					local oldBackground = oldItem.findWidget("background");
+					oldBackground.setTexture(804);
+					oldBackground.setPalette(804);
+				}
+				
+				if(newIndex >= 0)
+				{
+					// Set the texture of the newly selected item to show that it is focused
+					local newItem = skinList.getItem(newIndex);
+					local newBackground = newItem.findWidget("background");
+					newBackground.setTexture(805);
+					newBackground.setPalette(805);
+				}
+			}							
+			
+			// Called when a button is pressed on the device
+			function OnButtonPressed(event)
+			{
+				if(event.getButton() == event.B)
+				{
+					Application.getSceneManager().selectScene("Settings");	
+				}
+			}
+
+			// Called when the back arrow button is clicked
+			function OnBackClick(event)
+			{
+				Application.getSceneManager().selectScene("Settings");	
+			}	
+			
+			// This is called when the scene is initialized (i.e., after the XML is loaded)
+			function OnInit()
+			{
+				// The current event is always available from the Application object
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+
+
+
+				// Store some vars
+				skinList = scene.findWidget("skinList");
+
+				// Create the scrollbar
+				local tex_list = [700, 730, 731, 732, 733, 734];
+				scrollbar = Scrollbar(skinList, scene.findWidget("scrollbar"), tex_list, 6);
+									
+				// Set up events
+				SceneEffects.skinListMove = MoveToEffect();
+				SceneEffects.skinListMove.setTarget(skinList);
+				SceneEffects.skinListMove.setDuration(250);
+
+				SceneEffects.scrollBarMove = MoveToEffect();
+				SceneEffects.scrollBarMove.setTarget(scene.findWidget("scrollbar"));
+				SceneEffects.scrollBarMove.setDuration(250);
+
+				FadeEffects.titleFade = FadeEffect();
+				FadeEffects.titleFade.setTarget(scene.findWidget("title"));
+				FadeEffects.titleFade.setDuration(300);
+
+				FadeEffects.buttonmapLoadFade = FadeEffect();
+				FadeEffects.buttonmapLoadFade.setTarget(scene.findWidget("settings.buttonmapLoad"));
+				FadeEffects.buttonmapLoadFade.setDuration(300);
+					
+				// Group the events so they can be used as an end transition
+				SceneEffects.transitionEffects = EffectGroup();
+				SceneEffects.transitionEffects.addEffect(SceneEffects.skinListMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.scrollBarMove);
+				SceneEffects.transitionEffects.addEffect(FadeEffects.titleFade);
+				SceneEffects.transitionEffects.addEffect(FadeEffects.buttonmapLoadFade);
+						
+				// Hook scene events
+				scene.onBegin(OnBegin);								
+				scene.onEnd(OnEnd);
+				scene.onButtonPressed(OnButtonPressed);
+				
+				// Hook list events
+				skinList.onSelectedIndexChanged(OnSelectedIndexChanged);
+				skinList.onItemActivated(OnItemActivated.bindenv(this));
+				skinList.onTouchHold(OnTouchHold.bindenv(this));
+				skinList.onButtonPressed(OnListButtonPressed.bindenv(this));
+
+				// Hook back button click event
+				local back = scene.findWidget("back");
+				back.onButtonClick(OnBackClick);
+			}
+		]]>
+	</script>
+
+	<objects>
+		<image id="bg">
+			<properties>
+				<bounds x="0" y="0" width="256" height="192"/>
+				<texture-id>1</texture-id>
+				<palette-id>1</palette-id>
+			</properties>
+		</image>
+		<image id="headerGradient">
+			<properties>
+				<depth>2</depth>
+				<bounds x="0" y="0" width="256" height="28"/>
+				<texture-id>7</texture-id>
+				<palette-id>7</palette-id>
+			</properties>
+		</image>
+		<image id="colorBlocks">
+			<properties>
+				<depth>10</depth>
+				<bounds x="8" y="9" width="32" height="8"/>
+				<texture-id>3</texture-id>
+				<palette-id>3</palette-id>
+			</properties>
+		</image>
+		<label id="title">
+			<properties>
+				<bounds x="44" y="0" width="90" height="25"/>
+				<depth>10</depth>
+				<color red="5" blue="5" green="5"/>
+				<font name="default" size="12"/>
+				<text>Skin Selector</text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>middle</vertical-align>
+				<!-- <shadow xoffset="2" yoffset="2"/> -->
+				<alpha>0</alpha>
+			</properties>
+		</label>
+		<image id="buttonmapOk">
+			<properties>
+				<depth>10</depth>
+				<bounds x="6" y="178" width="32" height="16"/>
+				<texture-id>4</texture-id>
+				<palette-id>4</palette-id>
+			</properties>
+		</image>
+		<image id="settings.buttonmapBack">
+			<properties>
+				<depth>10</depth>
+				<bounds x="211" y="178" width="40" height="16"/>
+				<texture-id>5</texture-id>
+				<palette-id>5</palette-id>
+			</properties>
+		</image>
+		<image id="settings.buttonmapLoad">
+			<properties>
+				<depth>10</depth>
+				<bounds x="110" y="179" width="40" height="16"/>
+				<texture-id>806</texture-id>
+				<palette-id>806</palette-id>
+			</properties>
+		</image>
+		<button id="scrollbar">
+			<properties>
+				<bounds x="522" y="31" width="12" height="141"/>
+				<depth>6</depth>
+			</properties>
+			<objects>
+				<image id="bar">
+					<properties>
+						<depth>1</depth>
+						<bounds x="-1" y="14" width="13" height="113"/>
+						<texture-id>700</texture-id>
+						<palette-id>700</palette-id>
+					</properties>
+				</image>
+				<image id="scroller">
+					<properties>
+						<depth>2</depth>
+						<bounds x="1" y="40" width="10" height="10"/>
+						<texture-id>730</texture-id>
+						<palette-id>730</palette-id>
+					</properties>
+				</image>
+				<image id="uparrow">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="0" width="12" height="14"/>
+						<texture-id>731</texture-id>
+						<palette-id>731</palette-id>
+					</properties>
+				</image>
+				<image id="downarrow">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="127" width="12" height="14"/>
+						<texture-id>732</texture-id>
+						<palette-id>732</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+    <list id="skinList">
+      <properties>
+        <bounds x="287" y="31" width="235" height="144"/>
+        <depth>1</depth>
+      </properties>
+      
+      <objects>
+        <!-- bg image or whatever here -->
+      </objects>
+      
+      <item-template>
+        <properties>
+          <bounds x="0" y="0" width="232" height="24"/>
+          <depth>1</depth>
+        </properties>
+        <objects>
+		<image id="background">
+			<properties>
+				<bounds x="0" y="0" width="232" height="22"/>
+				<texture-id>804</texture-id>
+				<palette-id>804</palette-id>
+			</properties>
+		</image>
+          <label id="title">
+            <properties>
+              <bounds x="6" y="5" width="166" height="12"/>
+              <depth>2</depth>
+							<color red="15" blue="15" green="15"/>
+              <font name="default" size="10"/>
+              <wrap-type>clip</wrap-type>
+              <justify>left</justify>
+              <vertical-align>middle</vertical-align> 
+            </properties>       
+          </label>
+        </objects>
+      </item-template>
+    </list>
+		<button id="back">
+			<properties>
+				<bounds x="232" y="0" width="24" height="24"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="24" height="24"/>
+						<texture-id>2</texture-id>
+						<palette-id>2</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>	
+	</objects>
+
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+</scene>

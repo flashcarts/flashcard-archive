@@ -1,0 +1,88 @@
+
+Please release smidf0.msp/smid.msp.
+
+2006-03-07
+
+It corresponded to SMF format1.
+It corresponded to change PitchBend/Volume/Expression/Panpot/MasterVolume.
+
+2006-03-08
+
+Seek was supported.
+Tie was supported.
+
+2006-03-09
+
+Drum bank was supported.
+Dynamic loading for PCM was supported. (request MSP Ver2.0 support)
+The volume coefficient has been adjusted.
+
+2006-03-10
+
+Drum rendering and mapping bug was fixed.
+Envelope generator was supported.
+Pitch bend range was supported.
+The accuracy of pitch bend has been improved.
+Simple delay effect was implemented.
+
+2006-03-10-2
+
+Vibrato generator was implemented.
+Click noise was reduced.
+Variation tone bank was implemented.
+Duplication bug for drum PCM was fixed.
+Loading progress bar was implemented.
+
+2006-03-13
+
+Reflecting loop PCM was supported.
+Double drum mapping was supported.
+Click noise was reduced.
+Beginning and seeking use faster method.
+Setup_smidplugin.exe was included.
+
+2006-03-19
+
+The GUS patch layer was selected from note number automatically.
+音程からGUSパッチのレイヤーを自動選択するようにしました。
+
+2006-03-20
+
+コントロールチェンジ1のモジュレーションに対応しました。
+コントロールチェンジ64のダンパーペダルに対応しました。
+小数点以下4bitのループポイント(Fractions)に対応しました。
+リリースエンベロープをもう少し真面目に処理するようにしました。
+ドラムがずっと残るバグを修正しました。
+メモリが足りなかったときに警告を表示するようにしました。
+演奏が終了したときに次に進まないバグを修正しました。
+
+Control change 1 modulation was supported.
+Control change 64 damper pedal was supported.
+The 4bit fraction start/end looping point was supported.
+Release envelope is seriously processed.
+The drum muting bug was fixed.
+Show warning message when overflow memory.
+The bug that did not end even if sequence ended was corrected.
+
+2006-03-21
+
+RCP/R36(RCM-PC98V2.0(C)COME ON MUSIC)に対応した…つもり。
+ちょっと高速化しました。
+
+RCP/R36(RCM-PC98V2.0(C)COME ON MUSIC) was supported.
+Speed-up a little.
+
+2006-03-26
+
+PCM合成を大幅に高速化しました。
+The PCM synthesis was more faster.
+
+2006-04-01
+
+テンポ情報が見つからなかったとき、ハングアップするバグを修正しました。
+When tempo change command was not found, the bug that hung up was corrected.
+
+2006-06-02
+
+CPU内部メモリ(DTCM)を未初期化のまま使用していたバグを修正しました。
+

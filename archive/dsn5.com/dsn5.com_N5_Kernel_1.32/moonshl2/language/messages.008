@@ -1,0 +1,611 @@
+
+; MoonShell2 language resource for 'CP008 Arabic'.
+; Encoding format is UTF-8. ＦＯＲＣＥＴＡＧ
+
+Author=Juza[www.2dq8.com]
+Target=ARA / Arabic
+
+; ----------------------------
+
+TextFontFolderName=tfonteng
+
+; DateTimeFormat is YYYYMMDD or DDMMYYYY or MMDDYYYY.
+DateTimeFormat=YYYYMMDD
+
+; ----------------------------
+
+CD_CheckDisk_Start=...ﺓﺮﻛاﺬﻟا ﺔﻗﺎﻄﺑ ﻖﻗﺪﺗ ﻥﺎﻟا ﻱﺭﺎﺟ
+CD_CheckDisk_End=ﺪﺟﻮﺗ ﺀﺎﻄﺧﺃ ﻻ.ﻞﻤﺘﻛﺃ ﻖﻗﺪﺘﻟا
+
+CD_FatalError_Title=!ﻞﺗﺎﻗ ﺄﻄﺧ ﺙﺪﺣ ﺪﻗ
+CD_FatalError_DuplicatedArea0=.ﺹﺮﻘﻟا ﺔﺣﺎﺴﻣ ﺲﻔﻧ ﻡﺪﺨﺘﺴﺗ ﺕﺎﻔﻠﻤﻟا ﻦﻣ ﺪﻳﺪﻌﻟا
+CD_FatalError_DuplicatedArea1=.ﺔﺑﻮﻄﻌﻣ ﺕﺎﻔﻠﻤﻟا ﺾﻌﺑ
+CD_FatalError_BrokenEntry0=.ﺫﺎﺷ ﺮﺷﺎﺒﻤﻟا ﻝﻮﺧﺪﻟا
+CD_FatalError_BrokenEntry1=.ﺏﻮﻄﻌﻣ ﺪﺣاﻭ ﻒﻠﻣ ﻦﻣ ﺮﺜﻛﺃ
+CD_FatalError_IlligalClusterLink0=.ﺖﻌﻃﻮﻗ ﺔﻳﺩﻮﻘﻨﻌﻟﺍ ﺔﻠﺻﻮﻟﺍ
+CD_FatalError_IlligalClusterLink1=.ﺏﻮﻄﻌﻣ ﻒﻠﻤﻟا ﻞﻤﺘﺤﻤﻟا ﻦﻣ
+CD_FatalError_BrokenDirectoryLink0=.ﺮﺷﺎﺒﻤﻟا ﻝﻮﺧﺪﺑ ﺮﺜﻌﺗ
+CD_FatalError_BrokenDirectoryLink1=.ﺔﺑﻮﻄﻌﻣ ﺔﻈﻓﺎﺤﻟا
+CD_FatalError_BrokenUnicode0=.ﺮﺷﺎﺒﻤﻟا ﻝﻮﺧﺪﺑ ﺮﺜﻌﺗ
+CD_FatalError_BrokenUnicode1=.ﺮﺴﻛ ﺪﻗ ﻞﻳﻮﻄﻟا ﻒﻠﻤﻟا ﻢﺳا
+CD_FatalError_FileSizeError0=ﺽﻭﺮﻌﻤﻟا ﻒﻠﻤﻟا ﻢﺠﺣ ﻥإ
+CD_FatalError_FileSizeError1=.ﻒﻠﺘﺨﻣ ﻲﻟﺎﺤﻟا ﻒﻠﻤﻟا ﻢﺠﺣﻭ
+CD_FatalError_UnknownError=ﻝﻮﻬﺠﻣ ﺄﻄﺧ
+CD_FatalError_RecoveryMsg0=ﺩاﺩﺮﺘﺳﻻا ﺔﻘﻳﺮﻃ:
+CD_FatalError_RecoveryMsg1=,ﺐﻠﺼﻟا ﺹﺮﻘﻟا ﯽﻟإ ﺕﺎﻔﻠﻤﻟا ﻞﻜﻟ ﺔﻴﻃﺎﻴﺘﺣإ ﺔﺨﺴﻧ
+CD_FatalError_RecoveryMsg2=.ﺔﻗﺎﻄﺒﻟا ﺔﺌﻴﻬﺗ ﺪﻌﺑ ﺔﺨﺴﻨﻟا ﺓﺩﺎﻋإﻭ
+CD_FatalError_StopApplication=.ﻖﻴﺒﻄﺘﻟا ﺀﺎﻬﻧإ
+
+CD_NotSupportDiskSize_Title=.ﺹﺮﻘﻟا ﺔﻐﻴﺻ ﺔﺠﻟﺎﻌﻣ ﻊﻴﻄﺘﺴﻳ ﻻ
+CD_NotSupportDiskSize_Msg0=ﻭﺃ, اﺪﺟ ﺮﻴﺒﻛ ﺹﺮﻘﻟا ﻢﺠﺣ
+CD_NotSupportDiskSize_Msg1=.اﺪﺟ ﺮﻴﻐﺻ ﯽﻌﺴﻟا ﻢﺠﺣ ﻭﺃ
+CD_NotSupportDiskSize_Msg2=
+CD_NotSupportDiskSize_RecoveryMsg0=ﺩاﺩﺮﺘﺳﻻا ﺔﻘﻳﺮﻃ:
+CD_NotSupportDiskSize_RecoveryMsg1=ﺔﻗﺎﻄﺒﻟا ﺔﻐﻴﺻ ﺓﺩﺎﻋإ ﻝﻭﺎﺣ
+CD_NotSupportDiskSize_RecoveryMsg2=.ﺮﺒﻛﺃ ﻢﺠﺣ ﻊﻣ
+CD_NotSupportDiskSize_RecoveryMsg3=
+
+CD_CheckDuplicateCluster_Title=.ﺀاﺰﺟﻻا ﻭ ﺭﺮﻜﺘﻤﻟا ﺺﺤﻓ
+
+CD_CheckFATType_Title=.FAT ﻉﻮﻧ ﻖﻗﺪﺗ
+
+CD_FATType_UnknownFATType=.FAT ﻉﻮﻧ ﻝﻮﻬﺠﻣ
+
+CD_WriteTest_Title=.ﺹﺮﻘﻟا ﺔﺑﺎﺘﻛ / ﺓﺀاﺮﻗ ﺀاﺩا ﺭﺎﺒﺘﺧﺃ
+
+CD_WriteError_Title=.ﺔﻠﺷﺎﻓ ﺹﺮﻘﻠﻟ ﻝﻮﺻﻮﻠﻟ ﺭﺎﺒﺘﺧإ
+CD_WriteError_Msg0=. .اﺪﺟ ﺔﻠﻴﻠﻗ ﺔﻴﻟﺎﺨﻟا ﺹﺮﻘﻟا ﺔﺣﺎﺴﻣ
+CD_WriteError_Msg1=. Incompatible DLDI driver.
+CD_WriteError_Msg2=. .flashcart / ـ SD ﺓﺮﻛﺍﺬﻟﺍ ﺔﻗﺎﻄﺑ ﻦﻴﺑ ﻝﺎﺼﺗﻻﺍ ﻒﻌﺿ
+CD_WriteError_Msg3=. .ﺔﺑﻮﻄﻌﻣ ﺹﺮﻘﻟا ﺔﻘﻄﻨﻣ
+CD_WriteError_Msg4=
+CD_WriteError_Msg5=.ﺮﺧآ ﺭﺪﺼﻣ ﺎﻤﺑﺭ
+CD_WriteError_Msg6=
+CD_WriteError_Msg7=.ﻱﺯاﺮﺘﺣا ﺀاﺮﺟﺎﻛ ﻖﻴﺒﻄﺗ ﺀﺎﻬﻧإ ﺐﻠﻃ
+
+; ----------------------------
+
+ERRMSG0_MemoryOverflow_CanRecovery=ﻒﻠﻣ ﺢﺘﻔﻳ ﻥا ﻊﻴﻄﺘﺴﻳ ﻻ
+ERRMSG1_MemoryOverflow_CanRecovery=.ﺓﺮﻛاﺬﻟا ﻒﻌﺿ ﺐﺒﺴﺑ
+ERRMSG2_MemoryOverflow_CanRecovery=.ﻖﻠﻐﻠﻟ ﺓﺬﻓﺎﻨﻟا ﻩﺬﻫ ﺮﻘﻧﺃ
+
+ERRMSG0_NotSupportFileFormat=,ﺔﻣﻮﻋﺪﻣ ﺮﻴﻏ ﺔﻐﻴﺼﻟا
+ERRMSG1_NotSupportFileFormat=.ﺏﻮﻄﻌﻣ ﻒﻠﻤﻟا ﺎﻤﺑﺭ ﻭﺃ
+ERRMSG2_NotSupportFileFormat=.ﻖﻠﻐﻠﻟ ﺓﺬﻓﺎﻨﻟا ﻩﺬﻫ ﺮﻘﻧﺃ
+
+ERRMSG0_ProgressiveJpeg=JPEG ﺕﺎﻔﻠﻣ ﻢﻳﺪﻘﺗ
+ERRMSG1_ProgressiveJpeg=.ﺔﻣﻮﻋﺪﻣ ﺮﻴﻏ
+ERRMSG2_ProgressiveJpeg=.ﻖﻠﻐﻠﻟ ﺓﺬﻓﺎﻨﻟا ﻩﺬﻫ ﺮﻘﻧﺃ
+
+ERRMSG0_Text0byte=.ﻍﺭﺎﻓ ﺺﻧ ﻒﻠﻣ
+ERRMSG1_Text0byte=.0byte ﻒﻠﻣ ﺢﺘﻓ ﻊﻴﻄﺘﺴﻳ ﻻ
+ERRMSG2_Text0byte=.ﻖﻠﻐﻠﻟ ﺓﺬﻓﺎﻨﻟا ﻩﺬﻫ ﺮﻘﻧﺃ
+
+ERRMSG0_OverflowLargeImage=.اﺪﺟ ﺓﺮﻴﺒﻛ ﺓﺭﻮﺼﻟا
+ERRMSG1_OverflowLargeImage=.5MP ﻮﻫ ﯽﺼﻗﻷا ﻢﺠﺤﻟا
+ERRMSG2_OverflowLargeImage=.ﻖﻠﻐﻠﻟ ﺓﺬﻓﺎﻨﻟا ﻩﺬﻫ ﺮﻘﻧﺃ
+
+ERRMSG0_NotFoundMusicFile=ﯽﻘﻴﺳﻮﻣ ﻱﺃ ﻥﺎﻜﻣ ﺪﻳﺪﺤﺗ ﯽﻠﻋ ﺭﺩﺎﻗ ﺮﻴﻏ
+ERRMSG1_NotFoundMusicFile=.ﺓﺩﺪﺤﻤﻟا ﺔﻈﻓﺎﺤﻟا ﻲﻓ ﺕﺎﻔﻠﻤﻟا
+ERRMSG2_NotFoundMusicFile=.ﻖﻠﻐﻠﻟ ﺓﺬﻓﺎﻨﻟا ﻩﺬﻫ ﺮﻘﻧﺃ
+
+ERRMSG0_UnknownError=ﻝﻮﻬﺠﻣ ﻝﻮﺧﺩ
+ERRMSG1_UnknownError=.ﺄﻄﺧ ﺙﺪﺣ
+ERRMSG2_UnknownError=.DS ﻝا ﺀﺎﻔﻃإ ﺀﺎﺟﺮﻟا
+
+; ----------------------------
+
+Setup_Help1=
+Setup_Help2=             ﻲﻟﻭﺃ ﺩاﺪﻋإ ﺐﻠﻄﺘﺗ ﺩﻮﻨﺒﻟا ﺾﻌﺑ
+Setup_Help3=                   ﻞﻔﺳﻷا ﻲﻓ ﺎﻫﺪﺠﺗ
+Setup_Help4=         START ﻂﻐﺿا ﺕاﺩاﺪﻋﻹا ﻊﻴﻤﺟ ﺽﺮﻌﻟ
+Setup_Help5=                    ﺕﺎﻔﻠﻤﻟا ﺔﻤﺋﺎﻗ ﻲﻓ
+Setup_Help6=
+Setup_Help7=              ﺮﻴﺒﻛ ﺪﺣ ﯽﻟإ ﺕﺮﻴﻐﺗ ﺭاﺭﺯﻻا ﺾﻌﺑ
+Setup_Help8=
+Setup_Help9=            ﺭاﺭﺯﻷا ﺔﻃﺭﺎﺧ ﯽﻠﻋ ﻉﻼﻃﻹا ﻦﻜﻤﻳ
+Setup_Help10=              manuals/KeyMap.txt ﻲﻓ
+Setup_Help11=
+
+Setup_BootCheckDisk=.ﺀﺪﺒﻟا ﺀﺎﻨﺛا ﺓﺮﻛاﺬﻟا ﺔﻗﺎﻄﺑ ﺔﺒﻗاﺮﻣ ﻞﻐﺷ
+Setup_ClickSound=.ﺔﻴﺗﻮﺼﻟا ﺕاﺮﻴﺛﺄﺘﻟا ﻦﻜﻣ
+Setup_FileListMode=ﺕﺎﻔﻠﻤﻟا ﺔﻤﺋﺎﻗ ﺽﺮﻋ ﺔﻘﻳﺮﻃ
+Setup_FileListMode_Single=.١ ﻂﺧ ﯽﻠﻋ ﺕﺎﻔﻠﻤﻟا ﺀﺎﻤﺳﺃ ﺽﺮﻋ
+Setup_FileListMode_Double=.ﻦﻴﻄﺧ ﻲﻓ ﺔﻠﻳﻮﻄﻟا ﺕﺎﻔﻠﻤﻟا ﺀﺎﻤﺳا ﻢﺴﻗ
+Setup_SkipSetup=.ﺔﻣﺩﺎﻘﻟا ﺓﺮﻤﻟا ﻲﻓ ﺔﺷﺎﺸﻟا ﻩﺬﻫ ﺽﺮﻌﺗ ﻻ
+Setup_OKBtn=
+
+; ----------------------------
+
+Launch_FileInfo=ﻒﻠﻣ ﺕﺎﻣﻮﻠﻌﻣ:
+Launch_FileInfo_Relational=ﻒﻠﻣ ﺕﺎﻣﻮﻠﻌﻣ ﻆﻔﺣ:
+Launch_Size=(%dMbit) %dbyte : ﻢﺠﺤﻟا
+Launch_Create=%s %d:%02d:%02d : ﺀﺎﺸﻧإ
+Launch_Update=%s %d:%02d:%02d :ﺚﻳﺪﺤﺗ
+Launch_NotFoundRelationalFile=ﻅﻮﻔﺤﻣ ﻒﻠﻣ ﺪﺟﻮﻳ ﻻ
+
+; ----------------------------
+
+FL_Help0=ﺭاﺭﺯﻻا ﺾﻌﺑ ﻦﻋ ﺕﺎﻣﻮﻠﻌﻣ
+FL_Help1=
+FL_Help2=X/Y : ﺕﻮﺼﻟا ﻞﻴﻠﻘﺗ \ ﺓﺩﺎﻳﺯ
+FL_Help3=START: ﻡﺎﻈﻨﻟا ﺕاﺩاﺪﻋإ
+FL_Help4=
+FL_Help5=L+A/B: ﺭﺎﺴﻤﻟا ﻖﺑﺎﺴﻟا \ ﻲﻟﺎﺘﻟا
+FL_Help6=L+X/Y: ﺔﻴﻔﻠﺨﻟا ﺀﻮﺿ ىﻮﺘﺴﻣ ﺮﻴﻴﻐﺗ
+FL_Help7=
+FL_Help8=L or R and tap: ﺓﺪﻳﺪﺟ ﺓﺮﻛﺬﻣ ﺀﺪﺑ
+FL_Help9=L/R ﺭاﺮﻤﺘﺴﺑ ﻂﻐﺿﺃ: ﺭﺎﺴﻤﻟا ﺚﺤﺑ ﻊﺟاﺮﺗ \ ﻡﺪﻘﺗ
+FL_Help10=L/R ﺔﺟﻭﺩﺰﻣ ﺓﺮﻘﻧ: ﺭﺎﺴﻤﻟا ﻊﺟاﺮﺗ \ ﻡﺪﻘﺗ
+FL_Help11=R ﺔﻴﺛﻼﺛ ﺓﺮﻘﻧ: ﺩاﺪﻌﺘﺳﻻا ﻊﺿﻭ ﻂﻤﻧ
+
+; ----------------------------
+
+FL_Popup_Pause_Play=ﻞﻴﻐﺸﺗ
+FL_Popup_Pause_Pause=ﻑﺎﻘﻳإ
+FL_Popup_PreviousFile=ﻖﺑﺎﺴﻟا ﻒﻠﻤﻟا
+FL_Popup_NextFile=ﻲﻟﺎﺘﻟا ﻒﻠﻤﻟا
+FL_Popup_Volume=%d%% .ﺕﻮﺼﻟا
+FL_Popup_BacklightLevel=%d .ىﻮﺘﺴﻤﻟا
+FL_Popup_PlayMode_Repeat=ﺓﺩﺎﻋإ
+FL_Popup_PlayMode_AllRep=ﻊﻴﻤﺠﻟا ﺓﺩﺎﻋإ
+FL_Popup_PlayMode_Shuffle=ﻲﺋاﻮﺸﻋ
+FL_Popup_Seek=%s ﺚﺤﺑ
+FL_Popup_NotFoundMoonMemoFolder=/moonmemo .ﻒﻠﻣ ﺪﺠﻳ ﻢﻟ
+
+; ----------------------------
+
+FL_DeleteFileDialog_NotFoundDustBox_Title=ﻒﻠﻤﻟا ﻑﺬﺣ ﺪﻴﻛﺄﺗ
+FL_DeleteFileDialog_NotFoundDustBox_Line0=.ﺓﺩﻮﺟﻮﻣ ﺮﻴﻏ ﺕﺎﻠﻤﻬﻤﻟا ﺔﻠﺳ
+FL_DeleteFileDialog_NotFoundDustBox_Line1=ﻊﺟاﺭ ﺀﺎﺟﺮﻟا:
+FL_DeleteFileDialog_NotFoundDustBox_Line2=/manuals/DustBox.txt
+
+FL_DeleteFileDialog_DisabledDustBox_Title=ﻒﻠﻤﻟا ﻑﺬﺣ ﺪﻴﻛﺄﺗ
+FL_DeleteFileDialog_DisabledDustBox_Line0=ﺕﻼﻤﻬﻤﻟا ﺔﻠﺳ ﻲﻓ ﻒﻠﻤﻟا ﻑﺬﺣ ﺀﺎﺟﺮﻟا
+FL_DeleteFileDialog_DisabledDustBox_Line1=.ﺬﻓﺍﻮﻨﻟﺍ ﻊﻣ ﻕﻭﺪﻨﺼﻟﺍ ﺪﻠﺠﻣ
+FL_DeleteFileDialog_DisabledDustBox_Line2=
+
+FL_DeleteFileDialog_DisabledSystemFolder_Title=ﻒﻠﻤﻟا ﻑﺬﺣ ﺪﻴﻛﺄﺗ
+FL_DeleteFileDialog_DisabledSystemFolder_Line0=ﺪﻠﺠﻤﻟا ﻲﻔﻧﻭ ﻡﺎﻈﻨﻟا ﯽﻟإ ﻝﻮﺻﻮﻟا
+FL_DeleteFileDialog_DisabledSystemFolder_Line1=
+FL_DeleteFileDialog_DisabledSystemFolder_Line2=
+
+FL_DeleteFileDialog_DisabledMoveFolder_Title=ﻒﻠﻤﻟا ﻑﺬﺣ ﺪﻴﻛﺄﺗ
+FL_DeleteFileDialog_DisabledMoveFolder_Line0=ﺡﻮﻤﺴﻣ ﺮﻴﻏ ﻒﻠﻤﻟا اﺬﻫ ﻞﻘﻧ
+FL_DeleteFileDialog_DisabledMoveFolder_Line1=
+FL_DeleteFileDialog_DisabledMoveFolder_Line2=
+
+FL_DeleteFileDialog_Question_Title=ﻒﻠﻤﻟا ﻑﺬﺣ ﺪﻴﻛﺄﺗ
+FL_DeleteFileDialog_Question_Line0=؟ﻒﻠﻤﻟا ﻩﺬﻫ ﻑﺬﺣ ﺪﻳﺮﺗ ﺪﻛﺄﺘﻣ ﺖﻧﺃ ﻞﻫ
+FL_DeleteFileDialog_Question_Line1=L+R+A : ﻑﺬﺤﻠﻟ
+FL_DeleteFileDialog_Question_Line2=B : ﺀﺎﻐﻟإ
+
+FL_DeleteFileDialog_Question_EasyDelete_Title=ﻒﻠﻤﻟا ﻑﺬﺣ ﺪﻴﻛﺄﺗ
+FL_DeleteFileDialog_Question_EasyDelete_Line0=؟ﻒﻠﻤﻟا ﻩﺬﻫ ﻑﺬﺣ ﺪﻳﺮﺗ ﺪﻛﺄﺘﻣ ﺖﻧﺃ ﻞﻫ
+FL_DeleteFileDialog_Question_EasyDelete_Line1=X+A : ﻑﺬﺤﻠﻟ
+FL_DeleteFileDialog_Question_EasyDelete_Line2=B : ﺀﺎﻐﻟإ
+
+FL_DeleteFileDialog_Success_Title=ﻒﻠﻤﻟا ﻑﺬﺣ ﺪﻴﻛﺄﺗ
+FL_DeleteFileDialog_Success_Line0=
+FL_DeleteFileDialog_Success_Line1=.ﺔﻓﺬﺣ ﻢﺗ ﻒﻠﻤﻟا
+FL_DeleteFileDialog_Success_Line2=
+
+; ----------------------------
+
+FL_HelpLeft_Count=12
+FL_HelpLeft_Line0=L ﻒﺋﺎﻇﻮﻟا ﺭﺯ:
+FL_HelpLeft_Line1=
+FL_HelpLeft_Line2=L + ﺭﺎﺴﻳ: ﻲﺗﻮﺼﻟا ﻢﻜﺤﺘﻟا ﺀﺎﻔﺧإ \ ﺽﺮﻋ
+FL_HelpLeft_Line3=L + ﻦﻴﻤﻳ: ﻲﻟﺎﺘﻟا ﺭﺎﺴﻤﻟا
+FL_HelpLeft_Line4=L + ﯽﻠﻋﺃ: ﻑﺎﻘﻳإ
+FL_HelpLeft_Line5=L + ﺖﺤﺗ: ﺭاﺮﻜﺘﻟا ﻂﻤﻧ ﺮﻴﻐﺗ
+FL_HelpLeft_Line6=L + A/B: ﺭﺎﺴﻤﻟا ﻖﺑﺎﺴﻟا \ ﻲﻟﺎﺘﻟا
+FL_HelpLeft_Line7=L + X/Y: ﺔﻴﻔﻠﺨﻟا ىﻮﺘﺴﻣ ﺀﻮﺿ ﺮﻴﻐﺗ
+FL_HelpLeft_Line8=
+FL_HelpLeft_Line9=L + R: ﻑﺎﻘﻳإ
+FL_HelpLeft_Line10=L ﻖﻠﻋﻭ ﻂﻐﺿﺃ: ﺀاﺭﻮﻠﻟ ﺚﺤﺑ 1%
+FL_HelpLeft_Line11=L ﺔﺟﻭﺩﺰﻣ ﺓﺮﻘﻧ: ﻖﺑﺎﺴﻟا ﺭﺎﺴﻤﻟا
+
+FL_HelpRight_Count=11
+FL_HelpRight_Line0=R ﻒﺋﺎﻇﻮﻟا ﺭﺯ:
+FL_HelpRight_Line1=
+FL_HelpRight_Line2=R + ﻦﻴﻤﻳ/ﺭﺎﺴﻳ: ﺚﺤﺑ ﺀاﺭﻮﻠﻟ \ ﻡﺎﻣﻸﻟ 1%
+FL_HelpRight_Line3=R + ﺖﺤﺗ/ﻕﻮﻓ: ﺚﺤﺑ ﺀاﺭﻮﻠﻟ \ ﻡﺎﻣﻸﻟ 5%
+FL_HelpRight_Line4=R + A: ﻒﻠﻤﻟا ﻲﻓ ﺕاﺭﺎﺴﻤﻟا ﻞﻛ ﻞﻐﺷ
+FL_HelpRight_Line5=L + R + A: ﺓﺮﻛاﺬﻟا ﺔﻗﺎﻄﺑ ﯽﻠﻋ ﺕاﺭﺎﺴﻤﻟا ﻞﻛ ﻞﻐﺷ 
+FL_HelpRight_Line6=
+FL_HelpRight_Line7=L + R: ﻑﺎﻘﻳإ
+FL_HelpRight_Line8=R ﻖﻠﻋﻭ ﻂﻐﺿﺃ: ﻡﺎﻣﻸﻟ ﺚﺤﺑ 1%
+FL_HelpRight_Line9=R ﺔﻴﻟﺎﺘﺘﻣ ﺓﺮﻘﻧ: ﻲﻟﺎﺘﻟا ﺭﺎﺴﻤﻟا
+FL_HelpRight_Line10=R ﺔﻴﺛﻼﺛ ﺓﺮﻘﻧ: ﺩاﺪﻌﺘﺳﻻا ﻂﻤﻧ
+
+; ----------------------------
+
+SysMenu_MemoList=ﺓﺮﻛﺬﻤﻟا ﺔﻤﺋﺎﻗ ﺢﺘﻓ
+SysMenu_MemoList_NotFound=%s ﺪﺠﻳ ﻢﻟ
+SysMenu_FileListMode=ﺮﻄﺴ٢ \ ﺮﻄﺴ١ ﻂﻤﻧ
+SysMenu_Customize=ﺔﻴﻌﻤﺴﻟﺎ.ﻉ \ ﺔﻴﻣﻮﺳﺮﻟا ﻡ.ﻭ
+SysMenu_RestoreBG=ﺔﻴﺿاﺮﺘﻓﻻا ﺔﻴﻔﻠﺨﻟا ﺓﺩﺎﻌﺘﺳإ
+SysMenu_Firmware=Firmware ﯽﻟإ ﺝﻭﺮﺨﻟا
+SysMenu_Firmware_NotFound=%s ﺪﻳﺪﺤﺗ ﻊﻴﻄﺘﺴﻳ ﻻ
+
+; ----------------------------
+
+SubMenu_Title=ﺔﻤﺋﺎﻘﻟﺍ ﺩﺪﺣ
+SubMenu_AppLauncher=ﻖﻴﺒﻄﻟﺍ ﻕﻼﻃﺍ
+SubMenu_AudioPlayer=ﺕﻮﺼﻟﺍ ﻞﻐﺸﻣ
+SubMenu_SystemMenu=ﻡﺎﻈﻨﻟﺍ ﺔﻤﺋﺎﻗ
+SubMenu_PowOffTimer_Set=%dmin ﺔﻗﺎﻄﻟﺍ
+SubMenu_PowOffTimer_SetHelp=.ﻂﺒﻀﻠﻟ L/R
+SubMenu_PowOffTimer_LastTime=%d:%02d ﺓﺮﻣ ﻯﺮﺧﺃ
+SubMenu_BottomHelp=.ﺐﻠﻄﻟﺍ ﺪﻳﺪﺤﺘﻟ A ﺭﺯ ﻂﻐﺿﺃ
+
+; ----------------------------
+
+CS_Help0=           ﺔﻴﻌﻤﺴﻟا .ﻉ / ﺔﻴﻣﻮﺳﺮﻟا ﺝ.ﻭ ﺔﺌﻴﻬﺗ
+CS_Help1=
+CS_Help2=              "ﻖﺒﻃ "ﺭﺯ ﺮﻘﻧا , ﺀﺎﻬﺘﻧﺎﻟا ﺪﻨﻋ
+CS_Help3=                .ﺮﻴﻐﺘﻟا ﻆﻔﺤﻟ ﻞﻔﺳﻷا ﻲﻓ
+CS_Help4=
+CS_Help5=          ﺓﺭﻮﺻ ﺽﺮﻋ ﺀﺎﻨﺛا SELECT  ﻂﻐﺿﺃ
+CS_Help6=                      ﺺﻧ ﻭا ﻮﻳﺪﻴﻓ ﻭا
+CS_Help7=          .ﻚﻟﺫ ﺐﻠﻃ ﻝﺎﺣ ﻲﻓ ﺕاﺩاﺪﻋﻻا ﻂﺒﻀﻟ
+CS_Help8=
+CS_Help9=              ﺕﺎﻓﺎﺿﻻا ﻦﻋ ﺚﺤﺒﻟا ﺎﻀﻳا ﻚﻨﻜﻤﻳ
+CS_Help10=                  ﺪﻨﺘﺴﻣ ﻲﻓ ﻞﻴﺷ ﻥﻮﻤﻠﻟ
+CS_Help11=                  /Misc Tools/Extras
+
+CS_Title=ﺔﻴﻣﻮﺳﺮﻟا ﻡ.ﻭ ﺕاﺩاﺪﻋإ
+
+CS_PageTab_Title=ﺔﺌﻔﻟﺍ
+CS_PageTab_Global=ﻲﻤﻟﺎﻌﻟﺍ
+CS_PageTab_FileList=ﻒﻠﻤﻟﺍ ﺔﻤﺋﺎﻗ
+CS_PageTab_ScreenSaver=ﻒﻗﻮﺘﻟﺍ.ﺵ
+CS_PageTab_Music=ﻰﻘﻴﺳﻮﻤﻟﺍ
+
+CS_Cancel=ﺀﺎﻐﻟإ
+CS_Ok=ﻖﺒﻃ
+
+; ----------------------------
+
+CSG_SkipSetup=.ﻉﻼﻗﻷا ﺀﺎﻨﺛا ﺔﻴﻟﻭﻷا ﺩاﺪﻋﻹا ﺽﺮﻌﺗ ﻻ
+CSG_BootCheckDisk=.ﻉﻼﻗﻻا ﺀﺎﻨﺛا ﺓﺮﻛاﺬﻟا ﺔﻗﺎﻄﺑ ﺔﺒﻗاﺮﻣ ﻞﻐﺷ ﺎﻤﺋاﺩ
+
+CSG_ClickSound=.ﺔﻴﺗﻮﺼﻟا ﺕاﺮﻴﺛﺄﺘﻟا ﻦﻜﻣ
+CSG_EnableFadeEffect=.ﻝﺎﻘﺘﻧﻻا ﻲﺷﻼﺗ ﺕاﺮﻴﺛﺄﺗ ﻦﻜﻣ
+CSG_AutoLastState=.ﺓﺮﻴﺧﻻا ﺕﺎﻔﻠﻤﻟا ﻦﻣ ﻞﻴﺷ ﻥﻮﻣ ﺀﺪﺑ
+CSG_LRKeyLockTitle=.L/R ﻡﺪﺨﺘﺴﻤﻟا ﺪﺤﻟا ﺡﺎﺘﻔﻣ
+CSG_LRKeyLockAlwayOff=ﻖﻠﻐﻣ ﺎﻤﺋاﺩ
+CSG_LRKeyLockRelationalPanel=ﺔﻗﻼﻌﻟا ﺔﺣﻮﻟ
+CSG_LRKeyLockAlwayOn=ﻝﺎﻐﺷ ﺎﻤﺋاﺩ
+CSG_EnableResumeFunction=.ﺔﻇﻮﻔﺤﻣ ﻡﺎﻈﺘﻧﺎﺑ ﺕﺎﻣﻮﻠﻌﻤﻟﺍ ﻑﺎﻨﺌﺘﺳﺍ
+CSG_EnableScreenCapture=.ﻁﺎﻘﺘﻟﺍ ﺔﺷﺎﺷ ﻡﺪﺨﺘﺳﺍ DSi
+CSG_SpeakerPowerOffWhenPanelClosed=.ﺄﻔﻄﻨﻳ ﺮﻜﻴﺒﺴﻟﺍ , ﺀﺎﻄﻐﻟﺍ ﻕﻼﻏﺇ ﻢﺘﻳ ﺎﻣﺪﻨﻋ
+
+CSF_MoveFolderLocked=.ﺢﻔﺼﺘﻟا ﺔﻈﻓﺎﺣ ﻞﻔﻗ
+CSF_HiddenFilenameExt=.ﻒﻠﻤﻟا ﺩاﺪﺘﻣا ﻢﺳا ﺀﺎﻔﺧإ
+CSF_HiddenNotSupportFileType=.ﺔﻣﻮﻋﺪﻣ ﺮﻴﻐﻟا ﺕﺎﻔﻠﻤﻟا ﺀﺎﻔﺧإ
+CSF_HiddenNDSROMFile=.NDS ﻝا ﻡﻭﺭ ﺕﺎﻔﻠﻣ ﺀﺎﻔﺧإ
+CSF_EnableFileInfo=.ﻒﻠﻤﻟا ﺔﻤﺋﺎﻗ ﻲﻓ ﺕﺎﻣﻮﻠﻌﻤﻟاﻭ ﻒﻠﻤﻟا ﺽﺮﻋ
+CSF_ShowOnlineHelp_LRButton=.ﺓﺪﻋﺎﺴﻤﻟﺍ ﺽﺮﻌﻠﻟ L/R ﺭﺯ ﻂﻐﺿﺍ
+CSF_BButtonToFolderUp=.B ﺭﺯ ﻂﻐﺿ ﺪﻨﻋ ﺪﻠﺠﻤﻟﺍ ﻦﻣ ﺝﺮﺨﻳ ﺮﺷﺆﻤﻟﺍ
+CSF_EasyDeleteKey=.X+A ﺭﺯ ﻂﻐﻀﺑ ﻞﻬﺴﻟﺍ ﻑﺬﺤﻟﺍ ﻢﺘﻳ
+CSF_UseJpegExifThumbnail=.Jpeg EXIF ﻡﺍﺪﺨﺘﺳﺎﺑ ﺎﻬﺿﺮﻋ ﻢﺘﻳ ﺓﺮﻐﺼﻤﻟﺍ ﺭﻮﺼﻟﺍ
+CSF_ShowCoverImage=MP3 و M4A ﺭﻮﺻ ﺓﺮﺘﺳ ﺽﺮﻋ
+CSF_HideAttribute_Title=ﺕﺎﻤﺴﻟﺍ ﺀﺎﻔﺧﺇ
+CSF_HideAttribute_Archive=ﻒﻴﺷﺭﺍ
+CSF_HideAttribute_Hidden=ﻲﻔﺨﻣ
+CSF_HideAttribute_System=النظام
+CSF_HideAttribute_ReadOnly=قراءة فقط
+
+CSS_EnabledScreenSaver=.ﻒﻗﻮﺘﻟﺍ ﺔﺷﺎﺷ ﻡﺪﺨﺘﺳﺍ
+CSS_Use24hFormat=.ﺔﻋﺎﺳ 24 ﻮﻫ ﺖﻗﻮﻟﺍ ﻡﺎﻈﻧ
+CSS_ScreenSaverTitle=ﻉﻮﻨﻟا
+CSS_ScreenSaverNormal=ﻲﺳﺎﻴﻗ
+CSS_ScreenSaverDigital=ﻲﻤﻗﺮﻟا
+CSS_ScreenSaverExtend=ﻲﻓﺎﺿإ
+CSS_ScreenSaverBGTitle=ﺔﻴﻔﻠﺨﻟا
+CSS_ScreenSaverBGSkinDefault=ﻲﺿاﺮﺘﻓﻻا
+CSS_ScreenSaverBGTopScreen=ﺎﻴﻠﻌﻟا ﺔﺷﺎﺸﻟا
+CSS_ScreenSaverBGBottomScreen=ﺔﻴﻠﻔﺴﻟا ﺔﺷﺎﺸﻟا
+CSS_ScreenSaverTimeOutSecTitle=ﻒﻗﻮﺘﻟا ﺓﺮﺘﻓ
+CSS_ScreenSaverTimeOutSec5sec=5
+CSS_ScreenSaverTimeOutSec10sec=١٠
+CSS_ScreenSaverTimeOutSec30sec=٣٠
+CSS_ScreenSaverTimeOutSec60sec=٦٠
+CSS_ScreenSaverTimeOutSecOff=.ﻒﻗﻮﺘﻣ ﻲﻔﻠﺨﻟﺍ ﺀﻮﻀﻟﺍ
+CSS_ShowID3Tag=.ID3 ﺕﺎﻗﺎﻄﺑ ﺽﺮﻋ
+
+CSM_PlayListEndTitle=.ﻲﻬﺘﻨﺗ ﻞﻴﻐﺸﺘﻟا ﺔﻤﺋﺎﻗ ﺎﻣﺪﻨﻋ
+CSM_PlayListEndLoop=ﺭاﺮﻜﺗ
+CSM_PlayListEndStop=ﻒﻗﻮﺗ
+CSM_PlayListEndPowerOff=ﺔﻗﺎﻄﻟا ﺀﺎﻔﻃإ
+
+; ----------------------------
+
+ACS_Help0=ﻰﻘﻴﺳﻮﻤﻟﺍ ﻞﻐﺸﻣ ﺕﺍﺩﺍﺪﻋﺇ ﻦﻳﻮﻜﺗ
+ACS_Help1=
+ACS_Help2=
+ACS_Help3=
+ACS_Help4=
+ACS_Help5=
+ACS_Help6=
+ACS_Help7=
+ACS_Help8=
+ACS_Help9=
+ACS_Help10=
+ACS_Help11=
+
+ACS_Title=ﻰﻘﻴﺳﻮﻤﻟﺍ ﻞﻐﺸﻣ ﺕﺩﺍﺪﻋﺇ
+
+ACS_AlwaysUsedAudioPlayer=.ﺎﻤﺋﺍﺩ ﻡﺪﺨﺘﺴﻳ ﻰﻘﻴﺳﻮﻤﻟﺍ ﻞﻐﺸﻣ
+ACS_PauseWhenStopped=.ﻒﻗﻮﺘﻟﺍ ﻦﻣ ﺀﺎﻬﺘﻧﻻﺍ ﺪﻌﺑ ﻒﻠﻤﻟﺍ ﺔﻤﺋﺎﻗ ﻰﻟﺇ ﺓﺩﻮﻌﻟﺍ
+ACS_DrawPlayList=.ﺔﺷﺎﺸﻟﺍ ﻰﻠﻋﺃ ﻞﻴﻐﺸﺘﻟﺍ ﺔﻤﺋﺎﻗ ﺽﺮﻋ
+ACS_DrawSpectrumAnalyzer=.ﻒﻴﻄﻟﺍ ﻞﻴﻠﺤﺗ ﺽﺮﻋ ﻢﺘﻳ
+
+; ----------------------------
+
+DCS_Help0=ﻮﻳﺪﻴﻔﻟا ﻞﻴﻐﺸﺘﻟا ﺔﻤﺋﺎﻗ ﺕﺩاﺪﻋإ ﺔﺌﻴﻬﺗ
+DCS_Help1=
+DCS_Help2=ﺮﻘﻧﺃ ﺕﺩاﺪﻋﻷا ﻦﻣ ﺀﺎﻬﺘﻧﻻا ﺎﻣﺪﻨﻋ
+DCS_Help3=ﻞﻔﺳﺎﻟا ﻲﻓ "ﻖﺒﻃ" ﺭﺯ ﯽﻠﻋ
+DCS_Help4=.ﺕاﺮﻴﻐﺘﻟا ﻆﻔﺤﻟ
+DCS_Help5=
+DCS_Help6=                    :ﺮﻳﺬﺤﺗ
+DCS_Help7=(ﺔﻌﻳﺮﺳ ﺔﻳاﺪﺑ)ﺀﺎﻨﺛا ﺔﻋﺮﺴﻟا ﺓﺩﺎﻳﺯ
+DCS_Help8=ﻦﻜﻤﻤﻟا ﻦﻣ ﻮﻳﺪﻴﻔﻟا ﺔﻤﺋﺎﻗ ﻞﻴﻐﺸﺗ
+DCS_Help9=.ﺭﺎﻃﻻا ﻝﺪﻌﻣ ﺀﯽﻄﺑ ﻲﻓ ﺐﺒﺴﻳ ﻥﺃ
+DCS_Help10=
+DCS_Help11=
+
+DCS_Title=ﻮﻳﺪﻴﻔﻟا ﻞﻴﻐﺸﺗ ﺔﻤﺋﺎﻗ ﺩاﺪﻋإ
+
+DCS_EnabledFastStart=.(ﺔﻌﻳﺮﺳ ﺔﻳاﺪﺑ) ﻮﻳﺪﻴﻔﻟا ﻞﻴﻐﺸﺗ ﺔﻤﺋﺎﻗ ﻦﻴﻜﻤﺗ
+DCS_PauseWhenPanelClosed=.DS ﻝا ﻕﻼﻏإ ﺪﻨﻋ ﻮﻳﺪﻴﻔﻟا ﻑﺎﻘﻳإ
+DCS_EnableIndividualResume=.ﻑﺎﻨﺌﺘﺳﻻا ﻦﻣ  ﻦﻴﻜﻤﺗ
+DCS_ControlPowerLED=.ﺔﻔﻗﻮﺘﻣ ﺔﻗﺎﻄﻟا ﺕﺩاﺪﻣإ
+DCS_InverseVisual_PlayPause=.ﻒﻗﻮﺗ ﺔﻧﻮﻘﻳﺍ ﻞﻴﻐﺸﺗ .ﻞﻜﺸﻟﺍ ﺮﻴﻐﺗ
+DCS_EverytimeStopOfEnd=.ﻮﻳﺪﻴﻔﻟﺍ ﺀﺎﻬﺘﻧﺇ ﺎﻤﻠﻛ ﺔﺷﺎﺸﻠﻟ ﻉﻮﺟﺭ
+DCS_WhenLateDecodingWaitPause=.ﻒﻗﻮﺗ ﺮﻈﺘﻧﺍ , ﺮﻴﻔﺸﺘﻟﺍ ﺮﺧﺄﺗ ﺪﻨﻋ
+DCS_BacklightTimeOutTitle=(sec) ﺓﺀﺎﺿﻹﺍ ﺔﻠﻬﻣ
+DCS_BacklightTimeOutOff=ﻖﻠﻐﻣ
+DCS_BacklightTimeOut5sec=5
+DCS_BacklightTimeOut10sec=10
+DCS_BacklightTimeOut15sec=15
+
+; ----------------------------
+
+DV_VolumeLabel=ﺕﻮﺼﻟا
+DV_VolumeValue=%d%%
+DV_VolumeMute=ﺖﻣﺎﺻ
+DV_VolumeMax=ﻩﻮﺼﻘﻟا
+
+; ----------------------------
+
+DV_Popup_Pause_Play=ﻞﻴﻐﺸﺗ
+DV_Popup_Pause_Pause=ﻑﺎﻘﻳإ
+DV_Popup_PreviousFile=ﻖﺑﺎﺴﻟا ﻒﻠﻤﻟا
+DV_Popup_NextFile=ﻲﻟﺎﺘﻟا ﻒﻠﻤﻟا
+DV_Popup_Volume=%d%% .ﺕﻮﺼﻟا
+DV_Popup_Seek=%ssec ﺚﺤﺑ
+DV_Popup_BacklightLevel=%d .ىﻮﺘﺴﻤﻟا
+
+; ----------------------------
+
+ICS_Help0=                ﺭﻮﺼﻟا ﺽﺮﻋ ﺩاﺪﻋإ ﺔﺌﻴﻬﺗ
+ICS_Help1=
+ICS_Help2=            ﺮﻘﻧﺃ ﺕﺩاﺪﻋﻷا ﻦﻣ ﺀﺎﻬﺘﻧﻻا ﺎﻣﺪﻨﻋ
+ICS_Help3=              ﻞﻔﺳﺎﻟا ﻲﻓ "ﻖﺒﻃ" ﺭﺯ ﯽﻠﻋ
+ICS_Help4=                     .ﺕاﺮﻴﻐﺘﻟا ﻆﻔﺤﻟ
+ICS_Help5=
+ICS_Help6=        ﺔﺷﺎﺸﻠﻟ ﺔﻴﻔﻠﺨﻛ ﺓﺭﻮﺻ ﻊﻀﺗ ﻥﺃ ﻚﻨﻜﻤﻳ
+ICS_Help7=        .ﺓﺭﻮﺻ ﺽﺮﻋ ﺀﺎﻨﺛﺃ START ﯽﻠﻋ ﻂﻐﻀﺑ
+ICS_Help8=             ﺔﻴﺿاﺮﺘﻓﻻا ﺔﻴﻔﻠﺨﻟا ﯽﻟإ ﻉﻮﺟﺮﻠﻟ
+ICS_Help9=    ﺮﺘﺧﺃ ﺎﻫﺪﻌﺑ ﺕﺎﻔﻠﻤﻟا ﺔﻤﺋﺎﻗ ﻲﻓ START ﻂﻐﺿﺃ
+ICS_Help10=             " ﺔﻴﺿاﺮﺘﻓﻻا ﺔﻴﻔﻠﺨﻟا ﺓﺩﺎﻌﺘﺳإ "
+ICS_Help11=                     .ﻡﺎﻈﻨﻟا ﺔﻤﺋﺎﻗ ﻦﻣ
+
+ICS_Title=ﺭﻮﺼﻟا ﺽﺮﻋ ﺕاﺩاﺪﻋإ ﻂﻤﻧ
+
+ICS_ShowInfomation=.ﺓﺪﻋﺎﺴﻤﻟاﻭ ﻒﻠﻤﻟا ﺕﺎﻣﻮﻠﻌﻣ ﺽﺮﻋ
+ICS_ShowControlIcons=.ﺕﺎﻧﻮﻘﻳﻷا ﻢﻜﺤﺗ ﺽﺮﻋ
+ICS_DoubleSpeedKey=.ﺭﺰﻟا ﺔﻴﺳﺎﺴﺣ ﺓﺩﺎﻳﺯ
+ICS_DoubleSpeedTouch=.ﺲﻤﻠﻟا ﺔﺷﺎﺷ ﺔﻴﺳﺎﺴﺣ ﺓﺩﺎﻳﺯ
+ICS_MultipleResume=.ﺮﻴﺒﻜﺘﻟا ﺮﻛﺬﺗ
+ICS_AutoFitting=.JPEGs ﺓﺮﻴﺒﻜﻟا ﺭﻮﺼﻠﻟ ﻲﻟآ ﺽﺮﻋ
+ICS_EnabledProgressiveJpeg=.jpeg ﻞﻜﺷ ﻢﻳﺪﻘﺗ ﻦﻴﻜﻤﺗ
+ICS_StartPosTitle=ﺽﺮﻌﻟا ﻊﺿﻮﺑ ﺃﺪﺑإ:
+ICS_StartPosLeftTop=ﺭﺎﺴﻳ-ﻕﻮﻓ
+ICS_StartPosRightTop=ﻦﻴﻤﻳ-ﻕﻮﻓ
+ICS_StartPosLeftBottom=ﺭﺎﺴﻳ-ﺖﺤﺗ
+ICS_StartPosRightBottom=ﻦﻴﻤﻳ-ﺖﺤﺗ
+ICS_AutoNextTimeSecTitle=ﻲﺗﺍﺫ ﻲﻟﺎﺘﻟﺍ
+ICS_AutoNextTimeSecOff=ﻖﻠﻐﻣ
+ICS_AutoNextTimeSec10sec=10
+ICS_AutoNextTimeSec30sec=30
+ICS_AutoNextTimeSec60sec=60
+ICS_ShowInfoTopScreen=.ﺔﺷﺎﺸﻟﺍ ﻰﻠﻋﺃ ﺕﺎﻣﻮﻠﻌﻤﻟﺍ ﺽﺮﻋ ﻢﺘﻳ
+ICS_EffectTitle=.ﺔﻴﻔﻠﺨﻟا ﺮﻴﻐﺗ ﺪﻨﻋ ﺕاﺮﻴﺛﺄﺘﻟا ﻦﻜﻣ
+ICS_EffectHeightPadding=.ﺕﺎﺷﺎﺸﻟا ﻦﻴﺑ ﻍاﺮﻔﻟا ﺏﺎﺴﺣ
+ICS_EffectPastelForTopBG=.ﺔﺷﺎﺸﻟا ﯽﻠﻋﺃ ﻲﻓ ﺔﻴﻓﺎﻔﺸﻟا ﻖﻴﺒﻄﺗ
+ICS_EffectPastelForBottomBG=.ﺔﺷﺎﺸﻟا ﻞﻔﺳﺃ ﻲﻓ ﺔﻴﻓﺎﻔﺸﻟا ﻖﻴﺒﻄﺗ
+
+; ----------------------------
+
+IV_LoadMsg0=.ﺓﺭﻮﺼﻟا ﻞﻴﻤﺤﺗ ﻱﺭﺎﺟ
+IV_LoadMsg1=...ﺭﺎﻈﺘﻧﻻا ﺀﺎﺟﺮﻟا
+
+IV_Help1=START: ﺔﻴﻔﻠﺧ ﺎﻬﻠﻌﺟإ | Select: ﺕاﺩاﺪﻋﻹا
+IV_Help2=Y: 50% | X: 200% | A: 100% | B: ﺓﺩﻮﻌﻟا
+
+; ----------------------------
+
+IV_Popup_BacklightLevel=%d .ىﻮﺘﺴﻤﻟا
+IV_Popup_Zoom=%d%% ﺮﻴﺒﻜﺗ
+IV_Popup_Pause_Play=ﻞﻴﻐﺸﺗ
+IV_Popup_Pause_Pause=ﻑﺎﻘﻳإ
+IV_Popup_PreviousFile=ﻖﺑﺎﺴﻟا ﻒﻠﻤﻟا
+IV_Popup_NextFile=ﻲﻟﺎﺘﻟا ﻒﻠﻤﻟا
+IV_Popup_Seek=%s ﺚﺤﺑ
+
+; ----------------------------
+
+TCS_Help0=          ﺹﻮﺼﻨﻟا ﺽﺮﻋ ﺩاﺪﻋإ ﺔﺌﻴﻬﺗ
+TCS_Help1=
+TCS_Help2=       ﺮﻘﻧﺃ ﺕﺩاﺪﻋﻷا ﻦﻣ ﺀﺎﻬﺘﻧﻻا ﺎﻣﺪﻨﻋ
+TCS_Help3=          ﻞﻔﺳﺎﻟا ﻲﻓ "ﻖﺒﻃ" ﺭﺯ ﯽﻠﻋ
+TCS_Help4=                 .ﺕاﺮﻴﻐﺘﻟا ﻆﻔﺤﻟ
+TCS_Help5=
+TCS_Help6=    :ClearType ﻁﻮﻄﺧ ﺹﻮﺼﺨﺑ ﺮﻳﺬﺤﺗ
+TCS_Help7=          ﺔﺷﺎﺸﻟا ﯽﻠﻋﺃ ﻲﻓ ﺹﻮﺼﻨﻟا
+TCS_Help8=              "Phat"  ﻞﻟ DS  ﻞﻟ
+TCS_Help9=               .ﺔﺷﻮﺸﻣ ﻭﺪﺒﺗ ﺪﻗ
+TCS_Help10=
+TCS_Help11=
+
+TCS_Title=ﺹﻮﺼﻨﻟا ﺽﺮﻋ ﺩاﺪﻋإ ﺔﺌﻴﻬﺗ
+
+TCS_TopScrModeTitle=ﺎﻴﻠﻌﻟا ﺔﺷﺎﺸﻟا ﺽﺮﻋ ﻂﻤﻧ:
+TCS_TopScrModeLightOff=ﻑﺎﻘﻳإ
+TCS_TopScrModeText=ﺺﻧ
+TCS_TopScrModeClock=ﺕﺎﻣﻮﻠﻌﻣ ﻭ ﺺﻧ
+
+TCS_ScreenSaverTitle=ﻒﻗﻮﺘﻟا ﺔﺷﺎﺷ
+TCS_ScreenSaverNormal=ﻲﺳﺎﻴﻗ
+TCS_ScreenSaverDigital=ﻲﻤﻗﺭ
+TCS_ScreenSaverExtend=ﻲﻓﺎﺿإ
+
+TCS_LineSpaceTitle=ﺓﺪﻋﺎﺒﻣ
+TCS_LineSpaceSmall=ﻖﻴﺿ
+TCS_LineSpaceMiddle=ﻱﺩﺎﻋ
+TCS_LineSpaceLarge=ﺾﻳﺮﻋ
+
+TCS_FontSizeTitle=ﺺﻨﻟا ﻢﺠﺣ
+TCS_FontSizeSmall=(12pix) ﺮﻴﻐﺻ
+TCS_FontSizeMiddle=(14pix) ﻂﺳﻭ
+TCS_FontSizeLarge=(16pix) ﺮﻴﺒﻛ
+
+TCS_ClearTypeFontTitle=Clear type
+TCS_ClearTypeFontNone=ﺀﯽﻴﺷ ﻻ
+TCS_ClearTypeFontLite=ﻖﻴﻗﺭ
+TCS_ClearTypeFontNormal=ﻲﺳﺎﻴﻗ
+TCS_ClearTypeFontHeavy=ﻦﻴﺘﻣ
+
+TCS_UseSmoothScroll=.ﺲﻠﺴﻟﺍ ﺮﻳﺮﻤﺘﻟﺍ ﻡﺪﺨﺘﺳﺍ
+
+TCS_CPTitle=ﺔﺤﻔﺼﻟا ﺰﻴﻣﺮﺗ
+TCS_CP437=CP437 (US, AUS)
+TCS_CP850=CP850 (DOS)
+TCS_CP1252=CP1252 (Windows)
+
+TCS_DetectCharCodeTitle=ﻲﻟآ ﺰﻴﻣﺮﺘﻟا ﻉﻮﻧ ﻒﺸﺘﻜﻳ
+
+; ----------------------------
+
+TV_SelEnc_Title=.ﺺﻨﻟﺍ ﺰﻴﻣﺮﺗ ﻉﻮﻧ ﺭﺎﻴﺘﺧﺍ ﺀﺎﺟﺮﻟﺍ
+TV_SelEnc_Items_AutoDetect=ﻲﺗﺍﺫ ﻒﺸﻛ
+TV_SelEnc_Items_ANSI=ANSI 8bit
+TV_SelEnc_Items_EUC=EUC/S-JIS
+TV_SelEnc_Items_UTF16BE=UTF-16 (BE)
+TV_SelEnc_Items_UTF16LE=UTF-16 (LE)
+TV_SelEnc_Items_UTF8=UTF-8
+TV_SelEnc_Items_TextEdit=.ﺺﻨﻟﺍ ﺭﺮﺤﻣ ﺪﻴﻬﻤﺗ
+TV_SelEnc_Help_Normal=P.ﺀﺎﻐﻟﻺﻟ B ﻭ , ﺔﻘﻓﺍﻮﻤﻠﻟ A ﻂﻐﺿﺍ
+TV_SelEnc_Help_NoEdit0=128kbyte ﺯﻭﺎﺠﺘﻳ ﻒﻠﻤﻟﺍ
+TV_SelEnc_Help_NoEdit1=.ﻞﻳﺪﻌﺘﻟﺍ ﻦﻜﻤﻳ ﻻ
+
+; ----------------------------
+
+TV_PRG_LoadExtendFont=...ﻁﻮﻄﺨﻟا ﻞﻴﻤﺤﺗ ﻱﺭﺎﺟ
+TV_PRG_LoadTextFile=...ﺺﻨﻟا ﻒﻠﻣ ﻞﻴﻤﺤﺗ
+TV_PRG_DetectTextEncode=...ﺺﻨﻟا ﺮﻴﻔﺸﺗ ﻑﺎﺸﺘﻛإ
+TV_PRG_DetectReturnCode=...ﺓﺩﻮﻌﻟا ﺰﻣﺭ ﻑﺎﺸﺘﻛإ
+TV_PRG_ConvertToUnicode=...Unicode ﯽﻟإ ﻞﻳﻮﺤﺘﻟا
+
+TV_UncertainFormat1=.ﺪﻛﺆﻣ ﺮﻴﻏ ﻞﻐﺷ ﻦﻋ ﻒﺸﻜﻟﺍ
+TV_UncertainFormat2=.ﺀﻂﺨﻟﺍ ﻝﺎﺣ ﻲﻓ ﻩﺪﻤﻟ A ﻊﻣ Start ﻂﻐﺿﺃ
+
+TV_Help1=A: ﺔﺤﻔﺼﻟا ﻝﺎﻘﺘﻧإ / B: ﺓﺩﻮﻌﻟا
+TV_Help2=X/Y: ﺔﻤﺋﺎﻘﻟا ﻞﻴﻤﺤﺗ ﻆﻔﺣ ﻦﻳﻭﺎﻨﻌﻟا ﺔﻤﺋﺎﻗ
+TV_Help3=Select: ﺔﺌﻴﻬﺘﻟا / %s : ﺰﻴﻣﺮﺘﻟا
+TV_Info=ﺮﻄﺳ: %d / %d ﺭﻮﻄﺳ (%.2f%%)
+
+TV_BookmarkText_LoadTitle=ﻦﻳﻭﺎﻨﻌﻟا ﺔﻤﺋﺎﻗ ﻞﻴﻤﺤﺗ
+TV_BookmarkText_SaveTitle=ﻦﻳﻭﺎﻨﻌﻟا ﺔﻤﺋﺎﻗ ﻆﻔﺣ
+TV_BookmarkText_Empty=%d:  .ﻆﻔﺤﻳ ﻢﻟ
+TV_BookmarkText_Info=%d:  %d ﺮﻄﺳ(s)  %s %s
+
+; ----------------------------
+
+TV_Popup_BacklightLevel=%d .ىﻮﺘﺴﻤﻟا
+TV_Popup_Bookmark_Load=
+TV_Popup_Bookmark_Empty=.ﻲﻐﻠﻣ
+TV_Popup_Bookmark_Save=.ﻆﻔﺣ
+TV_Popup_Pause_Play=ﻞﻴﻐﺸﺗ
+TV_Popup_Pause_Pause=ﻑﺎﻘﻳإ
+TV_Popup_PreviousFile=ﻖﺑﺎﺴﻟا ﻒﻠﻤﻟا
+TV_Popup_NextFile=ﻲﻟﺎﺘﻟا ﻒﻠﻤﻟا
+TV_Popup_Seek=%s ﺚﺤﺑ
+TV_Popup_MoveToTop=.ﯽﻠﻋﻷا ﯽﻟإ ﻙﺮﺤﺗ
+TV_Popup_MoveToLast=.ﺮﺧﻷا ﯽﻟإ ﻙﺮﺤﺗ
+
+; ----------------------------
+
+ME_Help0=ﺕﺎﻈﺣﺎﻠﻤﻟا ﺓﺮﺘﻓﺩ ﻞﻳﺪﻌﺗ ﻂﻤﻧ
+ME_Help1=
+ME_Help2=D/L/U/R: ﺩﻮﺳﺃ/ﺮﻤﺣﺃ/ﺮﻀﺧﺃ/ﻕﺭﺯﺃ
+ME_Help3=Y / X: ﺮﻄﺳ ﻦﻴﺘﻣ / ﻖﻴﻗﺭ
+ME_Help4=A / B: ﺝﻭﺮﺧ ﻭ ﻆﻔﺣ
+ME_Help5=SELECT: ﻊﺟاﺮﺗ
+ME_Help6=ﻲﺤﻤﻠﻟ :ﺲﻤﻟﺃ ﻭ L/R ﻂﻐﺿﺃ
+ME_Help7=
+ME_Help8=DS ﻝا ﻕﻼﻏإ
+ME_Help9=.ﻆﻔﺣ ﻥﻭﺩ ﺓﺭﺩﺎﻐﻤﻟاﻭ
+
+; ----------------------------
+
+MemoList_Title=.ﺓﺮﻛﺬﻤﻟا ﺔﻤﺋﺎﻗ ﻂﻤﻧ
+
+MemoList_Help0=
+MemoList_Help1=
+MemoList_Help2=.ﺓﺪﻳﺪﺟ ﺔﺤﻔﺻ ﺀﺎﺸﻧإ : ﺔﺷﺎﺸﻟا ﺲﻤﻟ
+MemoList_Help3=ﺎﻬﻴﻠﻋ ﺮﺷﺄﻤﻟا ﺔﺤﻔﺼﻟا ﺢﺴﻤﻳ:ﺔﻠﻳﻮﻃ ﺓﺮﺘﻔﻟ START ﻂﻐﺿ
+
+; ----------------------------
+
+MemoEdit_FileInfo_Open=.ﺩﻮﺟﻮﻣ ﻒﻠﻣ ﺢﺘﻓ
+MemoEdit_FileInfo_Edited=.ﻲﻟﺃ ﻆﻔﺤﻳ ﻑﻮﺳ ﻒﻠﻣ.ﻞﻳﺪﻌﺗ
+MemoEdit_FileInfo_Create=.ﺪﻳﺪﺟ ﻒﻠﻣ ﻂﻤﻨﺑ ﺢﺘﻓ
+
+MemoEdit_SavingNow=....BMP ﻒﻠﻣ ﯽﻟإ ﺕاﺮﻴﻐﺘﻟا ﻆﻔﺣ
+
+; ----------------------------
+; for Text editor Ver1.5
+
+TE_File_SelectEncode_Title1=.ًﺎﻴﻟﺍ ﻢﻜﺤﺘﻟﺍ ﻊﻴﻄﺘﺴﻳ ﻻ
+TE_File_SelectEncode_Title2=.ﺰﻴﻣﺮﺘﻟﺍ ﺺﻧ ﻉﻮﻧ ﺭﺎﻴﺘﺧﺍ ﺀﺎﺟﺮﻟﺍ
+
+TE_skk_DicSystem_PreloadDic=.ﺱﻮﻣﺎﻘﻟﺍ ﻞﻴﻤﺤﺗ
+
+TE_skk_ExitMenu_Title=ﺔﻤﺋﺎﻘﻟﺍ ﺀﺎﻬﻧﺇ
+TE_skk_ExitMenu_Items_Cancel=.ﺀﺎﻐﻟﺇ
+TE_skk_ExitMenu_Items_Overwrite=.ﺝﻭﺮﺨﻟﺍ ﻭ ﻆﻔﺤﻟﺍ ﻝﺍﺪﺒﺘﺳﺍ
+TE_skk_ExitMenu_Items_SaveAs=.حفظ بأسم و الخروج
+TE_skk_ExitMenu_Items_CreateNew=.ﺪﻳﺪﺟ ﺀﺎﺸﻧﺇ
+TE_skk_ExitMenu_Items_NoSaveExit=.ﻆﻔﺤﻟﺍ ﻥﻭﺩ ﺝﻭﺮﺨﻟﺍ
+TE_skk_ExitMenu_SavePrgMsg1=...ﺓﺩﺎﻋﺇ ﻭ ﻒﻠﻤﻟﺍ ﺹﻮﺼﻧ ﻆﻔﺣ
+TE_skk_ExitMenu_SavePrgMsg2=.ﺔﻗﺎﻄﻟﺍ ﻰﻔﻄﺗ ﻻ ﺀﺎﺟﺮﻟﺍ
+
+TE_SysMsg_ClipBoard_Empty=.ﺔﻏﺭﺎﻓ ﺔﻈﻓﺎﺤﻟﺍ
+TE_SysMsg_ClipBoard_Pasted=.ﺔﻈﻓﺎﺤﻟﺍ ﻖﺼﻟ
+TE_SysMsg_ClipBoard_Copied=.ﺔﻈﻓﺎﺤﻠﻟ ﻪﺨﺴﻧ ﻭ ﺺﻨﻟﺍ ﺩﺪﺣ
+
+TE_OSKHW_Model_ModelResults_Selector_Title=.ﺢﻴﺤﺼﻟﺍ ﻑﺮﺤﻟﺍ ﺭﺎﻴﺘﺧﺍ ﺀﺎﺟﺮﻟﺍ
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle1=ﻞﺠﺳﺍ ﻥﺃ ﻲﻟ ﻞﻫ
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle2=ﻰﻟﺇ ﺔﻳﻭﺪﻴﻟﺍ ﺔﺑﺎﺘﻜﻟﺍ ﺕﺎﻧﺎﻴﺑ ﻩﺬﻫ 
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle3=؟ﺝﺫﺎﻤﻨﻟﺍ ﺱﻮﻣﺎﻗ
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogRegist=تسجيل
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogCancel=إلغاء
+
+; ----------------------------
+

@@ -1,0 +1,624 @@
+<dialog id="SudokuDialog">
+	<script>
+		<![CDATA[
+
+			
+			MODEL <- null;
+			HELP <- null; 
+			ABOUT <- null;
+			transitionEffects <- null;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////HelpDialog Class//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			class HelpDialog
+			{
+				constructor(_scene)
+				{
+					_helpBg = _scene.findWidget("sudokudialog.helpbg");
+					_helpDisplay = [];
+					_upButton = _scene.findWidget("sudokudialog.upButton");
+					_downButton = _scene.findWidget("sudokudialog.downButton");
+					_pageUpButton = _scene.findWidget("sudokudialog.pageUpButton");
+					_pageDownButton = _scene.findWidget("sudokudialog.pageDownButton");
+					_exitButton = _scene.findWidget("sudokudialog.exitButton");
+					_cursor = _scene.findWidget("sudokudialog.cursor");
+
+					_helpBgMove = MoveToEffect();
+					_helpBgMove.setTarget(_helpBg);
+					_helpBgMove.setDuration(600);
+
+					_cursorMove = MoveToEffect();
+					_cursorMove.setTarget(_cursor);
+					_cursorMove.setDuration(100);
+
+					for(local i = 0; i < 10; i++)
+					{
+						_helpDisplay.append(_scene.findWidget("sudokudialog.helpDisplay" + i.tostring()));
+						_helpDisplay[i].setColor(0,0,0);
+					}
+
+					_helpDisplayMove = [];
+
+					for(local i = 0; i < 10; i++)
+					{
+						_helpDisplayMove.append(MoveToEffect());
+						_helpDisplayMove[i].setTarget(_helpDisplay[i]);
+						_helpDisplayMove[i].setDuration(600);
+					}
+
+					_helpText = SDKDIALOG();
+				}
+
+				// Sets up the on-screen location of the widgets
+				function SetupBeginTransition()
+				{
+					for(local i = 0; i < 10; i++)
+					{
+						_helpDisplayMove[i].setDestination(18, i*15 + 21);
+					}
+					_helpBgMove.setDestination(12,16);
+					_exitButton.setX(229);
+					_exitButton.setY(17);
+					_upButton.setX(229);
+					_upButton.setY(66);
+					_downButton.setX(228);
+					_downButton.setY(103);
+					_pageUpButton.setX(229);
+					_pageUpButton.setY(30);
+					_pageDownButton.setX(229);
+					_pageDownButton.setY(139);
+					_cursor.setX(-1000);
+					_cursor.setY(10);
+				}
+
+				// Sets up the final off-screen locations of the widgets
+				function SetupEndTransition()
+				{
+					for(local i = 0; i < 10; i++)
+					{
+						_helpDisplayMove[i].setDestination(-300, i*15 + 21);
+					}
+					_helpBgMove.setDestination(-300,16);
+					_cursorMove.setDestination(-1000,10);
+					_upButton.setX(-200);
+					_upButton.setY(1);
+					_downButton.setX(-200);
+					_downButton.setY(1);
+					_pageUpButton.setX(-200);
+					_pageUpButton.setY(1);
+					_pageDownButton.setX(-200);
+					_pageDownButton.setY(1);
+					_exitButton.setX(-200);
+					_exitButton.setY(1);
+					_cursor.setX(-1000);
+					_cursor.setY(10);
+				}
+
+				// Sets up the button navigation
+				function SetupButtonNavigation()
+				{
+					_exitButton.setSouth(_pageUpButton);
+					_pageUpButton.setNorth(_exitButton);
+					_pageUpButton.setSouth(_upButton);
+					_upButton.setNorth(_pageUpButton);
+					_upButton.setSouth(_downButton);
+					_downButton.setNorth(_upButton);
+					_downButton.setSouth(_pageDownButton);
+					_pageDownButton.setNorth(_downButton);
+				}
+
+				// Hooks the click and focus button events
+				function HookButtonEvents()
+				{
+					_upButton.onButtonClick(UpButtonClick);
+					_upButton.onFocusGained(OnButtonFocusGained);
+
+					_downButton.onButtonClick(DownButtonClick);
+					_downButton.onFocusGained(OnButtonFocusGained);
+
+					_pageUpButton.onButtonClick(PageUpButtonClick);
+					_pageUpButton.onFocusGained(OnButtonFocusGained);
+
+					_pageDownButton.onButtonClick(PageDownButtonClick);
+					_pageDownButton.onFocusGained(OnButtonFocusGained);
+
+					_exitButton.onButtonClick(ExitButtonClick);
+					_exitButton.onFocusGained(OnButtonFocusGained);
+				}
+
+				// Called when a button is focused
+				function OnButtonFocusGained(event)
+				{
+					local button = event.getTarget();
+
+					HELP._cursorMove.setDestination(button.getX(), button.getY() );
+
+					HELP._cursor.setHeight(button.getHeight());
+					HELP._cursor.setWidth(button.getWidth());
+
+					HELP._cursorMove.start();
+				}
+
+				// Called when the down button is clicked
+				function DownButtonClick(event)
+				{
+					HELP._helpText.IncrementLineNum();
+
+					local tmp = HELP._helpText.GetLines();
+
+					for(local i = 0; i < 10; i++)
+						HELP._helpDisplay[i].setText(tmp[i]);
+				}
+
+				// Called when the up button is clicked
+				function UpButtonClick(event)
+				{
+					HELP._helpText.DecrementLineNum();
+
+					local tmp = HELP._helpText.GetLines();
+
+					for(local i = 0; i < 10; i++)
+						HELP._helpDisplay[i].setText(tmp[i]);
+				}
+
+				// Called when the page-down button is clicked
+				function PageDownButtonClick(event)
+				{
+					HELP._helpText.IncrementLineNum();
+					HELP._helpText.IncrementLineNum();
+					HELP._helpText.IncrementLineNum();
+					HELP._helpText.IncrementLineNum();
+					HELP._helpText.IncrementLineNum();
+					HELP._helpText.IncrementLineNum();
+					HELP._helpText.IncrementLineNum();
+					HELP._helpText.IncrementLineNum();
+					HELP._helpText.IncrementLineNum();
+					HELP._helpText.IncrementLineNum();
+
+					local tmp = HELP._helpText.GetLines();
+
+					for(local i = 0; i < 10; i++)
+						HELP._helpDisplay[i].setText(tmp[i]);
+				}
+
+				// Called when the page-up button is clicked
+				function PageUpButtonClick(event)
+				{
+					HELP._helpText.DecrementLineNum();
+					HELP._helpText.DecrementLineNum();
+					HELP._helpText.DecrementLineNum();
+					HELP._helpText.DecrementLineNum();
+					HELP._helpText.DecrementLineNum();
+					HELP._helpText.DecrementLineNum();
+					HELP._helpText.DecrementLineNum();
+					HELP._helpText.DecrementLineNum();
+					HELP._helpText.DecrementLineNum();
+					HELP._helpText.DecrementLineNum();
+
+					local tmp = HELP._helpText.GetLines();
+
+					for(local i = 0; i < 10; i++)
+						HELP._helpDisplay[i].setText(tmp[i]);
+				}
+
+				// Called when the exit button is clicked
+				function ExitButtonClick(event)
+				{
+
+					HELP.SetupEndTransition();
+					transitionEffects.start();
+
+					local dialog = event.getTarget().getParentScene();
+					dialog.hide();
+				}
+
+				// Resets the HelpDialog's data members
+				function Reset()
+				{
+					_helpText._currentLineNum = 0;
+
+					local tmp = _helpText.GetLines();
+
+					for(local i = 0; i < 10; i++)
+						_helpDisplay[i].setText(tmp[i]);
+
+					for(local i = 0; i < 10; i++)
+					{
+						_helpDisplay[i].setX(-300);
+						_helpDisplay[i].setY(i*15 + 21);
+						_helpDisplayMove[i].setDestination(-300, i*15 + 21);
+					}
+					_helpBg.setX(-300);
+					_helpBg.setY(16);
+					_helpBgMove.setDestination(-300, 16);
+					_upButton.setX(-200);
+					_upButton.setY(1);
+					_downButton.setX(-200);
+					_downButton.setY(1);
+					_pageUpButton.setX(-200);
+					_pageUpButton.setY(1);
+					_pageDownButton.setX(-200);
+					_pageDownButton.setY(1);
+					_exitButton.setX(-200);
+					_exitButton.setY(1);
+					_cursor.setX(-1000);
+					_cursor.setY(10);
+					_cursorMove.setDestination(-1000,10);
+				}
+
+				// Initilizes the cursor widget
+				function InitCursor()
+				{
+					_cursor.setAlpha(0);
+					_cursorWait = WaitEffect();
+					_cursorWait.setDuration(650);
+					_cursorWait.setTarget(_cursor);
+					_cursorWait.onStop(PopCursor);
+					_cursorWait.start();
+				}
+
+				// Shows the cursor widget
+				function PopCursor(event)
+				{
+					local cursor = event.getTarget();
+					cursor.setAlpha(10);
+				}
+					
+
+				_helpBg = null;
+				_upButton = null;
+				_downButton = null;
+				_pageUpButton = null;
+				_pageDownButton = null;
+				_exitButton = null;
+				_cursor = null;
+
+				_helpBgMove = null;
+				_cursorMove = null;
+
+				_helpDisplay = null;
+				_helpDisplayMove = null;
+
+				_helpText = null;
+
+				_cursorWait = null;
+			}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////AboutDialog Class///////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			class AboutDialog
+			{
+				constructor(_scene)
+				{
+					_aboutBg = _scene.findWidget("sudokudialog.aboutbg");
+					_aboutBgMove = MoveToEffect();
+					_aboutBgMove.setTarget(_aboutBg);
+					_aboutBgMove.setDuration(600);
+
+					_okButton = _scene.findWidget("sudokudialog.okButton");
+					_okButton.onButtonClick(OkButtonClick);
+				}
+
+				// Called when the dialog is clicked
+				function OkButtonClick(event)
+				{
+					local dialog = 	event.getTarget().getParentScene();
+
+					ABOUT.SetupEndTransition();
+
+					transitionEffects.start();
+
+					dialog.hide();
+				}
+
+				// Sets up the on-screen locations of the widgets
+				function SetupBeginTransition()
+				{
+					_aboutBgMove.setDestination(55,50);
+					_okButton.setX(55);
+					_okButton.setY(50);
+				}
+
+				// Sets up the final off-screen locations of the widgets
+				function SetupEndTransition()
+				{
+					_aboutBgMove.setDestination(-300,50);
+					_okButton.setX(-300);
+					_okButton.setY(140);
+				}	
+
+				// Resets the AboutDialog's data members
+				function Reset()
+				{
+					_aboutBg.setX(-300);
+					_aboutBg.setY(50);
+					_okButton.setX(-300);
+					_okButton.setY(140);
+
+					_aboutBgMove.setDestination(-300,50);
+				}			
+
+				_aboutBg = null;
+				_aboutBgMove = null;
+
+				_okButton = null;
+			}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			// Called when the dialog is summoned
+			function OnBegin(event)
+			{
+				local model = event.getTarget().getModel();
+				MODEL = model;
+
+
+				HELP.Reset();
+				ABOUT.Reset();
+
+				if(MODEL == "Help")
+				{
+					HELP.SetupBeginTransition();
+					HELP._upButton.focus();
+					HELP.InitCursor();
+				}
+				if(MODEL == "About")
+				{
+					ABOUT.SetupBeginTransition();
+					ABOUT._okButton.focus();
+				}
+
+				transitionEffects.start();				
+			}
+			
+			// Called when the dialog is hidden
+			function OnEnd(event)
+			{ 
+				if(MODEL == "Help")
+					HELP.SetupEndTransition();
+				else
+					ABOUT.SetupEndTransition();
+
+				event.setEndEffect(transitionEffects);
+			}
+
+			// Called when the dialog is initialized ( after the XML loads )		
+			function OnInit()
+			{
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+
+				// Create a HelpDialog object
+				HELP = HelpDialog(scene);
+				HELP.HookButtonEvents();
+				HELP.SetupButtonNavigation();
+
+				// Create an AboutDialog object
+				ABOUT = AboutDialog(scene);
+
+				// Create an effect group to handle all of the 
+				//  dialog's move effects
+				transitionEffects = EffectGroup();
+				transitionEffects.addEffect(HELP._helpBgMove);
+				transitionEffects.addEffect(HELP._cursorMove);
+				transitionEffects.addEffect(ABOUT._aboutBgMove);
+				for(local i = 0; i < 10; i++)
+					transitionEffects.addEffect(HELP._helpDisplayMove[i]);
+
+				// Hook scene events
+				scene.onBegin(OnBegin);
+				scene.onEnd(OnEnd);
+			}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////END SQUIRREL////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		]]>
+	</script>
+	
+	<objects>
+		<button id="sudokudialog.helpbg">
+			<properties>
+				<bounds x="-300" y="16" width="232" height="160"/>
+			</properties>
+			<objects>
+				<image id="left_panel">
+					<properties>
+						<bounds x="0" y="0" width="8" height="160"/>
+						<texture-id>80</texture-id>
+						<palette-id>80</palette-id>
+					</properties>
+				</image>
+				<image id="middle_panel">
+					<properties>
+						<bounds x="8" y="0" width="208" height="160"/>
+						<texture-id>81</texture-id>
+						<palette-id>81</palette-id>
+					</properties>
+				</image>
+				<image id="right_panel">
+					<properties>
+						<bounds x="216" y="0" width="16" height="160"/>
+						<texture-id>82</texture-id>
+						<palette-id>82</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+
+		<label id="sudokudialog.helpDisplay0">
+			<properties>
+				<bounds x="-300" y="20" width="150" height="13" /> 
+				<depth>2</depth> 
+				<font name="default" size="8" /> 
+				<text>saasjdf</text> 
+				<wrap-type>clip</wrap-type> 
+				<justify>left</justify> 
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<label id="sudokudialog.helpDisplay1">
+			<properties>
+				<bounds x="-300" y="20" width="150" height="13" /> 
+				<depth>2</depth> 
+				<font name="default" size="8" /> 
+				<text>saasjdf</text> 
+				<wrap-type>clip</wrap-type> 
+				<justify>left</justify> 
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<label id="sudokudialog.helpDisplay2">
+			<properties>
+				<bounds x="-300" y="20" width="150" height="13" />
+				<depth>2</depth> 
+				<font name="default" size="8" /> 
+				<text>asbadfsdfs</text> 
+				<wrap-type>clip</wrap-type> 
+				<justify>left</justify> 
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<label id="sudokudialog.helpDisplay3">
+			<properties>
+				<bounds x="-300" y="20" width="150" height="13" />
+				<depth>2</depth> 
+				<font name="default" size="8" /> 
+				<text>ljhfladfl</text> 
+				<wrap-type>clip</wrap-type> 
+				<justify>left</justify> 
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<label id="sudokudialog.helpDisplay4">
+			<properties>
+				<bounds x="-300" y="20" width="150" height="13" />
+				<depth>2</depth> 
+				<font name="default" size="8" /> 
+				<text>sdfnbsbdf</text> 
+				<wrap-type>clip</wrap-type> 
+				<justify>left</justify> 
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<label id="sudokudialog.helpDisplay5">
+			<properties>
+				<bounds x="-300" y="20" width="150" height="13" />
+				<depth>2</depth> 
+				<font name="default" size="8" /> 
+				<text>sdsdfhg</text> 
+				<wrap-type>clip</wrap-type> 
+				<justify>left</justify> 
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<label id="sudokudialog.helpDisplay6">
+			<properties>
+				<bounds x="-300" y="20" width="150" height="13" />
+				<depth>2</depth> 
+				<font name="default" size="8" /> 
+				<text>asbadfsdfs</text> 
+				<wrap-type>clip</wrap-type> 
+				<justify>left</justify> 
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<label id="sudokudialog.helpDisplay7">
+			<properties>
+				<bounds x="-300" y="20" width="150" height="13" />
+				<depth>2</depth> 
+				<font name="default" size="8" /> 
+				<text>ljhfladfl</text> 
+				<wrap-type>clip</wrap-type> 
+				<justify>left</justify> 
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<label id="sudokudialog.helpDisplay8">
+			<properties>
+				<bounds x="-300" y="20" width="150" height="13" />
+				<depth>2</depth> 
+				<font name="default" size="8" /> 
+				<text>sdfnbsbdf</text> 
+				<wrap-type>clip</wrap-type> 
+				<justify>left</justify> 
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<label id="sudokudialog.helpDisplay9">
+			<properties>
+				<bounds x="-300" y="20" width="150" height="13" />
+				<depth>2</depth> 
+				<font name="default" size="8" /> 
+				<text>sdsdfhg</text> 
+				<wrap-type>clip</wrap-type> 
+				<justify>left</justify> 
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<image id="sudokudialog.aboutbg">
+			<properties>
+				<bounds x="-300" y="1" width="144" height="96"/>
+				<texture-id>85</texture-id>
+				<palette-id>85</palette-id>
+			</properties>
+		</image>
+		<button id="sudokudialog.upButton">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="35"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="sudokudialog.downButton">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="35"/>
+				<depth>3</depth>
+			</properties>		
+		</button>		
+		<button id="sudokudialog.pageUpButton">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="36"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="sudokudialog.pageDownButton">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="36"/>
+				<depth>3</depth>
+			</properties>		
+		</button>		
+		<button id="sudokudialog.exitButton">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="13"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="sudokudialog.okButton">
+			<properties>		
+				<bounds x="0" y="0" width="144" height="96"/>
+				<depth>3</depth>
+			</properties>		
+		</button>
+		<image id="sudokudialog.cursor">
+			<properties>
+				<depth>2</depth>
+				<bounds x="0" y="0" width="15" height="15"/>
+				<texture-id>104</texture-id>
+				<palette-id>104</palette-id>
+			</properties>
+		</image>
+	</objects>
+	
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+</dialog>
+

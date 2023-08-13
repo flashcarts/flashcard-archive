@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone=no>
+<media>
+
+	<textures>
+		<texture id="1" format="256-Color" width="256" height="192" filepath="media/textures/bg.raw"/>
+		<texture id="2" format="256-Color" width="16" height="16" filepath="media/textures/pwng_ball.raw"/>
+		<texture id="3" format="256-Color" width="8" height="32" filepath="media/textures/pwng_paddle.raw"/>
+
+	</textures>
+	
+	<palettes>
+		<palette id="1" filepath="media/palettes/bg.pal" />
+		<palette id="2" filepath="media/palettes/pwng_ball.pal" />
+		<palette id="3" filepath="media/palettes/pwng_paddle.pal" />
+	</palettes>
+	
+	<fonts>
+		<font name="default" filepath="media/fonts/font.ttf" />
+	</fonts>
+	
+</media>
+	

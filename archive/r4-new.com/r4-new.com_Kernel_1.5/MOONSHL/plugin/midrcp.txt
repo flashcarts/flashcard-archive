@@ -1,0 +1,16 @@
+
+Please overwrite midrcp.msp/midrcp.bin onto /shell/plugin/ folder of CF/SD.
+Request MoonShell Version1.1 (MSPV20 support).
+
+---
+
+midrcp.msp/midrcp.binをCF/SDの/shell/plugin/フォルダに上書きコピーしてください。
+MoonShell Version1.1以降(MSPV20対応MoonShell)で使ってください。
+
+----
+
+音源ファイルはRafarl様作成し、SYUUHOU様が調整してくださったTimidity用の、「SYUUHOUの30MBパッチ用ConfigファイルVer.6.5」を私Moonlightが縮小加工して使用させていただきました。
+http://www.h7.dion.ne.jp/~syuuhou/
+
+勝手に使ったので問題があります。お怒りになる前に連絡いただけたら幸いです。
+

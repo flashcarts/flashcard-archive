@@ -1,0 +1,433 @@
+<scene>
+	<script>
+		<![CDATA[
+		
+			// Store some of the widgets for later use
+			// so we don't have to look them up each time we need them.
+			titleLabel <- null;
+			titleBg <- null;
+			appList <- null;
+			searchProgress <- null;
+			messageLabel1 <- null;
+
+			searching <- false;
+			
+			// Store the scene effects for easy access or to keep them in scope.
+			SceneEffects <- {
+			
+				titleLabelMove = null, // Move the title in from the left
+				titleBgMove = null, // Move the title bg in from the left
+				appListMove = null, // Move the list in from the right
+				
+				transitionEffects = null, // Group of transition effects
+			}	
+			
+			function GoBack()
+			{
+				Application.getSceneManager().selectScene("main");			
+			}
+			
+			function OnBackClick(event)
+			{
+				GoBack();
+			}			
+			
+						
+			// Set the final onscreen locations as the destinations of the effects			
+			function SetupBeginTransition()
+			{
+				SceneEffects.titleLabelMove.setDestination(10,12);
+				SceneEffects.titleBgMove.setDestination(0,10);	
+				SceneEffects.appListMove.setDestination(0,38);
+			}			
+
+			// Set the initial offscreen locations as the destinations of the effects							
+			function SetupEndTransition()
+			{
+				SceneEffects.titleLabelMove.setDestination(-210,12);
+				SceneEffects.titleBgMove.setDestination(-223,10);	
+				SceneEffects.appListMove.setDestination(257,38);					
+			}
+
+			// This is called when the search task is complete
+			function OnSearchComplete(event)
+			{
+				searching = false;
+
+				// Hide the progress bar
+				searchProgress.setVisible(false);
+				
+				// if we found apps, hide our messages, and add the apps to the list
+				// otherwise, just redisplay the "no apps" message
+				if(0 != Library.getNumApps())
+				{
+					messageLabel1.setVisible(false);
+					
+					AddAppsToList()
+					
+					// Slide in and focus the app list
+					appList.setX(257);
+					appList.setVisible(true);
+					appList.focus();
+					SceneEffects.appListMove.start();
+				}
+				else
+				{
+					messageLabel1.setText("No apps found!");
+				}
+			}
+
+			function SearchForApps()
+			{
+				searching = true;
+				
+				// Hide the app list
+				appList.setVisible(false);
+				
+				// Change the text for the user to see
+				messageLabel1.setText("Searching...");
+				messageLabel1.setVisible(true);
+				
+				// Reset the progress bar and make it visible
+				searchProgress.setStep(0);
+				searchProgress.setVisible(true);
+				
+				// Create a progress monitor and attach the progress bar to it
+				local monitor = ProgressMonitor();
+				searchProgress.attachToProgressMonitor(monitor);
+				
+				// Hook the task completed event on the monitor
+				monitor.onComplete(OnSearchComplete.bindenv(this));
+				
+				// Initiate the search (The search is asynchronous)
+				Library.findApps(monitor);				
+			}
+			
+			// This is called when the scene is being displayed
+			function OnBegin(event)
+			{
+				// Set the destinations appropriately on the transition 
+				// effects for the starting sequence
+				SetupBeginTransition();
+				
+				// Play the start transition
+				SceneEffects.transitionEffects.start();
+
+				// If we don't have any apps in the library, search
+				if(0 == Library.getNumApps())
+				{
+					SearchForApps();
+				}
+				else
+				{
+					appList.focus();
+				}
+			}
+			
+			// This is called before the next scene is displayed
+			function OnEnd(event)
+			{			
+				// Set the destinations appropriately on the transition 
+				// effects for the ending sequence
+				SetupEndTransition();
+				
+				// Setting the effect as the end effect on the event
+				// will cause the framework to wait for the effect to 
+				// finish before starting the next scene
+				event.setEndEffect(SceneEffects.transitionEffects);
+			}
+			
+			// This function simply loops through all the apps in
+			// the library and adds them to the app list
+			function AddAppsToList()
+			{
+				foreach(i, app in Library.getApps())
+				{
+					// Create the item
+					local item = ListItem("app_" + i);
+					
+					// Apply the template
+					appList.applyItemTemplate(item);
+					
+					// Set the app
+					item.setItem(app);
+					
+					// Set the icon texture/palette
+					local icon = item.findWidget("icon");
+					icon.setTexture(app.getIconTextureId());
+					icon.setPalette(app.getIconPaletteId());
+				
+					// Set the title label text
+					local title = item.findWidget("title");
+					app.assignTitleToLabel(title);
+		
+					// Add it to the list
+					appList.addItem(item);
+				}
+			}
+			
+			// This is called when a list item is actually activated
+			// We just grab the app from the list item and launch it!
+			function OnItemActivated(event)
+			{
+				local appItem = appList.getSelectedItem();
+
+				local dialog = Application.getSceneManager().getDialog("testDialog");
+				dialog.setModel(0);
+				dialog.show();
+			
+				if(dialog.getModel() == 1)
+				{
+					if(NowPlaying.isPlaying())
+					{
+						NowPlaying.stopPlaying();
+					}	
+					appItem.getItem().launch();
+				}
+			}
+			
+			function OnTouchHold(event)
+			{
+				local popup = PopupMenu();
+				popup.addMenuItem("Launch");
+				//popup.addMenuItem("Manage Saves");
+				popup.addMenuItem("Cancel");
+				popup.show(event.getX(), event.getY());			
+				
+				local result = popup.getSelectedItem();
+				if(result == 0)
+				{
+					if(NowPlaying.isPlaying())
+					{
+						NowPlaying.stopPlaying();
+					}
+					local appItem = appList.getSelectedItem();
+					appItem.getItem().launch();
+				}
+
+			}
+						
+			// This is called when the selected index in the list is changed
+			// We swap the texture which indicates to the user that the item
+			// is selected.
+			function OnSelectedIndexChanged(event)
+			{
+				local newIndex = event.getNewIndex();
+				local oldIndex = event.getOldIndex();
+				
+				if(oldIndex >= 0)
+				{
+					local oldItem = appList.getItem(oldIndex);
+					local oldTitle = oldItem.findWidget("title");
+					local oldHighlight = oldItem.findWidget("highlight");
+					oldHighlight.setVisible(false);
+				}
+				
+				if(newIndex >= 0)
+				{
+					local newItem = appList.getItem(newIndex);
+					local newTitle = newItem.findWidget("title");
+					local newHighlight = newItem.findWidget("highlight");
+					newHighlight.setVisible(true);
+				}
+			}							
+			
+			function OnButtonPressed(event)
+			{
+				if(!searching && event.getButton() == event.B)
+				{
+					GoBack();
+				}
+			}
+						
+			// This is called when the scene is initialized (i.e., after the XML is loaded)
+			function OnInit()
+			{
+				// The current event is always available from the Application object
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+
+				// Store some vars
+				titleLabel = scene.findWidget("titleLabel");
+				titleBg = scene.findWidget("titleImage");
+				appList = scene.findWidget("applist");
+				searchProgress = scene.findWidget("searchProgress");
+				messageLabel1 = scene.findWidget("messageLabel1");
+
+				// Set up initial locations (offscreen)
+				// This could obviously be done in the xml, but sometimes it's nice to
+				// keep the xml defined as what it will look like once fully presented
+				titleLabel.setX(-210);
+				titleBg.setX(-223);
+				appList.setX(257);
+									
+				// Set up events
+				SceneEffects.titleLabelMove = MoveToEffect();
+				SceneEffects.titleLabelMove.setTarget(titleLabel);
+				SceneEffects.titleLabelMove.setDuration(300);
+			
+				SceneEffects.titleBgMove = MoveToEffect();
+				SceneEffects.titleBgMove.setTarget(titleBg);
+				SceneEffects.titleBgMove.setDuration(300);	
+				
+				SceneEffects.appListMove = MoveToEffect();
+				SceneEffects.appListMove.setTarget(appList);
+				SceneEffects.appListMove.setDuration(300);
+									
+				// Group the events so they can be used as an end transition
+				SceneEffects.transitionEffects = EffectGroup();
+				SceneEffects.transitionEffects.addEffect(SceneEffects.titleLabelMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.titleBgMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.appListMove);
+						
+				// Hook scene events
+				scene.onBegin(OnBegin);								
+				scene.onEnd(OnEnd);
+				scene.onButtonPressed(OnButtonPressed);
+				
+				// Hook list events
+				appList.onSelectedIndexChanged(OnSelectedIndexChanged);
+				appList.onItemActivated(OnItemActivated);
+				appList.onTouchHold(OnTouchHold);
+				
+				local back = scene.findWidget("back");
+				back.onButtonClick(OnBackClick);			
+								
+			}
+		]]>
+	</script>
+
+	<objects>
+		<image id="game.bg">
+			<properties>
+				<bounds x="0" y="0" width="256" height="192"/>
+				<texture-id>9</texture-id>
+				<palette-id>2</palette-id>
+			</properties>
+		</image>
+    <list id="applist">
+      <properties>
+        <bounds x="0" y="38" width="256" height="152"/>
+        <depth>1</depth>
+      </properties>
+      
+      <objects>
+        <!-- bg image or whatever here -->
+      </objects>
+      
+      <item-template>
+        <properties>
+          <bounds x="0" y="0" width="256" height="38"/>
+          <depth>1</depth>
+        </properties>
+        <objects>
+        	<rect id="highlight">
+						<properties>
+							<bounds x="0" y="0" width="256" height="36"/>
+							<color red="0" green="0" blue="31"/>
+							<alpha>2</alpha>
+							<visible>false</visible>
+						</properties>
+					</rect>
+          <image id="icon">
+            <properties>
+              <bounds x="20" y="2" width="32" height="32"/>
+              <depth>1</depth>
+              <texture-id>27</texture-id>
+              <palette-id>27</palette-id>
+            </properties>
+          </image>
+          <label id="title">
+            <properties>
+              <bounds x="60" y="0" width="166" height="36"/>
+              <depth>2</depth>
+							<color red="15" blue="15" green="15"/>
+              <font name="default" size="8"/>
+              <wrap-type>clip</wrap-type>
+              <justify>left</justify>
+              <vertical-align>middle</vertical-align> 
+            </properties>       
+          </label>
+        </objects>
+      </item-template>
+    </list>
+		<image id="titleImage">
+			<properties>
+				<bounds x="0" y="10" width="223" height="30"/>
+				<depth>1</depth>
+				<texture-id>19</texture-id>
+				<palette-id>19</palette-id>
+			</properties>
+		</image>
+		<label id="titleLabel">
+			<properties>
+				<bounds x="10" y="12" width="200" height="20"/>
+				<depth>3</depth>
+				<font name="default" size="19"/>
+				<text>Apps Menu</text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>middle</vertical-align>
+				<shadow/>
+			</properties>
+		</label>
+		<label id="messageLabel1">
+			<properties>
+				<bounds x="0" y="80" width="256" height="20"/>
+				<depth>2</depth>
+				<color red="15" blue="15" green="15"/>
+				<font name="default" size="14"/>
+				<text>No apps found!</text>
+				<wrap-type>clip</wrap-type>
+				<justify>center</justify>
+				<visible>false</visible>
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<progress-bar id="searchProgress">
+			<properties>
+				<bounds x="35" y="100" width="185" height="15"/>
+				<depth>1</depth>
+				<progress-image>progressImage</progress-image>
+				<visible>false</visible>
+			</properties>
+			<objects>
+				<image id="progressImage">
+          <properties>
+            <texture-id>16</texture-id>
+            <palette-id>9</palette-id>
+          </properties>
+        </image>
+			</objects>
+		
+		</progress-bar>
+		<button id="back">
+			<properties>
+				<bounds x="224" y="13" width="24" height="24"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="24" height="24"/>
+						<texture-id>89</texture-id>
+						<palette-id>89</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>2</depth>
+						<bounds x="2" y="2" width="16" height="16"/>
+						<texture-id>71</texture-id>
+						<palette-id>71</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>	
+	</objects>
+
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+</scene>

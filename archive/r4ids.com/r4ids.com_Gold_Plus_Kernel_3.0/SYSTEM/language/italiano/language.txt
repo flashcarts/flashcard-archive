@@ -1,0 +1,287 @@
+// Thanks to Giovanni Zilli
+
+[font]
+main = liberation.pcf
+language = 4
+
+[start menu]
+Copy = Copia
+Cut = Taglia
+Paste = Incolla
+Delete = Cancella
+Setting = Impostazioni
+Info = Info sul File
+Help = Aiuto
+Tools = ¹¤¾ß
+START = ²Ëµ¥
+WifiUpdata = WifiÄÚºËÉý¼¶
+
+[message box]
+yes = Sì
+no = No
+ok = OK
+cancel = Annulla
+
+[progress window]
+processing save = Elaborazione… Non spegnere!
+processing copy = Copia in corso… Non spegnere! %c per annullare
+first use sd = Controllo SD per il primo utilizzo…
+gba load = Caricamento gioco GBA…
+gba save load = Caricamento salvataggio GBA…
+gba save store = Elaborazione salvataggio GBA… Non spegnere!
+erase nor = Cancellazigne NOR flash… Non spegnere!
+
+[copy file error]
+title = Errore di copia File
+text = Il File non esiste.
+
+[copy file exists]
+title = Conferma Incolla File
+text = E' presente un file con lo stesso nome. Sostituirlo?
+
+[copy dest is directory]
+title = Errore di Copia Cartella
+text = Questa cartella contiene già una Cartella con lo stesso nome. Non è possibile copiare il file.
+
+[move dest is directory]
+title = Errore Spostamento File o Cartella
+text =  Questa cartella contiene già una Cartella con lo stesso nome. Non è possibile spostare il file.
+
+[no copy dir]
+title = Taglia/Incolla Cartella
+text = Opzione non ancora supportata per le cartelle!
+
+[stop copying file]
+title = Conferma annullamento Copia File
+text = Vuoi annullare la copia del File?
+
+[confirm delete file]
+title = Conferma Eliminazione File/Cartella
+text = Il File o la Cartella non potrà essere recuperato, sei sicuro di voler eliminare '%s'?
+
+[do not delete directory]
+title = Errore eliminazione Cartella
+text = Questa Cartella non è vuota, elimina i Files all'interno e riprova.
+
+[restore save fail]
+title = Attenzione!
+text = Errore nel recupero del salvataggio.
+
+[language changed]
+title = Confermi il cambio della Lingua?
+text = Vuoi riavviare la console per applicare il cambio della lingua? Scegli "No" per mantenere l'attuale.
+
+[ui style changed]
+title = Confermi il cambio del Tema?
+text = Vuoi riavviare la console per applicare il cambio del Tema? Scegli "No" per mantenere l'attuale.
+
+[setting window]
+ok = OK
+savetype = Salavataggio
+cancel = Annulla
+confirm = Conferma
+confirm text = Salvare impostazioni correnti?
+close = Chiudi
+system = Sistema
+interface = Interfaccia
+filesystem = File system
+gba = GBA
+patches = Patches
+
+[save type]
+title = Seleziona il tipo di salvataggio
+text = Tipo salvataggio
+Unknown = Auto
+No Save = Disattiva
+4K = 4K
+64K = 64K
+512K = 512K
+1M = 1M
+2M = 2M
+4M = 4M
+8M = 8M
+16M = 16M
+32M = 32M
+64M = 64M
+default = Default
+save slot = Scegli lo slot
+tab1 = Compatibility
+tab2 = Features
+
+[system setting]
+title = Opzioni di Sistema
+safe mode = Safe Mode
+
+[rom info]
+title = Proprietà Rom
+file date = Ultima modifica: %d/%d/%d %02d:%02d:%02d(GMT)
+file size = Dimensione: %s
+save type = Salvataggio: %s
+game code = Codice Gioco: %s
+copy slot = Copy Slot
+file size2 =%s
+
+[disk info]
+total = Capacità Disco: %s
+used = Spazio utilizzato: %s
+free = Spazio libero: %s
+
+[no free space]
+title = Errore. Spazio terminato.
+text = Non c'è abbastanza spazio libero.
+
+[sd card error]
+title = Errore di accesso alla microSD
+text = Impossibile accedere alla microSD, assicuarati che la microSD sia formattata e inserita correttamente.
+
+[no sd for save]
+title = Nessuna microSD per il salvataggio
+text = Impossibile accedere alla microSD, il salvataggio della partita precedente sarà scritto in '%s'.
+
+[no gba card]
+title = Cartuccia GBA non trovata
+text = Non è inserita nessuna cartuccia nello SLOT-2
+
+[filelist type]
+text = File da visualizzare
+item0 = NDS
+item1 = NDS + SAV
+item2 = Tutti
+
+[rom trim]
+text = Trimma ROM quando copi
+item0 = Disabilitato
+item1 = Abilitato
+
+[language]
+text = Lingua del Sistema
+ja = japanese
+en = english
+fr = français
+de = deutsch
+it = italiano
+es = español
+
+[ui style]
+text = Tema
+
+[help window]
+title = Aiuto
+item0 = %c Scelta Programmi
+item1 = %c Sì/Start/OK
+item2 = %c  Indietro / Annulla / No / switch per l'estensione (a sinistra)
+item3 = %c Vedi file info/Seleziona tipo save
+item4 = %c  Passare alla estensione (a destra)
+item5 = %c Back to parent directory
+item6 = %c Regola Luminosità: 1/2/3/4
+item7 = %c+%c  Entrare nella configurazione del sistema
+item8 = %s Stile Menù nuovo/classico
+item9 = %s  selettore di modalità nuove List / modalità classica
+item10 = %s  Morbidi tasti di scelta rapida ripristinare nel gioco
+item11 = %s  barare su nel
+item12 = %s  imbrogliare off nel gioco
+
+[exp window]
+button = 3in1
+title = Impostazioni 3in1
+ram = RAM
+sram = sRAM
+off = Spento
+low = Basso
+mid = Medio
+high = Alto
+strength = Livello vibrazione
+flash to nor = su NOR
+copy to psram = su RAM
+
+[abort save]
+title = Annulla Salvataggio
+text = Sei sicuro di voler annullare il salvataggio?
+
+[gba warn]
+title = Attenzione!: Dimensione ROM GBA
+text = Le ROM GBA più grandi di 32M non sono al momento supportate!
+
+[patches]
+download play = DS Download Play
+cheating system = Cheat/Action Replay
+reset in game = Soft-Reset
+dma = Modo DMA
+protection = Bypass Protection
+linkage = Link with GBA
+sd save = Save directly to SD
+homebrew reset = Reset in Homebrew
+reset hotkey = Reset Hotkey
+
+[switches]
+Enable = Abilita
+Disable = Disabilita
+Global = Globali(%s)
+
+[ram allocation]
+title = Errore RAM
+memory allocation error = Errore di allocazione della memoria
+
+[scrolling]
+fast = Veloce
+medium = Medio
+slow = Lento
+
+[file settings]
+title = Impostazioni dei files
+show hidden files = Mostra files nascosti
+save extension = Estensione
+
+[interface settings]
+title = Impostazioni dell'Interfaccia
+scrolling speed = Velocità scorrimento
+filelist style = Stile vista
+oldschool = Old school
+modern = Moderno
+internal = Nome Interno
+animation = Animazione
+12 hour = 12-hour clock
+
+[gba settings]
+mode = Slot-2 模式
+
+[icon]
+icon = Show icon
+transparent = transparent
+as is = as is
+firmware = firmware
+
+[cheats]
+title = Cheats
+info = More…
+deselect = Deselect all
+DB Select = Seleziona il trucco
+Save = Salvare
+Cancel = Annullare
+
+[saveslot]
+title = Copia Save Slot
+confirm = Sei sicuro di voler copiare il save slot?
+target slot = Save Slot di destinazione
+
+[mainlist]
+flash memory = Flash Memory
+microsd card = microSD Card
+slot2 card = Slot2 Card
+favorites = Favorites
+
+[cheatt]
+Cheat ON = Cheat ON
+Cheat OFF =Cheat OFF
+
+[Wifidsp]
+wifi = Wifi aggiornamento del kernel 
+wifitext = sistema eseguirà l'aggiornamento del kernel, determinare per eseguire l'aggiornamento del kernel? Selezionare "No" per uscire dal processo di aggiornamento.
+[hotkeys]
+l-r-a-b-↓ = l-r-a-b-↓
+l-r-b-y-↓ = l-r-b-y-↓
+l-r-a-b-x-y = l-r-a-b-x-y
+b-y-touch = b-y-touch
+start-r-touch = start-r-touch
+
+[end]

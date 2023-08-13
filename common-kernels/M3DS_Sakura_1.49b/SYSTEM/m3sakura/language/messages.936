@@ -1,0 +1,309 @@
+; M3Sakura language resource for 'gb2312 Chinese simplified'.
+; Encoding format is UTF-8.
+
+; ----------------------------
+
+CD_CheckDisk_Start=开始进行简易磁盘检查...
+CD_CheckDisk_End=简易磁盘检查结束。
+CD_FatalError_Title=!!发现了严重的磁盘错误!!
+CD_FatalError_DuplicatedArea0=有文件重叠区域。
+CD_FatalError_DuplicatedArea1=部分文件夹已损坏。
+CD_FatalError_BrokenEntry0=目录进入异常。
+CD_FatalError_BrokenEntry1=一个以上的文件夹已损坏。
+CD_FatalError_IlligalClusterLink0=簇/群集的规格不合法
+CD_FatalError_IlligalClusterLink1=有文件夹损坏的可能性
+CD_FatalError_BrokenDirectoryLink0=目录夹排名有异常
+CD_FatalError_BrokenDirectoryLink1=文件夹已损坏
+CD_FatalError_BrokenUnicode0=目录夹排名有异常
+CD_FatalError_BrokenUnicode1=长文件名被破坏
+CD_FatalError_FileSizeError0=目录进入显示的容量大小
+CD_FatalError_FileSizeError1=和实际的文件夹容量大小不同
+CD_FatalError_UnknownError=未知错误
+CD_FatalError_RecoveryMsg0=恢复方法:
+CD_FatalError_RecoveryMsg1=将硬盘里备份的所有相关数据
+CD_FatalError_RecoveryMsg2=重新拷贝到磁盘
+CD_FatalError_StopApplication=终止应用软件
+CD_NotSupportDiskSize_Title=无法处理的磁盘格式
+CD_NotSupportDiskSize_Msg0=磁盘容量是否过大
+CD_NotSupportDiskSize_Msg1=或簇单元过小
+CD_NotSupportDiskSize_Msg2=
+CD_NotSupportDiskSize_RecoveryMsg0=恢复方法:
+CD_NotSupportDiskSize_RecoveryMsg1=请使用更大的簇单元
+CD_NotSupportDiskSize_RecoveryMsg2=尝试重新格式化
+CD_NotSupportDiskSize_RecoveryMsg3=
+CD_Fragments_Title=警告!!发现了分段碎片文件
+CD_Fragments_StringFormat=%d个文件内有%d个碎片
+CD_Fragments_Msg00=使用普通的自制软件一般没有问题
+CD_Fragments_Msg01=不过对于读取速度要求严格的软件和游戏
+CD_Fragments_Msg02=有可能会导致程序不能正常运行或出错
+CD_Fragments_Msg10=一般的解决方法
+CD_Fragments_Msg11=是在硬盘上备份全部文件后
+CD_Fragments_Msg12=格式化磁盘
+CD_Fragments_Msg13=请勿使用Windows的磁盘整理工具
+CD_Fragments_Ignore=按取消按钮忽略警告
+CD_CheckDuplicateCluster_Title=检查重复簇和碎片
+CD_CheckFATType_Title=检查FAT格式
+CD_FATType_StringFormat=识别为FAT%d格式
+CD_FATType_UnknownFATType=是不能兼容的FAT格式
+CD_FATType_WarnMsg00=不支持的FAT格式
+CD_FATType_WarnMsg10=最近比较没有发生此问题
+CD_FATType_WarnMsg11=M3Sakura推荐使用FAT16或FAT32
+CD_FATType_WarnMsg12=强烈推荐使用Panasonic的SDFormatter工具
+CD_FATType_WarnMsg20=特别频繁使用FAT32的时候
+CD_FATType_WarnMsg21=请进行磁盘检查
+CD_FATType_Ignore=继续执行的时候请按键
+CD_WriteError_Title=磁盘读写测试失败
+CD_WriteError_Msg0=磁盘可用空间不足
+CD_WriteError_Msg1=没有对应的驱动程序
+CD_WriteError_Msg2=CF/SD和适配器的相容性或接触不良
+CD_WriteError_Msg3=磁盘管理区域已损坏
+CD_WriteError_Msg4=
+CD_WriteError_Msg5=等,几种原因
+CD_WriteError_Msg6=
+CD_WriteError_Msg7=安全结束应用软件
+CD_WriteTest_Title=进行磁盘读写试验
+
+; ----------------------------
+
+SM_FileListMode=文件列表模式切换
+SM_Customize=系统设定
+SM_RestoreBG=还原壁纸
+SM_Langauge=语言版本设定
+SM_BackupSave=存档备份设定
+
+; ----------------------------
+
+CS_Title=M3樱花 系统设定
+
+CS_SkipSetup=启动时不显示设定窗口
+CS_BootCheckDisk=启动时进行磁盘检查
+
+CS_ClickSound=按键声音打开
+CS_EnableFadeEffect=画面切换有过渡效果
+CS_AutoLastState=允许启动时自动打开收藏夹
+
+CS_MoveFolderLocked=锁定当前文件夹，禁止切换
+CS_HiddenFilenameExt=隐藏文件的扩展名
+CS_HiddenNotSupportFileType=隐藏不支持的文件
+
+CS_ScreenSaver_BlackMode=屏幕保护使用最低亮度等级显示
+CS_EnabledFastStart=快速打开电影文件
+CS_LockLR=播放音乐时锁定L+R和R+L键
+
+CS_Cancel=取消
+CS_Ok=确定
+
+; ----------------------------
+IT_Message0=修复文件恢复菜单
+IT_Message1=
+IT_Message2=从备份的修复文件
+IT_Message3=恢复到过去的数据。
+IT_Message4=
+IT_Message5=选择想要恢复的数据后按L+A按钮
+IT_Message6=从修复文件备份中开始恢复数据，
+IT_Message7=按B按钮回到文件列表。
+IT_Message8=
+IT_Message9=注意:当前的数据将被清除，
+IT_Message10=最近一次的启动时间是「%d/%d/%d %d:%02d:%02d」
+IT_Message11=请充分确认后再执行恢复。
+IT_Message12=
+
+IT_NoTouchMessage=为了防止误操作，仅支持按键操作。
+IT_Executing=正在执行恢复中…
+
+IT_ItemMessageFormat= %dbyte. 启动时间 %d/%d/%d %d:%02d:%02d
+
+; ----------------------------
+
+ICS_Title=M3樱花 图片显示方式设定
+
+ICS_ShowInfomation=显示文件信息和帮助
+ICS_ShowControlIcons=显示触摸屏操作图标
+ICS_DoubleSpeedKey=加快按键操作移动速度
+ICS_DoubleSpeedTouch=加快触摸屏操作移动速度
+ICS_MultipleResume=记忆图片放大比率
+ICS_AutoFitting=自动缩小大尺寸JPEG图片
+ICS_EffectTitle=自定义桌面效果设置
+ICS_EffectHeightPadding=桌面上下屏幕连接视觉效果使用间隙
+ICS_EffectPastelForTopBG=桌面上屏幕显示使用白色蒙版效果
+ICS_EffectPastelForBottomBG=桌面下屏幕显示使用白色蒙版效果
+
+; ----------------------------
+
+TCS_Title=M3樱花 文本显示方式设定
+
+TCS_ShowClockAndFileInfo=使用双屏模式显示电子书
+TCS_ScreenSaver_BlackMode=屏幕保护使用最低亮度等级显示
+
+TCS_FontSizeTitle=字体大小
+TCS_FontSizeSmall=小
+TCS_FontSizeMiddle=中
+TCS_FontSizeLarge=大
+
+TCS_DetectCharCodeTitle=自动选择文字编码
+TCS_DetectCharCode_ANSI=ANSI (8bit ASCII)
+TCS_DetectCharCode_SJIS=简体中文(GBK)
+TCS_DetectCharCode_UTF16BE=UTF-16 big endian
+TCS_DetectCharCode_UTF16LE=UTF-16 little endian
+TCS_DetectCharCode_UTF8=UTF-8
+
+; ----------------------------
+
+IV_Help1=START: 选择壁纸 / SELECT: 选项设定
+IV_Help2=Ｙ:50% / Ｘ:100% / Ａ:200% / Ｂ:返回
+
+; ----------------------------
+
+TV_Help1=Ａ:翻页 / Ｂ:返回
+TV_Help2=Ｘ / Ｙ:保存书签/载入书签
+TV_Help3=SELECT:选项设定 / 编码:%s
+TV_Info=当前行数:%d / %d 行 (%.2f%%)
+
+TV_BookmarkText_Empty=%d: 没有保存
+TV_BookmarkText_Info=%d: %d行 %s %s
+
+; ----------------------------
+
+ERRMSG0_MemoryOverflow_CanRecovery=由于内存不足而产生错误，
+ERRMSG1_MemoryOverflow_CanRecovery=无法打开文件。
+
+ERRMSG0_NotSupportFileFormat=不支持的文件格式，
+ERRMSG1_NotSupportFileFormat=或者文件已损坏。
+
+ERRMSG0_ProgressiveJpeg=渐进式JPEG文件格式，
+ERRMSG1_ProgressiveJpeg=不能支持。
+
+ERRMSG0_Text0byte=空白文本文件，
+ERRMSG1_Text0byte=0字节的文件不能打开。
+
+ERRMSG0_OverflowLargeImage=图片尺寸太大，
+ERRMSG1_OverflowLargeImage=最大支持约500万像素的图片
+
+ERRMSG0_Diskfull=生成文件时发生严重错误，
+ERRMSG1_Diskfull=可能是磁盘空间已满，请关机
+
+ERRMSG0_GBAExtNotFind=未发现GBA扩展卡，
+ERRMSG1_GBAExtNotFind=无法运行GBA游戏
+
+ERRMSG0_GBAExtNotFind1=未发现GBA扩展卡，
+ERRMSG1_GBAExtNotFind1=联动功能无法实现
+
+; ----------------------------
+
+TM_Encode_Auto=自动检测
+TM_Encode_ANSI=ANSI 8bit
+TM_Encode_SJIS=SChinese(GBK)
+TM_Encode_UTF16LE=UTF-16 (LE)
+TM_Encode_UTF16BE=UTF-16 (BE)
+TM_Encode_UTF8=UTF-8
+
+; ----------------------------
+
+LCS_Title=M3樱花 语言版本设定
+
+LCS_GBK=简体中文版(Simplified Chinese)
+LCS_BIG5=繁体中文版(Traditional Chinese)
+LCS_KO=韩文版(Korean)
+
+; ----------------------------
+
+SU_Title=M3樱花 启动设定
+
+SU_CheckDisk=启动时进行磁盘检查
+SU_KeySound=按键声音打开
+SU_LineMode=文件列表模式设定
+SU_SingleLine=单行模式文件列表
+SU_DoubleLine=两行模式文件列表
+SU_ShowDialog=启动时不显示此画面
+SU_LangVer=语言版本设定
+
+;------------------------------
+
+SUR_Title=M3樱花 NDS游戏选项设定
+
+SUR_CheatFile=当前NDS金手指文件
+SUR_CheatFileButton=选择金手指文件...
+SUR_LinkageFile=当前GBA关联文件
+SUR_LinkageButton=选择关联文件...
+SUR_CheatItemButton=设置金手指选项...
+SUR_GenerateButton=生成即时存档备份
+SUR_CheatSwitch=金手指开关
+SUR_CheatSwitch0=关闭
+SUR_CheatSwitch1=开/关[Sel+←/→]
+SUR_CheatSwitch2=一直开启
+SUR_CheatSwitch3=Instant Codes
+SUR_ResetSwitch=重启动/即时存档开关
+SUR_ResetSwitch0=关闭
+SUR_ResetSwitch1=重启L+R+A+B+X
+SUR_ResetSwitch2=重启L+R+A+B+Y
+SUR_ResetSwitch3=即时L+R+SELECT
+SUR_ResetSwitch4=即时L+R+Y
+SUR_SlowMode=降速开关
+SUR_SlowMode0=关闭
+SUR_SlowMode1=L键+SELECT
+SUR_SlowMode2=R键+SELECT
+SUR_SlowModeLevel=降速级别
+SUR_SlowModeLevel0=1
+SUR_SlowModeLevel1=2
+SUR_SlowModeLevel2=3
+SUR_SlowModeLevel3=4
+SUR_SlowModeLevel4=5
+SUR_Method=运行模式
+SUR_Method0=普通模式
+SUR_Method1=联机运行
+SUR_Return=返回
+SUR_Run=运行
+
+;------------------------------
+
+SFL_Help1=请选择用户自定义的金手指文件
+SFL_Help2=请选择要关联的ＧＢＡ文件
+SFL_Help3=Ａ:确定返回 / Ｂ:取消返回
+
+;------------------------------
+
+CL_Title=金手指列表
+CL_Help=Ａ:改变选项 / Ｂ:保存返回
+CL_CheatNumber1=共有
+CL_CheatNumber2=个金手指选项
+
+;------------------------------
+
+SUG_Title=M3樱花 GBA游戏选项设定
+
+SUG_CheatFile=当前GBA金手指文件
+SUG_CheatFileButton=选择金手指文件...
+SUG_CheatSwitch=金手指开关
+SUG_CheatSwitch0=关闭
+SUG_CheatSwitch1=开启
+SUG_RTSwitch=即时存档开关
+SUG_RTSwitch0=关闭
+SUG_RTSwitch1=开启(L+R+A+B)
+SUG_Method=载入方式
+SUG_Method0=快速载入(不支持EPROM存档方式)
+SUG_Method1=补丁模式(推荐)
+SUG_Return=返回
+SUG_Run=运行
+SUG_Help=Ａ:保存运行 / Ｂ:保存返回
+
+;-----------------------------
+
+DM_Confirm=确认删除
+DM_Cancel=取消删除
+
+;-----------------------------
+
+SU_RegionVer=地区选择
+LCS_EUROPE=Europe
+LCS_ASIA=亚洲
+
+;-----------------------------
+
+SUR_GlobalButton=游戏全局设定
+SUR_TitleGlobal=全局设定
+SUR_MethodGlobal=全局设定模式
+SUR_GlobalMethod0=在新游戏中关闭设定
+SUR_GlobalMethod1=设定应用于新游戏
+SUR_GlobalMethod2=设定应用于所有游戏
+
+;------------------------------

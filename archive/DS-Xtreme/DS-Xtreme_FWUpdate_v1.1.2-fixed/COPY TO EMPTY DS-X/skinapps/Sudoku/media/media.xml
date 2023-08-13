@@ -1,0 +1,113 @@
+<?xml version="1.0" standalone=no>
+<media>
+
+	<textures>
+		<!-- Background texture -->
+		<texture id="9" format="256-Color" width="8" height="192" filepath="media/textures/bg.raw"/>
+
+		<!-- Dividers and top menu bar textures -->
+		<texture id="46" format="256-Color" width="192" height="8" filepath="media/textures/sudokuhoriz.raw"/>
+		<texture id="47" format="256-Color" width="8" height="192" filepath="media/textures/sudokuvert.raw"/>
+		<texture id="48" format="256-Color" width="248" height="16" filepath="media/textures/sudokumenubar.raw"/>
+
+		<!-- Sudoku tile textures-->
+		<texture id="50" format="256-Color" width="24" height="24" filepath="media/textures/sudoku0.raw"/>
+		<texture id="51" format="256-Color" width="24" height="24" filepath="media/textures/sudoku1.raw"/>
+		<texture id="52" format="256-Color" width="24" height="24" filepath="media/textures/sudoku2.raw"/>
+		<texture id="53" format="256-Color" width="24" height="24" filepath="media/textures/sudoku3.raw"/>
+		<texture id="54" format="256-Color" width="24" height="24" filepath="media/textures/sudoku4.raw"/>
+		<texture id="55" format="256-Color" width="24" height="24" filepath="media/textures/sudoku5.raw"/>
+		<texture id="56" format="256-Color" width="24" height="24" filepath="media/textures/sudoku6.raw"/>
+		<texture id="57" format="256-Color" width="24" height="24" filepath="media/textures/sudoku7.raw"/>
+		<texture id="58" format="256-Color" width="24" height="24" filepath="media/textures/sudoku8.raw"/>
+		<texture id="59" format="256-Color" width="24" height="24" filepath="media/textures/sudoku9.raw"/>
+
+		<!-- Side menu textures -->
+		<texture id="60" format="256-Color" width="32" height="32" filepath="media/textures/sudoku10.raw"/>
+		<texture id="70" format="256-Color" width="64" height="24" filepath="media/textures/sudoku11.raw"/>
+		<texture id="71" format="256-Color" width="64" height="24" filepath="media/textures/sudoku12.raw"/>
+		<texture id="72" format="256-Color" width="64" height="24" filepath="media/textures/sudoku13.raw"/>
+		<texture id="73" format="256-Color" width="64" height="24" filepath="media/textures/sudoku14.raw"/>
+		<texture id="74" format="256-Color" width="64" height="24" filepath="media/textures/sudoku15.raw"/>
+		<texture id="75" format="256-Color" width="64" height="24" filepath="media/textures/sudoku16.raw"/>
+
+		<!-- Sudoku dialog textures -->
+		<texture id="80" format="256-Color" width="8" height="160" filepath="media/textures/help_dialog_left.raw"/>
+		<texture id="81" format="256-Color" width="8" height="160" filepath="media/textures/help_dialog_middle.raw"/>
+		<texture id="82" format="256-Color" width="16" height="160" filepath="media/textures/help_dialog_right.raw"/>
+		<texture id="85" format="256-Color" width="144" height="96" filepath="media/textures/sudokuaboutbg.raw"/>
+
+		<!-- Sudoku message textures -->
+		<texture id="200" format="256-Color" width="104" height="32" filepath="media/textures/messagebox1.raw"/>
+		<texture id="201" format="256-Color" width="104" height="32" filepath="media/textures/messagebox2.raw"/>
+		<texture id="202" format="256-Color" width="104" height="32" filepath="media/textures/messagebox3.raw"/>
+		<texture id="203" format="256-Color" width="104" height="32" filepath="media/textures/messagebox4.raw"/>
+		<texture id="204" format="256-Color" width="80" height="24" filepath="media/textures/messagebox5.raw"/>
+
+		<!-- Keyboard textures -->
+		<texture id="100" format="256-Color" width="256" height="96" filepath="media/textures/keyboard1.raw"/>
+		<texture id="101" format="256-Color" width="256" height="96" filepath="media/textures/keyboard2.raw"/>
+		<texture id="102" format="256-Color" width="256" height="96" filepath="media/textures/keyboard3.raw"/>
+		<texture id="103" format="256-Color" width="256" height="104" filepath="media/textures/keyboarddispbg.raw"/>
+		<texture id="104" format="256-Color" width="16" height="16" filepath="media/textures/keyboardcursor.raw"/>
+		<texture id="105" format="256-Color" width="16" height="32" filepath="media/textures/keyboarddispcursor.raw"/>
+	</textures>
+	
+	<palettes>
+		<!-- Background palette -->
+		<palette id="2" filepath="media/palettes/bg.pal" />
+
+		<!-- Dividers and top menu bar palettes -->
+		<palette id="46" filepath="media/palettes/sudokuhoriz.pal" />
+		<palette id="47" filepath="media/palettes/sudokuvert.pal" />
+		<palette id="48" filepath="media/palettes/sudokumenubar.pal" />
+
+		<!-- Sudoku tile palettes-->
+		<palette id="50" filepath="media/palettes/sudoku0.pal" />
+		<palette id="51" filepath="media/palettes/sudoku1.pal" />
+		<palette id="52" filepath="media/palettes/sudoku2.pal" />
+		<palette id="53" filepath="media/palettes/sudoku3.pal" />
+		<palette id="54" filepath="media/palettes/sudoku4.pal" />
+		<palette id="55" filepath="media/palettes/sudoku5.pal" />
+		<palette id="56" filepath="media/palettes/sudoku6.pal" />
+		<palette id="57" filepath="media/palettes/sudoku7.pal" />
+		<palette id="58" filepath="media/palettes/sudoku8.pal" />
+		<palette id="59" filepath="media/palettes/sudoku9.pal" />
+
+		<!-- Side menu palettes -->
+		<palette id="60" filepath="media/palettes/sudoku10.pal" />
+		<palette id="70" filepath="media/palettes/sudoku11.pal" />
+		<palette id="71" filepath="media/palettes/sudoku12.pal" />
+		<palette id="72" filepath="media/palettes/sudoku13.pal" />
+		<palette id="73" filepath="media/palettes/sudoku14.pal" />
+		<palette id="74" filepath="media/palettes/sudoku15.pal" />
+		<palette id="75" filepath="media/palettes/sudoku16.pal" />
+
+		<!-- Sudoku dialog palettes -->
+		<palette id="80" filepath="media/palettes/help_dialog_left.pal" />
+		<palette id="81" filepath="media/palettes/help_dialog_middle.pal" />
+		<palette id="82" filepath="media/palettes/help_dialog_right.pal" />
+		<palette id="85" filepath="media/palettes/sudokuaboutbg.pal" />
+
+		<!-- Sudoku message palettes -->
+		<palette id="200" filepath="media/palettes/messagebox1.pal" />
+		<palette id="201" filepath="media/palettes/messagebox2.pal" />
+		<palette id="202" filepath="media/palettes/messagebox3.pal" />
+		<palette id="203" filepath="media/palettes/messagebox4.pal" />
+		<palette id="204" filepath="media/palettes/messagebox5.pal" />
+
+		<!-- Keyboard palettes -->
+		<palette id="100" filepath="media/palettes/keyboard1.pal" />
+		<palette id="101" filepath="media/palettes/keyboard2.pal" />
+		<palette id="102" filepath="media/palettes/keyboard3.pal" />
+		<palette id="103" filepath="media/palettes/keyboarddispbg.pal" />
+		<palette id="104" filepath="media/palettes/keyboardcursor.pal" />
+		<palette id="105" filepath="media/palettes/keyboarddispcursor.pal" />
+	</palettes>
+	
+	<fonts>
+		<font name="default" filepath="media/fonts/lucon.ttf" />
+	</fonts>
+	
+</media>
+	

@@ -1,0 +1,1278 @@
+<scene id="Calculator">
+	<script>
+		<![CDATA[
+
+			CALC <- null;
+			CALCWIDGETS <- null;
+			exitDelay <- null;
+
+			titleFade <- null;
+			backArrowFade <- null;
+				
+
+			class CalculatorWidgets
+			// Handles all calculator scene widgets.
+			{
+				constructor(_scene)
+				{
+					_buttonSet = [];
+					
+
+					_buttonSet.append(_scene.findWidget("calculator.backspaceButton"));
+					_buttonSet.append(_scene.findWidget("calculator.sinButton"));
+					_buttonSet.append(_scene.findWidget("calculator.memoryButton"));
+					_buttonSet.append(_scene.findWidget("calculator.sevenButton"));
+					_buttonSet.append(_scene.findWidget("calculator.eightButton"));
+					_buttonSet.append(_scene.findWidget("calculator.nineButton"));
+					_buttonSet.append(_scene.findWidget("calculator.divideButton"));
+					_buttonSet.append(_scene.findWidget("calculator.clearButton"));
+					_buttonSet.append(_scene.findWidget("calculator.inverseButton"));
+					_buttonSet.append(_scene.findWidget("calculator.cosButton"));
+					_buttonSet.append(_scene.findWidget("calculator.memoryrecallButton"));
+					_buttonSet.append(_scene.findWidget("calculator.fourButton"));
+					_buttonSet.append(_scene.findWidget("calculator.fiveButton"));
+					_buttonSet.append(_scene.findWidget("calculator.sixButton"));
+					_buttonSet.append(_scene.findWidget("calculator.multiplyButton"));
+					_buttonSet.append(_scene.findWidget("calculator.clearAllButton"));
+					_buttonSet.append(_scene.findWidget("calculator.cubeButton"));
+					_buttonSet.append(_scene.findWidget("calculator.tanButton"));
+					_buttonSet.append(_scene.findWidget("calculator.memoryplusButton"));
+					_buttonSet.append(_scene.findWidget("calculator.oneButton"));
+					_buttonSet.append(_scene.findWidget("calculator.twoButton"));
+					_buttonSet.append(_scene.findWidget("calculator.threeButton"));
+					_buttonSet.append(_scene.findWidget("calculator.subtractButton"));
+					_buttonSet.append(_scene.findWidget("calculator.equalButton"));
+					_buttonSet.append(_scene.findWidget("calculator.piButton"));
+					_buttonSet.append(_scene.findWidget("calculator.squarerootButton"));
+					_buttonSet.append(_scene.findWidget("calculator.squareButton"));
+					_buttonSet.append(_scene.findWidget("calculator.negativeButton"));
+					_buttonSet.append(_scene.findWidget("calculator.zeroButton"));
+					_buttonSet.append(_scene.findWidget("calculator.decimalButton"));
+					_buttonSet.append(_scene.findWidget("calculator.addButton"));
+
+
+					_displayBg = _scene.findWidget("calculator.displayBg");
+					_display = _scene.findWidget("calculator.display");
+					_display.setAlpha(24);
+					_display.setColor(0,0,0);
+					_dispSign = _scene.findWidget("calculator.signDisp");
+					_dispSign.setColor(5,5,15);
+					_dispSign.setAlpha(0);
+
+					_cursor = _scene.findWidget("calculator.cursor");
+					_cursorMove = MoveToEffect();
+					_cursorMove.setTarget(_cursor);
+					_cursorMove.setDuration(100);
+
+					_buttonFadeSet = [];
+
+					_transitionEffects = EffectGroup();
+				}
+
+				_buttonSet = null;
+				_buttonFadeSet = null;
+				_displayBg = null;
+				_display = null;
+				_dispSign = null;
+				_cursor = null;
+
+				_displayBgFade = null;
+				_displayFade = null;
+				_cursorMove = null;
+
+				_transitionEffects = null;
+			}
+
+			function CalculatorWidgets::InitializeWidgets()
+			// Initializes the calculator widgets.
+			{
+				SetupInitialLocations();
+				SetupMoves();
+				SetupNavigation();
+				HookButtonEvents();
+			}
+
+			function CalculatorWidgets::SetupMoves()
+			// Creates moveToEffects for each widget.
+			{
+				for(local i = 0; i < _buttonSet.len(); i++)
+				{
+					_buttonFadeSet.append(FadeEffect());
+					_buttonFadeSet[i].setTarget(_buttonSet[i]);
+					_buttonFadeSet[i].setDuration(600 + i*20);
+					_transitionEffects.addEffect(_buttonFadeSet[i]);
+				}
+
+					_displayBgFade = FadeEffect();
+					_displayBgFade.setTarget(_displayBg);
+					_displayBgFade.setDuration(600);
+					_transitionEffects.addEffect(_displayBgFade);
+
+					_displayFade = FadeEffect();
+					_displayFade.setTarget(_display);
+					_displayFade.setDuration(600);
+					_transitionEffects.addEffect(_displayFade);
+			}
+
+			function CalculatorWidgets::SetupInitialLocations()
+			// Sets up the initial offscreen locations of the widgets.
+			{
+				local x = 6;
+				local y = 85;
+				local SPC = 31;
+				local offy = 0;
+
+				for(local i = 0; i < _buttonSet.len(); i++)
+				{
+					_buttonSet[i].setX(x);
+					_buttonSet[i].setY(y);
+					_buttonSet[i].setAlpha(0);
+
+					_buttonSet[i].getWidget("background").setColor(31,31,31);
+
+					x += SPC;
+
+					if(x > 223)
+					{
+						if(offy == 1)
+							y += 1;
+
+						x = 6;
+						y += 26;
+						offy += 1;
+					}
+				}
+
+				_display.setX(10);
+				_display.setY(25);
+				_display.setAlpha(0);
+
+				_displayBg.setX(6);
+				_displayBg.setY(28);
+				_displayBg.setAlpha(0);
+			}
+
+			function CalculatorWidgets::SetupBeginTransition()
+			// Sets up the onscreen locations.
+			{
+				for(local i = 0; i < _buttonSet.len(); i++)
+				{
+					_buttonFadeSet[i].setEndAlpha(31);
+				}
+
+				_displayFade.setEndAlpha(31);
+				_displayBgFade.setEndAlpha(31);
+			}
+
+			function CalculatorWidgets::SetupEndTransition()
+			// Sets up the final offscreen locations after ending the scene.
+			{
+				local x = 40;
+				local y = 69;
+				local SPC = 31;
+				local offset = 800;
+
+				for(local i = 0; i < _buttonSet.len(); i++)
+				{
+					_buttonFadeSet[i].setDestination(x + offset,y);
+
+					x += SPC;
+
+					if(x > 240)
+					{
+						x = 40;
+						y += 31;
+						offset -= 100;
+					}
+				}
+
+				_xabacusMove.setDestination(-264,44);
+				_displayBgFade.setDestination(-266,7);
+			}
+
+			function CalculatorWidgets::HookButtonEvents()
+			// Hooks button events to the button widgets.
+			{
+				for(local i = 0; i < _buttonSet.len(); i++)
+				{
+					_buttonSet[i].onFocusGained(OnFocusGained.bindenv(this));
+					_buttonSet[i].onFocusLost(OnFocusLost.bindenv(this));
+					_buttonSet[i].onButtonClick(OnButtonClick);
+				}
+			}
+
+			function CalculatorWidgets::OnFocusGained(event) 
+			// Called when a button is focused. Highlight the widget to show that it is in focus.
+			{
+				local button = event.getTarget();
+
+				if(button.getId() == "calculator.equalButton")
+				{
+					_cursor.getWidget("reg_cur").setVisible(false);
+					_cursor.getWidget("eq_cur").setVisible(true);
+				}
+				else
+				{
+					_cursor.getWidget("reg_cur").setVisible(true);
+					_cursor.getWidget("eq_cur").setVisible(false);
+				}
+
+				_cursorMove.setDestination(button.getX() - 3, button.getY() - 3);
+				_cursorMove.start();
+
+				button.getWidget("background").setColor(27,27,29);
+			}
+
+			function CalculatorWidgets::OnFocusLost(event) 
+			// Called when a button focus is lost. Reset the colors of the widget to show that it is no longer in focus.
+			{
+				local button = event.getTarget();
+
+				button.getWidget("background").setColor(31,31,31);
+			}
+
+			function CalculatorWidgets::OnButtonClick(event) 
+			// Called when a button is clicked. Determines which CALC function to call.
+			{
+				local button = event.getTarget();
+				local buttonId = button.getId();
+
+				local ID = buttonId.slice(11);
+
+				if(ID == "oneButton")
+					CALC.DigitEntry(1);
+				else if(ID == "twoButton")
+					CALC.DigitEntry(2);
+				else if(ID == "threeButton")
+					CALC.DigitEntry(3);
+				else if(ID == "fourButton")
+					CALC.DigitEntry(4);
+				else if(ID == "fiveButton")
+					CALC.DigitEntry(5);
+				else if(ID == "sixButton")
+					CALC.DigitEntry(6);
+				else if(ID == "sevenButton")
+					CALC.DigitEntry(7);
+				else if(ID == "eightButton")
+					CALC.DigitEntry(8);
+				else if(ID == "nineButton")
+					CALC.DigitEntry(9);
+				else if(ID == "zeroButton")
+					CALC.DigitEntry(0);
+				else if(ID == "addButton")
+					CALC.Add();
+				else if(ID == "subtractButton")
+					CALC.Subtract();
+				else if(ID == "multiplyButton")
+					CALC.Multiply();
+				else if(ID == "divideButton")
+					CALC.Divide();
+				else if(ID == "clearButton")
+					CALC.Clear();
+				else if(ID == "clearAllButton")
+					CALC.ClearAll();
+				else if(ID == "equalButton")
+					CALC.Equal();
+				else if(ID == "decimalButton")
+					CALC.Decimal();
+				else if(ID == "negativeButton")
+					CALC.Negative();
+				else if(ID == "memoryButton")
+					CALC.Memory();
+				else if(ID == "memoryrecallButton")
+					CALC.MemoryRecall();
+				else if(ID == "memoryplusButton")
+					CALC.MemoryPlus();
+				else if(ID == "squareButton")
+					CALC.Square();
+				else if(ID == "squarerootButton")
+					CALC.Squareroot();
+				else if(ID == "backspaceButton")
+					CALC.Backspace();
+				else if(ID == "sinButton")
+					CALC.Sin();
+				else if(ID == "cosButton")
+					CALC.Cos();
+				else if(ID == "tanButton")
+					CALC.Tan();
+				else if(ID == "inverseButton")
+					CALC.Inverse();
+				else if(ID == "cubeButton")
+					CALC.Cubed();
+				else if(ID =="piButton")
+					CALC.Pi();
+
+				CALCWIDGETS._display.setText(CALC.DisplayAsString());
+
+					// Changes the sign display to reflect the current operator being held.
+				if(CALC._operator == 0)
+					CALCWIDGETS._dispSign.setAlpha(0);
+				else
+				{
+					CALCWIDGETS._dispSign.setAlpha(15);
+					CALCWIDGETS._dispSign.setTexture(50 + CALC._operator);
+					CALCWIDGETS._dispSign.setPalette(50 + CALC._operator);
+				}
+			}
+
+			function CalculatorWidgets::SetupNavigation()
+			// Sets up the navigation between buttons.
+			{
+				for(local i = 0; i < _buttonSet.len(); i++)
+				{
+					_buttonSet[i].setNorth( _buttonSet[((i + 24) % 32) % 31] );
+					_buttonSet[i].setSouth( _buttonSet[((i + 8) % 32) % 31] );
+					_buttonSet[i].setWest( _buttonSet[(((i + 7) % 8) + (i / 8)*8 ) % 31] );
+					_buttonSet[i].setEast( _buttonSet[(((i + 1) % 8) + (i / 8)*8 ) % 31] );
+				}
+
+				_buttonSet[7].setNorth(_buttonSet[23]);
+				_buttonSet[24].setWest(_buttonSet[23]);
+				_buttonSet[23].setSouth(_buttonSet[7]);
+				_buttonSet[30].setEast(_buttonSet[23]);
+			}	
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			function OnButtonPressed(event)
+			// Called when a button is pressed on the device
+			{
+				if(event.getButton() == event.B)
+				{
+					CALCWIDGETS._display.setText("Exiting..     ");
+
+					exitDelay.start();
+				}
+			}	
+
+			function OnBackTouchClick(event)
+			// Called when the back arrow button is touch clicked
+			{
+				CALCWIDGETS._display.setText("Exiting..     ");
+
+				exitDelay.start();
+			}
+
+			function Exit(event)
+			// Exits skin. Loads user default skin.
+			{
+				Application.launchSystem();
+			}
+
+			function OnBegin(event)
+			// Called when the scene begins.
+			{
+				titleFade.setEndAlpha(31);
+				backArrowFade.setEndAlpha(31);
+
+				titleFade.start();
+				backArrowFade.start();
+
+				CALCWIDGETS.SetupBeginTransition();
+
+				CALCWIDGETS._transitionEffects.start();
+
+				CALCWIDGETS._buttonSet[12].focus();
+			}
+			
+			function OnEnd(event)
+			// Called when the scene ends.
+			{
+				CALCWIDGETS.SetupEndTransition();
+
+				event.setEndEffect(CALCWIDGETS._transitionEffects);		
+			}
+			
+			// Called when the scene is initialized ( after the XML loads)
+			function OnInit()
+			{
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+
+				// Create a calculator object with display width 11
+				//  ( 9 digits + sign + decimal point )
+				CALC = Calculator(11);
+
+				CALCWIDGETS = CalculatorWidgets(scene);
+				CALCWIDGETS.InitializeWidgets();
+
+				// Create effects
+				exitDelay = WaitEffect();
+				exitDelay.setTarget(scene);
+				exitDelay.setDuration(100);
+				exitDelay.onStop(Exit.bindenv(this));
+
+				local title = scene.findWidget("calculator.title");
+				title.setAlpha(0);
+				titleFade = FadeEffect();
+				titleFade.setTarget(title);
+				titleFade.setDuration(500);
+
+				local backArrow = scene.findWidget("calculator.backButton");
+				backArrow.setAlpha(0);
+				backArrowFade = FadeEffect();
+				backArrowFade.setTarget(backArrow);
+				backArrowFade.setDuration(500);
+
+				// Hook back arrow touch click event
+				backArrow.onTouchClick(OnBackTouchClick.bindenv(this));	
+			
+				// Hook scene events
+				scene.onBegin(OnBegin);
+				scene.onEnd(OnEnd);
+				scene.onButtonPressed(OnButtonPressed);
+
+				// Initially focus the five button
+				CALCWIDGETS._buttonSet[15].focus();
+			}
+		]]>
+	</script>
+	
+	<objects>	
+		<image id="calculator.bg">
+			<properties>
+				<bounds x="0" y="0" width="256" height="192"/>
+				<texture-id>1</texture-id>
+				<palette-id>1</palette-id>
+			</properties>
+		</image>
+		<image id="calculator.headerGradient">
+			<properties>
+				<depth>2</depth>
+				<bounds x="0" y="0" width="256" height="28"/>
+				<texture-id>3</texture-id>
+				<palette-id>3</palette-id>
+			</properties>
+		</image>
+		<label id="calculator.title">
+			<properties>
+				<bounds x="44" y="0" width="90" height="25"/>
+				<depth>4</depth>
+				<color red="5" blue="5" green="5"/>
+				<font name="default" size="12"/>
+				<text>DS-X Calculator</text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>middle</vertical-align>
+				<!-- <shadow xoffset="2" yoffset="2"/> -->
+			</properties>
+		</label>
+		<image id="calculator.colorBlocks">
+			<properties>
+				<depth>10</depth>
+				<bounds x="8" y="9" width="32" height="8"/>
+				<texture-id>2</texture-id>
+				<palette-id>2</palette-id>
+			</properties>
+		</image>
+		<button id="calculator.cursor">
+			<properties>
+				<bounds x="125" y="200" width="33" height="54"/>
+				<depth>2</depth>
+			</properties>
+			<objects>
+				<image id="reg_cur">
+					<properties>
+						<bounds x="0" y="0" width="33" height="28"/>
+						<texture-id>14</texture-id>
+						<palette-id>14</palette-id>
+					</properties>
+				</image>
+				<image id="eq_cur">
+					<properties>
+						<bounds x="0" y="0" width="33" height="54"/>
+						<texture-id>15</texture-id>
+						<palette-id>15</palette-id>
+						<visible>false</visible>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="calculator.displayBg">
+			<properties>
+				<bounds x="6" y="28" width="244" height="56"/>
+			</properties>
+			<objects>
+				<image id="calculator.panelleft">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="0" width="8" height="56"/>
+						<texture-id>6</texture-id>
+						<palette-id>6</palette-id>
+					</properties>
+				</image>
+				<image id="calculator.panelcenter">
+					<properties>
+						<depth>2</depth>
+						<bounds x="8" y="0" width="228" height="56"/>
+						<texture-id>7</texture-id>
+						<palette-id>7</palette-id>
+					</properties>
+				</image>
+				<image id="calculator.panelright">
+					<properties>
+						<depth>2</depth>
+						<bounds x="236" y="0" width="8" height="56"/>
+						<texture-id>8</texture-id>
+						<palette-id>8</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<label id="calculator.display">
+			<properties>
+				<bounds x="10" y="25" width="231" height="56" /> 
+				<depth>11</depth>
+				<font name="default" size="27" /> 
+				<text>0.</text> 
+				<wrap-type>clip</wrap-type> 
+				<justify>right</justify> 
+				<vertical-align>middle</vertical-align> 
+				<color red="5" blue="5" green="5"/>
+			</properties>
+		</label>
+		<image id="calculator.signDisp">
+			<properties>
+				<bounds x="10" y="39" width="28" height="28" /> 
+				<depth>4</depth> 
+				<texture-id>53</texture-id> 
+				<palette-id>53</palette-id> 
+			</properties>
+		</image>
+		<button id="calculator.backButton">
+			<properties>
+				<bounds x="232" y="0" width="24" height="24"/>
+				<depth>12</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="24" height="24"/>
+						<texture-id>9</texture-id>
+						<palette-id>9</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="calculator.oneButton">
+			<properties>
+				<bounds x="102" y="131" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>41</texture-id>
+						<palette-id>41</palette-id>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="calculator.twoButton">
+			<properties>
+				<bounds x="133" y="131" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>42</texture-id>
+						<palette-id>42</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.threeButton">
+			<properties>
+				<bounds x="164" y="131" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>43</texture-id>
+						<palette-id>43</palette-id>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="calculator.fourButton">
+			<properties>
+				<bounds x="102" y="100" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>44</texture-id>
+						<palette-id>44</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.fiveButton">
+			<properties>
+				<bounds x="133" y="100" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>45</texture-id>
+						<palette-id>45</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.sixButton">
+			<properties>
+				<bounds x="164" y="100" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>46</texture-id>
+						<palette-id>46</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.sevenButton">
+			<properties>
+				<bounds x="102" y="69" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>47</texture-id>
+						<palette-id>47</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.eightButton">
+			<properties>
+				<bounds x="133" y="69" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>48</texture-id>
+						<palette-id>48</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.nineButton">
+			<properties>
+				<bounds x="164" y="69" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>49</texture-id>
+						<palette-id>49</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.zeroButton">
+			<properties>
+				<bounds x="133" y="162" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.addButton">
+			<properties>
+				<bounds x="195" y="162" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-3" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>51</texture-id>
+						<palette-id>51</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.subtractButton">
+			<properties>
+				<bounds x="195" y="131" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-3" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>52</texture-id>
+						<palette-id>52</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.multiplyButton">
+			<properties>
+				<bounds x="195" y="100" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>53</texture-id>
+						<palette-id>53</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.divideButton">
+			<properties>
+				<bounds x="195" y="69" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-3" width="27" height="23"/>
+						<depth>8</depth>
+						<texture-id>54</texture-id>
+						<palette-id>54</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.negativeButton">
+			<properties>
+				<bounds x="102" y="162" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-3" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>67</texture-id>
+						<palette-id>67</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.decimalButton">
+			<properties>
+				<bounds x="164" y="162" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>55</texture-id>
+						<palette-id>55</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.backspaceButton">
+			<properties>
+				<bounds x="226" y="100" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>57</texture-id>
+						<palette-id>57</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.clearButton">
+			<properties>
+				<bounds x="226" y="69" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>56</texture-id>
+						<palette-id>56</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.sinButton">
+			<properties>
+				<bounds x="40" y="69" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>62</texture-id>
+						<palette-id>62</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.cosButton">
+			<properties>
+				<bounds x="40" y="100" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>63</texture-id>
+						<palette-id>63</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.tanButton">
+			<properties>
+				<bounds x="40" y="131" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>64</texture-id>
+						<palette-id>64</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.memoryButton">
+			<properties>
+				<bounds x="71" y="69" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>58</texture-id>
+						<palette-id>58</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.memoryrecallButton">
+			<properties>
+				<bounds x="71" y="100" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>59</texture-id>
+						<palette-id>59</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.memoryplusButton">
+			<properties>
+				<bounds x="71" y="131" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.squareButton">
+			<properties>
+				<bounds x="71" y="162" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>65</texture-id>
+						<palette-id>65</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.squarerootButton">
+			<properties>
+				<bounds x="40" y="162" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>66</texture-id>
+						<palette-id>66</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.clearAllButton">
+			<properties>
+				<bounds x="40" y="162" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>68</texture-id>
+						<palette-id>68</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.inverseButton">
+			<properties>
+				<bounds x="40" y="162" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-3" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>70</texture-id>
+						<palette-id>70</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.cubeButton">
+			<properties>
+				<bounds x="40" y="162" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-2" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>69</texture-id>
+						<palette-id>69</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.piButton">
+			<properties>
+				<bounds x="40" y="162" width="27" height="22"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="22"/>
+						<texture-id>5</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="-3" width="27" height="24"/>
+						<depth>8</depth>
+						<texture-id>71</texture-id>
+						<palette-id>71</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="calculator.equalButton">
+			<properties>
+				<bounds x="226" y="131" width="27" height="48"/>
+				<depth>8</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="27" height="48"/>
+						<texture-id>11</texture-id>
+						<palette-id>11</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="10" width="27" height="22"/>
+						<depth>8</depth>
+						<texture-id>61</texture-id>
+						<palette-id>61</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+	</objects>
+	
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+</scene>
+

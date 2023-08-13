@@ -1,0 +1,180 @@
+[start menu]
+setup=設定
+save=セーブ
+cheat=チート
+Hotkey=ホットキー
+gbaLink=GBA Extend
+
+[setup menu]
+item0=ＳＤスピード
+item1=実行モード
+item2=言語
+item3=輝度
+item4=マルチセーブ
+item5=テーマ
+
+[file handle menu]
+noText=クリップボードが空く 
+item0=コピー
+item1=切り取り
+item2=貼り付け
+item3=削除
+
+[sd speed menu]
+item0=1x スピード
+item1=2x スピード
+item2=3x スピード
+item3=4x スピード
+item4=5x スピード
+item5=6x スピード
+item6=7x スピード
+item7=8x スピード
+item8=フールスピード
+
+[run mode menu]
+item0=クリーン
+item1=パッチ
+
+[patch menu]
+item0=オン
+item1=オフ
+
+[archive type menu]
+item0=セーブ 0
+item1=セーブ 1
+item2=セーブ 2
+item3=セーブ 3
+item4=データなし
+
+[save menu]
+item0=4K
+item1=64K
+item2=512K
+item3=2M/4M
+
+[ui type menu]
+title=Infit!
+text=テーマはもう変わりました。「OK」でリスタート、「No」は後でリスタートします。
+item0=Blue
+item1=Christmas
+item2=China ink
+item3=Pink
+
+[cheat menu]
+item0=オン
+item1=オフ
+
+[AntiPiracy menu]
+item0=Turn on
+item1=Turn off
+item2=No support
+
+[gbaLink menu]
+item0=NULL
+item1=Link
+item2=Rumble
+
+[brightness menu]
+item0=レベル 1
+item1=レベル 2
+item2=レベル 3
+item3=レベル 4
+
+[language menu]
+title=注意！
+text=システム言語はもう変わりました。「OK」でリスタート、「No」は後でリスタートします。
+item0=英語
+item1=中国語簡体字
+item2=中国語繁体字
+item3=日本語
+item4=フランス語
+item5=イタリア語
+item6=オランダ語
+item7=スペイン語
+item8=韓国語
+
+[set game info]
+item0=マルチセーブ
+item1=セーブサイズ
+item2=チート
+item3=Bybass anti-piracy
+
+[text wnd info]
+title=注意！
+item0=%s は存在しません。壊れた恐れがあります！
+item1=攻略
+
+[slow wnd]
+title=スロー
+item0=オフ
+item1=オン
+
+[message box]
+yes=はい
+no=いいえ
+ok=ＯＫ
+cancel=キャンセル
+
+[progress window]
+processing_copy=コピー中、電源を切らないでください！
+
+[copy file error]
+title=エラー！
+text=コピー中、エラーが発生しました！
+
+[stop copying file]
+title=確認
+text=コピーを中止しますか？
+
+[no free space]
+title=エラー!
+text=スペースが足りないため、コピーできません。
+
+[copy file exists]
+title=注意！
+text=ファイルはもう存在しました。「OK」で上書きますか?
+
+[copy dest is directory]
+title=エラー!
+text=ディレクトリはもう存在しました。コピーできません。
+
+[move dest is directory]
+title=エラー!
+text=ディレクトリはもう存在しました。移動できません。
+
+[no copy dir]
+title=エラー！
+text=ディレクトリをコピー・移動できません。
+
+[confirm delete file]
+title=確認
+text=削除されたファイルは回復できません。「%s」を削除しますか？
+
+[do not delete directory]
+title=注意！
+text=ディレクトリは空いていないため、削除できません。 
+
+[setting window]
+ok=ＯＫ
+savetype=セーブのタイプ
+cancel=キャンセル
+confirm=確認
+confirm_text=設定をセーブしますか？
+
+[main interface title]
+item0=ゲームに戻る
+item1=攻略
+item2=セーブ
+item3=ロード
+item4=スローモーション 
+item5=ＬＣＤの輝度
+item6=チートコード
+item7=メインメニューに戻る
+
+
+[disk info]
+total=ディスクスペース: %s
+used=使われたスペース: %s
+free=空きスペース: %s
+
+[end]

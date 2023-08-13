@@ -1,0 +1,465 @@
+<scene>
+	<script>
+		<![CDATA[
+			
+			// Store some of the widgets for later use
+			// so we don't have to look them up each time we need them.
+			songList <- null;
+
+			scrollbar <- null;
+
+			// Store the scene effects for easy access or to keep them in scope.
+			SceneEffects <- {
+				songListMove = null, // Move the list in from the right
+				scrollBarMove = null,
+				titleFade = null,
+				
+				transitionEffects = null, // Group of transition effects
+			}		
+				
+			
+			// Set the final onscreen locations as the destinations of the effects			
+			function SetupBeginTransition()
+			{
+				SceneEffects.songListMove.setDestination(6,31);
+				SceneEffects.scrollBarMove.setDestination(239,31);
+				SceneEffects.titleFade.setEndAlpha(31);
+			}			
+
+			// Set the initial offscreen locations as the destinations of the effects							
+			function SetupEndTransition()
+			{	
+				SceneEffects.songListMove.setDestination(287,31);				
+				SceneEffects.scrollBarMove.setDestination(522,31);	
+				SceneEffects.titleFade.setEndAlpha(0);				
+			}
+			
+			// This is called when the scene is being displayed
+			function OnBegin(event)
+			{
+				AddSongsToList();
+
+				scrollbar.UpdateByListCount();
+				local selectedIndex = songList.getSelectedIndex();
+				songList.setSelected(0);
+				songList.setSelected(1);
+				songList.setSelected(selectedIndex);
+
+				// Set the destinations appropriately on the transition 
+				// effects for the starting sequence
+				SetupBeginTransition();
+				
+				// Play the start transition
+				SceneEffects.transitionEffects.start();
+
+				// Allign scroller to top of scrollbar
+				if(songList.getSelectedIndex() == 0)
+				{
+					scrollbar._scrollMove.setDestination(1,14);
+					scrollbar._scrollMove.start();
+				}
+
+				songList.focus();
+
+			}
+			
+			// This is called before the next scene is displayed
+			function OnEnd(event)
+			{			
+				// Set the destinations appropriately on the transition 
+				// effects for the ending sequence
+				SetupEndTransition();
+				
+				// Setting the effect as the end effect on the event
+				// will cause the framework to wait for the effect to 
+				// finish before starting the next scene
+				event.setEndEffect(SceneEffects.transitionEffects);
+			}
+			
+			// Adds songs from the Library to the song list widget according
+			//   to the songListType
+			function AddSongsToList()
+			{
+				songList.clearItems();
+				
+				local songArray = null;
+				
+				if(songListType == "all")
+				{
+					songArray = Library.getSongs();
+				}
+				else if(songListType == "genre")
+				{
+					songArray = Library.getSongsForGenre(songListKey);
+				}
+				else if(songListType == "album")
+				{
+					songArray = Library.getSongsForAlbum(songListKey);				
+				}
+				else if(songListType == "artist")
+				{
+					print("Getting songs for artist " + songListKey);
+					songArray = Library.getSongsForArtist(songListKey);				
+				}
+	
+				foreach(i, song in songArray)
+				{
+					// Create the item
+					local item = ListItem("song_" + i);
+					
+					// Apply the template
+					songList.applyItemTemplate(item);
+				
+					// Store the item
+					item.setItem(song);
+
+					// Set the title label text
+					local title = item.findWidget("title");
+					title.setText(song.getName());
+		
+					// Add it to the list
+					songList.addItem(item);
+				}
+			}
+			
+			// Called when a list item is activated
+			function OnItemActivated(event)
+			{
+				local songItem = songList.getSelectedItem();
+				local song = songItem.getItem();
+
+				NowPlaying.clear();
+				NowPlaying.addSong(song);
+				NowPlaying.startPlaying(0);
+				Application.getSceneManager().selectScene("AudioMain");
+			}
+
+			// Called when the D-Pad is pressed on the device while the list is focused
+			function OnDPadPressed(event)
+			{
+				local direction = event.getDirection();
+				if(direction == event.Left)
+				{
+					GoBack();
+				}
+			}
+			
+			// Called when the back button is clicked
+			function OnBackClick(event)
+			{
+				GoBack();
+			}	
+			
+			// Summons a pop-up menu at the given coordinates
+			function DoPopupMenu(x, y)
+			{
+				local selectedItem = songList.getSelectedItem();
+				// Create a PopupMenu object and add items
+				local popup = PopupMenu();
+				popup.addMenuItem("Play Song");
+				popup.addMenuItem("Queue Song");
+				popup.addMenuItem("Cancel");
+
+				// Display the dialog
+				popup.show(x, y);			
+				
+				local result = popup.getSelectedItem();
+				if(result == 0)
+				{
+					NowPlaying.clear();
+					NowPlaying.addSong(selectedItem.getItem());
+					NowPlaying.startPlaying(0);
+					Application.getSceneManager().selectScene("AudioMain");	
+				}
+				else if(result == 1)
+				{
+					NowPlaying.addSong(selectedItem.getItem());
+				}
+			}
+			
+			// Called when a button on the device is held
+			function OnButtonHold(event)
+			{
+				if(event.getButton() == event.A)
+				{
+					local selectedItem = songList.getSelectedItem();
+					DoPopupMenu(50,50);
+				}			
+			}
+			
+			// Called when a touch hold event occurs on the list widget
+			function OnTouchHold(event)
+			{
+				DoPopupMenu(event.getX(),event.getY());
+			}
+				
+			// Called when a button on the device is released		
+			function OnButtonReleased(event)
+			{
+				if(event.getButton() == event.B)
+				{
+					GoBack();
+				}
+			}				
+			
+			// Transitions back to the previous list menu
+			function GoBack()
+			{
+				if(songListType == "genre")
+				{
+					Application.getSceneManager().selectScene("GenreList");
+				}
+				else if(songListType == "album" || songListType == "artist" )
+				{
+					Application.getSceneManager().selectScene("AlbumList");					
+				}
+				else
+				{
+					Application.getSceneManager().selectScene("Library");					
+				}
+			}
+			
+			// This is called when the selected index in the list is changed
+			// We swap the texture which indicates to the user that the item
+			// is selected.
+			function OnSelectedIndexChanged(event)
+			{
+				local newIndex = event.getNewIndex();
+				local oldIndex = event.getOldIndex();
+				
+				if(oldIndex >= 0)
+				{
+					// Change the previously selected list item to reflect the loss of focus
+					local oldItem = songList.getItem(oldIndex);
+					local oldBackground = oldItem.findWidget("background");
+					oldBackground.setTexture(400);
+					oldBackground.setPalette(400);
+				}
+				
+				if(newIndex >= 0)
+				{
+					// Change the newly selected list item to reflect focus has been gained
+					local newItem = songList.getItem(newIndex);
+					local newBackground = newItem.findWidget("background");
+					newBackground.setTexture(401);
+					newBackground.setPalette(401);
+				}
+			}							
+						
+			// This is called when the scene is initialized (i.e., after the XML is loaded)
+			function OnInit()
+			{
+				// The current event is always available from the Application object
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+
+				// Store some vars
+				songList = scene.findWidget("songlist");
+
+				// Set up initial locations (offscreen)
+				// This could obviously be done in the xml, but sometimes it's nice to
+				// keep the xml defined as what it will look like once fully presented
+				songList.setX(287);
+				scene.findWidget("scrollbar").setX(522);
+				scene.findWidget("media.title").setAlpha(0);
+
+				local tex_list = [700, 720, 721, 722, 723, 724];
+				scrollbar = Scrollbar(songList, scene.findWidget("scrollbar"), tex_list, 6);
+									
+				// Set up events
+				SceneEffects.titleFade = FadeEffect();
+				SceneEffects.titleFade.setTarget(scene.findWidget("media.title"));
+				SceneEffects.titleFade.setDuration(300);
+				
+				SceneEffects.songListMove = MoveToEffect();
+				SceneEffects.songListMove.setTarget(songList);
+				SceneEffects.songListMove.setDuration(300);
+
+				SceneEffects.scrollBarMove = MoveToEffect();
+				SceneEffects.scrollBarMove.setTarget(scene.findWidget("scrollbar"));
+				SceneEffects.scrollBarMove.setDuration(300);
+									
+				// Group the events so they can be used as an end transition
+				SceneEffects.transitionEffects = EffectGroup();
+				SceneEffects.transitionEffects.addEffect(SceneEffects.songListMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.scrollBarMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.titleFade);
+						
+				// Hook scene events
+				scene.onBegin(OnBegin);								
+				scene.onEnd(OnEnd);
+				scene.onButtonHold(OnButtonHold);
+				scene.onButtonReleased(OnButtonReleased);
+				
+				// Hook list events
+				songList.onSelectedIndexChanged(OnSelectedIndexChanged);
+				songList.onItemActivated(OnItemActivated);
+				songList.onTouchHold(OnTouchHold);
+				songList.onDPadPressed(OnDPadPressed);
+				
+				local back = scene.findWidget("back");
+				back.onButtonClick(OnBackClick);			
+			}
+		]]>
+	</script>
+
+	<objects>
+		<image id="game.bg">
+			<properties>
+				<bounds x="0" y="0" width="256" height="192"/>
+				<texture-id>1</texture-id>
+				<palette-id>1</palette-id>
+			</properties>
+		</image>
+		<image id="main.headerGradient">
+			<properties>
+				<depth>2</depth>
+				<bounds x="0" y="0" width="256" height="28"/>
+				<texture-id>7</texture-id>
+				<palette-id>7</palette-id>
+			</properties>
+		</image>
+		<image id="media.colorBlocks">
+			<properties>
+				<depth>10</depth>
+				<bounds x="8" y="9" width="32" height="8"/>
+				<texture-id>3</texture-id>
+				<palette-id>3</palette-id>
+			</properties>
+		</image>
+		<label id="media.title">
+			<properties>
+				<bounds x="44" y="0" width="90" height="25"/>
+				<depth>10</depth>
+				<color red="5" blue="5" green="5"/>
+				<font name="default" size="12"/>
+				<text>Songs</text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>middle</vertical-align>
+				<!-- <shadow xoffset="2" yoffset="2"/> -->
+			</properties>
+		</label>
+		<image id="media.buttonmapOk">
+			<properties>
+				<depth>10</depth>
+				<bounds x="6" y="179" width="32" height="16"/>
+				<texture-id>4</texture-id>
+				<palette-id>4</palette-id>
+			</properties>
+		</image>
+		<image id="media.buttonmapBack">
+			<properties>
+				<depth>10</depth>
+				<bounds x="211" y="179" width="40" height="16"/>
+				<texture-id>5</texture-id>
+				<palette-id>5</palette-id>
+			</properties>
+		</image>
+		<image id="media.buttonmapOptions">
+			<properties>
+				<depth>10</depth>
+				<bounds x="38" y="182" width="104" height="8"/>
+				<texture-id>402</texture-id>
+				<palette-id>402</palette-id>
+			</properties>
+		</image>
+		<button id="scrollbar">
+			<properties>
+				<bounds x="239" y="31" width="12" height="141"/>
+				<depth>6</depth>
+			</properties>
+			<objects>
+				<image id="bar">
+					<properties>
+						<depth>1</depth>
+						<bounds x="-1" y="14" width="13" height="113"/>
+						<texture-id>700</texture-id>
+						<palette-id>700</palette-id>
+					</properties>
+				</image>
+				<image id="scroller">
+					<properties>
+						<depth>2</depth>
+						<bounds x="1" y="40" width="10" height="10"/>
+						<texture-id>720</texture-id>
+						<palette-id>720</palette-id>
+					</properties>
+				</image>
+				<image id="uparrow">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="0" width="12" height="14"/>
+						<texture-id>721</texture-id>
+						<palette-id>721</palette-id>
+					</properties>
+				</image>
+				<image id="downarrow">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="127" width="12" height="14"/>
+						<texture-id>722</texture-id>
+						<palette-id>722</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+    <list id="songlist">
+      <properties>
+        <bounds x="6" y="31" width="232" height="144"/>
+        <depth>6</depth>
+      </properties>
+      
+      <objects>
+        <!-- bg image or whatever here -->
+      </objects>
+      
+      <item-template>
+        <properties>
+          <bounds x="0" y="0" width="232" height="24"/>
+          <depth>1</depth>
+        </properties>
+        <objects>
+		<image id="background">
+			<properties>
+				<bounds x="0" y="0" width="232" height="22"/>
+				<texture-id>400</texture-id>
+				<palette-id>400</palette-id>
+			</properties>
+		</image>
+          <label id="title">
+            <properties>
+              <bounds x="6" y="1" width="200" height="20"/>
+              <depth>2</depth>
+		<color red="15" blue="15" green="15"/>
+              <font name="default" size="10"/>
+              <wrap-type>clip</wrap-type>
+              <justify>left</justify>
+              <vertical-align>middle</vertical-align> 
+            </properties>       
+          </label>
+        </objects>
+      </item-template>
+    </list>
+		<button id="back">
+			<properties>
+				<bounds x="232" y="0" width="24" height="24"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="24" height="24"/>
+						<texture-id>2</texture-id>
+						<palette-id>2</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+	</objects>
+
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+</scene>

@@ -1,0 +1,187 @@
+<dialog>
+	<script>
+		<![CDATA[
+
+			// Store the scene effects to keep them in scope
+			SceneEffects <- {
+				dialogMove = null, // moves the dialog
+			}
+
+			function OnOkClick(event)
+			{
+				local dialog = event.getTarget().getParentScene();
+				dialog.setModel(1);
+				dialog.hide();
+			}
+
+			function OnCancelClick(event)
+			{
+				local dialog = event.getTarget().getParentScene();
+				dialog.hide();
+			}
+			
+			function OnButtonFocusGained(event)
+			{
+				// Swap the button image
+				local button = event.getTarget();
+				local image = button.getWidget("background");
+				image.setTexture(25);	
+				image.setPalette(25);
+			}
+
+			function OnButtonFocusLost(event)
+			{
+				// Swap the button image
+				local button = event.getTarget();
+				local image = button.getWidget("background");
+				image.setTexture(24);	
+				image.setPalette(24);
+			}
+
+			function OnBegin(event)
+			{
+				local dialog = event.getTarget();
+				dialog.setY(-132);
+				
+				local button1 = dialog.findWidget("dialog.buttonActive");
+				button1.focus();
+				
+				SceneEffects.dialogMove.setDestination(dialog.getX(),30);
+				SceneEffects.dialogMove.start();
+			}				
+
+			function OnEnd(event)
+			{
+				local dialog = event.getTarget();
+				
+				if(dialog.getModel() == 1)
+				{
+					SceneEffects.dialogMove.setDestination(dialog.getX(),193);		
+				}
+				else
+				{
+					SceneEffects.dialogMove.setDestination(dialog.getX(),-132);		
+				}
+				event.setEndEffect(SceneEffects.dialogMove);
+			}
+
+			function OnInit()
+			{
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+				local button1 = scene.findWidget("dialog.buttonActive");
+				local button2 = scene.findWidget("dialog.buttonInactive");
+				local myCard = scene.findWidget("main.myCard");
+				local myMedia = scene.findWidget("main.myMedia");
+						
+				// Setup navigation between buttons
+				button1.setEast(button2);
+				button2.setWest(button1);
+				
+				// Hook the events of the buttons
+				button1.onFocusGained(OnButtonFocusGained);
+				button1.onFocusLost(OnButtonFocusLost);
+				button1.onButtonClick(OnOkClick);
+				
+				// Hook the events of the buttons
+				button2.onFocusGained(OnButtonFocusGained);
+				button2.onFocusLost(OnButtonFocusLost);
+				button2.onButtonClick(OnCancelClick);
+				
+				SceneEffects.dialogMove = MoveToEffect();
+				SceneEffects.dialogMove.setTarget(scene);
+				SceneEffects.dialogMove.setDuration(300);
+				
+				scene.onBegin(OnBegin);
+				scene.onEnd(OnEnd);				
+			}
+			
+		]]>
+	</script>
+
+	<properties>
+			<bounds x="28" y="30" width="200" height="132"/>	
+	</properties>
+
+	<objects>
+		<image id="dialog.bg">
+			<properties>
+				<bounds x="0" y="0" width="200" height="132"/>
+				<texture-id>9</texture-id>
+				<palette-id>2</palette-id>
+			</properties>
+		</image>
+		<label id="label">
+			<properties>
+				<bounds x="0" y="40" width="200" height="36"/>
+				<depth>2</depth>
+				<color red="15" blue="15" green="15"/>
+				<font name="default" size="14"/>
+				<text>Launch App?</text>
+				<wrap-type>clip</wrap-type>
+				<justify>center</justify>
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<button id="dialog.buttonActive">
+			<properties>
+				<bounds x="3" y="90" width="95" height="36"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+				<properties>
+					<bounds x="0" y="0" width="95" height="36"/>
+					<texture-id>25</texture-id>
+					<palette-id>25</palette-id>
+				</properties>
+				</image>	
+				<label id="label">
+					<properties>
+						<bounds x="0" y="0" width="95" height="36"/>
+						<depth>2</depth>
+						<font name="default" size="14"/>
+						<text>Ok</text>
+						<wrap-type>clip</wrap-type>
+						<justify>center</justify>
+						<vertical-align>middle</vertical-align>
+						<shadow/>
+					</properties>
+				</label>		
+			</objects>			
+		</button>
+
+		<button id="dialog.buttonInactive">
+			<properties>
+				<bounds x="102" y="90" width="95" height="36"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+				<properties>
+					<bounds x="0" y="0" width="95" height="36"/>
+					<texture-id>24</texture-id>
+					<palette-id>24</palette-id>
+				</properties>
+				</image>	
+				<label id="label">
+					<properties>
+						<bounds x="0" y="0" width="95" height="36"/>
+						<depth>2</depth>
+						<font name="default" size="14"/>
+						<text>Cancel</text>
+						<wrap-type>clip</wrap-type>
+						<justify>center</justify>
+						<vertical-align>middle</vertical-align>
+						<shadow/>
+					</properties>
+				</label>			
+			</objects>			
+		</button>
+	</objects>
+
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+	
+</dialog>

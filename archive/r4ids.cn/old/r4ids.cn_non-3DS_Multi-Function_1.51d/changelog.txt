@@ -1,0 +1,30 @@
+wood rpg & r4 firmware.
+gbatemp.net exclusive software!
+
+important information:
+there is a wood r4i gold firmware that is released by R4iDSN team (http://www.r4ids.cn site) since version 1.17. this firmware is produced in
+close cooperation between me and the R4iDSN team and gets the same support from me as my other builds.
+
+caution: 
+wood r4i gold firmware is only for the r4i gold cards from http://www.r4ids.cn. other r4i gold cards, due different hardware, are not supported.
+
+1.28
+core:
+- for homebrew that use libefs efs_path filled by loader.
+
+interface:
+- freeze in cheat window fixed then shown additional info for some cheats.
+- wrong text clipping fixed.
+- portuguese localization updated.
+
+compatibility:
+- 'lost identities (europe)' fixed.
+- 'dragon quest monsters - joker 2 - professional (japan)' fixed.
+- 'tron - evolution (usa)' fixed.
+- force save size to 512K for 'monster farm ds 2 - yomigaeru! master breeder densetsu (japan)' & 'monster rancher ds (usa)'.
+- 'powerful golf (japan)' fixed.
+- 'tobidase! kagaku-kun chikyuu daitanken! nazo no chinkai seibutsu ni idome! (japan)' fixed.
+- 'digimon story - super xros wars red (japan)' fixed.
+- 'digimon story - super xros wars blue (japan)' fixed.
+- 'know how 2 (europe)' fixed.
+- 'okamiden (europe)' fixed.

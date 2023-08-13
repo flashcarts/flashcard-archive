@@ -1,0 +1,177 @@
+[Traduction par Alfadir]
+[start menu]
+setup=Config.
+save=Sauv.
+cheat=Triche
+Hotkey=Raccourcis
+gbaLink=GBA Extend
+
+[setup menu]
+item0=Vitesse SD
+item1=Mode d'exécution
+item2=Langue
+item3=Luminosit?item4=Sauv. multiple
+item5=Thèmes
+
+[file handle menu]
+noText=Presse-papier vide
+item0=Copier
+item1=Couper
+item2=Coller
+item3=Effacer
+
+[sd speed menu]
+item0=1x
+item1=2x
+item2=3x
+item3=4x
+item4=5x
+item5=6x
+item6=7x
+item7=8x
+item8=Max.
+
+[run mode menu]
+item0=Clean
+item1=Patch
+
+[patch menu]
+item0=Activer
+item1=Désactiver
+
+[archive type menu]
+item0=Sauv. 0
+item1=Sauv. 1
+item2=Sauv. 2
+item3=Sauv. 3
+item4=Vide
+
+[save menu]
+item0=4K
+item1=64K
+item2=512K
+item3=2M/4M
+
+[ui type menu]
+title=Thème
+text=Thème modifi? OUI pour appliquer les changements, NON pour redémarrer plus tard.
+item0=Bleu
+item1=Noël
+item2=Encre de Chine
+item3=Rose
+
+[cheat menu]
+item0=Désactiver
+item1=Activer
+
+[AntiPiracy menu]
+item0=Turn on
+item1=Turn off
+item2=No support
+
+[gbaLink menu]
+item0=NULL
+item1=Link
+item2=Rumble
+
+[brightness menu]
+item0=Intensit?1
+item1=Intensit?2
+item2=Intensit?3
+item3=Intensit?4
+
+[language menu]
+title=Attention!
+text=Langue changée, OUI pour appliquer, NON pour redémarrer plus tard.
+item0=English
+item1=S.Chinese
+item2=T.Chinese
+item3=Japanese
+item4=Français
+item5=Italiano
+item6=Deutsch
+item7=Español
+item8=Korean
+
+[set game info]
+item0=Multi-sauv.
+item1=Taille sauv.
+item2=Triche
+item3=Bybass anti-piracy
+
+[text wnd info]
+title=Attention!
+item0=%s fichier inexistant ou endommag?item1=Doc. Jeux
+
+[slow wnd]
+title=Ralentissement
+item0=Désactiver
+item1=Activer
+
+[message box]
+yes=OUI
+no=NON
+ok=OK
+cancel=Annuler
+
+[progress window]
+processing_copy=Copie en cours, ne pas éteindre!
+
+[copy file error]
+title=Erreur!
+text=Erreur lors de la copie
+
+[stop copying file]
+title=Confirmer
+text=Arrêter la copie ?
+
+[no free space]
+title=Erreur !
+text=Pas assez d'espace, copie annulée
+
+[copy file exists]
+title=Attention!
+text=Nom de fichier déj?existant, OUI pour écraser le fichier existant?
+
+[copy dest is directory]
+title=Erreur !
+text=Répertoire déj?existant, copie impossible
+
+[move dest is directory]
+title=Erreur !
+text=Répertoire déj?existant, déplacement impossible
+
+[no copy dir]
+title=Erreur !
+text=Impossible de copier/déplacer un répertoire
+
+[confirm delete file]
+title=Confirmer
+text=L'effacement sera définitif, OUI pour continuer ? "%s"?
+
+[do not delete directory]
+title=Attention !
+text=Le répertoire n'est pas vide, impossible de l'effacer
+
+[setting window]
+ok=OUI
+savetype=Taille Sauv.
+cancel=Annuler
+confirm=Confirmer
+confirm_text = Enregistrer les réglages ?
+
+[main interface title]
+item0=Retour au Jeu
+item1=Doc. Jeu
+item2=Sauvegarde
+item3=Chargement
+item4=Ralentissement
+item5=Luminosit?item6=Triche
+item7=Redémarrer
+
+[disk info]
+total=Espace disque: %s
+used=Espace Utilis?%s
+free=Espace Restant: %s
+
+[end]

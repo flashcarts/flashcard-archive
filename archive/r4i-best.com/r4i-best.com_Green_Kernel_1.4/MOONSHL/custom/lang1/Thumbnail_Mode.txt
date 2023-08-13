@@ -1,0 +1,6 @@
+Enable thumbnails for
+
+Type 0 = Disable both
+Type 1 = Thumbnail selector
+Type 2 = Fullscreen playback 
+Type 3 = Enable both

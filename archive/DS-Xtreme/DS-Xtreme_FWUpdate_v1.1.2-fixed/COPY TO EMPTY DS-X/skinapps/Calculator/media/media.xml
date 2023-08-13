@@ -1,0 +1,123 @@
+<?xml version="1.0" standalone=no>
+<media>
+
+	<textures>
+		<!-- Background texture -->
+		<texture id="1" format="256-Color" width="256" height="192" filepath="media/textures/bg.raw"/>
+
+		<!-- Header textures -->
+		<texture id="2" format="256-Color" width="32" height="8" filepath="media/textures/header_bullets_main.raw"/>
+		<texture id="3" format="256-Color" width="8" height="28" filepath="media/textures/header_gradient.raw"/>
+		<texture id="9" format="256-Color" width="24" height="24" filepath="media/textures/back_arrow.raw"/>
+
+		<!-- Display panel textures -->
+		<texture id="6" format="256-Color" width="8" height="56" filepath="media/textures/panel_left.raw"/>
+		<texture id="7" format="256-Color" width="8" height="56" filepath="media/textures/panel_center.raw"/>
+		<texture id="8" format="256-Color" width="8" height="56" filepath="media/textures/panel_right.raw"/>
+
+		<!-- Calculator button textures -->
+		<texture id="5" format="256-Color" width="32" height="24" filepath="media/textures/calc_but.raw"/>
+		<texture id="11" format="256-Color" width="32" height="48" filepath="media/textures/calc_but_eq.raw"/>
+
+		<!-- Cursor textures -->
+		<texture id="14" format="256-Color" width="40" height="32" filepath="media/textures/cursor.raw"/>
+		<texture id="15" format="256-Color" width="40" height="56" filepath="media/textures/cursoreq.raw"/>
+
+		<!-- Calculator button icon textures -->
+		<texture id="41" format="256-Color" width="32" height="32" filepath="media/textures/calc_but01.raw"/>
+		<texture id="42" format="256-Color" width="32" height="32" filepath="media/textures/calc_but02.raw"/>
+		<texture id="43" format="256-Color" width="32" height="32" filepath="media/textures/calc_but03.raw"/>
+		<texture id="44" format="256-Color" width="32" height="32" filepath="media/textures/calc_but04.raw"/>
+		<texture id="45" format="256-Color" width="32" height="32" filepath="media/textures/calc_but05.raw"/>
+		<texture id="46" format="256-Color" width="32" height="32" filepath="media/textures/calc_but06.raw"/>
+		<texture id="47" format="256-Color" width="32" height="32" filepath="media/textures/calc_but07.raw"/>
+		<texture id="48" format="256-Color" width="32" height="32" filepath="media/textures/calc_but08.raw"/>
+		<texture id="49" format="256-Color" width="32" height="32" filepath="media/textures/calc_but09.raw"/>
+		<texture id="50" format="256-Color" width="32" height="32" filepath="media/textures/calc_but10.raw"/>
+		<texture id="51" format="256-Color" width="32" height="32" filepath="media/textures/calc_but11.raw"/>
+		<texture id="52" format="256-Color" width="32" height="32" filepath="media/textures/calc_but12.raw"/>
+		<texture id="53" format="256-Color" width="32" height="32" filepath="media/textures/calc_but13.raw"/>
+		<texture id="54" format="256-Color" width="32" height="32" filepath="media/textures/calc_but14.raw"/>
+		<texture id="55" format="256-Color" width="32" height="32" filepath="media/textures/calc_but15.raw"/>
+		<texture id="56" format="256-Color" width="32" height="32" filepath="media/textures/calc_but16.raw"/>
+		<texture id="57" format="256-Color" width="32" height="32" filepath="media/textures/calc_but17.raw"/>
+		<texture id="58" format="256-Color" width="32" height="32" filepath="media/textures/calc_but18.raw"/>
+		<texture id="59" format="256-Color" width="32" height="24" filepath="media/textures/calc_but19.raw"/>
+		<texture id="60" format="256-Color" width="32" height="24" filepath="media/textures/calc_but20.raw"/>
+		<texture id="61" format="256-Color" width="32" height="32" filepath="media/textures/calc_but21.raw"/>
+		<texture id="62" format="256-Color" width="32" height="32" filepath="media/textures/calc_but22.raw"/>
+		<texture id="63" format="256-Color" width="32" height="32" filepath="media/textures/calc_but23.raw"/>
+		<texture id="64" format="256-Color" width="32" height="32" filepath="media/textures/calc_but24.raw"/>
+		<texture id="65" format="256-Color" width="32" height="32" filepath="media/textures/calc_but25.raw"/>
+		<texture id="66" format="256-Color" width="32" height="24" filepath="media/textures/calc_but26.raw"/>
+		<texture id="67" format="256-Color" width="32" height="32" filepath="media/textures/calc_but27.raw"/>
+		<texture id="68" format="256-Color" width="32" height="24" filepath="media/textures/calc_but28.raw"/>
+		<texture id="69" format="256-Color" width="32" height="32" filepath="media/textures/calc_but29.raw"/>
+		<texture id="70" format="256-Color" width="32" height="32" filepath="media/textures/calc_but30.raw"/>
+		<texture id="71" format="256-Color" width="32" height="32" filepath="media/textures/calc_but31.raw"/>
+
+	</textures>
+	
+	<palettes>
+		<!-- Background palette -->
+		<palette id="1" filepath="media/palettes/bg.pal" />
+
+		<!-- Header palettes -->
+		<palette id="2" filepath="media/palettes/header_bullets_main.pal" />
+		<palette id="3" filepath="media/palettes/header_gradient.pal" />
+		<palette id="9" filepath="media/palettes/back_arrow.pal" />
+
+		<!-- Display panel palettes -->
+		<palette id="6" filepath="media/palettes/panel_left.pal" />
+		<palette id="7" filepath="media/palettes/panel_center.pal" />
+		<palette id="8" filepath="media/palettes/panel_right.pal" />
+
+		<!-- Calculator button palettes -->
+		<palette id="5" filepath="media/palettes/calc_but.pal" />
+		<palette id="11" filepath="media/palettes/calc_but_eq.pal" />
+
+		<!-- Cursor palettes -->
+		<palette id="14" filepath="media/palettes/cursor.pal"/>
+		<palette id="15" filepath="media/palettes/cursoreq.pal"/>
+
+		<!-- Calculator button icon palettes -->
+		<palette id="41" filepath="media/palettes/calc_but01.pal" />
+		<palette id="42" filepath="media/palettes/calc_but02.pal" />
+		<palette id="43" filepath="media/palettes/calc_but03.pal" />
+		<palette id="44" filepath="media/palettes/calc_but04.pal" />
+		<palette id="45" filepath="media/palettes/calc_but05.pal" />
+		<palette id="46" filepath="media/palettes/calc_but06.pal" />
+		<palette id="47" filepath="media/palettes/calc_but07.pal" />
+		<palette id="48" filepath="media/palettes/calc_but08.pal" />
+		<palette id="49" filepath="media/palettes/calc_but09.pal" />
+		<palette id="50" filepath="media/palettes/calc_but10.pal" />
+		<palette id="51" filepath="media/palettes/calc_but11.pal" />
+		<palette id="52" filepath="media/palettes/calc_but12.pal" />
+		<palette id="53" filepath="media/palettes/calc_but13.pal" />
+		<palette id="54" filepath="media/palettes/calc_but14.pal" />
+		<palette id="55" filepath="media/palettes/calc_but15.pal" />
+		<palette id="56" filepath="media/palettes/calc_but16.pal" />
+		<palette id="57" filepath="media/palettes/calc_but17.pal" />
+		<palette id="58" filepath="media/palettes/calc_but18.pal" />
+		<palette id="59" filepath="media/palettes/calc_but19.pal" />
+		<palette id="60" filepath="media/palettes/calc_but20.pal" />
+		<palette id="61" filepath="media/palettes/calc_but21.pal" />
+		<palette id="62" filepath="media/palettes/calc_but22.pal" />
+		<palette id="63" filepath="media/palettes/calc_but23.pal" />
+		<palette id="64" filepath="media/palettes/calc_but24.pal" />
+		<palette id="65" filepath="media/palettes/calc_but25.pal" />
+		<palette id="66" filepath="media/palettes/calc_but26.pal" />
+		<palette id="67" filepath="media/palettes/calc_but27.pal" />
+		<palette id="68" filepath="media/palettes/calc_but28.pal" />
+		<palette id="69" filepath="media/palettes/calc_but29.pal" />
+		<palette id="70" filepath="media/palettes/calc_but30.pal" />
+		<palette id="71" filepath="media/palettes/calc_but31.pal" />
+
+	</palettes>
+	
+	<fonts>
+		<font name="default" filepath="media/fonts/font.ttf" />
+	</fonts>
+	
+</media>
+	

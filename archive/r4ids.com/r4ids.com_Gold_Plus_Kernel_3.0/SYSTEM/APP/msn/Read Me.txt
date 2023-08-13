@@ -1,0 +1,20 @@
+Beup Live 0.7 Release Notes:
+
+It seems to be that Microsoft took down MSNP9 Protocol.
+This means that Beup Live doesn't work anymore, since it uses MSNP9.
+I downgraded Beup Live to MSNP8 (which still works) for the people who still wants to use Beup Live.
+The only bad side is that there is no avatar support in MSNP8.
+
+Changelog:
+- Fixed: You can login again with Beup Live.
+(No more "Connection to notification server has died." error)
+- Changed from MSNP9 to MSNP8.
+
+Have fun chatting!
+
+
+Thanks to .:Mik:. for his help on this release
+-HtheB
+
+Check out for updates at:
+www.HtheB.com

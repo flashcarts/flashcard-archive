@@ -1,0 +1,180 @@
+[start menu]
+setup=Config
+save=Saver
+cheat=Trucos
+Hotkey=Hotkey
+gbaLink=GBA Extend
+
+[setup menu]
+item0=Velocidad SD 
+item1=Modo de Ejecución
+item2=Lenguaje
+item3=Brillo
+item4=Multi-Saver
+item5=Tema
+
+[file handle menu]
+noText=Limpiar portapapeles 
+item0=Copiar
+item1=Cortar
+item2=Pegar
+item3=Borrar
+
+[sd speed menu]
+item0=Vel. 1x
+item1=Vel. 2x
+item2=Vel. 3x
+item3=Vel. 4x
+item4=Vel. 5x
+item5=Vel. 6x
+item6=Vel. 7x
+item7=Vel. 8x
+item8=Rápido
+
+[run mode menu]
+item0=Limpio
+item1=Parchar
+
+[patch menu]
+item0=Activar
+item1=Desactivar
+
+[archive type menu]
+item0=Save 0
+item1=Save 1
+item2=Save 2
+item3=Save 3
+item4=Null
+
+[save menu]
+item0=4K
+item1=64K
+item2=512K
+item3=2M/4M
+
+[ui type menu]
+title=¡Atención!
+text=Ha elegido cambiar el tema, presione OK para reiniciar el sistema y realizar los cambios, presione 'No' para salir sin hacer cambios.
+item0=Blue
+item1=Christmas
+item2=China ink
+item3=Pink
+
+[cheat menu]
+item0=Desactivar
+item1=Activar
+
+[AntiPiracy menu]
+item0=Turn on
+item1=Turn off
+item2=No support
+
+[gbaLink menu]
+item0=NULL
+item1=Link
+item2=Rumble
+
+[brightness menu]
+item0=Nivel 1
+item1=Nivel 2
+item2=Nivel 3
+item3=Nivel 4
+
+[language menu]
+title=¡Atención!
+text=Se ha cambiado el lenguaje del sistema, presione OK para reiniciar el sistema para visualizar los cambios, presione 'No' si desea reiniciar manualmente en otro momento.
+item0=Inglés
+item1=Chino S.
+item2=Chino T.
+item3=Japonés
+item4=Francés
+item5=Italiano
+item6=Alemán
+item7=Español
+item8=Koreano
+
+[set game info]
+item0=Multi-Saver
+item1=Tamaño
+item2=Trucos
+item3=Bybass anti-piracy
+
+[text wnd info]
+title=¡Atención!
+item0=¡El archivo %s no existe o esta dañado!
+item1=Guía de Juego
+
+[slow wnd]
+title=Vel. Lenta
+item0=APAGADO
+item1=ENCENDIDO
+
+[message box]
+yes=SI
+no=NO
+ok=OK
+cancel=Cancelar
+
+[progress window]
+processing_copy=¡Copiando archivo, no apague la consola!
+
+[copy file error]
+title=¡Error!
+text=Ocurrio un error al copiar el archivo
+
+[stop copying file]
+title=Confirmar
+text=¿Cancelar la copia de este archivo?
+
+[no free space]
+title=¡Error!
+text=No hay suficiente espacio, no fue posible copiar el archivo
+
+[copy file exists]
+title=¡Atención!
+text=El nombre de archivo ya existe, presione OK para sobreescribir el archivo 
+
+[copy dest is directory]
+title=¡Error!
+text=El directorio ya existe, no fue posible copiar el archivo
+
+[move dest is directory]
+title=¡Error!
+text=El directorio ya existe, no fue posible mover el archivo
+
+[no copy dir]
+title=¡Error!
+text=No se pueden copiar o mover directorios
+
+[confirm delete file]
+title=Confirmar
+text=Los archivos no se pueden recuperar despues de borrados, presione OK para borrar el archivo "%s"
+
+[do not delete directory]
+title=¡Atención!
+text=El directorio seleccionado no esta vacio, no es posible borrarlo
+
+[setting window]
+ok=OK
+savetype=Tipo de Archivo
+cancel=Cancelar
+confirm=Confirmar
+confirm_text = ¿Almacenar la configuración actual?
+
+[main interface title]
+item0=Regresar al juego
+item1=Guía del Juego
+item2=Guardar
+item3=Cargar
+item4=Cámara Lenta
+item5=Brillo del LCD
+item6=Trucos
+item7=Regresar al men?principal
+
+
+[disk info]
+total=Capacidad Total en Memoria: %s
+used=Espacio Utilizado: %s
+free=Espacio Libre: %s
+
+[end]

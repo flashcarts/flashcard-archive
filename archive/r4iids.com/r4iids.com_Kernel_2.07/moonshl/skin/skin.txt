@@ -1,0 +1,15 @@
+
+Please copy the *.BMP/skin.ini file onto the shell folder of CF/SD/EXFS.
+
+このフォルダに入っている*.BMP/skin.iniファイルをCF/SD/EXFSのshellフォルダにコピーしてください。
+スキンファイルが他のスキンデータを混ざらないようにしてください。
+
+空架（aska）様のウェブページにある素材画像を使用させていただきました。
+
+Silverry moon light
+http://ciel.oheya.to/
+
+Copyright (c) 2002-2006 Silverry moon light all rights reserved.
+
+このファイル群の画像データを単体で利用することを禁止します。
+

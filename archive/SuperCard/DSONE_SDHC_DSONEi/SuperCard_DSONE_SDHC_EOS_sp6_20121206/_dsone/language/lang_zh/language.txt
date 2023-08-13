@@ -1,0 +1,173 @@
+[start menu]
+setup=設置
+save=存檔
+cheat=金手指
+Hotkey=熱鍵設置
+gbaLink=GBA擴展
+
+[setup menu]
+item0=卡速
+item1=運行模式
+item2=語言
+item3=亮度
+item4=多存檔
+item5=界面風格
+
+[file handle menu]
+noText=剪切板無內容 
+item0=復制
+item1=剪切
+item2=粘貼
+item3=刪除
+
+[sd speed menu]
+item0=1x倍速
+item1=2x倍速
+item2=3x倍速
+item3=4x倍速
+item4=5x倍速
+item5=6x倍速
+item6=7x倍速
+item7=8x倍速
+item8=全速
+
+[run mode menu]
+item0=clean
+item1=補丁
+
+[gbaLink menu]
+item0=無
+item1=聯動
+item2=振動
+
+[patch menu]
+item0=關閉
+item1=開啟
+
+[archive type menu]
+item0=存檔 0
+item1=存檔 1
+item2=存檔 2
+item3=存檔 3
+item4=無存檔
+
+[save menu]
+item0=4K
+item1=64K
+item2=512K
+item3=2M/4M
+
+[ui type menu]
+title=提示！
+text=改變了主題，要現在重啟更換新的主題嗎？選“否”稍后再重啟
+item0=水晶藍
+item1=聖誕節
+item2=中國風
+item3=科技粉
+
+[cheat menu]
+item0=關閉
+item1=開啟
+item2=設置
+
+[AntiPiracy menu]
+item0=開啟
+item1=關閉
+item2=不支持
+
+[brightness menu]
+item0=亮度1
+item1=亮度2
+item2=亮度3
+item3=亮度4
+
+[language menu]
+title=問題
+text=改變了系統語言，要現在重啟更換新的語言嗎？選“否”稍后再重啟
+item0=英語
+item1=中文
+item2=繁體
+item3=日語
+item4=法語
+item5=意大利語
+item6=德語
+item7=西班牙語
+item8=韓語
+
+[set game info]
+item0=存檔選擇
+item1=存檔大小
+item2=金手指
+item3=反燒錄
+
+[text wnd info]
+title=警告
+item0=%s 文件不存在或損壞！
+item1=攻略
+
+[slow wnd]
+title=減慢
+item0=關
+item1=開
+
+[message box]
+yes=是
+no=否
+ok=確定
+cancel=取消
+
+[progress window]
+processing_copy=正在復制文件，請不要關機！
+
+[copy file error]
+title=錯誤
+text=復制文件時發生錯誤
+
+[stop copying file]
+title=確認
+text=要停止拷貝這個文件嗎？
+
+[no free space]
+title=錯誤
+text=磁盤空間不足，無法完成拷貝
+
+[copy file exists]
+title=警告
+text=有相同文件名的文件存在，要覆蓋嗎?
+
+[copy dest is directory]
+title=錯誤
+text=有相同名字的目錄存在，不能將文件復制到這里
+
+[move dest is directory]
+title=錯誤
+text=有相同名字的目錄存在，不能將文件剪切到這里
+
+[no copy dir]
+title=錯誤
+text=不能復制或剪切一個目錄
+
+[confirm delete file]
+title=確認
+text=刪除文件后不能恢復，確實要刪除 “%s” 嗎？
+
+[do not delete directory]
+title=警告
+text=該目錄下還有文件或者目錄，不能直接刪除
+
+[main interface title]
+item0=返回游戲
+item1=攻略
+item2=存檔
+item3=讀檔
+item4=減慢
+item5=亮度設置
+item6=金手指
+item7=返回主界面
+
+[disk info]
+total=磁盤容量：%s
+used=已用空間：%s
+free=剩余空間：%s
+
+[end]

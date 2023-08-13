@@ -1,0 +1,311 @@
+<dialog>
+	<script>
+		<![CDATA[
+
+			// Store the scene effects to keep them in scope
+			SceneEffects <- {
+				dialogMove = null, // moves the dialog
+				dialogResize = null,
+
+				transitionGroup = null,
+			}
+
+			openDelay <- null;
+
+			// Store the fade effects
+			FadeEffects <- {
+				label = null,
+				button1 = null,
+				button2 = null,
+				bg = null,
+				stroke = null,
+
+				fadeGroup = null,
+			}
+
+			function OnOkClick(event)
+			{
+				// Handles the touch event on the ok button
+				local dialog = event.getTarget().getParentScene();
+				dialog.setModel(1);
+				dialog.hide();
+			}
+
+			function OnCancelClick(event)
+			{
+				// Handles the touch event on the cancel button
+				local dialog = event.getTarget().getParentScene();
+				dialog.setModel(0);
+				dialog.hide();
+			}
+
+			function OnButtonPressed(event)
+			{
+				// Handles the events of pressing A or B on the device
+
+				local dialog = event.getTarget().getParentScene();
+
+				if(event.getButton() == event.A)
+				{
+					dialog.setModel(1);
+					dialog.hide();
+				}
+				else if(event.getButton() == event.B)
+				{
+					dialog.setModel(0);
+					dialog.hide();
+				}
+			}
+
+			function OnBegin(event)
+			{
+				local dialog = event.getTarget();
+
+				// Initially focus the ok button
+				local button1 = dialog.findWidget("dialog.buttonActive");
+				button1.focus();
+
+				// Set the text of the label to the incoming model string
+				dialog.findWidget("label").setText(dialog.getModel());
+
+				// Set the alpha of the foreground widget to 0
+				dialog.findWidget("label").setAlpha(0);
+				dialog.findWidget("dialog.buttonActive").getWidget("background").setAlpha(0);
+				dialog.findWidget("dialog.buttonInactive").getWidget("background").setAlpha(0);
+
+				// Set the dialog position to (0,0)
+				dialog.setX(0);
+				dialog.setY(0);
+
+				// Set the alpha of the dialog bg and stroke to 15
+				dialog.findWidget("dialog.bg").setAlpha(15);
+				dialog.findWidget("dialog.stroke").setAlpha(15);
+
+				// Set up and start the dialog move effect				
+				SceneEffects.dialogMove.setDestination(36,55);
+				FadeEffects.bg.setEndAlpha(31);
+				FadeEffects.stroke.setEndAlpha(31);
+
+				// Start the transition
+				SceneEffects.transitionGroup.start();
+
+				// Set up and start the dialog resize effect
+				SceneEffects.dialogResize._tick = 0;
+				SceneEffects.dialogResize._direction = 1;
+				SceneEffects.dialogResize.start();
+
+				// Start the opening delay
+				openDelay.start();
+			}				
+
+			function OnEnd(event)
+			{
+				local dialog = event.getTarget();
+
+				// Stop the opening delay to prevent a fade-in during the end transition
+				openDelay.stop();
+
+				// Set the destination of the dialog according to an 'ok' or 'cancel' click				
+				if(dialog.getModel() == 1)
+				{
+					SceneEffects.dialogMove.setDestination(277,213);		
+				}
+				else
+				{
+					SceneEffects.dialogMove.setDestination(0,0);		
+				}
+
+				FadeEffects.bg.setEndAlpha(15);
+				FadeEffects.stroke.setEndAlpha(15);
+
+				// Set the dialog move effect as the end effect so the framework will pause until the effect completes
+				event.setEndEffect(SceneEffects.transitionGroup);
+
+				// Reverse the direction of the resize
+				SceneEffects.dialogResize._direction = -1;
+				SceneEffects.dialogResize._tick = 12;
+
+				// Set up the end fade effect
+				FadeEffects.label.setEndAlpha(0);
+				FadeEffects.button1.setEndAlpha(0);
+				FadeEffects.button2.setEndAlpha(0);
+
+				FadeEffects.label.setDuration(20);
+				FadeEffects.button1.setDuration(20);
+				FadeEffects.button2.setDuration(20);
+
+				// Start the fade and resize effects
+				FadeEffects.fadeGroup.start();
+				SceneEffects.dialogResize.start();
+			}
+
+			function ShowDialog(event)
+			{
+				// Fades-in the foreground widgets after the dialog resize effect completes 
+				FadeEffects.label.setEndAlpha(31);
+				FadeEffects.button1.setEndAlpha(31);
+				FadeEffects.button2.setEndAlpha(31);
+
+				FadeEffects.label.setDuration(200);
+				FadeEffects.button1.setDuration(200);
+				FadeEffects.button2.setDuration(200);
+
+				FadeEffects.fadeGroup.start();
+			}
+
+			function OnInit()
+			{
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+				local button1 = scene.findWidget("dialog.buttonActive");
+				local button2 = scene.findWidget("dialog.buttonInactive");
+
+				// Create the into delay effect which will fade the foreground widgets when the effect ends
+				openDelay = WaitEffect();
+				openDelay.setTarget(button1);
+				openDelay.setDuration(300);
+				openDelay.onStop(ShowDialog.bindenv(this));
+
+				// Create the resize objects for the background resize effect
+				local bgWidth = 182 / 12;
+				local bgHeight = 80 / 12;
+
+				local height_list = [1, bgHeight, bgHeight*2, bgHeight*3, bgHeight*4, bgHeight*5, bgHeight*6, 
+							bgHeight*7, bgHeight*8, bgHeight*9, bgHeight*10, bgHeight*11, bgHeight*11+7, 80];
+				local width_list = [1, bgWidth, bgWidth*2, bgWidth*3, bgWidth*4, bgWidth*5, bgWidth*6, bgWidth*7, 
+							bgWidth*8, bgWidth*9, bgWidth*10, bgWidth*11, bgWidth*11+10, 182];
+				local dur_list = [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9];
+
+
+				local bgResize = Resize(scene.findWidget("dialog.bg"), width_list, height_list, dur_list);
+
+				height_list = [3, bgHeight+2, bgHeight*2+2, bgHeight*3+2, bgHeight*4+2, bgHeight*5+2, bgHeight*6+2, 
+							bgHeight*7+2, bgHeight*8+2, bgHeight*9+2, bgHeight*10+2, bgHeight*11+2,bgHeight*11+9, 82];
+				width_list = [3+2, bgWidth+2, bgWidth*2+2, bgWidth*3+2, bgWidth*4+2, bgWidth*5+2, bgWidth*6+2, bgWidth*7+2, 
+							bgWidth*8+2, bgWidth*9+2, bgWidth*10+2, bgWidth*11+2, bgWidth*11+12, 184];
+				local strokeResize = Resize(scene.findWidget("dialog.stroke"), width_list, height_list, dur_list);
+
+				SceneEffects.dialogResize = SyncResize([bgResize, strokeResize]);
+
+
+				// Create the fade effects for the foreground widgets
+				FadeEffects.label = FadeEffect();
+				FadeEffects.label.setTarget(scene.findWidget("label"));
+				FadeEffects.label.setDuration(100);
+
+				FadeEffects.button1 = FadeEffect();
+				FadeEffects.button1.setTarget(scene.findWidget("dialog.buttonActive").getWidget("background"));
+				FadeEffects.button1.setDuration(100);
+
+				FadeEffects.button2 = FadeEffect();
+				FadeEffects.button2.setTarget(scene.findWidget("dialog.buttonInactive").getWidget("background"));
+				FadeEffects.button2.setDuration(100);
+
+				// Group the fade effects into an effect group
+				FadeEffects.fadeGroup = EffectGroup();
+				FadeEffects.fadeGroup.addEffect(FadeEffects.label);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.button1);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.button2);
+				
+				// Hook the events of the buttons
+				button1.onTouchRelease(OnOkClick);
+				button2.onTouchRelease(OnCancelClick);
+
+				// Create the dialog move effect
+				SceneEffects.dialogMove = MoveToEffect();
+				SceneEffects.dialogMove.setTarget(scene);
+				SceneEffects.dialogMove.setDuration(300);
+
+				FadeEffects.bg = FadeEffect();
+				FadeEffects.bg.setTarget(scene.findWidget("dialog.bg"));
+				FadeEffects.bg.setDuration(300);
+
+				FadeEffects.stroke = FadeEffect();
+				FadeEffects.stroke.setTarget(scene.findWidget("dialog.stroke"));
+				FadeEffects.stroke.setDuration(300);
+
+				SceneEffects.transitionGroup = EffectGroup();
+				SceneEffects.transitionGroup.addEffect(SceneEffects.dialogMove);
+				SceneEffects.transitionGroup.addEffect(FadeEffects.bg);
+				SceneEffects.transitionGroup.addEffect(FadeEffects.stroke);
+
+				// Hook the scene events
+				scene.onButtonPressed(OnButtonPressed);				
+				scene.onBegin(OnBegin);
+				scene.onEnd(OnEnd);				
+			}
+			
+		]]>
+	</script>
+
+	<properties>
+			<bounds x="36" y="55" width="184" height="82"/>	
+	</properties>
+
+	<objects>
+		<image id="dialog.bg">
+			<properties>
+				<depth>2</depth>
+				<bounds x="1" y="1" width="182" height="80"/>
+				<texture-id>600</texture-id>
+				<palette-id>600</palette-id>
+			</properties>
+		</image>
+		<image id="dialog.stroke">
+			<properties>
+				<depth>1</depth>
+				<bounds x="0" y="0" width="184" height="82"/>
+				<texture-id>601</texture-id>
+				<palette-id>601</palette-id>
+			</properties>
+		</image>
+		<label id="label">
+			<properties>
+				<bounds x="10" y="5" width="162" height="36"/>
+				<depth>3</depth>
+				<color red="15" blue="15" green="10"/>
+				<font name="default" size="10"/>
+				<text>Launch Application?</text>
+				<wrap-type>clip</wrap-type>
+				<justify>center</justify>
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<button id="dialog.buttonActive">
+			<properties>
+				<bounds x="27" y="48" width="64" height="24"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+				<properties>
+					<bounds x="0" y="0" width="64" height="24"/>
+					<texture-id>602</texture-id>
+					<palette-id>602</palette-id>
+				</properties>
+				</image>			
+			</objects>			
+		</button>
+
+		<button id="dialog.buttonInactive">
+			<properties>
+				<bounds x="98" y="48" width="64" height="24"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+				<properties>
+					<bounds x="0" y="0" width="64" height="24"/>
+					<texture-id>603</texture-id>
+					<palette-id>603</palette-id>
+				</properties>
+				</image>				
+			</objects>			
+		</button>
+	</objects>
+
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+	
+</dialog>

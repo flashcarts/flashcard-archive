@@ -1,0 +1,5 @@
+
+色空間は、Bitmap(mono)/Grayscale/Duotone(gray)/Indexed(palette)/RGB/Multichannel(CMY)/CMYKに対応。Lab色空間は未対応。CMYK->RGB変換はあっているか不安。
+非圧縮データは未対応。（RLE圧縮されたファイルのみ対応）
+レイヤーやパス情報などは全て未対応。
+

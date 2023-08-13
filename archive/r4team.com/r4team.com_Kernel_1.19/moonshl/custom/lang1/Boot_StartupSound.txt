@@ -1,0 +1,5 @@
+Startup sound
+
+Type 0 = No sound
+Type 1 = Play startup.mp3
+Type 2 = Play sound in music folder

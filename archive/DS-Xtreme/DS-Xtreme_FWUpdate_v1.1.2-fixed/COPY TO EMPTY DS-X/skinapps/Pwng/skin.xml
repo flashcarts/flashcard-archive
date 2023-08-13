@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone=no>
+<skin>
+	<name>Pwng</name>
+	<version>1.0</version>
+	<author>DSX-Mucky</author>
+	
+	<definitions>
+		<media filepath="media/media.xml"/>
+		<script filepath="scripts/XWidget.nut"/>
+		<scene id="main" filepath="scenes/Pwng.xml" start="true"/>
+	</definitions>
+	
+</skin>

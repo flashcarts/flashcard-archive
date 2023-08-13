@@ -1,0 +1,82 @@
+[menu]
+game = Game
+media = Media
+slot2 = Slot-2
+version = ENG
+firmware = English Version
+
+[font]
+main = tahoma.pcf
+language = 1
+
+[message box]
+yes = Yes
+no = No
+ok = OK
+cancel = Cancel
+
+[progress window]
+processing save = Processing, dont power off
+first use sd = Checking SD card for the first time using
+gba load = Loading gba game
+gba save load = Loading gba save
+gba save store = Processing gba save, dont power off
+
+[setting window]
+title = Settings
+ok = OK
+cancel = Cancel
+confirm = Confirm
+confirm text = Save current settings?
+close = Close
+system = System
+
+[system setting]
+title = System settings
+
+[rom info]
+title = File Information
+file date = Last change: %d/%d/%d %02d:%02d:%02d
+file size = File Size: %s
+save type = Save Type: %s
+game code = Code: %s
+
+[disk info]
+total = Disk Capacity: %s
+used = Used Space: %s
+free = Free Space: %s
+
+[no free space]
+title = Error
+text = There is not enough space on the disk.
+
+[sd card error]
+title = SD card error
+text = Can not access sd card, it may not be inserted correctly.
+
+[no gba card]
+title = Notify
+text = There is no device in SLOT-2
+
+[gba warn]
+title = Warning
+text = Gba roms with size more then 32M don't support!
+
+[patches]
+download play = Single Card Play
+cheating system = Cheat In Game(AR)
+reset in game = Reset In Game
+
+[switches]
+Enable = Enable
+Disable = Disable
+
+[cheats]
+title = Cheats
+generate = Generate
+cctitle = Warning
+cctext = .CC exists, Generate new one?
+dirtitle = Error
+dirtext = A directory with the same name already exists.
+
+[end]

@@ -1,0 +1,2 @@
+Cheats=Cheats(X)
+Games=Games(X)

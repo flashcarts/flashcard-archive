@@ -1,0 +1,180 @@
+[start menu]
+setup=Setup
+save=Saver
+cheat=Cheat
+Hotkey=Hotkey
+gbaLink=GBA Extend
+
+[setup menu]
+item0=SD speed
+item1=Run mode
+item2=Sprache
+item3=Helligkeit
+item4=Multi-Saver
+item5=Thema
+
+[file handle menu]
+noText=Clipboard leer 
+item0=Kopieren
+item1=Schneiden
+item2=Einfügen
+item3=Löschen
+
+[sd speed menu]
+item0=1x Speed
+item1=2x Speed
+item2=3x Speed
+item3=4x Speed
+item4=5x Speed
+item5=6x Speed
+item6=7x Speed
+item7=8x Speed
+item8=Schnell
+
+[run mode menu]
+item0=Clean
+item1=Patch
+
+[patch menu]
+item0=An
+item1=Aus
+
+[archive type menu]
+item0=Speicherslot 0
+item1=Speicherslot 1
+item2=Speicherslot 2
+item3=Speicherslot 3
+item4=Leer
+
+[save menu]
+item0=4K
+item1=64K
+item2=512K
+item3=2M/4M
+
+[ui type menu]
+title=Hinweis!
+text=Systemskin wurde geändert, Klicke 'OK' um neuzustarten oder wähle 'NEIN' um abzubrechen.
+item0=Blue
+item1=Christmas
+item2=China ink
+item3=Pink
+
+[cheat menu]
+item0=Aus
+item1=An
+
+[AntiPiracy menu]
+item0=Turn on
+item1=Turn off
+item2=No support
+
+[gbaLink menu]
+item0=NULL
+item1=Link
+item2=Rumble
+
+[brightness menu]
+item0=Stärke 1
+item1=Stärke 2
+item2=Stärke 3
+item3=Stärke 4
+
+[language menu]
+title=Warnung!
+text=Systemsprache wurde geändert, Klicke 'OK' um neuzustarten oder wähle 'NEIN' um abzubrechen.  
+item0=English                
+item1=S.Chinese
+item2=T.Chinese
+item3=Japanese
+item4=Francais
+item5=Italiano
+item6=Deutsch
+item7=Espanol
+item8=Korean
+
+[set game info]
+item0=Multi-Saver
+item1=Saver-Size
+item2=Cheat
+item3=Bybass anti-piracy
+
+[text wnd info]
+title=Warnung!
+item0=%s existiert nicht oder ist beschädigt!
+item1=Lösungsbuch
+
+[slow wnd]
+title=Slow
+item0=AUS
+item1=AN
+
+[message box]
+yes=JA
+no=NEIN
+ok=OK
+cancel=Abbrechen
+
+[progress window]
+processing_copy=Kopiere Datei, Schalte den DS nicht aus!
+
+[copy file error]
+title=Error!
+text=Error während Kopiervorgang !!!
+
+[stop copying file]
+title=Bestätigen
+text=Kopiervorgang stoppen?
+
+[no free space]
+title=Error!
+text=Nicht genügend Platz, Kopieren abgebrochen.
+
+[copy file exists]
+title=Warnung!
+text=Dateiname existiert bereits, überschreiben?
+
+[copy dest is directory]
+title=Error!
+text=Verzeichnis existiert, kann nicht kopiert werden.
+
+[move dest is directory]
+title=Error!
+text=Verzeichnis existiert, kann nicht verschoben werden.
+
+[no copy dir]
+title=Error!
+text=Verzeichnis kann nicht verschoben werden.
+
+[confirm delete file]
+title=Bestätigen
+text=Die Datei "%s" wird endgültig gelöscht, fortfahren?
+
+[do not delete directory]
+title=Warnung!
+text=Das Verzeichnis ist nicht leer, nicht löschbar.
+
+[setting window]
+ok=OK
+savetype=speichertyp
+cancel=Abbrechen
+confirm=Bestätigen
+confirm_text = Änderungen speichern?
+
+[main interface title]
+item0=Zurück zum Spiel
+item1=Lösungsbuch
+item2=Speichern
+item3=Laden
+item4=SlowMotion
+item5=LCD Helligkeit
+item6=Cheataktivierung
+item7=Zurück zum Hauptmen??
+
+
+[disk info]
+total=Speicherplatz: %s
+used=Belegt: %s
+free=Verbleibend: %s
+
+[end]

@@ -1,0 +1,1 @@
+cheats: EDGE/cheats.dat

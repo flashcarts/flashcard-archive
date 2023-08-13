@@ -1,0 +1,225 @@
+<?xml version="1.0" standalone=no>
+<media>
+
+	<textures>
+		<!-- global textures -->
+		<texture id="1" format="256-Color" width="256" height="192" filepath="media/textures/bg.raw"/>
+		<texture id="2" format="256-Color" width="24" height="24" filepath="media/textures/back_arrow.raw"/>
+		<texture id="3" format="256-Color" width="32" height="8" filepath="media/textures/header_bullets_main.raw"/>
+		<texture id="4" format="256-Color" width="32" height="16" filepath="media/textures/buttonmapping_ok.raw"/>
+		<texture id="5" format="256-Color" width="40" height="16" filepath="media/textures/buttonmapping_back.raw"/>
+		<texture id="7" format="256-Color" width="8" height="28" filepath="media/textures/header_gradient.raw"/>
+		<texture id="8" format="256-Color" width="8" height="16" filepath="media/textures/progress_bar.raw"/>
+
+
+		<!-- main menu textures -->
+		<texture id="11" format="256-Color" width="48" height="48" filepath="media/textures/home_icon1.raw"/>
+		<texture id="12" format="256-Color" width="48" height="48" filepath="media/textures/home_icon2.raw"/>
+		<texture id="13" format="256-Color" width="48" height="48" filepath="media/textures/home_icon3.raw"/>
+		<texture id="14" format="256-Color" width="48" height="48" filepath="media/textures/home_icon4.raw"/>
+		<texture id="15" format="256-Color" width="24" height="24" filepath="media/textures/about_button.raw"/>
+		<texture id="100" format="256-Color" width="72" height="96" filepath="media/textures/slider.raw"/>
+		<texture id="111" format="256-Color" width="8" height="8" filepath="media/textures/home_focus.raw"/>
+		<texture id="113" format="256-Color" width="56" height="56" filepath="media/textures/home_nofocus.raw"/>
+
+		<!-- musicplayer infopanel -->
+		<texture id="94" format="256-Color" width="8" height="56" filepath="media/textures/music_panel_left.raw"/>
+		<texture id="95" format="256-Color" width="8" height="56" filepath="media/textures/music_panel_center.raw"/>
+		<texture id="97" format="256-Color" width="8" height="56" filepath="media/textures/music_panel_right.raw"/>
+
+		<!-- musicplayer button icons -->
+		<texture id="21"  format="256-Color" width="32" height="32" filepath="media/textures/music_prev.raw"/>
+		<texture id="22"  format="256-Color" width="32" height="32" filepath="media/textures/music_rw.raw"/>
+		<texture id="23"  format="256-Color" width="24" height="24" filepath="media/textures/music_play.raw"/>
+		<texture id="230" format="256-Color" width="24" height="24" filepath="media/textures/music_pause.raw"/>
+		<texture id="24"  format="256-Color" width="32" height="32" filepath="media/textures/music_ff.raw"/>
+		<texture id="25"  format="256-Color" width="32" height="32" filepath="media/textures/music_next.raw"/>
+
+		<texture id="26"  format="256-Color" width="32" height="24" filepath="media/textures/music_norepeat.raw"/>
+		<texture id="27"  format="256-Color" width="32" height="24" filepath="media/textures/music_repeat.raw"/>
+		<texture id="28"  format="256-Color" width="32" height="24" filepath="media/textures/music_noshuffle.raw"/>
+		<texture id="29"  format="256-Color" width="32" height="24" filepath="media/textures/music_shuffle.raw"/>
+		<texture id="31"  format="256-Color" width="32" height="24" filepath="media/textures/music_playlist.raw"/>
+		<texture id="32"  format="256-Color" width="32" height="24" filepath="media/textures/music_library.raw"/>
+
+		<!-- musicplayer button focus -->
+		<texture id="211" format="256-Color" width="48" height="48" filepath="media/textures/music_skipsize_focus.raw"/>
+		<texture id="213" format="256-Color" width="48" height="48" filepath="media/textures/music_skipsize_nofocus.raw"/>
+		<texture id="231" format="256-Color" width="56" height="56" filepath="media/textures/music_play_focus.raw"/>
+		<texture id="233" format="256-Color" width="56" height="56" filepath="media/textures/music_play_nofocus.raw"/>
+		<texture id="261" format="256-Color" width="40" height="32" filepath="media/textures/music_small_focus.raw"/>
+		<texture id="262" format="256-Color" width="40" height="32" filepath="media/textures/music_small_nofocus.raw"/>
+		<texture id="301" format="256-Color" width="40" height="40" filepath="media/textures/music_stop_focus.raw"/>
+		<texture id="302" format="256-Color" width="40" height="40" filepath="media/textures/music_stop_nofocus.raw"/>
+
+		<!-- music list textures -->
+		<texture id="400" format="256-Color" width="232" height="24" filepath="media/textures/settings_panel_nofocus.raw"/>
+		<texture id="401" format="256-Color" width="232" height="24" filepath="media/textures/music_panel_focus.raw"/>
+		<texture id="402" format="256-Color" width="104" height="8" filepath="media/textures/buttonmapping_options.raw"/>
+
+		<!-- apps menu textures -->
+		<texture id="500" format="256-Color" width="232" height="48" filepath="media/textures/apps_panel_nofocus.raw"/>
+		<texture id="501" format="256-Color" width="232" height="48" filepath="media/textures/apps_panel_focus.raw"/>
+
+		<!-- dialog textures -->
+		<texture id="600" format="256-Color" width="8" height="80" filepath="media/textures/dialog_bg_gradient.raw"/>
+		<texture id="601" format="256-Color" width="8" height="8" filepath="media/textures/stroke_grey.raw"/>
+		<texture id="602" format="256-Color" width="64" height="24" filepath="media/textures/button_ok.raw"/>
+		<texture id="603" format="256-Color" width="64" height="24" filepath="media/textures/button_cancel.raw"/>
+
+		<!-- settings menu textures -->
+		<texture id="800" format="256-Color" width="16" height="8" filepath="media/textures/settings_arrow_up.raw"/>
+		<texture id="801" format="256-Color" width="16" height="8" filepath="media/textures/settings_arrow_down.raw"/>
+		<texture id="802" format="256-Color" width="16" height="16" filepath="media/textures/settings_radiobutton_enabled.raw"/>
+		<texture id="803" format="256-Color" width="16" height="16" filepath="media/textures/settings_radiobutton_disabled.raw"/>
+		<texture id="804" format="256-Color" width="232" height="24" filepath="media/textures/settings_panel_nofocus.raw"/>
+		<texture id="805" format="256-Color" width="232" height="24" filepath="media/textures/settings_panel_focus.raw"/>
+		<texture id="806" format="256-Color" width="40" height="16" filepath="media/textures/buttonmapping_load.raw"/>		
+
+		<!-- scrollbar textures-->
+		<texture id="700" format="256-Color" width="16" height="8" filepath="media/textures/scrollbar.raw"/>
+
+		<texture id="710" format="256-Color" width="16" height="8" filepath="media/textures/scrollbar1_scroller.raw"/>
+		<texture id="711" format="256-Color" width="16" height="16" filepath="media/textures/scrollbar1_up_arrow.raw"/>
+		<texture id="712" format="256-Color" width="16" height="16" filepath="media/textures/scrollbar1_down_arrow.raw"/>
+		<texture id="713" format="256-Color" width="16" height="16" filepath="media/textures/scrollbar1_up_arrow_active.raw"/>
+		<texture id="714" format="256-Color" width="16" height="16" filepath="media/textures/scrollbar1_down_arrow_active.raw"/>
+
+		<texture id="720" format="256-Color" width="16" height="8" filepath="media/textures/scrollbar2_scroller.raw"/>
+		<texture id="721" format="256-Color" width="16" height="16" filepath="media/textures/scrollbar2_up_arrow.raw"/>
+		<texture id="722" format="256-Color" width="16" height="16" filepath="media/textures/scrollbar2_down_arrow.raw"/>
+		<texture id="723" format="256-Color" width="16" height="16" filepath="media/textures/scrollbar2_up_arrow_active.raw"/>
+		<texture id="724" format="256-Color" width="16" height="16" filepath="media/textures/scrollbar2_down_arrow_active.raw"/>
+
+		<texture id="730" format="256-Color" width="16" height="8" filepath="media/textures/scrollbar3_scroller.raw"/>
+		<texture id="731" format="256-Color" width="16" height="16" filepath="media/textures/scrollbar3_up_arrow.raw"/>
+		<texture id="732" format="256-Color" width="16" height="16" filepath="media/textures/scrollbar3_down_arrow.raw"/>
+		<texture id="733" format="256-Color" width="16" height="16" filepath="media/textures/scrollbar3_up_arrow_active.raw"/>
+		<texture id="734" format="256-Color" width="16" height="16" filepath="media/textures/scrollbar3_down_arrow_active.raw"/>
+
+		<texture id="740" format="256-Color" width="16" height="8" filepath="media/textures/scrollbar4_scroller.raw"/>
+		<texture id="741" format="256-Color" width="16" height="16" filepath="media/textures/scrollbar4_up_arrow.raw"/>
+		<texture id="742" format="256-Color" width="16" height="16" filepath="media/textures/scrollbar4_down_arrow.raw"/>
+		<texture id="743" format="256-Color" width="16" height="16" filepath="media/textures/scrollbar4_up_arrow_active.raw"/>
+		<texture id="744" format="256-Color" width="16" height="16" filepath="media/textures/scrollbar4_down_arrow_active.raw"/>
+
+		<!-- ds-x skin apps section -->
+		<texture id="900" format="256-Color" width="232" height="24" filepath="media/textures/list_focus_4.raw"/>		
+		
+
+
+	</textures>
+	
+	<palettes>
+		<!-- global palettes -->
+		<palette id="1" filepath="media/palettes/bg.pal" />
+		<palette id="2" filepath="media/palettes/back_arrow.pal"/>
+		<palette id="3" filepath="media/palettes/header_bullets_main.pal" />
+		<palette id="4" filepath="media/palettes/buttonmapping_ok.pal" />
+		<palette id="5" filepath="media/palettes/buttonmapping_back.pal" />
+		<palette id="7" filepath="media/palettes/header_gradient.pal" />
+		<palette id="8" filepath="media/palettes/progress_bar.pal" />
+
+		<!-- main menu palettes -->
+		<palette id="11" filepath="media/palettes/home_icon1.pal" />
+		<palette id="12" filepath="media/palettes/home_icon2.pal" />
+		<palette id="13" filepath="media/palettes/home_icon3.pal" />
+		<palette id="14" filepath="media/palettes/home_icon4.pal" />
+		<palette id="15" filepath="media/palettes/about_button.pal" />
+		<palette id="100" filepath="media/palettes/slider.pal" />
+		<palette id="111" filepath="media/palettes/home_focus.pal" />
+		<palette id="113" filepath="media/palettes/home_nofocus.pal" />
+
+		<!-- musicplayer infopanel -->
+		<palette id="94" filepath="media/palettes/music_panel_left.pal"/>
+		<palette id="95" filepath="media/palettes/music_panel_center.pal"/>
+		<palette id="97" filepath="media/palettes/music_panel_right.pal"/>
+
+		<!-- musicplayer button icons -->
+		<palette id="21"  filepath="media/palettes/music_prev.pal"/>
+		<palette id="22"  filepath="media/palettes/music_rw.pal"/>
+		<palette id="23"  filepath="media/palettes/music_play.pal"/>
+		<palette id="230" filepath="media/palettes/music_pause.pal"/>
+		<palette id="24"  filepath="media/palettes/music_ff.pal"/>
+		<palette id="25"  filepath="media/palettes/music_next.pal"/>
+
+		<palette id="26"  filepath="media/palettes/music_norepeat.pal"/>
+		<palette id="27"  filepath="media/palettes/music_repeat.pal"/>
+		<palette id="28"  filepath="media/palettes/music_noshuffle.pal"/>
+		<palette id="29"  filepath="media/palettes/music_shuffle.pal"/>
+		<palette id="302" filepath="media/palettes/music_stop_nofocus.pal"/>
+		<palette id="31"  filepath="media/palettes/music_playlist.pal"/>
+		<palette id="32"  filepath="media/palettes/music_library.pal"/>
+
+		<!-- musicplayer button focus -->
+		<palette id="211" filepath="media/palettes/music_skipsize_focus.pal"/>
+		<palette id="213" filepath="media/palettes/music_skipsize_nofocus.pal"/>
+		<palette id="231" filepath="media/palettes/music_play_focus.pal"/>
+		<palette id="233" filepath="media/palettes/music_play_nofocus.pal"/>
+		<palette id="301" filepath="media/palettes/music_stop_focus.pal"/>
+		<palette id="261" filepath="media/palettes/music_small_focus.pal"/>
+		<palette id="262" filepath="media/palettes/music_small_nofocus.pal"/>
+
+		<!-- music list palettes -->
+		<palette id="400" filepath="media/palettes/settings_panel_nofocus.pal"/>
+		<palette id="401" filepath="media/palettes/music_panel_focus.pal"/>
+		<palette id="402" filepath="media/palettes/buttonmapping_options.pal"/>
+
+		<!-- apps menu palettes -->		
+		<palette id="500" filepath="media/palettes/apps_panel_nofocus.pal"/>
+		<palette id="501" filepath="media/palettes/apps_panel_focus.pal"/>
+
+		<!-- dialog palettes -->
+		<palette id="600" filepath="media/palettes/dialog_bg_gradient.pal"/>
+		<palette id="601" filepath="media/palettes/stroke_grey.pal"/>
+		<palette id="602" filepath="media/palettes/button_ok.pal"/>
+		<palette id="603" filepath="media/palettes/button_cancel.pal"/>
+
+		<!-- settings menu palettes -->
+		<palette id="800" filepath="media/palettes/settings_arrow_up.pal"/>
+		<palette id="801" filepath="media/palettes/settings_arrow_down.pal"/>
+		<palette id="802" filepath="media/palettes/settings_radiobutton_enabled.pal"/>
+		<palette id="803" filepath="media/palettes/settings_radiobutton_disabled.pal"/>
+		<palette id="804" filepath="media/palettes/settings_panel_nofocus.pal"/>
+		<palette id="805" filepath="media/palettes/settings_panel_focus.pal"/>
+		<palette id="806" filepath="media/palettes/buttonmapping_load.pal" />
+
+		<!-- scrollbar palettes -->
+		<palette id="700" filepath="media/palettes/scrollbar.pal"/>
+
+		<palette id="710" filepath="media/palettes/scrollbar1_scroller.pal"/>
+		<palette id="711" filepath="media/palettes/scrollbar1_up_arrow.pal"/>
+		<palette id="712" filepath="media/palettes/scrollbar1_down_arrow.pal"/>
+		<palette id="713" filepath="media/palettes/scrollbar1_up_arrow_active.pal"/>
+		<palette id="714" filepath="media/palettes/scrollbar1_down_arrow_active.pal"/>
+
+		<palette id="720" filepath="media/palettes/scrollbar2_scroller.pal"/>
+		<palette id="721" filepath="media/palettes/scrollbar2_up_arrow.pal"/>
+		<palette id="722" filepath="media/palettes/scrollbar2_down_arrow.pal"/>
+		<palette id="723" filepath="media/palettes/scrollbar2_up_arrow_active.pal"/>
+		<palette id="724" filepath="media/palettes/scrollbar2_down_arrow_active.pal"/>
+
+		<palette id="730" filepath="media/palettes/scrollbar3_scroller.pal"/>
+		<palette id="731" filepath="media/palettes/scrollbar3_up_arrow.pal"/>
+		<palette id="732" filepath="media/palettes/scrollbar3_down_arrow.pal"/>
+		<palette id="733" filepath="media/palettes/scrollbar3_up_arrow_active.pal"/>
+		<palette id="734" filepath="media/palettes/scrollbar3_down_arrow_active.pal"/>
+
+		<palette id="740" filepath="media/palettes/scrollbar4_scroller.pal"/>
+		<palette id="741" filepath="media/palettes/scrollbar4_up_arrow.pal"/>
+		<palette id="742" filepath="media/palettes/scrollbar4_down_arrow.pal"/>
+		<palette id="743" filepath="media/palettes/scrollbar4_up_arrow_active.pal"/>
+		<palette id="744" filepath="media/palettes/scrollbar4_down_arrow_active.pal"/>
+
+		<!-- ds-x skin apps section -->
+		<palette id="900" filepath="media/palettes/list_focus_4.pal"/>
+
+
+	</palettes>
+	
+	<fonts>
+		<font name="default" filepath="media/fonts/font.ttf" />
+	</fonts>
+	
+</media>
+	

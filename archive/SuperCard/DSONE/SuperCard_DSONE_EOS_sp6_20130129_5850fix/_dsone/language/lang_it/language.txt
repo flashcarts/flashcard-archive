@@ -1,0 +1,180 @@
+[start menu]
+setup=Setup
+save=Saver
+cheat=Cheat
+Hotkey=Scelta rapida
+gbaLink=GBA Extend
+
+[setup menu]
+item0=SD speed
+item1=Run mode
+item2=Language
+item3=Brightness
+item4=Multi-Saver
+item5=Theme
+
+[file handle menu]
+noText=Clipboard empty 
+item0=Copy
+item1=Cut
+item2=Paste
+item3=Delete
+
+[sd speed menu]
+item0=1x Speed
+item1=2x Speed
+item2=3x Speed
+item3=4x Speed
+item4=5x Speed
+item5=6x Speed
+item6=7x Speed
+item7=8x Speed
+item8=Fast
+
+[run mode menu]
+item0=Clean
+item1=Patch
+
+[patch menu]
+item0=Turn on
+item1=Turn off
+
+[archive type menu]
+item0=Save 0
+item1=Save 1
+item2=Save 2
+item3=Save 3
+item4=Null
+
+[save menu]
+item0=4K
+item1=64K
+item2=512K
+item3=2M/4M
+
+[ui type menu]
+title=Hint
+text=System theme changed, OK to restart to change the theme? Select 'No' to restart later.
+item0=Blue
+item1=Christmas
+item2=China ink
+item3=Pink
+
+[cheat menu]
+item0=Turn off
+item1=Turn on
+
+[AntiPiracy menu]
+item0=Turn on
+item1=Turn off
+item2=No support
+
+[gbaLink menu]
+item0=NULL
+item1=Link
+item2=Rumble
+
+[brightness menu]
+item0=Level 1
+item1=Level 2
+item2=Level 3
+item3=Level 4
+
+[language menu]
+title=Warning!
+text=System language changed, OK to restart to change the language? Select 'No' to restart later.
+item0=English
+item1=S.Chinese
+item2=T.Chinese
+item3=Japanese
+item4=Francais
+item5=Italiano
+item6=Deutsch
+item7=Espanol
+item8=Korean
+
+[set game info]
+item0=Multi-Saver
+item1=Save size
+item2=Cheat
+item3=Bybass anti-piracy
+
+[text wnd info]
+title=Warning!
+item0=%s file do not exist or damaged!
+item1=Game Guide
+
+[slow wnd]
+title=Slow
+item0=OFF
+item1=ON
+
+[message box]
+yes=YES
+no=NO
+ok=OK
+cancel=Cancel
+
+[progress window]
+processing_copy=Copying file, do not turn power off!
+
+[copy file error]
+title=Error!
+text=Error occured while copying file
+
+[stop copying file]
+title=Confirm
+text=Stop copying this file?
+
+[no free space]
+title=Error!
+text=No enough space, File copying not complete
+
+[copy file exists]
+title=Warning!
+text=Filename already exists, OK to overwrite the file?
+
+[copy dest is directory]
+title=Error!
+text=Directroy already exists, can not copy files
+
+[move dest is directory]
+title=Error!
+text=Directroy already exists, can not move files
+
+[no copy dir]
+title=Error!
+text=Can not copy or move a directory
+
+[confirm delete file]
+title=Confirm
+text=File can not be recovered after Delete, OK to delete the file? "%s"?
+
+[do not delete directory]
+title=Warning!
+text=The directory is not empty, it can not be deleted
+
+[setting window]
+ok=OK
+savetype=Save type
+cancel=Cancel
+confirm=Confirm
+confirm_text = Save current setting?
+
+[main interface title]
+item0=Return to Game
+item1=Game Guide
+item2=Save
+item3=Load
+item4=SlowMotion
+item5=LCD Brightness
+item6=Cheat Codes
+item7=Return to Main Menu
+
+
+[disk info]
+total=Disk Space: %s
+used=Used Space: %s
+free=Remaining Space: %s
+
+[end]

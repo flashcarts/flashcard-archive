@@ -1,0 +1,453 @@
+<scene>
+	<script>
+		<![CDATA[
+						
+			// Store some of the widgets for later use
+			// so we don't have to look them up each time we need them.
+			arrow <- null;
+			title <- null;
+			
+			// Store the scene effects to keep them in scope
+			SceneEffects <- {
+				titleLabelMove = null,
+				titleBgMove = null,
+				titleFade = null, // Fades the title
+				arrowDrop = null, // Move the arrow down on scene start
+				arrowMove = null, // Move the arrow when buttons change
+				arrowPulseFade = null, // Pulse the arrow
+				settingsMove = null, // Move the settings button up on scene start
+				gamesMove = null, // Move the games button up on scene start
+				filesMove = null, // Move the games button up on scene start
+				musicMove = null, // Move the games button up on scene start
+				
+				transitionEffects = null,
+			}
+
+			// Set the final onscreen locations as the destinations of the effects			
+			function SetupBeginTransition()
+			{
+				SceneEffects.titleLabelMove.setDestination(10,12);
+				SceneEffects.titleBgMove.setDestination(0,10);	
+				SceneEffects.arrowDrop.setDestination(arrow.getX(),44);
+				SceneEffects.settingsMove.setDestination(128,95);	
+				SceneEffects.gamesMove.setDestination(4,95);
+				SceneEffects.filesMove.setDestination(190,95);
+				SceneEffects.musicMove.setDestination(66,95);
+			}			
+
+			// Set the initial offscreen locations as the destinations of the effects							
+			function SetupEndTransition()
+			{
+				SceneEffects.titleLabelMove.setDestination(-210,12);
+				SceneEffects.titleBgMove.setDestination(-223,10);	
+				SceneEffects.arrowDrop.setDestination(arrow.getX(),-45);
+				SceneEffects.settingsMove.setDestination(128,275);	
+				SceneEffects.gamesMove.setDestination(4,300);
+				SceneEffects.filesMove.setDestination(190,325);
+				SceneEffects.musicMove.setDestination(66,350);					
+			}
+			
+			function OnButtonFocusGained(event)
+			{
+				// Swap the button image
+				local button = event.getTarget();
+				local imageedge = button.getWidget("background-edge");
+				imageedge.setTexture(56);	
+				imageedge.setPalette(56);
+				local imageinner = button.getWidget("background-inner");
+				imageinner.setTexture(55);	
+				imageinner.setPalette(55);
+				
+				// Move the arrow
+				SceneEffects.arrowMove.stop();			
+				SceneEffects.arrowMove.setDestination(button.getX(),arrow.getY());
+				SceneEffects.arrowMove.setDuration(300);
+				SceneEffects.arrowMove.start();
+				
+
+				
+				// Change the title
+				local buttonId = button.getId();
+				if(buttonId == "main.mySettings")
+				{
+					title.setText("Settings");
+				}
+				else if(buttonId == "main.myGames")
+				{
+					title.setText("Apps");
+				}
+				else if(buttonId == "main.myCard")
+				{
+					title.setText("About");
+				}
+				else if(buttonId == "main.myMedia")
+				{
+					title.setText("Music");
+				}
+				
+				// Fade in the title
+				title.setAlpha(0);
+				SceneEffects.titleFade.setDuration(300);
+				SceneEffects.titleFade.setTarget(title);
+				SceneEffects.titleFade.setEndAlpha(30);
+				SceneEffects.titleFade.start();
+							
+			}
+			
+			function OnButtonFocusLost(event)
+			{
+				// Swap the button image
+				local button = event.getTarget();
+				local imageedge = button.getWidget("background-edge");
+				imageedge.setTexture(58);	
+				imageedge.setPalette(58);
+				local imageinner = button.getWidget("background-inner");
+				imageinner.setTexture(57);	
+				imageinner.setPalette(57);
+
+			}		
+
+			function OnSettingsClick(event)
+			{
+				Application.getSceneManager().selectScene("Settings");
+			}
+			
+			function OnGamesClick(event)
+			{
+				Application.getSceneManager().selectScene("AppsList");
+			}
+
+			function OnMediaClick(event)
+			{
+				Application.getSceneManager().selectScene("AudioMain");
+			}
+
+			function OnCardClick(event)
+			{
+				local dialog = Application.getSceneManager().getDialog("aboutDialog");
+				//dialog.setModel(0);
+				dialog.show();
+			}
+
+			function OnBegin(event)
+			{
+				// Get the focused button and set the arrow X to match
+				local scene = event.getTarget();
+				arrow.setX(scene.getFocusedWidget().getX());
+			
+				// Set the destinations appropriately on the transition 
+				// effects for the starting sequence
+				SetupBeginTransition();
+				
+				// Play the start transition
+				SceneEffects.transitionEffects.start();
+				
+				// start the arrow pulsing
+				SceneEffects.arrowPulseFade.start();
+			}
+			
+			function OnEnd(event)
+			{
+				// Set the destinations appropriately on the transition 
+				// effects for the starting sequence
+				SetupEndTransition();
+				
+				// Stop the arrow from moving
+				SceneEffects.arrowMove.stop();
+				
+				// Setting the effect as the end effect on the event
+				// will cause the framework to wait for the effect to 
+				// finish before starting the next scene
+				event.setEndEffect(SceneEffects.transitionEffects);		
+			}
+			
+			function OnInit()
+			{
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+				local mySettings = scene.findWidget("main.mySettings");
+				local myGames = scene.findWidget("main.myGames");
+				local myCard = scene.findWidget("main.myCard");
+				local myMedia = scene.findWidget("main.myMedia");
+				local titleLabel = scene.findWidget("main.titleLabel");
+				local titleBg = scene.findWidget("main.titleBg");
+				
+				//Set LEDs
+				//first led 50% blue
+				//PWM.setLed(0, 0, 0, 128);
+				//second led 100% yellow
+				//PWM.setLed(1, 255, 255, 0);
+				
+				// Save a couple widgets for later
+				title = titleLabel;
+				arrow = scene.findWidget("main.brrow");
+
+				// Set up initial locations (offscreen)
+				// This could obviously be done in the xml, but sometimes it's nice to
+				// keep the xml defined as what it will look like once fully presented
+				titleLabel.setX(-210);
+				titleBg.setX(-223);
+				mySettings.setY(325);
+				myGames.setY(275);
+				myCard.setY(350);
+				myMedia.setY(300);
+				arrow.setY(-45);
+				arrow.setX(myGames.getX());
+				arrow.setAlpha(0);
+				
+				// Hook the events of the buttons
+				mySettings.onFocusGained(OnButtonFocusGained);
+				mySettings.onFocusLost(OnButtonFocusLost);
+				mySettings.onButtonClick(OnSettingsClick);
+				
+				myGames.onFocusGained(OnButtonFocusGained);
+				myGames.onFocusLost(OnButtonFocusLost);
+				myGames.onButtonClick(OnGamesClick);
+
+				myCard.onFocusGained(OnButtonFocusGained);
+				myCard.onFocusLost(OnButtonFocusLost);
+				myCard.onButtonClick(OnCardClick);
+	
+				myMedia.onFocusGained(OnButtonFocusGained);
+				myMedia.onFocusLost(OnButtonFocusLost);
+				myMedia.onButtonClick(OnMediaClick);
+
+				// Setup navigation between buttons
+				myGames.setEast(myMedia);	
+				myMedia.setEast(mySettings);
+				myMedia.setWest(myGames);
+				mySettings.setWest(myMedia);
+				mySettings.setEast(myCard);
+				myCard.setWest(mySettings);
+
+
+							
+				// Create effects
+				SceneEffects.titleFade = FadeEffect();
+				
+				SceneEffects.arrowMove = MoveToEffect();
+				SceneEffects.arrowMove.setTarget(arrow);
+
+				// The pulse fade is a custom effect defined fully in script					
+				SceneEffects.arrowPulseFade = PulseFadeEffect(arrow);				
+
+				SceneEffects.titleLabelMove = MoveToEffect();
+				SceneEffects.titleLabelMove.setTarget(titleLabel);
+				SceneEffects.titleLabelMove.setDuration(300);
+			
+				SceneEffects.titleBgMove = MoveToEffect();
+				SceneEffects.titleBgMove.setTarget(titleBg);
+				SceneEffects.titleBgMove.setDuration(300);	
+				
+				SceneEffects.arrowDrop = MoveToEffect();
+				SceneEffects.arrowDrop.setTarget(arrow);
+				SceneEffects.arrowDrop.setDuration(300);				
+				
+				SceneEffects.settingsMove = MoveToEffect();
+				SceneEffects.settingsMove.setTarget(mySettings);
+				SceneEffects.settingsMove.setDuration(500);
+								
+				SceneEffects.gamesMove = MoveToEffect();
+				SceneEffects.gamesMove.setTarget(myGames);
+				SceneEffects.gamesMove.setDuration(300);	
+				
+				SceneEffects.filesMove = MoveToEffect();
+				SceneEffects.filesMove.setTarget(myCard);
+				SceneEffects.filesMove.setDuration(600);	
+
+				SceneEffects.musicMove = MoveToEffect();
+				SceneEffects.musicMove.setTarget(myMedia);
+				SceneEffects.musicMove.setDuration(400);
+			
+				// Group the events so they can be used as an end transition
+				SceneEffects.transitionEffects = EffectGroup();
+				SceneEffects.transitionEffects.addEffect(SceneEffects.titleBgMove);				
+				SceneEffects.transitionEffects.addEffect(SceneEffects.titleLabelMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.arrowDrop);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.settingsMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.gamesMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.filesMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.musicMove);
+								
+				// Hook scene events
+				scene.onBegin(OnBegin);
+				scene.onEnd(OnEnd);
+				
+				// Initially focus the settings button
+				myGames.focus();
+			}
+		]]>
+	</script>
+	
+	<objects>	
+		<image id="main.bg">
+			<properties>
+				<bounds x="0" y="0" width="256" height="192"/>
+				<texture-id>9</texture-id>
+				<palette-id>2</palette-id>
+			</properties>
+		</image>
+		<image id="main.titleBg">
+			<properties>
+				<bounds x="0" y="10" width="223" height="30"/>
+				<depth>1</depth>
+				<texture-id>19</texture-id>
+				<palette-id>19</palette-id>
+			</properties>
+		</image>
+		<label id="main.titleLabel">
+			<properties>
+				<bounds x="10" y="12" width="200" height="20"/>
+				<depth>3</depth>
+				<font name="default" size="19"/>
+				<text>Main Menu</text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>middle</vertical-align>
+				<shadow xoffset="2" yoffset="2"/>
+			</properties>
+		</label>	
+		<button id="main.mySettings">
+			<properties>
+				<bounds x="128" y="95" width="62" height="83"/>
+				<depth>4</depth>
+			</properties>
+			<objects>
+				<image id="background-edge">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="62" height="83"/>
+						<texture-id>58</texture-id>
+						<palette-id>58</palette-id>
+					</properties>
+				</image>
+				<image id="background-inner">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="0" width="62" height="83"/>
+						<texture-id>57</texture-id>
+						<palette-id>57</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<depth>3</depth>
+						<bounds x="6" y="27" width="45" height="46"/>
+						<texture-id>12</texture-id>
+						<palette-id>5</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="main.myGames">
+			<properties>
+				<bounds x="4" y="95" width="62" height="83"/>
+				<depth>4</depth>
+			</properties>
+			<objects>
+				<image id="background-edge">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="62" height="83"/>
+						<texture-id>58</texture-id>
+						<palette-id>58</palette-id>
+					</properties>
+				</image>
+				<image id="background-inner">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="0" width="62" height="83"/>
+						<texture-id>57</texture-id>
+						<palette-id>57</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<depth>3</depth>
+						<bounds x="9" y="22" width="41" height="54"/>
+						<texture-id>13</texture-id>
+						<palette-id>6</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="main.myCard">
+			<properties>
+				<bounds x="90" y="95" width="62" height="83"/>
+				<depth>4</depth>
+			</properties>
+			<objects>
+				<image id="background-edge">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="62" height="83"/>
+						<texture-id>58</texture-id>
+						<palette-id>58</palette-id>
+					</properties>
+				</image>
+				<image id="background-inner">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="0" width="62" height="83"/>
+						<texture-id>57</texture-id>
+						<palette-id>57</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="28" width="48" height="48"/>
+						<depth>3</depth>
+						<texture-id>14</texture-id>
+						<palette-id>7</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="main.myMedia">
+			<properties>
+				<bounds x="66" y="95" width="62" height="83"/>
+				<depth>4</depth>
+			</properties>
+			<objects>
+				<image id="background-edge">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="62" height="83"/>
+						<texture-id>58</texture-id>
+						<palette-id>58</palette-id>
+					</properties>
+				</image>
+				<image id="background-inner">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="0" width="62" height="83"/>
+						<texture-id>57</texture-id>
+						<palette-id>57</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="7" y="24" width="44" height="53"/>
+						<depth>3</depth>
+						<texture-id>15</texture-id>
+						<palette-id>8</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<image id="main.brrow">
+			<properties>
+				<bounds x="191" y="44" width="52" height="45"/>
+				<depth>1</depth>
+				<texture-id>16</texture-id>
+				<palette-id>9</palette-id>
+			</properties>
+		</image>
+	
+	</objects>
+	
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+</scene>
+

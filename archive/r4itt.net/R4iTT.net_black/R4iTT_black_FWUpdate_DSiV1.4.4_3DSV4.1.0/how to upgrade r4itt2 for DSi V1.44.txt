@@ -1,0 +1,18 @@
+说明:这个是DSi V1.44升级包，如果你的黑色r4itt2卡不可以在DSi V1.44主机上运行，请用这个DSi V1.44升级包在NDS/DSL/DSI/DSILL/DSIXL/3DS主机上将你的r4itt2卡升级，就可以在DSi V1.44主机上运行啦
+
+  1.首先，请到www.r4itt.net下载r4itt2最新内核。
+  2：解压缩文件，把这些文件(app,data,moonshl2,
+NDSMAIL,svsip,SYSTEM,r4.DAT)复制到TF卡根目录里。
+  3.下载黑色r4itt2卡DSi V1.44升级包。解压并将解压文件(R4iTT_RTS_Updater.nds R4iTT_RTS_Code.bin)复制到TF卡上。
+  4.将TF卡插到r4itt2卡上，然后将插好TF卡的r4itt2卡插到NDS/DSL/DSI/DSILL/DSIXL/3DS主机上。
+  5.开机，按A键运行升级文件R4iTT_RTS_Updater.nds,就可以升级啦。注意：升级过程中不可以关闭电源或者拨出r4itt2卡，否则会损坏r4itt2卡。
+
+  Instructions :this is DSi V1.44 upgrade package, if your black r4itt2 can not run on DSi V1.44 console,please use this DSi V1.44 upgrade package to upgrade your black r4itt2 card by nds/dsl/dsi/dsill/dsixl/3ds for running on DSi V1.44 console.
+
+  1. First, go to www.r4itt.net to download the latest kernel of r4itt2.
+  2.Unzip and copy the files(app,data,moonshl2,
+NDSMAIL,svsip,SYSTEM,r4.DAT) to the root of MicroSD card.
+  3. Go to www.r4itt.net to download the DSi V1.44 upgrade package of black r4itt2.
+Unzip and copy the files(R4iTT_RTS_Updater.nds R4iTT_RTS_Code.bin) to the root of MicroSD card.
+  4. Insert MicroSD card into r4itt2 card, insert r4itt2 card into NDS/DSL/DSI/DSILL/DSIXL/3DS.
+  5.Turn on console and press “A” button to run the upgrade file R4iTT_RTS_Updater.nds.Note:When upgrading the r4itt2 card, it is not allowed to turn off power or pull out r4itt2  ,otherwise it will damage the r4itt2 card.

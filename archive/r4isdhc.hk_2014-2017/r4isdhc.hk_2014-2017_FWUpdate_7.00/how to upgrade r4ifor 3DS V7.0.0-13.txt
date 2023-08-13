@@ -1,0 +1,7 @@
+  Instructions :this is 3DS V7.0.0 upgrade Firmware, if your r4i card can not run on 3DS V7.0.0-13 console,please use it to upgrade your r4i card by nds\dsl\dsi\dsill\dsixl\3ds(less than V7.0.0-13) for running on 3DS V7.0.0-13 console.
+
+  1. First, download the Corresponding kernel,unzip the kernel and copy the files to the root of MicroSD card.
+  2. Download the upgrade Firmware,unzip and copy the files(fwUpdateAll_V7.00.nds) to the root of MicroSD card.
+  3. Insert MicroSD card into your r4i card, insert r4i card into nds\dsl\dsi\dsill\dsixl\3ds(less than V7.0.0-13).
+  4.Turn on console and press “A” button to run the upgrade file fwUpdateAll_V7.00.nds.
+  Note:When upgrading the r4i card, it is not allowed to turn off power or pull out r4i untill upgrade done,otherwise it will damage the r4i card.

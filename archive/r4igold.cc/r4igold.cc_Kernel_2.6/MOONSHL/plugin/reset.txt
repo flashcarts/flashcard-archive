@@ -1,0 +1,37 @@
+MoonShell execute plug-in
+
+This plug-in is exclusive return to firmware function.
+
+Reference URL that becomes base of reset function.
+Most of reset.mse is a copy of LoveLite.
+
+Lick + ds homebrew
+http://licklick.wordpress.com/tag/lovelite/
+
+For other homebrew developers.
+'reset.mse' can be used from your self-made application.
+
+Please make the C/D bank of VRAM accessible from ARM9.
+example.
+  VRAM_C_CR = VRAM_ENABLE | _VRAM_CD_MAIN_BG_0x6000000;
+  VRAM_D_CR = VRAM_ENABLE | _VRAM_CD_MAIN_BG_0x6020000;
+
+Please write the following values in 1024 bytes from 0x0603FC00. (16bit access is necessary.)
+0x0603FC00 0x01
+0x0603FC01 0x01
+0x0603FC02 0x01
+0x0603FC03 0x01
+0x0603FC04 '?'
+0x0603FC05 '?'
+0x0603FC06 '?'
+0x0603FC07 '?'
+0x0603FC08 0x00
+0x0603FC09 0x00
+0x0603FC0A 0x00
+0x0603FC0B 0x00
+0x0603FC0C 0x00,0x00,0x00...
+Please input the adaptor name (four characters) from 0x0603FC04 to 0x0603FC07.
+Please fill zero from 0x0603FC0C to 0x0603FFFF.
+
+Please start 'reset.mse'. (Please begin with usual NDS multi boot in a similar way.)
+

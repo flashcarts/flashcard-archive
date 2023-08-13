@@ -1,0 +1,325 @@
+<dialog>
+	<script>
+		<![CDATA[
+
+			// Store the scene effects to keep them in scope
+			SceneEffects <- {
+				dialogMove = null, // moves the dialog
+				dialogResize = null,
+
+				transitionGroup = null,
+			}
+
+			// Store the fade effects to be used in the dialog
+			FadeEffects <- {
+				line1 = null,
+				line2 = null,
+				line3 = null,
+				line4 = null,
+				button = null,
+
+				bg = null,
+				stroke = null,
+
+				fadeGroup = null,
+			}
+
+			openDelay <- null;
+ 
+			function OnOkClick(event)
+			{
+				// Hide the dialog
+				local dialog = event.getTarget().getParentScene();
+				dialog.hide();
+			}
+
+			function OnBegin(event)
+			{
+				local dialog = event.getTarget();
+
+				//Set up the beginning transition
+				dialog.setX(0);
+				dialog.setY(0);
+
+				// Initially set the alpha of all foreground widgets to be 0
+				dialog.findWidget("osVersion").setAlpha(0);
+				dialog.findWidget("News").setAlpha(0);
+				dialog.findWidget("Support").setAlpha(0);
+				dialog.findWidget("Sales").setAlpha(0);
+				dialog.findWidget("dialog.buttonActive").getWidget("background").setAlpha(0);
+
+				// Focus the ok button				
+				local button1 = dialog.findWidget("dialog.buttonActive");
+				button1.focus();
+
+				// Set the alpha of the dialog bg and stroke to 15
+				dialog.findWidget("dialog.bg").setAlpha(15);
+				dialog.findWidget("stroke.bg").setAlpha(15);
+
+				// Setup the intro transition				
+				SceneEffects.dialogMove.setDestination(7,33);
+				FadeEffects.bg.setEndAlpha(31);
+				FadeEffects.stroke.setEndAlpha(31);
+
+				// Start the transition
+				SceneEffects.transitionGroup.start();
+
+				// Set up and start the background resize
+				SceneEffects.dialogResize._tick = 0;
+				SceneEffects.dialogResize._direction = 1;
+				SceneEffects.dialogResize.start();
+
+				// Start the delay that fades the foreground widgets
+				openDelay.start();
+			}				
+
+			function OnEnd(event)
+			{
+				local dialog = event.getTarget();
+				
+				// Stop the delay that fades the widgets to avoid a fade-in during the end transition
+				openDelay.stop();
+
+				// Set up the end transition
+				SceneEffects.dialogMove.setDestination(0,0);
+				FadeEffects.bg.setEndAlpha(15);
+				FadeEffects.stroke.setEndAlpha(15);
+
+				// Set up the fade effects
+				FadeEffects.line1.setEndAlpha(0);
+				FadeEffects.line2.setEndAlpha(0);
+				FadeEffects.line3.setEndAlpha(0);
+				FadeEffects.line4.setEndAlpha(0);
+				FadeEffects.button.setEndAlpha(0);
+
+				FadeEffects.line1.setDuration(20);
+				FadeEffects.line2.setDuration(20);
+				FadeEffects.line3.setDuration(20);
+				FadeEffects.line4.setDuration(20);
+				FadeEffects.button.setDuration(20);
+
+				// Set the dialog's move effect as the end effect
+				event.setEndEffect(SceneEffects.transitionGroup);
+				FadeEffects.fadeGroup.start();
+
+				// Set up the resize to transition in the other direction
+				SceneEffects.dialogResize._direction = -1;
+				SceneEffects.dialogResize._tick = 6;
+
+				// Start the dialog resize
+				SceneEffects.dialogResize.start();
+			}
+
+			// Shows the dialog after the screen resize is completed
+			function ShowDialog(event)
+			{
+
+				local dialog = event.getTarget().getParentScene();
+
+				// Set up the fade effects
+				FadeEffects.line1.setEndAlpha(31);
+				FadeEffects.line2.setEndAlpha(31);
+				FadeEffects.line3.setEndAlpha(31);
+				FadeEffects.line4.setEndAlpha(31);
+				FadeEffects.button.setEndAlpha(31);
+
+				FadeEffects.line1.setDuration(200);
+				FadeEffects.line2.setDuration(200);
+				FadeEffects.line3.setDuration(200);
+				FadeEffects.line4.setDuration(200);
+				FadeEffects.button.setDuration(200);
+
+				// Start the fade effects
+				FadeEffects.fadeGroup.start();
+			}
+
+			function OnInit()
+			{
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+				local button1 = scene.findWidget("dialog.buttonActive");
+						
+				// Create a wait effect to delay the intro fade effect of the foreground widgets
+				openDelay = WaitEffect();
+				openDelay.setTarget(button1);
+				openDelay.setDuration(350);
+				openDelay.onStop(ShowDialog.bindenv(this));
+
+
+				// Create resize objects to resize the dialog background
+				local bgWidth = 240 / 10;
+				local bgHeight = 150 / 10;
+
+				local height_list = [1, bgHeight, bgHeight*2, bgHeight*3, bgHeight*4, bgHeight*5, bgHeight*6, 
+							bgHeight*7, bgHeight*8, bgHeight*9, 150];
+				local width_list = [1, bgWidth, bgWidth*2, bgWidth*3, bgWidth*4, bgWidth*5, bgWidth*6, bgWidth*7, 
+							bgWidth*8, bgWidth*9, 240];
+				local dur_list = [25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25];
+
+
+				local bgResize = Resize(scene.findWidget("dialog.bg"), width_list, height_list, dur_list);
+
+				local height_list = [1+2, bgHeight+2, bgHeight*2+2, bgHeight*3+2, bgHeight*4+2, bgHeight*5+2, 
+							bgHeight*6+2, bgHeight*7+2, bgHeight*8+2, bgHeight*9+2, 151];
+				local width_list = [1+2, bgWidth+2, bgWidth*2+2, bgWidth*3+2, bgWidth*4+2, bgWidth*5+2, bgWidth*6+2, 
+							bgWidth*7+2, bgWidth*8+2, bgWidth*9+2, 242];
+
+				local strokeResize = Resize(scene.findWidget("stroke.bg"), width_list, height_list, dur_list);
+
+				SceneEffects.dialogResize = SyncResize([bgResize, strokeResize]);
+
+				// Create the fade effects
+				FadeEffects.line1 = FadeEffect();
+				FadeEffects.line1.setTarget(scene.findWidget("osVersion"));
+				FadeEffects.line1.setDuration(100);
+
+				FadeEffects.line2 = FadeEffect();
+				FadeEffects.line2.setTarget(scene.findWidget("News"));
+				FadeEffects.line2.setDuration(100);
+
+				FadeEffects.line3 = FadeEffect();
+				FadeEffects.line3.setTarget(scene.findWidget("Support"));
+				FadeEffects.line3.setDuration(100);
+
+				FadeEffects.line4 = FadeEffect();
+				FadeEffects.line4.setTarget(scene.findWidget("Sales"));
+				FadeEffects.line4.setDuration(100);
+
+				FadeEffects.button = FadeEffect();
+				FadeEffects.button.setTarget(scene.findWidget("dialog.buttonActive").getWidget("background"));
+				FadeEffects.button.setDuration(100);
+
+				FadeEffects.fadeGroup = EffectGroup();
+				FadeEffects.fadeGroup.addEffect(FadeEffects.line1);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.line2);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.line3);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.line4);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.button);
+
+
+				// Hook the events of the buttons
+				button1.onButtonClick(OnOkClick);
+				
+				// Create the dialog background move effect
+				SceneEffects.dialogMove = MoveToEffect();
+				SceneEffects.dialogMove.setTarget(scene);
+				SceneEffects.dialogMove.setDuration(300);
+
+				FadeEffects.bg = FadeEffect();
+				FadeEffects.bg.setTarget(scene.findWidget("dialog.bg"));
+				FadeEffects.bg.setDuration(300);
+
+				FadeEffects.stroke = FadeEffect();
+				FadeEffects.stroke.setTarget(scene.findWidget("stroke.bg"));
+				FadeEffects.stroke.setDuration(300);
+
+				SceneEffects.transitionGroup = EffectGroup();
+				SceneEffects.transitionGroup.addEffect(SceneEffects.dialogMove);
+				SceneEffects.transitionGroup.addEffect(FadeEffects.bg);
+				SceneEffects.transitionGroup.addEffect(FadeEffects.stroke);
+
+				// Hook the scene events				
+				scene.onBegin(OnBegin);
+				scene.onEnd(OnEnd);
+
+				// Set the text of the osVersion widget according to the current os version on the system
+				local osVersion = scene.findWidget("osVersion");
+				osVersion.setText("DS-Xtreme OS " + Application.getOSVersion());
+			}
+			
+		]]>
+	</script>
+
+	<properties>
+			<bounds x="7" y="33" width="242" height="151"/>	
+	</properties>
+
+	<objects>
+		<image id="dialog.bg">
+			<properties>
+				<depth>4</depth>
+				<bounds x="1" y="1" width="240" height="136"/>
+				<texture-id>600</texture-id>
+				<palette-id>600</palette-id>
+			</properties>
+		</image>
+
+		<image id="stroke.bg">
+			<properties>
+				<depth>3</depth>
+				<bounds x="0" y="0" width="240" height="138"/>
+				<texture-id>601</texture-id>
+				<palette-id>601</palette-id>
+			</properties>
+		</image>
+		<label id="osVersion">
+			<properties>
+				<bounds x="0" y="10" width="240" height="36"/>
+				<depth>5</depth>
+				<color red="15" blue="15" green="15"/>
+				<font name="default" size="14"/>
+				<text>DS-Xtreme OS</text>
+				<wrap-type>clip</wrap-type>
+				<justify>center</justify>
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<label id="News">
+			<properties>
+				<bounds x="0" y="40" width="240" height="36"/>
+				<depth>5</depth>
+				<color red="15" blue="15" green="15"/>
+				<font name="default" size="10"/>
+				<text>News: news.ds-x.com</text>
+				<wrap-type>clip</wrap-type>
+				<justify>center</justify>
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<label id="Support">
+			<properties>
+				<bounds x="0" y="54" width="240" height="36"/>
+				<depth>5</depth>
+				<color red="15" blue="15" green="15"/>
+				<font name="default" size="10"/>
+				<text>Support: forums.ds-xtreme.com</text>
+				<wrap-type>clip</wrap-type>
+				<justify>center</justify>
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<label id="Sales">
+			<properties>
+				<bounds x="0" y="68" width="240" height="36"/>
+				<depth>5</depth>
+				<color red="15" blue="15" green="15"/>
+				<font name="default" size="10"/>
+				<text>Sales: www.ds-x.com</text>
+				<wrap-type>clip</wrap-type>
+				<justify>center</justify>
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+
+		<button id="dialog.buttonActive">
+			<properties>
+				<bounds x="90" y="110" width="64" height="24"/>
+				<depth>5</depth>
+			</properties>
+			<objects>
+				<image id="background">
+				<properties>
+					<bounds x="0" y="0" width="95" height="36"/>
+					<texture-id>602</texture-id>
+					<palette-id>602</palette-id>
+				</properties>
+				</image>		
+			</objects>			
+		</button>
+	</objects>
+
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+	
+</dialog>

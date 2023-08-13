@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone=no>
+<skin>
+	<name>Sudoku</name>
+	<version>1.0</version>
+	<author>DSX-Mucky</author>
+	
+	<definitions>
+		<media filepath="media/media.xml"/>
+		<script filepath="scripts/SudokuLogic.nut"/>
+		<script filepath="scripts/SudokuPuzzles.nut"/>
+		<script filepath="scripts/SudokuDialogText.nut"/>
+		<script filepath="scripts/KeyboardInit.nut"/>
+		<dialog id="Keyboard" filepath="dialogs/Keyboard.xml" />
+		<dialog id="SudokuDialog" filepath="dialogs/SudokuDialog.xml" />
+		<scene id="Sudoku" filepath="scenes/Sudoku.xml" start="true"/>
+	</definitions>
+	
+</skin>

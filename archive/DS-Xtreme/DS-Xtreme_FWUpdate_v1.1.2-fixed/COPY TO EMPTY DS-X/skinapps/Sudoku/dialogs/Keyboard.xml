@@ -1,0 +1,985 @@
+<dialog id="Keyboard">
+	<script>
+		<![CDATA[
+
+			
+
+			KBOARD <- null;
+			transitionEffects <- null;
+
+			function OnBegin(event)
+			// Called when the dialog is summoned.
+			{
+				local model = event.getTarget().getModel();
+
+				KBOARD.InitializeKeyboard(model);
+
+				KBOARD.SetupBeginTransition();
+
+				transitionEffects.start();
+
+				KBOARD._widgetSet[40].focus();
+			}
+			
+			function OnEnd(event)
+			// Called when the dialog is hidden.
+			{
+				KBOARD.SetupEndTransition();
+
+				event.setEndEffect(transitionEffects);		
+			}
+			
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////KBOARD HANDLER CLASS/////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			class OSKeyboard
+			{
+				constructor(kboardoffset_x, kboardoffset_y, _scene)
+				{
+						// Construction of data members.
+					KBOARD_OFFSET_X = kboardoffset_x;
+					KBOARD_OFFSET_Y = kboardoffset_y;
+
+					_shift = false;
+					_capsLock = false;
+					_shiftLock = false;
+					_maxLength = 10;
+					_cursor = 0;
+					_keyString = "";
+					_lastSwap = 1;
+
+					_keySet = ["`","1","2","3","4","5","6","7","8","9","0","-","=","xx","\t","q","w","e","r","t","y","u",
+						   "i","o","p","[","]","\\","xx","a","s","d","f","g","h","j","k","l",";","\'","0","0","z","x",
+						   "c","v","b","n","m",",",".","/","xx","xx","xx","xx","xx"," ","xx","xx","xx","xx"];
+
+					_keyShiftSet = ["~","!","@","#","$","%","^","&","*","(",")","_","+","xx","\t","Q","W","E","R","T","Y",
+							"U","I","O","P","{","}","|","xx","A","S","D","F","G","H","J","K","L",":","\"","xx","xx",
+							"Z","X","C","V","B","N","M","<",">","?","xx","xx","xx","xx","xx"," ","xx","xx","xx","xx"];
+
+					_keyCapsLockSet = ["`","1","2","3","4","5","6","7","8","9","0","-","=","xx","\t","Q","W","E","R","T","Y","U",
+						   "I","O","P","[","]","\\","xx","A","S","D","F","G","H","J","K","L",";","\'","xx","xx","Z","X",
+						   "C","V","B","N","M",",",".","/","xx","xx","xx","xx","xx"," ","xx","xx","xx","xx"];
+
+						// Keyboard widget construction.
+					_widgetSet = [];
+
+					for(local i = 1; i <= 62; i++)
+					{
+						if(i < 10)
+							_widgetSet.append(_scene.findWidget("keyboard.button0" + (i).tostring() ));
+						else
+							_widgetSet.append(_scene.findWidget("keyboard.button" + (i).tostring() ));
+						
+					}
+
+					_label = _scene.findWidget("keyboard.display");
+					_label.setText("");
+					_label.setColor(253,253,255);
+					_label.setAlpha(30);
+
+					_displayCursor = _scene.findWidget("keyboard.displayCursor");
+					_displayCursor.setColor(130,250,250);
+
+					_backdropImage = _scene.findWidget("keyboard.bg");
+					_backdropImage.setAlpha(28);
+
+					_labelBg = _scene.findWidget("keyboard.displayBg");
+					_labelBg.setAlpha(28);
+
+					_highlightWidget = _scene.findWidget("keyboard.cursor");
+					_highlightWidget.setColor(130,250,250);
+				}
+
+					// OSKeyboard data members.
+				_widgetSet = null;
+
+				_label = null;
+				_labelMove = null;
+
+				_displayCursor = null;
+				_displayCursorMove = null;
+
+				_highlightWidget = null;
+				_highlightWidgetMove = null;
+				_highlightWidgetFade = null;
+
+				_labelBg = null;
+				_labelBgMove = null;
+
+				_backdropImage = null;
+				_backdropImageMove = null;
+
+				_shift = null;
+				_capsLock = null;
+				_shiftLock = null;
+				_maxLength = null;
+				_cursor = null;
+				_lastSwap = null;
+				_keyString = null;
+
+				_keySet = null;
+				_keyShiftSet = null;
+				_keyCapsLockSet = null;
+
+				KBOARD_OFFSET_X = null;
+				KBOARD_OFFSET_Y = null;
+			}
+
+			function OSKeyboard::InitializeKeyboard(kinit_model)
+			// Initializes the keyboard using a KeyboardInitializer model.
+			{
+				_maxLength = kinit_model.GetMaxLength();
+				KBOARD_OFFSET_Y = kinit_model.GetOffset();
+
+				_label.setText(kinit_model.GetPrompt());
+
+				Reset();
+				
+				SetUpInitialLocations();
+			}
+
+			function OSKeyboard::SetUpInitialLocations()
+			// Sets up the initial offscreen locations of the keyboard widgets.
+			{
+				local shove = 500;
+
+				_backdropImage.setX(0 - shove/2);
+				_backdropImage.setY(KBOARD_OFFSET_Y + 29);
+
+				_label.setX(7 - shove/2);
+				_label.setY(KBOARD_OFFSET_Y + 4);
+
+				_displayCursor.setX(-20);
+				_displayCursor.setY(KBOARD_OFFSET_Y);
+
+				_labelBg.setX(5 - shove/2);
+				_labelBg.setY(KBOARD_OFFSET_Y);
+
+				_highlightWidget.setX(-100);
+				_highlightWidget.setY(100);
+
+				local x = KBOARD_OFFSET_X + 3;
+				local y = KBOARD_OFFSET_Y + 35;//36;
+				local spc = 2;
+
+				for(local i = 0; i < 62; i++)
+				{
+					_widgetSet[i].setX(x);
+					_widgetSet[i].setY(y);
+
+					x += spc + _widgetSet[i].getWidth();
+
+					if(x > 245)
+					{
+
+						x = KBOARD_OFFSET_X + 3;
+						y += spc + _widgetSet[i].getHeight();
+					}
+				}
+			}
+
+			function OSKeyboard::InitializeWidgets()
+			// Initializes keyboard widgets.
+			{
+				SetUpButtonNavigation();
+				SetUpMoves();
+				HookButtonEvents();
+			}
+
+			function OSKeyboard::SetUpButtonNavigation()
+			// Sets up the navigations between buttons.
+			{
+				for(local i = 1; i < 61; i++)
+				{
+					_widgetSet[i].setEast( _widgetSet[i + 1]);
+					_widgetSet[i].setWest( _widgetSet[i - 1]);
+				}
+
+				_widgetSet[0].setWest( _widgetSet[13]);
+				_widgetSet[0].setEast( _widgetSet[1]);
+				_widgetSet[13].setEast( _widgetSet[0]);
+				_widgetSet[14].setWest( _widgetSet[27]);
+				_widgetSet[27].setEast( _widgetSet[14]);
+				_widgetSet[28].setWest( _widgetSet[40]);
+				_widgetSet[40].setEast( _widgetSet[28]);
+				_widgetSet[41].setWest( _widgetSet[52]);
+				_widgetSet[52].setEast( _widgetSet[41]);
+				_widgetSet[53].setWest( _widgetSet[61]);
+				_widgetSet[61].setEast( _widgetSet[53]);
+				_widgetSet[61].setWest( _widgetSet[60]);
+
+				for(local i = 0; i < 11; i++)
+				{
+					_widgetSet[24 - i].setNorth(_widgetSet[10 - i]);
+					_widgetSet[i].setSouth(_widgetSet[i + 14]);
+					_widgetSet[38 - i].setNorth(_widgetSet[24 - i]);
+					_widgetSet[i + 14].setSouth(_widgetSet[i + 28]);
+					_widgetSet[51 - i].setNorth(_widgetSet[38 - i]);
+					_widgetSet[i + 28].setSouth(_widgetSet[i + 41]);
+				}
+
+				_widgetSet[11].setSouth( _widgetSet[25]);
+				_widgetSet[12].setSouth( _widgetSet[26]);
+				_widgetSet[13].setSouth( _widgetSet[27]);
+				_widgetSet[25].setNorth( _widgetSet[11]);
+				_widgetSet[26].setNorth( _widgetSet[12]);
+				_widgetSet[27].setNorth( _widgetSet[13]);
+				_widgetSet[25].setSouth( _widgetSet[39]);
+				_widgetSet[26].setSouth( _widgetSet[39]);
+				_widgetSet[27].setSouth( _widgetSet[40]);
+				_widgetSet[39].setNorth( _widgetSet[25]);
+				_widgetSet[40].setNorth( _widgetSet[27]);
+				_widgetSet[39].setSouth( _widgetSet[52]);
+				_widgetSet[40].setSouth( _widgetSet[52]);
+				_widgetSet[52].setNorth( _widgetSet[40]);
+				_widgetSet[41].setSouth( _widgetSet[53]);
+				_widgetSet[42].setSouth( _widgetSet[56]);
+				_widgetSet[43].setSouth( _widgetSet[57]);
+				_widgetSet[44].setSouth( _widgetSet[57]);
+				_widgetSet[45].setSouth( _widgetSet[57]);
+				_widgetSet[46].setSouth( _widgetSet[57]);
+				_widgetSet[47].setSouth( _widgetSet[57]);
+				_widgetSet[48].setSouth( _widgetSet[57]);
+				_widgetSet[49].setSouth( _widgetSet[57]);
+				_widgetSet[50].setSouth( _widgetSet[58]);
+				_widgetSet[51].setSouth( _widgetSet[59]);
+				_widgetSet[52].setSouth( _widgetSet[61]);
+				_widgetSet[53].setNorth( _widgetSet[41]);
+				_widgetSet[54].setNorth( _widgetSet[41]);
+				_widgetSet[55].setNorth( _widgetSet[42]);
+				_widgetSet[56].setNorth( _widgetSet[43]);
+				_widgetSet[57].setNorth( _widgetSet[46]);
+				_widgetSet[58].setNorth( _widgetSet[50]);
+				_widgetSet[59].setNorth( _widgetSet[51]);
+				_widgetSet[60].setNorth( _widgetSet[52]);
+				_widgetSet[61].setNorth( _widgetSet[52]);
+			}
+
+			function OSKeyboard::SetUpMoves()
+			// Creates MoveToEffects to animate the widgets.
+			{
+				_backdropImageMove = MoveToEffect();
+				_backdropImageMove.setTarget(_backdropImage);
+				_backdropImageMove.setDuration(500);
+
+				_labelMove = MoveToEffect();
+				_labelMove.setTarget(_label);
+				_labelMove.setDuration(500);
+
+				_labelBgMove = MoveToEffect();
+				_labelBgMove.setTarget(_labelBg);
+				_labelBgMove.setDuration(500);
+
+				_displayCursorMove = MoveToEffect();
+				_displayCursorMove.setTarget(_displayCursor);
+				_displayCursorMove.setDuration(100);
+
+				_highlightWidgetMove = MoveToEffect();
+				_highlightWidgetMove.setTarget(_highlightWidget);
+				_highlightWidgetMove.setDuration(200);
+
+				_highlightWidgetFade = FadeEffect();
+				_highlightWidgetFade.setTarget(_highlightWidget);
+				_highlightWidgetFade.setDuration(200);
+			}
+
+			function OSKeyboard::OnButtonFocusGained(event)
+			// Called when a button is focused.
+			{
+				local button = event.getTarget();
+
+				KBOARD._highlightWidget.setWidth(button.getWidth());
+
+				KBOARD._highlightWidget.setAlpha(0);
+				KBOARD._highlightWidgetFade.setDuration(350);
+				KBOARD._highlightWidgetFade.setEndAlpha(15);
+				KBOARD._highlightWidgetFade.start();
+
+				KBOARD._highlightWidgetMove.stop();
+				KBOARD._highlightWidgetMove.setDestination(button.getX() - 2,button.getY());
+				KBOARD._highlightWidgetMove.setDuration(100);
+				KBOARD._highlightWidgetMove.start();
+			}
+
+			function OSKeyboard::SetupBeginTransition()
+			// Sets up the final onscreen locations of the keyboard widgets.
+			{
+				_backdropImageMove.setDestination(0, KBOARD_OFFSET_Y + 29);
+				_labelMove.setDestination(7, KBOARD_OFFSET_Y + 4);
+				_displayCursorMove.setDestination(-20, KBOARD_OFFSET_Y);
+				_labelBgMove.setDestination(0, KBOARD_OFFSET_Y);
+			}
+
+			function OSKeyboard::SetupEndTransition()
+			// Sets up final locations when scene ends.
+			{
+				local shove = 300;
+
+				_backdropImageMove.setDestination(-shove, KBOARD_OFFSET_Y + 29);
+				_labelMove.setDestination(7-shove, KBOARD_OFFSET_Y + 4);
+				_labelBgMove.setDestination(5-shove, KBOARD_OFFSET_Y);
+
+				_highlightWidgetMove.setDuration(20);
+				_highlightWidgetMove.setDestination(-100,90);
+
+				_displayCursorMove.setDestination(-20, KBOARD_OFFSET_Y);
+			}
+
+			function OSKeyboard::HookButtonEvents()
+			// Hooks onButtonClick events to the button widgets.
+			{
+				for(local i = 0; i < 62; i++)
+				{
+					_widgetSet[i].onFocusGained(OnButtonFocusGained);
+					_widgetSet[i].onButtonClick(OnButtonClick);
+				}
+			}
+
+			function OSKeyboard::OnButtonClick(event)
+			// Called when a button is clicked.
+			{
+				local button = event.getTarget();
+				local buttonId = button.getId();
+
+				buttonId = buttonId.slice(15,17);
+				buttonId = buttonId.tointeger();
+
+
+				if(buttonId == 41)
+				{
+					local sendString = KBOARD._keyString;
+					local dialog = event.getTarget().getParentScene();
+					dialog.setModel(sendString);
+					KBOARD.SetupEndTransition();
+					transitionEffects.start();
+					dialog.hide();
+					return;
+				}
+
+				KBOARD.Input(buttonId);
+
+				KBOARD.TextureSwap();
+
+				local leftHalf = KBOARD._keyString.slice(0,KBOARD._cursor);
+				local rightHalf = KBOARD._keyString.slice(KBOARD._cursor, KBOARD._keyString.len() );
+
+				KBOARD._displayCursorMove.setDestination(leftHalf.len()*12 + 7, KBOARD.KBOARD_OFFSET_Y + 2);
+				KBOARD._displayCursorMove.start();
+
+				KBOARD._label.setText(leftHalf + rightHalf);
+			}
+
+			function OSKeyboard::Input(ID)
+			// Determines what action to take according to the button ID argument.
+			{
+				local frontHalf = _keyString.slice(0,_cursor);
+				local backHalf = _keyString.slice(_cursor, _keyString.len() );
+
+				if(ID == 14)
+				{
+					if(frontHalf.len() > 0)
+					{
+						_keyString = frontHalf.slice(0,frontHalf.len() - 1) + backHalf;
+						_cursor--;
+					}
+				}
+				else if((ID == 42) || (ID == 53))
+				{
+					if(_shiftLock)
+					{
+						_shiftLock = false;
+						_shift = false;
+					}
+					else if(!_shift)
+						_shift = true;
+					else
+						_shift = false;
+				}
+				else if(ID == 29)
+				{
+					if(!_capsLock)
+						_capsLock = true;
+					else
+						_capsLock = false;
+				}
+				else if(ID == 54)
+				{
+					if(_cursor  > 0)
+						_cursor--;
+				}
+				else if(ID == 55)
+				{
+					if(_cursor < _keyString.len() )
+						_cursor++;
+				}
+				else if(ID == 56)
+				{
+					_cursor = 0;
+				}
+				else if(ID == 57)
+				{
+					_cursor = _keyString.len();
+				}
+				else if(ID == 59)
+				{
+					if(!_shiftLock)
+						_shiftLock = true;
+					else
+						_shiftLock = false;
+				}
+				else if(ID == 60)
+				{
+					if( (_keyString.len() + 3) < _maxLength)
+					{
+						_keyString = _keyString + ".nds";
+						_cursor += 4;
+					}
+				}
+				else if(ID == 61)
+				{
+					if( (_keyString.len() + 3) < _maxLength)
+					{
+						_keyString = _keyString + ".sav";
+						_cursor += 4;
+					}
+				}
+				else if(ID == 62)
+				{
+					_keyString = "";
+					_cursor = 0;
+				}
+				else if(_keySet[ID - 1] != "xx")
+				{
+					if(_keyString.len() < _maxLength)
+					{
+						if( (_shift) || (_shiftLock) )
+							_keyString = frontHalf + _keyShiftSet[ID - 1].tostring() + backHalf;
+						else if(_capsLock)
+							_keyString = frontHalf + _keyCapsLockSet[ID - 1].tostring() + backHalf;
+						else
+							_keyString = frontHalf + _keySet[ID - 1].tostring() + backHalf;
+					
+						_cursor++;
+					}
+
+					_shift = false;
+				}
+			}
+
+			function OSKeyboard::TextureSwap()
+			// Swaps the keyboard textures to reflect shift or caps lock status.
+			{
+				if( (_shift) || (_shiftLock) )
+				{
+					if(_lastSwap != 2)
+					{
+						_backdropImage.setTexture(101);
+						_backdropImage.setPalette(101);
+					}
+					_lastSwap = 2;
+				}
+				else if(_capsLock)
+				{
+					if(_lastSwap != 3)
+					{
+						_backdropImage.setTexture(102);
+						_backdropImage.setPalette(102);
+					}
+					_lastSwap = 3;
+				}	
+				else
+				{
+					if(_lastSwap != 1)
+					{
+						_backdropImage.setTexture(100);
+						_backdropImage.setPalette(100);
+					}
+					_lastSwap = 1;
+				}
+			}
+
+			function OSKeyboard::Reset()
+			// Resets keyboard data members to default settings.
+			{
+				_shift = false;
+				_capsLock = false;
+				_shiftLock = false;
+				_widgetSet[40].focus();
+				_keyString = "";
+				_cursor = 0;
+			}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			
+			function OnInit()
+			{
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+
+					// Create a Keyboard instance.
+				KBOARD = OSKeyboard(5, 100, scene);
+
+					// Initialize the keyboard's widgets.
+				KBOARD.InitializeWidgets();
+
+					// Group events so they can be used as an end transition
+				transitionEffects = EffectGroup();
+				transitionEffects.addEffect(KBOARD._backdropImageMove);
+				transitionEffects.addEffect(KBOARD._labelMove);
+				transitionEffects.addEffect(KBOARD._labelBgMove);
+				transitionEffects.addEffect(KBOARD._highlightWidgetMove);
+				transitionEffects.addEffect(KBOARD._displayCursorMove);
+
+
+					// Hook scene events
+				scene.onBegin(OnBegin);
+				scene.onEnd(OnEnd);
+			}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////END SQUIRREL////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		]]>
+	</script>
+	
+	<objects>
+
+		<image id="keyboard.bg">
+			<properties>
+				<bounds x="0" y="105" width="256" height="96"/>
+				<texture-id>100</texture-id>
+				<palette-id>100</palette-id>
+			</properties>
+		</image>
+		<image id="keyboard.displayCursor">
+			<properties>
+				<depth>2</depth>
+				<bounds x="-30" y="-30" width="13" height="27"/>
+				<texture-id>105</texture-id>
+				<palette-id>105</palette-id>
+			</properties>
+		</image>
+		<label id="keyboard.display">
+			<properties>
+				<bounds x="7" y="70" width="241" height="22" /> 
+				<depth>2</depth> 
+				<font name="default" size="15" /> 
+				<text>0</text> 
+				<wrap-type>clip</wrap-type> 
+				<justify>left</justify> 
+				<vertical-align>middle</vertical-align> 
+				<shadow xoffset="1" yoffset="1" /> 
+			</properties>
+		</label>
+		<image id="keyboard.displayBg">
+			<properties>
+				<bounds x="5" y="64" width="256" height="29" /> 
+				<depth>2</depth> 
+				<texture-id>103</texture-id> 
+				<palette-id>103</palette-id> 
+			</properties>
+		</image>
+		<image id="keyboard.cursor">
+			<properties>
+				<depth>2</depth>
+				<bounds x="0" y="0" width="15" height="15"/>
+				<texture-id>104</texture-id>
+				<palette-id>104</palette-id>
+			</properties>
+		</image>
+		<button id="keyboard.button01">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button01">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button02">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button03">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button04">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button05">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button06">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button07">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button08">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button09">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button10">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button11">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button12">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button13">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button14">
+			<properties>		
+				<bounds x="0" y="0" width="23" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button15">
+			<properties>		
+				<bounds x="0" y="0" width="23" height="15"/>
+				<depth>3</depth>
+			</properties>	
+		</button>			
+		<button id="keyboard.button16">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button17">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button18">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button19">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button20">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button21">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button22">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button23">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button24">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button25">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button26">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button27">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button28">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button29">
+			<properties>		
+				<bounds x="0" y="0" width="31" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button30">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button31">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button32">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button33">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button34">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button35">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button36">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button37">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button38">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button39">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button40">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button41">
+			<properties>		
+				<bounds x="0" y="0" width="24" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button42">
+			<properties>		
+				<bounds x="0" y="0" width="39" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button43">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button44">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button45">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>	
+		</button>			
+		<button id="keyboard.button46">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button47">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button48">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button49">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button50">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button51">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button52">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button53">
+			<properties>		
+				<bounds x="0" y="0" width="33" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button54">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button55">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button56">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button57">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>	
+			</properties>		
+		</button>
+		<button id="keyboard.button58">
+			<properties>		
+				<bounds x="0" y="0" width="108" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button59">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button60">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button61">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>
+			</properties>		
+		</button>			
+		<button id="keyboard.button62">
+			<properties>		
+				<bounds x="0" y="0" width="15" height="15"/>
+				<depth>3</depth>				
+			</properties>		
+		</button>			
+			
+	</objects>
+	
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+</dialog>
+

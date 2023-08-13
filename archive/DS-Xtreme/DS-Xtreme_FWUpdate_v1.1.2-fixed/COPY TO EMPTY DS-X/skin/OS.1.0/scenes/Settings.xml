@@ -1,0 +1,559 @@
+<scene>
+	<script>
+		<![CDATA[
+		
+			// Store some of the widgets for later use
+			// so we don't have to look them up each time we need them.
+			titleLabel <- null;
+			titleBg <- null;
+			settingsList <- null;
+			leftSpinnerRed <- null;
+			leftSpinnerGreen <- null;
+			leftSpinnerBlue <- null;
+			rightSpinnerRed <- null;
+			rightSpinnerGreen <- null;
+			rightSpinnerBlue <- null;
+						
+			modified <- false;
+			
+			// Store the scene effects for easy access or to keep them in scope.
+			SceneEffects <- {
+			
+				titleLabelMove = null, // Move the title in from the left
+				titleBgMove = null, // Move the title bg in from the left
+				settingsListMove = null, // Move the list in from the right
+				
+				transitionEffects = null, // Group of transition effects
+			}	
+			
+			function GoBack()
+			{
+				Application.getSceneManager().selectScene("main");			
+			}
+			
+			function OnBackClick(event)
+			{
+				GoBack();
+			}			
+			
+						
+			// Set the final onscreen locations as the destinations of the effects			
+			function SetupBeginTransition()
+			{
+				SceneEffects.titleLabelMove.setDestination(10,12);
+				SceneEffects.titleBgMove.setDestination(0,10);	
+				SceneEffects.settingsListMove.setDestination(0,42);
+			}			
+
+			// Set the initial offscreen locations as the destinations of the effects							
+			function SetupEndTransition()
+			{
+				SceneEffects.titleLabelMove.setDestination(-210,12);
+				SceneEffects.titleBgMove.setDestination(-223,10);	
+				SceneEffects.settingsListMove.setDestination(257,42);					
+			}
+			
+			// This is called when the scene is being displayed
+			function OnBegin(event)
+			{
+				modified = false;
+			
+				// Set the destinations appropriately on the transition 
+				// effects for the starting sequence
+				SetupBeginTransition();
+				
+				// Play the start transition
+				SceneEffects.transitionEffects.start();
+
+				local selected = settingsList.getSelectedItem();
+				if(null != selected)
+				{
+					selected.focus();
+				}
+				else
+				{
+					settingsList.focus();
+				}
+
+			}
+			
+			// This is called before the next scene is displayed
+			function OnEnd(event)
+			{					
+				if(modified)
+				{
+					SaveLEDSettings();
+				}
+				
+				// Set the destinations appropriately on the transition 
+				// effects for the ending sequence
+				SetupEndTransition();
+				
+				// Setting the effect as the end effect on the event
+				// will cause the framework to wait for the effect to 
+				// finish before starting the next scene
+				event.setEndEffect(SceneEffects.transitionEffects);
+			}
+						
+			// This is called when the selected index in the list is changed
+			// We swap the texture which indicates to the user that the item
+			// is selected.
+			function OnSelectedIndexChanged(event)
+			{
+				local newIndex = event.getNewIndex();
+				local oldIndex = event.getOldIndex();
+				
+				if(oldIndex >= 0)
+				{
+					local oldItem = settingsList.getItem(oldIndex);
+					local oldHighlight = oldItem.findWidget("highlight");
+					oldHighlight.setVisible(false);
+				}
+				
+				if(newIndex >= 0)
+				{
+					local newItem = settingsList.getItem(newIndex);
+					local newHighlight = newItem.findWidget("highlight");
+					newHighlight.setVisible(true);
+					
+					local scene = newItem.getParentScene();
+					local widget = scene.getFocusedWidget();
+					local parentWidget = widget.getParent();
+
+					if(newItem.getId() != parentWidget.getId())
+					{
+							local button = newItem.findWidget("spinner-up");
+							if(button != null)
+							{
+								button.focus();
+							}
+							else
+							{
+								button = newItem.findWidget("status");
+								if(button != null)
+								{
+									button.focus();
+								}
+							}
+					}
+				}
+			}							
+					
+			function OnStatusButtonClick(event)
+			{
+				 local button = event.getTarget();
+				 local buttonBg = button.findWidget("statusBg");
+				 local item = button.getParent();
+				 
+				 local setting = Settings.get(item.getId());
+				 if(setting.getValue() == true)
+				 {
+				 		// Set to false
+				 		setting.setValue(false);
+		
+				 		// Change color
+	 					buttonBg.setTexture(27);
+						buttonBg.setPalette(27);
+				 }
+				 else
+				 {
+				 		// Set to true
+				 		setting.setValue(true);
+				 		
+				 		// Change color
+	 					buttonBg.setTexture(28);
+						buttonBg.setPalette(28);
+				 }
+				 
+				 Settings.set(setting);
+				 Settings.save();
+			}
+					
+			function OnBooleanItemFocus(event)
+			{
+				local instantboot = event.getTarget();
+				local button = instantboot.findWidget("status");
+				button.focus();
+			}
+			
+			function OnStatusButtonFocusGained(event)
+			{
+				local button = event.getTarget();
+				local buttonBg = button.findWidget("statusBg");
+				buttonBg.setAlpha(31);
+			}			
+			
+			function OnStatusButtonFocusLost(event)
+			{
+				local button = event.getTarget();
+				local buttonBg = button.findWidget("statusBg");
+				buttonBg.setAlpha(15);
+			}
+			
+
+			function OnLEDFocus(event)
+			{
+				local listitem = event.getTarget();
+				local button = listitem.findWidget("spinner-up");
+				print("setting focus to button " + button.getId());
+				button.focus();
+			}
+			
+			function OnSpinnerButtonFocusGained(event)
+			{
+				local button = event.getTarget();
+				local bg = button.findWidget("spinner-bg");
+				bg.setAlpha(31);
+			}
+			
+			function OnSpinnerButtonFocusLost(event)
+			{
+				local button = event.getTarget();
+				local bg = button.findWidget("spinner-bg");
+				bg.setAlpha(15);
+			}	
+					
+			function SaveLEDSettings()
+			{
+				local leftRed = leftSpinnerRed.getValue();
+				local leftGreen = leftSpinnerGreen.getValue();
+				local leftBlue = leftSpinnerBlue.getValue();
+				
+				local rightRed = rightSpinnerRed.getValue();
+				local rightGreen = rightSpinnerGreen.getValue();
+				local rightBlue = rightSpinnerBlue.getValue();
+			
+				local setting = Settings.get("left-led-red-value");
+				setting.setValue(leftRed);
+				Settings.set(setting);
+				
+				setting = Settings.get("left-led-green-value");
+				setting.setValue(leftGreen);
+				Settings.set(setting);				
+
+				setting = Settings.get("left-led-blue-value");
+				setting.setValue(leftBlue);
+				Settings.set(setting);	
+				
+				setting = Settings.get("right-led-red-value");
+				setting.setValue(rightRed);
+				Settings.set(setting);	
+				
+				setting = Settings.get("right-led-green-value");
+				setting.setValue(rightGreen);
+				Settings.set(setting);	
+				
+				setting = Settings.get("right-led-blue-value");
+				setting.setValue(rightBlue);
+				Settings.set(setting);	
+
+				Settings.save();			
+			}
+					
+			function OnLedValueChanged()
+			{
+				local leftRed = leftSpinnerRed.getValue();
+				local leftGreen = leftSpinnerGreen.getValue();
+				local leftBlue = leftSpinnerBlue.getValue();
+				
+				local rightRed = rightSpinnerRed.getValue();
+				local rightGreen = rightSpinnerGreen.getValue();
+				local rightBlue = rightSpinnerBlue.getValue();
+				
+				PWM.setLed(0,leftRed,leftGreen,leftBlue);
+				PWM.setLed(1,rightRed,rightGreen,rightBlue);
+				
+				modified = true;
+			}
+
+			function CreateBooleanItem( settings, settingTitle, settingName )
+			{
+				local item = ListItem(settingName);
+				settings.applyItemTemplate(item);
+				local title = item.findWidget("settingName");
+				title.setText(settingTitle);			
+			
+				local settingToggle = Button("status");
+				settingToggle.onButtonClick(OnStatusButtonClick);
+				local rect = Image("statusBg", 27, 27);
+				rect.setX(212);
+				rect.setY(3);
+				rect.setWidth(30);
+				rect.setHeight(30);
+				rect.setAlpha(31);
+
+				local setting = Settings.get(settingName);
+				if(setting == null)
+				{
+					setting = Setting(settingName,false);
+					Settings.set(setting);
+				}
+				if(setting.getValue() == true)
+				{				
+					rect.setTexture(28);
+					rect.setPalette(28);
+				}
+				else
+				{
+					rect.setTexture(27);
+					rect.setPalette(27);
+				}
+				
+				settingToggle.addWidget(rect);
+				item.addWidget(settingToggle);
+				settings.addItem(item);	
+				item.onFocusGained(OnBooleanItemFocus);
+				settingToggle.onFocusGained(OnStatusButtonFocusGained);
+				settingToggle.onFocusLost(OnStatusButtonFocusLost);			
+			}
+			
+			function CreateLedSpinnerItem( settings, settingTitle, initialValue )
+			{
+				// Create item and set title
+				local spinnerItem = ListItem(settingTitle);
+				settings.applyItemTemplate(spinnerItem);
+				local title = spinnerItem.findWidget("settingName");
+				title.setText(settingTitle);
+				
+				// Create label
+				local spinnerLabel = Label("spinner-label");
+				spinnerLabel.setX(180);
+				spinnerLabel.setY(0);
+				spinnerLabel.setWidth(30);
+				spinnerLabel.setHeight(36);
+				spinnerLabel.setDepth(2);
+				spinnerLabel.setColor(15,15,15);
+				spinnerLabel.setPointSize(12);			
+				spinnerItem.addWidget(spinnerLabel);
+				
+				// Create spinner up button
+				local spinnerUp = Button("spinner-up");
+				local rect = Image("spinner-bg", 30, 30);
+				rect.setX(210);
+				rect.setY(10);
+				rect.setWidth(16);
+				rect.setHeight(16);
+				rect.setAlpha(15);
+
+				spinnerUp.addWidget(rect);
+				spinnerItem.addWidget(spinnerUp);
+				
+				// Create spinner down button
+				local spinnerDown = Button("spinner-down");
+				rect = Image("spinner-bg", 29, 29);
+				rect.setX(230);
+				rect.setY(10);
+				rect.setWidth(16);
+				rect.setHeight(16);		
+				rect.setAlpha(15);
+						
+				spinnerDown.addWidget(rect);
+				spinnerItem.addWidget(spinnerDown);
+
+				// Set up navigation between buttons
+				spinnerUp.setEast(spinnerDown);
+				spinnerDown.setWest(spinnerUp);
+				
+				// Add the item to the list
+				settingsList.addItem(spinnerItem);	
+				
+				// Set focus handlers
+				spinnerItem.onFocusGained(OnLEDFocus);	
+				spinnerUp.onFocusGained(OnSpinnerButtonFocusGained);
+				spinnerUp.onFocusLost(OnSpinnerButtonFocusLost);
+				spinnerDown.onFocusGained(OnSpinnerButtonFocusGained);
+				spinnerDown.onFocusLost(OnSpinnerButtonFocusLost);
+												
+				// Create spinner object
+				local spinner = Spinner(spinnerLabel,spinnerUp, spinnerDown, 255);
+				spinner.setValue(initialValue);
+				spinner.onValueChanged(OnLedValueChanged.bindenv(this));			
+				
+				return spinner;
+			}
+			
+			function GetLedSettingValue( name )
+			{
+				local result = 255;
+				local setting = Settings.get(name);
+				if(setting != null)
+				{
+					result = setting.getValue();
+				}
+				return result;
+			}
+			
+			function CreateSettingsList()
+			{
+				CreateBooleanItem( settingsList, "Instant Boot", "instant-boot" );	
+				CreateBooleanItem( settingsList, "Dancing LEDs", "dancing-leds" );	
+				
+				leftSpinnerRed = CreateLedSpinnerItem(settingsList, "Left LED Red", GetLedSettingValue("left-led-red-value"));
+				leftSpinnerGreen = CreateLedSpinnerItem(settingsList, "Left LED Green", GetLedSettingValue("left-led-green-value"));
+				leftSpinnerBlue = CreateLedSpinnerItem(settingsList, "Left LED Blue", GetLedSettingValue("left-led-blue-value"));
+
+				rightSpinnerRed = CreateLedSpinnerItem(settingsList, "Right LED Red", GetLedSettingValue("right-led-red-value"));
+				rightSpinnerGreen = CreateLedSpinnerItem(settingsList, "Right LED Green", GetLedSettingValue("right-led-green-value"));
+				rightSpinnerBlue = CreateLedSpinnerItem(settingsList, "Right LED Blue", GetLedSettingValue("right-led-blue-value"));	
+			}
+					
+			function OnButtonReleased(event)
+			{
+				if(event.getButton() == event.B)
+				{
+					GoBack();
+				}
+			}
+				
+			// This is called when the scene is initialized (i.e., after the XML is loaded)
+			function OnInit()
+			{
+				// The current event is always available from the Application object
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+
+				// Store some vars
+				titleLabel = scene.findWidget("titleLabel");
+				titleBg = scene.findWidget("titleImage");
+				settingsList = scene.findWidget("settingslist");
+
+				// Set up initial locations (offscreen)
+				// This could obviously be done in the xml, but sometimes it's nice to
+				// keep the xml defined as what it will look like once fully presented
+				titleLabel.setX(-210);
+				titleBg.setX(-223);
+				settingsList.setX(257);
+									
+				// Set up events
+				SceneEffects.titleLabelMove = MoveToEffect();
+				SceneEffects.titleLabelMove.setTarget(titleLabel);
+				SceneEffects.titleLabelMove.setDuration(300);
+			
+				SceneEffects.titleBgMove = MoveToEffect();
+				SceneEffects.titleBgMove.setTarget(titleBg);
+				SceneEffects.titleBgMove.setDuration(300);	
+				
+				SceneEffects.settingsListMove = MoveToEffect();
+				SceneEffects.settingsListMove.setTarget(settingsList);
+				SceneEffects.settingsListMove.setDuration(300);
+									
+				// Group the events so they can be used as an end transition
+				SceneEffects.transitionEffects = EffectGroup();
+				SceneEffects.transitionEffects.addEffect(SceneEffects.titleLabelMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.titleBgMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.settingsListMove);
+						
+				// Hook scene events
+				scene.onBegin(OnBegin);								
+				scene.onEnd(OnEnd);
+				scene.onButtonReleased(OnButtonReleased);
+				
+				// Hook list events
+				settingsList.onSelectedIndexChanged(OnSelectedIndexChanged);
+
+				CreateSettingsList();
+				
+				
+				local back = scene.findWidget("back");
+				back.onButtonClick(OnBackClick);					
+				
+			}
+		]]>
+	</script>
+
+	<objects>
+		<image id="game.bg">
+			<properties>
+				<bounds x="0" y="0" width="256" height="192"/>
+				<texture-id>9</texture-id>
+				<palette-id>2</palette-id>
+			</properties>
+		</image>
+    <list id="settingslist">
+      <properties>
+        <bounds x="0" y="42" width="256" height="144"/>
+        <depth>1</depth>
+      </properties>
+      
+      <objects>
+        <!-- bg image or whatever here -->
+      </objects>
+      
+      <item-template>
+        <properties>
+          <bounds x="0" y="0" width="256" height="36"/>
+          <depth>1</depth>
+        </properties>
+        <objects>
+        	<rect id="highlight">
+						<properties>
+							<bounds x="0" y="0" width="256" height="36"/>
+							<color red="0" green="0" blue="31"/>
+							<alpha>2</alpha>
+							<visible>false</visible>
+						</properties>
+					</rect>
+          <label id="settingName">
+            <properties>
+              <bounds x="10" y="0" width="166" height="36"/>
+              <depth>2</depth>
+							<color red="15" blue="15" green="15"/>
+              <font name="default" size="12"/>
+              <wrap-type>clip</wrap-type>
+              <justify>left</justify>
+              <vertical-align>middle</vertical-align> 
+            </properties>       
+          </label>
+        </objects>
+      </item-template>
+    </list>
+		<image id="titleImage">
+			<properties>
+				<bounds x="0" y="10" width="223" height="30"/>
+				<depth>1</depth>
+				<texture-id>19</texture-id>
+				<palette-id>19</palette-id>
+			</properties>
+		</image>
+		<label id="titleLabel">
+			<properties>
+				<bounds x="10" y="12" width="200" height="20"/>
+				<depth>3</depth>
+				<font name="default" size="19"/>
+				<text>Settings</text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>middle</vertical-align>
+				<shadow/>
+			</properties>
+		</label>
+		<button id="back">
+			<properties>
+				<bounds x="224" y="13" width="24" height="24"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="24" height="24"/>
+						<texture-id>89</texture-id>
+						<palette-id>89</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>2</depth>
+						<bounds x="2" y="2" width="16" height="16"/>
+						<texture-id>71</texture-id>
+						<palette-id>71</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>		
+	</objects>
+
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+</scene>

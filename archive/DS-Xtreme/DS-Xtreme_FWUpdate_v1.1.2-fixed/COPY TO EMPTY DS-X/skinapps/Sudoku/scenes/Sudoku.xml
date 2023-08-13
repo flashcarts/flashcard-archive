@@ -1,0 +1,3397 @@
+<scene id="Sudoku">
+	<script>
+		<![CDATA[
+
+			GRID <- null;
+			KEYPAD <- null;
+			LOGIC <- null;
+			ARTIFACTS <- null;
+			transitionEffects <- null;
+
+			// Called when the scene begins
+			function OnBegin(event)
+			{
+					// Sets up a new game of sudoku
+				LOGIC.CreateGrid();
+				GRID.LoadGrid(LOGIC, ARTIFACTS);
+
+					//Set up the beginning transition
+				GRID.SetUpInitialLocations();
+				KEYPAD.SetupInitialLocations();
+				ARTIFACTS.SetupInitialLocations();
+
+				GRID.SetupBeginTransition();
+				KEYPAD.SetupBeginTransition();
+				ARTIFACTS.SetupBeginTransition();
+
+				GRID._widgetSet[40].focus();
+
+				ARTIFACTS.InitGridCursor();
+				ARTIFACTS.InitKeypadCursor();
+
+
+				transitionEffects.start();
+			}
+			
+			// Called when the scene ends
+			function OnEnd(event)
+			{
+				GRID.SetupEndTransition();
+				KEYPAD.SetupEndTransition();
+				ARTIFACTS.SetupEndTransition();
+
+				event.setEndEffect(transitionEffects);		
+			}
+
+			// Called when a button on the device is pressed
+			function OnButtonPressed(event)
+			{
+				if(event.getButton() == event.B)
+				{
+					// Tag (or un-tag) a grid square if a writable grid square is focused
+					if(GRID._focusOnGrid)
+					{
+						if(LOGIC._sudokuArray[GRID._gridLocation] < 10)
+						{
+							if(GRID._tagArray[GRID._gridLocation] == 0)
+							{
+								GRID._widgetSet[GRID._gridLocation].getWidget("background").setColor(255,245,245);
+
+								GRID._tagArray[GRID._gridLocation] = 1;
+							}
+							else if(GRID._tagArray[GRID._gridLocation] == 1)
+							{
+								GRID._widgetSet[GRID._gridLocation].getWidget("background").setColor(245,255,245);
+
+								GRID._tagArray[GRID._gridLocation] = 2;
+							}
+							else
+							{
+								GRID._widgetSet[GRID._gridLocation].getWidget("background").setColor(255,255,255);
+
+								GRID._tagArray[GRID._gridLocation] = 0;
+							}
+						}
+					}
+					else
+					{
+						GRID._widgetSet[GRID._gridLocation].focus();
+					}
+				}
+			}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////ARTIFACT HANDLER CLASS///////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			class ArtifactHandler
+			// Handles the non-interactive graphic artifacts used in the scene.
+			{
+				constructor(_scene)
+				{
+					_menuBar = _scene.findWidget("sudoku.menuBar");
+					_vertical_bar_1 = _scene.findWidget("sudoku.vert1");
+					_vertical_bar_2 = _scene.findWidget("sudoku.vert2");
+					_horizontal_bar_1 = _scene.findWidget("sudoku.horiz1");
+					_horizontal_bar_2 = _scene.findWidget("sudoku.horiz2");
+					_grid_cursor = _scene.findWidget("sudoku.highlighter");
+					_keypad_cursor = _scene.findWidget("sudoku.kpcursor");
+					_gridNumberDisplay = _scene.findWidget("sudoku.gridNumberDisplay");
+					_gridNumberDisplay.setColor(180,180,250);
+					_difficultyDisplay = _scene.findWidget("sudoku.difficultyDisplay");
+					_difficultyDisplay.setColor(20,20,26);
+					_display = _scene.findWidget("sudoku.display");
+
+					_grid_cursor.setColor(245,245,255);
+					_keypad_cursor.setColor(255,235,235);
+
+					_grid_cursor.setAlpha(15);
+					_keypad_cursor.setAlpha(10);
+				}
+
+				_vertical_bar_1 = null;
+				_vertical_bar_2 = null;
+				_horizontal_bar_1 = null;
+				_horizontal_bar_2 = null;
+				_grid_cursor = null;
+				_keypad_cursor = null;
+				_display = null;
+				_difficultyDisplay = null;
+				_menuBar = null;
+				_gridNumberDisplay = null;
+
+				_vertical_bar_1_move = null;
+				_vertical_bar_2_move = null;
+				_horizontal_bar_1_move = null;
+				_horizontal_bar_2_move = null;
+				_grid_cursor_move = null;
+				_keypad_cursor_move = null;
+				_display_move = null;
+				_difficultyDisplayMove = null;
+				_menuBarMove = null;
+				_gridNumberDisplayMove = null;
+
+				_gridCursorWait = null;
+				_keypadCursorWait = null;
+
+				_display_delay = null;
+			}
+
+			// Creates the MoveToEffects used to move the widgets
+			function ArtifactHandler::SetUpMoves()
+			{
+				_menuBarMove = MoveToEffect();
+				_menuBarMove.setTarget(_menuBar);
+				_menuBarMove.setDuration(1900);
+
+				_vertical_bar_1_move = MoveToEffect();
+				_vertical_bar_1_move.setTarget(_vertical_bar_1);
+				_vertical_bar_1_move.setDuration(1700);
+
+				_vertical_bar_2_move = MoveToEffect();
+				_vertical_bar_2_move.setTarget(_vertical_bar_2);
+				_vertical_bar_2_move.setDuration(1900);
+
+				_horizontal_bar_1_move = MoveToEffect();
+				_horizontal_bar_1_move.setTarget(_horizontal_bar_1);
+				_horizontal_bar_1_move.setDuration(1700);
+
+				_horizontal_bar_2_move = MoveToEffect();
+				_horizontal_bar_2_move.setTarget(_horizontal_bar_2);
+				_horizontal_bar_2_move.setDuration(1900);
+
+				_grid_cursor_move = MoveToEffect();
+				_grid_cursor_move.setTarget(_grid_cursor);
+				_grid_cursor_move.setDuration(50);
+
+				_keypad_cursor_move = MoveToEffect();
+				_keypad_cursor_move.setTarget(_keypad_cursor);
+				_keypad_cursor_move.setDuration(50);
+
+				_display_move = MoveToEffect();
+				_display_move.setTarget(_display);
+				_display_move.setDuration(500);
+
+				_difficultyDisplayMove = MoveToEffect();
+				_difficultyDisplayMove.setTarget(_difficultyDisplay);
+				_difficultyDisplayMove.setDuration(1900);
+
+				_gridNumberDisplayMove = MoveToEffect();
+				_gridNumberDisplayMove.setTarget(_gridNumberDisplay);
+				_gridNumberDisplayMove.setDuration(1900);
+			}
+
+			// Sets up the initial off-screen locations of the widgets
+			function ArtifactHandler::SetupInitialLocations()
+			{
+				_menuBar.setX(-1100);
+				_menuBar.setY(1);
+				_vertical_bar_1.setX(117);
+				_vertical_bar_1.setY(3000);
+				_vertical_bar_2.setX(60);
+				_vertical_bar_2.setY(3000);
+				_horizontal_bar_1.setX(-3000);
+				_horizontal_bar_1.setY(75);
+				_horizontal_bar_2.setX(-3000);
+				_horizontal_bar_2.setY(132);
+				_grid_cursor.setX(-200);
+				_grid_cursor.setY(5);
+				_keypad_cursor.setX(-200);
+				_keypad_cursor.setY(5);
+				_difficultyDisplay.setX(993);
+				_difficultyDisplay.setY(76);
+				_gridNumberDisplay.setX(-995);
+				_gridNumberDisplay.setY(3);
+			}
+				
+			// Sets up the on-screen locations of the widgets by setting
+			//  the destinations of the MoveToEffects
+			function ArtifactHandler::SetupBeginTransition()
+			{
+				_menuBarMove.setDestination(5,1);
+				_vertical_bar_1_move.setDestination(117,19);
+				_vertical_bar_2_move.setDestination(60,19);
+				_horizontal_bar_1_move.setDestination(5,75);
+				_horizontal_bar_2_move.setDestination(5,132);
+				_grid_cursor_move.setDestination(-200,5);
+				_keypad_cursor_move.setDestination(-200,5);
+				_difficultyDisplayMove.setDestination(193,76);
+				_gridNumberDisplayMove.setDestination(110,3);
+			}
+
+			// Sets up the final off-screen locations of the widgets by
+			//  setting the destinations of the MoveToEffects
+			function ArtifactHandler::SetupEndTransition()
+			{
+				_menuBarMove.setDestination(-1100,1);
+				_vertical_bar_1_move.setDestination(117,3000);
+				_vertical_bar_2_move.setDestination(60,3000);
+				_horizontal_bar_1_move.setDestination(-3000,75);
+				_horizontal_bar_2_move.setDestination(-3000,132);
+				_grid_cursor_move.setDestination(-200,5);
+				_keypad_cursor_move.setDestination(-200,5);
+				_difficultyDisplayMove.setDestination(993,76);
+				_gridNumberDisplayMove.setDestination(-995,3);
+			}
+
+			// Summons the a message box image widget to display
+			//  a message to the user
+			function ArtifactHandler::SummonDisplay(num)
+			{
+				_display_delay = WaitEffect();
+				_display_delay.setTarget(_display_move);
+				_display_delay.setDuration(2000);
+				_display_delay.onStop(DisplayDown);
+				_display.setTexture(num);
+				_display.setPalette(num);
+				_display_move.setDestination(76,80);
+
+				_display_move.start();
+				_display_delay.start();
+			}
+
+			// Moves the message box display back down to an
+			//  off-screen location
+			function ArtifactHandler::DisplayDown(event)
+			{
+				local move_effect = event.getTarget();
+
+				move_effect.setDestination(76, 200);
+				move_effect.start();
+			}
+
+			// Initializes the grid cursor
+			function ArtifactHandler::InitGridCursor()
+			{
+				_grid_cursor.setAlpha(0);
+				_gridCursorWait = WaitEffect();
+				_gridCursorWait.setDuration(1500);
+				_gridCursorWait.setTarget(_grid_cursor);
+				_gridCursorWait.onStop(PopCursor);
+				_gridCursorWait.start();
+			}
+
+			// Initializes the keypad cursor
+			function ArtifactHandler::InitKeypadCursor()
+			{
+				_keypad_cursor.setAlpha(0);
+				_keypadCursorWait = WaitEffect();
+				_keypadCursorWait.setDuration(2000);
+				_keypadCursorWait.setTarget(_keypad_cursor);
+				_keypadCursorWait.onStop(PopCursor);
+				_keypadCursorWait.start();
+			}
+				
+			// Shows the grid cursor
+			function ArtifactHandler::PopCursor(event)
+			{
+				local cursor = event.getTarget();
+				cursor.setX(81);
+				cursor.setY(96);
+				cursor.setAlpha(15);
+			}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////KEYPAD HANDLER CLASS/////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			class KeypadHandler
+			// Handles the right hand keypad and menu widgets.
+			{
+				constructor(keypadoffset_x, keypadoffset_y, _scene)
+				{
+					BLOCK_SIZE = 18;
+					BLOCK_SPACE = 1;
+					KEYPAD_OFFSET_X = keypadoffset_x;
+					KEYPAD_OFFSET_Y = keypadoffset_y;
+
+					_widgetMovementSet = [];
+					_widgetSet = [];
+
+				        	// Fill arrays with widgets
+					for(local i = 0; i < 10; i++)
+						_widgetSet.append(_scene.findWidget("sudoku.keypadButton" + (i).tostring()));
+				
+					_widgetSet.append(_scene.findWidget("sudoku.checkButton"));	
+					_widgetSet.append(_scene.findWidget("sudoku.hintButton"));					
+					_widgetSet.append(_scene.findWidget("sudoku.undoButton"));					
+					_widgetSet.append(_scene.findWidget("sudoku.solveButton"));					
+					_widgetSet.append(_scene.findWidget("sudoku.newButton"));					
+					_widgetSet.append(_scene.findWidget("sudoku.menuButton1"));					
+					_widgetSet.append(_scene.findWidget("sudoku.menuButton2"));					
+					_widgetSet.append(_scene.findWidget("sudoku.menuButton3"));					
+					_widgetSet.append(_scene.findWidget("sudoku.menuButton4"));					
+					_widgetSet.append(_scene.findWidget("sudoku.menuButton5"));				
+
+						// This is done to fix a graphical problem on the actual hardware.
+					_widgetSet[7].setHeight(19);
+					_widgetSet[7].getWidget("background").setHeight(19);
+					_widgetSet[8].setHeight(19);
+					_widgetSet[8].getWidget("background").setHeight(19);
+					_widgetSet[9].setHeight(19);
+					_widgetSet[9].getWidget("background").setHeight(19);
+
+					_exitMessage = _scene.findWidget("sudoku.exitMessage");
+					_exitDelay = WaitEffect();
+					_exitDelay.setTarget(_scene);
+					_exitDelay.setDuration(100);
+					_exitDelay.onStop(Exit.bindenv(this));
+				}
+
+				_widgetSet = null;
+				_widgetMovementSet = null;
+				BLOCK_SIZE = null;
+				BLOCK_SPACE = null;
+				KEYPAD_OFFSET_X = null;
+				KEYPAD_OFFSET_Y = null;
+				_exitMessage = null;
+				_exitDelay = null;
+			}
+
+			// Initializes the widgets
+			function KeypadHandler::InitializeWidgets()
+			{
+				SetupInitialLocations();
+				SetUpButtonNavigation();
+				SetUpMoves();
+				HookButtonEvents();
+			}
+
+			// Sets up the initial off-screen locations of the widgets
+			function KeypadHandler::SetupInitialLocations()
+			{
+				//Sets initial offscreen keypad button locations (1-9)
+				for(local i = 1; i < 10; i++)
+				{
+					_widgetSet[i].setX(( (BLOCK_SIZE + BLOCK_SPACE) * ( (i - 1) % 3) ) + KEYPAD_OFFSET_X + 800); 
+					_widgetSet[i].setY(((BLOCK_SIZE + BLOCK_SPACE) * ( (i - 1) / 3).tointeger())  + KEYPAD_OFFSET_Y);
+				}
+
+				//undo widget location
+				_widgetSet[0].setX((BLOCK_SIZE + BLOCK_SPACE)*2 + KEYPAD_OFFSET_X +800);
+				_widgetSet[0].setY(( (BLOCK_SIZE + BLOCK_SPACE) * 3) + KEYPAD_OFFSET_Y);
+
+				_widgetSet[10].setX(993);
+				_widgetSet[10].setY(96);
+				_widgetSet[11].setX(993);
+				_widgetSet[11].setY(115);
+				_widgetSet[12].setX(993);
+				_widgetSet[12].setY(135);
+				_widgetSet[13].setX(993);
+				_widgetSet[13].setY(154);
+				_widgetSet[14].setX(993);
+				_widgetSet[14].setY(173);
+			}
+
+			// Creates the MoveToEffects used to move the widgets
+			function KeypadHandler::SetUpMoves()
+			{
+				for(local i = 0; i < 15; i++)
+				{
+					_widgetMovementSet.append(MoveToEffect());
+					_widgetMovementSet[i].setTarget(_widgetSet[i]);
+					_widgetMovementSet[i].setDuration(1900);
+				}
+			}
+
+			// Sets up the on-screen locations of the widgets by setting
+			//  the destinations of the MoveToEffects
+			function KeypadHandler::SetupBeginTransition()
+			{
+				local x = 0;
+				local y = 0;
+
+				for(local i = 1; i < 10; i++)
+				{
+					x = ( (BLOCK_SIZE + BLOCK_SPACE) * ( (i - 1) % 3) ) + KEYPAD_OFFSET_X;
+					y = ( (BLOCK_SIZE + BLOCK_SPACE) * ( (i - 1) / 3).tointeger() ) + KEYPAD_OFFSET_Y;
+					_widgetMovementSet[i].setDestination(x,y);
+				}
+
+				x = (BLOCK_SIZE + BLOCK_SPACE)*2 + KEYPAD_OFFSET_X;
+				y = ( (BLOCK_SIZE + BLOCK_SPACE) * 3) + KEYPAD_OFFSET_Y + 1;
+				_widgetMovementSet[0].setDestination(x,y);
+
+				_widgetMovementSet[10].setDestination(193,96);
+				_widgetMovementSet[11].setDestination(193,115);
+				_widgetMovementSet[12].setDestination(193,135);
+				_widgetMovementSet[13].setDestination(193,154);
+				_widgetMovementSet[14].setDestination(193,173);
+			}
+
+			// Sets up the final off-screen locations of the widgets by setting
+			//  the destinations of the MoveToEffects
+			function KeypadHandler::SetupEndTransition()
+			{
+				local x = 0;
+				local y = 0;
+
+				for(local i = 1; i < 10; i++)
+				{
+					x = ( (BLOCK_SIZE + BLOCK_SPACE) * ( (i - 1) % 3) ) + KEYPAD_OFFSET_X + 800;
+					y = ( (BLOCK_SIZE + BLOCK_SPACE) * ( (i - 1) / 3).tointeger() ) + KEYPAD_OFFSET_Y;
+					_widgetMovementSet[i].setDestination(x,y);
+				}
+
+				x = (BLOCK_SIZE + BLOCK_SPACE)*2 + KEYPAD_OFFSET_X + 800;
+				y = ( (BLOCK_SIZE + BLOCK_SPACE) * 3) + KEYPAD_OFFSET_Y;
+				_widgetMovementSet[0].setDestination(x,y);
+
+				_widgetMovementSet[10].setDestination(993,96);
+				_widgetMovementSet[11].setDestination(993,115);
+				_widgetMovementSet[12].setDestination(993,135);
+				_widgetMovementSet[13].setDestination(993,154);
+				_widgetMovementSet[14].setDestination(993,173);
+			}
+
+			// Sets up the navigation among keypad widgets
+			function KeypadHandler::SetUpButtonNavigation()
+			{
+				for(local i = 1; i < 10; i++)
+				{
+					_widgetSet[i].setNorth(_widgetSet[ (((i-1) + 6) % 9) + 1]);
+					_widgetSet[i].setSouth(_widgetSet[ (((i-1) + 3)  % 9 ) + 1]);
+					_widgetSet[i].setEast( _widgetSet[ (((i-1) + 1) % 3) + (((i-1) / 3).tointeger()*3) + 1]);
+					_widgetSet[i].setWest( _widgetSet[ (((i-1) + 2) % 3) + (((i-1) / 3).tointeger()*3) + 1 ]);
+				}
+
+				_widgetSet[7].setSouth(_widgetSet[0]);
+				_widgetSet[8].setSouth(_widgetSet[0]);
+				_widgetSet[9].setSouth(_widgetSet[0]);
+				_widgetSet[0].setNorth(_widgetSet[8]);
+				_widgetSet[0].setEast(_widgetSet[0]);
+				_widgetSet[0].setWest(_widgetSet[0]);
+				_widgetSet[0].setSouth(_widgetSet[10]);		
+
+
+				_widgetSet[10].setSouth(_widgetSet[11]);
+				_widgetSet[10].setNorth(_widgetSet[0]);
+				_widgetSet[11].setSouth(_widgetSet[12]);
+				_widgetSet[11].setNorth(_widgetSet[10]);
+				_widgetSet[12].setSouth(_widgetSet[13]);
+				_widgetSet[12].setNorth(_widgetSet[11]);
+				_widgetSet[13].setNorth(_widgetSet[12]);
+				_widgetSet[13].setSouth(_widgetSet[14]);
+				_widgetSet[14].setNorth(_widgetSet[13]);
+
+				_widgetSet[1].setNorth(_widgetSet[18]);
+				_widgetSet[2].setNorth(_widgetSet[18]);
+				_widgetSet[3].setNorth(_widgetSet[18]);
+
+				_widgetSet[15].setSouth(_widgetSet[2]);
+				_widgetSet[16].setSouth(_widgetSet[2]);
+				_widgetSet[17].setSouth(_widgetSet[2]);
+				_widgetSet[18].setSouth(_widgetSet[2]);
+				_widgetSet[19].setSouth(_widgetSet[2]);
+
+
+				_widgetSet[15].setEast(_widgetSet[16]);
+				_widgetSet[16].setEast(_widgetSet[17]);
+				_widgetSet[16].setWest(_widgetSet[15]);
+				_widgetSet[17].setEast(_widgetSet[18]);
+				_widgetSet[17].setWest(_widgetSet[16]);
+				_widgetSet[18].setEast(_widgetSet[19]);
+				_widgetSet[18].setWest(_widgetSet[17]);
+				_widgetSet[19].setWest(_widgetSet[18]);
+			}
+
+			// Called when a keypad widget gains focus
+			function KeypadHandler::OnButtonFocusGained(event)
+			{
+				local button = event.getTarget();
+				local image = button.getWidget("background");
+				local buttonId = button.getId();
+				local Id = buttonId.slice(7,8);
+
+
+				ARTIFACTS._keypad_cursor.setWidth(button.getWidth());
+				ARTIFACTS._keypad_cursor.setHeight(button.getHeight());
+
+				ARTIFACTS._keypad_cursor_move.setDestination(button.getX(), button.getY() );
+				ARTIFACTS._keypad_cursor_move.start();				
+			}
+
+			function KeypadHandler::OnButtonFocusLost(event) {}
+
+			// Hooks the click, focus gained, and focus lost events
+			//  of the keypad widgets
+			function KeypadHandler::HookButtonEvents()
+			{
+				for(local i = 0; i < 20; i++)
+				{
+					_widgetSet[i].onFocusGained(OnButtonFocusGained);
+					_widgetSet[i].onFocusLost(OnButtonFocusLost);
+					if(i != 19)
+						_widgetSet[i].onButtonClick(OnButtonClick);
+					else
+						_widgetSet[i].onButtonClick(OnButtonClick.bindenv(this));
+				}
+			}
+
+			// Called when a keypad button is clicked
+			function KeypadHandler::OnButtonClick(event)
+			{
+				local button = event.getTarget();
+				local buttonId = button.getId();
+
+				if(buttonId == "sudoku.newButton")
+				{
+					local sendModel = KeyboardInitializer(65, 19, "Enter grid# 001-299");
+
+					// Create a keyboard dialog and summon it
+					local dialog = Application.getSceneManager().getDialog("Keyboard");
+					dialog.setModel(sendModel);
+					dialog.show();
+
+					local stringy = dialog.getModel().tostring();
+					local k = 0;
+
+					// Determine which grid should be loaded from the string
+					//  gathered from the keyboad dialog
+					stringy.slice(0,3);
+					for(local i = 0; i < 10; i++)
+					{
+						if(stringy.slice(0,1) == i.tostring())
+							k += 1;
+						if(stringy.slice(1,2) == i.tostring())
+							k += 1;
+						if(stringy.slice(2,3) == i.tostring())
+							k += 1;
+					}
+
+					if(k == 3)
+					{
+						for(local i = 0; i < 81; i++)
+							GRID._tagArray[i] = 0;
+
+						stringy = stringy.tointeger();
+					
+						LOGIC._gridNo = (stringy - 1) % 299;
+						LOGIC.CreateGrid();
+						GRID.LoadGrid(LOGIC, ARTIFACTS);
+					}
+
+					GRID._widgetSet[40].focus();
+				}
+				else if(buttonId == "sudoku.solveButton")
+				{
+					// Load solved grid from the solution array
+					for(local i = 0; i < 81; i++)
+					{
+						if(LOGIC._sudokuArray[i] < 10)
+							LOGIC._sudokuArray[i] = LOGIC._sudokuSolutionArray[i];
+					}
+
+					GRID.LoadGrid(LOGIC, ARTIFACTS);
+
+					GRID._widgetSet[GRID._gridLocation].focus();
+				}
+				else if(buttonId == "sudoku.hintButton")
+				{
+					local tmp = 0;
+
+					// Psuedo-random selection of a empty square
+					for(local i = 0; i < 5428; i++)
+					{
+						if(LOGIC._sudokuArray[i % 81] == 0)
+						{
+							if(tmp == 67)
+							{
+								LOGIC._sudokuArray[i % 81] = LOGIC._sudokuSolutionArray[i % 81];
+								GRID._gridLocation = i % 81;
+								break;
+							}
+
+							tmp++;
+						}
+					}
+
+					GRID.LoadCell(LOGIC);
+
+					GRID._widgetSet[GRID._gridLocation].focus();
+				}
+				else if(buttonId == "sudoku.undoButton")
+				{
+					// Blank out all squares where the number contained does not
+					//  match the number in the corresponding location in the solution array
+					for(local i = 0; i < 81; i++)
+					{
+						if(LOGIC._sudokuArray[i] != 0)
+							if( (LOGIC._sudokuArray[i] % 10) != LOGIC._sudokuSolutionArray[i])
+								LOGIC._sudokuArray[i] = 0;
+					}
+
+					GRID.LoadGrid(LOGIC, ARTIFACTS);
+
+					GRID._widgetSet[GRID._gridLocation].focus();
+				}
+				else if(buttonId == "sudoku.checkButton") 
+				{
+					// Checks if all filled in squares are correct by comparing
+					//  against the solution array
+					local correct = true;
+
+					for(local i = 0; i < 81; i++)
+					{
+						if(LOGIC._sudokuArray[i] != 0)
+							if( (LOGIC._sudokuArray[i] % 10) != LOGIC._sudokuSolutionArray[i])
+								correct = false;
+					}
+
+					if(correct == true)
+						ARTIFACTS.SummonDisplay(200);
+					else
+						ARTIFACTS.SummonDisplay(201);
+						
+				}
+				else if(buttonId == "sudoku.menuButton5")
+				{
+					// Starts a wait effect which will exit the skin
+					//  when the effect ends
+					_exitMessage.setVisible(true);
+
+					_exitDelay.start();
+				}
+				else if(buttonId == "sudoku.menuButton1")
+				{
+					// Moves back through the set of grids
+					for(local i = 0; i < 81; i++)
+						GRID._tagArray[i] = 0;
+
+					LOGIC._gridNo = (LOGIC._gridNo + 298) % 299;
+					LOGIC.CreateGrid();
+					GRID.LoadGrid(LOGIC, ARTIFACTS);
+				}
+				else if(buttonId == "sudoku.menuButton2")
+				{
+					// Moves forward through the set of grids
+					for(local i = 0; i < 81; i++)
+						GRID._tagArray[i] = 0;
+
+					LOGIC._gridNo = (LOGIC._gridNo + 1) % 299;
+					LOGIC.CreateGrid();
+					GRID.LoadGrid(LOGIC, ARTIFACTS);
+				}
+				else if(buttonId == "sudoku.menuButton3")
+				{
+					// Summons a help dialog
+					local dialog = Application.getSceneManager().getDialog("SudokuDialog");
+					dialog.setModel("Help");
+					dialog.show();
+				}
+				else if(buttonId == "sudoku.menuButton4")
+				{
+					// Summons an about dialog
+					local dialog = Application.getSceneManager().getDialog("SudokuDialog");
+					dialog.setModel("About");
+					dialog.show();
+				}
+				else
+				{
+					// Post the keypad number that is pressed to the grid
+					local postNum = buttonId.slice(19,20).tointeger();
+	
+					LOGIC.PostToGrid(postNum, GRID._gridLocation);
+					GRID.LoadCell(LOGIC);
+
+
+					if(LOGIC.IsFilled(LOGIC._sudokuArray))
+					{
+						if(LOGIC.FindIfSolved(LOGIC._sudokuArray))
+							ARTIFACTS.SummonDisplay(202);
+						else
+						{
+							ARTIFACTS.SummonDisplay(203);
+
+							LOGIC.PostToGrid(0, GRID._gridLocation);
+
+							GRID.LoadCell(LOGIC);
+						}
+					}
+
+					GRID._widgetSet[GRID._gridLocation].focus();
+				}
+			}
+
+			function KeypadHandler::Exit(event)
+			{
+				// Loads the user default skin
+				Application.launchSystem();
+			}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////GRID HANDLER CLASS///////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			class GridHandler
+			{
+				constructor(gridoffset_x, gridoffset_y, _scene)
+				{
+					BLOCK_SIZE = 18;
+					BLOCK_SPACE = 1;
+					GRID_OFFSET_X = gridoffset_x;
+					GRID_OFFSET_Y = gridoffset_y;
+					_gridLocation = 1;
+					_focusOnGrid = false;
+					_tagArray = [];
+
+					for(local i = 0; i < 81; i++)
+						_tagArray.append(0);
+
+					_widgetMovementSet = [];
+					_widgetSet = [];
+
+						// Fill the array with widgets.
+					for(local i = 1; i <= 81; i++)
+					{
+						if(i < 10)
+							_widgetSet.append(_scene.findWidget("sudoku.gridButton0" + (i).tostring() ));
+						else
+							_widgetSet.append(_scene.findWidget("sudoku.gridButton" + (i).tostring() ));
+					}
+
+						// Used to fix graphical problem on the hardware
+					for(local i = 0; i < 81; i++)
+						if( (i / 9) == 2)
+						{
+							_widgetSet[i].setHeight(19);
+							_widgetSet[i].getWidget("background").setHeight(19);
+						}
+				}
+
+				_widgetSet = null;
+				_widgetMovementSet = null;
+				_gridLocation = null;
+				_tagArray = null;
+				_focusOnGrid = null;
+				BLOCK_SIZE = null;
+				BLOCK_SPACE = null;
+				GRID_OFFSET_X = null;
+				GRID_OFFSET_Y = null;
+			}
+
+
+			// Sets up the initial offscreen locations of the grid widgets
+			function GridHandler::SetUpInitialLocations()
+			{
+				local x = 0; local y = 0;
+
+				for(local i = 0; i < 81; i++)
+				{
+					x = ( (BLOCK_SIZE + BLOCK_SPACE) * (i % 9) ) + GRID_OFFSET_X;
+					y = ( (BLOCK_SIZE + BLOCK_SPACE) * (i / 9).tointeger() ) + GRID_OFFSET_Y;
+
+					y = x * y + 200;
+
+					_widgetSet[i].setX(x);
+					_widgetSet[i].setY(y);
+				}
+			}
+
+			// Initializes the widgets
+			function GridHandler::InitializeWidgets()
+			{
+				SetUpInitialLocations();
+				SetUpButtonNavigation();
+				SetUpMoves();
+				HookButtonEvents();
+			}
+
+			// Sets up the button navigations between the grid widgets
+			function GridHandler::SetUpButtonNavigation()
+			{
+				for(local i = 0; i < 81; i++)
+				{
+					_widgetSet[i].setNorth(_widgetSet[ (i + 72) % 81 ]);
+					_widgetSet[i].setSouth(_widgetSet[ (i + 9)  % 81 ]);
+					_widgetSet[i].setEast( _widgetSet[ ((i + 1) % 9) + ((i / 9).tointeger()*9)]);
+					_widgetSet[i].setWest( _widgetSet[ ((i + 8) % 9) + ((i / 9).tointeger()*9) ]);
+				}
+			}
+
+			// Creates the moveToEffects used to animate the grid widgets
+			function GridHandler::SetUpMoves()
+			{
+				for(local i = 0; i < 81; i++)
+				{
+					_widgetMovementSet.append(MoveToEffect());
+					_widgetMovementSet[i].setTarget(_widgetSet[i]);
+					_widgetMovementSet[i].setDuration(900 + i * 10);
+				}
+			}
+
+			// Called when a grid button is focused
+			function GridHandler::OnButtonFocusGained(event)
+			{
+				local button = event.getTarget();
+				local image = button.getWidget("background");
+				local buttonId = button.getId();
+
+					// Change cursor size to match the button being focused.
+				ARTIFACTS._keypad_cursor.setWidth(button.getWidth());
+				ARTIFACTS._keypad_cursor.setHeight(button.getHeight());
+
+					// Set destination of cursor to the button being focused.
+				ARTIFACTS._grid_cursor_move.setDestination(button.getX(), button.getY() );
+				ARTIFACTS._grid_cursor_move.start();
+				ARTIFACTS._keypad_cursor_move.setDestination(button.getX(), button.getY() );
+				ARTIFACTS._keypad_cursor_move.start();
+
+				local c = (buttonId.slice(17, 18).tointeger() * 10) + buttonId.slice(18, 19).tointeger();
+
+				GRID._gridLocation = c - 1;
+
+					// Use different cursor colors depending on whether or not the square being focused is static or not.
+				if(LOGIC._sudokuArray[c - 1] > 10)
+					ARTIFACTS._grid_cursor.setColor(50,150,255);
+
+				else
+					ARTIFACTS._grid_cursor.setColor(215,255,255);
+
+				GRID._focusOnGrid = true;
+			}
+
+			// Sets up the final onscreen locations of the grid widgets
+			function GridHandler::SetupBeginTransition()
+			{
+				local x = 0;
+				local y = 0;
+				local periodic_space = 0;
+
+				for(local i = 0; i < 81; i++)
+				{
+						// The periodic space is used to fix a graphical problem on the hardware.
+					if( ( ((i / 9) == 3) && ((i % 9) == 0) ) || ( ((i / 9) == 6) && ((i % 9) == 0) ) )
+						periodic_space++;
+
+					x = ( (BLOCK_SIZE + BLOCK_SPACE) * (i % 9) ) + GRID_OFFSET_X;
+					y = ( (BLOCK_SIZE + BLOCK_SPACE) * (i / 9).tointeger() ) + GRID_OFFSET_Y + periodic_space;
+
+					_widgetMovementSet[i].setDestination(x,y);
+				}
+			}
+
+			// Sets up the end-of-scene animation
+			function GridHandler::SetupEndTransition()
+			{
+				local x = 0;
+				local y = 0;
+
+				for(local i = 0; i < 81; i++)
+				{
+					x = ( (BLOCK_SIZE + BLOCK_SPACE) * (i % 9) ) + GRID_OFFSET_X;
+					y = ( (BLOCK_SIZE + BLOCK_SPACE) * (i / 9).tointeger() ) + GRID_OFFSET_Y;
+					y = x * y + 200;
+
+					_widgetMovementSet[i].setDestination(x,y);
+				}
+			}
+
+			// Hooks onFocusGained and onButtonClick button events
+			function GridHandler::HookButtonEvents()
+			{
+				for(local i = 0; i < 81; i++)
+				{
+					_widgetSet[i].onFocusGained(OnButtonFocusGained);
+					_widgetSet[i].onFocusLost(OnButtonFocusLost);
+					_widgetSet[i].onButtonClick(OnButtonClick);
+				}
+			}
+
+			// Sets the _focusOnGrid data member to false when a grid widget
+			//  loses focus
+			function GridHandler::OnButtonFocusLost(event)
+			{
+				GRID._focusOnGrid = false;
+			}
+
+			// Called when a grid widget is clicked
+			function GridHandler::OnButtonClick(event)
+			{
+				local button = event.getTarget();
+				local buttonId = button.getId();
+
+				local a = 0; local b = 0;
+
+				a = buttonId.slice(17, 18);
+				b = buttonId.slice(18, 19);
+
+				GRID._gridLocation = (a.tointeger() * 10) + b.tointeger() - 1;
+
+				if(LOGIC._sudokuArray[(a.tointeger() * 10) + b.tointeger() - 1] < 10)
+				{
+					ARTIFACTS._keypad_cursor.setX(button.getX());
+					ARTIFACTS._keypad_cursor.setY(button.getY());
+
+					KEYPAD._widgetSet[5].focus()
+				}
+			}
+
+			// Loads a new grid and swaps widget textures to display the loaded grid
+			function GridHandler::LoadGrid(logic_object, artifact_object)
+			{
+				local image = null;
+				local texture = null;
+				local gridArray = logic_object.GetSudokuArray();
+
+				for(local i = 0; i < 81; i++)
+				{
+					texture = (gridArray[i] % 10) + 50;
+
+					_widgetSet[i].getWidget("background").setTexture(texture);
+					_widgetSet[i].getWidget("background").setPalette(texture);
+
+					if(gridArray[i] > 10)
+						_widgetSet[i].getWidget("background").setColor(186,186,255);
+					else
+					{
+						if(_tagArray[i] == 0)
+							_widgetSet[i].getWidget("background").setColor(255,255,255);
+						else if(_tagArray[i] == 1)
+							_widgetSet[i].getWidget("background").setColor(255,245,245);
+						else
+							_widgetSet[i].getWidget("background").setColor(245,255,245);
+					}
+				}
+
+				artifact_object._difficultyDisplay.setText(logic_object.GetDifficultyString());
+				artifact_object._gridNumberDisplay.setText(logic_object.GetGridNumberString());
+			}
+
+			// Loads a single cell in the grid ( determined by _gridLocation )
+			function GridHandler::LoadCell(logic_object)
+			{
+				local gridArray = logic_object.GetSudokuArray();
+
+				local texture = (gridArray[_gridLocation] % 10) + 50;
+
+				_widgetSet[_gridLocation].getWidget("background").setTexture(texture);
+				_widgetSet[_gridLocation].getWidget("background").setPalette(texture);
+
+				if(gridArray[_gridLocation] > 10)
+					_widgetSet[_gridLocation].getWidget("background").setColor(186,186,255);
+				else
+				{
+					if(_tagArray[_gridLocation] == 0)
+						_widgetSet[_gridLocation].getWidget("background").setColor(255,255,255);
+					else if(_tagArray[_gridLocation] == 1)
+						_widgetSet[_gridLocation].getWidget("background").setColor(255,245,245);
+					else
+						_widgetSet[_gridLocation].getWidget("background").setColor(245,255,245);
+				}
+			}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			
+			// Called when the scene is initialized ( after the XML loads )
+			function OnInit()
+			{
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+
+				local bg = scene.getWidget("sudoku.bg");
+				bg.setColor(211,211,249);
+
+
+					// Element creation and widget initialization
+				local _logic = SudokuLogic();
+				LOGIC = _logic;
+
+				local _grid = GridHandler(5, 19, scene);
+				GRID = _grid;
+
+				local _keypad = KeypadHandler(195, 19, scene);
+				KEYPAD = _keypad;
+
+				local _artifacts = ArtifactHandler(scene);
+				ARTIFACTS = _artifacts;
+				
+
+				GRID.InitializeWidgets();
+				KEYPAD.InitializeWidgets();
+				ARTIFACTS.SetUpMoves();
+
+					// Group the events so they can be used as an end transition
+				transitionEffects = EffectGroup();
+				for(local i = 0; i < 81; i++)
+					transitionEffects.addEffect(GRID._widgetMovementSet[i]);
+				for(local i = 0; i < 15; i++)
+					transitionEffects.addEffect(KEYPAD._widgetMovementSet[i]);
+
+				transitionEffects.addEffect(ARTIFACTS._vertical_bar_1_move);
+				transitionEffects.addEffect(ARTIFACTS._vertical_bar_2_move);
+				transitionEffects.addEffect(ARTIFACTS._horizontal_bar_1_move);
+				transitionEffects.addEffect(ARTIFACTS._horizontal_bar_2_move);
+				transitionEffects.addEffect(ARTIFACTS._grid_cursor_move);
+				transitionEffects.addEffect(ARTIFACTS._keypad_cursor_move);
+				transitionEffects.addEffect(ARTIFACTS._difficultyDisplayMove);
+				transitionEffects.addEffect(ARTIFACTS._gridNumberDisplayMove);
+				transitionEffects.addEffect(ARTIFACTS._menuBarMove);
+
+					// Hook scene events
+				scene.onBegin(OnBegin);
+				scene.onEnd(OnEnd);
+				scene.onButtonPressed(OnButtonPressed);
+			}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////END SQUIRREL////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		]]>
+	</script>
+	
+	<objects>
+		<image id="sudoku.display">
+			<properties>
+				<bounds x="76" y="200" width="104" height="32" /> 
+				<depth>3</depth>
+				<texture-id>100</texture-id>
+				<palette-id>100</palette-id>
+			</properties>
+		</image>
+		<label id="sudoku.difficultyDisplay">
+			<properties>
+				<bounds x="195" y="276" width="40" height="20" /> 
+				<depth>4</depth> 
+				<font name="default" size="10" /> 
+				<text>0</text> 
+				<wrap-type>clip</wrap-type> 
+				<justify>middle</justify> 
+				<vertical-align>middle</vertical-align> 
+				<shadow xoffset="1" yoffset="1" /> 
+			</properties>
+		</label>
+		<label id="sudoku.gridNumberDisplay">
+			<properties>
+				<bounds x="-300" y="3" width="20" height="12" /> 
+				<depth>4</depth> 
+				<font name="default" size="10" /> 
+				<text>999</text> 
+				<wrap-type>clip</wrap-type> 
+				<justify>middle</justify> 
+				<vertical-align>middle</vertical-align> 
+				<shadow xoffset="1" yoffset="1" /> 
+			</properties>
+		</label>
+		<image id="sudoku.bg">
+			<properties>
+				<bounds x="0" y="0" width="256" height="192"/>
+				<texture-id>9</texture-id>
+				<palette-id>2</palette-id>
+			</properties>
+		</image>
+		<image id="sudoku.highlighter">
+			<properties>
+				<bounds x="-200" y="5" width="18" height="18"/>
+				<depth>3</depth>
+				<texture-id>75</texture-id>
+				<palette-id>75</palette-id>
+			</properties>
+		</image>
+		<image id="sudoku.kpcursor">
+			<properties>
+				<bounds x="-200" y="5" width="18" height="18"/>
+				<depth>3</depth>
+				<texture-id>75</texture-id>
+				<palette-id>75</palette-id>
+			</properties>
+		</image>
+		<image id="sudoku.menuBar">
+			<properties>
+				<bounds x="-300" y="1" width="248" height="17"/>
+				<depth>1</depth>
+				<texture-id>48</texture-id>
+				<palette-id>48</palette-id>
+			</properties>
+		</image>
+		<button id="sudoku.menuButton1">
+			<properties>
+				<bounds x="96" y="3" width="12" height="14"/>
+				<depth>5</depth>
+			</properties>
+		</button>
+		<button id="sudoku.menuButton2">
+			<properties>
+				<bounds x="137" y="3" width="12" height="14"/>
+				<depth>5</depth>
+			</properties>
+		</button>
+		<button id="sudoku.menuButton3">
+			<properties>
+				<bounds x="152" y="3" width="33" height="14"/>
+				<depth>5</depth>
+			</properties>
+		</button>
+		<button id="sudoku.menuButton4">
+			<properties>
+				<bounds x="187" y="3" width="44" height="14"/>
+				<depth>5</depth>
+			</properties>
+		</button>
+		<button id="sudoku.menuButton5">
+			<properties>
+				<bounds x="238" y="3" width="12" height="14"/>
+				<depth>5</depth>
+			</properties>
+		</button>
+		<image id="sudoku.vert1">
+			<properties>
+				<bounds x="243" y="-900" width="3" height="172"/>
+				<depth>1</depth>
+				<texture-id>47</texture-id>
+				<palette-id>47</palette-id>
+			</properties>
+		</image>
+		<image id="sudoku.vert2">
+			<properties>
+				<bounds x="62" y="-1100" width="3" height="172"/>
+				<depth>1</depth>
+				<texture-id>47</texture-id>
+				<palette-id>47</palette-id>
+			</properties>
+		</image>
+		<image id="sudoku.horiz1">
+			<properties>
+				<bounds x="-900" y="62" width="170" height="3"/>
+				<depth>1</depth>
+				<texture-id>46</texture-id>
+				<palette-id>46</palette-id>
+			</properties>
+		</image>
+		<image id="sudoku.horiz2">
+			<properties>
+				<bounds x="-1100" y="123" width="170" height="3"/>
+				<depth>1</depth>
+				<texture-id>46</texture-id>
+				<palette-id>46</palette-id>
+			</properties>
+		</image>
+		<image id="sudoku.exitMessage">
+			<properties>
+				<bounds x="88" y="84" width="80" height="24"/>
+				<depth>15</depth>
+				<texture-id>204</texture-id>
+				<palette-id>204</palette-id>
+				<visible>false</visible>
+			</properties>
+		</image>
+		<button id="sudoku.hintButton">
+			<properties>
+				<bounds x="0" y="0" width="58" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="58" height="18"/>
+						<texture-id>70</texture-id>
+						<palette-id>70</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="58" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.solveButton">
+			<properties>
+				<bounds x="0" y="0" width="58" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="58" height="18"/>
+						<texture-id>72</texture-id>
+						<palette-id>72</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="58" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.newButton">
+			<properties>
+				<bounds x="0" y="0" width="58" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="58" height="18"/>
+						<texture-id>73</texture-id>
+						<palette-id>73</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="58" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.undoButton">
+			<properties>
+				<bounds x="0" y="0" width="58" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="58" height="18"/>
+						<texture-id>71</texture-id>
+						<palette-id>71</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="58" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.checkButton">
+			<properties>
+				<bounds x="0" y="0" width="58" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="58" height="18"/>
+						<texture-id>74</texture-id>
+						<palette-id>74</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="58" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.keypadButton0">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.keypadButton1">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>51</texture-id>
+						<palette-id>51</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>		
+			</objects>			
+		</button>
+		<button id="sudoku.keypadButton2">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>52</texture-id>
+						<palette-id>52</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="sudoku.keypadButton3">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>53</texture-id>
+						<palette-id>53</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>		
+			</objects>			
+		</button>
+		<button id="sudoku.keypadButton4">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>54</texture-id>
+						<palette-id>54</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>		
+			</objects>			
+		</button>
+		<button id="sudoku.keypadButton5">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>55</texture-id>
+						<palette-id>55</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.keypadButton6">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>56</texture-id>
+						<palette-id>56</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.keypadButton7">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>57</texture-id>
+						<palette-id>57</palette-id>
+					</properties>
+				</image>			
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>
+			</objects>			
+		</button>
+		<button id="sudoku.keypadButton8">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>58</texture-id>
+						<palette-id>58</palette-id>
+					</properties>
+				</image>				
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>
+			</objects>			
+		</button>
+		<button id="sudoku.keypadButton9">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>59</texture-id>
+						<palette-id>59</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton01">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton02">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton03">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton04">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton05">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton06">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton07">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton08">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton09">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton10">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton11">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton12">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton13">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton14">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton15">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton16">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton17">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton18">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton19">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton20">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton21">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton22">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton23">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton24">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton25">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton26">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton27">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton28">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton29">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton30">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton31">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton32">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton33">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton34">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton35">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton36">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>				
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton37">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>				
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton38">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton39">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton40">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton41">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton42">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton43">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton44">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton45">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton46">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton47">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton48">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton49">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton50">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton51">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton52">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton53">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton54">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton55">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton56">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton57">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton58">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton59">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton60">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton61">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton62">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton63">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton64">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton65">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton66">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton67">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton68">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton69">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton70">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton71">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton72">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton73">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton74">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>			
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton75">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton76">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton77">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton78">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton79">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton80">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="sudoku.gridButton81">
+			<properties>
+				<bounds x="0" y="0" width="18" height="18"/>
+				<depth>1</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>50</texture-id>
+						<palette-id>50</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<bounds x="0" y="0" width="18" height="18"/>
+						<texture-id>60</texture-id>
+						<palette-id>60</palette-id>
+						<depth>4</depth>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+	</objects>
+	
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+</scene>
+

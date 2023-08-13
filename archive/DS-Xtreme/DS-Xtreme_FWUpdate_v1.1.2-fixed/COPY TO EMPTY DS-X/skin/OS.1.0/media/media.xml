@@ -1,0 +1,160 @@
+<?xml version="1.0" standalone=no>
+<media>
+
+	<textures>
+		<texture id="9" format="256-Color" width="8" height="192" filepath="media/textures/bg.raw"/>
+
+		<texture id="12" format="A3L5" width="45" height="46" filepath="media/textures/settings.raw"/>
+		<texture id="13" format="A3L5" width="41" height="54" filepath="media/textures/joystick.raw"/>
+		<texture id="14" format="A3L5" width="48" height="48" filepath="media/textures/about.raw"/>
+		<texture id="15" format="A3L5" width="44" height="53" filepath="media/textures/note.raw"/>
+		<texture id="16" format="A3L5" width="52" height="45" filepath="media/textures/arrow.raw"/>
+		<!--
+		<texture id="12" format="256-Color" width="45" height="46" filepath="media/textures/settings.raw"/>
+		<texture id="13" format="256-Color" width="41" height="54" filepath="media/textures/joystick.raw"/>
+		<texture id="14" format="256-Color" width="58" height="45" filepath="media/textures/folder.raw"/>
+		<texture id="15" format="256-Color" width="44" height="53" filepath="media/textures/note.raw"/>
+		<texture id="16" format="256-Color" width="52" height="45" filepath="media/textures/arrow.raw"/>
+		-->
+
+
+		<texture id="19" format="A3L5" width="223" height="30" filepath="media/textures/submenuh.raw"/>
+		<texture id="20" format="A3L5" width="154" height="50" filepath="media/textures/ibantxt.raw"/>
+		<texture id="21" format="A3L5" width="154" height="50" filepath="media/textures/abantxt.raw"/>
+		<texture id="22" format="A3L5" width="49" height="50" filepath="media/textures/ibanimg.raw"/>
+		<texture id="23" format="A3L5" width="49" height="50" filepath="media/textures/abanimg.raw"/>
+		<texture id="24" format="A3L5" width="95" height="36" filepath="media/textures/idlgbut.raw"/>
+		<texture id="25" format="A3L5" width="95" height="36" filepath="media/textures/adlgbut.raw"/>
+		<texture id="26" format="A3L5" width="233" height="29" filepath="media/textures/menuhead.raw"/>
+		<texture id="27" format="256-Color" width="32" height="32" filepath="media/textures/offbut.raw"/>
+		<texture id="28" format="256-Color" width="32" height="32" filepath="media/textures/onbut.raw"/>
+		<texture id="29" format="256-Color" width="16" height="16" filepath="media/textures/downbut.raw"/>
+		<texture id="30" format="256-Color" width="16" height="16" filepath="media/textures/upbut.raw"/>
+
+		<texture id="55" format="256-Color" width="64" height="88" filepath="media/textures/abuti.raw"/>
+		<texture id="56" format="A3L5" width="64" height="88" filepath="media/textures/abute.raw"/>
+		<texture id="57" format="256-Color" width="64" height="88" filepath="media/textures/ibuti.raw"/>
+		<texture id="58" format="A3L5" width="64" height="88" filepath="media/textures/ibute.raw"/>
+
+		<texture id="60" format="A3L5" width="16" height="16" filepath="media/textures/aback.raw"/>
+		<texture id="61" format="A3L5" width="40" height="24" filepath="media/textures/arepeat.raw"/>
+		<texture id="62" format="A3L5" width="56" height="56" filepath="media/textures/arobutbe.raw"/>
+		<texture id="63" format="256-Color" width="56" height="56" filepath="media/textures/arobutbi.raw"/>
+		<texture id="64" format="A3L5" width="48" height="48" filepath="media/textures/arobutme.raw"/>
+		<texture id="65" format="256-Color" width="48" height="48" filepath="media/textures/arobutmi.raw"/>		
+		<texture id="66" format="A3L5" width="40" height="40" filepath="media/textures/arobutse.raw"/>
+		<texture id="67" format="256-Color" width="40" height="40" filepath="media/textures/arobutsi.raw"/>
+		<texture id="68" format="A3L5" width="48" height="14" filepath="media/textures/ashuffle.raw"/>
+		<texture id="69" format="A3L5" width="16" height="16" filepath="media/textures/astop.raw"/>
+		<texture id="70" format="A3L5" width="32" height="16" filepath="media/textures/ff.raw"/>
+		<texture id="71" format="A3L5" width="16" height="16" filepath="media/textures/iback.raw"/>
+		<texture id="72" format="A3L5" width="40" height="24" filepath="media/textures/irepeat.raw"/>
+		<texture id="73" format="A3L5" width="56" height="56" filepath="media/textures/irobutbe.raw"/>
+		<texture id="74" format="256-Color" width="56" height="56" filepath="media/textures/irobutbi.raw"/>
+		<texture id="75" format="A3L5" width="48" height="48" filepath="media/textures/irobutme.raw"/>
+		<texture id="76" format="256-Color" width="48" height="48" filepath="media/textures/irobutmi.raw"/>
+		<texture id="77" format="A3L5" width="40" height="40" filepath="media/textures/irobutse.raw"/>
+		<texture id="78" format="256-Color" width="40" height="40" filepath="media/textures/irobutsi.raw"/>
+		<texture id="79" format="A3L5" width="48" height="14" filepath="media/textures/ishuffle.raw"/>
+		<texture id="81" format="A3L5" width="16" height="16" filepath="media/textures/istop.raw"/>
+		<texture id="82" format="A3L5" width="24" height="16" filepath="media/textures/next.raw"/>
+		<texture id="83" format="A3L5" width="32" height="24" filepath="media/textures/play.raw"/>
+		<texture id="84" format="A3L5" width="24" height="16" filepath="media/textures/prev.raw"/>
+		<texture id="85" format="A3L5" width="88" height="24" filepath="media/textures/rebutb.raw"/>
+		<texture id="86" format="A3L5" width="88" height="24" filepath="media/textures/rebutbd.raw"/>
+		<texture id="87" format="A3L5" width="72" height="24" filepath="media/textures/rebutm.raw"/>
+		<texture id="88" format="A3L5" width="72" height="24" filepath="media/textures/rebutmd.raw"/>
+		<texture id="89" format="A3L5" width="24" height="24" filepath="media/textures/rebuts.raw"/>
+		<texture id="90" format="A3L5" width="24" height="24" filepath="media/textures/rebutsd.raw"/>
+		<texture id="91" format="A3L5" width="32" height="16" filepath="media/textures/rewind.raw"/>
+		<texture id="92" format="A3L5" width="40" height="24" filepath="media/textures/rrepeat.raw"/>
+		<texture id="93" format="A3L5" width="48" height="14" filepath="media/textures/rshuffle.raw"/>
+		<texture id="94" format="256-Color" width="256" height="112" filepath="media/textures/groovebgi.raw"/>
+		<texture id="95" format="A3L5" width="256" height="27" filepath="media/textures/groovebge.raw"/>
+		<texture id="96" format="A3L5" width="32" height="24" filepath="media/textures/pause.raw"/>
+
+
+	</textures>
+	
+	<palettes>
+		<palette id="2" filepath="media/palettes/bg.pal" />
+		<!--
+		<palette id="3" filepath="media/palettes/buttonactive.pal" />
+		<palette id="4" filepath="media/palettes/buttoninactive.pal" />
+		<palette id="5" filepath="media/palettes/settings.pal" />
+		<palette id="6" filepath="media/palettes/joystick.pal" />
+		<palette id="7" filepath="media/palettes/folder.pal" />
+		<palette id="8" filepath="media/palettes/musicnote.pal" />
+		<palette id="9" filepath="media/palettes/arrow.pal" />
+		>-->
+		<palette id="3" filepath="media/palettes/abut.pal" />
+		<palette id="4" filepath="media/palettes/ibut.pal" />
+		<palette id="5" filepath="media/palettes/settings.pal" />
+		<palette id="6" filepath="media/palettes/joystick.pal" />
+
+		<palette id="8" filepath="media/palettes/note.pal" />
+		<palette id="9" filepath="media/palettes/arrow.pal" />
+		<palette id="7" filepath="media/palettes/about.pal" />
+		<palette id="19" filepath="media/palettes/submenuh.pal" />
+		<palette id="20" filepath="media/palettes/ibantxt.pal" />
+		<palette id="21" filepath="media/palettes/abantxt.pal" />
+		<palette id="22" filepath="media/palettes/ibanimg.pal" />
+		<palette id="23" filepath="media/palettes/ibanimg.pal" />
+		<palette id="24" filepath="media/palettes/idlgbut.pal" />
+		<palette id="25" filepath="media/palettes/adlgbut.pal" />
+		<palette id="26" filepath="media/palettes/menuhead.pal" />
+		<palette id="27" filepath="media/palettes/offbut.pal" />
+		<palette id="28" filepath="media/palettes/onbut.pal" />
+		<palette id="29" filepath="media/palettes/downbut.pal" />
+		<palette id="30" filepath="media/palettes/upbut.pal" />
+
+		<palette id="55" filepath="media/palettes/abuti.pal" />
+		<palette id="56" filepath="media/palettes/abute.pal" />
+		<palette id="57" filepath="media/palettes/ibuti.pal" />
+		<palette id="58" filepath="media/palettes/ibute.pal" />
+
+		<palette id="60" filepath="media/palettes/aback.pal"/>
+		<palette id="61" filepath="media/palettes/arepeat.pal"/>
+		<palette id="62" filepath="media/palettes/arobutbe.pal"/>
+		<palette id="63" filepath="media/palettes/arobutbi.pal"/>
+		<palette id="64" filepath="media/palettes/arobutme.pal"/>
+		<palette id="65" filepath="media/palettes/arobutmi.pal"/>
+		<palette id="66" filepath="media/palettes/arobutse.pal"/>
+		<palette id="67" filepath="media/palettes/arobutsi.pal"/>
+		<palette id="68" filepath="media/palettes/ashuffle.pal"/>
+		<palette id="69" filepath="media/palettes/astop.pal"/>
+		<palette id="70" filepath="media/palettes/ff.pal"/>
+		<palette id="71" filepath="media/palettes/iback.pal"/>
+		<palette id="72" filepath="media/palettes/irepeat.pal"/>
+		<palette id="73" filepath="media/palettes/irobutbe.pal"/>
+		<palette id="74" filepath="media/palettes/irobutbi.pal"/>
+		<palette id="75" filepath="media/palettes/irobutme.pal"/>
+		<palette id="76" filepath="media/palettes/irobutmi.pal"/>
+		<palette id="77" filepath="media/palettes/irobutse.pal"/>
+		<palette id="78" filepath="media/palettes/irobutsi.pal"/>
+		<palette id="79" filepath="media/palettes/ishuffle.pal"/>
+		<palette id="81" filepath="media/palettes/istop.pal"/>
+		<palette id="82" filepath="media/palettes/next.pal"/>
+		<palette id="83" filepath="media/palettes/play.pal"/>
+		<palette id="84" filepath="media/palettes/prev.pal"/>
+		<palette id="85" filepath="media/palettes/rebutb.pal"/>
+		<palette id="86" filepath="media/palettes/rebutbd.pal"/>
+		<palette id="87" filepath="media/palettes/rebutm.pal"/>
+		<palette id="88" filepath="media/palettes/rebutmd.pal"/>
+		<palette id="89" filepath="media/palettes/rebuts.pal"/>
+		<palette id="90" filepath="media/palettes/rebutsd.pal"/>
+		<palette id="91" filepath="media/palettes/rewind.pal"/>
+		<palette id="92" filepath="media/palettes/rrepeat.pal"/>
+		<palette id="93" filepath="media/palettes/rshuffle.pal"/>
+		<palette id="94" filepath="media/palettes/groovebgi.pal"/>
+		<palette id="95" filepath="media/palettes/groovebge.pal"/>
+		<palette id="96" filepath="media/palettes/pause.pal"/>
+
+	</palettes>
+	
+	<fonts>
+		<font name="default" filepath="media/fonts/font.ttf" />
+	</fonts>
+	
+</media>
+	

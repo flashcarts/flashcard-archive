@@ -1,0 +1,21 @@
+
+; MoonShell2.00 language resource for 'CP936_GBK_Chinese_simplified'.
+; Encoding format is UTF-8.
+
+Author=yeyezai,so898,linoul
+Target=GBK Chinese simplified
+
+; ----------------------------
+
+TextFontFolderName=tfontchs
+
+; DateTimeFormat is YYYYMMDD or DDMMYYYY or MMDDYYYY.
+DateTimeFormat=YYYYMMDD
+
+
+MainMenu_Game=Game
+
+MainMenu_Mutil=MutilMedia
+
+; ----------------------------
+

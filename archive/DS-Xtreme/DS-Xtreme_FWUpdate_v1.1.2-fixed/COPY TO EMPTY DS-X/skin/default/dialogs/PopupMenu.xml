@@ -1,0 +1,330 @@
+<dialog>
+	<script>
+		<![CDATA[
+
+			menu <- null;
+
+			bgResize <- null;
+			strokeResize <- null;
+			resize <- null;
+			delay <- null;
+			endDelay <- null;
+
+			FadeEffects<-
+			{
+				bg = null,
+				stroke = null,
+
+				fadeGroup = null,
+			}
+
+			// This is called when the selected index in the list is changed
+			// We swap the texture which indicates to the user that the item
+			// is selected.
+			function OnSelectedIndexChanged(event)
+			{
+				local newIndex = event.getNewIndex();
+				local oldIndex = event.getOldIndex();
+				
+				if(oldIndex >= 0)
+				{
+					local oldItem = menu.getItem(oldIndex);
+					local oldLabel = oldItem.findWidget("menuitem");
+					local oldSelected = oldItem.findWidget("selected");
+					oldSelected.setVisible(false);
+				}
+				
+				if(newIndex >= 0)
+				{
+					local newItem = menu.getItem(newIndex);
+					local newLabel = newItem.findWidget("menuitem");
+					local newSelected = newItem.findWidget("selected");
+					newSelected.setVisible(true);
+				}
+			}	
+
+			function OnItemActivated(event)
+			{
+				// Set the model then hide the dialog
+				local dialog = event.getTarget().getParentScene();
+				dialog.getModel().setSelectedItem(menu.getSelectedIndex());
+				dialog.hide();
+			}
+
+			function OnItemClicked(event)
+			{
+				// Set the model then hide the dialog
+				local dialog = event.getTarget().getParentScene();
+				dialog.getModel().setSelectedItem(menu.getSelectedIndex());
+				dialog.hide();
+			}
+
+			function OnBegin(event)
+			{
+				menu.setVisible(false);
+
+				local dialog = event.getTarget();
+
+				dialog.findWidget("bg").setAlpha(15);
+				dialog.findWidget("stroke").setAlpha(15);
+
+				
+				// Clear items from the menu to create a new menu
+				menu.clearItems();
+				
+				local maxWidth = 0;
+				local menuHeight = 0;
+				
+				local model = dialog.getModel();
+				local menuItems = model.getItems();
+				foreach(itemText in menuItems)
+				{
+					// Create the item
+					local item = ListItem(itemText);
+					
+					// Apply the template
+					menu.applyItemTemplate(item);
+
+					// Set the label text
+					local menuitem = item.findWidget("menuitem");
+					menuitem.setText(itemText);
+					
+					// Get the text width and set the label to match
+					local textWidth = menuitem.getTextWidth();
+					
+					// Update max width and height
+					if(textWidth > maxWidth)
+					{
+						maxWidth = textWidth;
+					}
+					menuHeight = menuHeight + item.getHeight();
+					
+					// Add it to the list
+					menu.addItem(item);
+					
+					// Hook the click event
+					item.onClick(OnItemClicked);
+				}
+	
+				// Set the bounds of the widgets appropriately	
+				
+				if(maxWidth > 200)
+				{
+					maxWidth = 200;
+				}
+				
+				local x = model.getX();
+				local xRight = x + maxWidth + 20;
+				if(xRight > 246)
+				{
+					x = x - (xRight - 256) - 10;
+				}
+				
+				if(menuHeight > 170)
+				{
+					menuHeight = 170;
+				}
+				
+				local y = model.getY();
+				local yBottom = y + menuHeight;				
+				if(yBottom	> 182)
+				{
+					y = y - (yBottom - 192) - 10;
+				}
+				
+				dialog.setX(x);
+				dialog.setY(y);
+				dialog.setWidth(maxWidth+20);
+				dialog.setHeight(menuHeight);
+
+				local bg = dialog.findWidget("bg");
+				bg.setWidth(maxWidth+20-2);
+				bg.setHeight(menuHeight-2);
+
+				local stroke = dialog.findWidget("stroke");
+				stroke.setWidth(maxWidth+20);
+				stroke.setHeight(menuHeight);
+				
+				menu.setWidth(maxWidth+20);
+				menu.setHeight(menuHeight);
+				
+				foreach(item in menu.getItems())
+				{
+					local selected = item.findWidget("selected");
+					local menuitem = item.findWidget("menuitem");
+					item.setWidth(maxWidth+20);
+					selected.setWidth(maxWidth+18);
+					menuitem.setWidth(maxWidth+20);
+				}
+
+
+				// Create the resize objects to handle the grow effect of the background
+				local bgWidth = (maxWidth + 18) / 8;
+				local bgHeight = (menuHeight - 2) / 8;
+
+
+				local height_list = [1, bgHeight, bgHeight*2, bgHeight*3, bgHeight*4, bgHeight*5, bgHeight*6, 
+							bgHeight*7, menuHeight - 2];
+				local width_list = [1, bgWidth, bgWidth*2, bgWidth*3, bgWidth*4, bgWidth*5, bgWidth*6, bgWidth*7, maxWidth + 18];
+				local dur_list = [1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+
+				bgResize = Resize(dialog.findWidget("bg"), width_list, height_list, dur_list);
+
+				height_list = [3, bgHeight+2, bgHeight*2+2, bgHeight*3+2, bgHeight*4+2, bgHeight*5+2, bgHeight*6+2, 
+							bgHeight*7+2, menuHeight];
+				width_list = [3, bgWidth+2, bgWidth*2+2, bgWidth*3+2, bgWidth*4+2, bgWidth*5+2, bgWidth*6+2, 
+							bgWidth*7+2, maxWidth + 20];
+
+				strokeResize = Resize(dialog.findWidget("stroke"), width_list, height_list, dur_list);
+
+				resize = SyncResize([bgResize, strokeResize]);
+
+				resize._direction = 1;
+				resize._tick = 0;
+
+				// Set end alphas and start the fade effects
+				FadeEffects.bg.setEndAlpha(31);
+				FadeEffects.stroke.setEndAlpha(31);
+				FadeEffects.fadeGroup.start();
+
+				// Start the resize effect
+				resize.start();
+
+				// Start the delay effect
+				delay.start();
+				
+				// Focus the menu widget
+				menu.focus();
+			}				
+
+			function OnEnd(event)
+			{
+				local dialog = event.getTarget();
+
+				// Reverse the direction of the resize effect
+				resize._direction = -1;
+				resize._tick = 8;
+
+				// Set the menu visibility to false before the background resize effect
+				menu.setVisible(false);
+
+				// Set end alphas and start the fade effects
+				FadeEffects.bg.setEndAlpha(15);
+				FadeEffects.stroke.setEndAlpha(15);
+				FadeEffects.fadeGroup.start();
+
+				// sets the wait effect endDelay as the end effect to pause the framework while the resize effect runs
+				event.setEndEffect(endDelay);
+
+				// Start the resize effect
+				resize.start();
+			}
+
+			function ShowMenu(event)
+			{
+				// Sets the menu visibility to true after the intro resize effect completes
+				event.getTarget().setVisible(true);
+			}
+
+			function OnInit()
+			{
+				local event = Application.getEvent();
+				local dialog = event.getTarget();
+				
+				// Hooke the menu list events
+				menu = dialog.findWidget("menu");
+				menu.onSelectedIndexChanged(OnSelectedIndexChanged);
+				menu.onItemActivated(OnItemActivated);
+
+				// Create the opening delay effect
+				delay = WaitEffect();
+				delay.setTarget(menu);
+				delay.setDuration(240);
+				delay.onStop(ShowMenu);
+
+				// Create the end delay effect
+				endDelay = WaitEffect();
+				endDelay.setTarget(menu);
+				endDelay.setDuration(270);
+
+				FadeEffects.bg = FadeEffect();
+				FadeEffects.bg.setTarget(dialog.findWidget("bg"));
+				FadeEffects.bg.setDuration(230);
+
+				FadeEffects.stroke = FadeEffect();
+				FadeEffects.stroke.setTarget(dialog.findWidget("stroke"));
+				FadeEffects.stroke.setDuration(230);
+
+				FadeEffects.fadeGroup = EffectGroup();
+				FadeEffects.fadeGroup.addEffect(FadeEffects.bg);
+				FadeEffects.fadeGroup.addEffect(FadeEffects.stroke);
+							
+				// Hook the scene events	
+				dialog.onBegin(OnBegin);
+				dialog.onEnd(OnEnd);				
+			}
+			
+		]]>
+	</script>
+
+	<properties>
+			<bounds x="0" y="0" width="24" height="24"/>	
+	</properties>
+
+	<objects>
+		<image id="bg">
+			<properties>
+         			<depth>2</depth>
+				<bounds x="1" y="1" width="22" height="22"/>
+				<texture-id>600</texture-id>
+				<palette-id>600</palette-id>
+			</properties>
+		</image>
+		<image id="stroke">
+			<properties>
+          			<depth>1</depth>
+				<bounds x="0" y="0" width="24" height="24"/>
+				<texture-id>601</texture-id>
+				<palette-id>601</palette-id>
+			</properties>
+		</image>
+		<list id="menu">
+      <properties>
+        <depth>1</depth>
+      </properties>
+      <item-template>
+        <properties>
+          <bounds x="0" y="0" width="25" height="22"/>
+          <depth>3</depth>
+        </properties>
+        <objects>
+			    <rect id="selected">
+						<properties>
+							<bounds x="1" y="1" width="22" height="20"/>
+							<color red="0" green="0" blue="31"/>
+							<alpha>5</alpha>
+							<visible>false</visible>
+						</properties>
+					</rect>
+          <label id="menuitem">
+            <properties>
+              <bounds x="10" y="0" width="0" height="22"/>
+              <depth>4</depth>
+							<color red="15" blue="15" green="15"/>
+              <font name="default" size="10"/>
+              <wrap-type>clip</wrap-type>
+              <justify>left</justify>
+              <vertical-align>middle</vertical-align> 
+            </properties>       
+          </label>
+        </objects>
+      </item-template>
+    </list>
+	</objects>
+
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+	
+</dialog>

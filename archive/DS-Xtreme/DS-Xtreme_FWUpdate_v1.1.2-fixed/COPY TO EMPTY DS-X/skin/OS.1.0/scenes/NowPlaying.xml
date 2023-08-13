@@ -1,0 +1,352 @@
+<scene>
+	<script>
+		<![CDATA[
+		
+			// Store some of the widgets for later use
+			// so we don't have to look them up each time we need them.
+			titleLabel <- null;
+			titleBg <- null;
+			songList <- null;
+
+			// Store the scene effects for easy access or to keep them in scope.
+			SceneEffects <- {
+			
+				titleLabelMove = null, // Move the title in from the left
+				titleBgMove = null, // Move the title bg in from the left
+				songListMove = null, // Move the list in from the right
+				
+				transitionEffects = null, // Group of transition effects
+			}		
+						
+			// Set the final onscreen locations as the destinations of the effects			
+			function SetupBeginTransition()
+			{
+				SceneEffects.titleLabelMove.setDestination(10,12);
+				SceneEffects.titleBgMove.setDestination(0,10);	
+				SceneEffects.songListMove.setDestination(0,38);
+			}			
+
+			// Set the initial offscreen locations as the destinations of the effects							
+			function SetupEndTransition()
+			{
+				SceneEffects.titleLabelMove.setDestination(-230,12);
+				SceneEffects.titleBgMove.setDestination(-243,10);	
+				SceneEffects.songListMove.setDestination(280,38);					
+			}
+			
+			// This is called when the scene is being displayed
+			function OnBegin(event)
+			{
+				AddSongsToList();
+
+				// Set the destinations appropriately on the transition 
+				// effects for the starting sequence
+				SetupBeginTransition();
+				
+				// Play the start transition
+				SceneEffects.transitionEffects.start();
+
+				songList.focus();
+			}
+			
+			// This is called before the next scene is displayed
+			function OnEnd(event)
+			{			
+				// Set the destinations appropriately on the transition 
+				// effects for the ending sequence
+				SetupEndTransition();
+				
+				// Setting the effect as the end effect on the event
+				// will cause the framework to wait for the effect to 
+				// finish before starting the next scene
+				event.setEndEffect(SceneEffects.transitionEffects);
+			}
+			
+			function AddSongsToList()
+			{
+				songList.clearItems();
+				
+				local songArray = NowPlaying.getList();
+								
+				foreach(i, song in songArray)
+				{
+					// Create the item
+					local item = ListItem("song_" + i);
+					
+					// Apply the template
+					songList.applyItemTemplate(item);
+				
+					// Store the item
+					item.setItem(song);
+					
+					// Set the title label text
+					local title = item.findWidget("title");
+					title.setText(song.getName());
+		
+					// Add it to the list
+					songList.addItem(item);
+				}
+				
+				local index = NowPlaying.getPlaylistIndex();
+				if(index >= 0)
+				{
+					songList.setSelected(index);
+				}
+				
+			}
+			
+			function OnItemActivated(event)
+			{
+				NowPlaying.stopPlaying();
+				NowPlaying.startPlaying(NowPlaying.getIndexForPlaylistIndex(songList.getSelectedIndex()));
+			}
+
+			function OnDPadPressed(event)
+			{
+				local direction = event.getDirection();
+				if(direction == event.Left)
+				{
+					GoBack();
+				}
+			}
+			
+	
+			function OnBackClick(event)
+			{
+				GoBack();
+			}	
+			
+			
+			function DoPopupMenu(x, y)
+			{
+				local popup = PopupMenu();
+				popup.addMenuItem("Clear Playlist");
+				popup.addMenuItem("Cancel");
+				popup.show(x, y);			
+				
+				local result = popup.getSelectedItem();
+				if(result == 0)
+				{
+					NowPlaying.clear();
+					GoBack();
+				}
+			}
+			
+			function OnButtonHold(event)
+			{
+				if(event.getButton() == event.A)
+				{
+					DoPopupMenu(50,50);
+				}			
+			}
+			
+			function OnTouchHold(event)
+			{
+				DoPopupMenu(event.getX(),event.getY());
+			}
+				
+						
+			function OnButtonReleased(event)
+			{
+				if(event.getButton() == event.B)
+				{
+					GoBack();
+				}	
+				else if(event.getButton() == event.L)
+				{
+					NowPlaying.prevSong();
+				}
+				else if(event.getButton() == event.R)
+				{
+					NowPlaying.nextSong();
+				}
+			}
+			
+			function GoBack()
+			{
+				 Application.getSceneManager().selectScene("AudioMain");					
+			}
+			
+			function OnSongChanged(event)
+			{
+				songList.setSelected(NowPlaying.getPlaylistIndex());
+			}
+			
+			// This is called when the selected index in the list is changed
+			// We swap the texture which indicates to the user that the item
+			// is selected.
+			function OnSelectedIndexChanged(event)
+			{
+				local newIndex = event.getNewIndex();
+				local oldIndex = event.getOldIndex();
+				
+				if(oldIndex >= 0)
+				{
+					local oldItem = songList.getItem(oldIndex);
+					local oldHighlight = oldItem.findWidget("highlight");
+					oldHighlight.setVisible(false);
+				}
+				
+				if(newIndex >= 0)
+				{
+					local newItem = songList.getItem(newIndex);
+					local newHighlight = newItem.findWidget("highlight");
+					newHighlight.setVisible(true);
+				}
+			}							
+						
+			// This is called when the scene is initialized (i.e., after the XML is loaded)
+			function OnInit()
+			{
+				// The current event is always available from the Application object
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+
+				// Store some vars
+				titleLabel = scene.findWidget("titleLabel");
+				titleBg = scene.findWidget("titleImage");
+				songList = scene.findWidget("songlist");
+
+				// Set up initial locations (offscreen)
+				// This could obviously be done in the xml, but sometimes it's nice to
+				// keep the xml defined as what it will look like once fully presented
+				titleLabel.setX(-210);
+				titleBg.setX(-223);
+				songList.setX(257);
+									
+				// Set up events
+				SceneEffects.titleLabelMove = MoveToEffect();
+				SceneEffects.titleLabelMove.setTarget(titleLabel);
+				SceneEffects.titleLabelMove.setDuration(300);
+			
+				SceneEffects.titleBgMove = MoveToEffect();
+				SceneEffects.titleBgMove.setTarget(titleBg);
+				SceneEffects.titleBgMove.setDuration(300);	
+				
+				SceneEffects.songListMove = MoveToEffect();
+				SceneEffects.songListMove.setTarget(songList);
+				SceneEffects.songListMove.setDuration(300);
+									
+				// Group the events so they can be used as an end transition
+				SceneEffects.transitionEffects = EffectGroup();
+				SceneEffects.transitionEffects.addEffect(SceneEffects.titleLabelMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.titleBgMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.songListMove);
+						
+				// Hook scene events
+				scene.onBegin(OnBegin);								
+				scene.onEnd(OnEnd);
+				scene.onButtonReleased(OnButtonReleased);
+				scene.onButtonHold(OnButtonHold);	
+						
+				// Hook list events
+				songList.onSelectedIndexChanged(OnSelectedIndexChanged);
+				songList.onItemActivated(OnItemActivated);
+				songList.onTouchHold(OnTouchHold);
+				songList.onDPadPressed(OnDPadPressed);
+				
+				NowPlaying.onSongChanged(OnSongChanged.bindenv(this));
+				
+				local back = scene.findWidget("back");
+				back.onButtonClick(OnBackClick);					
+
+			}
+		]]>
+	</script>
+
+	<objects>
+		<image id="game.bg">
+			<properties>
+				<bounds x="0" y="0" width="256" height="192"/>
+				<texture-id>9</texture-id>
+				<palette-id>2</palette-id>
+			</properties>
+		</image>
+    <list id="songlist">
+      <properties>
+        <bounds x="0" y="38" width="256" height="152"/>
+        <depth>1</depth>
+      </properties>
+      
+      <objects>
+        <!-- bg image or whatever here -->
+      </objects>
+      
+      <item-template>
+        <properties>
+          <bounds x="0" y="0" width="256" height="19"/>
+          <depth>1</depth>
+        </properties>
+        <objects>
+        	<rect id="highlight">
+						<properties>
+							<bounds x="0" y="0" width="256" height="19"/>
+							<color red="0" green="0" blue="31"/>
+							<alpha>2</alpha>
+							<visible>false</visible>
+						</properties>
+					</rect>
+          <label id="title">
+            <properties>
+              <bounds x="10" y="0" width="236" height="19"/>
+              <depth>2</depth>
+							<color red="15" blue="15" green="15"/>
+              <font name="default" size="11"/>
+              <wrap-type>clip</wrap-type>
+              <justify>left</justify>
+              <vertical-align>middle</vertical-align> 
+            </properties>       
+          </label>
+        </objects>
+      </item-template>
+    </list>
+		<image id="titleImage">
+			<properties>
+				<bounds x="0" y="10" width="223" height="30"/>
+				<depth>1</depth>
+				<texture-id>19</texture-id>
+				<palette-id>19</palette-id>
+			</properties>
+		</image>
+		<label id="titleLabel">
+			<properties>
+				<bounds x="10" y="12" width="200" height="20"/>
+				<depth>3</depth>
+				<font name="default" size="19"/>
+				<text>Now Playing</text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>middle</vertical-align>
+				<shadow/>
+			</properties>
+		</label>
+		<button id="back">
+			<properties>
+				<bounds x="224" y="13" width="24" height="24"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="24" height="24"/>
+						<texture-id>89</texture-id>
+						<palette-id>89</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>2</depth>
+						<bounds x="2" y="2" width="16" height="16"/>
+						<texture-id>71</texture-id>
+						<palette-id>71</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+	</objects>
+
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+</scene>

@@ -1,0 +1,545 @@
+<scene>
+
+	<script>
+		<![CDATA[
+						
+			// Store some of the widgets for later use
+			// so we don't have to look them up each time we need them.
+			slider <- null;
+			caption <- null;
+			focused <- null;
+			sliderIsRunning <- null;
+			sliderDelay <- null;
+			
+			// Store the scene effects to keep them in scope
+			SceneEffects <- {
+				captionMove = null, // Move the caption
+				captionFade = null, // Fades the caption
+				sliderDrop = null, // Move the slider down on scene start
+				sliderMove = null, // Move the slider when buttons change
+				settingsMove = null, // Move the settings button up on scene start
+				gamesMove = null, // Move the games button up on scene start
+				filesMove = null, // Move the games button up on scene start
+				musicMove = null, // Move the games button up on scene start
+				titleFade = null, // Fade the title in and out
+				aboutButtonFade = null, // Fades the header back arrow
+				
+				transitionEffects = null, // Transition group
+			}
+
+			// Set the final onscreen locations as the destinations of the effects			
+			function SetupBeginTransition()
+			{
+				SceneEffects.captionMove.setDestination(0,160);
+				SceneEffects.sliderDrop.setDestination(slider.getX(),47);
+				SceneEffects.settingsMove.setDestination(132,85);	
+				SceneEffects.gamesMove.setDestination(12,85);
+				SceneEffects.filesMove.setDestination(192,85);
+				SceneEffects.musicMove.setDestination(72,85);
+				SceneEffects.titleFade.setEndAlpha(31);
+				SceneEffects.aboutButtonFade.setEndAlpha(31);
+			}			
+
+			// Set the initial offscreen locations as the destinations of the effects							
+			function SetupEndTransition()
+			{
+				SceneEffects.captionMove.setDestination(0,300);
+				SceneEffects.sliderDrop.setDestination(slider.getX(),300);
+				SceneEffects.settingsMove.setDestination(132,300);	
+				SceneEffects.gamesMove.setDestination(12,300);
+				SceneEffects.filesMove.setDestination(192,300);
+				SceneEffects.musicMove.setDestination(72,300);	
+				SceneEffects.titleFade.setEndAlpha(0);				
+				SceneEffects.aboutButtonFade.setEndAlpha(0);
+			}
+			
+			// Called when a button is focused
+			function OnButtonFocusGained(event)
+			{
+				// Swap the button image
+				local button = event.getTarget();
+				local imageedge = button.getWidget("background-edge");
+				imageedge.setTexture(111);	
+				imageedge.setPalette(111);
+				
+				// Move the slider
+				SceneEffects.sliderMove.stop();			
+				SceneEffects.sliderMove.setDestination(button.getX() - 7,slider.getY());
+				SceneEffects.sliderMove.setDuration(250);
+				SceneEffects.sliderMove.start();
+				
+				// Change the caption
+				local buttonId = button.getId();
+				if(buttonId == "main.mySettings")
+				{
+					caption.setText("Change your preferences");
+					focused = 0;
+				}
+				else if(buttonId == "main.myGames")
+				{
+					caption.setText("Launch your applications");
+					focused = 1;
+				}
+				else if(buttonId == "main.mySkinApps")
+				{
+					caption.setText("Launch your DS-X skin apps");
+					focused = 3;
+				}
+				else if(buttonId == "main.myMedia")
+				{
+					caption.setText("Play your music");
+					focused = 2;
+				}
+				
+				// Fade in the caption
+				caption.setAlpha(0);
+				SceneEffects.captionFade.setEndAlpha(30);
+				SceneEffects.captionFade.start();	
+			}
+			
+			// Called when a button loses focus
+			function OnButtonFocusLost(event)
+			{
+				// Swap the button image
+				local button = event.getTarget();
+				local imageedge = button.getWidget("background-edge");
+				imageedge.setTexture(113);	
+				imageedge.setPalette(113);
+			}		
+
+			// Called when the slider delay wait effect stops
+			function OnSliderDelayStop(event)
+			{
+				sliderIsRunning = false;
+
+				if(focused == 0)
+				{
+					// Transition to settings list menu scene
+					Application.getSceneManager().selectScene("Settings");
+				}
+				else if(focused == 1)
+				{
+					// Transition to app list menu scene
+					Application.getSceneManager().selectScene("AppsList");
+				}
+				else if(focused == 2)
+				{
+					// Transition to audio player scene
+					Application.getSceneManager().selectScene("AudioMain");
+				}
+				else if(focused == 3)
+				{
+					// Transition to skin app scene
+					Application.getSceneManager().selectScene("SkinAppList");
+				}
+			}
+
+			// Called when the slider move effect is started
+			function OnSliderMoveStart(event)
+			{
+				sliderIsRunning = true;
+			}
+
+			// Called when the slider move effect stops
+			function OnSliderMoveStop(event)
+			{
+				sliderIsRunning = false;
+			}
+
+			// Called when the settings button is clicked
+			function OnSettingsClick(event)
+			{
+				if(sliderIsRunning)
+					sliderDelay.start();
+				else
+					Application.getSceneManager().selectScene("Settings");
+				
+			}
+			
+			// Called when the games button is clicked
+			function OnGamesClick(event)
+			{
+				if(sliderIsRunning)
+					sliderDelay.start();
+				else
+					Application.getSceneManager().selectScene("AppsList");
+			}
+
+			// Called when the media/audio button is clicked
+			function OnMediaClick(event)
+			{
+				if(sliderIsRunning)
+					sliderDelay.start();
+				else
+					Application.getSceneManager().selectScene("AudioMain");
+			}
+
+			// Called when the skin apps button is clicked
+			function OnSkinAppClick(event)
+			{
+				if(sliderIsRunning)
+					sliderDelay.start();
+				else
+				{
+					Application.getSceneManager().selectScene("SkinAppList");
+				}
+				
+			}
+
+			// Called when the about button is touched
+			function OnAboutTouchPress(event)
+			{
+				local scene = event.getTarget().getParentScene();
+
+				// Summon about dialog
+				local dialog = Application.getSceneManager().getDialog("aboutDialog");
+				dialog.show();
+
+				// Revert focus to previously focused main menu button
+				if(focused == 0)
+					scene.findWidget("main.mySettings").focus();
+				if(focused == 1)
+					scene.findWidget("main.myGames").focus();
+				if(focused == 2)
+					scene.findWidget("main.myMedia").focus();
+				if(focused == 3)
+					scene.findWidget("main.mySkinApps").focus();
+			}
+
+			// Called when the scene begins
+			function OnBegin(event)
+			{
+				sliderDelay.pause();
+				sliderIsRunning = false;
+
+				// Get the focused button and set the slider X to match
+				local scene = event.getTarget();
+				slider.setX(scene.getFocusedWidget().getX() - 7);
+
+				// Set the destinations appropriately on the transition 
+				// effects for the starting sequence
+				SetupBeginTransition();
+				
+				// Play the start transition
+				SceneEffects.transitionEffects.start();
+			}
+			
+			// Called when the scene ends
+			function OnEnd(event)
+			{
+				// Set the destinations appropriately on the transition 
+				// effects for the starting sequence
+				SetupEndTransition();
+				
+				// Stop the slider from moving
+				SceneEffects.sliderMove.stop();
+
+				// Setting the effect as the end effect on the event
+				// will cause the framework to wait for the effect to 
+				// finish before starting the next scene
+				event.setEndEffect(SceneEffects.transitionEffects);	
+			}
+			
+			// Called when the scene is initialized
+			function OnInit()
+			{
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+				local mySettings = scene.findWidget("main.mySettings");
+				local myGames = scene.findWidget("main.myGames");
+				local mySkinApps = scene.findWidget("main.mySkinApps");
+				local myMedia = scene.findWidget("main.myMedia");
+				local aboutButton = scene.findWidget("main.aboutButton");
+				
+				// Save a couple widgets for later
+				slider = scene.findWidget("main.slider");
+				caption = scene.findWidget("main.caption");
+
+				// Set up initial locations (offscreen)
+				// This could obviously be done in the xml, but sometimes it's nice to
+				// keep the xml defined as what it will look like once fully presented
+				caption.setY(300);
+				mySettings.setY(325);
+				myGames.setY(275);
+				mySkinApps.setY(350);
+				myMedia.setY(300);
+				slider.setY(-45);
+				slider.setX(myGames.getX() - 14);
+				slider.setAlpha(50);
+				scene.findWidget("main.title").setAlpha(0);
+
+				// Hook the events of the buttons
+				mySettings.onFocusGained(OnButtonFocusGained);
+				mySettings.onFocusLost(OnButtonFocusLost);
+				mySettings.onButtonClick(OnSettingsClick);
+				
+				myGames.onFocusGained(OnButtonFocusGained);
+				myGames.onFocusLost(OnButtonFocusLost);
+				myGames.onButtonClick(OnGamesClick);
+				
+				mySkinApps.onFocusGained(OnButtonFocusGained);
+				mySkinApps.onFocusLost(OnButtonFocusLost);
+				mySkinApps.onButtonClick(OnSkinAppClick);
+	
+				myMedia.onFocusGained(OnButtonFocusGained);
+				myMedia.onFocusLost(OnButtonFocusLost);
+				myMedia.onButtonClick(OnMediaClick);
+
+				aboutButton.onTouchPress(OnAboutTouchPress.bindenv(this));
+
+				// Setup navigation between buttons
+				myGames.setEast(myMedia);	
+				myMedia.setEast(mySettings);
+				myMedia.setWest(myGames);
+				mySettings.setWest(myMedia);
+				mySettings.setEast(mySkinApps);
+				mySkinApps.setWest(mySettings);
+
+				// Create effects
+				sliderDelay = WaitEffect();
+				sliderDelay.setTarget(scene);
+				sliderDelay.setDuration(260);
+				sliderDelay.onStop(OnSliderDelayStop.bindenv(this));
+
+				SceneEffects.captionFade = FadeEffect();
+				SceneEffects.captionFade.setTarget(caption);
+				SceneEffects.captionFade.setDuration(300);
+				
+				SceneEffects.sliderMove = MoveToEffect();
+				SceneEffects.sliderMove.setTarget(slider);
+				SceneEffects.sliderMove.onStop(OnSliderMoveStop.bindenv(this));
+				SceneEffects.sliderMove.onStart(OnSliderMoveStart.bindenv(this));
+
+
+				SceneEffects.captionMove = MoveToEffect();
+				SceneEffects.captionMove.setTarget(caption);
+				SceneEffects.captionMove.setDuration(500);	
+				
+				SceneEffects.sliderDrop = MoveToEffect();
+				SceneEffects.sliderDrop.setTarget(slider);
+				SceneEffects.sliderDrop.setDuration(500);				
+				
+				SceneEffects.settingsMove = MoveToEffect();
+				SceneEffects.settingsMove.setTarget(mySettings);
+				SceneEffects.settingsMove.setDuration(500);
+
+				SceneEffects.gamesMove = MoveToEffect();
+				SceneEffects.gamesMove.setTarget(myGames);
+				SceneEffects.gamesMove.setDuration(500);	
+				
+				SceneEffects.filesMove = MoveToEffect();
+				SceneEffects.filesMove.setTarget(mySkinApps);
+				SceneEffects.filesMove.setDuration(500);	
+
+				SceneEffects.musicMove = MoveToEffect();
+				SceneEffects.musicMove.setTarget(myMedia);
+				SceneEffects.musicMove.setDuration(500);
+
+				SceneEffects.titleFade = FadeEffect();
+				SceneEffects.titleFade.setTarget(scene.findWidget("main.title"));
+				SceneEffects.titleFade.setDuration(300);
+
+				SceneEffects.aboutButtonFade = FadeEffect();
+				SceneEffects.aboutButtonFade.setTarget(aboutButton);
+				SceneEffects.aboutButtonFade.setDuration(300);
+			
+				// Group the events so they can be used as an end transition
+				SceneEffects.transitionEffects = EffectGroup();			
+				SceneEffects.transitionEffects.addEffect(SceneEffects.captionMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.sliderDrop);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.settingsMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.gamesMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.filesMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.musicMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.titleFade);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.aboutButtonFade);
+								
+				// Hook scene events
+				scene.onBegin(OnBegin);
+				scene.onEnd(OnEnd);
+				
+				// Initially focus the settings button
+				myGames.focus();
+			}
+		]]>
+	</script>
+	
+	<objects>
+		<image id="main.bg">
+			<properties>
+				<bounds x="0" y="0" width="256" height="192"/>
+				<texture-id>1</texture-id>
+				<palette-id>1</palette-id>
+			</properties>
+		</image>
+		<image id="main.headerGradient">
+			<properties>
+				<depth>10</depth>
+				<bounds x="0" y="0" width="256" height="28"/>
+				<texture-id>7</texture-id>
+				<palette-id>7</palette-id>
+			</properties>
+		</image>
+		<image id="main.colorBlocks">
+			<properties>
+				<depth>11</depth>
+				<bounds x="8" y="9" width="32" height="8"/>
+				<texture-id>3</texture-id>
+				<palette-id>3</palette-id>
+			</properties>
+		</image>
+		<label id="main.title">
+			<properties>
+				<bounds x="44" y="0" width="90" height="25"/>
+				<depth>11</depth>
+				<color red="5" blue="5" green="5"/>
+				<font name="default" size="12"/>
+				<text>DS-Xtreme</text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>middle</vertical-align>
+				<!-- <shadow xoffset="2" yoffset="2"/> -->
+			</properties>
+		</label>
+		<label id="main.caption">
+			<properties>
+				<bounds x="0" y="160" width="256" height="20"/>
+				<depth>3</depth>
+				<color red="15" blue="15" green="15"/>
+				<font name="default" size="10"/>
+				<text>Main Menu</text>
+				<wrap-type>clip</wrap-type>
+				<justify>center</justify>
+				<vertical-align>top</vertical-align>
+				<!-- <shadow xoffset="2" yoffset="2"/> -->
+			</properties>
+		</label>
+		<button id="main.aboutButton">
+			<properties>
+				<bounds x="232" y="0" width="24" height="24"/>
+				<depth>12</depth>
+				<alpha>0</alpha>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="24" height="24"/>
+						<texture-id>15</texture-id>
+						<palette-id>15</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="main.myGames">
+			<properties>
+				<bounds x="12" y="89" width="56" height="56"/>
+				<depth>4</depth>
+			</properties>
+			<objects>
+				<image id="background-edge">
+					<properties>
+						<depth>11</depth>
+						<bounds x="0" y="0" width="56" height="56"/>
+						<texture-id>113</texture-id>
+						<palette-id>113</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<depth>3</depth>
+						<bounds x="3" y="3" width="48" height="48"/>
+						<texture-id>11</texture-id>
+						<palette-id>11</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="main.myMedia">
+			<properties>
+				<bounds x="72" y="89" width="56" height="56"/>
+				<depth>4</depth>
+			</properties>
+			<objects>
+				<image id="background-edge">
+					<properties>
+						<depth>11</depth>
+						<bounds x="0" y="0" width="56" height="56"/>
+						<texture-id>113</texture-id>
+						<palette-id>113</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<depth>3</depth>
+						<bounds x="3" y="3" width="48" height="48"/>
+						<texture-id>12</texture-id>
+						<palette-id>12</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="main.mySettings">
+			<properties>
+				<bounds x="132" y="89" width="56" height="56"/>
+				<depth>4</depth>
+			</properties>
+			<objects>
+				<image id="background-edge">
+					<properties>
+						<depth>11</depth>
+						<bounds x="0" y="0" width="56" height="56"/>
+						<texture-id>113</texture-id>
+						<palette-id>113</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<depth>3</depth>
+						<bounds x="3" y="3" width="48" height="48"/>
+						<texture-id>13</texture-id>
+						<palette-id>13</palette-id>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+		<button id="main.mySkinApps">
+			<properties>
+				<bounds x="192" y="89" width="56" height="56"/>
+				<depth>4</depth>
+			</properties>
+			<objects>
+				<image id="background-edge">
+					<properties>
+						<depth>11</depth>
+						<bounds x="0" y="0" width="56" height="56"/>
+						<texture-id>113</texture-id>
+						<palette-id>113</palette-id>
+					</properties>
+				</image>
+				<image id="foreground">
+					<properties>
+						<depth>3</depth>
+						<bounds x="3" y="3" width="48" height="48"/>
+						<texture-id>14</texture-id>
+						<palette-id>14</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<image id="main.slider">
+			<properties>
+				<bounds x="91" y="144" width="72" height="96"/>
+				<depth>9</depth>
+				<texture-id>100</texture-id>
+				<palette-id>100</palette-id>
+			</properties>
+		</image>
+	
+	</objects>
+	
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+</scene>
+

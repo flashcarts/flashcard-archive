@@ -1,0 +1,784 @@
+<scene>
+	<script>
+		<![CDATA[
+		
+			// Store some of the widgets for later use
+			// so we don't have to look them up each time we need them.
+			settingsList <- null;
+			leftSpinnerRed <- null;
+			leftSpinnerGreen <- null;
+			leftSpinnerBlue <- null;
+			rightSpinnerRed <- null;
+			rightSpinnerGreen <- null;
+			rightSpinnerBlue <- null;
+						
+			modified <- false;
+
+			scrollbar <- null;
+
+			fromMain <- null;
+			
+			// Store the scene effects for easy access or to keep them in scope.
+			SceneEffects <- {
+
+				settingsListMove = null, // Move the list in from the right
+				scrollBarMove = null, // Move the scrollbar in from the right
+				
+				transitionEffects = null, // Group of transition effects
+			}	
+
+			// Store the fade effects
+			FadeEffects <- {
+
+				titleFade = null,
+				okButtonmapFade = null,
+				backButtonmapFade = null,
+				backarrowFade = null,
+
+				fadeGroup = null,
+			}
+			
+			function GoBack()
+			{
+				// Transition to the main menu scene
+				fromMain = true;
+				Application.getSceneManager().selectScene("main");			
+			}
+			
+			// Called when the back arrow button is clicked
+			function OnBackClick(event)
+			{
+				GoBack();
+			}			
+						
+			// Set the final onscreen locations as the destinations of the effects			
+			function SetupBeginTransition()
+			{
+				SceneEffects.settingsListMove.setDestination(6,31);
+				SceneEffects.scrollBarMove.setDestination(239,31);
+
+				FadeEffects.titleFade.setEndAlpha(31);
+				FadeEffects.backButtonmapFade.setEndAlpha(31);
+				FadeEffects.okButtonmapFade.setEndAlpha(31);
+				FadeEffects.backarrowFade.setEndAlpha(31);	
+			}			
+
+			// Set the initial offscreen locations as the destinations of the effects							
+			function SetupEndTransition()
+			{
+				SceneEffects.settingsListMove.setDestination(287,31);						
+				SceneEffects.scrollBarMove.setDestination(522,31);
+				FadeEffects.titleFade.setEndAlpha(0);
+
+				if(fromMain)
+				{
+					FadeEffects.backButtonmapFade.setEndAlpha(0);
+					FadeEffects.okButtonmapFade.setEndAlpha(0);
+					FadeEffects.backarrowFade.setEndAlpha(0);			
+				}		
+			}
+			
+			// This is called when the scene is being displayed
+			function OnBegin(event)
+			{
+				modified = false;
+			
+				scrollbar.UpdateByListCount();
+
+				// Set the destinations appropriately on the transition 
+				// effects for the starting sequence
+				SetupBeginTransition();
+
+				scrollbar.SetVisible(true);
+				settingsList.setVisible(true);
+				
+				// Play the start transition
+				SceneEffects.transitionEffects.start();
+
+				// Allign scroller to top of scrollbar
+				if(settingsList.getSelectedIndex() == 0)
+				{
+					scrollbar._scrollMove.setDestination(1,14);
+					scrollbar._scrollMove.start();
+				}
+
+				local selected = settingsList.getSelectedItem();
+				if(null != selected)
+				{
+					selected.focus();
+				}
+				else
+				{
+					settingsList.focus();
+				}
+			}
+			
+			// This is called before the next scene is displayed
+			function OnEnd(event)
+			{					
+				if(modified)
+				{
+					SaveLEDSettings();
+				}
+				
+				// Set the destinations appropriately on the transition 
+				// effects for the ending sequence
+				SetupEndTransition();
+				
+				// Setting the effect as the end effect on the event
+				// will cause the framework to wait for the effect to 
+				// finish before starting the next scene
+				event.setEndEffect(SceneEffects.transitionEffects);
+			}
+						
+			// This is called when the selected index in the list is changed
+			// We swap the texture which indicates to the user that the item
+			// is selected.
+			function OnSelectedIndexChanged(event)
+			{
+				local newIndex = event.getNewIndex();
+				local oldIndex = event.getOldIndex();
+				
+				if(oldIndex >= 0)
+				{
+					// Set the background of the old item to show loss of focus
+					local oldItem = settingsList.getItem(oldIndex);
+					local oldBackground = oldItem.findWidget("background");
+					oldBackground.setTexture(804);
+					oldBackground.setPalette(804);
+				}
+				
+				if(newIndex >= 0)
+				{
+					// Set the background of the new item to show that it has gained focus
+					local newItem = settingsList.getItem(newIndex);
+					local newBackground = newItem.findWidget("background");
+					newBackground.setTexture(805);
+					newBackground.setPalette(805);
+					
+					local scene = newItem.getParentScene();
+					local widget = scene.getFocusedWidget();
+					local parentWidget = widget.getParent();
+
+					// Shifts the focus to the interactive widget within the list item
+					if(newItem.getId() != parentWidget.getId())
+					{
+							local button = newItem.findWidget("spinner-up");
+							if(button != null)
+							{
+								button.focus();
+							}
+							else
+							{
+								button = newItem.findWidget("status");
+								if(button != null)
+								{
+									button.focus();
+								}
+							}
+							if(newItem.getId() == "skin-selector")
+							{
+								newItem.focus();
+							}
+					}
+				}
+			}							
+
+			// Called when a radio button is clicked					
+			function OnStatusButtonClick(event)
+			{
+				 local button = event.getTarget();
+				 local buttonBg = button.findWidget("statusBg");
+				 local item = button.getParent();
+				 
+				 local setting = Settings.get(item.getId());
+				 if(setting.getValue() == true)
+				 {
+				 		// Set to false
+				 		setting.setValue(false);
+		
+				 		// Change color
+	 					buttonBg.setTexture(803);
+						buttonBg.setPalette(803);
+				 }
+				 else
+				 {
+				 		// Set to true
+				 		setting.setValue(true);
+				 		
+				 		// Change color
+	 					buttonBg.setTexture(802);
+						buttonBg.setPalette(802);
+				 }
+				 
+				 Settings.set(setting);
+				 Settings.save();
+			}
+
+			// Called when a boolean list item is focused					
+			function OnBooleanItemFocus(event)
+			{
+				local instantboot = event.getTarget();
+				local button = instantboot.findWidget("status");
+				button.focus();
+			}
+			
+			// Called when a radio button gains focus
+			function OnStatusButtonFocusGained(event)
+			{
+				local button = event.getTarget();
+				local buttonBg = button.findWidget("statusBg");
+				buttonBg.setAlpha(31);
+			}			
+
+			// Called when a radio button loses focus			
+			function OnStatusButtonFocusLost(event)
+			{
+				local button = event.getTarget();
+				local buttonBg = button.findWidget("statusBg");
+				buttonBg.setAlpha(15);
+			}
+			
+			// Called when an LED list item is focused
+			function OnLEDFocus(event)
+			{
+				local listitem = event.getTarget();
+				local button = listitem.findWidget("spinner-up");
+				//print("setting focus to button " + button.getId());
+				button.focus();
+			}
+			
+			// Called when a spinner button gains focus
+			function OnSpinnerButtonFocusGained(event)
+			{
+				local button = event.getTarget();
+				local bg = button.findWidget("spinner-bg");
+				bg.setAlpha(31);
+			}
+
+			// Called when a spinner button loses focus			
+			function OnSpinnerButtonFocusLost(event)
+			{
+				local button = event.getTarget();
+				local bg = button.findWidget("spinner-bg");
+				bg.setAlpha(15);
+			}	
+				
+			// Called when a skin selector item is clicked
+			function OnSkinSelectorItemClick(event)
+			{
+				fromMain = false;
+				Application.getSceneManager().selectScene("SkinList");
+			}
+
+			// Called when a button is pressed on the device while a skin selector
+			// list item is focused
+			function OnSkinSelectorItemButtonPressed(event)
+			{
+				if(event.getButton() == event.A)
+				{
+					fromMain = false;
+					Application.getSceneManager().selectScene("SkinList");
+				}
+			}
+
+			// Saves the LED settings	
+			function SaveLEDSettings()
+			{
+				local leftRed = leftSpinnerRed.getValue();
+				local leftGreen = leftSpinnerGreen.getValue();
+				local leftBlue = leftSpinnerBlue.getValue();
+				
+				local rightRed = rightSpinnerRed.getValue();
+				local rightGreen = rightSpinnerGreen.getValue();
+				local rightBlue = rightSpinnerBlue.getValue();
+			
+				local setting = Settings.get("left-led-red-value");
+				setting.setValue(leftRed);
+				Settings.set(setting);
+				
+				setting = Settings.get("left-led-green-value");
+				setting.setValue(leftGreen);
+				Settings.set(setting);				
+
+				setting = Settings.get("left-led-blue-value");
+				setting.setValue(leftBlue);
+				Settings.set(setting);	
+				
+				setting = Settings.get("right-led-red-value");
+				setting.setValue(rightRed);
+				Settings.set(setting);	
+				
+				setting = Settings.get("right-led-green-value");
+				setting.setValue(rightGreen);
+				Settings.set(setting);	
+				
+				setting = Settings.get("right-led-blue-value");
+				setting.setValue(rightBlue);
+				Settings.set(setting);	
+
+				Settings.save();			
+			}
+					
+			// Updates the LED values on the device according to the values
+			//   in the spinner objects
+			function OnLedValueChanged()
+			{
+				local leftRed = leftSpinnerRed.getValue();
+				local leftGreen = leftSpinnerGreen.getValue();
+				local leftBlue = leftSpinnerBlue.getValue();
+				
+				local rightRed = rightSpinnerRed.getValue();
+				local rightGreen = rightSpinnerGreen.getValue();
+				local rightBlue = rightSpinnerBlue.getValue();
+				
+				PWM.setLed(0,leftRed,leftGreen,leftBlue);
+				PWM.setLed(1,rightRed,rightGreen,rightBlue);
+				
+				modified = true;
+			}
+
+			// Creates the list items which contain a radio button
+			function CreateBooleanItem( settings, settingTitle, settingName )
+			{
+				local item = ListItem(settingName);
+				settings.applyItemTemplate(item);
+				local title = item.findWidget("settingName");
+				title.setText(settingTitle);			
+			
+				// Create button widget for radio button
+				local settingToggle = Button("status");
+				settingToggle.onButtonClick(OnStatusButtonClick);
+
+				// Create an image widget to add to the button widget
+				local rect = Image("statusBg", 27, 27);
+				rect.setX(209);
+				rect.setY(6);
+				rect.setWidth(16);
+				rect.setHeight(16);
+				rect.setAlpha(31);
+
+				// Get the saved settings
+				local setting = Settings.get(settingName);
+				if(setting == null)
+				{
+					setting = Setting(settingName,false);
+					Settings.set(setting);
+				}
+				if(setting.getValue() == true)
+				{				
+					rect.setTexture(802);
+					rect.setPalette(802);
+				}
+				else
+				{
+					rect.setTexture(803);
+					rect.setPalette(803);
+				}
+				
+				// Add the widgets to the list item
+				settingToggle.addWidget(rect);
+				item.addWidget(settingToggle);
+				settings.addItem(item);	
+
+				// Hook the button events
+				item.onFocusGained(OnBooleanItemFocus);
+				settingToggle.onFocusGained(OnStatusButtonFocusGained);
+				settingToggle.onFocusLost(OnStatusButtonFocusLost);			
+			}
+
+			// Creates a skin selector list item widget
+			function CreateSkinSelectorItem( settings, settingTitle, settingName )
+			{
+				local item = ListItem(settingName);
+				settings.applyItemTemplate(item);
+				local title = item.findWidget("settingName");
+				title.setText(settingTitle);	
+				title.setFocusable(true);		
+				
+				// Add the widgets to the list item
+				settings.addItem(item);	
+
+				// Hook the button events
+				item.onClick(OnSkinSelectorItemClick.bindenv(this));	
+				item.onButtonPressed(OnSkinSelectorItemButtonPressed.bindenv(this));	
+			}
+
+			// Creates the list items which contain a spinner widget
+			function CreateLedSpinnerItem( settings, settingTitle, initialValue )
+			{
+				// Create item and set title
+				local spinnerItem = ListItem(settingTitle);
+				settings.applyItemTemplate(spinnerItem);
+				local title = spinnerItem.findWidget("settingName");
+				title.setText(settingTitle);
+				
+				// Create label
+				local spinnerLabel = spinnerItem.findWidget("spinner-label");
+				spinnerLabel.setX(158);
+				spinnerLabel.setY(0);
+				spinnerLabel.setWidth(32);
+				spinnerLabel.setHeight(22);
+				spinnerLabel.setDepth(2);
+				spinnerLabel.setColor(15,15,15);
+				spinnerLabel.setPointSize(10);		
+				spinnerLabel.setVisible(true);
+				
+				// Create spinner up button
+				local spinnerUp = Button("spinner-up");
+
+				local rect = Image("spinner-bg", 800, 800);
+				rect.setX(196);
+				rect.setY(7);
+				rect.setWidth(10);
+				rect.setHeight(8);
+				rect.setAlpha(15);
+
+				// Touchpad used to increase the size of the button area to better gather the touch events
+				local touchPadUp = Image("spinner-up-touch", 1, 1);
+				touchPadUp.setX(197);
+				touchPadUp.setY(3);
+				touchPadUp.setWidth(14);
+				touchPadUp.setHeight(16);
+				touchPadUp.setAlpha(0);
+
+				spinnerUp.addWidget(rect);
+				spinnerUp.addWidget(touchPadUp);
+
+
+				spinnerItem.addWidget(spinnerUp);
+				
+				// Create spinner down button
+				local spinnerDown = Button("spinner-down");
+
+				rect = Image("spinner-bg", 801, 801);
+				rect.setX(209);
+				rect.setY(7);
+				rect.setWidth(10);
+				rect.setHeight(8);		
+				rect.setAlpha(15);
+
+				// Touchpad used to increase the size of the button area to better gather the touch events
+				local touchPadDown = Image("spinner-down-touch", 1, 1);
+				touchPadDown.setX(210);
+				touchPadDown.setY(3);
+				touchPadDown.setWidth(14);
+				touchPadDown.setHeight(16);
+				touchPadDown.setAlpha(0);
+						
+				spinnerDown.addWidget(rect);
+				spinnerDown.addWidget(touchPadDown);
+
+				spinnerItem.addWidget(spinnerDown);
+
+				// Set up navigation between buttons
+				spinnerUp.setEast(spinnerDown);
+				spinnerDown.setWest(spinnerUp);
+				
+				// Add the item to the list
+				settingsList.addItem(spinnerItem);	
+				
+				// Set focus handlers
+				spinnerItem.onFocusGained(OnLEDFocus);	
+				spinnerUp.onFocusGained(OnSpinnerButtonFocusGained);
+				spinnerUp.onFocusLost(OnSpinnerButtonFocusLost);
+				spinnerDown.onFocusGained(OnSpinnerButtonFocusGained);
+				spinnerDown.onFocusLost(OnSpinnerButtonFocusLost);
+												
+				// Create spinner object
+				local spinner = Spinner(spinnerLabel,spinnerUp, spinnerDown, 255);
+				spinner.setValue(initialValue);
+				spinner.onValueChanged(OnLedValueChanged.bindenv(this));			
+				
+				return spinner;
+			}
+			
+			// Returns the settings value for the item with the given name
+			function GetLedSettingValue( name )
+			{
+				local result = 255;
+				local setting = Settings.get(name);
+				if(setting != null)
+				{
+					result = setting.getValue();
+				}
+				return result;
+			}
+			
+			// Builds the settings list
+			function CreateSettingsList()
+			{
+				CreateBooleanItem( settingsList, "Instant Boot", "instant-boot" );	
+				CreateBooleanItem( settingsList, "Dancing LEDs", "dancing-leds" );	
+				CreateBooleanItem( settingsList, "Preset Directories", "use-predefined-directories" );
+
+				CreateSkinSelectorItem( settingsList, "Select Default Skin", "skin-selector" );	
+				
+				leftSpinnerRed = CreateLedSpinnerItem(settingsList, "Left LED Red", GetLedSettingValue("left-led-red-value"));
+				leftSpinnerGreen = CreateLedSpinnerItem(settingsList, "Left LED Green", GetLedSettingValue("left-led-green-value"));
+				leftSpinnerBlue = CreateLedSpinnerItem(settingsList, "Left LED Blue", GetLedSettingValue("left-led-blue-value"));
+
+				rightSpinnerRed = CreateLedSpinnerItem(settingsList, "Right LED Red", GetLedSettingValue("right-led-red-value"));
+				rightSpinnerGreen = CreateLedSpinnerItem(settingsList, "Right LED Green", GetLedSettingValue("right-led-green-value"));
+				rightSpinnerBlue = CreateLedSpinnerItem(settingsList, "Right LED Blue", GetLedSettingValue("right-led-blue-value"));	
+			}
+			
+			// Called when a button on the device is released		
+			function OnButtonReleased(event)
+			{
+				if(event.getButton() == event.B)
+				{
+					GoBack();
+				}
+			}
+				
+			// This is called when the scene is initialized (i.e., after the XML is loaded)
+			function OnInit()
+			{
+				// The current event is always available from the Application object
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+
+				// Store some vars
+				settingsList = scene.findWidget("settingslist");
+
+				// Set up initial locations (offscreen)
+				// This could obviously be done in the xml, but sometimes it's nice to
+				// keep the xml defined as what it will look like once fully presented
+				settingsList.setX(287);
+				scene.findWidget("scrollbar").setX(522);
+
+				// Set up initial alpha values for fading widgets
+				scene.findWidget("settings.title").setAlpha(0);
+				scene.findWidget("settings.buttonmapOk").setAlpha(0);
+				scene.findWidget("settings.buttonmapBack").setAlpha(0);
+				scene.findWidget("back").setAlpha(0);
+
+				local tex_list = [700, 730, 731, 732, 733, 734];
+				scrollbar = Scrollbar(settingsList, scene.findWidget("scrollbar"), tex_list, 6);
+									
+				// Set up events	
+				SceneEffects.settingsListMove = MoveToEffect();
+				SceneEffects.settingsListMove.setTarget(settingsList);
+				SceneEffects.settingsListMove.setDuration(300);
+
+				SceneEffects.scrollBarMove = MoveToEffect();
+				SceneEffects.scrollBarMove.setTarget(scene.findWidget("scrollbar"));
+				SceneEffects.scrollBarMove.setDuration(300);
+
+				FadeEffects.titleFade = FadeEffect();
+				FadeEffects.titleFade.setTarget(scene.findWidget("settings.title"));
+				FadeEffects.titleFade.setDuration(300);
+
+				FadeEffects.okButtonmapFade = FadeEffect();
+				FadeEffects.okButtonmapFade.setTarget(scene.findWidget("settings.buttonmapOk"));
+				FadeEffects.okButtonmapFade.setDuration(300);
+
+				FadeEffects.backButtonmapFade = FadeEffect();
+				FadeEffects.backButtonmapFade.setTarget(scene.findWidget("settings.buttonmapBack"));
+				FadeEffects.backButtonmapFade.setDuration(300);
+
+				FadeEffects.backarrowFade = FadeEffect();
+				FadeEffects.backarrowFade.setTarget(scene.findWidget("back"));
+				FadeEffects.backarrowFade.setDuration(300);
+									
+				// Group the events so they can be used as an end transition
+				SceneEffects.transitionEffects = EffectGroup();
+				SceneEffects.transitionEffects.addEffect(SceneEffects.settingsListMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.scrollBarMove);
+				SceneEffects.transitionEffects.addEffect(FadeEffects.titleFade);
+				SceneEffects.transitionEffects.addEffect(FadeEffects.backButtonmapFade);
+				SceneEffects.transitionEffects.addEffect(FadeEffects.okButtonmapFade);
+				SceneEffects.transitionEffects.addEffect(FadeEffects.backarrowFade);
+						
+				// Hook scene events
+				scene.onBegin(OnBegin);								
+				scene.onEnd(OnEnd);
+				scene.onButtonReleased(OnButtonReleased);
+				
+				// Hook list events
+				settingsList.onSelectedIndexChanged(OnSelectedIndexChanged);
+
+				CreateSettingsList();
+				
+				// Hook back button click event
+				local back = scene.findWidget("back");
+				back.onButtonClick(OnBackClick);		
+
+				fromMain = true;				
+			}
+		]]>
+	</script>
+
+	<objects>
+		<image id="settings.bg">
+			<properties>
+				<bounds x="0" y="0" width="256" height="192"/>
+				<texture-id>1</texture-id>
+				<palette-id>1</palette-id>
+			</properties>
+		</image>
+		<image id="main.headerGradient">
+			<properties>
+				<depth>2</depth>
+				<bounds x="0" y="0" width="256" height="28"/>
+				<texture-id>7</texture-id>
+				<palette-id>7</palette-id>
+			</properties>
+		</image>
+		<image id="settings.colorBlocks">
+			<properties>
+				<depth>10</depth>
+				<bounds x="8" y="9" width="32" height="8"/>
+				<texture-id>3</texture-id>
+				<palette-id>3</palette-id>
+			</properties>
+		</image>
+		<label id="settings.title">
+			<properties>
+				<bounds x="44" y="0" width="90" height="25"/>
+				<depth>10</depth>
+				<color red="5" blue="5" green="5"/>
+				<font name="default" size="12"/>
+				<text>Settings</text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>middle</vertical-align>
+				<alpha>0</alpha>
+				<!-- <shadow xoffset="2" yoffset="2"/> -->
+			</properties>
+		</label>
+		<image id="settings.buttonmapOk">
+			<properties>
+				<depth>10</depth>
+				<bounds x="6" y="178" width="32" height="16"/>
+				<texture-id>4</texture-id>
+				<palette-id>4</palette-id>
+				<alpha>0</alpha>
+			</properties>
+		</image>
+		<image id="settings.buttonmapBack">
+			<properties>
+				<depth>10</depth>
+				<bounds x="211" y="178" width="40" height="16"/>
+				<texture-id>5</texture-id>
+				<palette-id>5</palette-id>
+				<alpha>0</alpha>
+			</properties>
+		</image>
+		<button id="scrollbar">
+			<properties>
+				<bounds x="239" y="31" width="12" height="141"/>
+				<depth>6</depth>
+			</properties>
+			<objects>
+				<image id="bar">
+					<properties>
+						<depth>1</depth>
+						<bounds x="-1" y="14" width="13" height="113"/>
+						<texture-id>700</texture-id>
+						<palette-id>700</palette-id>
+						<visible>false</visible>
+					</properties>
+				</image>
+				<image id="scroller">
+					<properties>
+						<depth>2</depth>
+						<bounds x="1" y="15" width="10" height="10"/>
+						<texture-id>730</texture-id>
+						<palette-id>730</palette-id>
+						<visible>false</visible>
+					</properties>
+				</image>
+				<image id="uparrow">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="0" width="12" height="14"/>
+						<texture-id>731</texture-id>
+						<palette-id>731</palette-id>
+						<visible>false</visible>
+					</properties>
+				</image>
+				<image id="downarrow">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="127" width="12" height="14"/>
+						<texture-id>732</texture-id>
+						<palette-id>732</palette-id>
+						<visible>false</visible>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+    <list id="settingslist">
+      <properties>
+        <bounds x="6" y="31" width="235" height="144"/>
+        <depth>1</depth>
+	<visible>false</visible>
+      </properties>
+      
+      <objects>
+        <!-- bg image or whatever here -->
+      </objects>
+      
+      <item-template>
+        <properties>
+          <bounds x="0" y="0" width="232" height="24"/>
+          <depth>1</depth>
+        </properties>
+        <objects>
+		<image id="background">
+			<properties>
+				<bounds x="0" y="0" width="232" height="22"/>
+				<texture-id>804</texture-id>
+				<palette-id>804</palette-id>
+			</properties>
+		</image>
+		<label id="spinner-label">
+			<properties>
+				<bounds x="0" y="0" width="1" height="1"/>
+				<font name="default" size="10"/>
+				<text>0</text>
+				<wrap-type>clip</wrap-type>
+				<justify>right</justify>
+				<vertical-align>middle</vertical-align>
+				<visible>false</visible>
+			</properties>
+		</label>
+          <label id="settingName">
+            <properties>
+              <bounds x="6" y="5" width="166" height="12"/>
+              <depth>2</depth>
+							<color red="15" blue="15" green="15"/>
+              <font name="default" size="10"/>
+              <wrap-type>clip</wrap-type>
+              <justify>left</justify>
+              <vertical-align>middle</vertical-align> 
+            </properties>       
+          </label>
+        </objects>
+      </item-template>
+    </list>
+		<button id="back">
+			<properties>
+				<bounds x="232" y="0" width="24" height="24"/>
+				<depth>3</depth>
+				<alpha>0</alpha>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="24" height="24"/>
+						<texture-id>2</texture-id>
+						<palette-id>2</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>		
+	</objects>
+
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+</scene>

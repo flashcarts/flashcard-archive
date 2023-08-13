@@ -1,0 +1,1359 @@
+<scene>
+	<dependencies>
+		<dependency type="scene" id="Library"/>
+		<dependency type="scene" id="NowPlaying"/>
+		<dependency type="scene" id="ArtistList"/>
+		<dependency type="scene" id="AlbumList"/>
+		<dependency type="scene" id="GenreList"/>
+		<dependency type="scene" id="SongList"/>
+		<dependency type="dialog" id="PopupMenu"/>
+	</dependencies>
+
+	<script>
+		<![CDATA[
+		
+			
+			play <- null;
+			prev <- null;
+			next <- null;
+			stop <- null;
+			back <- null;
+			shuffle <- null;
+			repeat <- null;
+			playlist <- null;
+			library <- null;
+			songTitle <- null;
+			songArtist <- null;
+			songAlbum <- null;
+			
+			topbuttons <- null;
+			middlebuttons <- null;
+			bottombuttons <- null;		
+			
+			lasttop <- null;
+			lastmiddle <- null;
+			lastbottom <- null;
+			
+			autoPause <- false;
+			
+			function SetRepeatState(state)
+			{
+				local icon = repeat.findWidget("icon");
+				
+				if (state == "enable")
+				{
+					
+					icon.setTexture(92);
+					icon.setPalette(92);
+				}
+				else if (state == "disable")
+				{
+					
+					icon.setTexture(72);
+					icon.setPalette(72);
+				}
+				else
+				{
+					
+					icon.setTexture(61);
+					icon.setPalette(61);
+				}
+			}
+
+			function SetShuffleState(state)
+			{
+				local icon = shuffle.findWidget("icon");			
+				
+				if (state == "enable")
+				{
+					icon.setTexture(93);
+					icon.setPalette(93);
+				}
+				else if (state == "disable")
+				{
+					icon.setTexture(79);
+					icon.setPalette(79);
+				}
+				else
+				{
+					icon.setTexture(68);
+					icon.setPalette(68);
+				}
+			}
+			
+
+			
+			function SetSongInformation()
+			{
+				local currentSong = NowPlaying.getCurrentSong();
+				if(currentSong != null)
+				{
+					songTitle.setText(currentSong.getName());
+					songArtist.setText(currentSong.getArtist());
+					songAlbum.setText(currentSong.getAlbum());
+				}
+				else
+				{
+					songTitle.setText("");
+					songArtist.setText("");
+					songAlbum.setText("");
+				}
+			}
+			
+			function OnSongChanged(event)
+			{
+				SetSongInformation();
+				SetNextButtonState();
+				SetPrevButtonState();
+			}
+			
+			function OnPlaylistClick(event)
+			{
+				Application.getSceneManager().selectScene("NowPlaying");			
+			}
+			
+			function OnLibraryClick(event)
+			{
+				Application.getSceneManager().selectScene("Library");			
+			}	
+			
+			function OnStopClick(event)
+			{
+				if(NowPlaying.isPlaying())
+				{
+					local playIcon = play.findWidget("icon");
+					NowPlaying.stopPlaying();
+					playIcon.setTexture(83);
+					playIcon.setPalette(83);
+					DisableButton(stop);
+				}
+			}
+
+			function OnPlaylistDone(event)
+			{
+					local playIcon = play.findWidget("icon");
+					playIcon.setTexture(83);
+					playIcon.setPalette(83);
+					DisableButton(stop);			
+			}
+			
+			function DisableButton( button )
+			{
+					button.setAlpha(5);
+					button.setFocusable(false);
+			}
+
+			function EnableButton( button )
+			{
+					button.setAlpha(31);
+					button.setFocusable(true);
+			}
+
+			function SetNextButtonState()
+			{
+				if( NowPlaying.getCurrentIndex() != (NowPlaying.getNumSongs() - 1))
+				{
+					EnableButton(next);
+				}
+				else
+				{
+					DisableButton(next);
+					if(next.focused)
+					{
+						local button = GetFocusable( middlebuttons, 1, "left", false );
+						if(button != null)
+						{
+								lastmiddle = button;
+								button.focus();
+						}
+					}
+				}			
+			}
+
+			function SetPrevButtonState()
+			{
+				if( NowPlaying.getCurrentIndex() > 0)
+				{
+					EnableButton(prev);
+				}
+				else
+				{
+					DisableButton(prev);
+					if(prev.focused)
+					{
+						local button = GetFocusable( middlebuttons, 1, "right", false );
+						if(button != null)
+						{
+								lastmiddle = button;
+								button.focus();
+						}
+					}
+				}			
+			}
+
+			function OnRepeatClick(event)
+			{
+				NowPlaying.setRepeat(!NowPlaying.isRepeatSet());
+				if (NowPlaying.isRepeatSet())				
+					SetRepeatState("enable");
+				else
+					SetRepeatState("focus");
+			}
+
+			function OnShuffleClick(event)
+			{
+				NowPlaying.setShuffle(!NowPlaying.isShuffleSet());
+				SetNextButtonState();
+				SetPrevButtonState();
+				if (NowPlaying.isShuffleSet())
+					SetShuffleState("enable");
+				else
+					SetShuffleState("focus");
+
+			}
+
+			function NextSong()
+			{
+				NowPlaying.nextSong();
+				SetNextButtonState();
+				SetPrevButtonState();
+				SetSongInformation();
+			}
+			
+			function PrevSong()
+			{
+				NowPlaying.prevSong();
+				SetNextButtonState();
+				SetPrevButtonState();
+				SetSongInformation();			
+			}
+			
+			function OnNextClick(event)
+			{
+				NextSong();
+			}
+
+			function OnPrevClick(event)
+			{
+				PrevSong();
+			}
+
+			function OnPlayClick(event)
+			{
+				local playButton = event.getTarget();				
+				local playIcon = playButton.findWidget("icon");
+				if(NowPlaying.isPlaying())
+				{
+					if(NowPlaying.isPaused() && NowPlaying.unpause())
+					{
+						playIcon.setTexture(96);
+						playIcon.setPalette(96);			
+					}
+					else if(NowPlaying.pause())
+					{
+						playIcon.setTexture(83);
+						playIcon.setPalette(83);						
+					}
+				}
+				else
+				{
+					NowPlaying.startPlaying(NowPlaying.getCurrentIndex());
+					playIcon.setTexture(96);
+					playIcon.setPalette(96);	
+					EnableButton(stop);	
+				}
+			}
+			
+			function GoBack()
+			{
+				if(NowPlaying.isPlaying() && !NowPlaying.isPaused())
+				{
+					NowPlaying.pause();
+					autoPause = true;
+				}
+				
+				Application.getSceneManager().selectScene("main");			
+			}
+			
+			function OnBackClick(event)
+			{
+				GoBack();
+			}			
+
+			function OnButtonPressed(event)
+			{
+				if(event.getButton() == event.B)
+				{
+					GoBack();
+				}
+				else if(event.getButton() == event.L)
+				{
+					PrevSong();
+				}
+				else if(event.getButton() == event.R)
+				{
+					NextSong();
+				}
+			}
+		
+			function GetFocusable( row, startIndex, direction, newRow )
+			{
+				local result = null;
+				
+				if(newRow)
+				{
+					if(row == topbuttons)
+					{
+						if(lasttop.focusable)
+						{
+							result = lasttop;
+						}
+						else if(library.focusable)
+						{
+							result = library;
+						}
+					}
+					else if(row == middlebuttons)
+					{
+						if(lastmiddle.focusable)
+						{
+							result = lastmiddle;
+						}
+						else if(play.focusable)
+						{
+							result = play;
+						}				
+					}
+					else if(row == bottombuttons)
+					{
+						if(lastbottom.focusable)
+						{
+							result = lastbottom;
+						}
+						else if(repeat.focusable)
+						{
+							result = repeat;
+						}				
+					}
+				}
+								
+				if(result == null)
+				{
+					if(direction == "left")
+					{
+						for(local i=startIndex;i>=0;i--)
+						{ 
+							if(row[i].focusable)
+							{
+								result = row[i];
+								break;
+							}
+						}
+					}
+					else
+					{
+						foreach(i, button in row)
+						{
+							if (i < startIndex)
+							{
+								continue;
+							}
+							
+							if(button.focusable)
+							{
+								result = button;
+								break;
+							}
+						}
+					}
+				}
+				return result;
+			}
+			
+			function OnPlaylistDPadPressed(event)
+			{
+				local button = null;
+				
+				local direction = event.getDirection();
+				if(direction == event.Right)
+				{
+					button = GetFocusable( topbuttons, 1, "right", false );
+				}
+				else if(direction == event.Down)
+				{
+					button = GetFocusable( middlebuttons, 0, "right", true );
+					if(button == null)
+					{
+						button = GetFocusable( bottombuttons, 0, "right", true );					
+					}
+				}
+				
+				if(button != null)
+				{
+					lasttop = playlist;
+					button.focus();
+				}
+			}
+
+			function OnLibraryDPadPressed(event)
+			{
+				local button = null;
+							
+				local direction = event.getDirection();
+				if(direction == event.Left)
+				{
+					button = GetFocusable( topbuttons, 0, "left", false );
+				}
+				else if(direction == event.Right)
+				{
+					button = GetFocusable( topbuttons, 2, "right", false );
+				}				
+				else if(direction == event.Down)
+				{
+					button = GetFocusable( middlebuttons, 0, "right", true );
+					if(button == null)
+					{
+						button = GetFocusable( bottombuttons, 0, "right", true );					
+					}
+				}
+				
+				if(button != null)
+				{
+					lasttop = library;
+					button.focus();
+				}
+			}
+			
+			function OnBackDPadPressed(event)
+			{
+				local button = null;
+				local direction = event.getDirection();
+				if(direction == event.Left)
+				{
+					button = GetFocusable( topbuttons, 1, "left", false );
+				}
+				else if(direction == event.Down)
+				{
+					button = GetFocusable( middlebuttons, 0, "right", true );
+					if(button == null)
+					{
+						button = GetFocusable( bottombuttons, 0, "right", true );					
+					}
+				}
+				
+				if(button != null)
+				{
+					lasttop = back;
+					button.focus();
+				}
+			}
+
+			function OnPrevDPadPressed(event)
+			{
+				local button = null;
+				local direction = event.getDirection();
+				
+				if(direction == event.Right)
+				{
+					button = GetFocusable( middlebuttons, 1, "right", false );
+				}
+				else if(direction == event.Up)
+				{
+					button = GetFocusable( topbuttons, 0, "right", true );
+				}
+				else if(direction == event.Down)
+				{
+					button = GetFocusable( bottombuttons, 0, "right", false );
+				}
+				
+				if(button != null)
+				{
+					lastmiddle = prev;
+					button.focus();
+				}
+			}
+
+			function OnPlayDPadPressed(event)
+			{
+				local button = null;
+				local direction = event.getDirection();
+				
+				if(direction == event.Right)
+				{
+					button = GetFocusable( middlebuttons, 2, "right", false );
+				}
+				else if(direction == event.Left)
+				{
+					button = GetFocusable( middlebuttons, 0, "left", false );
+				}
+				else if(direction == event.Up)
+				{
+					button = GetFocusable( topbuttons, 0, "right", true );
+				}
+				else if(direction == event.Down)
+				{
+					button = GetFocusable( bottombuttons, 0, "right", true );
+				}
+				
+				if(button != null)
+				{
+					lastmiddle = play;
+					button.focus();
+				}
+			}
+
+			function OnNextDPadPressed(event)
+			{
+				local button = null;
+				local direction = event.getDirection();
+				
+				if(direction == event.Left)
+				{
+					button = GetFocusable( middlebuttons, 1, "left", false );
+				}
+				else if(direction == event.Up)
+				{
+					button = GetFocusable( topbuttons, 2, "left", true );
+				}
+				else if(direction == event.Down)
+				{
+					button = GetFocusable( bottombuttons, 2, "left", true );
+				}
+				
+				if(button != null)
+				{
+					lastmiddle = next;
+					button.focus();
+				}
+			}
+			
+			function OnShuffleFocusGained(event)
+			{
+				local button = event.getTarget();
+				local icon = button.getWidget("icon");
+				
+				SetShuffleState("focus");
+			}
+			
+			function OnShuffleFocusLost(event)
+			{
+				local button = event.getTarget();
+				local icon = button.getWidget("icon");
+				
+				if (!NowPlaying.isShuffleSet())
+				{
+					SetShuffleState("disable");
+				}
+				else
+				{
+					SetShuffleState("enable");
+				}
+			}
+			
+			function OnRepeatFocusGained(event)
+			{
+				local button = event.getTarget();
+				local icon = button.getWidget("icon");
+				
+				SetRepeatState("focus");
+			}
+			
+			function OnRepeatFocusLost(event)
+			{
+				local button = event.getTarget();
+				local icon = button.getWidget("icon");
+				
+				if (!NowPlaying.isRepeatSet())
+				{
+					SetRepeatState("disable");
+				}
+				else
+				{
+					SetRepeatState("enable");
+				}
+			}	
+			
+			function OnStopFocusGained(event)
+			{
+				local button = event.getTarget();
+				local icon = button.getWidget("icon");
+				icon.setTexture(69);	
+				icon.setPalette(69);
+			}
+			
+			function OnStopFocusLost(event)
+			{
+				local button = event.getTarget();
+				local icon = button.getWidget("icon");
+				icon.setTexture(81);	
+				icon.setPalette(81);
+			}
+			
+			function OnBackFocusGained(event)
+			{
+				local button = event.getTarget();
+				local icon = button.getWidget("icon");
+				icon.setTexture(60);	
+				icon.setPalette(60);
+			}
+			
+			function OnBackFocusLost(event)
+			{
+				local button = event.getTarget();
+				local icon = button.getWidget("icon");
+				icon.setTexture(71);	
+				icon.setPalette(71);
+			}			
+			
+			function OnLabelFocusGained(event)
+			{
+				local button = event.getTarget();
+				local label = button.getWidget("label");
+				label.setColor(7,11,19);
+			}
+			
+			function OnLabelFocusLost(event)
+			{
+				local button = event.getTarget();
+				local label = button.getWidget("label");
+				label.setColor(14,14,14);
+			}			
+			
+			function OnBigRoundButtonFocusGained(event)
+			{
+				local button = event.getTarget();
+				local innerbg = button.getWidget("backgroundinner");
+				innerbg.setTexture(63);	
+				innerbg.setPalette(63);
+				local edgebg = button.getWidget("backgroundedge");
+				edgebg.setTexture(62);	
+				edgebg.setPalette(62);				
+			}
+			
+			function OnBigRoundButtonFocusLost(event)
+			{
+				local button = event.getTarget();
+				local innerbg = button.getWidget("backgroundinner");
+				innerbg.setTexture(74);	
+				innerbg.setPalette(74);
+				local edgebg = button.getWidget("backgroundedge");
+				edgebg.setTexture(73);	
+				edgebg.setPalette(73);	
+			}			
+			
+			function OnSmallRoundButtonFocusGained(event)
+			{
+				local button = event.getTarget();
+				local innerbg = button.getWidget("backgroundinner");
+				innerbg.setTexture(67);	
+				innerbg.setPalette(67);
+				local edgebg = button.getWidget("backgroundedge");
+				edgebg.setTexture(66);	
+				edgebg.setPalette(66);				
+			}
+			
+			function OnSmallRoundButtonFocusLost(event)
+			{
+				local button = event.getTarget();
+				local innerbg = button.getWidget("backgroundinner");
+				innerbg.setTexture(78);	
+				innerbg.setPalette(78);
+				local edgebg = button.getWidget("backgroundedge");
+				edgebg.setTexture(77);	
+				edgebg.setPalette(77);	
+			}			
+			
+						
+
+			function OnShuffleDPadPressed(event)
+			{
+				local button = null;
+							
+				local direction = event.getDirection();
+				if(direction == event.Right)
+				{
+					button = GetFocusable( bottombuttons, 1, "right", false );
+				}				
+				else if(direction == event.Up)
+				{
+					button = GetFocusable( middlebuttons, 0, "right", true );
+					if(button == null)
+					{
+						button = GetFocusable( topbuttons, 0, "right", true );					
+					}
+				}
+				
+				if(button != null)
+				{
+					lastbottom = shuffle;
+					button.focus();
+				}
+			}
+
+			function OnRepeatDPadPressed(event)
+			{
+				local button = null;
+							
+				local direction = event.getDirection();
+				if(direction == event.Left)
+				{
+					button = GetFocusable( bottombuttons, 0, "left", false );
+				}
+				else if(direction == event.Right)
+				{
+					button = GetFocusable( bottombuttons, 2, "right", false );
+				}				
+				else if(direction == event.Up)
+				{
+					button = GetFocusable( middlebuttons, 0, "right", true );
+					if(button == null)
+					{
+						button = GetFocusable( topbuttons, 0, "right", true );					
+					}
+				}
+				
+				if(button != null)
+				{
+					lastbottom = repeat;
+					button.focus();
+				}
+			}
+
+			function OnStopDPadPressed(event)
+			{
+				local button = null;
+							
+				local direction = event.getDirection();
+				if(direction == event.Left)
+				{
+					button = GetFocusable( bottombuttons, 1, "left", false );
+				}				
+				else if(direction == event.Up)
+				{
+					button = GetFocusable( middlebuttons, 2, "left", true );
+					if(button == null)
+					{
+						button = GetFocusable( topbuttons, 2, "left", true );					
+					}
+				}
+				
+				if(button != null)
+				{
+					lastbottom = stop;
+					button.focus();
+				}
+			}
+			
+			
+	
+			function OnBegin(event)
+			{
+				local scene = event.getTarget();				
+				local playIcon = play.findWidget("icon");
+
+				if(autoPause && NowPlaying.isPaused())
+				{
+					NowPlaying.unpause();					
+				}
+				
+				autoPause = false;
+
+				SetSongInformation();
+											
+				if( NowPlaying.getNumSongs() > 0)
+				{	
+					EnableButton(repeat);
+					EnableButton(shuffle);
+					EnableButton(playlist);
+					EnableButton(play);
+					
+					if(NowPlaying.isPlaying())
+					{
+						EnableButton(stop);	
+						
+						if(NowPlaying.isPaused())
+						{
+							playIcon.setTexture(83);
+							playIcon.setPalette(83);
+						}
+						else
+						{
+							playIcon.setTexture(96);
+							playIcon.setPalette(96);
+						}	
+					}
+					else
+					{
+						playIcon.setTexture(83);
+						playIcon.setPalette(83);
+					}	
+					
+					SetNextButtonState();
+					SetPrevButtonState();
+				}
+				else
+				{
+					DisableButton(play);
+					playIcon.setTexture(83);
+					playIcon.setPalette(83);
+					
+					DisableButton(next);
+					DisableButton(prev);
+					DisableButton(stop);
+					DisableButton(repeat);
+					DisableButton(shuffle);
+					DisableButton(playlist);
+				}
+			
+				if (NowPlaying.isShuffleSet())
+				{
+					SetShuffleState("enable");
+				}
+				else
+				{
+					SetShuffleState("disable");
+				}
+				
+				if (NowPlaying.isRepeatSet())
+				{
+					SetRepeatState("enable");
+				}
+				else
+				{
+					SetRepeatState("disable");
+				}	
+
+				if(play.focusable)
+				{
+					play.focus();
+				}
+				else
+				{
+					library.focus();
+				}
+			}
+	
+			function OnInit()
+			{
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+				playlist = scene.findWidget("playlist");
+				library = scene.findWidget("library");
+				shuffle = scene.findWidget("shuffle");
+				repeat = scene.findWidget("repeat");
+				
+				play = scene.findWidget("play");
+				next = scene.findWidget("next");
+				prev = scene.findWidget("previous");
+				stop = scene.findWidget("stop");
+				back = scene.findWidget("back");
+				
+				topbuttons <- [playlist, library, back];
+				middlebuttons <- [prev, play, next];
+				bottombuttons <- [shuffle, repeat, stop];
+				
+				lasttop = library;
+				lastmiddle = play;
+				lastbottom = repeat;
+				
+				songTitle = scene.findWidget("songTitle");
+				songArtist = scene.findWidget("songArtist");
+				songAlbum = scene.findWidget("songAlbum");
+								
+				playlist.onButtonClick(OnPlaylistClick);
+				playlist.onDPadPressed(OnPlaylistDPadPressed);
+				library.onButtonClick(OnLibraryClick);
+				library.onDPadPressed(OnLibraryDPadPressed);
+				play.onButtonClick(OnPlayClick);
+				play.onDPadPressed(OnPlayDPadPressed);
+				next.onButtonClick(OnNextClick);
+				next.onDPadPressed(OnNextDPadPressed);
+				prev.onButtonClick(OnPrevClick);
+				prev.onDPadPressed(OnPrevDPadPressed);
+				shuffle.onButtonClick(OnShuffleClick);
+				shuffle.onDPadPressed(OnShuffleDPadPressed);
+				repeat.onButtonClick(OnRepeatClick);
+				repeat.onDPadPressed(OnRepeatDPadPressed);
+				stop.onButtonClick(OnStopClick);	
+				stop.onDPadPressed(OnStopDPadPressed);
+				back.onButtonClick(OnBackClick);
+				back.onDPadPressed(OnBackDPadPressed);
+				
+				shuffle.onFocusGained(OnShuffleFocusGained);
+				shuffle.onFocusLost(OnShuffleFocusLost);
+				repeat.onFocusGained(OnRepeatFocusGained);
+				repeat.onFocusLost(OnRepeatFocusLost);
+				stop.onFocusGained(OnStopFocusGained);
+				stop.onFocusLost(OnStopFocusLost);
+				library.onFocusGained(OnLabelFocusGained);
+				library.onFocusLost(OnLabelFocusLost);
+				playlist.onFocusGained(OnLabelFocusGained);
+				playlist.onFocusLost(OnLabelFocusLost);
+				back.onFocusGained(OnBackFocusGained);
+				back.onFocusLost(OnBackFocusLost);
+				play.onFocusGained(OnBigRoundButtonFocusGained);
+				play.onFocusLost(OnBigRoundButtonFocusLost);
+				next.onFocusGained(OnSmallRoundButtonFocusGained);
+				next.onFocusLost(OnSmallRoundButtonFocusLost);
+				prev.onFocusGained(OnSmallRoundButtonFocusGained);
+				prev.onFocusLost(OnSmallRoundButtonFocusLost);
+
+							
+				// Hook scene events
+				scene.onBegin(OnBegin);
+				scene.onButtonPressed(OnButtonPressed);
+				
+				NowPlaying.onSongChanged(OnSongChanged.bindenv(this));
+				NowPlaying.onPlaylistDone(OnPlaylistDone.bindenv(this));
+			}
+		]]>
+	</script>
+
+	<objects>
+		<image id="media.bg">
+			<properties>
+				<bounds x="0" y="0" width="256" height="192"/>
+				<texture-id>9</texture-id>
+				<palette-id>2</palette-id>
+			</properties>
+		</image>
+		<image id="media.groovebgi">
+			<properties>
+				<depth>2</depth>
+				<bounds x="0" y="100" width="256" height="112"/>
+				<texture-id>94</texture-id>
+				<palette-id>94</palette-id>
+			</properties>
+		</image>
+		<image id="media.groovebge">
+			<properties>
+				<depth>3</depth>
+				<bounds x="0" y="100" width="256" height="27"/>
+				<texture-id>95</texture-id>
+				<palette-id>95</palette-id>
+			</properties>
+		</image>
+
+		<button id="previous">
+			<properties>
+				<bounds x="8" y="93" width="40" height="40"/>
+				<depth>3</depth>
+				<alpha>5</alpha>				
+			</properties>
+			<objects>
+				<image id="backgroundedge">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="40" height="40"/>
+						<texture-id>77</texture-id>
+						<palette-id>77</palette-id>
+					</properties>
+				</image>
+				<image id="backgroundinner">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="0" width="40" height="40"/>
+						<texture-id>78</texture-id>
+						<palette-id>78</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>3</depth>
+						<bounds x="8" y="13" width="24" height="16"/>
+						<texture-id>84</texture-id>
+						<palette-id>84</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="rewind">
+			<properties>
+				<focusable>false</focusable>
+				<bounds x="47" y="100" width="48" height="48"/>
+				<depth>3</depth>
+				<alpha>5</alpha>
+			</properties>
+			<objects>
+				<image id="backgroundedge">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="48" height="48"/>
+						<texture-id>75</texture-id>
+						<palette-id>75</palette-id>
+					</properties>
+				</image>
+				<image id="backgroundinner">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="0" width="48" height="48"/>
+						<texture-id>76</texture-id>
+						<palette-id>76</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>3</depth>
+						<bounds x="6" y="15" width="32" height="16"/>
+						<texture-id>91</texture-id>
+						<palette-id>91</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="play">
+			<properties>
+				<bounds x="101" y="100" width="56" height="56"/>
+				<depth>3</depth>
+				<alpha>5</alpha>
+			</properties>
+			<objects>
+				<image id="backgroundedge">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="56" height="56"/>
+						<texture-id>73</texture-id>
+						<palette-id>73</palette-id>
+					</properties>
+				</image>
+				<image id="backgroundinner">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="0" width="56" height="56"/>
+						<texture-id>74</texture-id>
+						<palette-id>74</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>3</depth>
+						<bounds x="15" y="18" width="32" height="24"/>
+						<texture-id>83</texture-id>
+						<palette-id>83</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="forward">
+			<properties>
+				<focusable>false</focusable>
+				<bounds x="164" y="100" width="48" height="48"/>
+				<depth>3</depth>
+				<alpha>5</alpha>
+			</properties>
+			<objects>
+				<image id="backgroundedge">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="48" height="48"/>
+						<texture-id>75</texture-id>
+						<palette-id>75</palette-id>
+					</properties>
+				</image>
+				<image id="backgroundinner">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="0" width="48" height="48"/>
+						<texture-id>76</texture-id>
+						<palette-id>76</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>3</depth>
+						<bounds x="8" y="15" width="32" height="16"/>
+						<texture-id>70</texture-id>
+						<palette-id>70</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="next">
+			<properties>
+				<bounds x="213" y="93" width="40" height="40"/>
+				<depth>3</depth>
+				<alpha>5</alpha>
+			</properties>
+			<objects>
+				<image id="backgroundedge">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="40" height="40"/>
+						<texture-id>77</texture-id>
+						<palette-id>77</palette-id>
+					</properties>
+				</image>
+				<image id="backgroundinner">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="0" width="40" height="40"/>
+						<texture-id>78</texture-id>
+						<palette-id>78</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>3</depth>
+						<bounds x="10" y="13" width="24" height="16"/>
+						<texture-id>82</texture-id>
+						<palette-id>82</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="back">
+			<properties>
+				<bounds x="224" y="13" width="24" height="24"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="24" height="24"/>
+						<texture-id>89</texture-id>
+						<palette-id>89</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>2</depth>
+						<bounds x="2" y="2" width="16" height="16"/>
+						<texture-id>71</texture-id>
+						<palette-id>71</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>		
+		<button id="shuffle">
+			<properties>
+				<bounds x="14" y="164" width="72" height="24"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="72" height="24"/>
+						<texture-id>87</texture-id>
+						<palette-id>87</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>2</depth>
+						<bounds x="15" y="5" width="48" height="14"/>
+						<texture-id>79</texture-id>
+						<palette-id>79</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="repeat">
+			<properties>
+				<bounds x="97" y="164" width="72" height="24"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="72" height="24"/>
+						<texture-id>87</texture-id>
+						<palette-id>87</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>2</depth>
+						<bounds x="16" y="1" width="40" height="24"/>
+						<texture-id>72</texture-id>
+						<palette-id>72</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="stop">
+			<properties>
+				<bounds x="179" y="164" width="72" height="24"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="72" height="24"/>
+						<texture-id>87</texture-id>
+						<palette-id>87</palette-id>
+					</properties>
+				</image>
+				<image id="icon">
+					<properties>
+						<depth>2</depth>
+						<bounds x="28" y="4" width="16" height="16"/>
+						<texture-id>81</texture-id>
+						<palette-id>81</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+		<button id="playlist">
+			<properties>
+				<bounds x="8" y="13" width="88" height="24"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="88" height="24"/>
+						<texture-id>85</texture-id>
+						<palette-id>85</palette-id>
+					</properties>
+				</image>
+				<label id="label">
+					<properties>
+						<color red="14" blue="14" green="14"/>
+						<bounds x="0" y="0" width="88" height="20"/>
+						<depth>3</depth>
+						<font name="default" size="12"/>
+						<text>Playlist</text>
+						<wrap-type>clip</wrap-type>
+						<justify>center</justify>
+						<vertical-align>middle</vertical-align>
+					</properties>
+				</label>
+			</objects>
+		</button>
+		<button id="library">
+			<properties>
+				<bounds x="100" y="13" width="88" height="24"/>
+				<depth>3</depth>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="88" height="24"/>
+						<texture-id>85</texture-id>
+						<palette-id>85</palette-id>
+					</properties>
+				</image>
+				<label id="label">
+					<properties>
+						<bounds x="0" y="0" width="88" height="20"/>
+						<color red="14" blue="14" green="14"/>
+						<depth>6</depth>
+						<font name="default" size="12"/>
+						<text>Library</text>
+						<wrap-type>clip</wrap-type>
+						<justify>center</justify>
+						<vertical-align>middle</vertical-align>
+					</properties>
+				</label>
+			</objects>
+		</button>
+		<label id="titleLabel">
+			<properties>
+				<color red="15" blue="15" green="15"/>
+				<bounds x="8" y="38" width="40" height="20"/>
+				<depth>3</depth>
+				<font name="default" size="11"/>
+				<text>Title:</text>
+				<wrap-type>clip</wrap-type>
+				<justify>right</justify>
+				<vertical-align>top</vertical-align>
+			</properties>
+		</label>
+		<label id="artistLabel">
+			<properties>
+				<color red="15" blue="15" green="15"/>
+				<bounds x="8" y="56" width="40" height="15"/>
+				<depth>3</depth>
+				<font name="default" size="8"/>
+				<text>Artist:</text>
+				<wrap-type>clip</wrap-type>
+				<justify>right</justify>
+				<vertical-align>top</vertical-align>
+			</properties>
+		</label>
+		<label id="albumLabel">
+			<properties>
+				<color red="15" blue="15" green="15"/>
+				<bounds x="8" y="70" width="40" height="15"/>
+				<depth>3</depth>
+				<font name="default" size="8"/>
+				<text>Album:</text>
+				<wrap-type>clip</wrap-type>
+				<justify>right</justify>
+				<vertical-align>top</vertical-align>
+			</properties>
+		</label>
+		<label id="songTitle">
+			<properties>
+				<color red="15" blue="15" green="15"/>
+				<bounds x="52" y="38" width="200" height="20"/>
+				<depth>3</depth>
+				<font name="default" size="11"/>
+				<text></text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>top</vertical-align>
+			</properties>
+		</label>
+		<label id="songArtist">
+			<properties>
+				<color red="15" blue="15" green="15"/>
+				<bounds x="52" y="56" width="200" height="15"/>
+				<depth>3</depth>
+				<font name="default" size="8"/>
+				<text></text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>top</vertical-align>
+			</properties>
+		</label>
+		<label id="songAlbum">
+			<properties>
+				<color red="15" blue="15" green="15"/>
+				<bounds x="52" y="70" width="200" height="15"/>
+				<depth>3</depth>
+				<font name="default" size="8"/>
+				<text></text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>top</vertical-align>
+			</properties>
+		</label>
+		<label id="dummy">
+			<properties>
+				<visible>false</visible>
+				<color red="15" blue="15" green="15"/>
+				<bounds x="0" y="0" width="0" height="0"/>
+				<depth>3</depth>
+				<font name="default" size="8"/>
+				<text>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-=!@#$%^&*()_+[]\{}|;':",./?`~</text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>top</vertical-align>
+			</properties>
+		</label>
+		<label id="dummy">
+			<properties>
+				<visible>false</visible>
+				<color red="15" blue="15" green="15"/>
+				<bounds x="0" y="0" width="0" height="0"/>
+				<depth>3</depth>
+				<font name="default" size="11"/>
+				<text>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-=!@#$%^&*()_+[]\{}|;':",./?`~</text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>top</vertical-align>
+			</properties>
+		</label>
+	</objects>
+
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+</scene>

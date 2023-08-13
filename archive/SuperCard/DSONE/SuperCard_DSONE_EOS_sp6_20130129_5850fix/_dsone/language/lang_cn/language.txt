@@ -1,0 +1,173 @@
+[start menu]
+setup=设置
+save=存档
+cheat=金手指
+Hotkey=热键设置
+gbaLink=GBA扩展
+
+[setup menu]
+item0=卡速
+item1=运行模式
+item2=语言
+item3=亮度
+item4=多存档
+item5=界面风格
+
+[file handle menu]
+noText=剪切板无内容 
+item0=复制
+item1=剪切
+item2=粘贴
+item3=删除
+
+[sd speed menu]
+item0=1x倍速
+item1=2x倍速
+item2=3x倍速
+item3=4x倍速
+item4=5x倍速
+item5=6x倍速
+item6=7x倍速
+item7=8x倍速
+item8=全速
+
+[run mode menu]
+item0=clean
+item1=补丁
+
+[gbaLink menu]
+item0=无
+item1=联动
+item2=振动
+
+[patch menu]
+item0=关闭
+item1=开启
+
+[archive type menu]
+item0=存档 0
+item1=存档 1
+item2=存档 2
+item3=存档 3
+item4=无存档
+
+[save menu]
+item0=4K
+item1=64K
+item2=512K
+item3=2M/4M
+
+[ui type menu]
+title=提示！
+text=改变了主题，要现在重启更换新的主题吗？选“否”稍后再重启
+item0=水晶蓝
+item1=圣诞节
+item2=中国风
+item3=科技粉
+
+[cheat menu]
+item0=关闭
+item1=开启
+item2=设置
+
+[AntiPiracy menu]
+item0=开启
+item1=关闭
+item2=不支持
+
+[brightness menu]
+item0=亮度1
+item1=亮度2
+item2=亮度3
+item3=亮度4
+
+[language menu]
+title=问题
+text=改变了系统语言，要现在重启更换新的语言吗？选“否”稍后再重启
+item0=英语
+item1=中文
+item2=繁体
+item3=日语
+item4=法语
+item5=意大利语
+item6=德语
+item7=西班牙语
+item8=韩语
+
+[set game info]
+item0=存档选择
+item1=存档大小
+item2=金手指
+item3=反烧录
+
+[text wnd info]
+title=警告
+item0=%s 文件不存在或损坏！
+item1=攻略
+
+[slow wnd]
+title=减慢
+item0=关
+item1=开
+
+[message box]
+yes=是
+no=否
+ok=确定
+cancel=取消
+
+[progress window]
+processing_copy=正在复制文件，请不要关机！
+
+[copy file error]
+title=错误
+text=复制文件时发生错误
+
+[stop copying file]
+title=确认
+text=要停止拷贝这个文件吗？
+
+[no free space]
+title=错误
+text=磁盘空间不足，无法完成拷贝
+
+[copy file exists]
+title=警告
+text=有相同文件名的文件存在，要覆盖吗?
+
+[copy dest is directory]
+title=错误
+text=有相同名字的目录存在，不能将文件复制到这里
+
+[move dest is directory]
+title=错误
+text=有相同名字的目录存在，不能将文件剪切到这里
+
+[no copy dir]
+title=错误
+text=不能复制或剪切一个目录
+
+[confirm delete file]
+title=确认
+text=删除文件后不能恢复，确实要删除 “%s” 吗？
+
+[do not delete directory]
+title=警告
+text=该目录下还有文件或者目录，不能直接删除
+
+[main interface title]
+item0=返回游戏
+item1=攻略
+item2=存档
+item3=读档
+item4=减慢
+item5=亮度设置
+item6=金手指
+item7=返回主界面
+
+[disk info]
+total=磁盘容量：%s
+used=已用空间：%s
+free=剩余空间：%s
+
+[end]

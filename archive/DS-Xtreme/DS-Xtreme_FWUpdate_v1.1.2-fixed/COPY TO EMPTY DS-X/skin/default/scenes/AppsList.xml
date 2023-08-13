@@ -1,0 +1,558 @@
+<scene>
+	<script>
+		<![CDATA[
+		
+			// Store some of the widgets for later use
+			// so we don't have to look them up each time we need them.
+			appList <- null;
+			searchProgress <- null;
+			messageLabel1 <- null;
+			scrollbar <- null;
+			searching <- false;
+			
+			// Store the scene effects for easy access or to keep them in scope.
+			SceneEffects <- {
+
+				appListMove = null, // Move the list in from the right
+				scrollBarMove = null, // Moves the scrollbar
+				
+				transitionEffects = null, // Group of transition effects
+			}
+
+			// Store the fade effects for the scene
+			FadeEffects <- {
+
+				titleFade = null, // Fades the title
+				okButtonmapFade = null, // Fades the ok button mapping
+				backButtonmapFade = null, // Fades the back button mapping
+				backarrowFade = null, // Fades the header back arrow
+			}	
+			
+			function GoBack()
+			{
+				// Transition to the main menu scene
+				Application.getSceneManager().selectScene("main");			
+			}
+			
+			// Called when the header back arrow is clicked
+			function OnBackClick(event)
+			{
+				GoBack();
+			}			
+						
+			// Set the final onscreen locations as the destinations of the effects			
+			function SetupBeginTransition()
+			{	
+				SceneEffects.appListMove.setDestination(6,31);
+				SceneEffects.scrollBarMove.setDestination(239,31);
+
+				FadeEffects.titleFade.setEndAlpha(31);
+				FadeEffects.backButtonmapFade.setEndAlpha(31);
+				FadeEffects.okButtonmapFade.setEndAlpha(31);
+				FadeEffects.backarrowFade.setEndAlpha(31);
+			}			
+
+			// Set the initial offscreen locations as the destinations of the effects							
+			function SetupEndTransition()
+			{	
+				SceneEffects.appListMove.setDestination(287,31);
+				SceneEffects.scrollBarMove.setDestination(522,31);
+
+				FadeEffects.titleFade.setEndAlpha(0);
+				FadeEffects.backButtonmapFade.setEndAlpha(0);
+				FadeEffects.okButtonmapFade.setEndAlpha(0);
+				FadeEffects.backarrowFade.setEndAlpha(0);					
+			}
+
+			// This is called when the search task is complete
+			function OnSearchComplete(event)
+			{
+				searching = false;
+
+				// Hide the progress bar
+				searchProgress.setVisible(false);
+				
+				// if we found apps, hide our messages, and add the apps to the list
+				// otherwise, just redisplay the "no apps" message
+				if(0 != Library.getNumApps())
+				{
+					messageLabel1.setVisible(false);
+					
+					AddAppsToList()
+					
+					// Slide in and focus the app list
+					appList.setX(257);
+					appList.setVisible(true);
+					appList.focus();
+					scrollbar._scrollbarWidget.setX(493);
+					scrollbar.SetVisible(true);
+					scrollbar.UpdateByListCount();
+
+					SceneEffects.appListMove.start();
+					SceneEffects.scrollBarMove.start();
+
+					scrollbar._scrollMove.setDestination(1,14);
+					scrollbar._scrollMove.start();
+
+				}
+				else
+				{
+					messageLabel1.setText("No apps found!");
+				}
+			}
+
+			// Searches for apps and adds them to the library
+			function SearchForApps()
+			{
+				searching = true;
+				
+				// Hide the app list
+				appList.setVisible(false);
+				scrollbar.SetVisible(false);
+				
+				// Change the text for the user to see
+				messageLabel1.setText("Searching...");
+				messageLabel1.setVisible(true);
+				
+				// Reset the progress bar and make it visible
+				searchProgress.setStep(0);
+				searchProgress.setVisible(true);
+				
+				// Create a progress monitor and attach the progress bar to it
+				local monitor = ProgressMonitor();
+				searchProgress.attachToProgressMonitor(monitor);
+				
+				// Hook the task completed event on the monitor
+				monitor.onComplete(OnSearchComplete.bindenv(this));
+				
+				// Initiate the search (The search is asynchronous)
+				Library.findApps(monitor);				
+			}
+			
+			// This is called when the scene is being displayed
+			function OnBegin(event)
+			{
+				// Set the destinations appropriately on the transition 
+				// effects for the starting sequence
+				SetupBeginTransition();
+				
+				// Play the start transition
+				SceneEffects.transitionEffects.start();
+
+				// If we don't have any apps in the library, search
+				if(0 == Library.getNumApps())
+				{
+					SearchForApps();
+				}
+				else
+				{
+					appList.focus();
+				}
+			}
+			
+			// This is called before the next scene is displayed
+			function OnEnd(event)
+			{			
+				// Set the destinations appropriately on the transition 
+				// effects for the ending sequence
+				SetupEndTransition();
+
+				// Setting the effect as the end effect on the event
+				// will cause the framework to wait for the effect to 
+				// finish before starting the next scene
+				event.setEndEffect(SceneEffects.transitionEffects);
+			}
+			
+			// This function simply loops through all the apps in
+			// the library and adds them to the app list
+			function AddAppsToList()
+			{
+				foreach(i, app in Library.getApps())
+				{
+					// Create the item
+					local item = ListItem("app_" + i);
+					
+					// Apply the template
+					appList.applyItemTemplate(item);
+					
+					// Set the app
+					item.setItem(app);
+					
+					// Set the icon texture/palette
+					local icon = item.findWidget("icon");
+					icon.setTexture(app.getIconTextureId());
+					icon.setPalette(app.getIconPaletteId());
+				
+					// Set the title label text
+					local title = item.findWidget("title");
+					app.assignTitleToLabel(title);
+		
+					// Add it to the list
+					appList.addItem(item);
+				}
+			}
+			
+			// This is called when a list item is actually activated
+			// We just grab the app from the list item and launch it!
+			function OnItemActivated(event)
+			{
+				local appItem = appList.getSelectedItem();
+
+				// Summon the ok/cancel dialog
+				local dialog = Application.getSceneManager().getDialog("testDialog");
+				dialog.setModel("Launch Application?");
+				dialog.show();
+
+				// Use the input gathered from the dialog to determine 
+				//   whether or not to launch the app
+				if(dialog.getModel() == 1)
+				{
+					if(NowPlaying.isPlaying())
+					{
+						NowPlaying.stopPlaying();
+					}	
+					appItem.getItem().launch();
+				}
+			}
+			
+			// Called when a touch hold event occurs on a list item
+			function OnTouchHold(event)
+			{
+				// Summon a pop-up dialog
+				local popup = PopupMenu();
+				popup.addMenuItem("Launch");
+				popup.addMenuItem("Cancel");
+				//popup.show(event.getX() + event.getTarget().getX(), event.getY() + event.getTarget().getY());			
+				popup.show(event.getX(), event.getY());			
+				
+				// Use the info gathered from the pop-up dialog to determine whether
+				//   or not to launch the app
+				local result = popup.getSelectedItem();
+				if(result == 0)
+				{
+					if(NowPlaying.isPlaying())
+					{
+						NowPlaying.stopPlaying();
+					}
+					local appItem = appList.getSelectedItem();
+					appItem.getItem().launch();
+				}
+
+			}
+						
+			// This is called when the selected index in the list is changed
+			// We swap the texture which indicates to the user that the item
+			// is selected.
+			function OnSelectedIndexChanged(event)
+			{
+				local newIndex = event.getNewIndex();
+				local oldIndex = event.getOldIndex();
+				
+				if(oldIndex >= 0)
+				{
+					// Set the texture of the old item to show that focus is gone
+					local oldItem = appList.getItem(oldIndex);
+					local oldBackground = oldItem.findWidget("background");
+					oldBackground.setTexture(500);
+					oldBackground.setPalette(500);
+				}
+				
+				if(newIndex >= 0)
+				{
+					// Set the texture of the newly selected item to show that it is focused
+					local newItem = appList.getItem(newIndex);
+					local newBackground = newItem.findWidget("background");
+					newBackground.setTexture(501);
+					newBackground.setPalette(501);
+				}
+			}							
+			
+			// Called when a button is pressed on the device
+			function OnButtonPressed(event)
+			{
+				// If searching is complete and the button pressed is the B button, go back
+				if(!searching && event.getButton() == event.B)
+				{
+					GoBack();
+				}
+			}
+						
+			// This is called when the scene is initialized (i.e., after the XML is loaded)
+			function OnInit()
+			{
+				// The current event is always available from the Application object
+				local event = Application.getEvent();
+				local scene = event.getTarget();
+
+				// Store some vars
+				appList = scene.findWidget("applist");
+				searchProgress = scene.findWidget("searchProgress");
+				messageLabel1 = scene.findWidget("messageLabel1");
+
+				// Create the scrollbar
+				local tex_list = [700, 710, 711, 712, 713, 714];
+				scrollbar = Scrollbar(appList, scene.findWidget("game.scrollbar"), tex_list, 3);
+
+				// Set the alpha values of the fading objects to 0
+				scene.findWidget("game.title").setAlpha(0);
+				scene.findWidget("game.buttonmapOk").setAlpha(0);
+				scene.findWidget("game.buttonmapBack").setAlpha(0);
+				scene.findWidget("back").setAlpha(0);
+
+				// Set up initial locations (offscreen)
+				// This could obviously be done in the xml, but sometimes it's nice to
+				// keep the xml defined as what it will look like once fully presented
+				appList.setX(287);
+				scene.findWidget("game.scrollbar").setX(522);
+									
+				// Set up events
+				SceneEffects.appListMove = MoveToEffect();
+				SceneEffects.appListMove.setTarget(appList);
+				SceneEffects.appListMove.setDuration(300);
+
+				SceneEffects.scrollBarMove = MoveToEffect();
+				SceneEffects.scrollBarMove.setTarget(scene.findWidget("game.scrollbar"));
+				SceneEffects.scrollBarMove.setDuration(300);
+
+				FadeEffects.titleFade = FadeEffect();
+				FadeEffects.titleFade.setTarget(scene.findWidget("game.title"));
+				FadeEffects.titleFade.setDuration(300);
+
+				FadeEffects.okButtonmapFade = FadeEffect();
+				FadeEffects.okButtonmapFade.setTarget(scene.findWidget("game.buttonmapOk"));
+				FadeEffects.okButtonmapFade.setDuration(300);
+
+				FadeEffects.backButtonmapFade = FadeEffect();
+				FadeEffects.backButtonmapFade.setTarget(scene.findWidget("game.buttonmapBack"));
+				FadeEffects.backButtonmapFade.setDuration(300);
+
+				FadeEffects.backarrowFade = FadeEffect();
+				FadeEffects.backarrowFade.setTarget(scene.findWidget("back"));
+				FadeEffects.backarrowFade.setDuration(300);
+					
+				// Group the events so they can be used as an end transition
+				SceneEffects.transitionEffects = EffectGroup();
+				SceneEffects.transitionEffects.addEffect(SceneEffects.appListMove);
+				SceneEffects.transitionEffects.addEffect(SceneEffects.scrollBarMove);
+				SceneEffects.transitionEffects.addEffect(FadeEffects.titleFade);
+				SceneEffects.transitionEffects.addEffect(FadeEffects.backButtonmapFade);
+				SceneEffects.transitionEffects.addEffect(FadeEffects.okButtonmapFade);
+				SceneEffects.transitionEffects.addEffect(FadeEffects.backarrowFade);
+						
+				// Hook scene events
+				scene.onBegin(OnBegin);								
+				scene.onEnd(OnEnd);
+				scene.onButtonPressed(OnButtonPressed);
+				
+				// Hook list events
+				appList.onSelectedIndexChanged(OnSelectedIndexChanged);
+				appList.onItemActivated(OnItemActivated);
+				appList.onTouchHold(OnTouchHold);
+				
+				// Hook the back button event
+				local back = scene.findWidget("back");
+				back.onButtonClick(OnBackClick);			
+			}
+		]]>
+	</script>
+
+	<objects>
+		<image id="game.bg">
+			<properties>
+				<bounds x="0" y="0" width="256" height="192"/>
+				<texture-id>1</texture-id>
+				<palette-id>1</palette-id>
+			</properties>
+		</image>
+		<image id="main.headerGradient">
+			<properties>
+				<depth>2</depth>
+				<bounds x="0" y="0" width="256" height="28"/>
+				<texture-id>7</texture-id>
+				<palette-id>7</palette-id>
+			</properties>
+		</image>
+		<image id="game.colorBlocks">
+			<properties>
+				<depth>10</depth>
+				<bounds x="8" y="9" width="32" height="8"/>
+				<texture-id>3</texture-id>
+				<palette-id>3</palette-id>
+			</properties>
+		</image>
+		<label id="game.title">
+			<properties>
+				<bounds x="44" y="0" width="90" height="25"/>
+				<depth>10</depth>
+				<color red="5" blue="5" green="5"/>
+				<font name="default" size="12"/>
+				<text>Applications</text>
+				<wrap-type>clip</wrap-type>
+				<justify>left</justify>
+				<vertical-align>middle</vertical-align>
+				<alpha>0</alpha>
+				<!-- <shadow xoffset="2" yoffset="2"/> -->
+			</properties>
+		</label>
+		<image id="game.buttonmapOk">
+			<properties>
+				<depth>10</depth>
+				<bounds x="6" y="179" width="32" height="16"/>
+				<texture-id>4</texture-id>
+				<palette-id>4</palette-id>
+				<alpha>0</alpha>
+			</properties>
+		</image>
+		<image id="game.buttonmapBack">
+			<properties>
+				<depth>10</depth>
+				<bounds x="211" y="179" width="40" height="16"/>
+				<texture-id>5</texture-id>
+				<palette-id>5</palette-id>
+				<alpha>0</alpha>
+			</properties>
+		</image>
+		<button id="game.scrollbar">
+			<properties>
+				<bounds x="239" y="31" width="12" height="145"/>
+				<depth>6</depth>
+			</properties>
+			<objects>
+				<image id="bar">
+					<properties>
+						<depth>1</depth>
+						<bounds x="-1" y="14" width="13" height="117"/>
+						<texture-id>700</texture-id>
+						<palette-id>700</palette-id>
+				<visible>false</visible>
+					</properties>
+				</image>
+				<image id="scroller">
+					<properties>
+						<depth>2</depth>
+						<bounds x="1" y="14" width="10" height="10"/>
+						<texture-id>710</texture-id>
+						<palette-id>710</palette-id>
+				<visible>false</visible>
+					</properties>
+				</image>
+				<image id="uparrow">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="0" width="12" height="14"/>
+						<texture-id>711</texture-id>
+						<palette-id>711</palette-id>
+				<visible>false</visible>
+					</properties>
+				</image>
+				<image id="downarrow">
+					<properties>
+						<depth>2</depth>
+						<bounds x="0" y="131" width="12" height="14"/>
+						<texture-id>712</texture-id>
+						<palette-id>712</palette-id>
+				<visible>false</visible>
+					</properties>
+				</image>				
+			</objects>			
+		</button>
+    <list id="applist">
+      <properties>
+        <bounds x="6" y="31" width="235" height="147"/>
+        <depth>1</depth>
+	<visible>false</visible>
+      </properties>
+      
+      <objects>
+        <!-- bg image or whatever here -->
+      </objects>
+      
+      <item-template>
+        <properties>
+          <bounds x="0" y="0" width="232" height="49"/>
+          <depth>1</depth>
+        </properties>
+        <objects>
+		<image id="background">
+			<properties>
+				<bounds x="0" y="0" width="232" height="48"/>
+				<texture-id>500</texture-id>
+				<palette-id>500</palette-id>
+			</properties>
+		</image>
+          <image id="icon">
+            <properties>
+              <bounds x="9" y="7" width="32" height="32"/>
+              <depth>1</depth>
+              <texture-id>21</texture-id>
+              <palette-id>21</palette-id>
+            </properties>
+          </image>
+          <label id="title">
+            <properties>
+              <bounds x="49" y="5" width="106" height="36"/>
+              <depth>2</depth>
+							<color red="15" blue="15" green="15"/>
+              <font name="default" size="8"/>
+              <wrap-type>clip</wrap-type>
+              <justify>left</justify>
+              <vertical-align>middle</vertical-align> 
+            </properties>       
+          </label>
+        </objects>
+      </item-template>
+    </list>
+		<label id="messageLabel1">
+			<properties>
+				<bounds x="0" y="80" width="256" height="20"/>
+				<depth>2</depth>
+				<color red="15" blue="15" green="15"/>
+				<font name="default" size="14"/>
+				<text>No apps found!</text>
+				<wrap-type>clip</wrap-type>
+				<justify>center</justify>
+				<visible>false</visible>
+				<vertical-align>middle</vertical-align>
+			</properties>
+		</label>
+		<progress-bar id="searchProgress">
+			<properties>
+				<bounds x="74" y="105" width="112" height="12"/>
+				<depth>11</depth>
+				<progress-image>progressImage</progress-image>
+				<visible>false</visible>
+			</properties>
+			<objects>
+				<image id="progressImage">
+          <properties>
+		<bounds x="0" y="0" width="7" height="12"/>
+            <texture-id>8</texture-id>
+            <palette-id>8</palette-id>
+          </properties>
+        </image>
+			</objects>
+		
+		</progress-bar>
+		<button id="back">
+			<properties>
+				<bounds x="232" y="0" width="24" height="24"/>
+				<depth>3</depth>
+				<alpha>0</alpha>
+			</properties>
+			<objects>
+				<image id="background">
+					<properties>
+						<depth>1</depth>
+						<bounds x="0" y="0" width="24" height="24"/>
+						<texture-id>2</texture-id>
+						<palette-id>2</palette-id>
+					</properties>
+				</image>
+			</objects>
+		</button>
+	</objects>
+
+	<events>
+		<on-init><![CDATA[ OnInit(); ]]></on-init>
+	</events>
+</scene>

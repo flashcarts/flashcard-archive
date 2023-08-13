@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone=no>
+<skin>
+	<name>Calculator</name>
+	<version>1.0</version>
+	<author>DSX-Mucky</author>
+	
+	<definitions>
+		<media filepath="media/media.xml"/>
+		<script filepath="scripts/Operand.nut"/>
+		<script filepath="scripts/Operand2.nut"/>
+		<script filepath="scripts/Operand3.nut"/>
+		<script filepath="scripts/Calculator.nut"/>
+		<script filepath="scripts/Calculator2.nut"/>
+		<scene id="Calculator" filepath="scenes/Calculator.xml" start="true"/>
+	</definitions>
+	
+</skin>
