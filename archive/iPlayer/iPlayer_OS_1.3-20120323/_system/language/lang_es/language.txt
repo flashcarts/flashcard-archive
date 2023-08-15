@@ -1,0 +1,144 @@
+[system item]
+title=INTERFAZ PRINCIPAL
+video=VÍDEO
+music=MÚSICA
+game=JUEGOS
+software_doself=HOMEBREW
+seekFile=ARCHIVOS
+setSystemItem=Configuración Sistema
+
+[title]
+seekFile=EXPLORADOR DE ARCHIVOS
+musicPlayMode=Play mode
+software_doself=HOMEBREW
+
+[system set]
+title=Configuración del sistema
+item0=Brillo
+item1=Idioma
+item2=Skin
+item3=Tiempo de retroiluminación
+item4=Funciones Homebrew
+item5=Configuración por defecto
+
+[system update info]
+text0=Update firmware?
+text1=Update firmware
+text2=OK(A)
+text3=Cancel(B)
+text4=complete!
+text5=Update file update.dat detect!
+text6=Updating...
+
+[homebrew info]
+item0=Abrir port dldi
+item1=Resetear
+
+[system set item]
+title=sistema
+item0=brillo
+item1=Directorio Idiomas
+item2=Modo-reproducción-multimedia
+item3=idioma
+item4=skin
+item5=Directorio Skins
+item6=tiempo-retroiluminación
+
+[brightness info]
+item0=Nivel 1
+item1=Nivel 2
+item2=Nivel 3
+item3=Nivel 4
+
+[language info]
+item0=English
+item1=S.Chinese
+item2=T.Chinese
+item3=Francais
+item4=Italiano
+item5=Deutsch
+item6=Espanol
+item7=Korean
+
+[skin info]
+item0=Skin Uno
+item1=Skin Dos
+item2=Skin Tres
+item3=Skin Cuatro
+
+[BL time info]
+item0=10 segundos
+item1=20 segundos
+item2=30 segundos
+item3=siempre activo
+
+[Contion]
+title=Atención
+text1=¿Confirmar guardar la configuración?
+text2=¡El Skin se ha cambiado y se activar?al reiniciar la consola!
+text3=Entrar en la configuración de vídeo detendr?la reproducción.
+text4=ha actualizado el u-boot!
+text5=¿Detener reproducción?
+text6=¡Esto no es un archivo homebrew!
+text7=¿Continuar desde donde lo dejaste?
+
+[Default Setting]
+text=¿Restaurar a la configuración por defecto?
+
+[message box]
+yes=Yes(A)
+no=NO(B)
+ok=OK(A)
+cancel=Cancelar(B)
+
+[file info]
+no-file=¡No hay ningún archivo!
+title=¡Atención!
+unknown-file=Este es un archivo desconocido!
+
+[Media-play-mode]
+title=Play mode
+item0=Repetir Siempre 
+item1=Orden
+item2=Al Azar
+item3=Repetir una vez
+item4=Una vez
+
+[media-file-info]
+video-title=Film Name :
+music-title=Music Name :
+unknown=Desconocido
+
+[help window]
+title=Ayuda
+item0=Arriba/Abajo/PgAr./PgAb.
+item1=OK/Abrir archivo
+item2=Cancelar/Cerrar archivo
+item3=Subir volumen
+item4=Bajar volumen
+item5=Canción anterior(modo sleep)
+item6=Brillo/Siguiente canción(modo sleep)
+item7=SELECT cierra la ventana inferior
+item8=Edicion:
+
+[shutdown]
+title=Información !
+text=Est?apagando ?
+
+[video-show-mode]
+title=Display
+item0=Original Size
+item1=Default Mode
+item2=Full Srceen
+
+[srt set]
+title=Subtitle
+item0=Color:
+item1=Offset:
+item2=BG transparency:
+
+[music extra fun]
+title=Botones L/R
+text=Cambiar de canción
+
+[end]

@@ -1,0 +1,144 @@
+[system item]
+title=HAUPTMEN
+video=VIDEO
+music=MUSIK
+game=SPIELE
+software_doself=HOMEBREW
+seekFile=Dateien
+setSystemItem=System
+
+[title]
+seekFile=DATEI EXPLORER
+musicPlayMode=WIEDERGABEMODUS
+software_doself=HOMEBREW
+
+[system set]
+title=Systemeinstellungen
+item0=Helligkeit
+item1=Sprache
+item2=Skin
+item3=Zeit Hintergrundbeleuchtung
+item4=Homebrew Funktion
+item5=Standardeinstellungen
+
+[system update info]
+text0=Update firmware?
+text1=Update firmware
+text2=OK(A)
+text3=Abbruch(B)
+text4=fertig!
+text5=Update file update.dat gefunden!
+text6=Update erfolgt...
+
+[homebrew info]
+item0=Open dldi port
+item1=Soft reset
+
+[system set item]
+title=system
+item0=Helligkeit
+item1=SprachVerzeichnis
+item2=Wiedergabemodus
+item3=Sprache
+item4=skin
+item5=SkinVerzeichnis
+item6=Zeit Hintergrudbeleuchtung
+
+[brightness info]
+item0=Level 1
+item1=Level 2
+item2=Level 3
+item3=Level 4
+
+[language info]
+item0=English
+item1=S.Chinese
+item2=T.Chinese
+item3=Francais
+item4=Italiano
+item5=Deutsch
+item6=Espanol
+item7=Korean
+
+[skin info]
+item0=Skin One
+item1=Skin Two
+item2=Skin Three
+item3=Skin Fouth
+
+[BL time info]
+item0=10 Sekunden
+item1=20 Sekunden
+item2=30 Sekunden
+item3=Immer an
+
+[Contion]
+title=Warnung
+text1=Settings speichern?
+text2=Skin wurde ver?ndert und Neustart aktiv.
+text3=Zugang zu Settings beendet die Wiedergabe
+text4=is upgrade the u-boot!
+text5=Wiedergabe anhalten
+text6=Keine homebrew Datei!
+text7=Wiedergabe vom letzten Mal fortsetzen?
+
+[Default Setting]
+text=Werkseinstellungen wiederherstellen?
+
+[message box]
+yes=Ja(A)
+no=Nein(B)
+ok=OK(A)
+cancel=Abbruch(B)
+
+[file info]
+no-file=Keine Dateien gefunden!
+title=Warnung!
+unknown-file=Format wird nicht unterst¨¹tzt!
+
+[Media-play-mode]
+title=Play Mode
+item0=Immer Wiederholen
+item1=Reihenfolge
+item2=Shuffle Play
+item3=Einmal Wiederholen
+item4=Einmal
+
+[media-file-info]
+video-title=Film Name :
+music-title=Musik Name :
+unknown=unbekannt
+
+[help window]
+title=Hilfe
+item0=Up/Down/PgUp/PgDown
+item1=OK/Datei ?ffnen
+item2=Abbruch/Datei schliessen
+item3=Lautst?rke +
+item4= Lautst?rke -
+item5=Titel zur¨¹ck (Sleep Modus)
+item6=Helligkeit/Titel vor (Sleep Modus)
+item7=Auswahl Unteren Bildschirm schiessen
+item8=Edition:
+
+[shutdown]
+title=Clew !
+text=Ist ausgeschalten ?
+
+[video-show-mode]
+title=Display
+item0=Original Size
+item1=Default Mode
+item2=Full Srceen
+
+[srt set]
+title=Subtitle
+item0=Color:
+item1=Offset:
+item2=BG transparency:
+
+[music extra fun]
+title=L/R Taste
+text=Switchi
+
+[end]

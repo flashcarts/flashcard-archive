@@ -1,0 +1,144 @@
+[system item]
+title=메뉴
+video=영상
+music=음악
+game=게임
+software_doself=홈브류
+seekFile=보기
+setSystemItem=설정
+
+[title]
+seekFile=파일 브라우져
+musicPlayMode=재생 모드
+software_doself=홈브류
+
+[system set]
+title=시스템 설정
+item0=밝기
+item1=언어
+item2=스킨
+item3=백라이트조절 
+item4=홈브류 펑션
+item5=기본값
+
+[system update info]
+text0=펌웨어업데이트여부?
+text1=펌웨어업데이트
+text2=확인(A)
+text3=취소(B)
+text4=완료!
+text5=업데이트 파일 update.dat 검색!
+text6=업데이트중...
+
+[homebrew info]
+item0=Open dldi port
+item1=Soft reset
+
+[system set item]
+title=시스템
+item0=밝기
+item1=langDirectory
+item2=Media-play-mode
+item3=언어
+item4=스킨
+item5=skinDirectory
+item6=백라이트 시간
+
+[brightness info]
+item0=Level 1
+item1=Level 2
+item2=Level 3
+item3=Level 4
+
+[language info]
+item0=English
+item1=S.Chinese
+item2=T.Chinese
+item3=Francais
+item4=Italiano
+item5=Deutsch
+item6=Espanol
+item7=korean
+
+[skin info]
+item0=Skin One
+item1=Skin Two
+item2=Skin Three
+item3=Skin Fouth
+
+[BL time info]
+item0=10 초
+item1=20 초
+item2=30 초
+item3=항상 켜짐
+
+[Contion]
+title=경고
+text1=저장 확인 
+text2=스킨 변경 완료 재부팅시 적용됩니다. 
+text3=영상 설정의 경우 재생이 중단됩니다.
+text4=is upgrade the u-boot!
+text5=재생을 중단합니까? 
+text6=홈브류 파일이 아닙니다. 
+text7=이어 보시겠습니까?
+
+[Default Setting]
+text=기본 설정으로 적용할까요?
+
+[message box]
+yes=예(A)
+no=아니오(B) 
+ok=확인 (A)
+cancel=취소(B)
+
+[file info]
+no-file=파일이 없습니다. 
+title=알림
+unknown-file=알수없는 파일입니다. 
+
+[Media-play-mode]
+title=재생 모드 
+item0=항상 반복   
+item1=Order
+item2=랜덤 
+item3=1회 반복 
+item4=1회
+
+[media-file-info]
+video-title=파일이름 :
+music-title=파일이름 :
+unknown=알 수 없음
+
+[help window]
+title=Help information
+item0=Up/Down/PgUp/PgDown
+item1=OK/File open
+item2=Cancel/File close
+item3=볼륨업
+item4=볼륨다운
+item5=이전재생(슬립모드)
+item6=밝기/다음재생(슬립모드)
+item7=터치메뉴 끄기
+item8=Edition:
+
+[shutdown]
+title=Clew !
+text=전원 off?
+
+[video-show-mode]
+title=화면설정 
+item0=원본크기 
+item1=기본크기 
+item2=전체화면
+
+[srt set]
+title=Subtitle
+item0=Color:
+item1=Offset:
+item2=BG transparency:
+
+[music extra fun]
+title=L/R KEY
+text=Switching over songs
+
+[end]

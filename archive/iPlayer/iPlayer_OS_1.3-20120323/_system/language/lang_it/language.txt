@@ -1,0 +1,144 @@
+[system item] 
+title=MENU PRINCIPALE
+video=VIDEO
+music=MUSICA
+game=GIOCHI
+software_doself=Giochi Homebrew
+seekFile=Archivi
+setSystemItem=Impostazioni di Sistema
+
+[title]
+seekFile=Esplora File
+musicPlayMode=Riproduttore
+software_doself=Giochi Homebrew
+
+[system set]
+title=Impostazioni di Sistema
+item0=Luminosit¨¤
+item1=Linguaggio
+item2=Aspetto
+item3=retro illuminazione
+item4=Funzioni Giochi Homebrew
+item5=Impostazioni iniziali
+
+[system update info]
+text0=Update firmware?
+text1=Update firmware
+text2=OK(A)
+text3=Cancel(B)
+text4=complete!
+text5=Update file update.dat detect!
+text6=Updating...
+
+[homebrew info]
+item0=Apertura porta DLDI
+item1=Riavvio
+
+[system set item]
+title=Sistema
+item0=Luminosit¨¤
+item1=Impostazione Lingua
+item2=Riproduttore Media
+item3=Linguaggio
+item4=sSfondi
+item5=Archivio Sfondi
+item6=Tempo retro illuminazione
+
+[brightness info]
+item0=Livello 1
+item1=Livello 2
+item2=Livello 3
+item3=Livello 4
+
+[language info]
+item0=English
+item1=S.Chinese
+item2=T.Chinese
+item3=Francais
+item4=Italiano
+item5=Deutsch
+item6=Espanol
+item7=Korean
+
+[skin info]
+item0=Tema 0
+item1=Tema 1
+item2=Tema 2
+item3=Tema 3
+
+[BL time info]
+item0=10 secondi
+item1=20 secondi
+item2=30 secondi
+item3=Sempre Acceso
+
+[Contion]
+title=Attenzione
+text1=Confermi Salvataggio Impostazioni?
+text2=Aspetto modificato e riavvio attivo!
+text3=Entrando in Impostazioni Video, la riproduzione sar¨¤ interrotta.
+text4=is upgrade the u-boot!
+text5=Fine Riproduzione?
+text6=Questo non ¨¨ un gioco Homebrew!
+text7=Riprendi?
+
+[Default Setting]
+text=Ripristina impostazioni iniziali?
+
+[message box]
+yes=Yes(A)
+no=NO(B)
+ok=OK(A)
+cancel=Annulla(B)
+
+[file info]
+no-file=Nessun File presente!
+title=Attenzione!
+unknown-file=File Sconosciuto!
+
+[Media-play-mode]
+title=Play Mode
+item0=Ripeti tuti i file
+item1=Ordine
+item2=Random
+item3=Ripeti una volta
+item4=Una volta
+
+[media-file-info]
+video-title=Film Name :
+music-title=Music Name :
+unknown=Sconosciuto
+
+[help window]
+title=Help information
+item0=Up/Down/PgUp/PgDown
+item1=OK/File open
+item2=Cancel/File close
+item3=Volum increase
+item4=Volum decrease
+item5=Previous music(sleep mode)
+item6=Brightness/Next music(sleep mode)
+item7=SELECT close the down screen
+item8=Edition:
+
+[shutdown]
+title=Clew !
+text=E' spento?
+
+[video-show-mode]
+title=Settaggio
+item0=Normale
+item1=Riempi
+item2=Schermo totale
+
+[srt set]
+title=Subtitle
+item0=Color:
+item1=Offset:
+item2=BG transparency:
+
+[music extra fun]
+title=Tasti L/R
+text=Cambio sulle Canzioni
+
+[end]

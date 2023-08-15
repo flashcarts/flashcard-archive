@@ -1,0 +1,144 @@
+[system item]
+title=MAIN INTERFACE
+video=VIDEO
+music=MUSIC
+game=GAME
+software_doself=HOMEBREW
+seekFile=FILES
+setSystemItem=SystemSetting
+
+[title]
+seekFile=FILE BROWSER
+musicPlayMode=PLAY MODE
+software_doself=HOMEBREW
+
+[system set]
+title=System Setting
+item0=Brightness
+item1=Language
+item2=Skin
+item3=Back Light Time
+item4=Homebrew function
+item5=Default Setting
+
+[system update info]
+text0=Update firmware?
+text1=Update firmware
+text2=OK(A)
+text3=Cancel(B)
+text4=complete!
+text5=Update file update.dat detect!
+text6=Updating...
+
+[homebrew info]
+item0=Open dldi port
+item1=Soft reset
+
+[system set item]
+title=system
+item0=brightness
+item1=langDirectory
+item2=Media-play-mode
+item3=language
+item4=skin
+item5=skinDirectory
+item6=backlight-time
+
+[brightness info]
+item0=Level 1
+item1=Level 2
+item2=Level 3
+item3=Level 4
+
+[language info]
+item0=English
+item1=S.Chinese
+item2=T.Chinese
+item3=Francais
+item4=Italiano
+item5=Deutsch
+item6=Espanol
+item7=Korean
+
+[skin info]
+item0=Skin One
+item1=Skin Two
+item2=Skin Three
+item3=Skin Fouth
+
+[BL time info]
+item0=10 seconds
+item1=20 seconds
+item2=30 seconds
+item3=always on
+
+[Contion]
+title=Warning
+text1=Confirm Saving Setting?
+text2=Skin is changed and restart machine active!
+text3=Enter video setting will stop playing.
+text4=is upgrade the u-boot!
+text5=Stop Playing?
+text6=This is not a homebrew file!
+text7=Continue from last time?
+
+[Default Setting]
+text=Restore To Default Setting?
+
+[message box]
+yes=Yes(A)
+no=NO(B)
+ok=OK(A)
+cancel=Cancel(B)
+
+[file info]
+no-file=Have'not any files!
+title=Warning!
+unknown-file=This is unknowned file!
+
+[Media-play-mode]
+title=Play Mode
+item0=alwaysRepeat 
+item1=Order
+item2=random
+item3=RepeatOnce
+item4=Once
+
+[media-file-info]
+video-title=Film Name :
+music-title=Music Name :
+unknown=Unknown
+
+[help window]
+title=Help information
+item0=Up/Down/PgUp/PgDown
+item1=OK/File open
+item2=Cancel/File close
+item3=Volum increase
+item4=Volum decrease
+item5=Previous music(sleep mode)
+item6=Brightness/Next music(sleep mode)
+item7=SELECT close the down screen
+item8=Edition:
+
+[shutdown]
+title=Clew !
+text=Is power off ?
+
+[video-show-mode]
+title=Display
+item0=Original Size
+item1=Default Mode
+item2=Full Srceen
+
+[srt set]
+title=Subtitle
+item0=Color:
+item1=Offset:
+item2=BG transparency:
+
+[music extra fun]
+title=L/R KEY
+text=Switching over songs
+
+[end]

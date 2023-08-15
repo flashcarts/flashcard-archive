@@ -1,0 +1,145 @@
+[system item]
+title=INTERFACE 
+video=VIDEOS
+music=MUSIQUES
+game=JEUX
+software_doself=HOMEBREW
+seekFile=FICHIERS
+setSystemItem=CONFIG
+
+[title]
+seekFile=Explorateur
+musicPlayMode=Play mode
+software_doself=HOMEBREW
+
+[system set]
+title=Configuration 
+item0=Contraste
+item1=Langue
+item2=Skin
+item3=Veille
+item4=Fonction Homebrew
+item5=Paramétres par défaut
+
+[system update info]
+text0=Mise ?jour du firmware?
+text1=Mise ?jour du firmware
+text2=OK(A)
+text3=Annuler(B)
+text4=Terminer!
+text5=Fichier mise ?jour detect?! update.dat !
+text6=Mise ?jour en cours...
+
+[homebrew info]
+item0=Activer port DLDI 
+item1=Soft reset
+
+[system set item]
+title=Système
+item0=Contraste
+item1=Dossier-lang
+item2=Mode-de-lecture
+item3=Language
+item4=Skin
+item5=Dossier-skin
+item6=Veille
+
+[brightness info]
+item0=Position 1
+item1=Position 2
+item2=Position 3
+item3=Position 4
+
+[language info]
+item0=English
+item1=S.Chinese
+item2=T.Chinese
+item3=Français
+item4=Italiano
+item5=Deutsch
+item6=Espanol
+item7=Korean
+
+[skin info]
+item0=Skin Un
+item1=Skin Deux
+item2=Skin Trois
+item3=Skin Quatre
+
+[BL time info]
+item0=10 secondes
+item1=20 secondes
+item2=30 secondes
+item3=Permanent
+
+[Contion]
+title=Attention
+text1=Confirmez les modifications ?
+text2=Skin modifi?redémarrage système!
+text3=Modifier les paramètres vidéos stoppera la lecture en cours.
+text4=Mettre a jour le firmware!
+text5=Arrêter la lecture ?
+text6=Ce n'est pas un Homebrew!
+text7=Reprendre la lecture ?
+
+[Default Setting]
+text=Restaurer les paramétres par défaut?
+
+[message box]
+yes=Oui(A)
+no=Non(B)
+ok=OK(A)
+cancel=Annuler(B)
+
+[file info]
+no-file=Aucun fichier détect?
+title=Attention!
+unknown-file=Fichier inconnu!
+
+[Media-play-mode]
+title=Mode de jeu
+item0=répéter titre
+item1=Ordre
+item2=Battage
+item3=répéter tous
+item4=Une fois
+
+[media-file-info]
+video-title=Film Name :
+music-title=Music Name :
+unknown=Inconnu
+
+[help window]
+title=Aide
+item0=En Haut/En Bas/Précédent/Suivant
+item1=OK/Ouvrir
+item2=Annuler/Fermer
+item3=Augmenter Volume 
+item4=Diminuer volume
+item5=Titre précédent(Mode veille)
+item6=Contraste/Titre suivant(Mode veille)
+item7=SELECT met en veille l'écran du bas
+item8=Edition:
+
+[shutdown]
+title=Attention !
+text=Eteindre ?
+
+[video-show-mode]
+title=Display
+item0=Taille d'origine
+item1=Mode par défaut
+item2=Plein écran
+
+[srt set]
+title=Subtitle
+item0=Color:
+item1=Offset:
+item2=BG transparency:
+
+[music extra fun]
+title= Touches L/R 
+text= Sauter les plages musicales
+
+[end]
+

@@ -1,0 +1,151 @@
+[system item]
+title=主界面
+video=视频
+music=音乐
+game=游戏
+software_doself=软件
+seekFile=文件
+setSystemItem=设置
+
+[title]
+seekFile=文件浏览
+musicPlayMode=播放方式
+software_doself=自制软件
+
+[system set]
+title=系统设置
+item0=亮度
+item1=语言
+item2=皮肤设置
+item3=背光灯时间
+item4=自制软件补丁
+item5=恢复默认设置
+
+[system update info]
+text0=是否升级固件？
+text1=升级固件
+text2=确定（A）
+text3=取消（B）
+text4=完成！
+text5=检测到升级文件update.dat！
+text6=正在升级。。。
+
+[homebrew info]
+item0=打开dldi端口
+item1=启用软复位
+
+[system set item]
+title=system
+item0=brightness
+item1=langDirectory
+item2=Media-play-mode
+item3=language
+item4=skin
+item5=skinDirectory
+item6=backlight-time
+
+[brightness info]
+item0=亮度一 
+item1=亮度二
+item2=亮度三
+item3=亮度四
+
+[language info]
+item0=English
+item1=简体中文
+item2=繁体中文
+item3=法语
+item4=意大利语
+item5=德语
+item6=西班牙语
+item7=韩语
+
+[skin info]
+item0=皮肤１
+item1=皮肤２
+item2=皮肤３
+item3=皮肤４
+
+[BL time info]
+item0=10秒
+item1=20秒
+item2=30秒
+item3=一直打开
+
+[Contion]
+title=提示！
+text1=是否保存设置？
+text2=皮肤改变，需重启生效！是否重启？
+text3=进入视频设置，需要停止播放！
+text4=是否升级u-boot？
+text5=退出播放吗？
+text6=此文件并非自制软件!
+text7=继续上次播放吗？
+
+
+[Default Setting]
+text=是否恢复默认设置？
+
+[message box]
+yes=是(A)
+no=否(B)
+ok=确定(A)
+cancel=取消(B)
+
+[file info]
+no-file=没有此类文件！
+title=警告
+unknown-file=这是一个未知文件！
+
+[Media-play-mode]
+title=播放模式
+item0=循环播放
+item1=顺序播放
+item2=随机播放
+item3=单曲循环
+item4=单曲播放
+
+[media-file-info]
+video-title=影片名：
+music-title=歌曲名：
+nothing=无歌曲
+item0=歌名：
+item1=艺术家：
+item2=专辑名：
+item3=发行年：
+unknown=未知
+
+[help window]
+title=帮助
+item0=选择文件(上/下/翻页)
+item1=确定/打开文件
+item2=取消/关闭文件
+item3=声音增加
+item4=声音减小
+item5=上一首歌曲
+item6=调节亮度/下一首歌曲
+item7=SELECT 播放电影时关闭下屏
+item8=版本号：
+
+[shutdown]
+title=提示
+text=是否关机？
+
+[video-show-mode]
+title=显示模式
+item0=原始大小
+item1=普通模式
+item2=全屏显示
+
+[srt set]
+title=字幕设置
+item0=颜色：
+item1=时间偏移：
+item2=背景透明度：
+
+[music extra fun]
+title=L/R键
+text=开启歌曲切换
+
+[end]
+    
