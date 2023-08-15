@@ -10,8 +10,7 @@ package: directory BL2CK_1.30.4_Amaze3DS.zip old extdata
 directory:
 	mkdir -p $(OUT)/$(BASE)
 
-BL2CK_1.30.4_Amaze3DS.zip: directory
-	cd $(COMMON)/BL2CK/BL2CK_1.30.4_Amaze3DS && zip -r $(OUT)/$(BASE)/$@ *
+include $(COMMON)/BL2CK/Amaze3DS/Makefile
 
 old: directory
 	make -C $@

@@ -20,4 +20,4 @@ CycloDS_Evolution_1.41.zip: directory
 	cd $(TOPDIR)/CycloDS_Evolution_1.41 && zip -r $(OUT)/$(BASE)/$@ *
 
 CycloDS_Evolution_1.5.zip: directory
-	cd $(TOPDIR)/CycloDS_Evolution_1.5.zip && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/CycloDS_Evolution_1.5 && zip -r $(OUT)/$(BASE)/$@ *

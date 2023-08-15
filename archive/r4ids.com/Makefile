@@ -10,8 +10,7 @@ package: directory BL2CK_1.30.4.zip r4ids.com_Original_Wood_R4_1.54.zip r4ids.co
 directory:
 	mkdir -p $(OUT)/$(BASE)
 
-BL2CK_1.30.4.zip: directory
-	cd $(COMMON)/BL2CK/BL2CK_1.30.4 && zip -r $(OUT)/$(BASE)/$@ *
+include $(COMMON)/BL2CK/R4iTT/Makefile
 
 r4ids.com_Original_Wood_R4_1.54.zip: directory
 	cd $(TOPDIR)/../r4ids.cn/r4ids.cn_non-3DS_Wood_R4_1.54 && zip -r $(OUT)/$(BASE)/$@ *

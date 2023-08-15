@@ -10,11 +10,13 @@ package: directory r4isdhc.hk_Dual-Core_pre-2019_BL2CK_1.30.4.zip r4isdhc.hk_Sil
 directory:
 	mkdir -p $(OUT)/$(BASE)
 
-r4isdhc.hk_Dual-Core_pre-2019_BL2CK_1.30.4.zip: directory
-	cd $(COMMON)/BL2CK/BL2CK_1.30.4 && zip -r $(OUT)/$(BASE)/$@ *
+include $(COMMON)/BL2CK/R4iTT/Makefile
 
-r4isdhc.hk_Silver_RTS_Lite_pre-2019_BL2CK_1.30.4.zip: directory
-	cd $(COMMON)/BL2CK/BL2CK_1.30.4_Amaze3DS && zip -r $(OUT)/$(BASE)/$@ *
+r4isdhc.hk_Dual-Core_pre-2019_BL2CK_1.30.4.zip: BL2CK_1.30.4.zip
+	mv $(OUT)/$(BASE)/$< $(OUT)/$(BASE)/$@
+
+r4isdhc.hk_Silver_RTS_Lite_pre-2019_BL2CK_1.30.4.zip: BL2CK_1.30.4.zip
+	mv $(OUT)/$(BASE)/$< $(OUT)/$(BASE)/$@
 
 old: directory
 	make -C $@

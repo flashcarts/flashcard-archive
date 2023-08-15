@@ -10,8 +10,7 @@ package: directory BL2CK_1.30.4.zip old extdata
 directory:
 	mkdir -p $(OUT)/$(BASE)
 
-BL2CK_1.30.4.zip: directory
-	cd $(COMMON)/BL2CK/BL2CK_1.30.4 && zip -r $(OUT)/$(BASE)/$@ *
+include $(COMMON)/BL2CK/R4iTT/Makefile
 
 old: directory
 	make -C $@
