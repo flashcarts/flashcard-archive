@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4i-gold.com_Pro_2013_Wood_R4_1.51.zip: directory
-	cd $(TOPDIR)/r4i-gold.com_Pro_2013_Wood_R4_1.51 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4i-gold.com_Pro_2013_Wood_R4_1.51 && zip -r -X $(OUT)/$(BASE)/$@ *

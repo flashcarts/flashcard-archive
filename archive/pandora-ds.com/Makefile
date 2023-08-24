@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 pandora-ds.com_Kernel.zip: directory
-	cd $(TOPDIR)/pandora-ds.com_Kernel && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/pandora-ds.com_Kernel && zip -r -X $(OUT)/$(BASE)/$@ *

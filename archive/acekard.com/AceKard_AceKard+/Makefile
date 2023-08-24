@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 AceKard_akMenu_4.07.zip: directory
-	cd AceKard_akMenu_4.07 && zip -r $(OUT)/$(BASE)/$@ *
+	cd AceKard_akMenu_4.07 && zip -r -X $(OUT)/$(BASE)/$@ *

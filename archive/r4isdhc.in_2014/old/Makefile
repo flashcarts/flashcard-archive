@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4isdhc.in_Dual-Core_2014_Kernel_1.62.zip: directory
-	cd $(TOPDIR)/r4isdhc.in_Dual-Core_2014_Kernel_1.62 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4isdhc.in_Dual-Core_2014_Kernel_1.62 && zip -r -X $(OUT)/$(BASE)/$@ *

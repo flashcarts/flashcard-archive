@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 R4i-Advance_Kernel_3.0.zip: directory
-	cd $(TOPDIR)/R4i-Advance_Kernel_3.0 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/R4i-Advance_Kernel_3.0 && zip -r -X $(OUT)/$(BASE)/$@ *
 
 extdata: directory
 	cp README.txt $(OUT)/$(BASE)

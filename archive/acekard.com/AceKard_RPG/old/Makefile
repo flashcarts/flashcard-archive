@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 AceKard_RPG_akMenu_4.11.zip: directory
-	cd $(TOPDIR)/AceKard_RPG_akMenu_4.11 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/AceKard_RPG_akMenu_4.11 && zip -r -X $(OUT)/$(BASE)/$@ *

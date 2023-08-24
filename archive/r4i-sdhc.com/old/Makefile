@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4i-sdhc.com_DEMON_1.85b.zip: directory
-	cd $(TOPDIR)/r4i-sdhc.com_DEMON_1.85b && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4i-sdhc.com_DEMON_1.85b && zip -r -X $(OUT)/$(BASE)/$@ *
 
 r4i-sdhc.com_DEMON_1.85b-notimebomb.zip: directory
-	cd $(TOPDIR)/r4i-sdhc.com_DEMON_1.85b-notimebomb && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4i-sdhc.com_DEMON_1.85b-notimebomb && zip -r -X $(OUT)/$(BASE)/$@ *

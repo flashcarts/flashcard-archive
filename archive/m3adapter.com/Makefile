@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 m3adapter.com_GMP-Z003_Sakura_1.49a.zip: directory
-	cd $(TOPDIR)/m3adapter.com_GMP-Z003_Sakura_1.49a && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/m3adapter.com_GMP-Z003_Sakura_1.49a && zip -r -X $(OUT)/$(BASE)/$@ *
 
 extdata: directory
 	cp README.txt $(OUT)/$(BASE)

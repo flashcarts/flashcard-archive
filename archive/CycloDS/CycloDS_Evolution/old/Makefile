@@ -11,13 +11,13 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 CycloDS_Evolution_1.4-BETA-3.zip: directory
-	cd $(TOPDIR)/CycloDS_Evolution_1.4-BETA-3 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/CycloDS_Evolution_1.4-BETA-3 && zip -r -X $(OUT)/$(BASE)/$@ *
 
 CycloDS_Evolution_1.4.zip: directory
-	cd $(TOPDIR)/CycloDS_Evolution_1.4 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/CycloDS_Evolution_1.4 && zip -r -X $(OUT)/$(BASE)/$@ *
 
 CycloDS_Evolution_1.41.zip: directory
-	cd $(TOPDIR)/CycloDS_Evolution_1.41 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/CycloDS_Evolution_1.41 && zip -r -X $(OUT)/$(BASE)/$@ *
 
 CycloDS_Evolution_1.5.zip: directory
-	cd $(TOPDIR)/CycloDS_Evolution_1.5 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/CycloDS_Evolution_1.5 && zip -r -X $(OUT)/$(BASE)/$@ *

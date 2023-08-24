@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4isdhc.com_Dual-Core_Kernel_1.38.zip: directory
-	cd $(TOPDIR)/r4isdhc.com_Dual-Core_Kernel_1.38 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4isdhc.com_Dual-Core_Kernel_1.38 && zip -r -X $(OUT)/$(BASE)/$@ *
 
 r4isdhc.com_RTS_black_Kernel_3.2.zip: directory
-	cd $(TOPDIR)/r4isdhc.com_RTS_black_Kernel_3.2 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4isdhc.com_RTS_black_Kernel_3.2 && zip -r -X $(OUT)/$(BASE)/$@ *

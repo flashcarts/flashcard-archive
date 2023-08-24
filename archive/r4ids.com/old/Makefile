@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4ids.com_Original_Multi-Function_1.51d.zip: directory
-	cd $(TOPDIR)/r4ids.com_Original_Multi-Function_1.51d && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4ids.com_Original_Multi-Function_1.51d && zip -r -X $(OUT)/$(BASE)/$@ *

@@ -13,10 +13,10 @@ directory:
 include $(COMMON)/BL2CK/R4iTT/Makefile
 
 r4ids.cn_non-3DS_Wood_R4_1.54.zip: directory
-	cd $(TOPDIR)/r4ids.cn_non-3DS_Wood_R4_1.54 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4ids.cn_non-3DS_Wood_R4_1.54 && zip -r -X $(OUT)/$(BASE)/$@ *
 
 r4ids.cn_Wood_R4_1.64.zip: directory
-	cd $(TOPDIR)/r4ids.cn_Wood_R4_1.64 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4ids.cn_Wood_R4_1.64 && zip -r -X $(OUT)/$(BASE)/$@ *
 
 old: directory
 	make -C $@

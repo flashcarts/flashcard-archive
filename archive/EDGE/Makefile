@@ -11,10 +11,10 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 EDGE_OS_2.3.zip: directory
-	cd $(TOPDIR)/EDGE_OS_2.3 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/EDGE_OS_2.3 && zip -r -X $(OUT)/$(BASE)/$@ *
 
 iEDGE_OS_2.3.zip: directory
-	cd $(TOPDIR)/iEDGE_OS_2.3 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/iEDGE_OS_2.3 && zip -r -X $(OUT)/$(BASE)/$@ *
 
 old: directory
 	make -C $@

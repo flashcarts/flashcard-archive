@@ -20,7 +20,7 @@ r4igold.cc_3DS_BL2CK_1.30.4.zip: BL2CK_1.30.4.zip
 	mv $(OUT)/$(BASE)/$< $(OUT)/$(BASE)/$@
 
 r4igold.cc_Kernel_2.6.zip: directory
-	cd $(TOPDIR)/r4igold.cc_Kernel_2.6 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4igold.cc_Kernel_2.6 && zip -r -X $(OUT)/$(BASE)/$@ *
 
 extdata: directory
 	cp -r r4igold.cc_3DS_FWUpdate* README.md $(OUT)/$(BASE)

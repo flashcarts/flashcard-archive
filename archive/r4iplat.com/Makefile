@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4iplat.com_Kernel_1.34.zip: directory
-	cd $(TOPDIR)/r4iplat.com_Kernel_1.34 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4iplat.com_Kernel_1.34 && zip -r -X $(OUT)/$(BASE)/$@ *
 
 extdata: directory
 	cp README.txt $(OUT)/$(BASE)

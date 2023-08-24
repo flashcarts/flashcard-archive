@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 ndsill.net_3DS_Kernel_2.60.zip: directory
-	cd $(TOPDIR)/ndsill.net_3DS_Kernel_2.60 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/ndsill.net_3DS_Kernel_2.60 && zip -r -X $(OUT)/$(BASE)/$@ *
 
 extdata: directory
 	cp README.txt $(OUT)/$(BASE)

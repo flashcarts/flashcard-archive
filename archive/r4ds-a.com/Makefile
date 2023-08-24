@@ -11,10 +11,10 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 R4-Advance_Kernel_1.22.zip: directory
-	cd $(TOPDIR)/R4-Advance_Kernel_1.22 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/R4-Advance_Kernel_1.22 && zip -r -X $(OUT)/$(BASE)/$@ *
 
 R4-Advance_Kernel_1.27.zip: directory
-	cd $(TOPDIR)/R4-Advance_Kernel_1.27 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/R4-Advance_Kernel_1.27 && zip -r -X $(OUT)/$(BASE)/$@ *
 
 extdata: directory
 	cp README.txt $(OUT)/$(BASE)

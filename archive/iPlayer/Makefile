@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 iPlayer_OS_1.3-20120323.zip: directory
-	cd $(TOPDIR)/iPlayer_OS_1.3-20120323 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/iPlayer_OS_1.3-20120323 && zip -r -X $(OUT)/$(BASE)/$@ *
 
 extdata: directory
 	cp README.md $(OUT)/$(BASE)

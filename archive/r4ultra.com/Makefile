@@ -13,7 +13,7 @@ directory:
 include $(COMMON)/BL2CK/R4iTT/Makefile
 
 R4_Ultra_AKAIO_1.8.6a.zip: directory
-	cd $(TOPDIR)/R4_Ultra_AKAIO_1.8.6a && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/R4_Ultra_AKAIO_1.8.6a && zip -r -X $(OUT)/$(BASE)/$@ *
 
 extdata: directory
 	cp -r R4i_Ultra_F* README.txt $(OUT)/$(BASE)

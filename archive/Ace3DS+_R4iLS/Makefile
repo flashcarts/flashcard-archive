@@ -12,7 +12,7 @@ directory:
 
 Ace3DS+_R4iLS_Wood_R4_1.62.zip: directory
 	mkdir tmp;cp -r Ace3DS+_R4iLS_Wood_R4_1.62/* $(COMMON)/Wood_R4Li_1.62/* tmp
-	cd tmp && zip -r $(OUT)/$(BASE)/$@ *
+	cd tmp && zip -r -X $(OUT)/$(BASE)/$@ *
 	cd $(TOPDIR); rm -rf tmp
 
 extdata: directory
