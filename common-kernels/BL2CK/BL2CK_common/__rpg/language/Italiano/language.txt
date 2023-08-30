@@ -1,4 +1,4 @@
-// Thanks to Giovanni Zilli
+﻿// Thanks to Giovanni Zilli
 
 [font]
 main = liberation.pcf

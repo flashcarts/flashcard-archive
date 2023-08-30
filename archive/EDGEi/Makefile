@@ -5,7 +5,7 @@ export BASE   := $(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../out
 export COMMON := $(TOPDIR)/../../common-kernels
 
-package: directory BL2CK_1.30.4_EDGEi.zip old
+package: directory BL2CK_1.31.0_EDGEi.zip old
 
 directory:
 	mkdir -p $(OUT)/$(BASE)

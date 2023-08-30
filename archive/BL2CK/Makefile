@@ -5,7 +5,7 @@ export BASE   := $(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../out
 export COMMON := $(TOPDIR)/../../common-kernels
 
-package: directory BL2CK_1.30.4.zip BL2CK_1.30.4_Amaze3DS.zip BL2CK_1.30.4_EDGEi.zip
+package: directory BL2CK_1.31.0.zip BL2CK_1.31.0_Amaze3DS.zip BL2CK_1.31.0_EDGEi.zip
 
 directory:
 	mkdir -p $(OUT)/$(BASE)

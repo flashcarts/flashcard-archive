@@ -1,4 +1,4 @@
-// Spanish language file for the Wood Firmwares by Yellow Wood Goblin. Modified and updated by PabloACZ. Very thanks to germich3, pichon64, Mhetralla and pepeluis33, for starting the translation project.
+﻿// Spanish language file for the Wood Firmwares by Yellow Wood Goblin. Modified and updated by PabloACZ. Very thanks to germich3, pichon64, Mhetralla and pepeluis33, for starting the translation project.
 
 [font]
 main = liberation.pcf

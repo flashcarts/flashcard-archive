@@ -1,4 +1,4 @@
-// Thanks to s223355 for the translation.
+﻿// Thanks to s223355 for the translation.
 
 [font]
 main = wenquanyi_9pt.pcf

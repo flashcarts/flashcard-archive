@@ -1,4 +1,4 @@
-// Thanks to Antoine L., Shad and Supercarte for the translation.
+﻿// Thanks to Antoine L., Shad and Supercarte for the translation.
 
 [font]
 main = liberation.pcf

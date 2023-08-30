@@ -1,4 +1,4 @@
-// Thanks to Ralf Friedrich, Klaus P., OzanOs, IcyVeins & Toastbrot for the translation.
+﻿// Thanks to Ralf Friedrich, Klaus P., OzanOs, IcyVeins & Toastbrot for the translation.
 
 [font]
 main = liberation.pcf

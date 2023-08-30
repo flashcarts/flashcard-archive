@@ -5,7 +5,7 @@ export BASE   := $(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../out
 export COMMON := $(TOPDIR)/../../common-kernels
 
-package: directory BL2CK_1.30.4.zip R4_Ultra_AKAIO_1.8.6a.zip extdata
+package: directory BL2CK_1.31.0.zip R4_Ultra_AKAIO_1.8.6a.zip extdata
 
 directory:
 	mkdir -p $(OUT)/$(BASE)

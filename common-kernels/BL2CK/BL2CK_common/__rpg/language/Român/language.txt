@@ -1,4 +1,4 @@
-//thanx to Attila13, http://gbatemp.net/index.php?showuser=264630
+﻿//thanx to Attila13, http://gbatemp.net/index.php?showuser=264630
 
 [font]
 main = liberation.pcf

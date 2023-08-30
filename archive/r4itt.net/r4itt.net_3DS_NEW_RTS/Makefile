@@ -5,7 +5,7 @@ export BASE   := r4itt.net/$(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../../out
 export COMMON := $(TOPDIR)/../../../common-kernels
 
-package: directory BL2CK_1.30.4.zip old extdata
+package: directory BL2CK_1.31.0.zip old extdata
 
 directory:
 	mkdir -p $(OUT)/$(BASE)

@@ -1,4 +1,4 @@
-// Thanks to DjoeN for the translation. (Almost) completely rewritten by MrDiesel.
+﻿// Thanks to DjoeN for the translation. (Almost) completely rewritten by MrDiesel.
 
 [font]
 main = liberation.pcf

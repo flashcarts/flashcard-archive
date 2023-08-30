@@ -1,4 +1,4 @@
-// Thanks to Issac for the translation.
+﻿// Thanks to Issac for the translation.
 
 [font]
 main = liberation.pcf

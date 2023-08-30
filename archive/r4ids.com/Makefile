@@ -5,7 +5,7 @@ export BASE   := $(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../out
 export COMMON := $(TOPDIR)/../../common-kernels
 
-package: directory BL2CK_1.30.4.zip r4ids.com_Original_Wood_R4_1.54.zip r4ids.com_Gold_2.0_AKAIO_1.8.6a.zip r4ids.com_Gold_Plus_Kernel_3.0.zip old extdata
+package: directory BL2CK_1.31.0.zip r4ids.com_Original_Wood_R4_1.54.zip r4ids.com_Gold_2.0_AKAIO_1.8.6a.zip r4ids.com_Gold_Plus_Kernel_3.0.zip old extdata
 
 directory:
 	mkdir -p $(OUT)/$(BASE)

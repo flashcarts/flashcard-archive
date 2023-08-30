@@ -1,4 +1,4 @@
-//thanx to sniperdmaa
+﻿//thanx to sniperdmaa
 
 [font]
 main = liberation.pcf

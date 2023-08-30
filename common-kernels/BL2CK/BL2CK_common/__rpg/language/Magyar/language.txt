@@ -1,4 +1,4 @@
-//thanx to helldavide
+﻿//thanx to helldavide
 
 [font]
 main = liberation.pcf

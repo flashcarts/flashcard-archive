@@ -1,4 +1,4 @@
-//tnx to ech0chrome
+﻿//tnx to ech0chrome
 
 [font]
 main = liberation.pcf
