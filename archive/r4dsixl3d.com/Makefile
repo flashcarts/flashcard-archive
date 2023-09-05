@@ -5,13 +5,13 @@ export BASE   := $(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../out
 export COMMON := $(TOPDIR)/../../common-kernels
 
-package: directory r4dsixl3d.com_Kernel_1.8.zip extdata
+package: directory old extdata
 
 directory:
 	mkdir -p $(OUT)/$(BASE)
 
-r4dsixl3d.com_Kernel_1.8.zip: directory
-	cd $(TOPDIR)/r4dsixl3d.com_Kernel_1.8 && zip -r -X $(OUT)/$(BASE)/$@ *
+old: directory
+	make -C $@
 
 extdata: directory
-	cp README.txt $(OUT)/$(BASE)
+	cp YSMenu-instructions.txt $(OUT)/$(BASE)
