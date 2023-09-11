@@ -1,0 +1,212 @@
+// Thanks to Antoine L. and Shad for the translation.
+
+[start menu]
+Copy = Copier
+Cut = Couper
+Paste = Coller
+Delete = Supprimer
+Save Type = Type Sauvegarde
+Patches = Spécial
+Setting = Conf. Système
+Info = Infos Fichier
+Help = Aide
+
+[message box]
+yes = Oui
+no = Non
+ok = OK
+cancel = Annuler
+
+[progress window]
+processing save = Sauvegarde... ne pas éteindre
+processing copy = Copie... ne pas éteindre, %c pour annuler
+first use sd = Vérification de la microSD pour une première utilisation
+
+[copy file error]
+title = Erreur
+text = Le fichier n'existe pas.
+
+[copy file exists]
+title = Attention
+text = Le fichier existe déj? l'écraser ?
+
+[copy dest is directory]
+title = Erreur
+text = Le répertoire existe déj? impossible de copier.
+
+[move dest is directory]
+title = Error
+text = Le répertoire existe déj? impossible de déplacer.
+
+[no copy dir]
+title = Erreur
+text = La copie de dossier n'est pas supportée.
+
+[stop copying file]
+title = Arrêter la copie
+text = Voulez-vous arrêter la copie ?
+
+[confirm delete file]
+title = Confirmation
+text = La suppression est définitive, voulez-vous vraiment supprimer "%s" ?
+
+[do not delete directory]
+title = Attention
+text = Le dossier n'est pas vide, impossible de supprimer.
+
+[unknown save type]
+title = Notification
+text = Le type de sauvegarde est inconnu, pressez A pour choisir.
+
+[no savelist]
+title = Attention
+text = La liste des sauvegardes "savelist.bin" est introuvable.
+
+[restore save fail]
+title = Attention
+text = Impossible de restaurer la sauvegarde, continuer ?
+
+[backup save fail]
+title = Attention
+text = Echec de l'écriture de la sauvegarde, espace disque insuffisant.
+
+[language changed]
+title = Question
+text = La configuration système a ét?mise ?jour, redémarrer pour appliquer les changements ? Choisissez "Non" pour redémarrer plus tard.
+
+[ui style changed]
+title = Question
+text = L'interface utilisateur a ét?mise ?jour, redémarrer pour appliquer les changements ? Choisissez "Non" pour annuler les modifications.
+
+[setting window]
+ok = OK
+savetype = Sauvegarde
+cancel = Annuler
+confirm = Confirmer
+confirm text = Sauvegarder la configuration ?
+
+[save type]
+title = Choisir type de sauvegarde
+text = Choisir type de sauvegarde
+Unknown = Automatique
+No Save = Aucune
+4K = 4K
+64K = 64K
+512K = 64K/512K
+2M = 2M
+4M = 2M/4M
+
+[system setting]
+title = Configuration système
+
+[rom info]
+title = Propriétés du fichier
+file date = Modifi?le : %d/%d/%d %02d:%02d:%02d(GMT)
+file size = Taille : %s
+save type = Type de sauvegarde : %s
+
+[disk info]
+total = Capacit?: %s
+used = Espace utilis?: %s
+free = Espace libre : %s
+
+[no free space]
+title = Erreur
+text = L'espace disque est insuffisant. Impossible de copier.
+
+[folder]
+title = Error
+text = Le nombre de dossiers ne peuvent pas ¨ºtre sup¨¦rieure ¨¤ 1024
+
+[sd speed]
+text = Régler la vitesse de la microSD
+item0 = Très rapide
+item1 = Rapide
+item2 = Moyenne
+item3 = Lente
+
+[unsupported sd]
+title = microSD incompatible
+text = Cette micro SD (modèle %s) n'est pas compatible avec les jeux DS. Veuillez copier les jeux sur la mémoire interne du Acekard et réessayer.
+
+[sd card error]
+title = Erreur microSD
+text = microSD inaccessible, vérifiez qu'elle est bien insérée.
+
+[no sd for save]
+title = Erreur microSD
+text = microSD inaccessible, la sauvegarde du dernier jeu lanc?a ét?écrite dans "%s".
+
+[no gba card]
+title = Notification
+text = Il n'y a pas de cartouche insérée dans le slot 2.
+
+[filelist type]
+text = Afficher les fichiers
+item0 = NDS
+item1 = NDS et SAV
+item2 = TOUT
+
+[rom trim]
+text = Trimmer lors de la copie
+item0 = Non
+item1 = Oui
+
+[cheat]
+text = Activer les codes de triche
+item0 = Non
+Item1 = Oui
+
+[autorun]
+text = RT SAVE
+item0 = Non
+item1 = Oui
+
+[language]
+text = Langage
+item0 = English
+item1 = S.Chinese
+item2 = T.Chinese
+item3 = Japanese
+item4 = Français
+item5 = Italiano
+item6 = Deutsch
+item7 = Español
+item8 = Nederlands
+item9 = Cor¨¦en
+[brightness]
+text = Luminosit?
+
+[ui style]
+text = Interface utilisateur
+
+[backgound voice]
+text = Musique de fond
+
+[key voice]
+text = Tonalit¨¦ des touches
+
+[help window]
+title = Aide
+item0 = %c  Sélectionner un logiciel
+item1 = %c  Lancer/OK/Oui
+item2 = %c  Retour/Annuler/Non
+item3 = %c  Propriétés/Type sauvegarde
+item4 = %c  Basculer SD/FLASH
+item5 = %c  Précédent répertoire
+item6 = %c  Ajuster la luminosit?
+item7 = %s  Menu de démarrage
+item8 = %s  Style nouveau/classique
+versions = HW: %02x NDD: %02x
+
+[patches]
+title = Fonctions spéciales
+download play = Corriger Download & Play
+cheating system = Codes Triches (AR)
+reset in game = Redémarrer lors du jeu
+
+[switches]
+Enable = Activer
+Disable = Désactiver
+
+[end]
