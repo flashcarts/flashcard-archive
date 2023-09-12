@@ -1,0 +1,10 @@
+ndsi V1.4.4j hardware upgrade£º
+
+1. You can not upgrade R4i-GOLD Card with ndsi V1.4.3j If your ndsi console has already been upgraded to ndsi V1.4.3j, you will need another NDSL or NDSi 1.43v to upgrade your ndsi flash card
+2.Make sure NDSi was fully charged, better with external power pluged.
+3.First, reformate the SD, download the latest kernel 1.73b.
+4.Unzip and copy the files(homebrew,R4iMenu,moonshl2,moonmemo,r4.DAT) to the root of MicroSD card.
+5.Download the latest upgrading programs. Unzip and copy the file(upNDSIv144C5.nds) to the root of MicroSD card.
+6.Insert MicroSD card into r4i-gold card, insert r4i-gold card into nds\dsl\dsi\dsixl.
+7.Turn on console and press "A" button to run the upgrade file upNDSIv144C5.nds. 
+Note:When upgrading the r4i-gold card, it is not allowed to turn off power or pull out r4i- gold card,otherwise it will damage the r4i-gold card.

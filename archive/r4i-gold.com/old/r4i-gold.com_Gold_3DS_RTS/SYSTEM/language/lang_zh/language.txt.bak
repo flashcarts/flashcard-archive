@@ -1,0 +1,205 @@
+[start menu]
+Copy = 複製
+Cut = 剪切
+Paste = 粘貼
+Delete = 刪除
+Save Type = 設置存檔類型
+Patches = 特殊功能
+Setting = 系統設置
+Info = 文檔信息
+Help = 幫助
+
+[message box]
+yes = 是
+no = 否
+ok = 確定
+cancel = 取消
+
+[progress window]
+processing save = 正在處理存檔，請不要關機
+processing copy = 正在複製文檔，請不要關機，按 %c 取消
+first use sd = 正在為第一次使用 SD 卡做準備
+loading.....please wait =正在裝載......請稍后
+scaning.....please wait =正在掃描......請稍后
+[copy file error]
+title = 錯誤
+text = 複製文檔時發生錯誤
+
+[copy file exists]
+title = 警告
+text = 有相同文檔名的文檔存在，要覆蓋嗎?
+
+[copy dest is directory]
+title = 錯誤
+text = 有相同名字的目錄存在，不能將文檔複製到這裡
+
+[move dest is directory]
+title = 錯誤
+text = 有相同名字的目錄存在，不能將文檔剪切到這裡
+
+[no copy dir]
+title = 錯誤
+text = 不能複製或剪切一個目錄
+
+[stop copying file]
+title = 確認
+text = 要停止拷貝這個文檔嗎？
+
+[confirm delete file]
+title = 確認
+text = 刪除文檔後不能恢復，確實要刪除 「%s」 嗎？
+
+[do not delete directory]
+title = 警告
+text = 該目錄下還有文檔或者目錄，不能直接刪除
+
+[unknown save type]
+title = Notify
+text = The save type of this program is unknown, press A to choose a type
+
+[no savelist]
+title = Warning
+text = Can not load save list, "savelist.bin" is missing
+
+[restore save fail]
+title = 警告
+text = 恢復存檔錯誤，要繼續嗎？
+
+[backup save fail]
+title = 警告
+text = 備份存檔失敗，磁盤上可能沒有足夠的空間
+
+[language changed]
+title = 問題
+text = 改變了系統語言，要現在重啟更換新的語言嗎？選「否」稍後再重啟
+
+[ui style changed]
+title = 問題
+text = 改變了用戶界面風格，必須重啟系統才能生效，要現在重啟更換新的風格嗎？選「否」保持當前的界面風格
+
+[setting window]
+ok = 確定
+savetype = 存檔類型
+cancel = 取消
+confirm = 確認
+confirm text = 要保存當前的設置嗎？
+
+[save type]
+title = 設置存檔類型
+text = 選擇一個存檔類型
+Unknown = 未知/自動
+No Save = 沒有存檔
+4K = 4K
+64K = 64K
+512K = 64K/512K
+2M = 2M
+4M = 2M/4M
+
+[system setting]
+title = 系統設置
+
+[rom info]
+title = 文檔信息
+file date = 最後寫入：%d年%d月%d日 %02d:%02d:%02d(GMT)
+file size = 文檔大小：%s
+save type = 存檔類型：%s
+
+[disk info]
+total = 磁盤容量：%s
+used = 已用空間：%s
+free = 剩餘空間：%s
+
+[folder]
+title =錯誤
+text =文件夾數目不能超過1024個
+[no free space]
+title = 錯誤
+text = 磁盤空間不足，無法完成拷貝
+
+[sd speed]
+text = 設置SD卡速度
+item0 = 極速
+item1 = 快速
+item2 = 中速
+item3 = 慢速
+
+[unsupported sd]
+title = 不兼容的SD卡
+text = 您使用的SD卡(型號:%s) 不適合直接運行 DS 官方程式，請拷貝到 Acekard 內置閃存中再運行
+
+[sd card error]
+title = SD卡錯誤
+text = 無法訪問SD卡的內容，SD卡可能沒有插好
+
+[no sd for save]
+title = SD卡錯誤
+text = 無法訪問SD卡，之前的存檔信息將被備份到內置閃存的：%s 文檔中
+
+[no gba card]
+title = 提示
+text = SLOT2 並沒有插入設備
+
+[filelist type]
+text = 設置文檔列表方式
+item0 = NDS
+item1 = NDS & SAV
+item2 = 顯示所有
+
+[rom trim]
+text = 拷貝時自動裁剪ROM
+item0 = 否
+item1 = 是
+
+[cheat]
+text = Use cheat code
+item0 = No
+Item1 = Yes
+
+[autorun]
+text = RT Save
+item0 = No
+item1 = Yes
+
+[language]
+text = Language
+item0 = 英語
+item1 = 間體中文
+item2 = 繁體中文
+item3 = 日語
+item4 = 法語
+item5 = 意大利語
+item6 = 德語
+item7 = 西班牙語
+item8 = 荷語
+item9 = 韓語
+[brightness]
+text = 屏幕亮度
+
+[ui style]
+text = 界面風格
+
+[help window]
+title = 幫助信息
+item0 = %c  選擇遊戲
+item1 = %c  開始/確定
+item2 = %c  後退/取消
+item3 = %c  查看文檔信息 / 選擇存檔類型
+item4 = %c  切換 SD / FLASH
+item5 = %c  回上一級目錄
+item6 = %c  調節亮度
+item7 = %s  開始菜單
+item8 = %s  切換新列表模式/經典模式
+versions = HW: %02x NDD: %02x
+
+[patches]
+title = 特殊功能設置
+download play = 提升單卡聯機兼容性
+cheating system = 金手指
+reset in game = 軟復位
+
+[switches]
+Disable = 禁用
+Enable = 啟用
+
+
+[end]
