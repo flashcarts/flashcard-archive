@@ -7,6 +7,7 @@ Some kernels are in different locations, or have consolidated as they are identi
   - Ace3DS+
   - Ace3DS X
   - \### in 1 combo cart
+  - r4azure.com carts
   - r4isdhc.com.cn carts
   - r4isdhc.hk 2020+ carts
   - r4li.com carts
