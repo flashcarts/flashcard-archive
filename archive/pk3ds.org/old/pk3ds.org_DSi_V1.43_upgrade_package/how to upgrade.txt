@@ -1,0 +1,22 @@
+  说明:这个是DSi1.43升级包，如果你的PK3DS卡不可以在DSi1.43主机上运行，请用这个DSi1.43升级包在电脑上将你的PK3DS卡升级，就可以在DSi1.43上运行啦
+
+  1.首先，请到www.pk3ds.com下载最新内核。
+  2：解压缩文件，把这些文件(app,data,moonshl2,
+NDSMAIL,svsip,SYSTEM,r4.DAT)复制到TF卡根目录里。
+  3.下载DSi1.43 upgrade package of PK3DS升级包。解压并将解压文件(PK3DS.upd )复制到TF卡上。
+  4.将TF卡插到PK3DS卡上，然后将插好TF卡的PK3DS卡插上PK3DS专用数据线连接到电脑主机上。
+这时PK3DS烧录卡这端USB座边上的红色升级灯会连续不停地快速闪动，表明正在升级， 这个过程请不要将数据线拔出，否则会损坏PK3DS卡。
+5. 当红色灯灭了以后，表明升级完成，就可以在DSi1.43主机上运行啦，升级完成后TF卡内的升级文件(PK3DS.upd )会被自动删除。
+注：在升级过程中如果红色灯不闪并一直亮着，可以拔出数据线，重复以上的第4步再来一次。
+
+  Instructions :this is DSi1.43 upgrade package, if your PK3DS card can not run on DSi1.43 console,please use this DSi1.43 upgrade package to upgrade your PK3DS card on computer for running on DSi1.43 console.
+
+  1. First, go to www.pk3ds.com to download the latest kernel.
+  2.Unzip and copy the files(app,data,moonshl2,
+NDSMAIL,svsip,SYSTEM,r4.DAT) to the root of MicroSD card.
+  3. Go to www.pk3ds.com to download the DSi1.43 upgrade package of PK3DS.
+Unzip and copy the file (PK3DS.upd) to the root of MicroSD card.
+  4. Insert MicroSD card into PK3DS card, and connect PK3DS card to the computer host by PK3DS dedicated data line.And then the lantern on pk3ds card will flash Continuously and quickly,that is being upgraded.Note:This process should not pull out the data line, otherwise it will damage the PK3DS card
+ 5.When the red light went out ,it means that the upgrade is complete,you can pull out the data line from computer,and now the pk3ds card can run on DSi1.43 console.[the update file (PK3DS.upd) will be automatically deleted after the upgrade is complete]
+Note:During the upgrade process if the red lights do not flash or has been lit, you can pull out the data line, repeat the step 4 above again.
+
