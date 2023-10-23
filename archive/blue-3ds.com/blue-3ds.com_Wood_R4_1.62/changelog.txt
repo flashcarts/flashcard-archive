@@ -1,0 +1,7 @@
+1.62
+compatibility:
+- 'smurfs 2, the (europe)' fixed.
+- 'smurfs 2, the (usa)' fixed.
+
+r4i specific:
+- fixed sound restoring in many games. 
