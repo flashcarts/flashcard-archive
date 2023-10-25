@@ -1,0 +1,220 @@
+[start menu]
+Copy = 복사
+Cut = 잘라내기
+Paste = 붙여넣기
+Delete = 삭제
+Save Type = 저장 방식 지정
+Patches = 특수 기능
+Setting = 환경 설정
+Info = 파일/폴더 정보
+Help = 도움말
+
+[message box]
+yes = 예
+no = 아니오
+ok = 확인
+cancel = 취소
+
+[progress window]
+processing save = 진행 중입니다, 전원을 끄지 마십시오.
+processing copy = 복사 중, 전원을 끄지 마십시오.(취소: %c) 
+first use sd = 처음 사용하는 SD카드를 확인하는 중입니다.
+gba load = 게임을 불러오는 중입니다.
+gba save load = 세이브를 불러옵니다.
+gba save store = 세이브를 저장합니다. 전원을 끄지 마십시오.
+erase nor = NOR 플래시 메모리를 초기화 합니다.
+rebuilding cheat data = 치트파일을 재생성 하는 중입니다.
+
+[copy file error]
+title = 오류
+text = 파일이 존재 하지 않습니다.
+
+[copy file exists]
+title = 경고
+text = 동일한 이름을 가진 파일이 존재합니다. 덮어씌우시겠습니까?
+
+[copy dest is directory]
+title = 오류
+text = 동일한 이름을 가진 폴더가 존재하므로 파일을 복사할 수 없습니다.
+
+[move dest is directory]
+title = 오류
+text = 동일한 이름을 가진 폴더가 존재하므로 파일을 이동할 수 없습니다.
+
+[no copy dir]
+title = 오류
+text = 폴더의 복사/이동은 아직 지원하지 않습니다.
+
+[stop copying file]
+title = 파일 복사 정지
+text = 복사를 취소하시겠습니까?
+
+[confirm delete file]
+title = 확인
+text = 삭제한 파일은 복구 할 수 없습니다. 그래도 삭제 하겠습니까? "%s"
+
+[do not delete directory]
+title = 경고
+text = 비어있지 않은 디렉토리는 삭제할 수 없습니다.
+
+[unknown save type]
+title = 알림
+text = 이 소프트웨어의 저장 방식이 지정되지 않았습니다. A버튼을 눌러 저장 방식을 설정하십시오.
+
+[no savelist]
+title = 경고
+text = "savelist.bin" 파일이 없으므로, 저장 방식 목록을 불러올 수 없습니다.
+
+[restore save fail]
+title = 경고
+text = 세이브 데이터를 복구하는데 실패했습니다. 계속하시겠습니까?
+
+[backup save fail]
+title = 경고
+text = 세이브 데이터를 백업하는데 실패했습니다. 디스크가 용량이 부족합니다.
+
+[language changed]
+title = 질문
+text = 사용자 언어가 변경되었습니다. 변경한 언어를 적용시키기 위해서 지금 재시동 하겠습니까?
+
+[ui style changed]
+title = 질문
+text = 유저 인터페이스가 변경되었습니다. 변경한 인터페이스를 적용시키기 위해서 지금 재시동 하겠습니까?
+
+[setting window]
+ok = 예
+savetype = 저장 방식
+cancel = 취소
+confirm = 확인
+confirm text = 현재 설정을 저장하시겠습니까?
+shortcut = 바로가기
+rominfo = 롬 정보
+
+[save type]
+title = 저장 방식 지정
+text = 저장 방식 선택
+Unknown = 모름/자동
+No Save = 저장 안함
+4K = 4K
+64K = 64K
+512K = 64K/512K
+2M = 2M
+4M = 2M/4M
+
+[system setting]
+title = 환경 설정
+
+[rom info]
+title = 파일/폴더 정보
+title_rominfo = 롬 정보 설정
+file date = 마지막 변경: %d/%d/%d %02d:%02d:%02d(GMT)
+file size = 파일 크기: %s
+save type = 저장 방식: %s 
+
+[disk info]
+total = 디스크 용량: %s
+used = 사용 용량: %s
+free = 남은 용량: %s
+
+[no free space]
+title = 오류
+text = 디스크에 용량이 부족하여 파일을 복사할 수 없습니다.
+
+[folder]
+title = Error
+text = folders can not exceed 1024
+
+[sd speed]
+text = Micro SD 속도 지정
+item0 = 아주빠름
+item1 = 빠름
+item2 = 보통
+item3 = 느림
+
+[unsupported sd]
+title = 지원되지 않는 SD 카드
+text = 이 SD 카드(모델:%s)는 DS소프트웨어를 실행하는데 적합하지 않습니다. SD 카드의 소프트웨어를 내장 메모리로 옮겨서 실행해주시기 바랍니다.
+
+[sd card error]
+title = SD 카드 에러
+text = SD 카드에 접근할 수 없습니다. 정확하게 삽입 되었는지 확인해 주십시오.
+
+[no sd for save]
+title = SD 카드 에러
+text = SD 카드에 접근할 수 없습니다. 이전에 실행했던 소프트웨어의 저장 데이터는 내장 메모리에 저장됩니다.: "%s".
+
+[no gba card]
+title = 알림
+text = 슬롯2에 장치가 없습니다.
+
+[filelist type]
+text = 표시할 파일 설정
+item0 = NDS
+item1 = NDS + SAV
+item2 = 모두보임
+
+[rom trim]
+text = 복사할 때 롬파일 용량 줄임
+item0 = 사용안함
+item1 = 사용함
+
+[cheat]
+text = 치트 사용
+item0 = 사용안함
+Item1 = 사용함
+
+[autorun]
+text = RT Save
+item0 = 사용안함
+item1 = 사용함
+
+[language]
+text = 언어
+item0 = English
+item1 = S.Chinese
+item2 = T.Chinese
+item3 = Japanese
+item4 = Francais
+item5 = Italiano
+item6 = Deutsch
+item7 = Espanol
+item8 = Nederlands
+item9 = 한국어
+
+
+[brightness]
+text = 밝기
+
+[ui style]
+text = 유저 인터페이스 스타일
+
+[backgound voice] 
+text =배경음악 
+
+[key voice]
+text =키소리 
+[help window]
+title = 도움말 정보
+item0 = %c  프로그램 선택
+item1 = %c  시작/확인/예
+item2 = %c  뒤로/취소/아니오
+item3 = %c  파일 정보 보기/저장 방식 선택
+item4 = %c  치트 메뉴 
+item5 = %c  상위 폴더로 이동
+item6 = %c  밝기 조절
+item7 = %s  시작 메뉴
+item8 = %s  목록 스타일 전환
+versions = HW: %02x NDD: %02x
+
+[patches]
+title = 특수 기능 설정
+download play = 다운로드 플레이 패치
+cheating system = 치트 사용(AR)
+reset in game = 소프트 리셋 사용
+
+[switches]
+Disable = 사용안함
+
+Enable = 폘痰
+
+[end]

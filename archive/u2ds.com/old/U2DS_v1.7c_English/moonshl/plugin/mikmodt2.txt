@@ -1,0 +1,20 @@
+
+ModPlug-XMMS and libmodplug are now in the public domain.
+
+Modplug Plugin for XMMS v2.0 / libmodplug v0.7
+ Based on the ModPlug sound engine by Olivier Lapicque <olivierl@jps.net>
+ XMMS plugin by Kenton Varda <temporal@gauge3d.org>
+ Placed in the public domain in October, 2001
+
+Olivier Lapicque, author of Modplug, which is arguably the best quality
+MOD-playing software available, has placed his sound rendering code in the
+public domain.  This library and plugin is based on that code.
+
+For more information on libmodplug, the library for decoding mod-like music
+formats, see libmodplug/README.
+
+NOTE TO FELLOW OPEN SOURCE PROGRAMMERS:
+  I (Kenton Varda) no longer have the time or desire to maintain this library.
+  If anyone would like to take over for me, please e-mail me at
+  <temporal@gauge3d.org>.  Thanks.
+
