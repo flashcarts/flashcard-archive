@@ -32,6 +32,7 @@ These carts may support BL2CK OS. Only these carts are confirmed to actually wor
   - R4i Gold 3DS Plus with faulty DS mode
   - r4-pro.com carts
   - r4dspro.com carts
+  - r4ixds.com 2014-2016 non-white
 - Amaze3DS version:
   - r4igold.cc Wood 
   - Amaze3DS (use the Amaze3DS version)
@@ -39,7 +40,6 @@ These carts may support BL2CK OS. Only these carts are confirmed to actually wor
 These carts may support BL2CK OS, but have not been attempted. This information is based on its provided DLDI, which are identical.  
 Please do not attempt cross-loading without knowing what you're doing.
 - 3dslink.com Blue
-- r4ixds.com 2014-2016 non-white
 - r4i-gold.me 2013
 - r4i-gold.com 3DS Gold Pro
 - amazekard.com cards
