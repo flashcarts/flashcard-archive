@@ -14,6 +14,7 @@ Some kernels are in different locations, or have consolidated as they are identi
   - r4infinity.com 2
   - r4ixds.com 2014 white version
   - woodr4isdhc.com carts
+  - ge.ndsi.in GEi HOT
   - (please raise an issue if you think your cart is an Ace3DS+ or R4iLS clone!)
 
 These carts may support BL2CK OS. Only these carts are confirmed to actually work so far:
