@@ -1,0 +1,55 @@
+# This is an example of the Bunjalloo configuration file
+# If /data/bunjalloo/config.ini doesn't exist at start up
+# then this file is copied there and used.
+
+# Configure the path from /data/bunjalloo to the font base. 
+# Can be absolute or relative, but does not support ".."
+# font=/data/bunjalloo/fonts/vera
+#font=fonts/vera
+font=fonts/sans
+
+# File that contains sites that cookies are accepted from. 
+# All other sites are blocked, their cookies are rejected.
+cookiefile=user/ckallow.lst
+
+# File that contains search configuration.
+searchfile=user/search.cfg
+
+cafile=cert/CAcertSrv.pem
+
+# Uncomment the proxy line to enable proxy server.
+# The value is of the form server[:port]
+# proxy=192.168.169.20:8080
+# proxy=192.168.169.20
+
+# The maximum number of connections before we consider a connection lost.
+timeout=60
+
+# Use an on disk cache of files. Speeds up browsing.
+# The cache is stored in /data/bunjalloo/cache in crc32 files.
+# Set to 0 to disable - setting to 0 disables images 
+# images require the cache.
+usecache=1
+# Clear the cache on start up. Only valid if usecache is not 0
+clearcache=1
+
+# Create a file bunjalloo.log with debugging data
+logger=0
+
+# Language setting. "Builtin" means use the DS setting.
+language=builtin
+
+# Send the full referrer with each request
+fullref=0
+
+# Default download directory
+download=/
+
+# Place to look for updates
+update=http://localhost/~rich/version.txt
+
+# Allow inline images
+images=1
+
+# left handed, swaps controls
+lefty=0

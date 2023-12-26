@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+date:Tue, 13 Apr 2010 10:16:03 GMT
+expires:-1
+cache-control:private, max-age=0
+content-type:text/html; charset=Big5
+set-cookie:PREF=ID=06773b30dc1e4f53:NW=1:TM=1271153763:LM=1271153763:S=m4hTW2cyrVVD2FA_; expires=Thu, 12-Apr-2012 10:16:03 GMT; path=/; domain=.google.com.hk
+set-cookie:NID=33=v6iVrFsz_LHhjc8yTX7TpS-tPpFDeVYHKnfxzfNcRC-th-yCirRmQkfYICm0BwOohm7I0JaYPNXr5nKiA3luNxjuvwXkh0Kdkj5FE_UBhz6I-0wTkBh1YM5njg94q91i; expires=Wed, 13-Oct-2010 10:16:03 GMT; path=/; domain=.google.com.hk; HttpOnly
+server:gws
+connection:close

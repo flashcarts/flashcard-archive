@@ -1,0 +1,611 @@
+﻿
+; MoonShell2 language resource for 'CP950'.
+; Encoding format is UTF-8.
+
+Author=mcc,niu10912,matif525
+Target=CHT / 正體中文
+
+; ----------------------------
+
+TextFontFolderName=tfontchn
+
+; DateTimeFormat is YYYYMMDD or DDMMYYYY or MMDDYYYY.
+DateTimeFormat=YYYYMMDD
+
+; ----------------------------
+
+CD_CheckDisk_Start=開始進行簡易磁碟檢查...
+CD_CheckDisk_End=簡易磁碟檢查結束。
+
+CD_FatalError_Title=!!發現了嚴重的磁碟錯誤!!
+CD_FatalError_DuplicatedArea0=有文件重疊區域。
+CD_FatalError_DuplicatedArea1=部分文件夾已損壞。
+CD_FatalError_BrokenEntry0=目錄異常。
+CD_FatalError_BrokenEntry1=一個以上的檔案夾已損壞。
+CD_FatalError_IlligalClusterLink0=叢集的規格不合法
+CD_FatalError_IlligalClusterLink1=有檔案損壞的可能性
+CD_FatalError_BrokenDirectoryLink0=目錄有異常
+CD_FatalError_BrokenDirectoryLink1=檔案夾被破壞
+CD_FatalError_BrokenUnicode0=目錄異常
+CD_FatalError_BrokenUnicode1=長檔名被破壞
+CD_FatalError_FileSizeError0=目錄所示的大小
+CD_FatalError_FileSizeError1=和實際的文件大小不同
+CD_FatalError_UnknownError=未知錯誤
+CD_FatalError_RecoveryMsg0=恢復方法:
+CD_FatalError_RecoveryMsg1=先將所有文件備份到硬碟
+CD_FatalError_RecoveryMsg2=格式化硬碟後再重新拷回
+CD_FatalError_StopApplication=已經終止了程式
+
+CD_NotSupportDiskSize_Title=無法處理的磁碟格式
+CD_NotSupportDiskSize_Msg0=磁碟容量過大
+CD_NotSupportDiskSize_Msg1=或叢集過小
+CD_NotSupportDiskSize_Msg2=
+CD_NotSupportDiskSize_RecoveryMsg0=恢復方法:
+CD_NotSupportDiskSize_RecoveryMsg1=請使用更大的叢集
+CD_NotSupportDiskSize_RecoveryMsg2=嘗試重新格式化
+CD_NotSupportDiskSize_RecoveryMsg3=
+
+CD_CheckDuplicateCluster_Title=檢查重複叢集和碎片
+
+CD_CheckFATType_Title=檢查FAT格式
+
+CD_FATType_UnknownFATType=無法識別的FAT格式
+
+CD_WriteTest_Title=正在進行磁碟讀寫測試
+
+CD_WriteError_Title=磁碟訪問測試失敗
+CD_WriteError_Msg0=可能有如下原因
+CD_WriteError_Msg1=磁碟可用空間不足
+CD_WriteError_Msg2=沒有對應的DLDI補丁
+CD_WriteError_Msg3=CF/SD和燒錄卡接觸不良
+CD_WriteError_Msg4=或有相容性問題
+CD_WriteError_Msg5=磁碟管理區域已損壞
+CD_WriteError_Msg6=
+CD_WriteError_Msg7=安全起見，程式已停止運作
+
+; ----------------------------
+
+ERRMSG0_MemoryOverflow_CanRecovery=由於記憶體不足
+ERRMSG1_MemoryOverflow_CanRecovery=無法打開檔案
+ERRMSG2_MemoryOverflow_CanRecovery=點擊以關閉窗口
+
+ERRMSG0_NotSupportFileFormat=不支援的檔案格式
+ERRMSG1_NotSupportFileFormat=或者檔案已損壞
+ERRMSG2_NotSupportFileFormat=點擊以關閉窗口
+
+ERRMSG0_ProgressiveJpeg=錯誤
+ERRMSG1_ProgressiveJpeg=不支持Progressive JPEG檔案
+ERRMSG2_ProgressiveJpeg=點擊以關閉窗口
+
+ERRMSG0_Text0byte=空白的文本檔案
+ERRMSG1_Text0byte=0字節的檔案不能打開
+ERRMSG2_Text0byte=點擊以關閉窗口
+
+ERRMSG0_OverflowLargeImage=圖片尺寸太大，
+ERRMSG1_OverflowLargeImage=最大支持約500萬畫素的圖片
+ERRMSG2_OverflowLargeImage=點擊關閉窗口
+
+ERRMSG0_NotFoundMusicFile=指定檔案夾中
+ERRMSG1_NotFoundMusicFile=沒有找到任何音樂文件
+ERRMSG2_NotFoundMusicFile=點擊以關閉窗口
+
+ERRMSG0_UnknownError=發現未定義錯誤。
+ERRMSG1_UnknownError=內部異常。
+ERRMSG2_UnknownError=請關閉電源。
+
+; ----------------------------
+
+Setup_Help1=
+Setup_Help2=
+Setup_Help3=現在進行MoonShell啟動必須設定
+Setup_Help4=
+Setup_Help5=請在檔案列表中按下START鍵
+Setup_Help6=打開環境設定選單
+Setup_Help7=以顯示所有選項
+Setup_Help8=
+Setup_Help9=大量設定選項位置已被更改
+Setup_Help10=具體請參照使用說明書
+Setup_Help11=
+
+Setup_BootCheckDisk=啟動時進行磁碟檢查
+Setup_ClickSound=播放按鍵聲音
+Setup_FileListMode=檔案列表的顯示模式：
+Setup_FileListMode_Single=單行顯示
+Setup_FileListMode_Double=長檔名雙行顯示
+Setup_SkipSetup=下次啟動時不顯示設定視窗
+Setup_OKBtn=
+
+; ----------------------------
+
+Launch_FileInfo=檔案資訊
+Launch_FileInfo_Relational=關聯檔案資訊
+Launch_Size=大小： %dbyte (%dMbit)
+Launch_Create=創建日期： %s %d:%02d:%02d
+Launch_Update=修改日期： %s %d:%02d:%02d
+Launch_NotFoundRelationalFile=沒有找到相關檔案
+
+; ----------------------------
+
+FL_Help0=
+FL_Help1=
+FL_Help2=X/Y鍵：調節音量 加大/減小
+FL_Help3=START鍵：打開系統選單 (環境設定)
+FL_Help4=
+FL_Help5=L+A/B鍵：下一首/上一首
+FL_Help6=L+X/Y鍵：調節螢幕亮度
+FL_Help7=
+FL_Help8=按住L或R並點擊: 新增筆記本檔案
+FL_Help9=L/R鍵點擊：向前/向後定位MP3
+FL_Help10=L/R鍵雙擊：上一首/下一首
+FL_Help11=R鍵三擊：啟動待機模式
+
+; ----------------------------
+
+FL_Popup_Pause_Play=播放
+FL_Popup_Pause_Pause=暫停
+FL_Popup_PreviousFile=上一首
+FL_Popup_NextFile=下一首
+FL_Popup_Volume=音量： %d%%
+FL_Popup_BacklightLevel=螢幕亮度： %d
+FL_Popup_PlayMode_Repeat=播放模式： 單曲播放
+FL_Popup_PlayMode_AllRep=播放模式： 全部播放
+FL_Popup_PlayMode_Shuffle=播放模式： 隨機撥放
+FL_Popup_Seek=播放進度： %s
+FL_Popup_NotFoundMoonMemoFolder=/moonmemo不存在
+
+; ----------------------------
+
+FL_DeleteFileDialog_NotFoundDustBox_Title=檔案刪除錯誤
+FL_DeleteFileDialog_NotFoundDustBox_Line0=沒有發現資源回收筒檔案夾
+FL_DeleteFileDialog_NotFoundDustBox_Line1=請參考說明手冊
+FL_DeleteFileDialog_NotFoundDustBox_Line2=
+
+FL_DeleteFileDialog_DisabledDustBox_Title=檔案刪除錯誤
+FL_DeleteFileDialog_DisabledDustBox_Line0=資源回收筒內檔案的刪除
+FL_DeleteFileDialog_DisabledDustBox_Line1=請在Windows下進行
+FL_DeleteFileDialog_DisabledDustBox_Line2=
+
+FL_DeleteFileDialog_DisabledSystemFolder_Title=檔案刪除錯誤
+FL_DeleteFileDialog_DisabledSystemFolder_Line0=禁止刪除系統檔案夾
+FL_DeleteFileDialog_DisabledSystemFolder_Line1=(moonshl2內的檔案)
+FL_DeleteFileDialog_DisabledSystemFolder_Line2=
+
+FL_DeleteFileDialog_DisabledMoveFolder_Title=檔案刪除錯誤
+FL_DeleteFileDialog_DisabledMoveFolder_Line0=不允許移動檔案夾
+FL_DeleteFileDialog_DisabledMoveFolder_Line1=
+FL_DeleteFileDialog_DisabledMoveFolder_Line2=
+
+FL_DeleteFileDialog_Question_Title=確認
+FL_DeleteFileDialog_Question_Line0=真的要刪除這個檔案嗎？
+FL_DeleteFileDialog_Question_Line1=按下L+R+A鍵後執行
+FL_DeleteFileDialog_Question_Line2=按下B鍵後取消
+
+FL_DeleteFileDialog_Question_EasyDelete_Title=確認
+FL_DeleteFileDialog_Question_EasyDelete_Line0=真的要刪除這個檔案嗎？
+FL_DeleteFileDialog_Question_EasyDelete_Line1=按下X+A鍵後執行
+FL_DeleteFileDialog_Question_EasyDelete_Line2=按下B鍵後取消
+
+FL_DeleteFileDialog_Success_Title=完畢
+FL_DeleteFileDialog_Success_Line0=檔案刪除(移動到資源回收筒)完成
+FL_DeleteFileDialog_Success_Line1=回收站內檔案的刪除
+FL_DeleteFileDialog_Success_Line2=請在Windows下進行
+
+; ----------------------------
+
+FL_HelpLeft_Count=12
+FL_HelpLeft_Line0=請按L鍵查看幫助
+FL_HelpLeft_Line1=
+FL_HelpLeft_Line2=L + 左 : 顯示MP3控制列
+FL_HelpLeft_Line3=L + 右 : 下一首
+FL_HelpLeft_Line4=L + 上 : 暫停
+FL_HelpLeft_Line5=L + 下 : 更改播放模式
+FL_HelpLeft_Line6=L + A / B : 下/上一首
+FL_HelpLeft_Line7=L + X / Y : 更改螢幕亮度
+FL_HelpLeft_Line8=
+FL_HelpLeft_Line9=L+R : 暫停
+FL_HelpLeft_Line10=長按L鍵：MP3播放往前跳1%
+FL_HelpLeft_Line11=雙擊L鍵：上一首
+
+FL_HelpRight_Count=11
+FL_HelpRight_Line0=請按R鍵查看說明
+FL_HelpRight_Line1=
+FL_HelpRight_Line2=R + 左/右 : MP3播放往前/後跳1%
+FL_HelpRight_Line3=R + 上/下 : MP3播放往前/後跳5%
+FL_HelpRight_Line4=R+A : 播放檔案夾下的全部歌曲
+FL_HelpRight_Line5=L+R+A : 播放磁碟上的全部歌曲
+FL_HelpRight_Line6=
+FL_HelpRight_Line7=L+R : 暫停
+FL_HelpRight_Line8=單擊R鍵+長按：MP3播放往後跳1%
+FL_HelpRight_Line9=雙擊R鍵：下一首
+FL_HelpRight_Line10=三擊R鍵：等待模式
+
+; ----------------------------
+
+SysMenu_MemoList=筆記本
+SysMenu_MemoList_NotFound=沒有%s檔案夾無法使用
+SysMenu_FileListMode=檔案列表模式切換
+SysMenu_Customize=系統設定
+SysMenu_RestoreBG=背景主題還原
+SysMenu_Firmware=返回燒錄卡內核介面
+SysMenu_Firmware_NotFound=沒有找到 %s
+
+; ----------------------------
+
+SubMenu_Title=選擇選單
+SubMenu_AppLauncher=程式啟動器
+SubMenu_AudioPlayer=音樂播放器
+SubMenu_SystemMenu=系統選單
+SubMenu_PowOffTimer_Set=關機計時器 %d分
+SubMenu_PowOffTimer_SetHelp=使用L/R鍵更改
+SubMenu_PowOffTimer_LastTime=剩餘時間: %d:%02d
+SubMenu_BottomHelp=按下A或SELECT進行設定
+
+; ----------------------------
+
+CS_Help0=MoonShell系統與音樂播放設定
+CS_Help1=
+CS_Help2=
+CS_Help3=要進行有關圖片、影片、文本的設定，
+CS_Help4=請在打開相關檔案後，
+CS_Help5=按下SELECT鍵。
+CS_Help6=
+CS_Help7=
+CS_Help8=/moonshl2/moonshl2.ini 檔案中
+CS_Help9=還有更多的設定。
+CS_Help10=
+CS_Help11=
+
+CS_Title=MoonShell2系統設定
+
+CS_PageTab_Title=種類
+CS_PageTab_Global=全局
+CS_PageTab_FileList=檔案列表
+CS_PageTab_ScreenSaver=螢幕保護
+CS_PageTab_Music=音樂
+
+CS_Cancel=取消
+CS_Ok=確定
+
+; ----------------------------
+
+CSG_SkipSetup=啟動時不顯示設定視窗
+CSG_BootCheckDisk=啟動時進行磁碟檢查
+
+CSG_ClickSound=按鍵音效
+CSG_EnableFadeEffect=畫面切換過渡效果
+CSG_AutoLastState=啟動時自動打開收藏夾
+CSG_LRKeyLockTitle=L/R鍵使用限制
+CSG_LRKeyLockAlwayOff=始終禁用
+CSG_LRKeyLockRelationalPanel=上蓋閉合時無效
+CSG_LRKeyLockAlwayOn=始終有效
+CSG_EnableResumeFunction=定期儲存恢復資訊
+CSG_EnableScreenCapture=啟用螢幕抓圖(DSi)
+CSG_SpeakerPowerOffWhenPanelClosed=上蓋閉合時關閉揚聲器
+
+CSF_MoveFolderLocked=鎖定當前檔案夾，禁止切換
+CSF_HiddenFilenameExt=隱藏檔案的副檔名
+CSF_HiddenNotSupportFileType=隱藏不支援的檔案
+CSF_HiddenNDSROMFile=隱藏NDS檔案
+CSF_EnableFileInfo=文件右側顯示該檔案資訊
+CSF_ShowOnlineHelp_LRButton=顯示L/R鍵的說明選單
+CSF_BButtonToFolderUp=按下B返回上一層檔案夾
+CSF_EasyDeleteKey=按下X+A刪除文件
+CSF_UseJpegExifThumbnail=從JpegExif讀取縮小圖
+CSF_ShowCoverImage=顯示M4A和MP3文件的封面圖像
+CSF_HideAttribute_Title=不顯示以下屬性的檔案
+CSF_HideAttribute_Archive=文檔
+CSF_HideAttribute_Hidden=隱藏
+CSF_HideAttribute_System=系統
+CSF_HideAttribute_ReadOnly=唯讀
+
+CSS_EnabledScreenSaver=使用螢幕保護
+CSS_Use24hFormat=24小時制
+CSS_ScreenSaverTitle=時鐘類型
+CSS_ScreenSaverNormal=普通時鐘
+CSS_ScreenSaverDigital=數位時鐘
+CSS_ScreenSaverExtend=擴展時鐘
+CSS_ScreenSaverBGTitle=背景主題
+CSS_ScreenSaverBGSkinDefault=標準
+CSS_ScreenSaverBGTopScreen=上螢幕背景主題
+CSS_ScreenSaverBGBottomScreen=下螢幕背景主題
+CSS_ScreenSaverTimeOutSecTitle=時間(秒)
+CSS_ScreenSaverTimeOutSec5sec=5
+CSS_ScreenSaverTimeOutSec10sec=10
+CSS_ScreenSaverTimeOutSec30sec=30
+CSS_ScreenSaverTimeOutSec60sec=60
+CSS_ScreenSaverTimeOutSecOff=關閉背光
+CSS_ShowID3Tag=播放音樂時顯示相關資訊
+
+CSM_PlayListEndTitle=播放列表播放結束後
+CSM_PlayListEndLoop=循環播放
+CSM_PlayListEndStop=停止播放
+CSM_PlayListEndPowerOff=關機
+
+; ----------------------------
+
+ACS_Help0=這裏可以進行音樂播放器相關的設定
+ACS_Help1=
+ACS_Help2=
+ACS_Help3=
+ACS_Help4=在顯示頻譜分析儀的時候，
+ACS_Help5=播放高負載的音樂文件，
+ACS_Help6=可能會造成走音。
+ACS_Help7=
+ACS_Help8=
+ACS_Help9=
+ACS_Help10=
+ACS_Help11=
+
+ACS_Title=音樂播放器設定
+
+ACS_AlwaysUsedAudioPlayer=總是使用音樂播放器
+ACS_PauseWhenStopped=暫停後返回檔案列表
+ACS_DrawPlayList=在上螢幕顯示播放列表
+ACS_DrawSpectrumAnalyzer=顯示頻譜分析器
+
+; ----------------------------
+
+DCS_Help0=這裏可以進行影片播放相關的設定
+DCS_Help1=
+DCS_Help2=
+DCS_Help3=啟用快速開始後，
+DCS_Help4=播放高幀率，高位元率的檔案時
+DCS_Help5=可能會產生拖慢現象。
+DCS_Help6=
+DCS_Help7=
+DCS_Help8=
+DCS_Help9=
+DCS_Help10=
+DCS_Help11=
+
+DCS_Title=影片播放設定
+
+DCS_EnabledFastStart=快速開始影片播放
+DCS_PauseWhenPanelClosed=上蓋閉合時自動暫停播放
+DCS_EnableIndividualResume=記錄每個影片檔案的播放中斷位置
+DCS_ControlPowerLED=播放時關閉電源LED燈
+DCS_InverseVisual_PlayPause=交換播放與暫停按鈕的圖標
+DCS_EverytimeStopOfEnd=播放完畢後始終結束
+DCS_WhenLateDecodingWaitPause=影片播放卡滯時暫停播放等待緩衝
+DCS_BacklightTimeOutTitle=背光時間(秒)
+DCS_BacklightTimeOutOff=關閉
+DCS_BacklightTimeOut5sec=5
+DCS_BacklightTimeOut10sec=10
+DCS_BacklightTimeOut15sec=15
+
+; ----------------------------
+
+DV_VolumeLabel=Vol.
+DV_VolumeValue=%d%%
+DV_VolumeMute=mute
+DV_VolumeMax=MAX
+
+; ----------------------------
+
+DV_Popup_Pause_Play=播放
+DV_Popup_Pause_Pause=暫停
+DV_Popup_PreviousFile=上一首
+DV_Popup_NextFile=下一首
+DV_Popup_Volume=音量： %d%%
+DV_Popup_Seek=播放進度： %s秒
+DV_Popup_BacklightLevel=螢幕亮度： %d
+
+; ----------------------------
+
+ICS_Help0=這裏可以進行圖片顯示相關的設定
+ICS_Help1=
+ICS_Help2=
+ICS_Help3=在瀏覽圖片時按下START鍵
+ICS_Help4=可以將圖片設定為壁紙。
+ICS_Help5=
+ICS_Help6=當想恢復預設的背景時，
+ICS_Help7=請在檔案列表按下START鍵，
+ICS_Help8=並在系統選單中，
+ICS_Help9=選擇「還原背景主題」。
+ICS_Help10=
+ICS_Help11=
+
+ICS_Title=圖片顯示設定
+
+ICS_ShowInfomation=顯示檔案資訊和說明
+ICS_ShowControlIcons=顯示觸控螢幕操作圖標
+ICS_DoubleSpeedKey=加快按鍵操作移動速度
+ICS_DoubleSpeedTouch=加快觸控螢幕操作移動速度
+ICS_MultipleResume=記憶圖片放大比例
+ICS_AutoFitting=JPEG圖片自適應縮放
+ICS_EnabledProgressiveJpeg=啟用Progressive JPEG格式支持（慢）
+ICS_StartPosTitle=圖片打開位置
+ICS_StartPosLeftTop=左上
+ICS_StartPosRightTop=右上
+ICS_StartPosLeftBottom=左下
+ICS_StartPosRightBottom=右下
+ICS_AutoNextTimeSecTitle=自動切換(秒)
+ICS_AutoNextTimeSecOff=關閉
+ICS_AutoNextTimeSec10sec=10
+ICS_AutoNextTimeSec30sec=30
+ICS_AutoNextTimeSec60sec=60
+ICS_ShowInfoTopScreen=在上螢幕顯示資訊
+ICS_EffectTitle=轉換成背景主題時的效果
+ICS_EffectHeightPadding=考慮上下畫面間隔轉換
+ICS_EffectPastelForTopBG=上畫面應用白色模糊效果加工
+ICS_EffectPastelForBottomBG=下畫面應用白色模糊效果加工
+
+; ----------------------------
+
+IV_LoadMsg0=正在讀取圖片檔案
+IV_LoadMsg1=請稍等
+
+IV_Help1=START: 設定為背景主題 / SELECT: 選項設定
+IV_Help2=Ｙ：50% / Ｘ：200% / Ａ：100% / Ｂ：返回
+
+; ----------------------------
+
+IV_Popup_BacklightLevel=螢幕亮度： %d
+IV_Popup_Zoom=縮放： %d%%
+IV_Popup_Pause_Play=播放
+IV_Popup_Pause_Pause=暫停
+IV_Popup_PreviousFile=上一首
+IV_Popup_NextFile=下一首
+IV_Popup_Seek=播放進度： %s
+
+; ----------------------------
+
+TCS_Help0=這裏可以進行文本顯示相關的設定
+TCS_Help1=
+TCS_Help2=使用ClearType時請註意：
+TCS_Help3=舊式DS在使用上螢幕顯示文本時，
+TCS_Help4=會有文本模糊不清的現象。
+TCS_Help5=
+TCS_Help6=文字編碼自動識別失敗的時候
+TCS_Help7=在文件上長按A按鈕
+TCS_Help8=會出現子選單
+TCS_Help9=請在其中選擇你需要的文字編碼
+TCS_Help10=手動選擇可以為每個文件設定不同的編碼
+TCS_Help11=
+
+TCS_Title=文本顯示設置
+
+TCS_TopScrModeTitle=上螢幕顯示設定
+TCS_TopScrModeLightOff=關閉
+TCS_TopScrModeText=顯示文本
+TCS_TopScrModeClock=顯示時鐘
+
+TCS_ScreenSaverTitle=螢幕保護時鐘
+TCS_ScreenSaverNormal=標準時鐘
+TCS_ScreenSaverDigital=數位時鐘
+TCS_ScreenSaverExtend=擴展時鐘
+
+TCS_LineSpaceTitle=行間距
+TCS_LineSpaceSmall=窄
+TCS_LineSpaceMiddle=標準
+TCS_LineSpaceLarge=寬
+
+TCS_FontSizeTitle=字體大小
+TCS_FontSizeSmall=小(12pix)
+TCS_FontSizeMiddle=中(14pix)
+TCS_FontSizeLarge=大(16pix)
+
+TCS_ClearTypeFontTitle=ClearType字體
+TCS_ClearTypeFontNone=無
+TCS_ClearTypeFontLite=薄
+TCS_ClearTypeFontNormal=標準
+TCS_ClearTypeFontHeavy=濃
+
+TCS_UseSmoothScroll=使用平滑捲動
+
+TCS_CPTitle=編碼
+TCS_CP437=CP437 (US, AUS)
+TCS_CP850=CP850 (DOS)
+TCS_CP1252=CP1252 (Windows)
+
+TCS_DetectCharCodeTitle=自動識別文字編碼
+
+; ----------------------------
+
+TV_SelEnc_Title=請選擇文字編碼類型
+TV_SelEnc_Items_AutoDetect=自動偵測
+TV_SelEnc_Items_ANSI=ANSI 8bit
+TV_SelEnc_Items_EUC=EUC/S-JIS
+TV_SelEnc_Items_UTF16BE=UTF-16 (BE)
+TV_SelEnc_Items_UTF16LE=UTF-16 (LE)
+TV_SelEnc_Items_UTF8=UTF-8
+TV_SelEnc_Items_TextEdit=啟動文本編輯器
+TV_SelEnc_Help_Normal=按Ａ確定，Ｂ取消。
+TV_SelEnc_Help_NoEdit0=不能編輯大小超過128kbyte的文件。
+TV_SelEnc_Help_NoEdit1=
+
+; ----------------------------
+
+TV_PRG_LoadExtendFont=正在載入外掛字體…
+TV_PRG_LoadTextFile=讀取文本文件中…
+TV_PRG_DetectTextEncode=正在識別文本編碼…
+TV_PRG_DetectReturnCode=正在識別返回碼…
+TV_PRG_ConvertToUnicode=正在轉換為UNICODE…
+
+TV_UncertainFormat1=可能無法正確識別文本格式,如果不能正常顯示。
+TV_UncertainFormat2=請在打開文本文件時長按 A 鍵手動選擇編碼。
+
+TV_Help1=Ａ：翻頁 / Ｂ：返回
+TV_Help2=Ｘ／Ｙ：儲存書籤/載入書籤
+TV_Help3=SELECT：選項設定 / 編碼:%s
+TV_Info=當前行數：%d / %d 行 (%.2f%%)
+
+TV_BookmarkText_LoadTitle=書籤讀取選單
+TV_BookmarkText_SaveTitle=書籤儲存選單
+TV_BookmarkText_Empty=%d: 沒有書籤
+TV_BookmarkText_Info=%d: %d行 %s %s
+
+; ----------------------------
+
+TV_Popup_BacklightLevel=螢幕亮度： %d
+TV_Popup_Bookmark_Load=
+TV_Popup_Bookmark_Empty=讀取中斷
+TV_Popup_Bookmark_Save=書籤儲存完畢
+TV_Popup_Pause_Play=播放
+TV_Popup_Pause_Pause=暫停
+TV_Popup_PreviousFile=上一首
+TV_Popup_NextFile=下一首
+TV_Popup_Seek=播放進度： %s
+TV_Popup_MoveToTop=移動到開頭
+TV_Popup_MoveToLast=移動到結尾
+
+; ----------------------------
+
+ME_Help0=筆記本模式
+ME_Help1=
+ME_Help2=↓ / ← / ↑ / →: 黑色 / 紅色 / 綠色 / 藍色
+ME_Help3=Y / X : 筆跡細/粗.
+ME_Help4=A / B : 儲存並關閉
+ME_Help5=SELECT:撤銷
+ME_Help6=長按L/R時觸摸：橡皮擦
+ME_Help7=
+ME_Help8=如果您不想儲存請直接關機。
+ME_Help9=
+
+; ----------------------------
+
+MemoList_Title=筆記本列表
+
+MemoList_Help0=
+MemoList_Help1=
+MemoList_Help2=觸摸下螢幕：新建筆記本
+MemoList_Help3=長按START鍵：刪除遊標位置文件
+
+; ----------------------------
+
+MemoEdit_FileInfo_Open=打開已有文件。
+MemoEdit_FileInfo_Edited=正在編輯中.完成後將被自動儲存。
+MemoEdit_FileInfo_Create=開始新建文件編輯模式。
+
+MemoEdit_SavingNow=正在儲存更改後的BMP文件...
+
+; ----------------------------
+; for Text editor Ver1.5
+
+TE_File_SelectEncode_Title1=不能自動識別文本編碼。
+TE_File_SelectEncode_Title2=請手動選擇文本的編碼類型。
+
+TE_skk_DicSystem_PreloadDic=正在讀取字典...
+
+TE_skk_ExitMenu_Title=退出選單
+TE_skk_ExitMenu_Items_Cancel=取消
+TE_skk_ExitMenu_Items_Overwrite=覆蓋並且退出
+TE_skk_ExitMenu_Items_SaveAs=另存新檔並且退出
+TE_skk_ExitMenu_Items_CreateNew=開新檔案儲存並且退出
+TE_skk_ExitMenu_Items_NoSaveExit=不儲存退出
+TE_skk_ExitMenu_SavePrgMsg1=正在儲存文本文件...
+TE_skk_ExitMenu_SavePrgMsg2=請不要關閉電源。
+
+TE_SysMsg_ClipBoard_Empty=剪貼板為空白。
+TE_SysMsg_ClipBoard_Pasted=已從剪貼板粘貼。
+TE_SysMsg_ClipBoard_Copied=已複製到剪貼板。
+
+TE_OSKHW_Model_ModelResults_Selector_Title=請選擇一個正確的字符。
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle1=是否將這個手寫數據
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle2=關聯到對應字符並
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle3=註冊到字典？
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogRegist=註冊
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogCancel=取消
+
+; ----------------------------
+

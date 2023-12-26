@@ -1,3 +1,0 @@
-# Installation instructions for YSMenu on the iTouchDS
-
-Please follow the instructions for "How to use with YSMenu" section here: https://gbatemp.net/threads/607421/

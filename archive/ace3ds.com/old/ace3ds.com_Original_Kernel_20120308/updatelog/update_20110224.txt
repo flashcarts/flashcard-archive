@@ -1,0 +1,22 @@
+update_20110224
+
+fixed 4603 - Princess Angel (K)
+fixed 4863 - Touch Man to Man Gicho Yeongeo (K)
+fixed 4941 - Figure Princess Exciting Skating Gold Medal Aim! (K)
+fixed 5560 - Dragon Quest VI Realms of Revelation (U)
+fixed 5560 - Dragon Quest VI Realms of Revelation (U) GER PATCHED v1.2
+fixed 5561 - Junior Brain Trainer Maths Edition (E)
+fixed 5562 - Dengeki Gakuen RPG Cross of Venus Special (J)
+fixed 5563 - Maru Goukaku Shikaku Dasshu TAC Koumuin Shiken (J)
+fixed 5564 - Minna de Taikan Dokusho DS Chou Kowai Gakkou no Kaidan (J)
+fixed 5565 - 18 Classic Card Games (U)
+fixed 5566 - Challenge Me Brain Puzzles 2 (U)
+fixed 5569 - Jewel Quest Mysteries Two Pack (E)
+fixed 5570 - Midnight Mysteries The Edgar Allan Poe Conspiracy (E)
+fixed 5572 - Rango The Videogame (E).
+fixed 5573 - Atari Greatest Hits Volume 1 (E)
+fixed XXXX - Radiant Historia (U)
+fixed XXXX - Naruto Shippuden Naruto vs Sasuke (U)
+fixed XXXX - Celebi Distribution 2011 (E)
+fixed XXXX - Lingo (NL)
+fixed XXXX - Lingo voor Kinderen (NL)

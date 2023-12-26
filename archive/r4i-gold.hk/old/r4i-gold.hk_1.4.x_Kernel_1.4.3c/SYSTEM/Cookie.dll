@@ -1,0 +1,594 @@
+[SYSTEM]
+; Section Name of Literals
+;LITERALS=LITERALS_CHS
+LITERALS=LITERALS_ENG
+;LITERALS=LITERALS_FRA
+;LITERALS=LITERALS_ITA
+;LITERALS=LITERALS_SPA
+; Sort by SAV Modification Time
+SORT_BY_TIME=false
+; INI FileName for Skin
+SKIN=/Skin/Skin.ini
+; Brightness (0-3 or -1=Default)
+BRIGHT=-1
+; Auto boot this file (default DEFAULT.NDS)
+AUTO_BOOT=
+; write it shown on bottom by yourself
+VERSION=
+; Disable WAIT_CNT on SuperCard
+GBA_PATCH=true
+; Disable File Deletion
+NO_DEL=false
+; Extension of Save (use .sav usually)
+EXT_SAV=.sav
+; Default DMA/Reset Setting
+DEFAULT_DMA=true
+DEFAULT_RESET=true
+; External Application (Start Button Menu)
+EXT_APP1_FILE=/3dscard.dat
+EXT_APP1_NAME=Back to Bootup R4 Main Menu
+
+[FILETYPE]
+GB=cat /SYSTEM/goomba.gba
+GBC=cat /SYSTEM/goomba.gba
+NES=pnes /SYSTEM/PocketNES.gba
+FDS=hvca /SYSTEM/hvca.gba
+SMS=swan /SYSTEM/SMSAdvance.gba
+GG=swan /SYSTEM/SMSAdvance.gba 4
+WS=swan /SYSTEM/SwanAdvance.gba
+WSC=swan /SYSTEM/SwanAdvance.gba
+NGP=swan /SYSTEM/NGPAdvance.gba
+
+[LITERALS_CHS]
+BTN_OK=OK(A)
+BTN_YES=确定(A)
+BTN_NO=取消(B)
+BTN_STOP=中止(B)
+BTN_IGNORE=忽略(X)
+
+ERROR=错 误
+CHEAT=金手指
+DMA=DMA
+RESET=复 位
+BROWSE=...
+SLOT2=Slot2
+NDS=NDS
+GBA=GBA
+FIRMWARE=返回DSL界面
+
+GAMES= 
+SAVES= 
+ALL_FILES= 
+
+RUMBLE=震动包
+RUMBLE_LOW=震动(弱)
+RUMBLE_MID=震动(中)
+RUMBLE_TOP=震动(強)
+
+GBA_NOR=GBA-NOR
+GBA_NOR_WRITE=写入到..
+GBA_NOR_READ_SRAM=从SRAM到File
+GBA_NOR_CONFIRM=NOR 是否写入？
+GBA_NOR_SAME=NOR已经写入完成，是否回写？
+GBA_NOR_SRAM_ONLY=只是SRAM(X)
+GBA_NOR_DIFF=NOR与SRAM中不同，是否保存？
+GBA_NOR_SRAM_CONFIRM=SRAM是否保存？
+GBA_NOR_NO_INFO=NOR文件中没有信息
+
+BOOTING=启动中..
+LOADING=载入中..
+
+UNKNOWN_DLDI_TYPE=这个DLDI名与机器不匹配
+NO_BOOT_LOADER=没有启动引导
+CANT_READ_BOOT_LOADER=不能读取启动引导
+
+NO_SAV_CREATE=没有存档文件，是否建立？
+CANT_CREATE_SAV=不能建立存档文件
+
+COPYING=复制中..
+CANT_OPEN_COPY_SRC=不能打开复制源文件
+CANT_OPEN_COPY_DST=不能打开复制目标
+
+DAY_WEEK=日\0一\0二\0三\0四\0五\0六
+DAY_WEEK_LEN=2
+
+KIND_SAVE=< 保存文件 >
+KIND_BACKUP=< 备  份 >
+KIND_GB=< GAMEBOY >
+KIND_NES=< NES >
+KIND_TEXT=< 文本文件 >
+KIND_UNKNOWN=< 未知格式 >
+KIND_FOLDER=< 目  录 >
+KIND_PARENT=上级目录
+
+MOD_DATE=更新日期：
+MOD_DATE_SAVE=存档更新：
+
+CHEAT_SAVE_FAIL=金手指保存失败
+CHEAT_CANCEL=是否取消金手指？
+
+PASSME=PassMe
+BOOT_SLOT2=GBA启动
+NO_SLOT2=GBA扩展没有安装，是否运行？
+NO_PASS=GBA扩展不能通过测试，是否运行？
+
+CANT_OPEN_NDS=不能打开NDS文件
+CANT_READ_NDS=不能读取NDS文件
+CANT_OPEN_SAV=不能打开存档文件
+SAV_IS_DIR=存档文件已经存在
+CREATING_SAV=保存金手指中...
+CANT_CREATE_SAV2=不能创建存档文件
+CANT_CREATE_ARP=不能创建R4MENU.INI
+CREATING_SYS=正在初始化..
+CANT_CREATE_SYS=不能创建初始化失败..
+
+BACKUP=备  份
+RESTORE=恢  复
+BACKUP_CONFIRM=是否确定开始备份？\n(覆盖旧的备份)
+RESTORE_CONFIRM=是否确定恢复备份？\n(覆盖现在的存档)
+
+DELETE=删除
+DEL_FOLDER_CONFIRM=是否确定删除目录？
+DEL_FILE_CONFIRM=是否确定删除文件？
+CANT_DEL=不能删除
+
+SAVING_SRAM=GBA SRAM 保存中...
+NO_FLASH_CART=闪存装置不存在或错误
+CANT_OPEN_GBA=不能打开GBA
+GBA_EZ4PATCHED=EZ已经应用补丁\n是否继续？
+GBA_NORPATCHED=NOR应经应用补丁\nNOR存档将被覆盖\n是否保存文件？
+GBA_SRAM_FORMAT=是否开始 SRAM 格式化？\n其他文件将被删除
+GBA_SIZE_OVER=容量太大\n是否继续？
+
+CANT_OPEN_ROM=ROM打开失败
+CANT_OPEN_EMU=不能打开模拟器
+
+CANT_OPEN_FILE=不能打开文件
+
+HELP_CHEAT=START = 保存并退出\nB = 取消变更并推出
+HELP_ETC=START = 退回到文件列表\nX = 启动GBA端\nY = PassMe
+HELP_TEXTVIEW=START = 一般返回\nB = 强制返回
+
+
+[LITERALS_ENG]
+BTN_OK=OK(A)
+BTN_YES=Yes(A)
+BTN_NO=No(B)
+BTN_STOP=Stop(B)
+BTN_IGNORE=Ignore(X)
+
+ERROR=Error
+CHEAT=Cheat
+DMA=DMA
+RESET=Reset
+BROWSE=...
+SLOT2=Slot2
+NDS=NDS
+GBA=GBA
+FIRMWARE=DS Menu
+
+GAMES=Games
+SAVES=Saves
+ALL_FILES=All Files
+
+RUMBLE=Rumble
+RUMBLE_LOW=Rumble(Low)
+RUMBLE_MID=Rumble(Mid)
+RUMBLE_TOP=Rumble(High)
+
+GBA_NOR=GBA-NOR
+GBA_NOR_WRITE=Write
+GBA_NOR_READ_SRAM=SRAM->File
+GBA_NOR_CONFIRM=Write to NOR?
+GBA_NOR_SAME=TheROM had been write to NOR.\nRewrite?
+GBA_NOR_SRAM_ONLY=SRAM Only(X)
+GBA_NOR_DIFF=There is other ROM on NOR.\nBackup SRAM to file?
+GBA_NOR_SRAM_CONFIRM=Save SRAM to File?
+GBA_NOR_NO_INFO=No filename data for NOR
+
+BOOTING=Booting...
+LOADING=Loading...
+
+UNKNOWN_DLDI_TYPE=Unsupported DLDI Name
+NO_BOOT_LOADER=Can't open loader
+CANT_READ_BOOT_LOADER=Can't read loader
+
+NO_SAV_CREATE=No SAV file.\nCreate it?
+CANT_CREATE_SAV=Can't create SAV
+
+COPYING=Copying...
+CANT_OPEN_COPY_SRC=Can't open source file
+CANT_OPEN_COPY_DST=Can't open destination
+
+DAY_WEEK=Sun\0Mon\0Tue\0Wed\0Thu\0Fri\0Sat
+DAY_WEEK_LEN=4
+
+KIND_SAVE=< SaveFile >
+KIND_BACKUP=< Backup >
+KIND_GB=< GameBoy >
+KIND_NES=< Famicom/NES >
+KIND_TEXT=< Text >
+KIND_UNKNOWN=< Unknown >
+KIND_FOLDER=< Folder >
+KIND_PARENT=Parent
+
+MOD_DATE=Time:
+MOD_DATE_SAVE=SAV:
+
+CHEAT_SAVE_FAIL=Save failed
+CHEAT_CANCEL=Cancel modification and\nReturn to menu?
+
+PASSME=PassMe
+BOOT_SLOT2=Boot GBA
+NO_SLOT2=No cartridge in slot2.\nForce booting?
+NO_PASS=No pass in slot2.\nForce booting?
+
+CANT_OPEN_NDS=Can't open NDS file
+CANT_READ_NDS=Can't read from NDS file
+CANT_OPEN_SAV=Can't open SAV file
+SAV_IS_DIR=There is directory named SAV
+CREATING_SAV=Creating SAV...
+CANT_CREATE_SAV2=SAV Creation failed
+CANT_CREATE_ARP=Can't create SYSTEM.ARP
+CREATING_SYS=Creating SYS...
+CANT_CREATE_SYS=Can't create SYS
+
+BACKUP=Backup
+RESTORE=Restore
+BACKUP_CONFIRM=Backup SAV to BAK?\n(may overwrites old BAK)
+RESTORE_CONFIRM=Restore BAK to SAV?\n(may overwrites current SAV)
+
+DELETE=Delete
+DEL_FOLDER_CONFIRM=Delete this folder?
+DEL_FILE_CONFIRM=Delete this file?
+CANT_DEL=Can't delete it
+
+SAVING_SRAM=Saving GBA SRAM...
+NO_FLASH_CART=No flash cartridge in slot2
+CANT_OPEN_GBA=Can't open GBA file
+GBA_EZ4PATCHED=rom is patched for EZ\nContinue loading?
+GBA_NORPATCHED=rom is patched for NOR\nOverwrite SRAM for NOR?
+GBA_SRAM_FORMAT=format SRAM for SYSTEM?\nthe other tool's data will be overwritten
+GBA_SIZE_OVER=rom is larger than PSRAM\nContinue loading?
+
+CANT_OPEN_ROM=Can't open rom file
+CANT_OPEN_EMU=Can't open emulator
+
+CANT_OPEN_FILE=Can't open the file
+
+HELP_CHEAT=START = SAVE and EXIT\nB = CANCEL and EXIT
+HELP_ETC=START = EXIT\nX = Boot GBA\nY = PassMe\nSELECT = DS Menu
+HELP_TEXTVIEW=START = EXIT\nB = EXIT
+
+
+[LITERALS_FRA]
+BTN_OK=OK(A)
+BTN_YES=Oui(A)
+BTN_NO=Non(B)
+BTN_STOP=Stop(B)
+BTN_IGNORE=Ignorer(X)
+
+ERROR=Erreur
+CHEAT=Triche
+DMA=DMA
+RESET=Reset
+BROWSE=...
+SLOT2=Slot2
+NDS=NDS
+GBA=GBA
+FIRMWARE=Menu DS
+
+GAMES=Jeux
+SAVES=SAVs
+ALL_FILES=Tout
+
+RUMBLE=Niveau de vibration
+RUMBLE_LOW=Faible
+RUMBLE_MID=Moyen
+RUMBLE_TOP=Fort
+
+GBA_NOR=GBA-NOR
+GBA_NOR_WRITE=Ecrire
+GBA_NOR_READ_SRAM=SRAM->Fichier
+GBA_NOR_CONFIRM=Ecrire sur NOR?
+GBA_NOR_SAME=La ROM va être écrite sur NOR.\nRéécrire?
+GBA_NOR_SRAM_ONLY=SRAM Seulement(X)
+GBA_NOR_DIFF=Il y a d'autre ROM en NOR.\nBackup SRAM en fichier?
+GBA_NOR_SRAM_CONFIRM=Sauver SRAM sur fichier?
+GBA_NOR_NO_INFO=Aucun fichier de donnés sur NOR
+
+BOOTING=Démarrage...
+LOADING=Chargement...
+
+UNKNOWN_DLDI_TYPE=Nom du DLDI non reconnu
+NO_BOOT_LOADER=Ne peut pas ouvrir le lanceur
+CANT_READ_BOOT_LOADER=Ne peut pas lire le lanceur
+
+NO_SAV_CREATE=Aucun fichier SAV.\nCréer ?
+CANT_CREATE_SAV=Ne peut pas créer le SAV
+
+COPYING=En Copie...
+CANT_OPEN_COPY_SRC=Ne peut pas ouvrir le fichier source
+CANT_OPEN_COPY_DST=Ne peut pas ouvrir la destination
+
+DAY_WEEK=Dim\0Lun\0Mar\0Mer\0Jeu\0Ven\0Sam
+DAY_WEEK_LEN=4
+
+KIND_SAVE=Fichier de sauvegarde
+KIND_BACKUP=Backup
+KIND_GB=ROM GameBoy
+KIND_NES=ROM Famicom/NES
+KIND_TEXT=Fichier de Text
+KIND_UNKNOWN=Inconnu
+KIND_FOLDER=Dossier
+KIND_PARENT=Parent
+
+MOD_DATE=Date :
+MOD_DATE_SAVE=SAV :
+
+CHEAT_SAVE_FAIL=Sauvegarde raté
+CHEAT_CANCEL=Annulez la modification et\nRevenir au menu ?
+
+PASSME=Mode PasseMe
+BOOT_SLOT2=Démarrer GBA
+NO_SLOT2=Aucune cartouche dans le slot2.\nForcer le Demarrage?
+NO_PASS=Aucun PasseMe dans le slot1.\nForcer le Demarrage?
+
+CANT_OPEN_NDS=Ne peut pas ouvrir le fichier NDS
+CANT_READ_NDS=Ne peut pas lire le fichier NDS
+CANT_OPEN_SAV=Ne peut pas ouvrir le fichier SAV
+SAV_IS_DIR=Il y a un dossier appelé SAV
+CREATING_SAV=Création de SAV...
+CANT_CREATE_SAV2=La création de SAV a ratée
+CANT_CREATE_ARP=Le SYSTEM.ARP ne peut pas créé
+CREATING_SYS=Création du SYS...
+CANT_CREATE_SYS=Le SYS ne peut pas créé
+
+BACKUP=Backup
+RESTORE=Restituer
+BACKUP_CONFIRM=Ecrire SAV sur BAK?\n(Remplace l'ancien BAK)
+RESTORE_CONFIRM=Restituer BAK sur SAV?\n(Remplace la SAV actuel)
+
+DELETE=Effacer
+DEL_FOLDER_CONFIRM=Effacer ce dossier?
+DEL_FILE_CONFIRM=Effacer ce fichier?
+CANT_DEL=Effacement impossible
+
+SAVING_SRAM=Sauvegarde de la SRAM GBA...
+NO_FLASH_CART=Aucune cartouche dans le slot2
+CANT_OPEN_GBA=Le fichier GBA ne peut être lancé
+GBA_EZ4PATCHED=ROM patché pour EZ\nCharger quand même ?
+GBA_NORPATCHED=ROM patché pour la NOR\nRemplacer la SRAM pour la NOR?
+GBA_SRAM_FORMAT=Formater la SRAM pour SYSTEM ?\nLes données seront remplacées
+GBA_SIZE_OVER=ROM plus grande que la PSRAM\nCharger quand même ?
+
+CANT_OPEN_ROM= Ne peut pas lancer la ROM
+CANT_OPEN_EMU=Ne peut pas lancer l'émulateur
+
+CANT_OPEN_FILE=Ne peut pas ouvrir le fichier
+
+HELP_CHEAT=START = Sauver et Quitter\nB = Annuler et Quitter
+HELP_ETC=START = Quitter\nX = Démarrer GBA\nY = mode PasseMe\nSELECT = Menu DS
+HELP_TEXTVIEW=START = Quitter\nB = Quitter
+
+
+[LITERALS_ITA]
+BTN_OK=OK(A)
+BTN_YES=Si(A)
+BTN_NO=No(B)
+BTN_STOP=Stop(B)
+BTN_IGNORE=Ignora(X)
+
+ERROR=Errore
+CHEAT=Cheat
+DMA=DMA
+RESET=Resetta
+BROWSE=...
+SLOT2=Slot2
+NDS=NDS
+GBA=GBA
+FIRMWARE=DS Menu
+
+GAMES=Giochi
+SAVES=Salvataggi
+ALL_FILES=Tutti i File
+
+RUMBLE=vibrazione(Spenta)
+RUMBLE_LOW=vibrazione(Bassa)
+RUMBLE_MID=vibrazione(Media)
+RUMBLE_TOP=vibrazione(Alta)
+
+GBA_NOR=GBA-NOR
+GBA_NOR_WRITE=Scrivi
+GBA_NOR_READ_SRAM=SRAM->File
+GBA_NOR_CONFIRM=Scrivi NOR?
+GBA_NOR_SAME=Rom scritta sulla NOR.\nRiscrivi?
+GBA_NOR_SRAM_ONLY=Solo SRAM(X)
+GBA_NOR_DIFF=Cè un altra Rom nella NOR.\nCreo un backup della SRAM?
+GBA_NOR_SRAM_CONFIRM=Salvare SRAM in un file?
+GBA_NOR_NO_INFO=Nessun file sulla NOR
+
+BOOTING=Booting...
+LOADING=Caricamento...
+
+UNKNOWN_DLDI_TYPE=DLDI non supportata
+NO_BOOT_LOADER=Impossibile aprire il LOADER
+CANT_READ_BOOT_LOADER=Impossibile leggere il LOADER
+
+NO_SAV_CREATE=Nessun salvataggio.\nCrearne uno?
+CANT_CREATE_SAV=Impossibile creare SAV
+
+COPYING=Sto copiando...
+CANT_OPEN_COPY_SRC=Impossibile aprire il file sorgente
+CANT_OPEN_COPY_DST=Impossibile aprire il file di destinazione
+
+DAY_WEEK=Dom\0Lun\0Mar\0Mer\0Gio\0Ven\0Sab
+DAY_WEEK_LEN=4
+
+KIND_SAVE=< Salvataggio >
+KIND_BACKUP=< Backup >
+KIND_GB=< GameBoy >
+KIND_NES=< Famicom/NES >
+KIND_TEXT=< Testo >
+KIND_UNKNOWN=< Sconosciuto >
+KIND_FOLDER=< Cartella >
+KIND_PARENT=<..
+
+MOD_DATE=Data-Ora:
+MOD_DATE_SAVE=SAV:
+
+CHEAT_SAVE_FAIL=Salvataggio cheat fallito
+CHEAT_CANCEL=Ignora modifiche /nTornare al menu?
+
+PASSME=PassMe
+BOOT_SLOT2=Avvia GBA
+NO_SLOT2=Nessuna cartuccia nello slot2.\nForzare avvio?
+NO_PASS=Nessuna passCard nello slot2.\nForzare avvio?
+
+CANT_OPEN_NDS=Impossibile aprire file NDS
+CANT_READ_NDS=Impossibile leggere file NDS
+CANT_OPEN_SAV=Impossibile aprire file SAV
+SAV_IS_DIR=Esiste una directory SAV
+CREATING_SAV=Sto creando il SAV...
+CANT_CREATE_SAV2=Creazione del SAV fallita
+CANT_CREATE_ARP=Impossibile creare SYSTEM.ARP
+CREATING_SYS=Sto creando il SYS...
+CANT_CREATE_SYS=Impossibile creare SYS
+
+BACKUP=Backup
+RESTORE=Ripristina
+BACKUP_CONFIRM=Backup SAV in BAK?\n(verrà sovrascritto il vecchio BAK)
+RESTORE_CONFIRM=Ripristinare BAK in SAV?\n(verrà sovrascritto il vecchio SAV)
+
+DELETE=Elimina
+DEL_FOLDER_CONFIRM=Eliminare questa cartella?
+DEL_FILE_CONFIRM=Eliminare questo file?
+CANT_DEL=Impossibile da eliminare...
+
+SAVING_SRAM=Salvataggio GBA in SRAM...
+NO_FLASH_CART=Nessuna flashcard nello slot2
+CANT_OPEN_GBA=Impossibile aprire il file GBA
+GBA_EZ4PATCHED=Rom preparata per ez\nContinuo caricamento?
+GBA_NORPATCHED=Rom preparata per NOR\nSovrascrivi SRAM per NOR?
+GBA_SRAM_FORMAT=Formattare la SRAM per SYSTEM?\nogni dato verrà sovrascritto
+GBA_SIZE_OVER=La rom è pu grande del PSAR\nContinuo caricamento?
+
+CANT_OPEN_ROM=Impossibile aprire la rom
+CANT_OPEN_EMU=Impossibile aprire emulatore
+
+CANT_OPEN_FILE=Impossibile aprire il file
+
+HELP_CHEAT=START = Salva e Esci\nB = Ignora e Esci
+HELP_ETC=START = Esci\nX = Avvia GBA\nY = PassMe\nSELECT = DS Menu
+HELP_TEXTVIEW=START = Esci\nB = Esci
+
+
+[LITERALS_SPA]
+BTN_OK=OK(A)
+BTN_YES=Sí(A)
+BTN_NO=No(B)
+BTN_STOP=Parar(B)
+BTN_IGNORE=Ignorar(X)
+
+ERROR=Error
+CHEAT=Truco
+DMA=DMA
+RESET=Reset
+BROWSE=...
+SLOT2=Slot2
+NDS=NDS
+GBA=GBA
+FIRMWARE=Menú de DS
+
+GAMES=Juegos
+SAVES=Saves
+ALL_FILES=Todos los archivos
+
+RUMBLE=Rumble
+RUMBLE_LOW=Rumble(Bajo)
+RUMBLE_MID=Rumble(Medio)
+RUMBLE_TOP=Rumble(Alto)
+
+GBA_NOR=GBA-NOR
+GBA_NOR_WRITE=Escribir
+GBA_NOR_READ_SRAM=SRAM->Archivo
+GBA_NOR_CONFIRM=Escribir a NOR?
+GBA_NOR_SAME=La ROM ha sido escrita en NOR.\nReescribir?
+GBA_NOR_SRAM_ONLY=Solo SRAM(X)
+GBA_NOR_DIFF=Aquí hay otra ROM en NOR.\nBackupear SRAM a un archivo?
+GBA_NOR_SRAM_CONFIRM=Guardar SRAM a un archivo?
+GBA_NOR_NO_INFO=No hay nombre para NOR
+
+BOOTING=Booting...
+LOADING=Cargando...
+
+UNKNOWN_DLDI_TYPE=DLDI no soportado
+NO_BOOT_LOADER=No se puede cargar el loader
+CANT_READ_BOOT_LOADER=No se puede leer el loader
+
+NO_SAV_CREATE=No hay SAV.\nCrearlo?
+CANT_CREATE_SAV=No se puede crear el SAV
+
+COPYING=Copiando...
+CANT_OPEN_COPY_SRC=No se puede abrir el archivo de origen
+CANT_OPEN_COPY_DST=No se puede abrir el destinatario
+
+DAY_WEEK=Dom\0Lun\0Mar\0Mie\0Jue\0Vie\0Sab
+DAY_WEEK_LEN=4
+
+KIND_SAVE=< Save >
+KIND_BACKUP=< Backup >
+KIND_GB=< GameBoy >
+KIND_NES=< Famicom/NES >
+KIND_TEXT=< Texto >
+KIND_UNKNOWN=< Desconocido >
+KIND_FOLDER=< Carpeta >
+KIND_PARENT=Raíz
+
+MOD_DATE=Fecha:
+MOD_DATE_SAVE=SAV:
+
+CHEAT_SAVE_FAIL=Guardado fallido
+CHEAT_CANCEL=Cancelar modificación y\nvolver al menú?
+
+PASSME=PassMe
+BOOT_SLOT2=Cargar GBA
+NO_SLOT2=No hay ningún cartucho en el slot2.\nForzar cargado?
+NO_PASS=No hay ningún pass en el slot2.\nForzar cargado?
+
+CANT_OPEN_NDS=No se puede abrir el archivo NDS
+CANT_READ_NDS=No se puede leer desde el archivo NDS
+CANT_OPEN_SAV=No se puede abrir el SAV
+SAV_IS_DIR=Este es el directorio llamado SAV
+CREATING_SAV=Creando SAV...
+CANT_CREATE_SAV2=Creación del SAV fallida
+CANT_CREATE_ARP=No se puede crear SYSTEM.ARP
+CREATING_SYS=Creando SYS...
+CANT_CREATE_SYS=No se puede crear SYS
+
+BACKUP=Backup
+RESTORE=Restarurar
+BACKUP_CONFIRM=Backupear SAV a BAK?\n(sobreescribirá el antiguo BAK)
+RESTORE_CONFIRM=Restaurar BAK a SAV?\n(sobreescribirá el actual SAV)
+
+DELETE=Borrar
+DEL_FOLDER_CONFIRM=Borrar esta carpeta?
+DEL_FILE_CONFIRM=Borrar este archivo?
+CANT_DEL=No se puede borrar
+
+SAVING_SRAM=Guardando GBA SRAM...
+NO_FLASH_CART=No hay flashcard en slot2
+CANT_OPEN_GBA=No se puede abrir el archivo GBA
+GBA_EZ4PATCHED=ROM parcheada para EZ\nContinuar cargando?
+GBA_NORPATCHED=ROM parcheada para NOR\nSobreescribir SRAM para NOR?
+GBA_SRAM_FORMAT=Formatear SRAM para SYSTEM?\nLa otra herramienta de datos será sobreescrita
+GBA_SIZE_OVER=La ROM es demasiado grande para PSRAM\nContinuar carga?
+
+CANT_OPEN_ROM=No se puede abrir la ROM
+CANT_OPEN_EMU=No se puede abrir el emulador
+
+CANT_OPEN_FILE=No se puede abrir el archivo
+
+HELP_CHEAT=START = GUARDAR y SALIR\nB = CANCELAR y SALIR
+HELP_ETC=START = SALIR\nX = Cargar GBA\nY = PassMe\nSELECT = Menú de DS
+HELP_TEXTVIEW=START = SALIR\nB = SALIR

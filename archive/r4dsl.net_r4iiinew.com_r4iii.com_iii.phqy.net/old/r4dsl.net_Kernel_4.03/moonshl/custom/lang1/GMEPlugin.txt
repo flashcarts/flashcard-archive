@@ -1,0 +1,2 @@
+﻿Game_Music_Emu 0.5.2 by Blargg
+各種模擬器音樂播放設定。

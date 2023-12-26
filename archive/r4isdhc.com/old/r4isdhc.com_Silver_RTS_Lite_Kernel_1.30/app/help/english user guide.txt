@@ -1,0 +1,16 @@
+user guide£º
+1 what can i do if i can not find the game which i just put into tf card?
+   enter game list and press "update" £¨the bottom left corner of your screen£© 
+2  key function:
+    * L+R+A+B (enter rts setting)
+    * B       (Retrun Home)
+    * L+R+START+DOWN (Close AR Cheat)
+    * L+R+START+UP   (Open  AR Cheat)
+3  Internet£º
+   Press "A" key and write internet address and press "accept"
+4  email£º
+    settting and choose manager account and set pop3 ......that is ok!
+5  MSN£º
+    input MSN account and password and connect 
+6  notice:
+    you must set your nds wifi function befer using (internet,e-mail,msn) function

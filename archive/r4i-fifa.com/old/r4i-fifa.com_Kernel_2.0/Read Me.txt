@@ -1,0 +1,117 @@
+Email说明
+Email Instructions
+
+Email登陆不支持WIFI有设置密码.
+Email Login do not support Wifi with password setting.
+
+MSN说明
+MSN Instructions
+
+进入软件后 可以选择如何连接wifi
+When login into software, you may select different ways to connect to WiFi. 
+
+1、直接读取固件信息
+Read directly for Wifi message.
+
+
+2、运行连接向导
+Step by step to connect to Wifi.
+
+3、手动输入
+Enter manually.
+
+先选1运行 如果连不上用2运行向导设置下就ok
+Use option 1 to enter. If fail, use option 2 step by step instruction.
+
+然后点击menu不放下拉选择Server list 选择第一项testing.bitlbee.org服务器 点击contact联机
+Press and hold on Menu until server list appears. Choose testing.bitlbee.org server then enter contact server.
+
+登陆成功后就可以按照irc聊天工具使用
+After entering, you can use IRC chatting model. 
+
+如果想进入msn模式 输入如下命令：
+If you want to enter MSN model, please enter following command:
+
+register xxxxxxxxx
+（xxxxxxxxx为你的私有密码 不是msn的密码 是你链接到此bitlbee的密码 此步为注册到服务器）
+
+(XXXXXXXX is your personal password, not your MSN password. It is your password to enter to bitlee. using this can register to server.)
+
+Add MSN account 帐号 密码 
+
+（帐号和密码是msn的）
+(It should be MSN's account & Password)
+
+account on
+（打开msn帐号）
+(Open MSN account)
+
+
+
+完成了 此时上屏会有加入msn的提示
+After finishing above, above the screen will appear a shortcut to enter MSN
+
+如果想看信息和其他的东西 在加入msn完成后 输入help命令可以查看所有的动作
+比如输入blist为显示你的msn联系人等等
+If you like to check other messages or functions. After logging into MSN, enter "help" to view all other.
+Example: To enter Blist for your MSN contact...etc 
+
+第二次登陆可以尝试直接输入account on来进入msn，但是根据不同的服务器可能不会保存你的账户密码，如果不成功 按第一次的来一次就ok了
+On your 2nd login, you can try directly entering "account on" to enter MSN. Different servers have different settings, some server may not have remember password function. If unable to enter, Use 1st login steps to enter.
+
+
+可用的irc服务器如下：
+Supports the following IRC servers:
+
+im.bitlbee.org:6667
+Location: The Netherlands
+Maintainer: Wilmer van der Gaast
+Comments: Can be used via Mibbit.
+testing.bitlbee.org:6667
+Location: Belgium
+Maintainer: Wilmer van der Gaast, Tom Laermans
+Comments: Usually runs experimental (but reasonably stable) code. SSL via port 6668. IPv6.
+im.rootdir.de:6668
+Location: Germany
+Maintainer: Claas Langbehn
+Comments: IPv6
+im.uk.bitlbee.org:6667
+Location: UK
+Maintainer: James Ray
+Comments: SSL via port 6668
+irc.net:6667
+Location: Pittsburgh, USA
+Maintainer: Doug Luce
+bitlbee1.asnetinc.net:6667
+Location: New York, USA
+Maintainer: ASNET, Inc.
+Comments: CGI:IRC
+bitlbee.hensema.net:6667
+Location: The Netherlands
+Maintainer: Erik Hensema
+bitlbee.extreme-players.de:6667
+Location: Germany
+Maintainer: Mike Hillebrecht
+irc2im.picasa.hu:6667
+Location: Hungary
+Maintainer: dy
+im.sixxs.net:6667
+Location: The Netherlands
+Maintainer: SixXS Staff
+Comments: IPv6, CGI:IRC
+im.kernel-oops.de:7777
+Location: Germany
+Maintainer: Guido S. Nickels
+Comments: CGI:IRC
+im.rondom.org:7070
+Location: The Netherlands
+Maintainer: Mark Lijftogt
+im.okkernoot.net:6667
+Location: The Netherlands
+Maintainer: Arnie
+im.codemonkey.be:6667
+Location: Belgium
+Maintainer: Tom Laermans
+im.se.bitlbee.org:6667
+Location: Sweden
+Maintainer: Wacko

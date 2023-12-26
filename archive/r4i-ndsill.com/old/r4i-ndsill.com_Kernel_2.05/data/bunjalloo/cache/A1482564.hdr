@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+content-type:image/gif
+last-modified:Thu, 25 Mar 2010 09:42:43 GMT
+date:Tue, 13 Apr 2010 09:22:35 GMT
+expires:Wed, 13 Apr 2011 09:22:35 GMT
+x-content-type-options:nosniff
+server:sffe
+content-length:7763
+cache-control:public, max-age=31536000
+age:402
+connection:close

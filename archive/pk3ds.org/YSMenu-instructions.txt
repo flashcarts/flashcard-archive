@@ -1,3 +1,0 @@
-# Installation instructions for YSMenu on the pk3ds.org
-
-Please follow the instructions to install YSMenu here: https://flashcarts.net/ysmenu-compat-ext.html
