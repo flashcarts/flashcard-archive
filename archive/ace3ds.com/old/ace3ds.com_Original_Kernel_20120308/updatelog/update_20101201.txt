@@ -1,0 +1,15 @@
+20101201 update
+
+fixed 5126 - Petz Hamsterz Superstars (U)
+fixed 5131 - Samantha Swift and the Hidden Roses of Athena (U)
+fixed 5237 - My Sims Sky Heroes (E)
+fixed 5341 - Harry Potter and the Deathly Hallows Part 1 (E)
+fixed 5342 - Beyblade Metal Fusion - Cyber Pegasus (E)
+fixed 5356 - Nine Hours Nine Persons Nine Doors (U)
+fixed 5358 - Hanbaishi Kentei Shiken 2 Kyuu 3 Kyuu (J)
+fixed 5361 - Junior Classic Books (E)
+fixed 5362 - Take a Breaks Puzzle Bonanza (E)
+fixed 5363 - Doctor Who Evacuation Earth (E)
+fixed 5364 - Tron (E)
+fixed 5366 - Beyblade Metal Fusion (U)
+fixed 5367 - Golden Sun Dark Dawn (U)

@@ -1,0 +1,611 @@
+﻿
+; MoonShell2 language resource for 'CP949'.
+; Encoding format is UTF-8.
+
+Author=cherries4u
+Target=KOR/Korean
+;한글번역 및 스킨=체리체리(다음 NINTENDO-DS 카페)
+
+; ----------------------------
+
+TextFontFolderName=tfontkor
+
+; DateTimeFormat is YYYYMMDD or DDMMYYYY or MMDDYYYY.
+DateTimeFormat=YYYYMMDD
+
+; ----------------------------
+
+CD_CheckDisk_Start=간이 디스크검사를 시작했습니다.
+CD_CheckDisk_End=간이 디스크검사가 정상적으로 종료되었습니다.
+
+CD_FatalError_Title=!!디스크에서 치명적인 문제를 발견했습니다.
+CD_FatalError_DuplicatedArea0=여러 파일이 같은 영역에 존재합니다.
+CD_FatalError_DuplicatedArea1=몇개의 파일이 이미 손상되었습니다.
+CD_FatalError_BrokenEntry0=디렉토리 기재사항이 비정상입니다.
+CD_FatalError_BrokenEntry1=한 개 이상의 파일이 손상되었습니다.
+CD_FatalError_IlligalClusterLink0=클러스터 링크가 끊어져 있습니다.
+CD_FatalError_IlligalClusterLink1=파일이 손상되었을 가능성이 있습니다.
+CD_FatalError_BrokenDirectoryLink0=디렉토리 기재사항이 비정상입니다. 
+CD_FatalError_BrokenDirectoryLink1=폴더가 손상되었습니다.
+CD_FatalError_BrokenUnicode0= 디렉토리 엔트리가 비정상적입니다.
+CD_FatalError_BrokenUnicode1=긴 파일명이 손상되었습니다.
+CD_FatalError_FileSizeError0=디렉토리 기재사항의 파일크기와
+CD_FatalError_FileSizeError1=실제 파일크기가 일치하지 않습니다.
+CD_FatalError_UnknownError=알 수 없는 오류 발생
+CD_FatalError_RecoveryMsg0=복구방법: 
+CD_FatalError_RecoveryMsg1=모든 파일을 하드디스크로 백업하신 후,
+CD_FatalError_RecoveryMsg2=포맷하시고 파일을 다시 설치해 주세요.
+CD_FatalError_StopApplication=프로그램을 중지 했습니다.
+
+CD_NotSupportDiskSize_Title=지원되지 않는 디스크 포맷입니다.
+CD_NotSupportDiskSize_Msg0=디스크 용량이 너무 크거나
+CD_NotSupportDiskSize_Msg1=클러스터 크기가 너무 작습니다.
+CD_NotSupportDiskSize_Msg2=
+CD_NotSupportDiskSize_RecoveryMsg0=복구방법:
+CD_NotSupportDiskSize_RecoveryMsg1=클러스터 크기를 크게 설정해
+CD_NotSupportDiskSize_RecoveryMsg2=디스크를 다시 포맷해 주세요.
+CD_NotSupportDiskSize_RecoveryMsg3=
+
+CD_CheckDuplicateCluster_Title=중복 클러스터와 단편화를 검사중 입니다.
+
+CD_CheckFATType_Title=FAT 종류를 검사하고 있습니다.
+
+CD_FATType_UnknownFATType=알 수 없는 FAT 종류입니다.
+
+CD_WriteTest_Title=디스크의 읽기/쓰기 검사 중입니다.
+
+CD_WriteError_Title=디스크 액세스 검사가 실패했습니다.
+CD_WriteError_Msg0=・디스크의 빈 공간이 너무 작음
+CD_WriteError_Msg1=・호환되지 않는 DLDI 드라이버
+CD_WriteError_Msg2=・닥터와 메모리의 접촉불량
+CD_WriteError_Msg3=・디스크 관리영역의 손상
+CD_WriteError_Msg4=
+CD_WriteError_Msg5=등의 요소가 문제일 수 있습니다.
+CD_WriteError_Msg6=
+CD_WriteError_Msg7=안전을 위해 프로그램을 중지했습니다.
+
+; ----------------------------
+
+ERRMSG0_MemoryOverflow_CanRecovery=메모리가 부족하여
+ERRMSG1_MemoryOverflow_CanRecovery=파일을 열 수 없습니다.
+ERRMSG2_MemoryOverflow_CanRecovery=이곳을 누르면 창이 닫힙니다.
+
+ERRMSG0_NotSupportFileFormat=지원되지 않는 파일 포맷이거나
+ERRMSG1_NotSupportFileFormat=손상이 의심되는 파일입니다.
+ERRMSG2_NotSupportFileFormat=이곳을 누르면 창이 닫힙니다.
+
+ERRMSG0_ProgressiveJpeg=프로그레시브 JPEG 파일은
+ERRMSG1_ProgressiveJpeg=지원되지 않습니다.
+ERRMSG2_ProgressiveJpeg=이곳을 누르면 창이 닫힙니다.
+
+ERRMSG0_Text0byte=비어있는 문서 파일입니다.
+ERRMSG1_Text0byte=0 byte 파일은 열 수 없습니다.
+ERRMSG2_Text0byte=이곳을 누르면 창이 닫힙니다.
+
+ERRMSG0_OverflowLargeImage=이미지 파일이 너무 큽니다.
+ERRMSG1_OverflowLargeImage=약 500만 화소가 최대한도입니다.
+ERRMSG2_OverflowLargeImage=이곳을 누르면 창이 닫힙니다.
+
+ERRMSG0_NotFoundMusicFile=지정하신 폴더에 음악 파일이 
+ERRMSG1_NotFoundMusicFile=하나도 없습니다.
+ERRMSG2_NotFoundMusicFile=이곳을 누르면 창이 닫힙니다.
+
+ERRMSG0_UnknownError=알 수 없는 내부 오류가                     
+ERRMSG1_UnknownError=발생했습니다.
+ERRMSG2_UnknownError=닌텐도를 꺼주세요.
+
+; ----------------------------
+
+Setup_Help1=
+Setup_Help2=초기 환경설정에 꼭 필요한 사항만
+Setup_Help3=표시합니다.
+Setup_Help4=
+Setup_Help5=전체환경 설정은 파일목록창에서 START
+Setup_Help6=버튼을 눌러 환경설정을 하세요.
+Setup_Help7=
+Setup_Help8=사용법은 Readme.HTML을 읽어주세요.
+Setup_Help9=
+Setup_Help10=한글번역 및 스킨제작
+Setup_Help11=체리체리(다음 NINTENDO-DS 카페)
+
+Setup_BootCheckDisk=시작할 때마다 디스크검사 하기
+Setup_ClickSound=터치 조작음 사용하기
+Setup_FileListMode=파일목록 표시 방법
+Setup_FileListMode_Single=파일 이름을 한줄로 표시
+Setup_FileListMode_Double=긴 파일 이름은 두줄로 나눠서 표시
+Setup_SkipSetup=시작할 때 이 화면 안보이기
+Setup_OKBtn=
+
+; ----------------------------
+
+Launch_FileInfo=파일정보
+Launch_FileInfo_Relational=관련파일정보
+Launch_Size=크기： %dbytes (%dMbits)
+Launch_Create=작성일： %s %d:%02d:%02d
+Launch_Update=수정일： %s %d:%02d:%02d
+Launch_NotFoundRelationalFile=파일을 찾을 수 없습니다.
+
+; ----------------------------
+
+FL_Help0=
+FL_Help1=
+FL_Help2=X/Y 버튼                 소리 작게/크게
+FL_Help3=START 버튼             시스템 메뉴(환경설정)
+FL_Help4=
+FL_Help5=L+A/B 버튼              다음곡/이전곡
+FL_Help6=L+X/Y 버튼              화면밝기 조절
+FL_Help7=
+FL_Help8=L|R 누르며 터치        메모장 신규작성
+FL_Help9=L|R 두번클릭후 누름 앞으로/뒤로 MP3 탐색
+FL_Help10=L|R 두번클릭            이전곡/다음곡 재생
+FL_Help11=R 세번클릭               대기모드
+
+; ----------------------------
+
+FL_Popup_Pause_Play=재생
+FL_Popup_Pause_Pause=일시정지
+FL_Popup_PreviousFile=이전곡재생
+FL_Popup_NextFile=다음곡재생
+FL_Popup_Volume=볼륨： %d%%
+FL_Popup_BacklightLevel=화면밝기： %d
+FL_Popup_PlayMode_Repeat=재생모드：한곡재생
+FL_Popup_PlayMode_AllRep=재생모드：전곡재생
+FL_Popup_PlayMode_Shuffle=재생모드：랜덤재생
+FL_Popup_Seek=탐색： %s
+FL_Popup_NotFoundMoonMemoFolder=/moonmemo 폴더가 없습니다
+
+; ----------------------------
+
+FL_DeleteFileDialog_NotFoundDustBox_Title=파일 삭제 오류
+FL_DeleteFileDialog_NotFoundDustBox_Line0=휴지통 폴더를 찾을 수 없습니다.
+FL_DeleteFileDialog_NotFoundDustBox_Line1=사용설명서의 휴지통을
+FL_DeleteFileDialog_NotFoundDustBox_Line2=참조해 주세요.
+
+FL_DeleteFileDialog_DisabledDustBox_Title=파일 삭제 오류
+FL_DeleteFileDialog_DisabledDustBox_Line0=휴지통의 파일 삭제는
+FL_DeleteFileDialog_DisabledDustBox_Line1=Windows에서만 가능합니다.
+FL_DeleteFileDialog_DisabledDustBox_Line2=
+
+FL_DeleteFileDialog_DisabledSystemFolder_Title=파일 삭제 오류
+FL_DeleteFileDialog_DisabledSystemFolder_Line0=시스템 폴더(moonshl2)
+FL_DeleteFileDialog_DisabledSystemFolder_Line1=내에서의 조작은
+FL_DeleteFileDialog_DisabledSystemFolder_Line2=허용되지 않습니다.
+
+FL_DeleteFileDialog_DisabledMoveFolder_Title=파일 삭제 오류
+FL_DeleteFileDialog_DisabledMoveFolder_Line0=폴더의 이동은 하실 수
+FL_DeleteFileDialog_DisabledMoveFolder_Line1=없습니다.
+FL_DeleteFileDialog_DisabledMoveFolder_Line2=
+
+FL_DeleteFileDialog_Question_Title=파일 삭제
+FL_DeleteFileDialog_Question_Line0=이 파일을 삭제하시겠습니까?
+FL_DeleteFileDialog_Question_Line1=삭제는 L+R+A 버튼
+FL_DeleteFileDialog_Question_Line2=최소는 B 버튼
+
+FL_DeleteFileDialog_Question_EasyDelete_Title=파일 삭제
+FL_DeleteFileDialog_Question_EasyDelete_Line0=이 파일을 삭제하시겠습니까?
+FL_DeleteFileDialog_Question_EasyDelete_Line1=삭제는 X+A 버튼
+FL_DeleteFileDialog_Question_EasyDelete_Line2=취소는 B 버튼
+
+FL_DeleteFileDialog_Success_Title=파일 삭제
+FL_DeleteFileDialog_Success_Line0=파일이 휴지통으로 이동했습니다.
+FL_DeleteFileDialog_Success_Line1=휴지통의 파일 삭제는 Windows
+FL_DeleteFileDialog_Success_Line2=에서 하실 수 있습니다.
+
+; ----------------------------
+
+FL_HelpLeft_Count=12
+FL_HelpLeft_Line0=도움말 - L 버튼을 누르는 중...
+FL_HelpLeft_Line1=
+FL_HelpLeft_Line2=L + ←      MP3 제어창 보이기
+FL_HelpLeft_Line3=L + →      다음곡
+FL_HelpLeft_Line4=L + ↑      일시정지/해제
+FL_HelpLeft_Line5=L + ↓      재생방식 변경
+FL_HelpLeft_Line6=L + A / B  다음곡 / 이전곡
+FL_HelpLeft_Line7=L + X / Y  화면밝기 조절
+FL_HelpLeft_Line8=
+FL_HelpLeft_Line9=L+R 동시클릭        일시정지/해제
+FL_HelpLeft_Line10=L 두번클릭후 누름 뒤로 1%씩 탐색
+FL_HelpLeft_Line11=L 두번클릭            이전곡
+
+FL_HelpRight_Count=11
+FL_HelpRight_Line0=도움말 - R 버튼을 누르는 중...
+FL_HelpRight_Line1=
+FL_HelpRight_Line2=R + ← / →  뒤로 / 앞으로 1%씩 탐색
+FL_HelpRight_Line3=R + ↑ / ↓   뒤로 / 앞으로 5%씩 탐색
+FL_HelpRight_Line4=R+A           폴더내의 모든 곡 재생
+FL_HelpRight_Line5=L+R+A        메모리의 모든 곡 재생
+FL_HelpRight_Line6=
+FL_HelpRight_Line7=L+R 동시클릭        일시정지/재생
+FL_HelpRight_Line8=R 두번클릭후 누름 앞으로 1%씩 탐색
+FL_HelpRight_Line9=R 두번클릭            다음곡
+FL_HelpRight_Line10=R 세번클릭            대기모드
+
+; ----------------------------
+
+SysMenu_MemoList=메모장을 엽니다.
+SysMenu_MemoList_NotFound=%s를 찾을 수 없습니다.
+SysMenu_FileListMode=1줄/2줄 모드 전환
+SysMenu_Customize=환경설정
+SysMenu_RestoreBG=배경화면을 기본으로 복원
+SysMenu_Firmware=소프트리셋
+SysMenu_Firmware_NotFound=%s를 찾을 수 없습니다.
+
+; ----------------------------
+
+SubMenu_Title=메뉴 선택
+SubMenu_AppLauncher=보조프로그램
+SubMenu_AudioPlayer=음악플레이어
+SubMenu_SystemMenu=시스템 메뉴
+SubMenu_PowOffTimer_Set=%d분 후 끄기
+SubMenu_PowOffTimer_SetHelp=시간 설정 L/R
+SubMenu_PowOffTimer_LastTime=남은시간: %d:%02d
+SubMenu_BottomHelp=A버튼이나 select버튼으로 선택
+
+; ----------------------------
+
+CS_Help0=사용환경 설정
+CS_Help1=
+CS_Help2=설정을 완료하신 후 "적용" 버튼을
+CS_Help3=눌러서 설정을 저장해 주세요.
+CS_Help4=
+CS_Help5=사진, 동영상, 문서에 대한 설정은
+CS_Help6=각 파일을 여신 후 SELECT 버튼을
+CS_Help7=눌러서 설정하실 수 있습니다.
+CS_Help8=
+CS_Help9=문쉘의 일부 추가기능은 
+CS_Help10=/moonshl2/moonshl2.ini에서
+CS_Help11=설정할 수 있습니다.
+
+CS_Title=사용환경 설정
+
+CS_PageTab_Title=변경할 메뉴 선택
+CS_PageTab_Global=전체
+CS_PageTab_FileList=파일목록
+CS_PageTab_ScreenSaver=화면보호기
+CS_PageTab_Music=음악재생
+
+CS_Cancel=취소
+CS_Ok=적용
+
+; ----------------------------
+
+CSG_SkipSetup=문쉘 구동시 초기 환경설정을 안함
+CSG_BootCheckDisk=문쉘 구동시 항상 디스크검사를 수행
+
+CSG_ClickSound=터치 조작음을 사용
+CSG_EnableFadeEffect=부드러운 화면전환 사용
+CSG_AutoLastState=문쉘 구동 후 최근 사용파일 다시시작
+CSG_LRKeyLockTitle=L / R 버튼 사용 옵션 : 
+CSG_LRKeyLockAlwayOff=사용안함
+CSG_LRKeyLockRelationalPanel=화면사용에 따라서
+CSG_LRKeyLockAlwayOn=항상사용
+CSG_EnableResumeFunction=다시시작 정보를 주기적으로 저장
+CSG_EnableScreenCapture=DSi의 화면저장 기능을 사용
+CSG_SpeakerPowerOffWhenPanelClosed=닌텐도를 닫을 때 스피커 소리 끄기
+
+CSF_MoveFolderLocked=폴더간 이동을 금지
+CSF_HiddenFilenameExt=확장자를 표시하지 않음
+CSF_HiddenNotSupportFileType=지원하지 않는 파일 표시안함
+CSF_HiddenNDSROMFile=NDS 롬파일 표시안함
+CSF_EnableFileInfo=파일의 정보를 표시
+CSF_ShowOnlineHelp_LRButton=L/R버튼의 도움말 표시
+CSF_BButtonToFolderUp=B버튼 사용시 이전 폴더로 이동
+CSF_EasyDeleteKey=삭제 버튼을 X+A로 변경
+CSF_UseJpegExifThumbnail=견본이미지 파일명에 표시
+CSF_ShowCoverImage=M4A나 MP3등의 앨범쟈켓 표시
+CSF_HideAttribute_Title=표시하지 않을 파일속성
+CSF_HideAttribute_Archive=보존
+CSF_HideAttribute_Hidden=숨김
+CSF_HideAttribute_System=시스템
+CSF_HideAttribute_ReadOnly=읽기전용
+
+CSS_EnabledScreenSaver=화면보호기 사용
+CSS_Use24hFormat=24시간제 표시
+CSS_ScreenSaverTitle=타입
+CSS_ScreenSaverNormal=표준
+CSS_ScreenSaverDigital=디지탈
+CSS_ScreenSaverExtend=확장
+CSS_ScreenSaverBGTitle=배경
+CSS_ScreenSaverBGSkinDefault=기본
+CSS_ScreenSaverBGTopScreen=위배경
+CSS_ScreenSaverBGBottomScreen=아래배경
+CSS_ScreenSaverTimeOutSecTitle=끄기시간(초)
+CSS_ScreenSaverTimeOutSec5sec=5
+CSS_ScreenSaverTimeOutSec10sec=10
+CSS_ScreenSaverTimeOutSec30sec=30
+CSS_ScreenSaverTimeOutSec60sec=60
+CSS_ScreenSaverTimeOutSecOff=화면끄기 사용
+CSS_ShowID3Tag=MP3 재생시 ID3 태그 보이기
+
+CSM_PlayListEndTitle=재생을 마친 후 옵션
+CSM_PlayListEndLoop=반복
+CSM_PlayListEndStop=정지
+CSM_PlayListEndPowerOff=전원끄기
+
+; ----------------------------
+
+ACS_Help0=음악 플레이어 환경설정
+ACS_Help1=
+ACS_Help2=설정을 완료하신 후 "적용" 버튼을
+ACS_Help3=눌러서 설정을 저장해 주세요.
+ACS_Help4=
+ACS_Help5=
+ACS_Help6=경고:
+ACS_Help7=스펙트럼 아날라이저를 사용하면서
+ACS_Help8=고품질의 음악파일을 재생할 경우
+ACS_Help9=소리가 튀는 현상이 발생할 수
+ACS_Help10=있습니다.
+ACS_Help11=
+
+ACS_Title=음악 플레이어 환경설정
+
+ACS_AlwaysUsedAudioPlayer=항상 음악 플레이어로 재생
+ACS_PauseWhenStopped=일시정지 후 파일목록으로 복귀
+ACS_DrawPlayList=재생목록을 윗화면에 표시
+ACS_DrawSpectrumAnalyzer=스펙트럼 아날라이저 표시
+
+; ----------------------------
+
+DCS_Help0=동영상재생 환경설정
+DCS_Help1=
+DCS_Help2=설정을 완료하신 후 "적용" 버튼을
+DCS_Help3=눌러서 설정을 저장해 주세요.
+DCS_Help4=
+DCS_Help5=
+DCS_Help6=경고:
+DCS_Help7=높은 프레임레이트와 비트레이트로
+DCS_Help8=인코딩된 동영상의 경우 재생도중
+DCS_Help9=처리속도(고속재생)를 높이게 되면
+DCS_Help10=화면끊김이 발생할 수 있습니다.
+DCS_Help11=
+
+DCS_Title=동영상재생 환경설정
+
+DCS_EnabledFastStart=고속재생 사용
+DCS_PauseWhenPanelClosed=화면을 닫으면 일시정지
+DCS_EnableIndividualResume=동영상 파일별로 다시시작 위치를 저장
+DCS_ControlPowerLED=재생중 전원 LED를 끔
+DCS_InverseVisual_PlayPause=재생과 일시정지버튼 아이콘 바꿈
+DCS_EverytimeStopOfEnd=재생 후 플레이어 종료
+DCS_BacklightTimeOutTitle=화면끄기 시간(초)
+DCS_BacklightTimeOutOff=사용안함
+DCS_BacklightTimeOut5sec=5
+DCS_BacklightTimeOut10sec=10
+DCS_BacklightTimeOut15sec=15
+
+; ----------------------------
+
+DV_VolumeLabel=Vol.
+DV_VolumeValue=%d%%
+DV_VolumeMute=Mute
+DV_VolumeMax=Max
+
+; ----------------------------
+
+DV_Popup_Pause_Play=재생
+DV_Popup_Pause_Pause=일시정지
+DV_Popup_PreviousFile=이전파일
+DV_Popup_NextFile=다음파일
+DV_Popup_Volume=볼륨： %d%%
+DV_Popup_Seek=탐색： %s초
+DV_Popup_BacklightLevel=화면밝기： %d
+
+; ----------------------------
+
+ICS_Help0=이미지보기 환경설정
+ICS_Help1=
+ICS_Help2=설정을 완료하신 후 "적용" 버튼을
+ICS_Help3=눌러서 설정을 저장해 주세요.
+ICS_Help4=
+ICS_Help5=마음에 드는 사진에서 START 버튼을
+ICS_Help6=눌러 문쉘배경으로 사용할 수 있으며
+ICS_Help7=초기화면으로 복구하고 싶을때는
+ICS_Help8=파일목록창에서 START 버튼을 눌러
+ICS_Help9=시스템 메뉴를 여신 후 "배경화면을
+ICS_Help10=기본으로 복원"을 선택하시면
+ICS_Help11=초기화면으로 복구됩니다.
+
+ICS_Title=이미지보기 환경설정
+
+ICS_ShowInfomation=파일정보와 도움말을 표시
+ICS_ShowControlIcons=조작 아이콘을 표시
+ICS_DoubleSpeedKey=버튼조작 감도 높임
+ICS_DoubleSpeedTouch=터치화면 감도 높임
+ICS_MultipleResume=확대비율 저장 후 다음에 사용
+ICS_AutoFitting=큰 Jpeg 이미지 자동축소
+ICS_EnabledProgressiveJpeg=프로그래시브 jpeg 이미지 사용
+ICS_StartPosTitle=이미지 보기 시작 위치:
+ICS_StartPosLeftTop=↖
+ICS_StartPosRightTop=↗
+ICS_StartPosLeftBottom=↙
+ICS_StartPosRightBottom=↘
+ICS_AutoNextTimeSecTitle=슬라이드쇼
+ICS_AutoNextTimeSecOff=끄기
+ICS_AutoNextTimeSec10sec=10
+ICS_AutoNextTimeSec30sec=30
+ICS_AutoNextTimeSec60sec=60
+ICS_ShowInfoTopScreen=윗화면에 정보 표시
+ICS_EffectTitle=스킨변환 옵션
+ICS_EffectHeightPadding=두 화면의 틈새를 고려해 변환
+ICS_EffectPastelForTopBG=위 화면에 투명도 적용
+ICS_EffectPastelForBottomBG=아래 화면에 투명도 적용
+
+; ----------------------------
+
+IV_LoadMsg0=이미지를 읽고 있습니다.
+IV_LoadMsg1=잠시만 기다려 주세요.
+
+IV_Help1=START: 스킨만들기 | SELECT: 환경설정
+IV_Help2=Y: 50% | X: 200% | A: 100% | B: 취소
+
+; ----------------------------
+
+IV_Popup_BacklightLevel=화면밝기： %d
+IV_Popup_Zoom=확대비율： %d%%
+IV_Popup_Pause_Play=재생
+IV_Popup_Pause_Pause=일시정지
+IV_Popup_PreviousFile=이전파일
+IV_Popup_NextFile=다음파일
+IV_Popup_Seek=탐색： %s
+
+; ----------------------------
+
+TCS_Help0=문서보기 환경설정 
+TCS_Help1=
+TCS_Help2=클리어타입 폰트 사용시 주의사항:
+TCS_Help3=구형 닌텐도에서는 위 화면의 글씨가
+TCS_Help4=희미하게 보일 수 있습니다.
+TCS_Help5=
+TCS_Help6=문자코드 자동감지에 실패한 경우
+TCS_Help7=A 버튼을 누르시거나 길게 터치를 하시면  
+TCS_Help8=보조메뉴가 표시되며 그 중 원하시는
+TCS_Help9=인코딩 타입을 선택하시면 됩니다.
+TCS_Help10=인코딩 방법 수동설정은 문서파일마다
+TCS_Help11=각각 지정하실 수 있습니다.
+
+TCS_Title=문서보기 환경설정
+
+TCS_TopScrModeTitle=위 화면 표시모드 선택
+TCS_TopScrModeLightOff=끔
+TCS_TopScrModeText=문서표시
+TCS_TopScrModeClock=시계 및 정보
+
+TCS_ScreenSaverTitle=화면보호기
+TCS_ScreenSaverNormal=표준
+TCS_ScreenSaverDigital=디지탈
+TCS_ScreenSaverExtend=확장
+
+TCS_LineSpaceTitle=줄 간격
+TCS_LineSpaceSmall=좁게
+TCS_LineSpaceMiddle=보통
+TCS_LineSpaceLarge=넓게
+
+TCS_FontSizeTitle=글자 크기
+TCS_FontSizeSmall=소
+TCS_FontSizeMiddle=중
+TCS_FontSizeLarge=대
+
+TCS_ClearTypeFontTitle=클리어타입 폰트
+TCS_ClearTypeFontNone=없음
+TCS_ClearTypeFontLite=얇게
+TCS_ClearTypeFontNormal=표준
+TCS_ClearTypeFontHeavy=굵게
+
+TCS_UseSmoothScroll=부드러운 스크롤 사용
+
+TCS_CPTitle=코드 페이지
+TCS_CP437=437(US)
+TCS_CP850=850(DOS)
+TCS_CP1252=1252(Windows)
+
+TCS_DetectCharCodeTitle=자동감지 문자코드
+
+; ----------------------------
+
+TV_SelEnc_Title=인코딩방식을 선택해 주세요.
+TV_SelEnc_Items_AutoDetect=자동
+TV_SelEnc_Items_ANSI=ANSI 8bit
+TV_SelEnc_Items_EUC=EUC/S-JIS
+TV_SelEnc_Items_UTF16BE=UTF-16 (BE)
+TV_SelEnc_Items_UTF16LE=UTF-16 (LE)
+TV_SelEnc_Items_UTF8=UTF-8
+TV_SelEnc_Items_TextEdit=문서편집기 실행
+TV_SelEnc_Help_Normal=A: 확인 B: 취소
+TV_SelEnc_Help_NoEdit0=파일이 128KB를 넘습니다.
+TV_SelEnc_Help_NoEdit1=편집할 수 없습니다.
+
+; ----------------------------
+
+TV_PRG_LoadExtendFont=확장 폰트를 읽는 중...
+TV_PRG_LoadTextFile=문서 파일을 읽는 중...
+TV_PRG_DetectTextEncode=문서 인코딩 타입을 감지중...
+TV_PRG_DetectReturnCode=복귀 코드를 감지중...
+TV_PRG_ConvertToUnicode=유니코드로 변환중...
+
+TV_UncertainFormat1=알 수 없는 포맷입니다.
+TV_UncertainFormat2=A버튼을 길게 누르면 수동설정 할 수 있습니다.
+
+TV_Help1=A          페이지 스크롤 / B          취소
+TV_Help2=X/Y       북마크 저장 불러오기 메뉴
+TV_Help3=SELECT 환경설정 / 인코딩방식  %s
+TV_Info=현재줄   %d /전체 %d 줄 (%.2f%%)
+
+TV_BookmarkText_LoadTitle=북마크 불러오기 메뉴
+TV_BookmarkText_SaveTitle=북마크 저장 메뉴
+TV_BookmarkText_Empty=%d：  저장되어 있지 않습니다.
+TV_BookmarkText_Info=%d：  %d 줄  %s %s
+
+; ----------------------------
+
+TV_Popup_BacklightLevel=화면밝기： %d
+TV_Popup_Bookmark_Load=
+TV_Popup_Bookmark_Empty=읽어오기를 취소했습니다.
+TV_Popup_Bookmark_Save=북마크를 저장했습니다.
+TV_Popup_Pause_Play=재생
+TV_Popup_Pause_Pause=일시정지
+TV_Popup_PreviousFile=이전파일
+TV_Popup_NextFile=다음파일
+TV_Popup_Seek=탐색： %s
+TV_Popup_MoveToTop=처음으로
+TV_Popup_MoveToLast=마지막으로
+
+; ----------------------------
+
+ME_Help0=메모장 수정
+ME_Help1=
+ME_Help2=↓/←/↑/→           검정/빨강/녹색/파랑
+ME_Help3=Y/X                     얇은/굵은 펜 사용
+ME_Help4=A/B                     저장 후 종료
+ME_Help5=SELECT               되돌리기
+ME_Help6=L/R버튼+터치       지우개
+ME_Help7=
+ME_Help8=저장없이 종료를 할때는
+ME_Help9=닌텐도를 꺼주세요.
+
+; ----------------------------
+
+MemoList_Title=메모장 목록
+
+MemoList_Help0=
+MemoList_Help1=화면터치: 새로운 메모 만들기
+MemoList_Help2=
+MemoList_Help3=START 길게누름： 메모 삭제
+
+; ----------------------------
+
+MemoEdit_FileInfo_Open=파일을 불러왔습니다.
+MemoEdit_FileInfo_Edited=편집중... 종료시 자동저장합니다.
+MemoEdit_FileInfo_Create=새파일 작성을 시작합니다.
+
+MemoEdit_SavingNow=변경된 BMP 파일을 저장중입니다.
+
+; ----------------------------
+; for Text editor Ver1.5
+
+TE_File_SelectEncode_Title1=인코딩 방식을 알 수 없습니다.
+TE_File_SelectEncode_Title2=인코딩 방식을 선택해 주세요.
+
+TE_skk_DicSystem_PreloadDic=사전 데이터를 불러오는 중...
+
+TE_skk_ExitMenu_Title=종료 메뉴
+TE_skk_ExitMenu_Items_Cancel=취소 후 에디터로 복귀
+TE_skk_ExitMenu_Items_Overwrite=저장 후 종료
+TE_skk_ExitMenu_Items_SaveAs=다른 이름으로 저장
+TE_skk_ExitMenu_Items_CreateNew=새로운 파일로 저장
+TE_skk_ExitMenu_Items_NoSaveExit=저장하지 않고 종료
+TE_skk_ExitMenu_SavePrgMsg1=파일 저장중...
+TE_skk_ExitMenu_SavePrgMsg2=전원을 끄지 마세요.
+
+TE_SysMsg_ClipBoard_Empty=클립보드가 비어있음
+TE_SysMsg_ClipBoard_Pasted=클립보드에서 복사
+TE_SysMsg_ClipBoard_Copied=클립보드로 복사
+
+TE_OSKHW_Model_ModelResults_Selector_Title=올바른 문자를 선택해 주세요.
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle1=와 함께 손으로 쓰신 
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle2=글자를 연동해서 사전에 
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle3=등록해 사용하게 할까요?
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogRegist=등록
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogCancel=취소
+
+; ----------------------------
+

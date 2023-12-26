@@ -1,0 +1,6 @@
+fixed 5822 - Professor Layton and the Diabolical Box (KOR) 
+fixed 5821 - Mays Mysteries the Secret of Dragonville (EU)
+fixed 5820 - Jewel Quest 4 Heritage (EU)fixed 5819 - Bandz Mania (EU) 
+fixed 5818 - Paws and Claws Pampered Pets 2 (US) (DSi Enhanced)
+fixed 5817 - Green Lantern Rise of the Manhunter (US)
+fixed 5816 - Imagine Gymnast (US) (DSi Enhanced)

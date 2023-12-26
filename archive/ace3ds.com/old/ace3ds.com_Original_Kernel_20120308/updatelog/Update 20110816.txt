@@ -1,0 +1,4 @@
+fixed 5584 - Pokemon White Version v3.0 Clean & Full
+fixed 5585 - Pokemon Black Version v3.0 Clean & Full
+fixed 5803 - Atsumete Kirby (J)
+fixed 5810 - Les Aventures de May L'Etrange (F)

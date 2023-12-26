@@ -16,4 +16,4 @@ old: directory
 	make -C $@
 
 extdata: directory
-	cp -r r4itt.net_3DS_*_FWUpdate* $(OUT)/$(BASE)
+	cp -r readme.txt r4itt.net_3DS_*_FWUpdate* $(OUT)/$(BASE)

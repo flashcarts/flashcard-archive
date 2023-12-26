@@ -1,0 +1,14 @@
+update_20101227
+
+fixed 4770 - Bibliothek der Klassischen Buecher (G)
+fixed 5089 - Vampire Legends Power of Three (U)
+fixed 5128 - Imagine Babyz Fashion (U)
+fixed 5138 - Myst v1.1 (U)
+fixed 5242 - Popstars (G)
+fixed 5399 - Vampire Moon The Mystery of the Hidden Sun (E)
+fixed 5416 - Dondake Sports 101 (J)
+fixed 5417 - Bakugan Battle Brawlers DS Defenders of the Core (J)
+fixed 5418 - Poupee Girl DS 2 Elegant Mint Style (J)
+fixed 5419 - Poupee Girl DS 2 Sweet Pink Style (J)
+fixed 5420 - Inazuma Eleven 3 Sekai e no Chousen! The Ogre (J)
+fixed 5421 - Atari Greatest Hits Volume 1 (U)

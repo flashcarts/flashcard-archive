@@ -1,0 +1,57 @@
+<html>
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+  <title>%Config%</title>
+  <form action="/update">
+    <br>
+    <input type=submit value="%check_update_str%">
+  </form>
+  <p>
+  <br>
+  <form action="/config">
+    %Language%
+    <select name=language>
+      <option value=jp %language=jp?selected=1%>Japanese</option>
+      <option value=en %language=en?selected=1%>English</option>
+      <option value=fr %language=fr?selected=1%>Français</option>
+      <option value=de %language=de?selected=1%>Deutsch</option>
+      <option value=it %language=it?selected=1%>Italiano</option>
+      <option value=es %language=es?selected=1%>Español</option>
+      <option value=nl %language=nl?selected=1%>Nederlands</option>
+      <option value=builtin %language=builtin?selected=1%>%Default%</option>
+    </select>
+    <br>
+    %fullref%
+    <select name=fullref>
+      <option value=1 %fullref=1?selected=1%>%Yes%</option>
+      <option value=0 %fullref=0?selected=1%>%No%</option>
+    </select>
+    <br>
+    %clrcache%
+    <select name=clearcache>
+      <option value=1 %clearcache=1?selected=1%>%Yes%</option>
+      <option value=0 %clearcache=0?selected=1%>%No%</option>
+    </select>
+    <br>
+    %logger%
+    <select name=logger>
+      <option value=1 %logger=1?selected=1%>%Yes%</option>
+      <option value=0 %logger=0?selected=1%>%No%</option>
+    </select>
+    <br>
+    %images%
+    <select name=images>
+      <option value=1 %images=1?selected=1%>%Yes%</option>
+      <option value=0 %images=0?selected=1%>%No%</option>
+    </select>
+    <br>
+    %Download%<input type=text name=download value="%cfg:download%" size=14>
+    <br>
+    <select name=lefty>
+      <option value=1 %lefty=1?selected=1%>%lefth%</option>
+      <option value=0 %lefty=0?selected=1%>%righth%</option>
+    </select>
+    <br>
+    <input type=submit value="%Update%">
+  </form>
+  <p>
+</html>

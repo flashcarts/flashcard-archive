@@ -1,0 +1,8 @@
+HTTP/1.1 302 FOUND
+location:http://www.google.com/
+cache-control:private
+content-type:text/html; charset=UTF-8
+date:Tue, 13 Apr 2010 09:31:20 GMT
+server:gws
+content-length:219
+connection:close

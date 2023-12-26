@@ -1,0 +1,22 @@
+update_20110112
+
+fixed 5357 - 18 Card Games (E)
+fixed 5437 - Pets Nursery 2 (U)
+fixed 5446 - Logic Machines (U)
+fixed 5447 - Mechanic Master 2 (U)
+fixed 5448 - Monopoly (U)
+fixed 5449 - SaGa 3 Jikuu no Hasha Shadow or Light (J)
+fixed 5450 - Littlest Pet Shop 3 Biggest Stars Blue Team (U)
+fixed 5451 - Backyard Sports Rookie Rush (U)
+fixed 5452 - The Lord of the Rings Aragorns Quest (U)
+fixed 5459 - Art Academy (K)
+fixed 5464 - Pucca Power Up (K)
+fixed 5465 - Princess In Wonderland (K)
+fixed 5466 - Tomicar Hero Rescue Force DS (K)
+fixed 5467 - Naruto Shippuden Naruto vs Sasuke (K)
+fixed 5471 - Goldeneye 007 (F)
+fixed 5472 - Kingdom Hearts Re-Coded (U)
+fixed 5473 - Kingdom Hearts Re-Coded (E)(SUXXORS) PATCHED
+fixed 5474 - Shawn Johnson Gymnastics (U)
+fixed 5476 - Yogi Bear (E)
+fixed 5477 - Ghost Trick (U)

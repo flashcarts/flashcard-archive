@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" dir="ltr"><head><meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="HandheldFriendly" content="true" />
+<link rel="alternate" media="handheld" href="" />
+<style type="text/css">
+    body {font-size:small;font-family:Arial, Helvetica, sans-serif;}
+    h1 {font-size:large;color:#1d46a6;margin-bottom:0.4em;}
+    p {margin-top:0.4em;margin-bottom:0.4em}
+
+    .center {text-align:center;}
+    .nobr {white-space: nowrap}
+  </style>
+<style type="text/css">
+        h2 {font-size:small;color:#316ba6;font-weight:bold;padding-top:10px;}
+        .new {font-size:small;color:#ee0055;font-weight:bold;padding-top:10px;margin-bottom:0.8em;}
+        .product-icon {vertical-align:bottom;}
+        .promoheading {font-size:small;color:#316ba6;font-weight:bold;padding-top:10px;margin-bottom:0.8em;}
+      </style>
+<title>Google 移动</title></head>
+<body id="ProductsPage"><div id="container"><p>
+寻找 Google 搜索吗？请访问 <a href="http://www.google.com/m?source=backstop&amp;dc=gorganic">Google.com</a>。</p>
+<img src="http://www.gstatic.com/mgc/images/google_logo_small.gif" width="48" height="17" alt="Google 移动" />
+<h2>Google 移动产品</h2>
+<img src="http://www.gstatic.com/mgc/images/icons/16x16/search.gif" width="16" height="16" alt="" />&nbsp;<a class="productLink productName" id="search" href="http://www.google.com/m?source=mobileproducts&amp;dc=gorganic">搜索</a>
+<br /> <img src="http://www.gstatic.com/mgc/images/icons/16x16/gmail.gif" width="16" height="16" alt="" />&nbsp;<a class="productLink productName" id="pudu" href="http://m.google.com/mail?dc=gorganic">Gmail</a>
+<br /> <img src="http://www.gstatic.com/mgc/images/icons/16x16/maps.gif" width="16" height="16" alt="" />&nbsp;<a class="productLink productName" id="gmm_local" href="http://m.google.com/maps?dc=gorganic">地图</a>
+<br /> <img src="http://www.gstatic.com/mgc/images/icons/16x16/news.gif" width="16" height="16" alt="" />&nbsp;<a class="productLink productName" id="news" href="http://m.google.com/news?dc=gorganic">资讯</a>
+<br /> <img src="http://www.gstatic.com/mgc/images/icons/16x16/igoogle.gif" width="16" height="16" alt="" />&nbsp;<a class="productLink productName" id="igoogle" href="http://www.google.com/m/ig?source=products&amp;dc=gorganic">iGoogle</a>
+<br /> <img src="http://www.gstatic.com/mgc/images/icons/16x16/picasa.gif" width="16" height="16" alt="" />&nbsp;<a class="productLink productName" id="photos" href="http://m.google.com/photos?dc=gorganic">相册</a>
+<br /> <img src="http://m.google.com/images/icons/16x16/voice.gif" width="16" height="16" alt="" />&nbsp;<a class="productLink productName" id="voice_webapp" href="http://www.google.com/voice/m?dc=gorganic">语音</a>
+<br /> <img src="http://www.gstatic.com/mgc/images/icons/16x16/calendar.gif" width="16" height="16" alt="" />&nbsp;<a class="productLink productName" id="calendar" href="http://m.google.com/calendar?dc=gorganic">Google 日历</a>
+<br /> <img src="http://www.gstatic.com/mgc/images/icons/16x16/reader.gif" width="16" height="16" alt="" />&nbsp;<a class="productLink productName" id="reader" href="http://m.google.com/reader?dc=gorganic">阅读器</a>
+<br /> <img src="http://www.gstatic.com/mgc/images/icons/16x16/goog411.gif" width="16" height="16" alt="" />&nbsp;<a class="productLink productName" id="goog411" href="http://m.google.com/goog411?dc=gorganic">GOOG-411</a>
+<br /> <img src="http://www.gstatic.com/mgc/images/icons/16x16/docs.gif" width="16" height="16" alt="" />&nbsp;<a class="productLink productName" id="docs" href="http://m.google.com/docs?dc=gorganic">文档</a>
+<br /> <img src="http://www.gstatic.com/mgc/images/icons/16x16/notebook.gif" width="16" height="16" alt="" />&nbsp;<a class="productLink productName" id="notebook" href="http://m.google.com/notebook?dc=gorganic">笔记本</a>
+<br /> <img src="http://www.gstatic.com/mgc/images/icons/16x16/tasks.gif" width="16" height="16" alt="" />&nbsp;<a class="productLink productName" id="tasks" href="http://m.google.com/tasks?dc=gorganic">工作表</a>
+<br />
+<br />
+*提示：为此网页添加书签，以便快速访问 Google 服务。
+<br />
+<a id="changeCountry" href="http://m.google.com/countries/?dc=gorganic">不在美国吗？</a>
+<br />
+<br />
+<a id="help" href="http://m.google.com/m/help/?dc=gorganic">帮助</a>
+<br />
+<div><div style="padding-top:0.5em"><img src="http://www.gstatic.com/mgc/images/icons/change_language.gif" width="32" height="16" style="vertical-align:top;" alt="" /><a id="changeLanguage" href="http://m.google.com/languages/?dc=gorganic&amp;continue=http%3A%2F%2Fm.google.com%2F" style="vertical-align:top; margin-top:1em">更改语言</a></div><p style="text-align: center;">&copy;2010&nbsp;-&nbsp;<span class="nobr"><a href="http://m.google.com/m/terms?dc=gorganic">服务条款</a></span>&nbsp;-&nbsp;<span class="nobr"><a href="http://m.google.com/privacy?dc=gorganic">隐私权政策</a></span></p></div></div></body></html>

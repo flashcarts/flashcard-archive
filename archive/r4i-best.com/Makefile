@@ -5,10 +5,13 @@ export BASE   := $(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../out
 export COMMON := $(TOPDIR)/../../common-kernels
 
-package: directory r4i-best.com_Green_Kernel_1.4.zip r4i-best.com_R4i-Best_R4i-Gold_Kernel_2.02.zip extdata
+package: directory old r4i-best.com_Green_Kernel_1.4.zip r4i-best.com_R4i-Best_R4i-Gold_Kernel_2.02.zip extdata
 
 directory:
 	mkdir -p $(OUT)/$(BASE)
+
+old: directory
+	make -C $@
 
 r4i-best.com_Green_Kernel_1.4.zip: directory
 	cd $(TOPDIR)/r4i-best.com_Green_Kernel_1.4 && zip -r -X $(OUT)/$(BASE)/$@ *

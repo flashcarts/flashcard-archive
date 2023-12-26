@@ -5,7 +5,7 @@ export BASE   := $(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../out
 export COMMON := $(TOPDIR)/../../common-kernels
 
-package: directory old r4i-gold.com_Pro_2013_Wood_R4_1.51.zip extdata
+package: directory old r4i-gold.com_3DS_Gold_Pro_2013_BL2CK_1.31.0.zip extdata
 
 directory:
 	mkdir -p $(OUT)/$(BASE)
@@ -13,8 +13,10 @@ directory:
 old: directory
 	make -C $@
 
-r4i-gold.com_Pro_2013_Wood_R4_1.51.zip: directory
-	cd $(TOPDIR)/r4i-gold.com_Pro_2013_Wood_R4_1.51 && zip -r -X $(OUT)/$(BASE)/$@ *
+include $(COMMON)/BL2CK/R4iTT/Makefile
+
+r4i-gold.com_3DS_Gold_Pro_2013_BL2CK_1.31.0.zip: BL2CK_1.31.0.zip
+	mv $(OUT)/$(BASE)/$< $(OUT)/$(BASE)/$@
 
 extdata: directory
-	cp YSMenu-instructions.txt $(OUT)/$(BASE)
+	cp readme.txt $(OUT)/$(BASE)
