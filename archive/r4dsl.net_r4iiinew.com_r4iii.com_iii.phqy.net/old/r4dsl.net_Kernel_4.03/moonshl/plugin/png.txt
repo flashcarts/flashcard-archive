@@ -1,0 +1,9 @@
+
+    libpng version 1.2.8 - December 3, 2004
+    Copyright (c) 1998-2004 Glenn Randers-Pehrson
+    (Version 0.96 Copyright (c) 1996, 1997 Andreas Dilger)
+    (Version 0.88 Copyright (c) 1995, 1996 Guy Eric Schalnat, Group 42, Inc.)
+
+    zlib version 1.2.3 - July 18, 2005
+    Copyright (C) 1995-2005 Jean-loup Gailly and Mark Adler
+

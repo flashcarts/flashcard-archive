@@ -1,0 +1,15 @@
+update_20110307
+
+
+fixed 5584 - Pokemon White Version (E)
+fixed 5585 - Pokemon Black Version (E)
+fixed 5586 - Pokemon Version Blanche (F)
+fixed 5587 - Pokemon Version Noire (F)
+fixed 5588 - Pokemon Weisse Edition (G)
+fixed 5589 - Pokemon Schwarze Edition (G)
+added 5590 - Shougi World Champion Gekisashi DS (J)
+added 5591 - Ishin no Arashi Shippuu Ryoumaden (J)
+fixed XXXX - Pokemon Edicion Blanca (S)
+fixed XXXX - Pokemon Edicion Negra (S)
+added XXXX - Pokemon Versione Bianca (I)
+added XXXX - Pokemon Versione Nera (I)

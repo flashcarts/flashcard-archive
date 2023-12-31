@@ -14,6 +14,7 @@ Some kernels are in different locations, or have consolidated as they are identi
   - r4infinity.com 2
   - r4ixds.com 2014 white version
   - woodr4isdhc.com carts
+  - ge.ndsi.in GEi HOT
   - (please raise an issue if you think your cart is an Ace3DS+ or R4iLS clone!)
 
 These carts may support BL2CK OS. Only these carts are confirmed to actually work so far:
@@ -32,6 +33,9 @@ These carts may support BL2CK OS. Only these carts are confirmed to actually wor
   - R4i Gold 3DS Plus with faulty DS mode
   - r4-pro.com carts
   - r4dspro.com carts
+  - r4ixds.com 2014-2016 non-white
+  - r4i-gold.com 3DS Gold Pro / 2013 carts
+  - r4sdhc.com V3DSU
 - Amaze3DS version:
   - r4igold.cc Wood 
   - Amaze3DS (use the Amaze3DS version)
@@ -39,8 +43,6 @@ These carts may support BL2CK OS. Only these carts are confirmed to actually wor
 These carts may support BL2CK OS, but have not been attempted. This information is based on its provided DLDI, which are identical.  
 Please do not attempt cross-loading without knowing what you're doing.
 - 3dslink.com Blue
-- r4ixds.com 2014-2016 non-white
 - r4i-gold.me 2013
-- r4i-gold.com 3DS Gold Pro
 - amazekard.com cards
 - Galaxy Eagle cards (use the Amaze3DS version and rename _DS_MENU.dat to ge.nds)

@@ -1,0 +1,610 @@
+﻿
+; MoonShell2 language resource for 'CP866 Russian (Cyrillic)'.
+; Encoding format is UTF-8.
+
+Author=mc_B3oWoLF™
+Target=RUS / Russian
+
+; ----------------------------
+
+TextFontFolderName=tfonteng
+
+; DateTimeFormat is YYYYMMDD or DDMMYYYY or MMDDYYYY.
+DateTimeFormat=DDMMYYYY
+
+; ----------------------------
+
+CD_CheckDisk_Start=Запущена проверка флешки.
+CD_CheckDisk_End=Проверка флешки успешно завершена.
+
+CD_FatalError_Title=Критическая ошибка!
+CD_FatalError_DuplicatedArea0=Несколько файлов используют одно диск.пространство.
+CD_FatalError_DuplicatedArea1=некоторые файлы уже повреждены.
+CD_FatalError_BrokenEntry0=Прямое вхождение неверно.
+CD_FatalError_BrokenEntry1=Повреждено более 1 файла.
+CD_FatalError_IlligalClusterLink0=Кластерная ссылка прервана.
+CD_FatalError_IlligalClusterLink1=Возможно, файл повреждён.
+CD_FatalError_BrokenDirectoryLink0=Прямое вхождение неверно.
+CD_FatalError_BrokenDirectoryLink1=Папка повреждена.
+CD_FatalError_BrokenUnicode0=Прямое вхождение неверно.
+CD_FatalError_BrokenUnicode1=Повреждено длинное название файла.
+CD_FatalError_FileSizeError0=Отображаемый размер файла
+CD_FatalError_FileSizeError1=отличается от реального.
+CD_FatalError_UnknownError=Неизвестная ошибка
+CD_FatalError_RecoveryMsg0=Метод восстановления:
+CD_FatalError_RecoveryMsg1=Сохраните все файлы на компьютере, отформа-
+CD_FatalError_RecoveryMsg2=тируйте флешку и скопируйте их обратно.
+CD_FatalError_StopApplication=Приложение закрыто.
+
+CD_NotSupportDiskSize_Title=Невозможно обработать формат флешки.
+CD_NotSupportDiskSize_Msg0=Размер флешки либо слишком большой,
+CD_NotSupportDiskSize_Msg1=либо размер кластера слишком маленький.
+CD_NotSupportDiskSize_Msg2=
+CD_NotSupportDiskSize_RecoveryMsg0=Метод восстановления:
+CD_NotSupportDiskSize_RecoveryMsg1=Попробуйте переформатировать флешку
+CD_NotSupportDiskSize_RecoveryMsg2=с бОльшим размером кластера.
+CD_NotSupportDiskSize_RecoveryMsg3=
+
+CD_CheckDuplicateCluster_Title=Проверка на двойные фрагменты и кластеры.
+
+CD_CheckFATType_Title=Проверка типа FAT.
+
+CD_FATType_UnknownFATType=Тип FAT неизвестен.
+
+CD_WriteTest_Title=Проверка диска на чтение/запись.
+
+CD_WriteError_Title=Проверка на доступ к диску провалена.
+CD_WriteError_Msg0=・Слишком мало свободного места.
+CD_WriteError_Msg1=・Несовместимый DLDI драйвер.
+CD_WriteError_Msg2=・Плохой контакт между SD флешкой и адаптером.
+CD_WriteError_Msg3=・Управляемая область флешки повреждена.
+CD_WriteError_Msg4=
+CD_WriteError_Msg5=Возможен другой источник.
+CD_WriteError_Msg6=
+CD_WriteError_Msg7=Во избежание проблем, приложение закрыто.
+
+; ----------------------------
+
+ERRMSG0_MemoryOverflow_CanRecovery=Невозможно открыть файл,
+ERRMSG1_MemoryOverflow_CanRecovery=так как памяти недостаточно.
+ERRMSG2_MemoryOverflow_CanRecovery=Закрыть.
+
+ERRMSG0_NotSupportFileFormat=Формат не поддерживается
+ERRMSG1_NotSupportFileFormat=или файл м.б. повреждён.
+ERRMSG2_NotSupportFileFormat=Закрыть.
+
+ERRMSG0_ProgressiveJpeg=Прогрессивные JPEG файлы
+ERRMSG1_ProgressiveJpeg=не поддерживаются.
+ERRMSG2_ProgressiveJpeg=Закрыть.
+
+ERRMSG0_Text0byte=Пустой текстовый файл.
+ERRMSG1_Text0byte=Невозможно открыть 0-байтовый файл.
+ERRMSG2_Text0byte=Закрыть.
+
+ERRMSG0_OverflowLargeImage=Изображение слишком большое.
+ERRMSG1_OverflowLargeImage=Максимальный размер - около 5МП.
+ERRMSG2_OverflowLargeImage=Закрыть.
+
+ERRMSG0_NotFoundMusicFile=Невозможно обнаружить музыкальные
+ERRMSG1_NotFoundMusicFile=файлы в указанной папке.
+ERRMSG2_NotFoundMusicFile=Закрыть.
+
+ERRMSG0_UnknownError=Произошла неизвестная
+ERRMSG1_UnknownError=внутренняя ошибка.
+ERRMSG2_UnknownError=Выключите, пожалуйста, DS.
+
+; ----------------------------
+
+Setup_Help1=
+Setup_Help2=Преднастройки МунШелл.
+Setup_Help3=
+Setup_Help4=Чтобы посмотреть все настройки, 
+Setup_Help5=нажмите START в списке файлов 
+Setup_Help6=и откройте Настройки Системы.
+Setup_Help7=
+Setup_Help8=Настройки кнопок сильно изменились.
+Setup_Help9=Пожалуйста, обратитесь к файлу KeyMap.txt.
+Setup_Help10=
+Setup_Help11=
+
+Setup_BootCheckDisk=Всегда запускать проверку флешки.
+Setup_ClickSound=Включить звуковые эффекты.
+Setup_FileListMode=Отображение файлов:
+Setup_FileListMode_Single=Однострочное.
+Setup_FileListMode_Double=Двустрочное.
+Setup_SkipSetup=Не показывать окно в следующий раз.
+Setup_OKBtn=
+
+; ----------------------------
+
+Launch_FileInfo=Инфо о файле
+Launch_FileInfo_Relational=Доп инфо о файле
+Launch_Size=Размер: %dбайт (%dМбит)
+Launch_Create=Создан: %s %d:%02d:%02d
+Launch_Update=Изменён: %s %d:%02d:%02d
+Launch_NotFoundRelationalFile=Файл не найден.
+
+; ----------------------------
+
+FL_Help0=
+FL_Help1=
+FL_Help2=X/Y: Уменьшить/Увеличить громкость
+FL_Help3=START: Настройки Системы
+FL_Help4=
+FL_Help5=L + A/B: Следующий/Предыдущий трек
+FL_Help6=L + X/Y: Регулировка яркости
+FL_Help7=
+FL_Help8=Зажать L или R: Перемотка вперёд/назад
+FL_Help9=Двойной клик L или R: След-й/Пред-й трек
+FL_Help10=Тройной клик L: Пауза
+FL_Help11=Тройной клик R: Перейти в ждущий режим
+
+; ----------------------------
+
+FL_Popup_Pause_Play=Воспроизвести
+FL_Popup_Pause_Pause=Пауза
+FL_Popup_PreviousFile=Предыдущий файл
+FL_Popup_NextFile=Следующий файл
+FL_Popup_Volume=Громкость. %d%%
+FL_Popup_BacklightLevel=Подсветка. %d
+FL_Popup_PlayMode_Repeat=Повтор
+FL_Popup_PlayMode_AllRep=Повтор Всех
+FL_Popup_PlayMode_Shuffle=Шаффл
+FL_Popup_Seek=Перемотка %s
+FL_Popup_NotFoundMoonMemoFolder=папка /moonmemo не найдена.
+
+; ----------------------------
+
+FL_DeleteFileDialog_NotFoundDustBox_Title=Ошибка удаления файла
+FL_DeleteFileDialog_NotFoundDustBox_Line0=Невозможно найти "Корзину".
+FL_DeleteFileDialog_NotFoundDustBox_Line1=Пожалуйста, обратитесь к
+FL_DeleteFileDialog_NotFoundDustBox_Line2=/Manuals/DustBox.txt.
+
+FL_DeleteFileDialog_DisabledDustBox_Title=Ошибка удаления файла
+FL_DeleteFileDialog_DisabledDustBox_Line0=Пожалуйста, удалите файлы из
+FL_DeleteFileDialog_DisabledDustBox_Line1="Корзины" с помощью компьютера.
+FL_DeleteFileDialog_DisabledDustBox_Line2=
+
+FL_DeleteFileDialog_DisabledSystemFolder_Title=Ошибка удаления файла
+FL_DeleteFileDialog_DisabledSystemFolder_Line0=Невозможно произвести действия
+FL_DeleteFileDialog_DisabledSystemFolder_Line1=с файлами в системной папке
+FL_DeleteFileDialog_DisabledSystemFolder_Line2=(moonshl2).
+
+FL_DeleteFileDialog_DisabledMoveFolder_Title=Ошибка удаления файла
+FL_DeleteFileDialog_DisabledMoveFolder_Line0=Невозможно просмотреть
+FL_DeleteFileDialog_DisabledMoveFolder_Line1=содержимое папок.
+FL_DeleteFileDialog_DisabledMoveFolder_Line2=
+
+FL_DeleteFileDialog_Question_Title=Подтвердите удаление файла
+FL_DeleteFileDialog_Question_Line0=Вы действительно хотите удалить этот файл?
+FL_DeleteFileDialog_Question_Line1=Нажмите L+R+A для подтверждения.
+FL_DeleteFileDialog_Question_Line2=Нажмите B для отмены.
+
+FL_DeleteFileDialog_Question_EasyDelete_Title=Подтвердите удаление файла
+FL_DeleteFileDialog_Question_EasyDelete_Line0=Вы действительно хотите удалить этот файл?
+FL_DeleteFileDialog_Question_EasyDelete_Line1=Нажмите X+A для подтверждения.
+FL_DeleteFileDialog_Question_EasyDelete_Line2=Нажмите B для отмены.
+
+FL_DeleteFileDialog_Success_Title=Результат удаления файла
+FL_DeleteFileDialog_Success_Line0=Файл был перемещён в "Корзину".
+FL_DeleteFileDialog_Success_Line1=Пожалуйста, удалите файлы из
+FL_DeleteFileDialog_Success_Line2="Корзины" с помощью компьютера.
+
+; ----------------------------
+
+FL_HelpLeft_Count=12
+FL_HelpLeft_Line0=Помощь - Кнопка L...
+FL_HelpLeft_Line1=
+FL_HelpLeft_Line2=L + ← : Отобразить управление MP3
+FL_HelpLeft_Line3=L + → : Следующий трек
+FL_HelpLeft_Line4=L + ↑ : Пауза
+FL_HelpLeft_Line5=L + ↓ : Изменить режим воспроизведения
+FL_HelpLeft_Line6=L + A / B: Следующий / Предыдущий трек
+FL_HelpLeft_Line7=L + X / Y: Настройка яркости
+FL_HelpLeft_Line8=
+FL_HelpLeft_Line9=Одновременное нажатие L+R: Пауза
+FL_HelpLeft_Line10=Двойной клик и зажатие L: Перемотка ← 1%
+FL_HelpLeft_Line11=Двойной клик L: Предыдущий трек
+
+FL_HelpRight_Count=11
+FL_HelpRight_Line0=Помощь - Кнопка R...
+FL_HelpRight_Line1=
+FL_HelpRight_Line2=R + ← / → : Перемотка назад / вперёд 1%
+FL_HelpRight_Line3=R + ↑ / ↓ : Перемотка назад / вперёд 5%
+FL_HelpRight_Line4=R+A : Воспроизвести все треки в папке
+FL_HelpRight_Line5=L+R+A : Воспроизвести все треки на флешке
+FL_HelpRight_Line6=
+FL_HelpRight_Line7=Одновременное нажатие L+R: Пауза
+FL_HelpRight_Line8=Двойной клик и зажатие R: Перемотка → 1%
+FL_HelpRight_Line9=Двойной клик R: Следующий трек
+FL_HelpRight_Line10=Тройной клик R: Ждущий режим
+
+; ----------------------------
+
+SysMenu_MemoList=Открыть блокнот
+SysMenu_MemoList_NotFound=Не найти %s
+SysMenu_FileListMode=1 строка / 2 строки
+SysMenu_Customize=Настройки
+SysMenu_RestoreBG=Восстановить обои
+SysMenu_Firmware=Вернуться в прошивку
+SysMenu_Firmware_NotFound=Невозможно найти %s
+
+; ----------------------------
+
+SubMenu_Title=Выберите меню:
+SubMenu_AppLauncher=Список приложений
+SubMenu_AudioPlayer=Аудио Плеер
+SubMenu_SystemMenu=Настр. сист.
+SubMenu_PowOffTimer_Set=Откл ч/з %dмин
+SubMenu_PowOffTimer_SetHelp=Настр: L/R
+SubMenu_PowOffTimer_LastTime=Осталось: %d:%02d
+SubMenu_BottomHelp=Кнопка A или SELECT - подтвердить выбор.
+
+; ----------------------------
+
+CS_Help0=Системное меню и настройки
+CS_Help1=
+CS_Help2=По завершении, нажмите внизу кнопку
+CS_Help3="Применить", чтобы сохранить изменения.
+CS_Help4=
+CS_Help5=Нажмите SELECT во время просмотра
+CS_Help6=изображения, видео или текстового файла,
+CS_Help7=чтобы открыть настройки, связанные 
+CS_Help8=с этими файлами.
+CS_Help9=Вы всегда можете найти дополнительные
+CS_Help10=функции (Адд-оны) для MoonShell в папке 
+CS_Help11=/Misc Tools/Extras.
+
+CS_Title=Настройки Системы
+
+CS_PageTab_Title=Настройки:
+CS_PageTab_Global=Общие
+CS_PageTab_FileList=Список файлов
+CS_PageTab_ScreenSaver=СкринСейвер
+CS_PageTab_Music=Аудио
+
+CS_Cancel=Отмена
+CS_Ok=Ок
+
+; ----------------------------
+
+CSG_SkipSetup=Не показывать преднастройки.
+CSG_BootCheckDisk=Всегда проверять флешку.
+
+CSG_ClickSound=Включить звуковые эффекты.
+CSG_EnableFadeEffect=Использовать эффект затухания.
+CSG_AutoLastState=Автоматически запускать File Launcher.
+CSG_LRKeyLockTitle=Кнопки L/R:
+CSG_LRKeyLockAlwayOff=Всегда ВЫКЛ
+CSG_LRKeyLockRelationalPanel=Вспл. подсказки
+CSG_LRKeyLockAlwayOn=Всегда ВКЛ
+CSG_EnableResumeFunction=Помнить состояние после выключения.
+CSG_EnableScreenCapture=Включить "захват экрана" у DSi.
+CSG_SpeakerPowerOffWhenPanelClosed=Отключать динамики в закрытом виде.
+
+CSF_MoveFolderLocked=Заблокировать навигацию.
+CSF_HiddenFilenameExt=Скрывать расширения файлов.
+CSF_HiddenNotSupportFileType=Скрывать неподдерживаемые файлы.
+CSF_HiddenNDSROMFile=Скрывать NDS-ром-файлы.
+CSF_EnableFileInfo=Отображать инфо о файле в проводнике.
+CSF_ShowOnlineHelp_LRButton=Отображать подсказки о "L"/"R".
+CSF_BButtonToFolderUp=Выйти из папки кнопкой "B".
+CSF_EasyDeleteKey=Кнопки "X"+"A" - удалить.
+CSF_UseJpegExifThumbnail=Отображать эскизы Jpeg EXIF.
+CSF_ShowCoverImage=Отображать AlbumArt для M4A и MP3.
+CSF_HideAttribute_Title=Скрывать файлы:
+CSF_HideAttribute_Archive=Архивные
+CSF_HideAttribute_Hidden=Скрытые
+CSF_HideAttribute_System=Системные
+CSF_HideAttribute_ReadOnly=Т.д/чтения
+
+CSS_EnabledScreenSaver=Использовать скринсейвер.
+CSS_Use24hFormat=24-часовой формат.
+CSS_ScreenSaverTitle=Тип:
+CSS_ScreenSaverNormal=Станд
+CSS_ScreenSaverDigital=Цифр
+CSS_ScreenSaverExtend=Экстра
+CSS_ScreenSaverBGTitle=Фон:
+CSS_ScreenSaverBGSkinDefault=Станд.
+CSS_ScreenSaverBGTopScreen=В. Экран
+CSS_ScreenSaverBGBottomScreen=Н. Экран
+CSS_ScreenSaverTimeOutSecTitle=Вык.Подсветку:
+CSS_ScreenSaverTimeOutSec5sec=5с
+CSS_ScreenSaverTimeOutSec10sec=10с
+CSS_ScreenSaverTimeOutSec30sec=30с
+CSS_ScreenSaverTimeOutSec60sec=60с
+CSS_ScreenSaverTimeOutSecOff=Сразу отключать подсветку.
+CSS_ShowID3Tag=Отображать ID3 тэги.
+
+CSM_PlayListEndTitle=Воспроизведение:
+CSM_PlayListEndLoop=Цикл
+CSM_PlayListEndStop=Остановить
+CSM_PlayListEndPowerOff=Выключить приставку
+
+; ----------------------------
+
+ACS_Help0=Настройки аудио плеера
+ACS_Help1=
+ACS_Help2=
+ACS_Help3=
+ACS_Help4=
+ACS_Help5=
+ACS_Help6=
+ACS_Help7=
+ACS_Help8=
+ACS_Help9=
+ACS_Help10=
+ACS_Help11=
+
+ACS_Title=Настройки аудио плеера.
+
+ACS_AlwaysUsedAudioPlayer=Плеер всегда включён.
+ACS_PauseWhenStopped=Возврат в проводник по нажатии паузы.
+ACS_DrawPlayList=Отображать плейлист на В.экране.
+ACS_DrawSpectrumAnalyzer=Отображать спектроанализатор.
+
+; ----------------------------
+
+DCS_Help0=Настройки воспроизведения видео
+DCS_Help1=
+DCS_Help2=По завершении, нажмите внизу кнопку
+DCS_Help3="Применить", чтобы сохранить изменения.
+DCS_Help4=
+DCS_Help5=
+DCS_Help6=Внимание:
+DCS_Help7=Увеличение скорости обработки во время
+DCS_Help8=воспроизведения ("БыстрыйЗапуск") может 
+DCS_Help9=привести к проблемам с видео
+DCS_Help10=высокого фрэймрейта и битрейта.
+DCS_Help11=
+
+DCS_Title=Настройки воспроизведения видео
+
+DCS_EnabledFastStart=Включить режим "БыстрыйЗапуск".
+DCS_PauseWhenPanelClosed=Видео на паузу при закрытии DS.
+DCS_EnableIndividualResume=Включить "individual resume".
+DCS_ControlPowerLED=Выключить индикатор питания.
+DCS_InverseVisual_PlayPause=Инвертировать кнопку Play/pause.
+DCS_EverytimeStopOfEnd=Выход в проводник по окончании видео.
+DCS_BacklightTimeOutTitle=Отключить подсветку через (Сек):
+DCS_BacklightTimeOutOff=Выкл.
+DCS_BacklightTimeOut5sec=5
+DCS_BacklightTimeOut10sec=10
+DCS_BacklightTimeOut15sec=15
+
+; ----------------------------
+
+DV_VolumeLabel=Volume
+DV_VolumeValue=%d%%
+DV_VolumeMute=Выкл
+DV_VolumeMax=Макс
+
+; ----------------------------
+
+DV_Popup_Pause_Play=Воспроизведение
+DV_Popup_Pause_Pause=Пауза
+DV_Popup_PreviousFile=Предыдущий файл
+DV_Popup_NextFile=Следующий файл
+DV_Popup_Volume=Громкость. %d%%
+DV_Popup_Seek=Перемотка %ssec
+DV_Popup_BacklightLevel=Подсветка. %d
+
+; ----------------------------
+
+ICS_Help0=Настройки просмотра изображений
+ICS_Help1=
+ICS_Help2=По завершении, нажмите внизу кнопку
+ICS_Help3="Применить", чтобы сохранить изменения.
+ICS_Help4=
+ICS_Help5=
+ICS_Help6=Вы можете применить изображение как
+ICS_Help7=обои, нажав START во время отображения.
+ICS_Help8=Для восстановления стандартных обоев,
+ICS_Help9=нажмите START в списке файлов и выберите
+ICS_Help10=пункт "Восстановить Обои" в системном
+ICS_Help11=меню.
+
+ICS_Title=Настройки просмотра изображений
+
+ICS_ShowInfomation=Показывать инфо о файле и помощь.
+ICS_ShowControlIcons=Показывать значки управления.
+ICS_DoubleSpeedKey=Увеличить чувствительность кнопок.
+ICS_DoubleSpeedTouch=Увеличить чувствительность тач скрина.
+ICS_MultipleResume=Запомнить зум.
+ICS_AutoFitting=Автоподстраивать большие JPEG.
+ICS_EnabledProgressiveJpeg=Включить поддержку progressive jpeg.
+ICS_StartPosTitle=Выровнять при открытии по краю:
+ICS_StartPosLeftTop=Вх-Лв
+ICS_StartPosRightTop=Вх-Пр
+ICS_StartPosLeftBottom=Нз-Лв
+ICS_StartPosRightBottom=Нз-Пр
+ICS_AutoNextTimeSecTitle=Слайдшоу (сек.):
+ICS_AutoNextTimeSecOff=Выкл.
+ICS_AutoNextTimeSec10sec=10
+ICS_AutoNextTimeSec30sec=30
+ICS_AutoNextTimeSec60sec=60
+ICS_ShowInfoTopScreen=Отобразить инфо на в.экране.
+ICS_EffectTitle=Эффекты применяемых обоев:
+ICS_EffectHeightPadding=Учесть расстояниее м/у экранами.
+ICS_EffectPastelForTopBG=Применить прозр-й оверлей к в.экрану.
+ICS_EffectPastelForBottomBG=Применить прозр-й оверлей к н.экрану.
+
+; ----------------------------
+
+IV_LoadMsg0=Изображение загружается.
+IV_LoadMsg1=Пожалуйста, подождите...
+
+IV_Help1=START: Устан. обои | Select: Настройки
+IV_Help2=Y: 50% | X: 200% | A: 100% | B: Назад
+
+; ----------------------------
+
+IV_Popup_BacklightLevel=Подсветка. %d
+IV_Popup_Zoom=Зум %d%%
+IV_Popup_Pause_Play=Воспроизведение
+IV_Popup_Pause_Pause=Пауза
+IV_Popup_PreviousFile=Предыдущий файл
+IV_Popup_NextFile=Следующий файл
+IV_Popup_Seek=Перемотка %s
+
+; ----------------------------
+
+TCS_Help0=Настройки просмотра текста
+TCS_Help1=
+TCS_Help2=По завершении, нажмите внизу кнопку
+TCS_Help3="Применить", чтобы сохранить изменения.
+TCS_Help4=
+TCS_Help5=
+TCS_Help6=Предупреждение по шрифтам ClearType:
+TCS_Help7=Текст, отображаемый на верхнем экране
+TCS_Help8=оригинальной DS "Phat" может оказаться
+TCS_Help9=очень размытым.
+TCS_Help10=
+TCS_Help11=
+
+TCS_Title=Настройки просмотра текста
+
+TCS_TopScrModeTitle=Режим верхнего экрана:
+TCS_TopScrModeLightOff=Выкл
+TCS_TopScrModeText=Текст
+TCS_TopScrModeClock=Время и инфо
+
+TCS_ScreenSaverTitle=Скринсейвер:
+TCS_ScreenSaverNormal=Стд
+TCS_ScreenSaverDigital=Циф
+TCS_ScreenSaverExtend=Экстра
+
+TCS_LineSpaceTitle=Интервал:
+TCS_LineSpaceSmall=Мал
+TCS_LineSpaceMiddle=Норм
+TCS_LineSpaceLarge=Шир
+
+TCS_FontSizeTitle=Шрифт:
+TCS_FontSizeSmall=Мал
+TCS_FontSizeMiddle=Срд
+TCS_FontSizeLarge=Бол
+
+TCS_ClearTypeFontTitle=ClrType
+TCS_ClearTypeFontNone=Откл
+TCS_ClearTypeFontLite=Узк
+TCS_ClearTypeFontNormal=Стд
+TCS_ClearTypeFontHeavy=Жрн
+
+TCS_UseSmoothScroll=Плавная прокрутка
+
+TCS_CPTitle=Кодировка
+TCS_CP437=437
+TCS_CP850=850
+TCS_CP1252=1252
+
+TCS_DetectCharCodeTitle=Использовать кодировки:
+
+; ----------------------------
+
+TV_SelEnc_Title=Выберите тип кодировки:
+TV_SelEnc_Items_AutoDetect=Автоопределение
+TV_SelEnc_Items_ANSI=ANSI 8bit
+TV_SelEnc_Items_EUC=EUC/S-JIS
+TV_SelEnc_Items_UTF16BE=UTF-16 (BE)
+TV_SelEnc_Items_UTF16LE=UTF-16 (LE)
+TV_SelEnc_Items_UTF8=UTF-8
+TV_SelEnc_Items_TextEdit=Запустить текстовый редактор.
+TV_SelEnc_Help_Normal=Кнопка A - подтвердить, B - отмена.
+TV_SelEnc_Help_NoEdit0=Файл, превышающий 128kb
+TV_SelEnc_Help_NoEdit1=не отредактировать.
+
+; ----------------------------
+
+TV_PRG_LoadExtendFont=Загрузка дополнительных шрифтов...
+TV_PRG_LoadTextFile=Загрузка текстового файла...
+TV_PRG_DetectTextEncode=Распознавание кодировки...
+TV_PRG_DetectReturnCode=Распознавание кода возврата...
+TV_PRG_ConvertToUnicode=Конвертирование в Юникод...
+
+TV_UncertainFormat1=Формат неопределён.
+TV_UncertainFormat2=Непр.формат? Откр.долгим нажатием A.
+
+TV_Help1=A: След. страница | B: Назад
+TV_Help2=X/Y: Управление закладками
+TV_Help3=Select: Конфиг | Кодировка: %s
+TV_Info=Строка: %d / %d Строк (%.2f%%)
+
+TV_BookmarkText_LoadTitle=Меню загрузки закладок
+TV_BookmarkText_SaveTitle=Меню сохранения закладок
+TV_BookmarkText_Empty=%d:  Нет закладки
+TV_BookmarkText_Info=%d:  %dя Строка  %s%s
+
+; ----------------------------
+
+TV_Popup_BacklightLevel=Подсветка. %d
+TV_Popup_Bookmark_Load=Загружено.
+TV_Popup_Bookmark_Empty=Отменено.
+TV_Popup_Bookmark_Save=Сохранено.
+TV_Popup_Pause_Play=Воспроизведение
+TV_Popup_Pause_Pause=Пауза
+TV_Popup_PreviousFile=Предыдущий файл
+TV_Popup_NextFile=Следующий файл
+TV_Popup_Seek=Перемотка %s
+TV_Popup_MoveToTop=Переместиться в начало.
+TV_Popup_MoveToLast=Переместиться в конец.
+
+; ----------------------------
+
+ME_Help0=Режим редактора
+ME_Help1=
+ME_Help2=↓ / ← / ↑ / →: Чёрный/Красный/Зелёный/Синий
+ME_Help3=Y/X: Тонкая/толстая линия
+ME_Help4=A/B: Сохранить и выйти.
+ME_Help5=SELECT: Отменить
+ME_Help6=Зажать L/R и клик: Стереть
+ME_Help7=
+ME_Help8=Выключите DS, чтобы выйти,
+ME_Help9=не сохраняя изменения.
+
+; ----------------------------
+
+MemoList_Title=Режим памяток.
+
+MemoList_Help0=
+MemoList_Help1=
+MemoList_Help2=Тач скрин: Создать новую страницу.
+MemoList_Help3=Зажать кнопку START: Удалить выбранную страницу.
+
+; ----------------------------
+
+MemoEdit_FileInfo_Open=Открыт существующий файл.
+MemoEdit_FileInfo_Edited=Редактирование. Файл будет сохранён автоматически.
+MemoEdit_FileInfo_Create=Открыт в режиме "Новый файл".
+
+MemoEdit_SavingNow=Сохраняются изменения файла BMP...
+
+; ----------------------------
+; for Text editor Ver1.5
+
+TE_File_SelectEncode_Title1=Автовыбор кодировки невозможен.
+TE_File_SelectEncode_Title2=Выберите, пожалуйста, тип кодировки.
+
+TE_skk_DicSystem_PreloadDic=Загрузка словаря.
+
+TE_skk_ExitMenu_Title=Меню выхода
+TE_skk_ExitMenu_Items_Cancel=Отмена.
+TE_skk_ExitMenu_Items_Overwrite=Перезаписать и выйти.
+TE_skk_ExitMenu_Items_SaveAs=Сохранить как.. и выйти.
+TE_skk_ExitMenu_Items_CreateNew=Создать новый.
+TE_skk_ExitMenu_Items_NoSaveExit=Выйти без сохранения.
+TE_skk_ExitMenu_SavePrgMsg1=Сохранение файла и перезагрузка...
+TE_skk_ExitMenu_SavePrgMsg2=Пожалуйста, не отключайте питание.
+
+TE_SysMsg_ClipBoard_Empty=Буфер обмена пуст.
+TE_SysMsg_ClipBoard_Pasted=Данные вставлены.
+TE_SysMsg_ClipBoard_Copied=Данные скопированы.
+
+TE_OSKHW_Model_ModelResults_Selector_Title=Пожалуйста, выберите корректный символ.
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle1=Зарегистрировать 
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle2=данный символ 
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle3=в словарь прописи?
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogRegist=ДА
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogCancel=ОТМЕНА
+
+; ----------------------------
+

@@ -1,0 +1,19 @@
+  说明:这个是DSi V1.44升级包，如果你的r4itt卡不可以在DSi V1.44版本主机上运行，请用这个DSi V1.44升级包在nds\dsl\dsi\dsill\dsixl\3ds主机上将你的r4itt卡升级，就可以在DSi V1.44上运行啦
+
+  1.首先，请到www.r4itt.net下载最新内核。
+  2：解压缩文件，把这些文件(app,data,moonshl2,
+NDSMAIL,svsip,SYSTEM,r4.DAT)复制到TF卡根目录里。
+  3.下载紫色r4itt卡DSi V1.44升级包。解压并将解压文件(R4itt_Updater.nds R4iTTFirmware.dat)复制到TF卡上。
+  4.将TF卡插到r4itt卡上，然后将插好TF卡的r4itt卡插到nds\dsl\dsi\dsill\dsixl\3ds主机上。
+  5.开机，按A键运行升级文件R4itt_Updater.nds,就可以升级啦。注意：升级过程中不可以关闭电源或者拨出r4itt卡，否则会损坏r4itt卡。
+
+  Instructions :this is DSi V1.44 upgrade package, if your purple r4itt card can not run on DSi V1.44 console,please use this DSi V1.44 upgrade package to upgrade your r4itt card by nds\dsl\dsi\dsill\dsixl\3ds for running on DSi V1.44 console.
+
+  1. First, go to www.r4itt.net to download the latest kernel.
+  2.Unzip and copy the files(app,data,moonshl2,
+NDSMAIL,svsip,SYSTEM,r4.DAT) to the root of MicroSD card.
+  3. Go to www.r4itt.net to download the DSi V1.44 upgrade package of purple r4itt.
+Unzip and copy the files(R4itt_Updater.nds R4iTTFirmware.dat) to the root of MicroSD card.
+  4. Insert MicroSD card into r4itt card, insert r4itt card into nds\dsl\dsi\dsill\dsixl\3ds.
+  5.Turn on console and press “A” button to run the upgrade file R4itt_Updater.nds.
+Note:When upgrading the r4itt card, it is not allowed to turn off power or pull out r4itt  ,otherwise it will damage the r4itt card.

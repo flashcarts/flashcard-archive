@@ -1,0 +1,9 @@
+HTTP/1.1 302 FOUND
+location:http://www.google.com.hk/
+cache-control:private
+content-type:text/html; charset=UTF-8
+set-cookie:PREF=ID=70a8ab90b1061235:U=50fc2043612ad676:FF=2:LD=zh-CN:NW=1:TM=1271149810:LM=1271149869:S=jiLz_WfrGTCCN4pz; expires=Thu, 12-Apr-2012 09:11:09 GMT; path=/; domain=.google.com.hk
+date:Tue, 13 Apr 2010 09:11:09 GMT
+server:gws
+content-length:222
+connection:close
