@@ -17,4 +17,4 @@ ndsill.net_3DS_Kernel_2.60.zip: directory
 	cd $(TOPDIR)/ndsill.net_3DS_Kernel_2.60 && zip -r -X $(OUT)/$(BASE)/$@ *
 
 extdata: directory
-	cp readme.txt $(OUT)/$(BASE)
+	cp README.txt $(OUT)/$(BASE)

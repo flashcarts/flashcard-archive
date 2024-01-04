@@ -14,4 +14,4 @@ old: directory
 	make -C $@
 
 extdata: directory
-	cp YSMenu-instructions.txt $(OUT)/$(BASE)
+	cp readme.txt $(OUT)/$(BASE)
