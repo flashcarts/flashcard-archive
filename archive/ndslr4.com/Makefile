@@ -14,4 +14,4 @@ old: directory
 	make -C $@
 
 extdata: directory
-	cp readme.txt $(OUT)/$(BASE)
+	cp README.txt $(OUT)/$(BASE)
