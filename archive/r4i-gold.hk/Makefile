@@ -14,7 +14,7 @@ old: directory
 	make -C $@
 
 r4i-gold.hk_RTS_Kernel_4.1.0.8.zip: directory
-	cd $(TOPDIR)/r4i-gold.hk_RTS_Kernel_4.1.0.8 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4i-gold.hk_RTS_Kernel_4.1.0.8 && zip -r $(OUT)/$(BASE)/$@ *
 
 extdata: directory
 	cp readme.txt $(OUT)/$(BASE)

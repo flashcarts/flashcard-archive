@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 ndslr4.com_Kernel_1.34.zip: directory
-	cd $(COMMON)/R4SDHC_Original_Kernel_1.34 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(COMMON)/R4SDHC_Original_Kernel_1.34 && zip -r $(OUT)/$(BASE)/$@ *

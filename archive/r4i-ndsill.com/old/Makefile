@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4i-ndsill.com_Kernel_2.05.zip: directory
-	cd $(TOPDIR)/r4i-ndsill.com_Kernel_2.05 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4i-ndsill.com_Kernel_2.05 && zip -r $(OUT)/$(BASE)/$@ *

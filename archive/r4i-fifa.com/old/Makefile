@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4i-fifa.com_Kernel_2.0.zip: directory
-	cd $(TOPDIR)/r4i-fifa.com_Kernel_2.0 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4i-fifa.com_Kernel_2.0 && zip -r $(OUT)/$(BASE)/$@ *

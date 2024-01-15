@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4infinity.com_original_Kernel_2.1.zip: directory
-	cd $(TOPDIR)/r4infinity.com_original_Kernel_2.1 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4infinity.com_original_Kernel_2.1 && zip -r $(OUT)/$(BASE)/$@ *

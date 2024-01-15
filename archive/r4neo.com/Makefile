@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4neo.com_Kernel_1.35.zip: directory
-	cd $(TOPDIR)/r4neo.com_Kernel_1.35 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4neo.com_Kernel_1.35 && zip -r $(OUT)/$(BASE)/$@ *
 
 extdata: directory
 	cp README.txt $(OUT)/$(BASE)

@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4dspro.com_Kernel_1.50.zip: directory
-	cd $(TOPDIR)/r4dspro.com_Kernel_1.50 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4dspro.com_Kernel_1.50 && zip -r $(OUT)/$(BASE)/$@ *

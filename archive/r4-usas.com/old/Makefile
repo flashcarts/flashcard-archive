@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4-usas.com_DEMON_3.9b.zip: directory
-	cd $(TOPDIR)/r4-usas.com_DEMON_3.9b && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4-usas.com_DEMON_3.9b && zip -r $(OUT)/$(BASE)/$@ *

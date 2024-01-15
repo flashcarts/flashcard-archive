@@ -11,13 +11,13 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 EDGE_OS_1.36.zip: directory
-	cd $(TOPDIR)/EDGE_OS_1.36 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/EDGE_OS_1.36 && zip -r $(OUT)/$(BASE)/$@ *
 
 EDGE_OS_1.37.zip: directory
-	cd $(TOPDIR)/EDGE_OS_1.37 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/EDGE_OS_1.37 && zip -r $(OUT)/$(BASE)/$@ *
 
 EDGE_OS_1.40.zip: directory
-	cd $(TOPDIR)/EDGE_OS_1.40.zip && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/EDGE_OS_1.40.zip && zip -r $(OUT)/$(BASE)/$@ *
 
 EDGE_OS_1.41.zip: directory
-	cd $(TOPDIR)/EDGE_OS_1.41 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/EDGE_OS_1.41 && zip -r $(OUT)/$(BASE)/$@ *

@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4i-best.com_R4i-SDHC_DEMON_1.08b.zip: directory
-	cd $(TOPDIR)/r4i-best.com_R4i-SDHC_DEMON_1.08b && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4i-best.com_R4i-SDHC_DEMON_1.08b && zip -r $(OUT)/$(BASE)/$@ *

@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4dsl.net_Kernel_3.13.zip: directory
-	cd $(TOPDIR)/r4dsl.net_Kernel_3.13 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4dsl.net_Kernel_3.13 && zip -r $(OUT)/$(BASE)/$@ *
 
 r4dsl.net_Kernel_4.03.zip: directory
-	cd $(TOPDIR)/r4dsl.net_Kernel_4.03 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4dsl.net_Kernel_4.03 && zip -r $(OUT)/$(BASE)/$@ *

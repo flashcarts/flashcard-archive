@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 SuperCard_DSONE_EOS_sp6_20130129_5850fix.zip: directory
-	cd $(TOPDIR)/SuperCard_DSONE_EOS_sp6_20130129_5850fix && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/SuperCard_DSONE_EOS_sp6_20130129_5850fix && zip -r $(OUT)/$(BASE)/$@ *

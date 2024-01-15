@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4plus.net_Kernel_2.01.zip: directory
-	cd $(TOPDIR)/r4plus.net_Kernel_2.01 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4plus.net_Kernel_2.01 && zip -r $(OUT)/$(BASE)/$@ *
 
 extdata: directory
 	cp README.txt $(OUT)/$(BASE)

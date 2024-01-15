@@ -11,10 +11,10 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 iTouchDS_Kernel_1.9.zip: directory
-	cd $(TOPDIR)/iTouchDS_Kernel_1.9 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/iTouchDS_Kernel_1.9 && zip -r $(OUT)/$(BASE)/$@ *
 
 iTouchDS_Kernel_2.1.zip: directory
-	cd $(TOPDIR)/iTouchDS_Kernel_2.1 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/iTouchDS_Kernel_2.1 && zip -r $(OUT)/$(BASE)/$@ *
 
 iTouchDS_Kernel_3.9a.zip: directory
-	cd $(TOPDIR)/iTouchDS_Kernel_3.9a && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/iTouchDS_Kernel_3.9a && zip -r $(OUT)/$(BASE)/$@ *

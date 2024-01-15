@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 R4iTT_black_Kernel_2.27.zip: directory
-	cd $(TOPDIR)/R4iTT_black_Kernel_2.27 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/R4iTT_black_Kernel_2.27 && zip -r $(OUT)/$(BASE)/$@ *
 
 extdata: directory
 	cp -r readme.txt R4iTT_black_FWUpdate*  $(OUT)/$(BASE)

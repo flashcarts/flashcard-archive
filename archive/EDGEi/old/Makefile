@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 EDGEi_Kernel_2.20.zip: directory
-	cd $(TOPDIR)/EDGEi_Kernel_2.20 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/EDGEi_Kernel_2.20 && zip -r $(OUT)/$(BASE)/$@ *

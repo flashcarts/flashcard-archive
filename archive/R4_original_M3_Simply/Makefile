@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 R4DS_Wood_R4_1.62.zip: directory
-	cd $(TOPDIR)/R4DS_Wood_R4_1.62 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/R4DS_Wood_R4_1.62 && zip -r $(OUT)/$(BASE)/$@ *
 
 extdata: directory
 	cp README.txt $(OUT)/$(BASE)

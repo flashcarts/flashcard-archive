@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4.ndsl.cc_Kernel_2.0.zip: directory
-	cd $(TOPDIR)/r4.ndsl.cc_Kernel_2.0 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4.ndsl.cc_Kernel_2.0 && zip -r $(OUT)/$(BASE)/$@ *
 
 extdata: directory
 	cp README.txt $(OUT)/$(BASE)

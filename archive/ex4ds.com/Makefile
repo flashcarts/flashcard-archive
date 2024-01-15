@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 EX4DS_Kernel_2.01.zip: directory
-	cd $(TOPDIR)/EX4DS_Kernel_2.01 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/EX4DS_Kernel_2.01 && zip -r $(OUT)/$(BASE)/$@ *

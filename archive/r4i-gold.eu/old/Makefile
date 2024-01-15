@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4i-gold.eu_3DS_DEMON_1.73b.zip: directory
-	cd $(TOPDIR)/r4i-gold.eu_3DS_DEMON_1.73b && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4i-gold.eu_3DS_DEMON_1.73b && zip -r $(OUT)/$(BASE)/$@ *

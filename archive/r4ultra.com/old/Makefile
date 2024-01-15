@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 R4iUltra-En_1.56.zip: directory
-	cd $(TOPDIR)/R4iUltra-En_1.56 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/R4iUltra-En_1.56 && zip -r $(OUT)/$(BASE)/$@ *

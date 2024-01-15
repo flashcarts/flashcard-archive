@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 R4iTT.net_original_Kernel_2.32.zip: directory
-	cd $(TOPDIR)/R4iTT.net_original_Kernel_2.32 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/R4iTT.net_original_Kernel_2.32 && zip -r $(OUT)/$(BASE)/$@ *

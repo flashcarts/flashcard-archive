@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4i.ndsi.in_R4i_Gold_Kernel_3.2.zip: directory
-	cd $(TOPDIR)/r4i.ndsi.in_R4i_Gold_Kernel_3.2 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4i.ndsi.in_R4i_Gold_Kernel_3.2 && zip -r $(OUT)/$(BASE)/$@ *

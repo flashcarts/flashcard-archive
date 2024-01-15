@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4imax.com_Kernel_4.5.zip: directory
-	cd $(TOPDIR)/r4imax.com_Kernel_4.5 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4imax.com_Kernel_4.5 && zip -r $(OUT)/$(BASE)/$@ *

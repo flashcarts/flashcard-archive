@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4i-sdhc.hk_Unlimited_Upgradable_FWUpdate_3DS4.2_DSi1.4.4.zip: directory
-	cd $(TOPDIR)/r4i-sdhc.hk_Unlimited_Upgradable_FWUpdate_3DS4.2_DSi1.4.4 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4i-sdhc.hk_Unlimited_Upgradable_FWUpdate_3DS4.2_DSi1.4.4 && zip -r $(OUT)/$(BASE)/$@ *
 
 r4i-sdhc.hk_Unlimited_Upgradable_Kernel_4.2.0.9A.zip: directory
-	cd $(TOPDIR)/r4i-sdhc.hk_Unlimited_Upgradable_Kernel_4.2.0.9A && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4i-sdhc.hk_Unlimited_Upgradable_Kernel_4.2.0.9A && zip -r $(OUT)/$(BASE)/$@ *

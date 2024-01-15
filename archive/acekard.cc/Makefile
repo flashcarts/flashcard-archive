@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 acekard.cc_Acekard_3_AKAIO_1.8.7.zip: directory
-	cd $(TOPDIR)/acekard.cc_Acekard_3_AKAIO_1.8.7 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/acekard.cc_Acekard_3_AKAIO_1.8.7 && zip -r $(OUT)/$(BASE)/$@ *
 
 extdata: directory
 	cp acekardcc.jpg $(OUT)/$(BASE)

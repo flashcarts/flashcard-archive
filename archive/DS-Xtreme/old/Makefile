@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 DS-Xtreme_FWUpdate_v1.1.2.zip: directory
-	cd $(TOPDIR)/DS-Xtreme_FWUpdate_v1.1.2 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/DS-Xtreme_FWUpdate_v1.1.2 && zip -r $(OUT)/$(BASE)/$@ *

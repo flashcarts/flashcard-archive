@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4ids.cn_Multi-Function_1.51d.zip: directory
-	cd $(TOPDIR)/r4ids.cn_Multi-Function_1.51d && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4ids.cn_Multi-Function_1.51d && zip -r $(OUT)/$(BASE)/$@ *
 
 r4ids.cn_non-3DS_Multi-Function_1.51d.zip: directory
-	cd $(TOPDIR)/r4ids.cn_non-3DS_Multi-Function_1.51d && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4ids.cn_non-3DS_Multi-Function_1.51d && zip -r $(OUT)/$(BASE)/$@ *

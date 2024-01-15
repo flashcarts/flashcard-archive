@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 ace3ds.com_Original_Kernel_20120308.zip: directory
-	cd $(TOPDIR)/ace3ds.com_Original_Kernel_20120308 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/ace3ds.com_Original_Kernel_20120308 && zip -r $(OUT)/$(BASE)/$@ *

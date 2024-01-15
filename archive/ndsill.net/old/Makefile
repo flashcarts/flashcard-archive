@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 ndsill.net_original_Kernel_1.45.zip: directory
-	cd $(TOPDIR)/ndsill.net_original_Kernel_1.45 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/ndsill.net_original_Kernel_1.45 && zip -r $(OUT)/$(BASE)/$@ *

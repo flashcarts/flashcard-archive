@@ -11,7 +11,7 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4iiisdhc.com_Kernel_3.07.zip: directory
-	cd $(TOPDIR)/r4iiisdhc.com_Kernel_3.07 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4iiisdhc.com_Kernel_3.07 && zip -r $(OUT)/$(BASE)/$@ *
 
 extdata: directory
 	cp README.txt $(OUT)/$(BASE)

@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4igold.cn_Kernel_1.9.zip: directory
-	cd $(TOPDIR)/r4igold.cn_Kernel_1.9 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4igold.cn_Kernel_1.9 && zip -r $(OUT)/$(BASE)/$@ *

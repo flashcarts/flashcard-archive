@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 r4idsxl.com_Kernel_1.6.zip: directory
-	cd $(TOPDIR)/r4idsxl.com_Kernel_1.6 && zip -r -X $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/r4idsxl.com_Kernel_1.6 && zip -r $(OUT)/$(BASE)/$@ *
