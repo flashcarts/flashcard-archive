@@ -22,7 +22,7 @@ These carts may support BL2CK OS. Only these carts are confirmed to actually wor
 - Default version:
   - r4i3d.com NEW, 2012+
   - r4igold.cc 3DS
-  - r4i-gold.me 2014-2015
+  - r4i-gold.me 2013-2015
   - r4isdhc.hk carts with no year number, or before 2020
   - r4isdhc.com NEW/2013 carts
   - r4isdhc.com Dual-Core (no year number)
@@ -33,17 +33,23 @@ These carts may support BL2CK OS. Only these carts are confirmed to actually wor
   - r4isdhc.in 2014
   - R4i Gold 3DS Plus with faulty DS mode
   - r4-pro.com carts
-  - r4dspro.com carts
   - r4ixds.com 2014-2016 non-white
   - r4i-gold.com 3DS Gold Pro / 2013 carts
   - r4sdhc.com V3DSU
+  - r4i-3dsnew.com carts
+  - r4i-u.com carts
+  - r4ds-i.com.cn carts
+  - super4i.com carts
 - Amaze3DS version:
   - r4igold.cc Wood 
   - Amaze3DS (use the Amaze3DS version)
+- EDGEi version:
+  - edgei-ds.cn carts (Fake iEDGE)
+- R4DSPro version:
+  - r4dspro.com carts
 
 These carts may support BL2CK OS, but have not been attempted. This information is based on its provided DLDI, which are identical.  
 Please do not attempt cross-loading without knowing what you're doing.
 - 3dslink.com Blue
-- r4i-gold.me 2013
 - amazekard.com cards
 - Galaxy Eagle cards (use the Amaze3DS version and rename _DS_MENU.dat to ge.nds)

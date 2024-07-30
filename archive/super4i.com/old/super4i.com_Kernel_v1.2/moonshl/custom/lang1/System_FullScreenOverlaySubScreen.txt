@@ -1,0 +1,4 @@
+DPG fullscreen playback on which screen?
+
+OFF = Touch screen (lower)
+ON = Regular screen (upper)

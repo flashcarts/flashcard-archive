@@ -5,10 +5,16 @@ export BASE   := $(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../out
 export COMMON := $(TOPDIR)/../../common-kernels
 
-package: directory r4i-gold.me_2013_Kernel_1.63.1.zip
+package: directory old BL2CK_1.31.0.zip extdata
 
 directory:
 	mkdir -p $(OUT)/$(BASE)
 
-r4i-gold.me_2013_Kernel_1.63.1.zip: directory
-	cd $(TOPDIR)/r4i-gold.me_2013_Kernel_1.63.1 && zip -r $(OUT)/$(BASE)/$@ *
+include $(COMMON)/BL2CK/R4iTT/Makefile
+
+old: directory
+	make -C $@
+
+extdata: directory
+	cp README.txt $(OUT)/$(BASE)
+

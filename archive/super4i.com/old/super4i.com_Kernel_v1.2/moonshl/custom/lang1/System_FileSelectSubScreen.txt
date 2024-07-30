@@ -1,0 +1,4 @@
+Display filelist on which screen?
+
+OFF = Touch screen (lower)
+ON = Regular screen (upper)
