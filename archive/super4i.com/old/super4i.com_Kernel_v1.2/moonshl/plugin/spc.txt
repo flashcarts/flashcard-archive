@@ -1,0 +1,8 @@
+
+PocketSPC player for the Nintendo DS
+Version 0.9
+
+Gary Linscott
+pocketspc@pocketheaven.com
+http://pocketspc.pocketheaven.com
+

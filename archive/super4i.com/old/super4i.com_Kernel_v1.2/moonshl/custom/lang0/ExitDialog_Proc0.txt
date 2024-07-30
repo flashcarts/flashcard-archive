@@ -1,0 +1,6 @@
+ここで変更した項目は、moonshl.savに
+保存します。
+
+moonshl.iniを変更すると、moonshl.ini
+から再読込します。
+（moonshl.savは初期化します）
