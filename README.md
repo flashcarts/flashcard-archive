@@ -9,6 +9,7 @@ Some kernels are in different locations, or have consolidated as they are identi
   - \### in 1 combo cart
   - r4azure.com carts
   - r4isdhc.com.cn carts
+  - r4iwood.cn carts
   - r4isdhc.hk 2020+ carts
   - r4li.com carts
   - r4infinity.com 2
