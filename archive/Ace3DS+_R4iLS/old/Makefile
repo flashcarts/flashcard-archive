@@ -2,8 +2,8 @@
 
 export TOPDIR := $(shell pwd $(CURDIR))
 export BASE   := Ace3DS+_R4iLS/$(shell basename $(CURDIR))
-export OUT    := $(TOPDIR)/../../out
-export COMMON := $(TOPDIR)/../../common-kernels
+export OUT    := $(TOPDIR)/../../../out
+export COMMON := $(TOPDIR)/../../../common-kernels
 
 package: directory Ace3DS+_R4iLS_Wood_R4_1.62_old.zip extdata
 
