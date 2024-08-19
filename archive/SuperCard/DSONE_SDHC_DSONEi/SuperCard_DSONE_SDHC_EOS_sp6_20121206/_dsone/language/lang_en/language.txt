@@ -54,7 +54,7 @@ item3=2M/4M
 
 [ui type menu]
 title=Hint
-text=System theme changed, OK to restart to change the theme? Select 'No' to restart later.
+text=System theme changed, restart to apply the theme? Select 'No' to restart later.
 item0=Blue
 item1=Christmas
 item2=China ink
@@ -97,11 +97,11 @@ item8=Korean
 item0=Multi-Saver
 item1=Save size
 item2=Cheat
-item3=Bybass anti-piracy
+item3=Bypass anti-piracy
 
 [text wnd info]
 title=Warning!
-item0=%s file do not exist or damaged!
+item0=%s file does not exist or is damaged!
 item1=Game Guide
 
 [slow wnd]
@@ -116,11 +116,11 @@ ok=OK
 cancel=Cancel
 
 [progress window]
-processing_copy=Copying file, do not turn power off!
+processing_copy=Copying file, do not power off!
 
 [copy file error]
 title=Error!
-text=Error occured while copying file
+text=Error occurred while copying file
 
 [stop copying file]
 title=Confirm
@@ -128,7 +128,7 @@ text=Stop copying this file?
 
 [no free space]
 title=Error!
-text=No enough space, File copying not complete
+text=Not enough space, file copying failed
 
 [copy file exists]
 title=Warning!
@@ -136,37 +136,37 @@ text=Filename already exists, OK to overwrite the file?
 
 [copy dest is directory]
 title=Error!
-text=Directroy already exists, can not copy files
+text=Directory already exists, cannot copy files
 
 [move dest is directory]
 title=Error!
-text=Directroy already exists, can not move files
+text=Directory already exists, cannot move files
 
 [no copy dir]
 title=Error!
-text=Can not copy or move a directory
+text=Cannot copy or move a directory
 
 [confirm delete file]
 title=Confirm
-text=File can not be recovered after Delete, OK to delete the file? "%s"?
+text=File cannot be recovered after deletion, OK to delete the file? "%s"?
 
 [do not delete directory]
 title=Warning!
-text=The directory is not empty, it can not be deleted
+text=The directory is not empty, it cannot be deleted
 
 [setting window]
 ok=OK
 savetype=Save type
 cancel=Cancel
 confirm=Confirm
-confirm_text = Save current setting?
+confirm_text = Save current settings?
 
 [main interface title]
 item0=Return to Game
 item1=Game Guide
 item2=Save
 item3=Load
-item4=SlowMotion
+item4=Slow-Motion
 item5=LCD Brightness
 item6=Cheat Codes
 item7=Return to Main Menu
