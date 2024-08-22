@@ -13,8 +13,10 @@ directory:
 include $(COMMON)/BL2CK/R4iTT/Makefile
 
 r4isdhc.hk_Dual-Core_pre-2019_BL2CK_1.31.0.zip: BL2CK_1.31.0.zip
-	mv $(OUT)/$(BASE)/$< $(OUT)/$(BASE)/$@
+	cp $(OUT)/$(BASE)/$< $(OUT)/$(BASE)/$@
 
+# Move instead of copy
+# Works around issue of dependency not being rebuilt
 r4isdhc.hk_Silver_RTS_Lite_pre-2019_BL2CK_1.31.0.zip: BL2CK_1.31.0.zip
 	mv $(OUT)/$(BASE)/$< $(OUT)/$(BASE)/$@
 
