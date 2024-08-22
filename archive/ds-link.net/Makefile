@@ -11,4 +11,4 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 extdata: directory
-	cp -r ds-link.net_Kernel_2.31 README.md $(OUT)/$(BASE)
+	cp -r ds-link.net_Kernel_2.31 $(OUT)/$(BASE)
