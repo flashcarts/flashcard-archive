@@ -14,7 +14,7 @@ Compatible with:
  - r4iwood.cn carts
  - r4isdhc.hk 2020+ carts
  - r4li.com carts
- - r4infinity.com 2
+ - r4infinity.com 2, V1.6
  - r4ixds.com 2014 white version
  - woodr4isdhc.com carts
  - ge.ndsi.in GEi HOT
