@@ -12,7 +12,7 @@ Some kernels are in different locations, or have consolidated as they are identi
     - r4iwood.cn carts
     - r4isdhc.hk 2020+ carts
     - r4li.com carts
-    - r4infinity.com 2, V1.6
+    - r4infinity.com 2
     - r4ixds.com 2014 white version
     - woodr4isdhc.com carts
     - ge.ndsi.in GEi HOT
@@ -30,7 +30,7 @@ These carts may support BL2CK OS. Only these carts are confirmed to actually wor
     - r4i-drive.com carts
     - R4 Ultra and Acekard 2/2.1/2i carts that cannot run AKAIO due to being a clone
     - R4iTT 3DS NEW, RTS
-    - r4infinity.com Dual-Core
+    - r4infinity.com Dual-Core, V1.6
     - r4isdhc.in 2014
     - R4i Gold 3DS Plus with faulty DS mode
     - r4-pro.com carts
