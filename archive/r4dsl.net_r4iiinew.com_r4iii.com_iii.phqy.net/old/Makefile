@@ -1,6 +1,6 @@
 .PHONY: package
 
-export TOPDIR := $(shell pwd $(CURDIR))
+export TOPDIR := $(CURDIR)
 export BASE   := r4dsl.net_r4iiinew.com_r4iii.com_iii.phqy.net/$(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../../out
 export COMMON := $(TOPDIR)/../../../common-kernels

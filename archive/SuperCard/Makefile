@@ -1,6 +1,6 @@
 .PHONY: package DSONE DSONE_SDHC_DSONEi DSTWO Lite_Rumble
 
-export TOPDIR := $(shell pwd $(CURDIR))
+export TOPDIR := $(CURDIR)
 export BASE   := $(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../out
 export COMMON := $(TOPDIR)/../../common-kernels

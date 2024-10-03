@@ -1,6 +1,6 @@
 .PHONY: package directory original Dual-Core_i R4infinity_3
 
-export TOPDIR := $(shell pwd $(CURDIR))
+export TOPDIR := $(CURDIR)
 export BASE   := $(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../out
 export COMMON := $(TOPDIR)/../../common-kernels

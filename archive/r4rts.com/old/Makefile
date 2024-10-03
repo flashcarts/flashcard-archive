@@ -1,6 +1,6 @@
 .PHONY: package
 
-export TOPDIR := $(shell pwd $(CURDIR))
+export TOPDIR := $(CURDIR)
 export BASE   := r4rts.com/$(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../../out
 export COMMON := $(TOPDIR)/../../../common-kernels

@@ -1,6 +1,6 @@
 .PHONY: package directory AceKard_AceKard+ AceKard_2_2.1 AceKard_2i AceKard_RPG
 
-export TOPDIR := $(shell pwd $(CURDIR))
+export TOPDIR := $(CURDIR)
 export BASE   := $(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../out
 export COMMON := $(TOPDIR)/../../common-kernels
