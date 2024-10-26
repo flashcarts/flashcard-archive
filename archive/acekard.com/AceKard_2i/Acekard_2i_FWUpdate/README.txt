@@ -1,4 +1,4 @@
-# Notes on AK2i Firmware Updates
+Notes on AK2i Firmware Updates:
 
 This folder is ordered in the versions that the firmware update was released. Thus, DSi1.4.0 would be the first firmware update, and the bottom of the list is the last.
 

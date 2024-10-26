@@ -1,1 +1,0 @@
-# DO NOT USE ON HW 44 ACEKARD 2I!!!!!
