@@ -14,4 +14,4 @@ stargate-3ds.com_Kernel_1.0.zip: directory
 	cd $(TOPDIR)/stargate-3ds.com_Kernel_1.0 && zip -r $(OUT)/$(BASE)/$@ *
 
 extdata: directory
-	cp README.txt $(OUT)/$(BASE)
+	cp -r SG_Launcher_CFW README.txt $(OUT)/$(BASE)
