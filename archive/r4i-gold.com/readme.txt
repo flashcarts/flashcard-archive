@@ -3,7 +3,7 @@
 Warning:
     Only a few r4i-gold.com flashcarts are supported by YSMenu. Running YSMenu on an unsupported cart will cause it to brick!
     Supported carts:
-        - r4i-gold.com V1.4.1-V1.4.4
+        - r4i-gold.com V1.4-V1.4.4
         - r4i-gold.com Gold 3DS RTS
     If you have one of the following carts, YSMenu will BRICK them so do not attempt to use it:
         - r4i-gold.com Gold 3DS PRO 
@@ -15,7 +15,7 @@ r4i-gold.com Gold 3DS RTS:
     2. Extract the YSMenu .7z file.
     3. Copy the files from the `DSTTi-Clone YSMenu` folder to the root of your microSD card.
 
-r4i-gold.com V1.4.1-V1.4.4:
+r4i-gold.com V1.4-V1.4.4:
     1. Download YSMenu from here: https://gbatemp.net/download/35737/
     2. Extract the YSMenu .7z file.
     3. Copy the files from the `DSTTi-Clone YSMenu` folder to the root of your microSD card.
