@@ -1,0 +1,567 @@
+
+; MoonShell2.01 language resource for 'CP003 Italian'.
+; Encoding format is UTF-8.
+
+Author=|Random|
+Target=ITA / Italian
+
+; Italian translation for MoonShell2.00 beta.6 by |Random|.
+; For problems/questions regarding the translation, contact me at randexe@hotmail.it .
+
+; ------------ cutting ----------------
+; Moonlight added this items. and poor english translation.
+; Please delete this block after you correctly adjust this.
+; CS_HiddenNDSROMFile=Hide NDSROM files.
+; and changed point. TextReader: The position of a setting item was made flexible.
+; ------------ cutting ----------------
+
+; ------------ cutting ----------------
+; Moonlight added this items. and poor english translation.
+; Please delete this block after you correctly adjust this.
+; FL_Popup_PlayMode_Random changed to FL_Popup_PlayMode_Shuffle.
+; CS_PlayListEndTitle=When playlist ends.
+; CS_PlayListEndLoop=Loop
+; CS_PlayListEndStop=Stop
+; CS_PlayListEndPowerOff=PowerOff
+; ------------ cutting ----------------
+
+; ------------ cutting ----------------
+; Moonlight added this items. and poor english translation.
+; Please delete this block after you correctly adjust this.
+; FL_Popup_NotFoundMoonMemoFolder=not found /moonmemo folder.
+; CS_LRKeyLockTitle=L/R key use limitation.
+; CS_LRKeyLockAlwayOff=Alway OFF
+; CS_LRKeyLockRelationalPanel=Relational panel
+; CS_LRKeyLockAlwayOn=Alway ON
+; TV_Popup_MoveToTop=Move to top.
+; TV_Popup_MoveToLast=Move to last.
+; MemoList_Title=Memo list mode.
+; MemoList_Help0=
+; MemoList_Help1=
+; MemoList_Help2=Touch screen: Create new page.
+; MemoList_Help3=START button long press: Delete page on cursor.
+; ------------ cutting ----------------
+
+; ----------------------------
+
+TextFontFolderName=tfonteng
+
+; DateTimeFormat is YYYYMMDD or DDMMYYYY or MMDDYYYY.
+DateTimeFormat=DDMMYYYY
+
+; ----------------------------
+
+CD_CheckDisk_Start=Quick DiskCheck inizializzato.
+CD_CheckDisk_End=Quick DiskCheck completato con successo.
+
+
+CD_FatalError_Title=!! Errore irreversibile !!
+CD_FatalError_DuplicatedArea0=I file occupano lo stesso spazio su disco.
+CD_FatalError_DuplicatedArea1=Alcuni file sono danneggiati.
+CD_FatalError_BrokenEntry0=Il valore inserito non è valido.
+CD_FatalError_BrokenEntry1=Più di un file è danneggiato.
+CD_FatalError_IlligalClusterLink0=Il link Cluster è stato interrotto.
+CD_FatalError_IlligalClusterLink1=Probabile file danneggiato.
+CD_FatalError_BrokenDirectoryLink0=Il valore reinserito non è valido.
+CD_FatalError_BrokenDirectoryLink1=La cartella è danneggiata.
+CD_FatalError_BrokenUnicode0=Il valore reinserito non è valido.
+CD_FatalError_BrokenUnicode1=Long file name è danneggiato.
+CD_FatalError_FileSizeError0=La dimensione del file mostrata e
+CD_FatalError_FileSizeError1=la dimensione attuale sono diverse.
+CD_FatalError_UnknownError=Errore sconosciuto
+CD_FatalError_RecoveryMsg0=Metodo di riparazione:
+CD_FatalError_RecoveryMsg1=Fai un backup di tutti i file su hard disk,
+CD_FatalError_RecoveryMsg2=e ricopiali dopo la formattazione della scheda di memoria.
+CD_FatalError_StopApplication=Applicazione terminata.
+
+
+CD_NotSupportDiskSize_Title=Impossibile gestire il formato del disco.
+CD_NotSupportDiskSize_Msg0=La dimensione del disco è troppo grande, o
+CD_NotSupportDiskSize_Msg1=la dimensione del cluster è troppo piccola.
+CD_NotSupportDiskSize_Msg2=
+CD_NotSupportDiskSize_RecoveryMsg0=Metodo di riparazione:
+CD_NotSupportDiskSize_RecoveryMsg1=Prova a riformattare la scheda
+CD_NotSupportDiskSize_RecoveryMsg2=con una dimensione cluster più grande.
+CD_NotSupportDiskSize_RecoveryMsg3=
+
+CD_CheckDuplicateCluster_Title=Controllo di cluster e frammenti duplicati.
+
+
+CD_CheckFATType_Title=Controllo del tipo FAT.
+
+
+CD_FATType_UnknownFATType=Tipo FAT sconosciuto.
+
+
+
+CD_WriteTest_Title=Test di lettura/scrittura disco in corso.
+
+CD_WriteError_Title=Test di accesso disco fallito.
+CD_WriteError_Msg0=Poco spazio libero rimasto su disco.
+CD_WriteError_Msg1=Driver DLDI incompatibile.
+CD_WriteError_Msg2=Compatibilità adattatore CF/SD, contatto esiguo.
+CD_WriteError_Msg3=L'area del disco usata è danneggiata.
+CD_WriteError_Msg4=
+CD_WriteError_Msg5=Probabile altra sorgente.
+CD_WriteError_Msg6=
+CD_WriteError_Msg7=Per sicurezza, l'applicazione è stata terminata.
+
+; ----------------------------
+
+ERRMSG0_MemoryOverflow_CanRecovery=Impossibile aprire il file
+ERRMSG1_MemoryOverflow_CanRecovery=per scarsa memoria disponibile.
+ERRMSG2_MemoryOverflow_CanRecovery=clicca la finestra per chiudere.
+
+ERRMSG0_NotSupportFileFormat=Il formato non è supportato
+ERRMSG1_NotSupportFileFormat=o il file può essere danneggiato.
+ERRMSG2_NotSupportFileFormat=clicca la finestra per chiudere.
+
+ERRMSG0_ProgressiveJpeg=I file JPEG progressivi
+ERRMSG1_ProgressiveJpeg=non sono supportati.
+ERRMSG2_ProgressiveJpeg=clicca la finestra per chiudere.
+
+ERRMSG0_Text0byte=File di testo vuoto.
+ERRMSG1_Text0byte=Impossibile aprire il file da 0byte.
+ERRMSG2_Text0byte=clicca la finestra per chiudere.
+
+ERRMSG0_OverflowLargeImage=L'immagine è troppo grande.
+ERRMSG1_OverflowLargeImage=La dimensione massima è circa 5MP.
+ERRMSG2_OverflowLargeImage=clicca la finestra per chiudere.
+
+ERRMSG0_NotFoundMusicFile=Nessun file di musica
+ERRMSG1_NotFoundMusicFile=trovato nella cartella.
+ERRMSG2_NotFoundMusicFile=clicca la finestra per chiudere.
+
+ERRMSG0_UnknownError=Riscontrato un errore non definito.
+ERRMSG1_UnknownError=Riscontrato un errore anomalo.
+ERRMSG2_UnknownError=Si prega di spegnere la console.
+
+; ----------------------------
+
+Setup_Help0=MoonShell Version 2.01
+Setup_Help1=Italian translation by |Random|
+Setup_Help2=
+Setup_Help3=Qui puoi scegliere alcune
+Setup_Help4=impostazioni importanti di Setup.
+Setup_Help5=
+Setup_Help6=Premi il tasto START nella lista file
+Setup_Help7=per aprire le Impostazioni di Sistema.
+Setup_Help8=
+Setup_Help9=L'assegnazione dei tasti è stata modificata.
+Setup_Help10=Controlla il file 'manuals/KeyMap.txt'.
+Setup_Help11=
+
+Setup_BootCheckDisk=Avvia il CheckDisk ad ogni avvio.
+Setup_ClickSound=Abilita gli effetti sonori.
+Setup_FileListMode=Modalità visual. lista file
+Setup_FileListMode_Single=il nome del file è mostrato su una riga.
+Setup_FileListMode_Double=i nomi lunghi sono divisi su 2 righe.
+Setup_SkipSetup=Non mostrare il Setup all'avvio.
+Setup_OKBtn=
+
+; ----------------------------
+
+Launch_FileInfo=Informazioni File:
+Launch_FileInfo_Relational=Informazioni File Salvataggio:
+Launch_Size=Dimensione : %dbyte (%dMbit)
+Launch_Create=Creazione : %s %d:%02d:%02d
+Launch_Update=Modifica : %s %d:%02d:%02d
+Launch_NotFoundRelationalFile=Nessun file salvataggio trovato.
+
+; ----------------------------
+
+FL_Help0=
+FL_Help1=
+FL_Help2=X/Y : Regola Volume
+FL_Help3=START : Menu di Sistema (preferenze)
+FL_Help4=
+FL_Help5=L+A/B : Canzone successiva/precedente
+FL_Help6=L+X/Y : Regola luminosità
+FL_Help7=
+FL_Help8=L o R + tocco: Avvia modalità memo
+FL_Help9=Tieni premuto L/R : Ricerca mp3 Avanti/Ind.
+FL_Help10=2 volte L/R: Avvia canzone precedente/succ.
+FL_Help11=3 volte R: Attiva modalità standby
+
+; ----------------------------
+
+FL_Popup_Pause_Play=PLAY
+FL_Popup_Pause_Pause=PAUSE
+FL_Popup_PreviousFile=Previous file
+FL_Popup_NextFile=Next file
+FL_Popup_Volume=Volume. %d%%
+FL_Popup_BacklightLevel=Level. %d
+FL_Popup_PlayMode_Repeat=Repeat
+FL_Popup_PlayMode_AllRep=All repeat
+FL_Popup_PlayMode_Shuffle=Random
+FL_Popup_Seek=Seek %s
+FL_Popup_NotFoundMoonMemoFolder=not found /moonmemo folder.
+
+; ----------------------------
+
+FL_DeleteFileDialog_NotFoundDustBox_Title=Finestra di conferma Cancellazione File.
+FL_DeleteFileDialog_NotFoundDustBox_Line0=Cartella dustbox non trovata.
+FL_DeleteFileDialog_NotFoundDustBox_Line1=Controlla il file
+FL_DeleteFileDialog_NotFoundDustBox_Line2=/manuals/DustBox.txt
+
+FL_DeleteFileDialog_DisabledDustBox_Title=Finestra di conferma Cancellazione File.
+FL_DeleteFileDialog_DisabledDustBox_Line0=Elimina il file utilizzando il 
+FL_DeleteFileDialog_DisabledDustBox_Line1=cestino di Windows sul computer.
+FL_DeleteFileDialog_DisabledDustBox_Line2=
+
+FL_DeleteFileDialog_DisabledSystemFolder_Title=Finestra di conferma Cancellazione File.
+FL_DeleteFileDialog_DisabledSystemFolder_Line0=Cartella di sistema:
+FL_DeleteFileDialog_DisabledSystemFolder_Line1=cancellazione proibita.
+FL_DeleteFileDialog_DisabledSystemFolder_Line2=
+
+FL_DeleteFileDialog_DisabledMoveFolder_Title=Finestra di conferma Cancellazione File.
+FL_DeleteFileDialog_DisabledMoveFolder_Line0=Lo spostamento di questa
+FL_DeleteFileDialog_DisabledMoveFolder_Line1=cartella è proibito.
+FL_DeleteFileDialog_DisabledMoveFolder_Line2=
+
+FL_DeleteFileDialog_Question_Title=Finestra di conferma Cancellazione File.
+FL_DeleteFileDialog_Question_Line0=Sei sicuro di eliminare questo file?
+FL_DeleteFileDialog_Question_Line1=L+R+A : Sì.
+FL_DeleteFileDialog_Question_Line2=B : Annulla.
+
+FL_DeleteFileDialog_Question_EasyDelete_Title=Finestra di conferma Cancellazione File.
+FL_DeleteFileDialog_Question_EasyDelete_Line0=Sei sicuro di eliminare questo file?
+FL_DeleteFileDialog_Question_EasyDelete_Line1=X+A : Sì.
+FL_DeleteFileDialog_Question_EasyDelete_Line2=B : Annulla.
+
+FL_DeleteFileDialog_Success_Title=Finestra di conferma Cancellazione File.
+FL_DeleteFileDialog_Success_Line0=
+FL_DeleteFileDialog_Success_Line1=Il file è stato eliminato.
+FL_DeleteFileDialog_Success_Line2=
+
+; ----------------------------
+
+FL_HelpLeft_Count=12
+FL_HelpLeft_Line0=Menu "L" di aiuto mp3...
+FL_HelpLeft_Line1=
+FL_HelpLeft_Line2=L + Sin. : Mostra barra di controllo MP3
+FL_HelpLeft_Line3=L + Destra : Canzone successiva
+FL_HelpLeft_Line4=L + Su : Pausa
+FL_HelpLeft_Line5=L + Giù : Cambia modalità playback
+FL_HelpLeft_Line6=L + A / B : Canzone succ./precedente
+FL_HelpLeft_Line7=L + X / Y : Regola luminosità
+FL_HelpLeft_Line8=
+FL_HelpLeft_Line9=L+R : Pausa
+FL_HelpLeft_Line10=2 volte L: Canzone precedente
+FL_HelpLeft_Line11=3 volte L: Pausa/Avvia canzone
+
+FL_HelpRight_Count=11
+FL_HelpRight_Line0=Menu "R" di aiuto mp3...
+FL_HelpRight_Line1=
+FL_HelpRight_Line2=R + Sin. / Destra : ricerca mp3 avanti/ind. 1%
+FL_HelpRight_Line3=R + Su / Giù : ricerca mp3 avanti/indietro 5%
+FL_HelpRight_Line4=R+A : Esegui tutti in questa cartella
+FL_HelpRight_Line5=L+R+A : Esegui tutti nell'intera card
+FL_HelpRight_Line6=
+FL_HelpRight_Line7=
+FL_HelpRight_Line8=L+R : Pausa
+FL_HelpRight_Line9=2 volte R: Canzone successiva
+FL_HelpRight_Line10=3 volte R : Attiva modalità stand-by
+
+; ----------------------------
+
+; Not impliments this. (for sub menu)
+
+FLSM_Folder_AllPlay= Avvia tutte le canzoni in una cartella.
+
+FLSM_Text_CharCode_Auto=Rileva e apri automaticamente.
+FLSM_Text_CharCode_ANSI=Apri in modalità ANSI.
+FLSM_Text_CharCode_UTF8=Apri in modalità UTF-8.
+FLSM_Text_CharCode_SJIS=Apri in modalità Japan S-JIS.
+FLSM_Text_CharCode_UTF16BE=Apri in modalità UTF-16BE.
+FLSM_Text_CharCode_UTF16LE=Apri in modalità UTF-16LE.
+
+FLSM_NDSROM_ExtendBoot=Esegui in modalità espansa.
+
+; ----------------------------
+
+SSC_Title=Configurazione dello screen saver
+SSC_Use24hFormat=24h
+SSC_ScreenSaverTitle=Tipo
+SSC_ScreenSaverNormal=Normale
+SSC_ScreenSaverDigital=Digitale
+SSC_ScreenSaverExtend=M3 Sakura
+SSC_ScreenSaverBGTitle=BG
+SSC_ScreenSaverBGSkinDefault=Default
+SSC_ScreenSaverBGTopScreen=Superiore
+SSC_ScreenSaverBGBottomScreen=Inferiore
+SSC_ScreenSaverTimeOutSecTitle=IdleTime
+SSC_ScreenSaverTimeOutSec10sec=10
+SSC_ScreenSaverTimeOutSec30sec=30
+SSC_ScreenSaverTimeOutSec60sec=60
+SSC_ScreenSaverTimeOutSecOff=Black
+; Black check box is "Both screen, back light off".
+; This item has not been programmed yet. Perhaps, I think that I narrow very much.
+SSC_ShowID3Tag=Durante MP3: mostra l'ID3Tag.
+SSC_HideScreenSaverCustom=Non mostrare più questa schermata.
+SSC_TimeoutMsg=Spegni luce: %d secondi.
+SSC_Back=Indietro
+
+; ----------------------------
+
+SM_MemoList=Open memo list
+SM_MemoList_NotFound=Can't found %s
+SM_FileListMode=Modalità 1 riga/2 righe
+SM_Customize=Impostazioni Moonshell
+SM_RestoreBG=Resetta wallpaper
+SM_Firmware=Ritorna al firmware
+SM_Firmware_NotFound=%s non trovato.
+
+; ----------------------------
+
+CS_Help0=Impostazioni e preferenze di sistema
+CS_Help1=
+CS_Help2=
+CS_Help3=Qui puoi scegliere le impostazioni per 
+CS_Help4=immagini, video, musica e testo.
+CS_Help5=Per le ultime applicazioni avviate
+CS_Help6=premi il tasto SELECT.
+CS_Help7=
+CS_Help8=
+CS_Help9=Puoi trovare altre impostazioni anche
+CS_Help10=nella cartella '/misctools/Additional'.
+CS_Help11=
+
+CS_Title=Impostazioni di MoonShell2 
+
+CS_SkipSetup=Non mostrare il Setup all'avvio.
+CS_BootCheckDisk=Avvia sempre il CheckDisk all'avvio.
+
+
+CS_ClickSound=Abilita effetti sonori.
+CS_EnableFadeEffect=Attiva effetto dissolvenza.
+CS_AutoLastState=Ricorda ultima applicazione avviata.
+
+CS_MoveFolderLocked=Blocca le cartelle.
+CS_HiddenFilenameExt=Nascondi estensioni dei file.
+CS_HiddenNotSupportFileType=Nascondi file non supportati.
+CS_HiddenNDSROMFile=Hide NDSROM files.
+CS_EnableFileInfo=Display file info in the File List.
+
+CS_LRKeyLockTitle=L/R key use limitation.
+CS_LRKeyLockAlwayOff=Alway OFF
+CS_LRKeyLockRelationalPanel=Relational panel
+CS_LRKeyLockAlwayOn=Alway ON
+
+CS_HideScreenSaverCustom=Non mostrare le opzioni screensaver.
+CS_M4A_EnableFastStart=Avvio veloce M4A/AAC. (NO ricerca)
+
+CS_PlayListEndTitle=When playlist ends.
+CS_PlayListEndLoop=Loop
+CS_PlayListEndStop=Stop
+CS_PlayListEndPowerOff=PowerOff
+
+CS_Cancel=Annulla
+CS_Ok=Applica
+
+; ----------------------------
+
+DCS_Help0=Impostazioni per la riproduzione video
+DCS_Help1=
+DCS_Help2=
+DCS_Help3=Puoi velocizzare il tempo di caricamento
+DCS_Help4=dei video, ma la riproduzione
+DCS_Help5=potrebbe rallentare.
+DCS_Help6=
+DCS_Help7=
+DCS_Help8=
+DCS_Help9=
+DCS_Help10=
+DCS_Help11=
+
+DCS_Title=Impostazioni per la riproduzione video
+
+DCS_EnabledFastStart=Velocizza il tempo di caricamento video.
+DCS_PauseWhenPanelClosed=DS chiuso: metti in pausa il video.
+DCS_EnableIndividualResume=Enable individual resume.
+DCS_ControlPowerLED=Power supply LED is turned off.
+
+DV_VolumeLabel=Vol.
+DV_VolumeValue=%d%%
+DV_VolumeMute=muto
+DV_VolumeMax=MAX
+
+; ----------------------------
+
+DV_Popup_Pause_Play=PLAY
+DV_Popup_Pause_Pause=PAUSE
+DV_Popup_PreviousFile=Previous file
+DV_Popup_NextFile=Next file
+DV_Popup_Volume=Volume. %d%%
+DV_Popup_Seek=Seek %ssec
+DV_Popup_BacklightLevel=Level. %d
+
+; ----------------------------
+
+ICS_Help0=Impostazioni visualizzazione immagine
+ICS_Help1=
+ICS_Help2=
+ICS_Help3=Premi il tasto START mentre visualizzi  
+ICS_Help4=l'immagine per utilizzarla come wallpaper.
+ICS_Help5=
+ICS_Help6=Per reimpostare lo sfondo predefinito
+ICS_Help7=premi il tasto START nella lista file e
+ICS_Help8=seleziona "Resetta Wallpaper"
+ICS_Help9=nel menù di sistema.
+ICS_Help10=
+ICS_Help11=
+
+ICS_Title=Impostazioni visualizzazione immagine
+
+ICS_ShowInfomation=Mostra legenda.
+ICS_ShowControlIcons=Mostra icone di controllo.
+ICS_DoubleSpeedKey=Aumenta sensibilità tasti.
+ICS_DoubleSpeedTouch=Aumenta sensibilità touch screen.
+ICS_MultipleResume=Ricorda lo zoom.
+ICS_AutoFitting=Fixa automaticamente JPEG grandi.
+ICS_StartPosTitle=Imposta posizione iniziale:
+ICS_StartPosLeftTop=SuSx
+ICS_StartPosRightTop=SuDx
+ICS_StartPosLeftBottom=GiùSx
+ICS_StartPosRightBottom=GiùDx
+ICS_EffectTitle=Effetti Wallpaper:
+ICS_EffectHeightPadding=Considera lo spazio tra gli schermi.
+ICS_EffectPastelForTopBG=Usa trasparenza schermo superiore.
+ICS_EffectPastelForBottomBG=Usa trasparenza schermo inferiore.
+
+; ----------------------------
+
+IV_LoadMsg0=Caricamento immagine...
+IV_LoadMsg1=Attendere prego.
+
+IV_Help1=START : Wallpaper / SELECT : Impostazioni
+IV_Help2=Y : 50% / X : 200% / A : 100% / B : Indietro
+
+; ----------------------------
+
+IV_Popup_BacklightLevel=Level. %d
+IV_Popup_Zoom=Zoom %d%%
+IV_Popup_Pause_Play=PLAY
+IV_Popup_Pause_Pause=PAUSE
+IV_Popup_PreviousFile=Previous file
+IV_Popup_NextFile=Next file
+IV_Popup_Seek=Seek %s
+
+; ----------------------------
+
+TCS_Help0=Impostazioni Visualizzazione Testo
+TCS_Help1=
+TCS_Help2=Non è consigliato utilizzare
+TCS_Help3=il ClearTypeFont su DS vecchi !
+TCS_Help4=
+TCS_Help5=Quando la codifica del testo non viene
+TCS_Help6=rilevata correttamente, tieni premuto
+TCS_Help7=il tasto A o tocca il file
+TCS_Help8=per aprire il sottomenù.
+TCS_Help9=Seleziona la codifica corretta dal sottomenù.
+TCS_Help10=Puoi configurare le impostazioni
+TCS_Help11=per ogni file di testo.
+
+TCS_Title=Impostazioni Visualizzazione Testo
+
+TCS_TopScrModeTitle=Modalità di visualizzazione schermo superiore
+TCS_TopScrModeLightOff=Off
+TCS_TopScrModeText=Testo
+TCS_TopScrModeClock=Data e Orologio
+
+
+TCS_ScreenSaverTitle=Screensaver
+TCS_ScreenSaverNormal=Norm.
+TCS_ScreenSaverDigital=Digit.
+TCS_ScreenSaverExtend=M3Sak.
+
+TCS_LineSpaceTitle=Dimensione righe:
+TCS_LineSpaceSmall=Pcl
+TCS_LineSpaceMiddle=Med
+TCS_LineSpaceLarge=Lrg
+
+
+TCS_FontSizeTitle=Dimensione Font:
+TCS_FontSizeSmall=Pcl
+TCS_FontSizeMiddle=Med
+TCS_FontSizeLarge=Lrg
+
+
+
+TCS_ClearTypeFontTitle=ClearType
+TCS_ClearTypeFontNone=Off
+TCS_ClearTypeFontLite=Pcl
+TCS_ClearTypeFontNormal=Med
+TCS_ClearTypeFontHeavy=Forte
+
+TCS_CPTitle=CodicePagina
+TCS_CP437=437
+TCS_CP850=850
+TCS_CP1252=1252
+
+TCS_DetectCharCodeTitle=Auto-rileva codifica
+
+; ----------------------------
+
+TV_PRG_LoadExtendFont=Caricamento font esteso...
+TV_PRG_LoadTextFile=Caricamento file di testo...
+TV_PRG_DetectTextEncode=Rilevazione codifica testo...
+TV_PRG_DetectReturnCode=Rilevazione codice ritorno...
+TV_PRG_ConvertToUnicode=Conversione in Unicode...
+
+TV_Help1=A : Pagina successiva / B : Indietro
+TV_Help2=X/Y : Salva/Carica Segnalibro
+TV_Help3=SELECT : Impostaz. / Codifica : %s
+TV_Info=Riga : %d / %d righe (%.2f%%)
+
+TV_BookmarkText_LoadTitle=Menu Carica Segnalibri
+TV_BookmarkText_SaveTitle=Menu Salva Segnalibri
+TV_BookmarkText_Empty=%d :  Vuoto
+TV_BookmarkText_Info=%d :  %d righe  %s %s
+
+; ----------------------------
+
+TV_Popup_BacklightLevel=Level. %d
+TV_Popup_Bookmark_Load=
+TV_Popup_Bookmark_Empty=Canceled.
+TV_Popup_Bookmark_Save=Saved.
+TV_Popup_Pause_Play=PLAY
+TV_Popup_Pause_Pause=PAUSE
+TV_Popup_PreviousFile=Previous file
+TV_Popup_NextFile=Next file
+TV_Popup_Seek=Seek %s
+TV_Popup_MoveToTop=Move to top.
+TV_Popup_MoveToLast=Move to last.
+
+; ----------------------------
+
+ME_Help0=STRUMENTO PER GLI APPUNTI
+ME_Help1=
+ME_Help2=Giù / Sin. / Su /Destra: Nero/Rosso/Verde/Blu
+ME_Help3=Y / X : Usa penna fine o spessa.
+ME_Help4=A / B : Salva ed esci.
+ME_Help5=SELECT: Undo
+ME_Help6=Press L/R and touch: Erase
+ME_Help7=
+ME_Help8=Spegni il DS se vuoi
+ME_Help9=uscire senza salvare.
+
+; ----------------------------
+
+MemoList_Title=Memo list mode.
+
+MemoList_Help0=
+MemoList_Help1=
+MemoList_Help2=Touch screen: Create new page.
+MemoList_Help3=START button long press: Delete page on cursor.
+
+; ----------------------------
+
+MemoEdit_FileInfo_Open=Un file è stato aperto.
+MemoEdit_FileInfo_Edited=Modifica in corso. Il File viene salvato automaticamente alla chiusura.
+MemoEdit_FileInfo_Create=Modalità creazione in corso.
+
+MemoEdit_SavingNow=Salvataggio del file BMP modificato in corso...
+
+; ----------------------------
+

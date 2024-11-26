@@ -1,0 +1,98 @@
+MoonShell extend link application converted by Moonlight.
+----------------------------------------------------------
+
+Title:			NesterDS
+Version:		0.3
+Author:			Rich Whitehouse
+Date:			2006-11-23
+Homepage:		http://www.telefragged.com/thefatal/
+Additional thanks:	Darren Ranalli (original author of Nester)
+			Author of NesterDC (in case I used anything from that, I see
+			it is in my old NesterGBA source folder)
+			Authors of NDSLib and DSEmu
+			Everyone else who has constributed to the wealth of knowledge
+			available for DS homebrewing
+-------------------------------------------------------------------------------------
+Version 0.3 notes:
+------------------
+New this version:
+
+-Vastly improved compatibility by fixing several mapper problems.
+-Got rid of alternate-line rendering.
+-Lots of speed-ups (better DTCM management, changed screen writes to occur during
+ actual scanline routines, lots of other stuff).
+-Converted code-base to pure C, moved to devkitARM r19b.
+
+There were lots of changes that I've forgotten about in here, this was sitting
+around on my hard drive half-finished for months. I was also working on converting
+expensive PPU routines to ARM, but that was also unfinished. The included source has
+some of the ARM routines that I did finish.
+
+
+Version 0.2 notes:
+------------------
+New this version:
+
+-Sound. Sound processing is done almost entirely on the arm7 and so comes with no
+ noticeable performance penalty, and the actual sound processing is still faithful
+ to the original nester core.
+-General performance improvements, and decent code cleanup.
+-Scanline speed hack disabled by default, makes lots of games work that were broken
+ before. Said hack is still available as a toggle option.
+-Reset option (X+start).
+-Hardware scaling to fit output to DS screen resolution.
+-All options are now listed and updated when changed on the sub screen.
+-Made auto-framerate option work better.
+-Other things I was too lazy to make notes of.
+-50% more ninjas.
+
+Things I would like done but am currently too lazy to do:
+
+-Sound output is poppy when not at 44100, but defaults to 22050 because the arm7
+ cannot handle the nester APU at 44100. Ideally, fix the poppiness.
+-SRAM support (should be fairly trivial to implement in existing code).
+-PPU has tons of code that could be hand-tweaked to provide massive speedups.
+ Might also be worthwhile to render each scanline to a smaller chunk of faster
+ memory and draw it to the screen buffer as the logic is performed, but this
+ could be tricky to get right with vsync.
+-Support for extra mappers and sound processing.
+-Binaries are bloated due to bad use of global arrays tossed about. Fix.
+-Exponential increase in amount of ninjas.
+
+That will be all.
+
+
+Version 0.1 notes:
+------------------
+This is a DS port of Nester. As you might've guessed. There are a ton of issues, and
+it still bothers me that I'm storing the NES ROM over in ewram. I need to look into
+that gbfs stuff apparently. There is no sound (the APU stuff is hooked up and runs
+fine on the DS, it just needs the DS to actually do something with the output), but
+the games I've tried run ok speed-wise. There is some "scanline"-type rendering
+optimizaton in place because that's all still very slow and I haven't taken
+advantage of any DS-specific hardware features to speed it up.
+
+For compiling the actual code, I'm using DevKitARM R13, and there are some issues with
+the way the default ds_arm9 linker script shoves things into memory. For whatever
+reason, the default handling of non-static global variables is pretty wacked, and
+if you have more than 16k or so I've found that everything goes to hell (silent
+data collision, I'm guessing) and stuff just stops working, and some of the standard
+C runtime functions stop working. Just general bad things. So I had to manually change
+the linker script to move my .data into ewram and that seemed to solve everything.
+If you want to compile this yourself, be sure to change the batch files and makefile
+to use your own paths. Mine are all hardcoded because I'm a terrible person. Also,
+the code itself is all very messy, and torn apart. It's based on an old GBA port of
+Nester I made, and I ported it to the DS over a single weekend (so it hasn't had the
+tender loving care it deserves).
+
+To use the thing, you can use the crappy primitive ROM insertion tool included in the
+archive to put in the NES ROM of your choice. Currently only one ROM at a time is
+supported. If I ever stop being lazy and load ROM files from image ROM like I should
+be doing, that will be changing.
+
+Currently there aren't any emulators that really do a good job of running this. Out
+of them all IDeaS seems to do the best job. It probably goes without saying, but I
+have tested everything on actual DS hardware (using the wifime method) and it all
+works happily.
+
+So that's that, enjoy.

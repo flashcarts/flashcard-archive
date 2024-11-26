@@ -7,5 +7,4 @@
 
 Cheats:
     - YSMenu: TTMenu/usrcheat.dat
-    - r4i-sdhc.com DEMON Kernel 1.85b/no-timebomb (old): R4iMenu/usrcheat.dat
-    - r4i-sdhc.com DEMON Kernel 1.12b (old): R4iMenu/usrcheat.dat
+    - r4i-sdhc.com DEMON Kernel 1.12b/1.85b/1.87b (old): R4iMenu/usrcheat.dat
