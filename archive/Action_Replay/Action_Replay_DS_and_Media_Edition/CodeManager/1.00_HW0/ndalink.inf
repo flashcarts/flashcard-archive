@@ -1,0 +1,87 @@
+[Version]
+Signature="$CHICAGO$"
+Provider=%S_Provider%
+DriverVer=05/08/2000,1.42
+Class=USBIOControlledDevices
+ClassGUID={96e73b6e-7a5a-11d4-9f24-0080c82727f4}
+[ClassInstall] 
+AddReg=_AddReg_ClassInstall
+[ClassInstall32] 
+AddReg=_AddReg_ClassInstall
+[_AddReg_ClassInstall]
+HKR,,,,"%S_DeviceClassDisplayName%"
+HKR,,Icon,,"-20"
+[Manufacturer]
+%S_Mfg%=_Devices
+[_Devices]
+%S_DeviceDesc1%=_Install1, USB\VID_05FD&PID_EEAE
+[_Install1]
+CopyFiles=_CopyFiles_sys
+AddReg=_AddReg_SW1, _AddReg_98, _Parameters1_98
+[_Install1.HW]
+AddReg=_AddReg_HW1
+[_Install1.NTx86]
+CopyFiles=_CopyFiles_sys
+AddReg=_AddReg_SW1, _Parameters1_NT
+[_Install1.NTx86.Services]
+AddService = %S_DriverName%, 0x00000002, _NT_AddService, _NT_EventLog
+[_Install1.NTx86.HW]
+AddReg=_AddReg_HW1
+[_NT_AddService]
+DisplayName    = %S_ServiceDisplayName%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; demand
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\%S_DriverName%.sys
+[_NT_EventLog]
+AddReg=_NT_EventLog_AddReg
+[_NT_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\%S_DriverName%.sys"
+HKR,,TypesSupported,  0x00010001,7
+[_AddReg_98]
+HKR,,NTMPDriver,,%S_DriverName%.sys
+HKR,,DevLoader,,*ntkern
+[_AddReg_SW1]
+HKLM,"%S_ConfigPath%",,,
+HKLM,"%S_ConfigPath%"\"%S_DeviceConfigPath1%",,,
+[_AddReg_HW1]
+HKR,,USBIO_ConfigurationPath,,\Registry\Machine\%S_ConfigPath%\%S_DeviceConfigPath1%
+HKR,,USBIO_UserInterfaceGuid,,"{FA668F1F-02CA-49a1-A84D-BDBFDCC31A8D}"
+[_Parameters1_98]
+HKLM,"%S_ConfigPath%"\"%S_DeviceConfigPath1%",PowerStateOnOpen,0x00010001, 0
+HKLM,"%S_ConfigPath%"\"%S_DeviceConfigPath1%",PowerStateOnClose,0x00010001, 0
+HKLM,"%S_ConfigPath%"\"%S_DeviceConfigPath1%",EnableRemoteWakeup,0x00010001, 1
+HKLM,"%S_ConfigPath%"\"%S_DeviceConfigPath1%",MinPowerStateUsed,0x00010001, 3
+HKLM,"%S_ConfigPath%"\"%S_DeviceConfigPath1%",MinPowerStateUnused,0x00010001, 3
+HKLM,"%S_ConfigPath%"\"%S_DeviceConfigPath1%",AbortPipesOnPowerDown,0x00010001, 1
+[_Parameters1_NT]
+HKLM,"%S_ConfigPath%"\"%S_DeviceConfigPath1%",PowerStateOnOpen,0x00010001, 0
+HKLM,"%S_ConfigPath%"\"%S_DeviceConfigPath1%",PowerStateOnClose,0x00010001, 0
+HKLM,"%S_ConfigPath%"\"%S_DeviceConfigPath1%",EnableRemoteWakeup,0x00010001, 1
+HKLM,"%S_ConfigPath%"\"%S_DeviceConfigPath1%",MinPowerStateUsed,0x00010001, 3
+HKLM,"%S_ConfigPath%"\"%S_DeviceConfigPath1%",MinPowerStateUnused,0x00010001, 3
+HKLM,"%S_ConfigPath%"\"%S_DeviceConfigPath1%",AbortPipesOnPowerDown,0x00010001, 1
+HKLM,"%S_ConfigPath%"\"%S_DeviceConfigPath1%",SuppressPnPRemoveDlg,0x00010001, 1
+[_CopyFiles_sys]
+usbio.sys
+[ControlFlags]
+[DestinationDirs]
+DefaultDestDir  = 11    ; SYSTEM directory
+_CopyFiles_sys = 10,System32\Drivers
+[SourceDisksNames]
+1=%S_DiskName%,,
+[SourceDisksFiles]
+%S_DriverName%.sys=1
+[Strings]
+S_Provider="Datel"
+S_Mfg="Datel"
+S_DeviceClassDisplayName="USBIO controlled devices"
+S_DeviceDesc1="NDS Link"
+S_DiskName="Action Replay DS Driver Disk"
+S_DriverName="usbio"
+S_ServiceDisplayName="USBIO Driver (usbio.sys)"
+S_ConfigPath="SYSTEM\CurrentControlSet\Services\USBIO"
+S_DeviceConfigPath1="Parameters"
+S_DeviceBaseName1="USBIO_Device"
+
+
