@@ -1,0 +1,10 @@
+Date: 7,Apr, 2008
+AR1.2 Loader (Final) Fix
+Fix the 2157 and 2152 problem
+
+
+====================================
+AR1.2 Loader (Final) 
+solved the sound and screen problem.
+press the [Y] or [sun] icon to change the backlight.
+when playing game press L,R,A,B,X,Y for soft-reset to main menu.
