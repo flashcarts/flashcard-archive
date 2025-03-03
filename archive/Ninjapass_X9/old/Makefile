@@ -1,7 +1,7 @@
 .PHONY: package
 
 export TOPDIR := $(CURDIR)
-export BASE   := ace3ds.com/$(shell basename $(CURDIR))
+export BASE   := Ninjapass_X9/$(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../../out
 export COMMON := $(TOPDIR)/../../../common-kernels
 
