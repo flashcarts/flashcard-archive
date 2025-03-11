@@ -28,6 +28,14 @@ r4isdhc.com Christmas Edition flashcards:
     3. Copy the files inside of the `R4-clone YSMenu` folder to the root of your microSD card.
     4. Launch YSMenu.nds from the flashcards file list.
 
+2014+ r4isdhc.com flashcards:
+
+There are two modern kernels that you can use to play games, these are YSMenu and R4iMenu 4.3 (r4isdhc.com_2014-and-above_DEMON_4.3).
+
+Both kernels have their own little quirks. If you choose to use R4iMenu, you should only use the built-in cheat database. Other cheat databases can often be unusable depending on the length of the cheat names and descriptions. If the name of the cheat is too long, it will either be cut off, or the entire cheat list will appear to be corrupted. Cheats in R4iMenu can sometimes break gameplay too as the kernel seems to refuse to use certain cheat codes. R4iMenu also has some issues with homebrew compatibility, with some apps - such as TwiLight Menu++ - refusing to boot at all.
+
+YSMenu does not have the same issues with cheat databases, but it is strict on what it will load. A game must have patches in YSMenu's database before it is able to launch. If the game you are trying to load doesn't have patches, an error code will be displayed and you will have to turn off your console. This is a major issue for new ROM hacks as YSMenu does not have patches for them. YSMenu also does not support any form of RTS.
+
 Cheats:
     - YSMenu: TTMenu/usrcheat.dat
     - BL2CK: __rpg/cheats/usrcheat.dat
