@@ -1,0 +1,4 @@
+﻿對變更的專案、moonshl.sav進行保存。
+
+如果moonshl.ini變更
+moonshl.ini重新載入時初始化。

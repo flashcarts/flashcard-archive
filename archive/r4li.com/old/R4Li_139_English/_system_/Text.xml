@@ -1,0 +1,91 @@
+﻿<!-- R4/EX4 language setting -->
+
+<!-- English version -->
+<!-- note: "&#160;" is space -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Text>
+  <Version>R4Li English version</Version>
+  <Time>
+    <LastModify>Final revise:</LastModify>
+    <Year>&#160;</Year>
+    <Month>-</Month>
+    <Day>-</Day>
+    <Hour>-</Hour>
+    <Minute>-</Minute>
+    <Second>&#160;</Second>
+  </Time>
+  <List>
+    <Cloose>Game;Multimedia;Boot Slot-2</Cloose>
+    <FileType>Games;eBook;Save;Files</FileType>
+  </List>
+  <Tip>
+    <Type>
+      <Dir>Directory</Dir>
+      <Untitle>Untitled</Untitle>
+      <Save>Save/Bookmark</Save>
+      <Music>Music</Music>
+      <Movie>Movie</Movie>
+      <Text>Text</Text>
+      <GBA>GameBoy Advance Game</GBA>
+      <Bitmap>Bitmap</Bitmap>
+      <Jpg>JPG picture</Jpg>
+      <Backup>Save backup</Backup>
+      <Unknown>Unknown</Unknown>
+    </Type>
+    <Operate>
+      <BookMarkErr>Can't find the Bookmark for this&#xA;Do you want to create it?</BookMarkErr>
+      <CreateBakErr>Can't find the SAV for this file&#xA;Do you want to create it?</CreateBakErr>
+      <UnknownErr>This types of files currently&#xA;not allowed to operate</UnknownErr>
+      <CopyErr>File copy wrong&#xA;The source or target damaged</CopyErr>
+      <Backup>Do you want to backup this SAVE?&#xA;The old backup will be rewritten!</Backup>
+      <BackupBad>This is a bad backup&#xA;or it's not a game backup</BackupBad>
+      <BackupErr>Create backup failure&#xA;Storage space inadequate</BackupErr>
+      <Restore>Do you want to restore this SAVE?&#xA;The old SAVE will be rewritten</Restore>
+      <RestoreBad>This is a bad SAVE&#xA;or it's not a game SAVE</RestoreBad>
+      <RestoreErr>Create saver/bookmark failure&#xA;Storage space inadequate</RestoreErr>
+      <Delete>Do you want to delete this file?&#xA;the data will be lost completely</Delete>
+      <DeleteErr>At present, can't delete&#xA;system file and non empty DIR</DeleteErr>
+    </Operate>
+    <Error>
+      <CreateSysFile>Create system file failure&#xA;Storage space inadequate</CreateSysFile>
+      <MoonShellFile>Can't find file of _DS_MSHL.NDS&#xA;in the SD/TF root directory</MoonShellFile>
+      <Slot2>Can't find NDS or GBA card in S2&#xA;Do you want boot to NDS mode?</Slot2>
+    </Error>
+    <Title>
+      <Info>Information</Info>
+      <Warn>Warning</Warn>
+      <Error>Error</Error>
+      <InitSys>Init system file ...</InitSys>
+      <Loading>Game loading ...</Loading>
+      <Copying>Copying...</Copying>
+      <Deleting>Deleting...</Deleting>
+      <CreateSav>Create saver/bookmark ...</CreateSav>
+      <Saving>Saving..., please wait</Saving>
+    </Title>
+  </Tip>
+  <Theme>
+    <Title>Theme select</Title>
+    <Auto>Automatic mode</Auto>
+    <Manual>Manual mode</Manual>
+  </Theme>
+  <Button>
+    <OK>OK(A)</OK>
+    <Cancel>Cancel(B)</Cancel>
+    <Ignore>Ignore(X)</Ignore>
+  </Button>
+  <Cheat>
+    <Button>Cheat(Y)</Button>
+    <SelTitle>Selected cheats: </SelTitle>
+    <SelAll>Select ALL</SelAll>
+    <SelNone>Select NONE</SelNone>
+    <RealTime>Real-time on/off enable(B)</RealTime>
+    <GameDisable>Game DISABLE</GameDisable>
+    <GameEnable>Game ENABLE</GameEnable>
+    <CheatDisable>Cheat DISABLE</CheatDisable>
+    <CheatEnable>Cheat ENABLE</CheatEnable>
+    <SaveTip>Save &#x26; exit</SaveTip>
+    <DiscardTip>Discard &#x26; exit</DiscardTip>
+    <MessageTip>Do you want to discard this&#xA;changes, and exit now?</MessageTip>
+  </Cheat>
+</Text>
