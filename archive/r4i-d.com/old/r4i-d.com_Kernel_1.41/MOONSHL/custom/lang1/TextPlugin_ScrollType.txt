@@ -1,0 +1,8 @@
+Top down scroll lines.
+
+0 = Same as horizontal
+    (A little left over)
+1 = Fullpage scroll
+
+2,3,4... = The number of lines are
+         manual specified.

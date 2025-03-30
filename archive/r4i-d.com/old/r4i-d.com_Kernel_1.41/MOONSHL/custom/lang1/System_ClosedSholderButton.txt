@@ -1,0 +1,8 @@
+Shoulder button lock
+
+Type 0 = Disable shoulder button when 
+         closed
+Type 1 = Use L+R=ShoulderRight, 
+        R+L=ShoulderLeft when closed
+Type 2 = Always disabled
+Type 3 = Always enabled
