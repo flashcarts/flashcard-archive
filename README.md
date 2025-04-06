@@ -32,13 +32,12 @@ These carts may support BL2CK OS. Only these carts are confirmed to actually wor
     - R4 Ultra and Acekard 2/2.1/2i carts that cannot run AKAIO due to being a clone
     - R4iTT 3DS NEW, RTS
     - r4infinity.com Dual-Core, V1.6
-    - r4isdhc.in 2014
+    - r4isdhc.in carts
     - R4i Gold 3DS Plus with faulty DS mode
     - r4-pro.com carts
     - r4ixds.com 2014-2016 non-white
     - r4i-gold.com 3DS Gold Pro / 2013 carts
     - r4sdhc.com V3DSU
-    - r4i-3dsnew.com carts
     - r4i-u.com carts
     - r4ds-i.com.cn carts
     - super4i.com carts
@@ -51,6 +50,7 @@ These carts may support BL2CK OS. Only these carts are confirmed to actually wor
     - "R4DS Pro" carts
     - r4iplat.com carts
     - r4i-d.com carts
+    - r4i-3dsnew.com carts
 
 These carts may support BL2CK OS, but have not been attempted. This information is based on its provided DLDI, which are identical.  
 Please do not attempt cross-loading without knowing what you're doing.
