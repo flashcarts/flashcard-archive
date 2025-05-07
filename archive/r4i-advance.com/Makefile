@@ -5,13 +5,13 @@ export BASE   := $(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../out
 export COMMON := $(TOPDIR)/../../common-kernels
 
-package: directory R4i-Advance_Kernel_3.0.zip extdata
+package: directory old extdata
 
 directory:
 	mkdir -p $(OUT)/$(BASE)
 
-R4i-Advance_Kernel_3.0.zip: directory
-	cd $(TOPDIR)/R4i-Advance_Kernel_3.0 && zip -r $(OUT)/$(BASE)/$@ *
+old: directory
+	make -C $@
 
 extdata: directory
 	cp README.txt $(OUT)/$(BASE)

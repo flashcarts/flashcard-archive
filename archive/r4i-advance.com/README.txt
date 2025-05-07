@@ -1,6 +1,6 @@
-also compatible with r4ds-a.com (kernel 1.27 is UNTESTED! 1.22 known working)
+# Installation instructions for YSMenu on r4i-advance.com flashcards
 
-https://web.archive.org/web/20140905051809/http://r4i-advance.com/en/index.asp
-
-cheats (3.0):
-R4Menu/usrcheat.dat
+1. Download YSMenu from here: https://gbatemp.net/download/35737/
+2. Extract the YSMenu .7z file.
+3. Copy the files inside of the DSTTi-Clone YSMenu folder to the root of your microSD card.
+4. Make a copy of `TTMenu.dat`, then rename this copy to `R4i.TP`
