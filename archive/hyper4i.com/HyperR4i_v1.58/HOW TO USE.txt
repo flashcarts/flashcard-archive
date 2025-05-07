@@ -1,0 +1,15 @@
+﻿軟複位 + 即時存檔 + 即時攻略，統一快捷鍵：L+R+A+B
+金手指文件，請命名為“usrcheat.dat”，放置於“_SYSTEM_”目錄下
+
+遊戲 ROM：你可以將遊戲文件放於任意目錄
+存檔文件：為了便於管理，統一存放於“SAVE”文件夾內，並於遊戲文件同名
+即時存檔：同一個遊戲ROM的即時存檔可以與他人共享交換，文件在“SSTATE”文件夾內，並於遊戲文件同名。
+即時攻略：請將後綴為SST的即時攻略文件（可自己編寫），文件在“SSTATE”文件夾內，並於遊戲文件同名。
+
+SOFTRESTE + RT SAVE + GAME GUIDE: L+R+A+B
+Please put the R4 CHEAT FILE "usrcheat.dat" in the Folder "_SYSTEM_"
+
+GAME ROM: any folder is ok.
+SAVE FILE: put into the Folder "SAVE" with the same file name as GAME ROM.
+RealTime Save: put into the Folder "SSTATE" with the same file name as GAME ROM.
+Game Guide: put the *.sst file into the Folder "SSTATE" with the same file name as GAME ROM.

@@ -1,0 +1,15 @@
+
+for Exif2.1 and DCF image files.
+
+The thumbnail image of the Jpeg file taken a picture of with the digital camera in accordance with "Exif2.1 or DCF" standard is cached.
+When this file is deleted, the thumbnail image is not cached.
+
+Please use "ThumbnailIconMaker.exe" to add the thumbnail image to the picture file that doesn't contain "Exif2.1/DCF thumbnail image".
+
+------------
+
+このファイルは、Exif2.1またはDCF規格に準拠したデジタルカメラ（カメラ付き携帯電話も含む）で撮影されたJpegファイルのサムネイル画像（ファイルアイコン）を最大510枚分一時保管するファイルです。
+このファイルを削除すると、キャッシュを行わなくなります。表示が遅くなるだけでサムネイル画像自体は表示されます。
+また、MoonShell2で表示した画像ファイル（Jpegファイル以外を含む）のサムネイル画像を作成する機能を追加します。
+"Exif2.1/DCFサムネイル画像"を含まない画像ファイルにサムネイル画像を付加するときは、"ThumbnailIconMaker.exe"を使用してください。
+
