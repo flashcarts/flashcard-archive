@@ -43,7 +43,7 @@ These carts may support BL2CK OS. Only these carts are confirmed to actually wor
     - super4i.com carts
 - Amaze3DS version:
     - r4igold.cc Wood 
-    - Amaze3DS (use the Amaze3DS version)
+    - Amaze3DS
 - EDGEi version:
     - edgei-ds.cn carts (Fake iEDGE)
 - R4DSPro version:
