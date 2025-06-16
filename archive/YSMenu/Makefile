@@ -12,3 +12,4 @@ directory:
 
 extdata: directory
 	cp -r DEMON_common $(OUT)/$(BASE)
+	cp -r R4SDHC_common $(OUT)/$(BASE)
