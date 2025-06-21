@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+content-type:image/gif
+content-length:254
+content-disposition:inline
+date:Mon, 12 Apr 2010 10:53:39 GMT
+expires:Mon, 12 Apr 2010 10:53:39 GMT

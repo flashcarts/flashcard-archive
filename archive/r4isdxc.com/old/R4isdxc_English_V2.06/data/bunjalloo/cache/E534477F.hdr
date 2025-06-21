@@ -1,0 +1,12 @@
+HTTP/1.0 200 OK
+server:nginx
+content-type:image/gif
+content-length:276
+last-modified:Wed, 20 Jan 2010 02:55:47 GMT
+expires:Mon, 11 Apr 2011 19:54:43 GMT
+cache-control:max-age=31536000
+accept-ranges:bytes
+via:1.0 Stcz93:8103 (Cdn Cache Server V2.0), 1.0 zjls204:80 (Cdn Cache Server V2.0)
+connection:close
+age:1
+date:Sun, 11 Apr 2010 23:32:38 GMT

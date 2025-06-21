@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+content-type:application/xhtml+xml; charset=UTF-8
+date:Mon, 12 Apr 2010 10:53:32 GMT
+expires:Mon, 12 Apr 2010 10:53:32 GMT
+cache-control:private, max-age=0
+x-content-type-options:nosniff
+x-frame-options:SAMEORIGIN
+x-xss-protection:1; mode=block
+server:GSE
+connection:close

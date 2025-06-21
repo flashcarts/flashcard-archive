@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+date:Mon, 12 Apr 2010 10:54:34 GMT
+expires:-1
+cache-control:private, max-age=0
+content-type:text/html; charset=ISO-8859-1
+set-cookie:PREF=ID=01988a5bae139b62:NW=1:TM=1271069674:LM=1271069674:S=JI0qg08MjeVjlzyR; expires=Wed, 11-Apr-2012 10:54:34 GMT; path=/; domain=.google.cm
+set-cookie:NID=33=eyseuw3q3fhwPCjnrxlNRQ1104F-luSC58a1AJg9ilo1JOuWyv-6MoaZLZgR0ZJbqZU90Nbr_puRODTEs35ASetvjyVGVd8IhVsS1Af7WcsVL5dHRvQfYHpWQ70ysCEI; expires=Tue, 12-Oct-2010 10:54:34 GMT; path=/; domain=.google.cm; HttpOnly
+server:gws
+connection:close

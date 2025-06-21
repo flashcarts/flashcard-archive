@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+cache-control:private, max-age=0
+date:Mon, 12 Apr 2010 10:57:11 GMT
+expires:-1
+content-type:text/html; charset=ISO-8859-1
+set-cookie:SS=Q0=aXJjZHM; path=/search
+server:gws
+connection:close

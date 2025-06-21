@@ -1,0 +1,1 @@
+cheats: SD:/SYSTEM/usrcheat.dat

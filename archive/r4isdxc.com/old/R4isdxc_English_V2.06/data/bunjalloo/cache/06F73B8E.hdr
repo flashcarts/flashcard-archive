@@ -1,0 +1,12 @@
+HTTP/1.0 200 OK
+server:nginx/0.6.36
+content-type:image/jpeg
+content-length:4740
+last-modified:Mon, 12 Apr 2010 01:42:51 GMT
+expires:Fri, 11 Jun 2010 01:44:14 GMT
+cache-control:max-age=5184000
+accept-ranges:bytes
+via:192.168.51.29, 192.168.51.234.nginx, 1.0 yz164:80 (Cdn Cache Server V2.0), 1.0 ls74:8102 (Cdn Cache Server V2.0), 1.0 zjls203:8102 (Cdn Cache Server V2.0)
+connection:close
+age:1
+date:Mon, 12 Apr 2010 01:44:15 GMT
