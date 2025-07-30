@@ -22,7 +22,7 @@ Some kernels are in different locations, or have consolidated as they are identi
 These carts may support BL2CK OS. Only these carts are confirmed to actually work so far:
 
 - Default version:
-    - r4i3d.com NEW, 2012+
+    - r4i3d.com NEW, or 2012+
     - r4igold.cc 3DS
     - r4i-gold.me 2013-2015
     - r4isdhc.hk carts with no year number, or before 2020
