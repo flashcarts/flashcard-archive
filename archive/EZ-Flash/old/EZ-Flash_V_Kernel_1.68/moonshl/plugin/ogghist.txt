@@ -1,0 +1,15 @@
+
+2006/03/05
+
+It was corrected that the seek bar had worked abnormally with the monaural channel.
+
+2006/04/27
+
+81kbyte is normal version. 97kbyte is accuracy version.
+An accurate version is only for the ogg file of 128kbps or less because it is very heavy.
+
+2007/01/13
+
+Fixed memory leak on 'framing.c'. Thank you Firon.
+81kbyte is normal version. 97kbyte is accuracy version.
+

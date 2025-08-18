@@ -1,0 +1,6 @@
+
+This README covers the Ogg Vorbis 'Tremor' integer playback codec
+source as of date 2002 09 02, version 1.0.0.
+
+Copyright (c) 2002, Xiph.org Foundation
+

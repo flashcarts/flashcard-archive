@@ -5,7 +5,7 @@ export BASE   := $(shell basename $(CURDIR))
 export OUT    := $(TOPDIR)/../../out
 export COMMON := $(TOPDIR)/../../common-kernels
 
-package: directory EZ-Flash_V+_oldVi_Kernel_2.0RC20.zip EZ-Flash_Vi_705_805_Kernel_3.0OB8.zip old
+package: directory EZ-Flash_V+_oldVi_Kernel_2.0RC20.zip EZ-Flash_Vi_705_805_Kernel_3.0OB8.zip old extdata
 
 directory:
 	mkdir -p $(OUT)/$(BASE)
@@ -18,3 +18,6 @@ EZ-Flash_Vi_705_805_Kernel_3.0OB8.zip: directory
 
 old: directory
 	make -C $@
+
+extdata: directory
+	cp README.txt $(OUT)/$(BASE)

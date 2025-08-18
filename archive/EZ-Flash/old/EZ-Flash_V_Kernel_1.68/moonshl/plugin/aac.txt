@@ -1,0 +1,52 @@
+FAAD2 fix for low stack machine.
+
+FAAD2 2.5 uses quite a lot stacks, it makes difficult to run on low stack machines like Nintedno DS.
+AAC decoding code on DS just results in frozing by stack overflow.
+For example, "element" structure in channel_pair_element function is more than 20000 bytes.
+The size of "trans_buf" array in ifilter_bank function is 8192 bytes.
+Those large local variable arrays and structures in syntax.c, specrec.c, and filtbank.c was modified to static.
+This fix will help low stack application for FAAD2.
+
+TODO: Only part of large local variables was modified. Changing compile options and sound format other than AAC may still contain large local variables. All of the large local variables should be fixed.
+
+Moonlight wrote. (2006/12/18 09:46 GMT+09:00)
+
+filtbank.c
+Line.190 comment out. : memset(transf_buf, 0, sizeof(2*1024*sizeof(real_t)));
+
+syntax.c
+Line.597 comment out. : memset(&sce, 0, sizeof(element));
+Line.598 comment out. : memset(spec_data, 0, 1024*sizeof(int16_t));
+Line.648 comment out. : memset(spec_data1, 0, 1024*sizeof(int16_t));
+Line.649 comment out. : memset(spec_data2, 0, 1024*sizeof(int16_t));
+Line.650 comment out. : memset(&cpe, 0, sizeof(element));
+
+Moonlight wrote. (2006/12/20 11:07 GMT+09:00)
+
+re-enabled all 2006/12/18 comment out. (for Accuracy memory initializer)
+
+common.h
+enabled SBR_DEC and SBR_LOW_POWER.
+
+sbr_hfgen.c
+Line.211 add mask value. : uint32_t pow2, mask, exp;
+
+sbr_hfadj.c
+Line.1507 fix undefined reference to 'SBR_SQRT_Q2'.
+Reffer http://www.audiocoding.com/modules/newbb/viewtopic.php?topic_id=223&forum=2&PHPSESSID=6a43abb3f8b2a3a84812e529303cf45a
+
+Moonlight wrote. (2006/12/24 22:53 GMT+09:00)
+
+re-comment out all 2006/12/18 comment out. (for Fast initializer)
+
+Moonlight wrote. (2006/12/27 23:12 GMT+09:00)
+
+Disabled SBR.
+
+Functions.
+
+MPEG-4 format: LTP/LD profile AAC
+DRM (copyright protection mechanism) is unsupported.
+High-bitrate stream is unsupported.
+Seek cannot be done.
+

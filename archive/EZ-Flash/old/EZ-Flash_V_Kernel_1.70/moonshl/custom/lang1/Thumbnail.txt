@@ -1,0 +1,2 @@
+﻿縮略圖顯示功能。
+使用CreateThumbnail.exe生成縮略圖後此功能有效。
