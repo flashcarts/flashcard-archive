@@ -1,0 +1,322 @@
+// Traduction par Antoine L. et Shad
+
+[start menu]
+Copy = Copier
+Cut = Couper
+Paste = Coller
+Delete = Supprimer
+Save Type = Type Sauvegarde
+Patches = Spécial
+Setting = Conf. Système
+Info = Infos Fichier
+Help = Aide
+
+[message box]
+yes = Oui
+no = Non
+ok = OK
+cancel = Annuler
+
+[progress window]
+processing save = Sauvegarde... ne pas éteindre
+processing copy = Copie... ne pas éteindre, %c pour annuler
+first use sd = Vérification de la microSD pour une première utilisation
+gba load = Chargement du jeu GBA
+gba save load = Chargement de la sauvegarde du jeu GBA
+gba save store = Sauvegarde GBA... ne pas éteindre
+erase nor = Erase NOR flash
+rebuilding cheat data = Rebuilding cheat file.
+
+[copy file error]
+title = Erreur
+text = Le fichier n'existe pas.
+
+[copy file exists]
+title = Attention
+text = Le fichier existe déjà , l'écraser ?
+
+[copy dest is directory]
+title = Erreur
+text = Le répertoire existe déjà , impossible de copier.
+
+[move dest is directory]
+title = Error
+text = Le répertoire existe déjà , impossible de déplacer.
+
+[no copy dir]
+title = Erreur
+text = La copie de dossier n'est pas supportée.
+
+[stop copying file]
+title = Arrêter la copie
+text = Voulez-vous arrêter la copie ?
+
+[confirm delete file]
+title = Confirmation
+text = La suppression est définitive, voulez-vous vraiment supprimer "%s" ?
+
+[do not delete directory]
+title = Attention
+text = Le dossier n'est pas vide, impossible de supprimer.
+
+[unknown save type]
+title = Notification
+text = Le type de sauvegarde est inconnu, pressez A pour choisir.
+
+[no savelist]
+title = Attention
+text = La liste des sauvegardes "savelist.bin" est introuvable.
+
+[restore save fail]
+title = Attention
+text = Impossible de restaurer la sauvegarde, continuer ?
+
+[backup save fail]
+title = Attention
+text = Echec de l'écriture de la sauvegarde, espace disque insuffisant.
+
+[language changed]
+title = Question
+text = La configuration système a été mise à  jour, redémarrer pour appliquer les changements ? Choisissez "Non" pour redémarrer plus tard.
+
+[ui style changed]
+title = Question
+text = L'interface utilisateur a été mise à  jour, redémarrer pour appliquer les changements ? Choisissez "Non" pour annuler les modifications.
+
+[setting window]
+ok = OK
+savetype = Sauvegarde
+cancel = Annuler
+confirm = Confirmer
+confirm text = Sauvegarder la configuration ?
+shortcut = Shortcut
+rominfo = Rom Info
+
+[save type]
+title = Choisir type de sauvegarde
+text = Choisir type de sauvegarde
+Unknown = Automatique
+No Save = Aucune
+4K = 4K
+64K = 64K
+512K = 64K/512K
+2M = 2M
+4M = 2M/4M
+
+[scrolling]
+Fast = Rapide
+Medium = Moyen
+Slow = Lent
+
+[romnametype]
+Normal = Normal
+HideExtName = Hide ROM Ext.
+BannerTitle = Internal Name
+
+[advanced setting]
+title = Configuration avancée
+Advanced = Avancé
+Show Hidden Files = Afficher les fichiers cachés
+Scrolling Speed = Vitesse de défilement
+Rom Name Type = ROM Name in List
+
+[system setting]
+title = Configuration système
+
+[rom info]
+title = Propriétés du fichier
+title_rominfo = Setup Rom Info
+file date = Modifié le : %d/%d/%d %02d:%02d:%02d(GMT)
+file size = Taille : %s
+save type = Type de sauvegarde : %s
+game code = Code du jeu: %s
+save slot = Select Save Slot
+copy slot = Copy Slot
+cheat menu = Cheat Menu
+
+[gba info]
+run mode = Run Mode
+Normal = Run
+Linkage = Linkage
+patch sleep = Patch Sleep Mode
+patch sram = Patch SRAM
+
+[saveslot]
+title = Save Slot
+Slot = Slot
+title_copyslot = Copy Save Slot
+confirm_copyslot = Are you sure you want to copy save slot?
+target slot = Target SaveSlot
+Default Slot = Default
+Set Slot = Set Slot
+Copy = Copier
+Delete = Supprimer
+
+
+[disk info]
+total = Capacité : %s
+used = Espace utilisé : %s
+free = Espace libre : %s
+
+[no free space]
+title = Erreur
+text = L'espace disque est insuffisant. Impossible de copier.
+
+
+[sd speed]
+text = Régler la vitesse de la microSD
+item0 = Très rapide
+item1 = Rapide
+item2 = Moyenne
+item3 = Lente
+
+[unsupported sd]
+title = microSD incompatible
+text = Cette micro SD (modèle %s) n'est pas compatible avec les jeux DS. Veuillez copier les jeux sur la mémoire interne du DSTT et réessayer.
+
+[sd card error]
+title = Erreur microSD
+text = microSD inaccessible, vérifiez qu'elle est bien insérée.
+
+[no sd for save]
+title = Erreur microSD
+text = microSD inaccessible, la sauvegarde du dernier jeu lancé a été écrite dans "%s".
+
+[no gba card]
+title = Notification
+text = Il n'y a pas de cartouche insérée dans le slot 2.
+
+[filelist type]
+text = Afficher les fichiers
+item0 = ROMS
+item1 = ROMS et SAV
+item2 = TOUT
+
+[rom trim]
+text = Trimmer lors de la copie
+item0 = Non
+item1 = Oui
+
+[cheat]
+text = Activer les codes de triche
+item0 = Non
+Item1 = Oui
+
+[autorun]
+text = Lancement automatique
+item0 = Non
+item1 = Oui
+
+[language]
+text = Langage
+item0 = English
+item1 = S.Chinese
+item2 = T.Chinese
+item3 = Japanese
+item4 = Français
+item5 = Italiano
+item6 = Deutsch
+item7 = Español
+item8 = Korean
+item9 = Nederlands
+
+[brightness]
+text = Luminosité
+
+[ui style]
+text = Interface utilisateur
+
+[help window]
+title = Aide
+item0 = %c  Sélectionner un logiciel
+item1 = %c  Lancer/OK/Oui
+item2 = %c  Retour/Annuler/Non
+item3 = %c  Propriétés/Type sauvegarde
+item4 = %c  Cheat Menu
+item5 = %c  Précédent répertoire
+item6 = %c  Ajuster la luminosité
+item7 = %s  Menu de démarrage
+item8 = %s  Style nouveau/classique
+versions = HW: %02x NDD: %02x
+
+[exp window]
+title = Configuration du 3in1 expansion pack
+ram = RAM
+sram = sRAM
+off = Désactivée
+low = Faible
+mid = Moyenne
+high = Forte
+strength = Vibrations
+NOR Mode = NOR Mode
+auto = Auto
+always = Always
+
+[gba warn]
+title = Attention
+text = Les roms GBA avec une taille supérieur à  32Mb ne sont pas supportées.
+
+[patches]
+title = Fonctions spéciales
+download play = Corriger Download & Play
+cheating system = Codes Triches (AR)
+reset in game = Redémarrer lors du jeu
+3in1 = 3in1
+cheatdb select= Cheat DB File
+
+[switches]
+Enable = Activé
+Disable = Désactivé
+Default = Default
+auto menu = Auto Menu
+
+
+[shortcut]
+title_overwrite = Remplacer le raccourci ?
+text_overwrite = Etes-vous sûr de vouloir créer / remplacer votre raccourci ?
+title_delete = Confirm Shortcut
+text_delete = Are you sure want to delete your shortcut?
+
+[slot2]
+boot mode = Boot Mode
+gbamode = Boot in GBA mode
+passme = Boot in NDS mode (PassMe)
+unknown = Unknown Slot2 Title
+3in1 Expansion Pack = EZ-Flash 3In1 Expansion Pack is detected.
+EWin Expansion Pack = EWin Expansion Pack is detected.
+
+
+[cheats]
+title = Codes triches
+confirm = Confirmer
+error_title = Erreur
+error_text = Fichier contenant les codes n'a pas été trouvé.
+no cheatdb= Cheat DB file is not found.
+invalid cheatdb= Cheat DB file is invalid.
+notfound = No Cheats found in Cheat DB.
+confirm_rebuild = Do you want really rebuilding? current cheatfile will be removed.
+Save = Save
+Cancel = Annuler
+Rebuild = Rebuild
+DB Select = DB Select
+
+[textview]
+confirm = Confirmer
+exit = Voulez-vous vraiment quitter ?
+error = Erreur
+file open error = Impossible d'ouvrir ce fichier, retour au menu.
+screen angle = Angle de l'écran
+normal = Normal
+rotate 90 = 90°
+rotate 270 = 270°
+screen mode = Affichage
+dual = Deux écrans
+dual copy = Deux écran identiques
+lower = Bas uniquement
+upper = Haut uniquement
+add bookmark = Voulez-vous ajouter un nouveau marque-page à  cette position ?
+remove bookmark = Voulez-vous supprimer ce marque-page ?
+goto top = Voulez-vous revenir à  la première page ?
+line space = Line Space
+
+[end]

@@ -1,0 +1,307 @@
+﻿//Language text corrected and translated into spanish by Boriar.
+
+[font]
+main = liberation.pcf
+language = 5
+
+[start menu]
+Copy = Copiar
+Cut = Cortar
+Paste = Pegar
+Delete = Borrar
+Save Type = Fijar Tipo SAVE
+Patches = Especiales
+Setting = Ajustes Sistema
+Info = Info. Archivo
+Help = Ayuda
+
+[message box]
+yes = Sí
+no = No
+ok = OK
+cancel = Anular
+
+[progress window]
+processing save = Procesando, NO apague
+processing copy = Copiando, NO apague, %c para anular
+first use sd = Comprobando Tarjeta MicroSD por primera vez
+gba load = Cargando Juego GBA
+gba save load = Cargando Partida GBA
+gba save store = Procesando Partida GBA, NO Apage
+erase nor = Limpiando Flash NOR
+rebuilding cheat data = Rebuilding cheat file.
+
+[copy file error]
+title = Error
+text = El archivo no existe
+
+[copy file exists]
+title = Atención
+text = Ya existe un fichero con ese nombre, żSobreescribir?
+
+[copy dest is directory]
+title = Error
+text = Ya existe un directorio con el mismo nombre, no puede copiarse el archivo origen.
+
+[move file exists]
+title = Error
+text = Existe un fichero con el mismo nombre, imposible mover el archivo aqui.
+
+[no copy dir]
+title = Error
+text = Copia de carpeta NO soportada.
+
+[stop copying file]
+title = Detener Copia Archivo
+text = żQuieres detener la copia?
+
+[confirm delete file]
+title = Confirmar
+text = El archivo no podrá recuperse tras borrar, żcontinuar borrado "%s"?
+
+[do not delete directory]
+title = Atención
+text = La carpeta no esta vacía, no puede borrarse.
+
+[unknown save type]
+title = Atención
+text = Tipo de SAVE desconocido, pulse "A" para elegir un nuevo tipo.
+
+[no savelist]
+title = Atención
+text = Imposible cargar lista, no se encontró "savelist.bin".
+
+[restore save fail]
+title = Atención
+text = Fallo al restaurar los datos, żcontinuar igualmente?
+
+[backup save fail]
+title = Atención
+text = Fallo al grabar datos, no hay suficiente memoria libre en el disco.
+
+[language changed]
+title = Pregunta
+text = Ajuste del idioma cambiado, żdesea reiniciar ahora para aplicar el nuevo idioma? Pulse "No" para reiniciar después.
+
+[ui style changed]
+title = Pregunta
+text = Estilo del interfaz cambiado, żdesea reiniciar para aplicar los cambios? Pulsar "No" mantendrá el estilo actual.
+
+[setting window]
+ok = OK
+savetype = Tipo SAVE
+cancel = Anular
+confirm = Confirmar
+confirm text = żGrabar ajustes actuales?
+shortcut = Enlazar
+rominfo = Rom Info
+
+[save type]
+title = Fijar Tipo SAVE
+text = Seleccione Tipo De SAVE
+Unknown = Desconocido/Auto
+No Save = No SAVE
+4K = 4K
+64K = 64K
+512K = 64K/512K
+2M = 2M
+4M = 2M/4M
+
+[scrolling]
+Fast = RÁPIDA
+Medium = MEDIA
+Slow = LENTA
+
+[romnametype]
+oldschool = Simple
+modern = Icono+Archivo
+internal = Nombre interno
+
+[advanced setting]
+title = Configuración Avanzada
+Advanced = Avanzada
+Show Hidden Files = Mostrar Archivos Ocultos
+Rom Name Type = ROM Name in List
+Scrolling Speed = Velocidad de Scroll
+
+[system setting]
+title = Ajustes Sistema
+
+[rom info]
+title = Información Archivo
+title_rominfo = Setup Rom Info
+file date = Último Cambio: %d/%d/%d %02d:%02d:%02d(GMT)
+file size = Tamańo Archivo: %s
+save type = Tipo SAVE: %s
+game code = Código del Juego: %s
+save slot = Select Save Slot
+copy slot = Copy Slot
+cheat menu = Cheat Menu
+
+[gba info]
+run mode = Run Mode
+Normal = Run
+Linkage = Linkage
+patch sleep = Patch Sleep Mode
+patch sram = Patch SRAM
+
+[saveslot]
+title = Save Slot
+Slot = Slot
+title_copyslot = Copy Save Slot
+confirm_copyslot = Are you sure you want to copy save slot?
+target slot = Target SaveSlot
+Default Slot = Default
+Set Slot = Set Slot
+Copy = Copiar
+Delete = Borrar
+
+
+[disk info]
+total = Capacidad Disco: %s
+used = Espacio Utilizado: %s
+free = Espacio Libre: %s
+
+[no free space]
+title = Error
+text = No hay suficiente espacio en disco, imposible copiar archivo.
+
+
+[sd speed]
+text = Fijar Velocidad MicroSD
+item0 = EXTREMA
+item1 = RAPIDA
+item2 = MEDIA
+item3 = LENTA
+
+[unsupported sd]
+title = Tarjeta MicroSD NO Soportada
+text = Esta tarjeta MicroSD (Modelo:%s) no es compatible para ejecutar aplicaciones NDS, copie los ficheros de la tarjeta MicroSD a la memoria interna y pruebe de nuevo.
+
+[sd card error]
+title = Error Tarjeta MicroSD
+text = Imposible acceder a la MicroSD, puede que no esté bien insertada.
+
+[no sd for save]
+title = Error en Tarjeta MicroSD
+text = Imposible acceder a la MicroSD, los datos de la aplicación en curso serán guardados en el fichero: "%s".
+
+[no gba card]
+title = Atención
+text = No hay dispositivo en el SLOT-2
+
+[filelist type]
+text = Fijar Tipo de Lista
+item0 = NDS
+item1 = NDS + SAV
+item2 = TODO
+
+[rom trim]
+text = Recortar ROM al Copiar
+item0 = No
+item1 = Sí
+
+[cheat]
+text = Usar Trucos
+item0 = No
+Item1 = Sí
+
+[autorun]
+text = Autoejecutar
+item0 = No
+item1 = Sí
+
+[language]
+text = Idioma
+item0 = Inglés
+item1 = Chino Simple
+item2 = Chino Tradic
+item3 = Japonés
+item4 = Francés
+item5 = Italiano
+item6 = Alemán
+item7 = Espańol
+item8 = Korean
+item9 = Nederlands
+
+[brightness]
+text = Brillo
+
+[ui style]
+text = Estilo del Interfaz
+
+[help window]
+title = Información de Ayuda
+item0 = %c  Seleccionar Programas
+item1 = %c  Empezar/OK/Sí
+item2 = %c  Volver/Anular/No
+item3 = %c  Ver info/Seleccionar Tipo SAVE
+item4 = %c  Cheat Menu
+item5 = %c  Volver a la Carpeta Anterior
+item6 = %c  Ajustar Brillo
+item7 = %s  Menu Inicial
+item8 = %s  Estilo Menú Nuevo/Clásico
+versions = HW: %02x NDD: %02x
+
+[exp window]
+title = Configuración 3in1 Pack de Expansión
+ram = RAM
+sram = sRAM
+off = Off
+low = Baja
+mid = Media
+high = Alta
+strength = Vibración del Rumble
+NOR Mode = NOR Mode
+auto = Auto
+always = Always
+
+[gba warn]
+title = Atención
+text = ĄLas ROMS GBA de tamańo superior a 32M no están soportadas!
+
+[patches]
+title = Funciones Especiales
+download play = Parcheo DescargaDS
+cheating system = Trucos en el Juego (AR)
+reset in game = Soft Reset en el Juego
+3in1 = 3in1
+cheatdb select= Cheat DB File
+
+[switches]
+Enable = Habilitado
+Disable = Deshabilitado
+Default = Default
+auto menu = Auto Menu
+
+
+[shortcut]
+title_overwrite = żSobreescribir Enlace?
+text_overwrite = żEstás seguro de Crear/Sobreescribir el Enlace del Menu de Inicio?
+title_delete = Confirm Shortcut
+text_delete = Are you sure want to delete your shortcut?
+
+[slot2]
+boot mode = Boot Mode
+gbamode = Boot in GBA mode
+passme = Boot in NDS mode (PassMe)
+unknown = Unknown Slot2 Title
+3in1 Expansion Pack = EZ-Flash 3In1 Expansion Pack is detected.
+EWin Expansion Pack = EWin Expansion Pack is detected.
+
+[cheats]
+title = Trucos
+confirm = Confirmar
+error_title = Error
+error_text = No se ha encuetrado el archivo de Trucos.
+no cheatdb= Cheat DB file is not found.
+invalid cheatdb= Cheat DB file is invalid.
+notfound = No Cheats found in Cheat DB.
+confirm_rebuild = Do you want really rebuilding? current cheatfile will be removed.
+Save = Save
+Cancel = Anular
+Rebuild = Rebuild
+DB Select = DB Select
+
+[end]
+

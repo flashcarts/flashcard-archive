@@ -1,0 +1,328 @@
+﻿
+
+[font]
+main = liberation.pcf
+language = 1
+
+[start menu]
+Copy = Copy
+Cut = Cut
+Paste = Paste
+Delete = Delete
+Save Type = Save Type
+Patches = Patches
+Setting = System Options
+Info = Properties
+Help = Help
+
+[message box]
+yes = Yes
+no = No
+ok = OK
+cancel = Cancel
+
+[progress window]
+processing save = Processing... Do not power off!
+processing copy = Copying... Do not power off, %c=Cancel!
+first use sd = Checking SD card for first time usage...
+gba load = Loading GBA game...
+gba save load = Loading GBA save...
+gba save store = Processing GBA save... Do not power off!
+erase nor = Erasing NOR flash... Do not power off!
+rebuilding cheat data = Rebuilding cheat file.
+
+[copy file error]
+title = Error Copying File or Folder
+text = The File or folder does not exist.
+
+[copy file exists]
+title = Confirm File Replace
+text = This folder already contains a file with the same name. Would you like to replace the existing file with this one?
+
+[copy dest is directory]
+title = Error Copying File or Folder
+text = This folder already contains a folder with the same name. It is not possible to copy file.
+
+[move dest is directory]
+title = Error Moving File or Folder
+text = This folder already contains a folder with the same name. It is not possible to move file.
+
+[no copy dir]
+title = Error Folder Copy/Cut
+text = Folder copying/moving is not supported for now!
+
+[stop copying file]
+title = Confirm File Copy Cancel
+text = Are you sure you want to cancel file copy?
+
+[confirm delete file]
+title = Confirm File/Folder Delete
+text = File/folder can not be undeleted, are you sure you want to delete '%s'?
+
+[do not delete directory]
+title = Error Folder Delete
+text = This folder is not empty, delete folder contents first and retry.
+
+[unknown save type]
+title = Unknown Safe Type
+text = The save type of this program is unknown, press "A" to manually set a type.
+
+[no savelist]
+title = Error Loading Save List
+text = The save list could not be loaded, "savelist.bin" is missing.
+
+[restore save fail]
+title = Failed Save Data Restore
+text = The save data could not be restored, ignore and continue anyway?
+
+[backup save fail]
+title = Failed Save Data Backup
+text = Failed to backup save data, target disk may not have enough free space.
+
+[language changed]
+title = Confirm System Language Change
+text = Are you sure you want to restart now to apply the system language change? Choose "No" to restart later.
+
+[ui style changed]
+title = Confirm Interface Theme Change
+text = Are you sure you want to restart now to apply the interface theme change? Choose "No" to keep current theme. 
+
+[setting window]
+ok = OK
+savetype = Save Type
+cancel = Cancel
+confirm = Confirm Options Save
+confirm text = Are you sure you want to save current settings?
+shortcut = Shortcut
+rominfo = Rom Info
+
+[save type]
+title = Set Save Type
+text = Save type
+Unknown = Unknown/Auto
+No Save = No Save
+4K = 4K
+64K = 64K
+512K = 64K/512K
+2M = 2M
+4M = 2M/4M
+
+[scrolling]
+Fast = Fast
+Medium = Medium
+Slow = Slow
+
+[romnametype]
+oldschool = Old school
+modern = Modern
+internal = Internal
+
+[advanced setting]
+title = Advanced Setting
+Advanced = Advanced
+Show Hidden Files = Show Hidden files
+Rom Name Type = ROM Name in List
+Scrolling Speed = Scroll Speed
+
+[system setting]
+title = System Options
+
+[gba info]
+run mode = Run Mode
+Normal = Run
+Linkage = Linkage
+patch sleep = Patch Sleep Mode
+patch sram = Patch SRAM
+
+[rom info]
+title = Properties
+file date = Last Change: %d/%d/%d %02d:%02d:%02d(GMT)
+file size = File Size: %s
+save type = Save Type: %s
+game code = Game Code: %s
+title_rominfo = Setup Rom Info
+save slot = Select Save Slot
+copy slot = Copy Slot
+cheat menu = Cheat Menu
+SaveSlot = Saveslot
+
+[saveslot] 
+title = Save Slot
+Slot = Slot 
+title_copyslot = Copy Save Slot 
+confirm_copyslot = Are you sure you want to copy save slot?
+target slot = Target SaveSlot
+Default Slot = Default
+Set Slot = Set Slot
+Delete = Delete
+Copy = Copy
+
+[disk info]
+total = Disk Capacity: %s
+used = Used Space: %s
+free = Free Space: %s
+
+[no free space]
+title = Error not enough Space
+text = There is not enough space on the target disk, can not copy file.
+
+
+[sd speed]
+text = Set MicroSD speed
+item0 = Extreme
+item1 = Fast
+item2 = Medium
+item3 = Slow
+
+[unsupported sd]
+title = Unsupported MicroSD Card
+text = This MicroSD card(Model:%s) is not suitable for running offical DS programs, please copy program from SD card to DSTT Internal Flash Memory and try again.
+
+[sd card error]
+title = Error Accessing MicroSD Card
+text = Unable to access MicroSD card, please verify that MicroSD card is formatted and inserted correctly.
+
+[no sd for save]
+title = No MicroSD for Safe Data
+text = Unable to access MicroSD card, save data of previous launched program will be written to file '%s'.
+
+[no gba card]
+title = Error No GBA Card
+text = There is no device in Slot-2.
+
+[filelist type]
+text = Show file(s) of type
+item0 = NDS
+item1 = NDS + SAV
+item2 = ALL
+
+[rom trim]
+text = Trim ROM when copying
+item0 = Disabled
+item1 = Enabled
+
+[cheat]
+text = Cheat code usage
+item0 = Disabled
+Item1 = Enabled
+
+[autorun]
+text = Autorun
+item0 = Disabled
+item1 = Enabled
+
+[language]
+text = Interface language
+item0 = English
+item1 = S.Chinese
+item2 = T.Chinese
+item3 = Japanese
+item4 = Francais
+item5 = Italiano
+item6 = Deutsch
+item7 = Espa隳l
+item8 = Korean
+item9 = Nederlands
+
+[brightness]
+text = Brightness
+
+[ui style]
+text = Interface Theme
+
+[help window]
+title = Help
+item0 = %c  Up/Down/PgUp/PgDown
+item1 = %c  Yes/Start/OK
+item2 = %c  No/Back/Cancel
+item3 = %c  View file info/Select save type
+item4 = %c  Cheat Menu
+item5 = %c  Back to parent directory
+item6 = %c  Set Brightness: 1/2/3/4
+item7 = %s  Open "START" Menu
+item8 = %s  List style: Animate/Number
+versions = HW: %02x NDD: %02x
+
+[exp window]
+title = 3in1 Expansion Pack Settings
+ram = RAM
+sram = sRAM
+off = Off
+low = Low
+mid = Medium
+high = High
+strength = Rumble level
+NOR Mode = NOR Mode
+auto = Auto
+always = Always
+
+[abort save]
+title = Cancel Save Processing
+text = Are you sure you want to cancel save processing?
+
+[gba warn]
+title = Warning GBA ROM size
+text = GBA ROM's bigger than 32M are currently not supported!
+
+[patches]
+title = Patch Options
+download play = DS Download Play
+cheating system = Cheat/Action Replay
+reset in game = Soft-Reset
+cheatdb select= Cheat DB File
+3in1 = 3in1
+
+[switches]
+Default = Default
+Enable = Enabled
+Disable = Disabled
+auto menu = Auto Menu
+
+[shortcut]
+title_overwrite = Confirm Shortcut
+text_overwrite = Are you sure you want to create/overwrite shortcut?
+title_delete = Confirm Shortcut
+text_delete = Are you sure want to delete your shortcut?
+
+[slot2]
+boot mode = Boot Mode
+gbamode = Boot in GBA mode
+passme = Boot in NDS mode (PassMe)
+unknown = Unknown Slot2 Title
+3in1 Expansion Pack = EZ-Flash 3In1 Expansion Pack is detected.
+EWin Expansion Pack = EWin Expansion Pack is detected.
+
+[cheats]
+title = Cheats
+confirm = Confirm
+error_title = Error
+error_text = Cheat file is not found.
+no cheatdb= Cheat DB file is not found.
+invalid cheatdb= Cheat DB file is invalid.
+notfound = No Cheats found in Cheat DB
+confirm_rebuild = Do you want really rebuilding? current cheatfile will be removed.
+Save = Save
+Cancel = Cancel
+Rebuild = Rebuild
+DB Select = DB Select
+
+[textview]
+confirm = Confirm 
+exit = Do you really want to exit?
+error = Error Opening File
+file open error = Can not open this text file. Return to OS menu.
+screen angle = Screen Orientation
+normal = Normal
+rotate 90 = Rotate 90
+rotate 270 = Rotate 270
+screen mode = Screen Mode
+dual = Dual Screen
+dual copy = Clone Screen
+lower = Lower Only
+upper = Upper Only
+add bookmark = Are you sure you want to add a new bookmark at this position?
+remove bookmark = Are you sure you want to remove this bookmark?
+goto toppage? = Are you sure you want to jump to top of page?
+line space = Line Space
+
+[end]

@@ -1,0 +1,324 @@
+[start menu]
+Copy = Kopieer
+Cut = Knip
+Paste = Plak
+Delete = Verwijder
+Save Type = Save Type
+Patches = Patches
+Setting = Systeem Opties
+Info = Eigenschappen
+Help = Hulp
+
+[message box]
+yes = Ja
+no = Nee
+ok = OK
+cancel = Annuleer
+
+[progress window]
+processing save = Verwerken... Niet uitschakelen!
+processing copy = Kopieert... Niet uitschakelen, %c=annuleren!
+first use sd = Kontroleren SD kaart voor eerste gebruik..
+gba load = Laden GBA spel...
+gba save load = Laden GBA save...
+gba save store = Verwerken GBA save... Niet uitschakelen!
+erase nor = Wissen NOR flash... Niet uitschakelen! 
+rebuilding cheat data = Rebuilding cheat file.
+
+[copy file error]
+title = Kopieren Bestand of Map Fout
+text = De Bestand of map bestaat niet.
+
+[copy file exists]
+title = Vervangen van Bestand Bevestigen
+text = Deze map bevat al een bestand met dezelfde naam. Wilt u het bestaande bestand vervangen door dit bestand?
+
+[copy dest is directory]
+title = Kopieren Bestand of Map Fout
+text = Deze map bevat al een map met dezelfde naam. Het is niet mogelijk om bestand te kopieren.
+
+[move dest is directory]
+title = Verplaatsen Bestand of Map Fout
+text = Deze map bevat al een map met dezelfde naam. Het is niet mogelijk om bestand te verplaatsen.
+
+[no copy dir]
+title = Map Kopieeer/Knip Fout
+text = Map kopieren/knippen wordt op dit moment niet ondersteunt!
+
+[stop copying file]
+title = Bestand Kopieeren Annuleren Bevestigen
+text = Weet u zeker dat u bestand kopieren wilt annuleren?
+
+[confirm delete file]
+title = Verwijderen Bestand/Map Bevestigen
+text = Bestand/map kan niet hersteld worden, weet u zeker dat u '%s' wilt verwijderen?
+
+[do not delete directory]
+title = Map verwijderen Fout
+text = Deze map is niet leeg, verwijder eerst inhoud van de map en probeer opnieuw.
+
+[unknown save type]
+title = Safe Type Onbekend
+text = De save type van dit programma is onbekend, druk "A" om handmatig type te bepalen.
+
+[no savelist]
+title = Laden Save List Fout
+text = De save list kon niet geladen worden, "savelist.bin" is niet aanwezig.
+
+[restore save fail]
+title = Save Data Herstel Mislukt
+text = De Save data kon niet hersteld worden, negeren en verder gaan?
+
+[backup save fail]
+title = Save Data Bewaren Mislukt
+text = De save data kon niet bewaard worden, doel disk heeft wellicht niet genoeg ruimte.
+
+[language changed]
+title = Systeem Taal Wijziging Bevestigen
+text = Weet u zeker dat u nu wilt herstarten om de systeem taal wijziging toe te passen? Kies "Nee" om later te herstarten.
+
+[ui style changed]
+title = Interface Thema Wijziging Bevestigen
+text = Weet u zeker dat u nu wilt herstarten om de interface thema wijziging toe te passen? Kies "Nee" om huidige thema te behouden. 
+
+[setting window]
+ok = OK
+savetype = Save Type
+cancel = Annuleer
+confirm = Options Save Bevestigen
+confirm text = Weet u zeker dat u de huidige instellingen wilt opslaan?
+shortcut = Snelkoppeling
+rominfo = Rom Info
+
+[save type]
+title = Save Type Instelling
+text = Save type
+Unknown = Onbekend
+No Save = Geen Save
+4K = 4K
+64K = 64K
+512K = 64K/512K
+2M = 2M
+4M = 2M/4M
+
+[scrolling]
+Fast = Snel
+Medium = Gemiddeld
+Slow = Langzaam
+
+[romnametype]
+Normal = Normal
+HideExtName = Hide ROM Ext.
+BannerTitle = Internal Name
+
+[advanced setting]
+title = Geavanceerde Opties
+Advanced = Geavanceerd
+Show Hidden Files = Verborgen bestanden
+Hide Extension Name = Verberg ROM extensie
+Scrolling Speed = Blader snelheid
+Rom Name Type = ROM Name in List
+
+[system setting]
+title = Systeem Opties
+
+[rom info]
+title = Eigenschappen
+title_rominfo = Setup Rom Info
+file date = Laatste Wijziging: %d/%d/%d %02d:%02d:%02d(GMT)
+file size = Grootte: %s
+save type = Save Type: %s
+game code = Game Code: %s
+save slot = Select Save Slot
+cheat menu = Cheat Menu
+copy slot = Copy Slot
+SaveSlot = Saveslot
+
+[gba info]
+run mode = Run Mode
+Normal = Run
+Linkage = Linkage
+patch sleep = Patch Sleep Mode
+patch sram = Patch SRAM
+
+[saveslot] 
+title = Save Slot
+Slot = Slot 
+title_copyslot = Copy Save Slot
+confirm_copyslot = Are you sure you want to copy save slot?
+target slot = Target SaveSlot
+Default Slot = Default
+Set Slot = Set Slot
+Copy = Kopieer
+Delete = Verwijder
+
+
+[disk info]
+total = Capaciteit: %s
+used = Gebruikt: %s
+free = Beschikbaar: %s
+
+[no free space]
+title = Onvoldoende Ruimte Fout
+text = Er is onvoldoende ruimte op de doel disk, kan bestand niet kopieren.
+
+[sd speed]
+text = Bepaal MicroSD Snelheid
+item0 = Extreem
+item1 = Snel
+item2 = Gemiddeld
+item3 = Langzaam
+
+[unsupported sd]
+title = MicroSD Kaart Niet Ondersteund
+text = Dit MicroSD kaart(Model:%s) is niet geschikt om officiele DS programma's te draaien, Kopieer alstublieft programme van SD kaart naar DSTT Interne Flash geheugen en probeer opnieuw.
+
+[sd card error]
+title = Benaderen MicroSD Kaart Fout
+text = MicroSD kaart kon niet benaderd worden, verifieer dat MicroSD kaart geformatteerd and korrect geplaatst is.
+
+[no sd for save]
+title = Geen MicroSD voor Safe Data
+text = MicroSD kaard kon niet benaderd worden, save data van eerder gestart programma zal geschreven worden naar bestand '%s'.
+
+[no gba card]
+title = Geen GBA Kaart Fout
+text = Er is geen apparaat in Slot-2.
+
+[filelist type]
+text = Type file(s) zichtbaar
+item0 = NDS
+item1 = NDS + SAV
+item2 = ALLES
+
+[rom trim]
+text = Trim ROM bij kopieren
+item0 = Uit
+item1 = Aan
+
+[cheat]
+text = Cheat code gebruik
+item0 = Uit
+Item1 = Aan
+
+[autorun]
+text = Autorun
+item0 = Uit
+item1 = Aan
+
+[language]
+text = Interface taal
+item0 = English
+item1 = S.Chinese
+item2 = T.Chinese
+item3 = Japanese
+item4 = Francais
+item5 = Italiano
+item6 = Deutsch
+item7 = Español
+item8 = Korean
+item9 = Nederlands
+
+[brightness]
+text = Helderheid
+
+[ui style]
+text = Interface thema
+
+[help window]
+title = Hulp
+item0 = %c  Omhoog/Omlaag/PgOmhoog/PgOmlaag
+item1 = %c  Ja/Start/OK
+item2 = %c  Nee/Terug/Annuleer
+item3 = %c  Bestands info/Selekteer save type
+item4 = %c  Cheat Menu
+item5 = %c  Terug naar bovenliggende map
+item6 = %c  Helderheid instellen: 1/2/3/4
+item7 = %s  Open "START" Menu
+item8 = %s  Lijst stijl: Animatie/Nummer
+versions = HW: %02x NDD: %02x
+
+[exp window]
+title = 3in1 Expansion Pack Instellingen
+ram = RAM
+sram = sRAM
+off = Uit
+low = Laag
+mid = Gemiddeld
+high = Hoog
+strength = Rumble niveau
+NOR Mode = NOR Mode
+auto = Auto
+always = Always
+
+[abort save]
+title = Save Verwerking Annuleren
+text = Weet u zeker dat u save verwerking wilt annuleren?
+
+[gba warn]
+title = GBA ROM formaat waarschuwing
+text = GBA ROM's groter dan 32M worden op dit moment niet ondersteund!
+
+[patches]
+title = Patch Opties
+download play = DS Download Play
+cheating system = Cheat/Action Replay
+reset in game = Soft-Reset
+3in1 = 3in1
+cheatdb select= Cheat DB File
+
+[switches]
+Enable = Aan
+Disable = Uit
+Default = Default
+auto menu = Auto Menu
+
+
+[shortcut]
+title_overwrite = Snelkoppeling Bevestigen
+text_overwrite = Weet u zeker dat u snelkoppeling wilt aanmaken/overschrijven?
+title_delete = Confirm Shortcut
+text_delete = Are you sure want to delete your shortcut?
+
+[slot2]
+boot mode = Boot Mode
+gbamode = Boot in GBA mode
+passme = Boot in NDS mode (PassMe)
+unknown = Unknown Slot2 Title
+3in1 Expansion Pack = EZ-Flash 3In1 Expansion Pack is detected.
+EWin Expansion Pack = EWin Expansion Pack is detected.
+
+[cheats]
+title = Cheats
+confirm = Confirm
+error_title = Error
+error_text = Cheat file is not found.
+no cheatdb= Cheat DB file is not found.
+invalid cheatdb= Cheat DB file is invalid.
+notfound = No Cheats found in Cheat DB.
+confirm_rebuild = Do you want really rebuilding? current cheatfile will be removed.
+Save = Save
+Rebuild = Rebuild
+Cancel = Annuleer
+DB Select = DB Select
+
+[textview]
+confirm = Afsluiten Bevestigen
+exit = Weet u zeker dat u programma wilt afsluiten?
+error = Tekst Bestand Openen fout
+file open error = Dit tekst bestand kan niet geopend worden. Terug naar lijst weergave.
+screen angle = Scherm Orientatie
+normal = Normaal
+rotate 90 = Roteer 90
+rotate 270 = Roteer 270
+screen mode = Scherm Mode
+dual = Dual Scherm
+dual copy = Kloon Scherm
+lower = Alleen Onder
+upper = Alleen Boven
+add bookmark = Weet u zeker dat u nieuwe markering wilt plaatsen op deze positie?
+remove bookmark = Weet u zeker dat u deze markering wilt verwijderen?
+goto toppage? = Weet u zeker dat u naar de top van de pagina wilt springen?
+line space = Line Space
+
+[end]

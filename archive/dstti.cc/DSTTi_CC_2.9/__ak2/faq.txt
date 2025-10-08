@@ -1,0 +1,31 @@
+*Q Where can i find the latest firmware, And how to use it?
+*A Please download the latest firmware from www.dstti.cc/download.htm. Extract the zip file you've downloaded and copy "akmenu4.nds" and folder "__ak2" to the root of your TF card.
+
+*Q It shows "System file missing" after launching DSTTI
+*A You do not copy the right firmware to your TF card.Please download the latest firmware from www.dstti.cc/download.htm. Extract the zip file you've downloaded and copy "akmenu4.nds" and folder "__ak2" to the root of your TF card.
+
+*Q Why i always got a "Loading"
+*A Maybe your TF card doese not insert correctly or the files in TF card can't be accessed. Please check your TF card and re-insert it.
+
+*Q How to play MP3
+*A Please make sure you're using the lastest firmware. Press Start button and select "System Options". Set "Show file(s) of type" to "All". Then press A button on Mp3 file to play it. Quit playing by pressing Start button.
+
+*Q How to view TXT files
+*A Please make sure you're using the lastest firmware. Press Start button and select "System Options". Set "Show file(s) of type" to "All". Then press A button on TXT file to play it. Quit playing by pressing Select button.
+
+*Q How to play video
+*A Please make sure you're using the latest firmware. You can download "Moonshell for DSTTI" to play DPG files. YOu can download it at www.acekard.com/download.php. And you can google "moonshell" for more informations.
+
+*Q How to do when game can't run or save?
+*A You can try the three methods below.
+  1. use the latest firmware.
+  2. disable all special patches by press y button twice.
+  3. hold a button when launching game to until you enter it to use the old engine.
+
+*Q How to use cheat
+*A 1.Press Start button and select "Patches".
+  2.Set "Cheat/Action Replay" to "Enable".
+  3.Select cheat file which putting at __ak2\cheats at "Cheat DB File". DSTTI supports cheat data of R4 format.
+  4.Press X button when selecting the game. If there's any cheat code of the game then it will be shown. You can use X or Y button to enable or disable them. Press A button to save your changes.
+  You can press Y button twice when selecting game to set Patchs for this game.
+
