@@ -1,0 +1,2 @@
+﻿Cheats=Cheats
+Games=Games
