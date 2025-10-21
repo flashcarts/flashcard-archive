@@ -11,6 +11,7 @@ Compatible with:
  - ### in 1 combo cart
  - r4azure.com carts
  - r4inp.com carts
+ - r4xmp.com carts
  - r4isdhc.com.cn carts
  - r4iwood.cn carts
  - r4isdhc.hk 2020+ carts
@@ -18,6 +19,7 @@ Compatible with:
  - r4infinity.com 2
  - r4ixds.com 2014 white version
  - woodr4isdhc.com carts
+ - woodbeyond.com carts
  - ge.ndsi.in GEi HOT
  - (please raise an issue if you think your cart is an Ace3DS+ or an R4iLS clone!)
 

@@ -9,6 +9,7 @@ Some kernels are in different locations, or have consolidated as they are identi
     - \### in 1 combo cart
     - r4azure.com carts
     - r4inp.com carts
+    - r4xmp.com carts
     - r4isdhc.com.cn carts
     - r4iwood.cn carts
     - r4isdhc.hk 2020+ carts
@@ -16,6 +17,7 @@ Some kernels are in different locations, or have consolidated as they are identi
     - r4infinity.com 2
     - r4ixds.com 2014 white version
     - woodr4isdhc.com carts
+    - woodbeyond.com carts
     - ge.ndsi.in GEi HOT
     - (please raise an issue if you think your cart is an Ace3DS+ or R4iLS clone!)
 
@@ -42,7 +44,6 @@ These carts may support BL2CK OS. Only these carts are confirmed to actually wor
     - r4ds-i.com.cn carts
     - super4i.com carts
 - Amaze3DS version:
-    - r4igold.cc Wood 
     - Amaze3DS
 - EDGEi version:
     - edgei-ds.cn carts (Fake iEDGE)
@@ -57,4 +58,3 @@ Please do not attempt cross-loading without knowing what you're doing.
 
 - 3dslink.com Blue
 - amazekard.com cards
-- Galaxy Eagle cards (use the Amaze3DS version and rename _DS_MENU.dat to ge.nds)
