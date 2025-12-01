@@ -20,3 +20,4 @@ old: directory
 
 extdata: directory
 	cp readme.txt $(OUT)/$(BASE)
+	cp -r V2.10T_init_file $(OUT)/$(BASE)
