@@ -25,5 +25,4 @@ old: directory
 	make -C $@
 
 extdata: directory
-	cp -r r4isdhc.com_Dual-Core_*_FWUpdate* README.txt $(OUT)/$(BASE)
-    cp -r V2.0_init_file $(OUT)/$(BASE)
+	cp -r r4isdhc.com_Dual-Core_*_FWUpdate* V2.0_init_file README.txt $(OUT)/$(BASE)
