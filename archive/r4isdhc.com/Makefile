@@ -26,3 +26,4 @@ old: directory
 
 extdata: directory
 	cp -r r4isdhc.com_Dual-Core_*_FWUpdate* README.txt $(OUT)/$(BASE)
+    cp -r V2.0_init_file $(OUT)/$(BASE)
