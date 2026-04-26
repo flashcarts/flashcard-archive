@@ -21,6 +21,7 @@ Compatible with:
  - woodr4isdhc.com carts
  - woodbeyond.com carts
  - ge.ndsi.in GEi HOT
+ - qq3ds.com DS
  - (please raise an issue if you think your cart is an Ace3DS+ or an R4iLS clone!)
 
 cheats (NDS):

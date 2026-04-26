@@ -19,6 +19,7 @@ Some kernels are in different locations, or have consolidated as they are identi
     - woodr4isdhc.com carts
     - woodbeyond.com carts
     - ge.ndsi.in GEi HOT
+    - qq3ds.com DS
     - (please raise an issue if you think your cart is an Ace3DS+ or R4iLS clone!)
 
 These carts may support BL2CK OS. Only these carts are confirmed to actually work so far:
