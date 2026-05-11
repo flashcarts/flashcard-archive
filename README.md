@@ -37,7 +37,6 @@ These carts may support BL2CK OS. Only these carts are confirmed to actually wor
     - r4infinity.com Dual-Core, V1.6
     - r4isdhc.in carts
     - R4i Gold 3DS Plus with faulty DS mode
-    - r4-pro.com carts
     - r4ixds.com 2014-2016 non-white
     - r4i-gold.com 3DS Gold Pro / 2013 carts
     - r4sdhc.com V3DSU
@@ -50,6 +49,7 @@ These carts may support BL2CK OS. Only these carts are confirmed to actually wor
     - edgei-ds.cn carts (Fake iEDGE)
 - R4DSPro version:
     - "R4DS Pro" carts
+    - r4-pro.com carts
     - r4iplat.com carts
     - r4i-d.com carts
     - r4i-3dsnew.com carts
