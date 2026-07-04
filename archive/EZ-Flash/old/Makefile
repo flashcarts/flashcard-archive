@@ -11,10 +11,10 @@ directory:
 	mkdir -p $(OUT)/$(BASE)
 
 EZ-Flash_V_Kernel_1.68.zip: directory
-	cd $(TOPDIR)/EZ-Flash_V_Kernel_1.80 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/EZ-Flash_V_Kernel_1.68 && zip -r $(OUT)/$(BASE)/$@ *
 
 EZ-Flash_V_Kernel_1.70.zip: directory
-	cd $(TOPDIR)/EZ-Flash_V_Kernel_1.80 && zip -r $(OUT)/$(BASE)/$@ *
+	cd $(TOPDIR)/EZ-Flash_V_Kernel_1.70 && zip -r $(OUT)/$(BASE)/$@ *
 
 EZ-Flash_V_Kernel_1.80.zip: directory
 	cd $(TOPDIR)/EZ-Flash_V_Kernel_1.80 && zip -r $(OUT)/$(BASE)/$@ *
