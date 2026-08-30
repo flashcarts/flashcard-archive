@@ -8,4 +8,6 @@ R4iTTS 3DS RTS is also compatible with the R4iTT 'old' kernel:
 
 Instructions to update the Flashcart's firmware are under ./r4itt.net_3DS_RTS_FWUpdate_3DSV7.0.0/
 
-
+cheats:
+    - BL2CK: __rpg/cheats/usrcheat.dat
+    - r4itt.net_3DS_NEW_Kernel_2.37 (old) SYSTEM/cheats/usrcheat.dat
