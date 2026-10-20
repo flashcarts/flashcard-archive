@@ -1,0 +1,611 @@
+﻿
+; MoonShell2 language resource for 'CP936_GBK_Chinese_simplified'.
+; Encoding format is UTF-8.
+
+Author=yeyezai,so898,linoul,cheryl
+Target=CHS / 简体中文
+
+; ----------------------------
+
+TextFontFolderName=tfontchn
+
+; DateTimeFormat is YYYYMMDD or DDMMYYYY or MMDDYYYY.
+DateTimeFormat=YYYYMMDD
+
+; ----------------------------
+
+CD_CheckDisk_Start=开始进行简易磁盘检查...
+CD_CheckDisk_End=简易磁盘检查结束。
+
+CD_FatalError_Title=!!发现了严重的磁盘错误!!
+CD_FatalError_DuplicatedArea0=有文件重叠区域。
+CD_FatalError_DuplicatedArea1=部分文件夹已损坏。
+CD_FatalError_BrokenEntry0=目录异常。
+CD_FatalError_BrokenEntry1=一个以上的文件夹已损坏。
+CD_FatalError_IlligalClusterLink0=簇/群集的规格不合法
+CD_FatalError_IlligalClusterLink1=有文件损坏的可能性
+CD_FatalError_BrokenDirectoryLink0=目录有异常
+CD_FatalError_BrokenDirectoryLink1=文件夹被破坏
+CD_FatalError_BrokenUnicode0=目录异常
+CD_FatalError_BrokenUnicode1=长文件名被破坏
+CD_FatalError_FileSizeError0=目录所示的大小
+CD_FatalError_FileSizeError1=和实际的文件大小不同
+CD_FatalError_UnknownError=未知错误
+CD_FatalError_RecoveryMsg0=恢复方法:
+CD_FatalError_RecoveryMsg1=先将所有文件备份到硬盘
+CD_FatalError_RecoveryMsg2=格式化硬盘后再重新拷回
+CD_FatalError_StopApplication=已经终止了程序
+
+CD_NotSupportDiskSize_Title=无法处理的磁盘格式
+CD_NotSupportDiskSize_Msg0=磁盘容量过大
+CD_NotSupportDiskSize_Msg1=或簇单元过小
+CD_NotSupportDiskSize_Msg2=
+CD_NotSupportDiskSize_RecoveryMsg0=恢复方法:
+CD_NotSupportDiskSize_RecoveryMsg1=请使用更大的簇单元
+CD_NotSupportDiskSize_RecoveryMsg2=尝试重新格式化
+CD_NotSupportDiskSize_RecoveryMsg3=
+
+CD_CheckDuplicateCluster_Title=检查重复簇和碎片
+
+CD_CheckFATType_Title=检查FAT格式
+
+CD_FATType_UnknownFATType=无法识别的FAT格式
+
+CD_WriteTest_Title=正在进行磁盘读写测试
+
+CD_WriteError_Title=磁盘访问测试失败
+CD_WriteError_Msg0=可能有如下原因
+CD_WriteError_Msg1=磁盘可用空间不足
+CD_WriteError_Msg2=没有对应的DLDI补丁
+CD_WriteError_Msg3=CF/SD和烧录卡接触不良
+CD_WriteError_Msg4=或有兼容性问题
+CD_WriteError_Msg5=磁盘管理区域已损坏
+CD_WriteError_Msg6=
+CD_WriteError_Msg7=安全起见，程序已停止运行
+
+; ----------------------------
+
+ERRMSG0_MemoryOverflow_CanRecovery=由于内存不足
+ERRMSG1_MemoryOverflow_CanRecovery=无法打开文件
+ERRMSG2_MemoryOverflow_CanRecovery=点击以关闭窗口
+
+ERRMSG0_NotSupportFileFormat=不支持的文件格式
+ERRMSG1_NotSupportFileFormat=或者文件已损坏
+ERRMSG2_NotSupportFileFormat=点击以关闭窗口
+
+ERRMSG0_ProgressiveJpeg=错误
+ERRMSG1_ProgressiveJpeg=不支持Progressive JPEG文件
+ERRMSG2_ProgressiveJpeg=点击以关闭窗口
+
+ERRMSG0_Text0byte=空白的文本文件
+ERRMSG1_Text0byte=0字节的文件不能打开
+ERRMSG2_Text0byte=点击以关闭窗口
+
+ERRMSG0_OverflowLargeImage=图片尺寸太大，
+ERRMSG1_OverflowLargeImage=最大支持约500万像素的图片
+ERRMSG2_OverflowLargeImage=点击关闭窗口
+
+ERRMSG0_NotFoundMusicFile=指定文件夹中
+ERRMSG1_NotFoundMusicFile=没有找到任何音乐文件
+ERRMSG2_NotFoundMusicFile=点击以关闭窗口
+
+ERRMSG0_UnknownError=发现未定义错误。
+ERRMSG1_UnknownError=内部异常。
+ERRMSG2_UnknownError=请关闭电源。
+
+; ----------------------------
+
+Setup_Help1=
+Setup_Help2=
+Setup_Help3=现在进行MoonShell启动必须设置
+Setup_Help4=
+Setup_Help5=请在文件列表中按下START键
+Setup_Help6=打开环境设置菜单
+Setup_Help7=以显示所有选项
+Setup_Help8=
+Setup_Help9=大量设置选项位置已被更改
+Setup_Help10=具体请参照使用说明书
+Setup_Help11=
+
+Setup_BootCheckDisk=启动时进行磁盘检查
+Setup_ClickSound=播放按键声音
+Setup_FileListMode=文件列表的显示模式：
+Setup_FileListMode_Single=单行显示
+Setup_FileListMode_Double=长文件名双行显示
+Setup_SkipSetup=下次启动时不显示设定窗口
+Setup_OKBtn=
+
+; ----------------------------
+
+Launch_FileInfo=文件信息
+Launch_FileInfo_Relational=关联文件信息
+Launch_Size=大小： %dbyte (%dMbit)
+Launch_Create=创建日期： %s %d:%02d:%02d
+Launch_Update=修改日期： %s %d:%02d:%02d
+Launch_NotFoundRelationalFile=没有找到相关文件
+
+; ----------------------------
+
+FL_Help0=
+FL_Help1=
+FL_Help2=X/Y键：调节音量 加大/减小
+FL_Help3=START键：打开系统菜单 (环境设置)
+FL_Help4=
+FL_Help5=L+A/B键：下一首/上一首
+FL_Help6=L+X/Y键：调节背景灯亮度
+FL_Help7=
+FL_Help8=按住L或R并触摸: 新建记事本文件
+FL_Help9=L/R键点击：向前/向后定位MP3
+FL_Help10=L/R键双击：上一首/下一首
+FL_Help11=R键三击：启动待机模式
+
+; ----------------------------
+
+FL_Popup_Pause_Play=播放
+FL_Popup_Pause_Pause=暂停
+FL_Popup_PreviousFile=上一首
+FL_Popup_NextFile=下一首
+FL_Popup_Volume=音量： %d%%
+FL_Popup_BacklightLevel=背光亮度： %d
+FL_Popup_PlayMode_Repeat=播放模式： 单曲播放
+FL_Popup_PlayMode_AllRep=播放模式： 全部播放
+FL_Popup_PlayMode_Shuffle=播放模式： 乱序
+FL_Popup_Seek=播放进度： %s
+FL_Popup_NotFoundMoonMemoFolder=/moonmemo不存在
+
+; ----------------------------
+
+FL_DeleteFileDialog_NotFoundDustBox_Title=文件删除错误
+FL_DeleteFileDialog_NotFoundDustBox_Line0=没有发现回收站文件夹
+FL_DeleteFileDialog_NotFoundDustBox_Line1=请参考说明手册
+FL_DeleteFileDialog_NotFoundDustBox_Line2=
+
+FL_DeleteFileDialog_DisabledDustBox_Title=文件删除错误
+FL_DeleteFileDialog_DisabledDustBox_Line0=回收站内文件的删除
+FL_DeleteFileDialog_DisabledDustBox_Line1=请在Windows下进行
+FL_DeleteFileDialog_DisabledDustBox_Line2=
+
+FL_DeleteFileDialog_DisabledSystemFolder_Title=文件删除错误
+FL_DeleteFileDialog_DisabledSystemFolder_Line0=禁止删除系统文件夹
+FL_DeleteFileDialog_DisabledSystemFolder_Line1=(moonshl2内的文件)
+FL_DeleteFileDialog_DisabledSystemFolder_Line2=
+
+FL_DeleteFileDialog_DisabledMoveFolder_Title=文件删除错误
+FL_DeleteFileDialog_DisabledMoveFolder_Line0=不允许移动文件夹
+FL_DeleteFileDialog_DisabledMoveFolder_Line1=
+FL_DeleteFileDialog_DisabledMoveFolder_Line2=
+
+FL_DeleteFileDialog_Question_Title=确认
+FL_DeleteFileDialog_Question_Line0=真的要删除这个文件吗？
+FL_DeleteFileDialog_Question_Line1=按下L+R+A键后执行
+FL_DeleteFileDialog_Question_Line2=按下B键后取消
+
+FL_DeleteFileDialog_Question_EasyDelete_Title=确认
+FL_DeleteFileDialog_Question_EasyDelete_Line0=真的要删除这个文件吗？
+FL_DeleteFileDialog_Question_EasyDelete_Line1=按下X+A键后执行
+FL_DeleteFileDialog_Question_EasyDelete_Line2=按下B键后取消
+
+FL_DeleteFileDialog_Success_Title=完毕
+FL_DeleteFileDialog_Success_Line0=文件删除(移动到回收站)完成
+FL_DeleteFileDialog_Success_Line1=回收站内文件的删除
+FL_DeleteFileDialog_Success_Line2=请在Windows下进行
+
+; ----------------------------
+
+FL_HelpLeft_Count=12
+FL_HelpLeft_Line0=请按L键查看帮助
+FL_HelpLeft_Line1=
+FL_HelpLeft_Line2=L + 左 : 显示MP3控制条
+FL_HelpLeft_Line3=L + 右 : 下一首
+FL_HelpLeft_Line4=L + 上 : 暂停
+FL_HelpLeft_Line5=L + 下 : 更改播放模式
+FL_HelpLeft_Line6=L + A / B : 下/上一首
+FL_HelpLeft_Line7=L + X / Y : 更改背光亮度
+FL_HelpLeft_Line8=
+FL_HelpLeft_Line9=L+R : 暂停
+FL_HelpLeft_Line10=长按L键：MP3播放往前跳1%
+FL_HelpLeft_Line11=双击L键：上一首
+
+FL_HelpRight_Count=11
+FL_HelpRight_Line0=请按R键查看帮助
+FL_HelpRight_Line1=
+FL_HelpRight_Line2=R + 左/右 : MP3播放往前/后跳1%
+FL_HelpRight_Line3=R + 上/下 : MP3播放往前/后跳5%
+FL_HelpRight_Line4=R+A : 播放文件夹下的全部歌曲
+FL_HelpRight_Line5=L+R+A : 播放磁盘上的全部歌曲
+FL_HelpRight_Line6=
+FL_HelpRight_Line7=L+R : 暂停
+FL_HelpRight_Line8=单击R键+长按：MP3播放往后跳1%
+FL_HelpRight_Line9=双击R键：下一首
+FL_HelpRight_Line10=三击R键：等待模式
+
+; ----------------------------
+
+SysMenu_MemoList=记事本
+SysMenu_MemoList_NotFound=没有%s文件夹无法使用
+SysMenu_FileListMode=文件列表模式切换
+SysMenu_Customize=系统设定
+SysMenu_RestoreBG=壁纸还原
+SysMenu_Firmware=返回烧录卡内核界面
+SysMenu_Firmware_NotFound=没有找到 %s
+
+; ----------------------------
+
+SubMenu_Title=选择菜单
+SubMenu_AppLauncher=程序启动器
+SubMenu_AudioPlayer=音乐播放器
+SubMenu_SystemMenu=系统菜单
+SubMenu_PowOffTimer_Set=关机计时器 %d分
+SubMenu_PowOffTimer_SetHelp=使用L/R键更改
+SubMenu_PowOffTimer_LastTime=剩余时间: %d:%02d
+SubMenu_BottomHelp=按下A或SELECT进行设置
+
+; ----------------------------
+
+CS_Help0=MoonShell系统与音乐播放设置
+CS_Help1=
+CS_Help2=
+CS_Help3=要进行有关图片、视频、文本的设置，
+CS_Help4=请在打开相关文件后，
+CS_Help5=按下SELECT键。
+CS_Help6=
+CS_Help7=
+CS_Help8=/moonshl2/moonshl2.ini 文件中
+CS_Help9=还有更多的设置。
+CS_Help10=
+CS_Help11=
+
+CS_Title=MoonShell2系统设置
+
+CS_PageTab_Title=种类
+CS_PageTab_Global=全局
+CS_PageTab_FileList=文件列表
+CS_PageTab_ScreenSaver=屏幕保护
+CS_PageTab_Music=音乐
+
+CS_Cancel=取消
+CS_Ok=确定
+
+; ----------------------------
+
+CSG_SkipSetup=启动时不显示设定窗口
+CSG_BootCheckDisk=启动时进行磁盘检查
+
+CSG_ClickSound=按键音效
+CSG_EnableFadeEffect=画面切换过渡效果
+CSG_AutoLastState=启动时自动打开收藏夹
+CSG_LRKeyLockTitle=L/R键使用限制
+CSG_LRKeyLockAlwayOff=始终禁用
+CSG_LRKeyLockRelationalPanel=面板闭合时无效
+CSG_LRKeyLockAlwayOn=始终有效
+CSG_EnableResumeFunction=定期保存恢复信息
+CSG_EnableScreenCapture=启用屏幕截图(DSi)
+CSG_SpeakerPowerOffWhenPanelClosed=面板闭合时关闭扬声器
+
+CSF_MoveFolderLocked=锁定当前文件夹，禁止切换
+CSF_HiddenFilenameExt=隐藏文件的扩展名
+CSF_HiddenNotSupportFileType=隐藏不支持的文件
+CSF_HiddenNDSROMFile=隐藏NDS文件
+CSF_EnableFileInfo=文件右侧显示该文件信息
+CSF_ShowOnlineHelp_LRButton=显示L/R键的帮助菜单
+CSF_BButtonToFolderUp=按下B返回上一级文件夹
+CSF_EasyDeleteKey=按下X+A删除文件
+CSF_UseJpegExifThumbnail=从JpegExif读取缩略图
+CSF_ShowCoverImage=显示M4A和MP3文件的封面图像
+CSF_HideAttribute_Title=不显示以下属性的文件
+CSF_HideAttribute_Archive=文档
+CSF_HideAttribute_Hidden=隐藏
+CSF_HideAttribute_System=系统
+CSF_HideAttribute_ReadOnly=只读
+
+CSS_EnabledScreenSaver=使用屏幕保护
+CSS_Use24hFormat=24小时制
+CSS_ScreenSaverTitle=时钟类型
+CSS_ScreenSaverNormal=普通时钟
+CSS_ScreenSaverDigital=数字时钟
+CSS_ScreenSaverExtend=扩展时钟
+CSS_ScreenSaverBGTitle=壁纸
+CSS_ScreenSaverBGSkinDefault=标准
+CSS_ScreenSaverBGTopScreen=上屏壁纸
+CSS_ScreenSaverBGBottomScreen=下屏壁纸
+CSS_ScreenSaverTimeOutSecTitle=时间(秒)
+CSS_ScreenSaverTimeOutSec5sec=5
+CSS_ScreenSaverTimeOutSec10sec=10
+CSS_ScreenSaverTimeOutSec30sec=30
+CSS_ScreenSaverTimeOutSec60sec=60
+CSS_ScreenSaverTimeOutSecOff=关闭背光
+CSS_ShowID3Tag=播放音乐时显示相关信息
+
+CSM_PlayListEndTitle=播放列表播放结束后
+CSM_PlayListEndLoop=循环播放
+CSM_PlayListEndStop=停止播放
+CSM_PlayListEndPowerOff=关机
+
+; ----------------------------
+
+ACS_Help0=这里可以进行音乐播放器相关的设置
+ACS_Help1=
+ACS_Help2=
+ACS_Help3=
+ACS_Help4=在显示频谱分析仪的时候，
+ACS_Help5=播放高负荷的音乐文件，
+ACS_Help6=可能会造成走音。
+ACS_Help7=
+ACS_Help8=
+ACS_Help9=
+ACS_Help10=
+ACS_Help11=
+
+ACS_Title=音乐播放器设置
+
+ACS_AlwaysUsedAudioPlayer=始终使用音乐播放器
+ACS_PauseWhenStopped=暂停后返回文件列表
+ACS_DrawPlayList=在上屏幕显示播放列表
+ACS_DrawSpectrumAnalyzer=显示频谱分析器
+
+; ----------------------------
+
+DCS_Help0=这里可以进行视频播放相关的设置
+DCS_Help1=
+DCS_Help2=
+DCS_Help3=启用快速开始后，
+DCS_Help4=播放高帧率，高比特率的文件时
+DCS_Help5=可能会产生拖慢现象。
+DCS_Help6=
+DCS_Help7=
+DCS_Help8=
+DCS_Help9=
+DCS_Help10=
+DCS_Help11=
+
+DCS_Title=视频播放设置
+
+DCS_EnabledFastStart=快速开始视频播放
+DCS_PauseWhenPanelClosed=面板闭合时自动暂停播放
+DCS_EnableIndividualResume=记录每个视频文件的播放中断位置
+DCS_ControlPowerLED=播放时关闭电源LED灯
+DCS_InverseVisual_PlayPause=交换播放与暂停按钮的图像
+DCS_EverytimeStopOfEnd=播放完毕后始终结束
+DCS_WhenLateDecodingWaitPause=视频播放卡滞时暂停播放等待缓冲
+DCS_BacklightTimeOutTitle=背光时间(秒)
+DCS_BacklightTimeOutOff=关闭
+DCS_BacklightTimeOut5sec=5
+DCS_BacklightTimeOut10sec=10
+DCS_BacklightTimeOut15sec=15
+
+; ----------------------------
+
+DV_VolumeLabel=Vol.
+DV_VolumeValue=%d%%
+DV_VolumeMute=mute
+DV_VolumeMax=MAX
+
+; ----------------------------
+
+DV_Popup_Pause_Play=播放
+DV_Popup_Pause_Pause=暂停
+DV_Popup_PreviousFile=上一首
+DV_Popup_NextFile=下一首
+DV_Popup_Volume=音量： %d%%
+DV_Popup_Seek=播放进度： %s秒
+DV_Popup_BacklightLevel=背光亮度： %d
+
+; ----------------------------
+
+ICS_Help0=这里可以进行图片显示相关的设置
+ICS_Help1=
+ICS_Help2=
+ICS_Help3=在浏览图象时按下START键
+ICS_Help4=可以将图象设置为壁纸。
+ICS_Help5=
+ICS_Help6=当想恢复默认的背景时，
+ICS_Help7=请在文件列表按下START键，
+ICS_Help8=并在系统菜单中，
+ICS_Help9=选择「壁纸还原」。
+ICS_Help10=
+ICS_Help11=
+
+ICS_Title=图片显示设置
+
+ICS_ShowInfomation=显示文件信息和帮助
+ICS_ShowControlIcons=显示触摸屏操作图标
+ICS_DoubleSpeedKey=加快按键操作移动速度
+ICS_DoubleSpeedTouch=加快触摸屏操作移动速度
+ICS_MultipleResume=记忆图片放大比率
+ICS_AutoFitting=JPEG图片自适应缩放
+ICS_EnabledProgressiveJpeg=启用Progressive JPEG格式支持（慢）
+ICS_StartPosTitle=图片打开位置
+ICS_StartPosLeftTop=左上
+ICS_StartPosRightTop=右上
+ICS_StartPosLeftBottom=左下
+ICS_StartPosRightBottom=右下
+ICS_AutoNextTimeSecTitle=自动切换(秒)
+ICS_AutoNextTimeSecOff=关闭
+ICS_AutoNextTimeSec10sec=10
+ICS_AutoNextTimeSec30sec=30
+ICS_AutoNextTimeSec60sec=60
+ICS_ShowInfoTopScreen=在上屏幕显示信息
+ICS_EffectTitle=转换成壁纸时的效果
+ICS_EffectHeightPadding=考虑上下画面间隔转换
+ICS_EffectPastelForTopBG=上画面应用白色蒙版效果加工
+ICS_EffectPastelForBottomBG=下画面应用白色蒙版效果加工
+
+; ----------------------------
+
+IV_LoadMsg0=正在读取图像文件
+IV_LoadMsg1=请稍等
+
+IV_Help1=START: 设置为壁纸 / SELECT: 选项设定
+IV_Help2=Ｙ：50% / Ｘ：200% / Ａ：100% / Ｂ：返回
+
+; ----------------------------
+
+IV_Popup_BacklightLevel=背光亮度： %d
+IV_Popup_Zoom=缩放： %d%%
+IV_Popup_Pause_Play=播放
+IV_Popup_Pause_Pause=暂停
+IV_Popup_PreviousFile=上一首
+IV_Popup_NextFile=下一首
+IV_Popup_Seek=播放进度： %s
+
+; ----------------------------
+
+TCS_Help0=这里可以进行文本显示相关的设置
+TCS_Help1=
+TCS_Help2=使用ClearType时请注意：
+TCS_Help3=老式DS在使用上屏显示文本时，
+TCS_Help4=会有文本模糊不清的现象。
+TCS_Help5=
+TCS_Help6=文字编码自动识别失败的时候
+TCS_Help7=在文件上长按A按钮
+TCS_Help8=会出现子菜单
+TCS_Help9=请在其中选择你需要的文字编码
+TCS_Help10=手动选择可以为每个文件设置不同的编码
+TCS_Help11=
+
+TCS_Title=文本显示设置
+
+TCS_TopScrModeTitle=上屏显示设定
+TCS_TopScrModeLightOff=关闭
+TCS_TopScrModeText=显示文本
+TCS_TopScrModeClock=显示时钟
+
+TCS_ScreenSaverTitle=屏幕保护时钟
+TCS_ScreenSaverNormal=标准时钟
+TCS_ScreenSaverDigital=数字时钟
+TCS_ScreenSaverExtend=扩展时钟
+
+TCS_LineSpaceTitle=行间距
+TCS_LineSpaceSmall=窄
+TCS_LineSpaceMiddle=标准
+TCS_LineSpaceLarge=宽
+
+TCS_FontSizeTitle=字体大小
+TCS_FontSizeSmall=小(12pix)
+TCS_FontSizeMiddle=中(14pix)
+TCS_FontSizeLarge=大(16pix)
+
+TCS_ClearTypeFontTitle=ClearType字体
+TCS_ClearTypeFontNone=无
+TCS_ClearTypeFontLite=薄
+TCS_ClearTypeFontNormal=标准
+TCS_ClearTypeFontHeavy=浓
+
+TCS_UseSmoothScroll=使用平滑滚动
+
+TCS_CPTitle=代码页
+TCS_CP437=CP437 (US, AUS)
+TCS_CP850=CP850 (DOS)
+TCS_CP1252=CP1252 (Windows)
+
+TCS_DetectCharCodeTitle=自动识别文字编码
+
+; ----------------------------
+
+TV_SelEnc_Title=请选择文本编码类型
+TV_SelEnc_Items_AutoDetect=自动识别
+TV_SelEnc_Items_ANSI=ANSI 8bit
+TV_SelEnc_Items_EUC=EUC/S-JIS
+TV_SelEnc_Items_UTF16BE=UTF-16 (BE)
+TV_SelEnc_Items_UTF16LE=UTF-16 (LE)
+TV_SelEnc_Items_UTF8=UTF-8
+TV_SelEnc_Items_TextEdit=启动文本编辑器
+TV_SelEnc_Help_Normal=按Ａ确定，Ｂ取消。
+TV_SelEnc_Help_NoEdit0=不能编辑大小超过128kbyte的文件。
+TV_SelEnc_Help_NoEdit1=
+
+; ----------------------------
+
+TV_PRG_LoadExtendFont=正在载入外挂字体…
+TV_PRG_LoadTextFile=读取文本文件中…
+TV_PRG_DetectTextEncode=正在识别文本编码…
+TV_PRG_DetectReturnCode=正在识别返回码…
+TV_PRG_ConvertToUnicode=正在转换为UNICODE…
+
+TV_UncertainFormat1=可能无法正确识别文本格式,如果不能正常显示。
+TV_UncertainFormat2=请在打开文本文件时长按 A 键手动选择编码。
+
+TV_Help1=Ａ：翻页 / Ｂ：返回
+TV_Help2=Ｘ／Ｙ：保存书签/载入书签
+TV_Help3=SELECT：选项设定 / 编码:%s
+TV_Info=当前行数：%d / %d 行 (%.2f%%)
+
+TV_BookmarkText_LoadTitle=书签读取菜单
+TV_BookmarkText_SaveTitle=书签保存菜单
+TV_BookmarkText_Empty=%d: 没有书签
+TV_BookmarkText_Info=%d: %d行 %s %s
+
+; ----------------------------
+
+TV_Popup_BacklightLevel=背光亮度： %d
+TV_Popup_Bookmark_Load=
+TV_Popup_Bookmark_Empty=读取中断
+TV_Popup_Bookmark_Save=书签保存完毕
+TV_Popup_Pause_Play=播放
+TV_Popup_Pause_Pause=暂停
+TV_Popup_PreviousFile=上一首
+TV_Popup_NextFile=下一首
+TV_Popup_Seek=播放进度： %s
+TV_Popup_MoveToTop=移动到开头
+TV_Popup_MoveToLast=移动到结尾
+
+; ----------------------------
+
+ME_Help0=记事本模式
+ME_Help1=
+ME_Help2=↓ / ← / ↑ / →: 黑色 / 红色 / 绿色 / 蓝色
+ME_Help3=Y / X : 笔迹细/粗.
+ME_Help4=A / B : 保存并关闭
+ME_Help5=SELECT:撤销
+ME_Help6=长按L/R时触摸：橡皮擦
+ME_Help7=
+ME_Help8=如果您不想保存请直接关机。
+ME_Help9=
+
+; ----------------------------
+
+MemoList_Title=记事本列表
+
+MemoList_Help0=
+MemoList_Help1=
+MemoList_Help2=触摸下屏幕：新建记事本
+MemoList_Help3=长按START键：删除光标位置文件
+
+; ----------------------------
+
+MemoEdit_FileInfo_Open=打开已有文件。
+MemoEdit_FileInfo_Edited=正在编辑中.完成后将被自动保存。
+MemoEdit_FileInfo_Create=开始新建文件编辑模式。
+
+MemoEdit_SavingNow=正在保存更改后的BMP文件...
+
+; ----------------------------
+; for Text editor Ver1.5
+
+TE_File_SelectEncode_Title1=不能自动识别文本编码。
+TE_File_SelectEncode_Title2=请手动选择文本的编码类型。
+
+TE_skk_DicSystem_PreloadDic=正在读取字典...
+
+TE_skk_ExitMenu_Title=退出菜单
+TE_skk_ExitMenu_Items_Cancel=取消
+TE_skk_ExitMenu_Items_Overwrite=覆盖并且退出
+TE_skk_ExitMenu_Items_SaveAs=另存为并且退出
+TE_skk_ExitMenu_Items_CreateNew=用新文件名保存并且退出
+TE_skk_ExitMenu_Items_NoSaveExit=不保存退出
+TE_skk_ExitMenu_SavePrgMsg1=正在保存文本文件...
+TE_skk_ExitMenu_SavePrgMsg2=请不要关闭电源。
+
+TE_SysMsg_ClipBoard_Empty=剪贴板为空。
+TE_SysMsg_ClipBoard_Pasted=已从剪贴板粘贴。
+TE_SysMsg_ClipBoard_Copied=已复制到剪贴板。
+
+TE_OSKHW_Model_ModelResults_Selector_Title=请选择一个正确的字符。
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle1=是否将这个手写数据
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle2=关联到对应字符并
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle3=注册到字典？
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogRegist=注册
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogCancel=取消
+
+; ----------------------------
+

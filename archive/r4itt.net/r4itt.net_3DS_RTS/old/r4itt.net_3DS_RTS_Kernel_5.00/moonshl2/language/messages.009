@@ -1,0 +1,611 @@
+
+; MoonShell2 language resource for 'CP009'.
+; Encoding format is UTF-8. ＦＯＲＣＥＴＡＧ
+
+Author=Marioysikax
+Target=FIN / Suomi
+
+; ----------------------------
+
+TextFontFolderName=tfonteng
+
+; DateTimeFormat is YYYYMMDD or DDMMYYYY or MMDDYYYY.
+DateTimeFormat=DDMMYYYY
+
+; ----------------------------
+
+CD_CheckDisk_Start=Nopea levytarkistus käynnistetty.
+CD_CheckDisk_End=Nopea levytarkistus suoritettu onnistuneesti.
+
+CD_FatalError_Title=On sattunut vakava virhe!
+CD_FatalError_DuplicatedArea0=Useampi tiedosto käyttää samaa levyn tilaa.
+CD_FatalError_DuplicatedArea1=Osa tiedostoista on jo korruptoitunut.
+CD_FatalError_BrokenEntry0=Suora merkintä on poikkeava.
+CD_FatalError_BrokenEntry1=Useampi kuin yksi tiedosto on korruptoitunut.
+CD_FatalError_IlligalClusterLink0=Lohkolinkki on keskeytetty.
+CD_FatalError_IlligalClusterLink1=Tiedosto voi olla korruptoitunut.
+CD_FatalError_BrokenDirectoryLink0=Suora uudelleenmerkintä on poikkeava.
+CD_FatalError_BrokenDirectoryLink1=Kansio on korruptoitunut.
+CD_FatalError_BrokenUnicode0=Suora uudelleenmerkintä on poikkeava.
+CD_FatalError_BrokenUnicode1=Pitkä tiedostonimi on rikkoutunut.
+CD_FatalError_FileSizeError0=Näytetty tiedostokoko ja 
+CD_FatalError_FileSizeError1=oikea tiedostokoko eivät täsmää.
+CD_FatalError_UnknownError=Tuntematon virhe
+CD_FatalError_RecoveryMsg0=Ongelman korjaus:
+CD_FatalError_RecoveryMsg1=Varmuuskopioi tiedostot koneelle ja
+CD_FatalError_RecoveryMsg2=siirrä takaisin formatoiduttua korttisi.
+CD_FatalError_StopApplication=Sovellus pysäytetty.
+
+CD_NotSupportDiskSize_Title=Ei voida käyttää korttia.
+CD_NotSupportDiskSize_Msg0=Kortin koko on liian suuri tai
+CD_NotSupportDiskSize_Msg1=lohkokoko on liian pieni.
+CD_NotSupportDiskSize_Msg2=
+CD_NotSupportDiskSize_RecoveryMsg0=Ongelman korjaus:
+CD_NotSupportDiskSize_RecoveryMsg1=Yritä uudelleenformatoida kortti
+CD_NotSupportDiskSize_RecoveryMsg2=isommalla lohkokoolla.
+CD_NotSupportDiskSize_RecoveryMsg3=
+
+CD_CheckDuplicateCluster_Title=Tarkistetaan onko tupla lohkoja tai paloja.
+
+CD_CheckFATType_Title=Tarkastetaan FAT tyyppiä.
+
+CD_FATType_UnknownFATType=Tuntematon FAT tyyppi.
+
+CD_WriteTest_Title=Suoritetaan kortin luku/kirjoitus testiä.
+
+CD_WriteError_Title=Kortille pääsyn testi epäonnistui.
+CD_WriteError_Msg0=. Erittäin vähän vapaata tilaa.
+CD_WriteError_Msg1=. Epäyhteensopiva DLDI ajuri.
+CD_WriteError_Msg2=. Huono kontakti kortin ja flash-kortin välillä.
+CD_WriteError_Msg3=. Yritetty kortin alue on korruptoitunut.
+CD_WriteError_Msg4=
+CD_WriteError_Msg5=Jokin mahdollinen muu vika.
+CD_WriteError_Msg6=
+CD_WriteError_Msg7=Sovellus pysäytetty varatoimenpiteenä.
+
+; ----------------------------
+
+ERRMSG0_MemoryOverflow_CanRecovery=Ei voitu avata tiedostoa
+ERRMSG1_MemoryOverflow_CanRecovery=liian vähän muistin takia.
+ERRMSG2_MemoryOverflow_CanRecovery=Kosketa ikkunaa sulkeaksesi.
+
+ERRMSG0_NotSupportFileFormat=Formaatti ei ole tuettu
+ERRMSG1_NotSupportFileFormat=tai tiedosto on korruptoitunut.
+ERRMSG2_NotSupportFileFormat=Kosketa ikkunaa sulkeaksesi.
+
+ERRMSG0_ProgressiveJpeg=Progressiivisia JPEG
+ERRMSG1_ProgressiveJpeg=tiedostoja ei tueta.
+ERRMSG2_ProgressiveJpeg=Kosketa ikkunaa sulkeaksesi.
+
+ERRMSG0_Text0byte=Tyhjä tekstitiedosto.
+ERRMSG1_Text0byte=Ei voi avata 0 bitin tiedostoa.
+ERRMSG2_Text0byte=Kosketa ikkunaa sulkeaksesi.
+
+ERRMSG0_OverflowLargeImage=Kuva on liian suuri.
+ERRMSG1_OverflowLargeImage=Suurin koko on noin 5MP.
+ERRMSG2_OverflowLargeImage=Kosketa ikkunaa sulkeaksesi.
+
+ERRMSG0_NotFoundMusicFile=Ei löydetty musiikkitiedostoja
+ERRMSG1_NotFoundMusicFile=määritetystä kansiosta.
+ERRMSG2_NotFoundMusicFile=Kosketa ikkunaa sulkeaksesi.
+
+ERRMSG0_UnknownError=On tapahtunut
+ERRMSG1_UnknownError=tuntematon sisäinen virhe.
+ERRMSG2_UnknownError=Ole hyvä ja sulje DS.
+
+; ----------------------------
+
+Setup_Help1=
+Setup_Help2=Vain asennukseen vaadittavat asetukset
+Setup_Help3=näkyvät alla.
+Setup_Help4=
+Setup_Help5=Muokataksesi asetuksia paina START
+Setup_Help6=näppäintä ja valitse "Asetukset"
+Setup_Help7=
+Setup_Help8=Näppäinasetukset ovat muuttuneet paljon.
+Setup_Help9=Lue lisää KeyMap.txt tiedostosta.
+Setup_Help10=
+Setup_Help11=
+
+Setup_BootCheckDisk=Suorita levytarkistus käynnistyksessä.
+Setup_ClickSound=Käytä ääniefektejä.
+Setup_FileListMode=Tiedostoselaimen näyttö
+Setup_FileListMode_Single=Näytä tiedostonimet 1 rivillä.
+Setup_FileListMode_Double=Halkaise pitkät nimet 2 riville.
+Setup_SkipSetup=Älä näytä tätä ikkunaa seuraavalla kerralla.
+Setup_OKBtn=
+
+; ----------------------------
+
+Launch_FileInfo=Tiedoston tiedot
+Launch_FileInfo_Relational=Tiedostoon liittyvät tiedot
+Launch_Size=Size: %dbittiä (%dMbittiä)
+Launch_Create=Created: %s %d:%02d:%02d
+Launch_Update=Modified: %s %d:%02d:%02d
+Launch_NotFoundRelationalFile=Tiedostoja ei löytynyt.
+
+; ----------------------------
+
+FL_Help0=
+FL_Help1=
+FL_Help2=X/Y: Vähennä/Lisää äänenvoimakkuutta
+FL_Help3=START: Valikko (Asetukset)
+FL_Help4=
+FL_Help5=L + A/B: Seuraava/Edellinen kappale
+FL_Help6=L + X/Y: Säädä kirkkautta
+FL_Help7=
+FL_Help8=Pidä L tai R: takaisin/eteenpäin kelaus
+FL_Help9=L/R tuplanapautus: Seuraava/Edellinen kappale
+FL_Help10=L kolmoisnapautus: Paussi
+FL_Help11=R kolmoisnapautus: Aloita valmiustila
+
+; ----------------------------
+
+FL_Popup_Pause_Play=TOISTO
+FL_Popup_Pause_Pause=TAUKO
+FL_Popup_PreviousFile=Edellinen tiedosto
+FL_Popup_NextFile=Seuraava tiedosto
+FL_Popup_Volume=Äänenvoimakkuus. %d%%
+FL_Popup_BacklightLevel=Taso. %d
+FL_Popup_PlayMode_Repeat=Toista
+FL_Popup_PlayMode_AllRep=Toista kaikki
+FL_Popup_PlayMode_Shuffle=Satunnaistoisto
+FL_Popup_Seek=Haku %s
+FL_Popup_NotFoundMoonMemoFolder=Ei löytynyt /moonmemo kansiota.
+
+; ----------------------------
+
+FL_DeleteFileDialog_NotFoundDustBox_Title=Tiedosto-Poistovirhe
+FL_DeleteFileDialog_NotFoundDustBox_Line0=Ei löydetty roskakansiota.
+FL_DeleteFileDialog_NotFoundDustBox_Line1=Lisätietoja tiedostosta
+FL_DeleteFileDialog_NotFoundDustBox_Line2=/Manuals/DustBox.txt.
+
+FL_DeleteFileDialog_DisabledDustBox_Title=Tiedosto-Poistovirhe
+FL_DeleteFileDialog_DisabledDustBox_Line0=Ole hyvä ja poista tiedostot
+FL_DeleteFileDialog_DisabledDustBox_Line1=roskakansiosta tietokoneella.
+FL_DeleteFileDialog_DisabledDustBox_Line2=
+
+FL_DeleteFileDialog_DisabledSystemFolder_Title=Tiedosto-Poistovirhe
+FL_DeleteFileDialog_DisabledSystemFolder_Line0=Ei voida muokata tiedostoja
+FL_DeleteFileDialog_DisabledSystemFolder_Line1=järjestelmäkansiossa
+FL_DeleteFileDialog_DisabledSystemFolder_Line2=(moonshl2).
+
+FL_DeleteFileDialog_DisabledMoveFolder_Title=Tiedosto-Poistovirhe
+FL_DeleteFileDialog_DisabledMoveFolder_Line0=Ei voida navigoida kansioita.
+FL_DeleteFileDialog_DisabledMoveFolder_Line1=
+FL_DeleteFileDialog_DisabledMoveFolder_Line2=
+
+FL_DeleteFileDialog_Question_Title=Tiedosto-Poiston varmistus
+FL_DeleteFileDialog_Question_Line0=Haluatko varmasti poistaa tämän tiedoston?
+FL_DeleteFileDialog_Question_Line1=Paina L+R+A hyväksyäksesi.
+FL_DeleteFileDialog_Question_Line2=Paina B peruuttaaksesi.
+
+FL_DeleteFileDialog_Question_EasyDelete_Title=Tiedosto-Poiston varmistus
+FL_DeleteFileDialog_Question_EasyDelete_Line0=Haluatko varmasti poistaa tämän tiedoston?
+FL_DeleteFileDialog_Question_EasyDelete_Line1=Paina X+A hyväksyäksesi.
+FL_DeleteFileDialog_Question_EasyDelete_Line2=Paina B peruuttaaksesi.
+
+FL_DeleteFileDialog_Success_Title=Tiedosto-Poiston varmistus
+FL_DeleteFileDialog_Success_Line0=Tiedosto on siirretty roskakansioon.
+FL_DeleteFileDialog_Success_Line1=Ole hyvä ja poista tiedostot
+FL_DeleteFileDialog_Success_Line2=roskakansiosta tietokoneellasi
+
+; ----------------------------
+
+FL_HelpLeft_Count=12
+FL_HelpLeft_Line0=Toiminnot näppäimellä L...
+FL_HelpLeft_Line1=
+FL_HelpLeft_Line2=L + vasen : Näytä musiikkiohjain
+FL_HelpLeft_Line3=L + Oikea : Seuraava kappale
+FL_HelpLeft_Line4=L + Ylös : Tauko
+FL_HelpLeft_Line5=L + Alas : Vaihda toistomoodia
+FL_HelpLeft_Line6=L + A / B: Seuraava / Edellinen kappale
+FL_HelpLeft_Line7=L + X / Y: Säädä kirkkautta
+FL_HelpLeft_Line8=
+FL_HelpLeft_Line9=L+R Yhtä aikaa: Tauko
+FL_HelpLeft_Line10=L tuplanäpäytä + pidä: etsi taaksepäin 1%
+FL_HelpLeft_Line11=L tuplanäpäytä: Edellinen kappale
+
+FL_HelpRight_Count=11
+FL_HelpRight_Line0=Toiminnot näppäimelle R...
+FL_HelpRight_Line1=
+FL_HelpRight_Line2=R + Vasen / Oikea : Etsi eteenpäin / taaksepäin 1%
+FL_HelpRight_Line3=R + Ylös / Alas : Etsi eteenpäin / taaksepäin 5%
+FL_HelpRight_Line4=R+A : Toista kaikki kappaleet kansiosta
+FL_HelpRight_Line5=L+R+A : Toista kaikki kappaleet kortilta
+FL_HelpRight_Line6=
+FL_HelpRight_Line7=L+R Yhtä aikaa: Tauko
+FL_HelpRight_Line8=R tuplanäpäytä + pidä: etsi eteenpäin 1%
+FL_HelpRight_Line9=R tuplanäpäytä: Seuraava kappale
+FL_HelpRight_Line10=R kolmoisnäpäytä: Valmiustila
+
+; ----------------------------
+
+SysMenu_MemoList=Avaa muistilista
+SysMenu_MemoList_NotFound=Ei löydetty %s
+SysMenu_FileListMode=Vaihda 1-Rivi/2-Rivi tilaa
+SysMenu_Customize=Asetukset
+SysMenu_RestoreBG=Palauta oletustaustakuva
+SysMenu_Firmware=Palaa firmwareen
+SysMenu_Firmware_NotFound=Ei löydetty %s
+
+; ----------------------------
+
+SubMenu_Title=SELECT valikko
+SubMenu_AppLauncher=Sovellusavaaja
+SubMenu_AudioPlayer=Musiikkisoitin
+SubMenu_SystemMenu=Järjestelmävalikko
+SubMenu_PowOffTimer_Set=Uniajastin %dmin
+SubMenu_PowOffTimer_SetHelp=L/R ajastus.
+SubMenu_PowOffTimer_LastTime=ViimeAika %d:%02d
+SubMenu_BottomHelp=Sekä A että SELECT ovat valintanäppäimiä.
+
+; ----------------------------
+
+CS_Help0=Asetusten muokkaus
+CS_Help1=
+CS_Help2=Kun olet valmis näpäytä "valmis" nappia
+CS_Help3=sivun alalaidassa jotta asetukset tallentuvat.
+CS_Help4=
+CS_Help5=Paina SELECT nappia katsellessasi kuvaa,
+CS_Help6=videota tai tekstiä päästäksesi kyseisen
+CS_Help7=formaatin asetuksiin.
+CS_Help8=
+CS_Help9=Voit myös löytää lisäosa asetuksia
+CS_Help10=Moonshelliin /moonshl2/moonshl2.ini
+CS_Help11=tiedostosta.
+
+CS_Title=Asetukset
+
+CS_PageTab_Title=Kategoria
+CS_PageTab_Global=Yleiset
+CS_PageTab_FileList=TiedostoLista
+CS_PageTab_ScreenSaver=NäytönSääst.
+CS_PageTab_Music=Musiikki
+
+CS_Cancel=Peruuta
+CS_Ok=Valmis
+
+; ----------------------------
+
+CSG_SkipSetup=Älä näytä alkuasetuksia käynnistyksessä.
+CSG_BootCheckDisk=Suorita aina levytarkistus käynnistyksessä.
+
+CSG_ClickSound=Käytä ääniefektejä.
+CSG_EnableFadeEffect=Käytä häivytys efektiä.
+CSG_AutoLastState=Käynnistä siitä mihin jäätiin.
+CSG_LRKeyLockTitle=L/R näppäin rajoitus.
+CSG_LRKeyLockAlwayOff=Aina POIS
+CSG_LRKeyLockRelationalPanel=Paneelin mukaan
+CSG_LRKeyLockAlwayOn=Aina PÄÄLLÄ
+CSG_EnableResumeFunction=Palautustiedot säilötään säännöllisesti.
+CSG_EnableScreenCapture=DSi käyttää ruudun kaappausta.
+CSG_SpeakerPowerOffWhenPanelClosed=Kannen suljettua kaiuttimet sammuvat.
+
+CSF_MoveFolderLocked=Lukitse kansionavigointi.
+CSF_HiddenFilenameExt=Piilota tiedostopäätteet.
+CSF_HiddenNotSupportFileType=Piilota tukemattomat tiedostot.
+CSF_HiddenNDSROMFile=Piilota NDSROM tiedostot.
+CSF_EnableFileInfo=Näytä tiedoston tiedot tiedostolistalla.
+CSF_ShowOnlineHelp_LRButton=L/R nappien aputekstit näytetään.
+CSF_BButtonToFolderUp=Kursori menee pois kansiosta B napilla.
+CSF_EasyDeleteKey=Poisto suoritetaan X+A näppäimillä.
+CSF_UseJpegExifThumbnail=Esikatselu Jpeg EXIF tiedoilla.
+CSF_ShowCoverImage=Musiikkien levynkansi näytetään.
+CSF_HideAttribute_Title=Piilota tiedostoatribuutit
+CSF_HideAttribute_Archive=Arkisto
+CSF_HideAttribute_Hidden=Piilotettu
+CSF_HideAttribute_System=Järjestelmä
+CSF_HideAttribute_ReadOnly=VainLuku
+
+CSS_EnabledScreenSaver=Käytä näytönsäästäjää.
+CSS_Use24hFormat=Aika esitetään 24 tuntisena.
+CSS_ScreenSaverTitle=Tyyppi
+CSS_ScreenSaverNormal=Normi
+CSS_ScreenSaverDigital=Digi
+CSS_ScreenSaverExtend=Extra
+CSS_ScreenSaverBGTitle=Tausta
+CSS_ScreenSaverBGSkinDefault=Normi
+CSS_ScreenSaverBGTopScreen=Yläruutu
+CSS_ScreenSaverBGBottomScreen=Alaruutu
+CSS_ScreenSaverTimeOutSecTitle=Viive
+CSS_ScreenSaverTimeOutSec5sec=5
+CSS_ScreenSaverTimeOutSec10sec=10
+CSS_ScreenSaverTimeOutSec30sec=30
+CSS_ScreenSaverTimeOutSec60sec=60
+CSS_ScreenSaverTimeOutSecOff=Taustavalo sammutetaan.
+CSS_ShowID3Tag=Näytä ID3 tagit.
+
+CSM_PlayListEndTitle=Kun soittolista loppuu.
+CSM_PlayListEndLoop=Aloita alusta
+CSM_PlayListEndStop=Lopeta
+CSM_PlayListEndPowerOff=Sammuta
+
+; ----------------------------
+
+ACS_Help0=Musiikkisoittimen asetusten muokkaus
+ACS_Help1=
+ACS_Help2=
+ACS_Help3=
+ACS_Help4=Toisto saattaa hyppiä jos
+ACS_Help5=toistat musiikkia joka vaatii
+ACS_Help6=paljon tehoja kun DS laskee
+ACS_Help7=spectrum analyysiä.
+ACS_Help8=
+ACS_Help9=
+ACS_Help10=
+ACS_Help11=
+
+ACS_Title=Musiikkisoittimen asetukset
+
+ACS_AlwaysUsedAudioPlayer=Käytä aina musiikkisoitinta.
+ACS_PauseWhenStopped=Pysäytä musiikki myös listassa.
+ACS_DrawPlayList=Näytä soittolista ylänäytöllä.
+ACS_DrawSpectrumAnalyzer=Spectrum analyysi näytetään.
+
+; ----------------------------
+
+DCS_Help0=Videosoittimen asetusten muokkaus
+DCS_Help1=
+DCS_Help2=Kun olet valmis näpäytä "valmis" nappia
+DCS_Help3=sivun alalaidassa jotta asetukset
+DCS_Help4=tallentuvat.
+DCS_Help5=
+DCS_Help6=Varoitus:
+DCS_Help7=Prosessointinopeuden kasvattaminen kesken
+DCS_Help8=toiston (FastStart) voi aiheuttaa
+DCS_Help9=hyvälaatuisissa videoissa pätkimistä.
+DCS_Help10=
+DCS_Help11=
+
+DCS_Title=Videosoittimen asetukset
+
+DCS_EnabledFastStart=Käytä FastStart videotoistoa.
+DCS_PauseWhenPanelClosed=Pysäytä video kun kansi suljetaan.
+DCS_EnableIndividualResume=Käytä yksilöllistä palautusta.
+DCS_ControlPowerLED=Sulje virtalähteen LED valo.
+DCS_InverseVisual_PlayPause=Toisto/Tauko ikonit toisinpäin.
+DCS_EverytimeStopOfEnd=Näyttö palaa videon loputtua.
+DCS_WhenLateDecodingWaitPause=Jos purku on hidas, odota.
+DCS_BacklightTimeOutTitle=Taustavalon ajastin (s)
+DCS_BacklightTimeOutOff=Off
+DCS_BacklightTimeOut5sec=5
+DCS_BacklightTimeOut10sec=10
+DCS_BacklightTimeOut15sec=15
+
+; ----------------------------
+
+DV_VolumeLabel=Volume
+DV_VolumeValue=%d%%
+DV_VolumeMute=MUTE
+DV_VolumeMax=MAX
+
+; ----------------------------
+
+DV_Popup_Pause_Play=TOISTO
+DV_Popup_Pause_Pause=TAUKO
+DV_Popup_PreviousFile=Edellinen tiedosto
+DV_Popup_NextFile=Seuraava tiedosto
+DV_Popup_Volume=Äänenvoimakkuus. %d%%
+DV_Popup_Seek=Haku %ssec
+DV_Popup_BacklightLevel=Taso. %d
+
+; ----------------------------
+
+ICS_Help0=Kuvakatselimen asetusten muokkaus
+ICS_Help1=
+ICS_Help2=Kun olet valmis näpäytä "valmis" nappia
+ICS_Help3=sivun alalaidassa jotta asetukset
+ICS_Help4=tallentuvat.
+ICS_Help5=
+ICS_Help6=Voit asettaa kuvan taustakuvaksi painamalla
+ICS_Help7=START näppäintä katsellessa kuvaa.
+ICS_Help8=Vaihtaaksesi takaisin alkuperäisen
+ICS_Help9=taustakuvan paina START nappia
+ICS_Help10=tiedostolistauksessa ja valitse
+ICS_Help11="Palauta oletustaustakuva" listalta.
+
+ICS_Title=Kuvakatselimen asetukset
+
+ICS_ShowInfomation=Näytä tiedoston tiedot ja apu.
+ICS_ShowControlIcons=Näytä kontrolli-ikonit.
+ICS_DoubleSpeedKey=Nosta näppäinten herkkyyttä.
+ICS_DoubleSpeedTouch=Nosta kosketusnäytön herkkyyttä.
+ICS_MultipleResume=Muista suurennus.
+ICS_AutoFitting=Sovita suuret kuvat automaattisesti.
+ICS_EnabledProgressiveJpeg=Käytä progressiivista jpeg formaattia.
+ICS_StartPosTitle=Kuvan aloitussijainti:
+ICS_StartPosLeftTop=VasenYlä
+ICS_StartPosRightTop=OikeaYlä
+ICS_StartPosLeftBottom=VasenAla
+ICS_StartPosRightBottom=OikeaAla
+ICS_AutoNextTimeSecTitle=Diaesitys (s)
+ICS_AutoNextTimeSecOff=Off
+ICS_AutoNextTimeSec10sec=10
+ICS_AutoNextTimeSec30sec=30
+ICS_AutoNextTimeSec60sec=60
+ICS_ShowInfoTopScreen=Informaatio esitetään ylänäytöllä.
+ICS_EffectTitle=Taustakuvaefektit.
+ICS_EffectHeightPadding=Määritä näyttöjen väli.
+ICS_EffectPastelForTopBG=Käytä läpinäkyvyyttä ylänäytössä.
+ICS_EffectPastelForBottomBG=Käytä läpinäkyvyyttä alanäytössä.
+
+; ----------------------------
+
+IV_LoadMsg0=Kuvaa ladataan.
+IV_LoadMsg1=Ole hyvä ja odota...
+
+IV_Help1=START: Taustakuvaksi | Select: Asetukset
+IV_Help2=Y: 50% | X: 200% | A: 100% | B: Palaa
+
+; ----------------------------
+
+IV_Popup_BacklightLevel=Taso. %d
+IV_Popup_Zoom=Suurennos %d%%
+IV_Popup_Pause_Play=TOISTO
+IV_Popup_Pause_Pause=TAUKO
+IV_Popup_PreviousFile=Edellinen tiedosto
+IV_Popup_NextFile=Seuraava tiedosto
+IV_Popup_Seek=Haku %s
+
+; ----------------------------
+
+TCS_Help0=Tekstikatselimen asetusten muokkaus
+TCS_Help1=
+TCS_Help2=Kun olet valmis näpäytä "valmis" nappia
+TCS_Help3=sivun alalaidassa jotta asetukset
+TCS_Help4=tallentuvat.
+TCS_Help5=
+TCS_Help6=Varoitus koskien ClearType Fontteja:
+TCS_Help7=Ylänäytön teksti alkuperäisellä DS
+TCS_Help8="Läski" mallilla saattaa näyttää
+TCS_Help9=hyvin epäselvältä.
+TCS_Help10=
+TCS_Help11=
+
+TCS_Title=Tekstikatselimen asetukset
+
+TCS_TopScrModeTitle=Ylänäytön näyttömoodi:
+TCS_TopScrModeLightOff=Pois
+TCS_TopScrModeText=Teksti
+TCS_TopScrModeClock=Aika ja informaatio
+
+TCS_ScreenSaverTitle=Näytönsäästäjä
+TCS_ScreenSaverNormal=Normi
+TCS_ScreenSaverDigital=Digi
+TCS_ScreenSaverExtend=Extra
+
+TCS_LineSpaceTitle=Kirjainväli
+TCS_LineSpaceSmall=Tiukka
+TCS_LineSpaceMiddle=Normi
+TCS_LineSpaceLarge=Väljä
+
+TCS_FontSizeTitle=Tekstikoko
+TCS_FontSizeSmall=Pieni (12px)
+TCS_FontSizeMiddle=Normi (14px)
+TCS_FontSizeLarge=Suuri (16px)
+
+TCS_ClearTypeFontTitle=Clear type
+TCS_ClearTypeFontNone=Pois
+TCS_ClearTypeFontLite=Ohut
+TCS_ClearTypeFontNormal=Normi
+TCS_ClearTypeFontHeavy=Paksu
+
+TCS_UseSmoothScroll=käytä pehmeää vieritystä.
+
+TCS_CPTitle=Sivun koodaus
+TCS_CP437=CP437 (US, AUS)
+TCS_CP850=CP850 (DOS)
+TCS_CP1252=CP1252 (Windows)
+
+TCS_DetectCharCodeTitle=Koodauksen tunnistus
+
+; ----------------------------
+
+TV_SelEnc_Title=Valitse koodauksen tyyppi.
+TV_SelEnc_Items_AutoDetect=Auto. tunnistus
+TV_SelEnc_Items_ANSI=ANSI 8bit
+TV_SelEnc_Items_EUC=EUC/S-JIS
+TV_SelEnc_Items_UTF16BE=UTF-16 (BE)
+TV_SelEnc_Items_UTF16LE=UTF-16 (LE)
+TV_SelEnc_Items_UTF8=UTF-8
+TV_SelEnc_Items_TextEdit=Käynnistä tekstieditori.
+TV_SelEnc_Help_Normal=Paina A hyväksyäksesi, B peruuttaaksesi.
+TV_SelEnc_Help_NoEdit0=Tiedosto ylitti 128kbitin rajan
+TV_SelEnc_Help_NoEdit1=ei voida muokata.
+
+; ----------------------------
+
+TV_PRG_LoadExtendFont=Ladataan laajennettuja fontteja...
+TV_PRG_LoadTextFile=Ladataan tekstitiedostoa...
+TV_PRG_DetectTextEncode=Tunnistetaan koodausta...
+TV_PRG_DetectReturnCode=Tunnistetaan vastausta...
+TV_PRG_ConvertToUnicode=Konvertoidaan Unicodeksi...
+
+TV_UncertainFormat1=Tunnistettiin epävarma formaatti.
+TV_UncertainFormat2=Aloita A napilla, paina pitkään jos väärä.
+
+TV_Help1=A: Sivun vieritys / B: Palaa
+TV_Help2=X/Y: Kirjanmerkin Tallennus/Lataus
+TV_Help3=Select: konfigurointi / Koodaus: %s
+TV_Info=Rivi: %d / %d riviä (%.2f%%)
+
+TV_BookmarkText_LoadTitle=Kirjanmerkin latausvalikko
+TV_BookmarkText_SaveTitle=Kirjanmerkin tallennusvalikko
+TV_BookmarkText_Empty=%d:  Ei tallennettu.
+TV_BookmarkText_Info=%d:  %d Rivi(ä)  %s %s
+
+; ----------------------------
+
+TV_Popup_BacklightLevel=Taso. %d
+TV_Popup_Bookmark_Load=
+TV_Popup_Bookmark_Empty=Peruttu.
+TV_Popup_Bookmark_Save=Tallennettu.
+TV_Popup_Pause_Play=TOISTO
+TV_Popup_Pause_Pause=TAUKO
+TV_Popup_PreviousFile=Edellinen tiedosto
+TV_Popup_NextFile=Seuraava tiedosto
+TV_Popup_Seek=Haku %s
+TV_Popup_MoveToTop=Siirry yläosaan.
+TV_Popup_MoveToLast=Siirry alaosaan.
+
+; ----------------------------
+
+ME_Help0=Muistio
+ME_Help1=
+ME_Help2=Ristiohjain: Must./Pun./Vih./Sin.
+ME_Help3=Y / X: Ohut / Paksu viiva
+ME_Help4=A / B: Tallenna ja lopeta
+ME_Help5=SELECT: Kumoa
+ME_Help6=Paina L/R ja kosketa: Pyyhi
+ME_Help7=
+ME_Help8=Sulje DS lopettaaksesi
+ME_Help9=tallentamatta.
+
+; ----------------------------
+
+MemoList_Title=Muistilista
+
+MemoList_Help0=
+MemoList_Help1=Kosketa näyttöä: Luo uusi sivu.
+MemoList_Help2=START nappi pohjassa: Poista sivu kursorin
+MemoList_Help3=kohdalta.
+
+; ----------------------------
+
+MemoEdit_FileInfo_Open=Avattiin olemassa oleva tiedosto.
+MemoEdit_FileInfo_Edited=Muokataan. Tiedosto tallennetaan automaattisesti.
+MemoEdit_FileInfo_Create=Avattiin "Uusi tiedosto" moodi.
+
+MemoEdit_SavingNow=Tallennetaan muutokset BMP tiedostoon...
+
+; ----------------------------
+; for Text editor Ver1.5
+
+TE_File_SelectEncode_Title1=Ei voida tunnistaa automaattisesti.
+TE_File_SelectEncode_Title2=Valitse tekstin koodaustyyppi.
+
+TE_skk_DicSystem_PreloadDic=Esiladataan kirjastoa.
+
+TE_skk_ExitMenu_Title=SULJE VALIKKO
+TE_skk_ExitMenu_Items_Cancel=Peruuta.
+TE_skk_ExitMenu_Items_Overwrite=Tallenna ja lopeta.
+TE_skk_ExitMenu_Items_SaveAs=Tallenna nimellä ja lopeta.
+TE_skk_ExitMenu_Items_CreateNew=Luo uusi.
+TE_skk_ExitMenu_Items_NoSaveExit=Lopeta tallentamatta.
+TE_skk_ExitMenu_SavePrgMsg1=Tallenna tekstitiedosto ja käynnistä uudelleen...
+TE_skk_ExitMenu_SavePrgMsg2=Älä sulje virtaa.
+
+TE_SysMsg_ClipBoard_Empty=Leikepöytä on tyhjä.
+TE_SysMsg_ClipBoard_Pasted=Leikepöytä liitetty.
+TE_SysMsg_ClipBoard_Copied=Kopioi teksti leikepöydälle.
+
+TE_OSKHW_Model_ModelResults_Selector_Title=Valitse oikea kirjain.
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle1=Rekisteröidäänkö tämä 
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle2=käsialan data
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle3=moduulikirjastoon?
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogRegist=REKISTERÖI
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogCancel=PERUUTA
+
+; ----------------------------
+

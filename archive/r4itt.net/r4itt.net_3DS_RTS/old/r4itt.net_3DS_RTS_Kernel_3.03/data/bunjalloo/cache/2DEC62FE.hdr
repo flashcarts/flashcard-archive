@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+date:Wed, 14 Oct 2009 06:02:31 GMT
+server:Apache
+last-modified:Mon, 27 Aug 2007 21:31:23 GMT
+etag:"250//wiki/screenshots/game.png"
+accept-ranges:bytes
+content-length:4917
+content-type:image/png
+x-xss-protection:0
+connection:close

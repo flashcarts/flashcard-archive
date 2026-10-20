@@ -1,0 +1,611 @@
+
+; MoonShell2 language resource for 'CP006 Dutch'.
+; Encoding format is UTF-8.
+
+Author=Bram Vandeperre
+Target=NL / Nederlands/Dutch
+
+; ----------------------------
+
+TextFontFolderName=tfonteng
+
+; DateTimeFormat is YYYYMMDD or DDMMYYYY or MMDDYYYY. Select in your country.
+; The date format is for Europe
+DateTimeFormat=DDMMYYYY
+
+; ----------------------------
+
+CD_CheckDisk_Start=Geheugenkaart controleren...
+CD_CheckDisk_End=Controle voltooid; Geen fouten.
+
+CD_FatalError_Title=Schijffout
+CD_FatalError_DuplicatedArea0=Twee dezelfde bestanden gebruiken de zelfde map
+CD_FatalError_DuplicatedArea1=Sommige bestanden zijn al verwijderd
+CD_FatalError_BrokenEntry0=Fout: Pad bestaat niet
+CD_FatalError_BrokenEntry1=Een of meer bestanden zijn beschadigd
+CD_FatalError_IlligalClusterLink0=De cluster link is beschadigd.
+CD_FatalError_IlligalClusterLink1=Fout: Beschadigd Bestand.
+CD_FatalError_BrokenDirectoryLink0=Fout: Verkeerd pad opgegeven.
+CD_FatalError_BrokenDirectoryLink1=Pad bestaat niet.
+CD_FatalError_BrokenUnicode0=Verkeerde invoer.
+CD_FatalError_BrokenUnicode1=Lange bestandsnaam is verwijderd
+CD_FatalError_FileSizeError0=De grootte van de map en de echte
+CD_FatalError_FileSizeError1=grootte verschilt.
+CD_FatalError_UnknownError=Onverwachte error
+CD_FatalError_RecoveryMsg0=Hersteld rapport:
+CD_FatalError_RecoveryMsg1=Back-up je bestanden om niets te verliezen
+CD_FatalError_RecoveryMsg2=Herstel bestanden na formatteren van TF Kaart
+CD_FatalError_StopApplication=Onverwachtse fout, programma gestopt
+
+CD_NotSupportDiskSize_Title=De grootte van je geheugenkaart is niet ondersteund
+CD_NotSupportDiskSize_Msg0=De diskgrootte is te groot of
+CD_NotSupportDiskSize_Msg1=De grootte van de clusters zijn te klein
+CD_NotSupportDiskSize_Msg2=
+CD_NotSupportDiskSize_RecoveryMsg0=Herstellingsrapport:
+CD_NotSupportDiskSize_RecoveryMsg1=Probeer te formatteren naar
+CD_NotSupportDiskSize_RecoveryMsg2=een grotere diskcluster
+CD_NotSupportDiskSize_RecoveryMsg3=
+
+CD_CheckDuplicateCluster_Title=De fragmentatie is multi-cluster
+
+CD_CheckFATType_Title=FAT Geheugen wordt gescand
+
+CD_FATType_UnknownFATType=Bestandssysteem niet herkend
+
+CD_WriteTest_Title=lees/schrijf test geheugenkaart
+
+CD_WriteError_Title=geheugenkaart: niet toegankelijk
+CD_WriteError_Msg0=Niet genoeg ruimte op geheugenkaart
+CD_WriteError_Msg1=DLDI driver ondersteund het schrijven niet
+CD_WriteError_Msg2=Incompatible geheugenkaart of los contact op geheugenkaart
+CD_WriteError_Msg3=Data is Beschadigd
+CD_WriteError_Msg4=
+CD_WriteError_Msg5=De grootste kans is dat het bovenstaande is gebeurd
+CD_WriteError_Msg6=
+CD_WriteError_Msg7=Uit voorzorg is dit programma gestopt
+
+; ----------------------------
+
+ERRMSG0_MemoryOverflow_CanRecovery=Geheugenfout
+ERRMSG1_MemoryOverflow_CanRecovery=Bestand Openen is geanulleerd
+ERRMSG2_MemoryOverflow_CanRecovery=Tik op het venster om te sluiten
+
+ERRMSG0_NotSupportFileFormat=Niet-ondersteund bestandstype
+ERRMSG1_NotSupportFileFormat=Of het bestand is beschadigd
+ERRMSG2_NotSupportFileFormat=Tik op het venster om te sluiten
+
+ERRMSG0_ProgressiveJpeg=Progressive JPEG Bestand openen mislukt
+ERRMSG1_ProgressiveJpeg=
+ERRMSG2_ProgressiveJpeg=Tik op het venster om te sluiten
+
+ERRMSG0_Text0byte=Dit bestand is leeg
+ERRMSG1_Text0byte=Bestand van 0 bytes is niet te openen
+ERRMSG2_Text0byte=Tik op het venster om te sluiten
+
+ERRMSG0_OverflowLargeImage=Resolutie niet ondersteund
+ERRMSG1_OverflowLargeImage=Maximum is 5 Miljoen pixels
+ERRMSG2_OverflowLargeImage=Tik op het venster om te sluiten
+
+ERRMSG0_NotFoundMusicFile=Geen muziekbestanden gevonden
+ERRMSG1_NotFoundMusicFile=in opgegeven map
+ERRMSG2_NotFoundMusicFile=Tik op het venster om te sluiten
+
+ERRMSG0_UnknownError=Onbekende fout plaatsgevonden
+ERRMSG1_UnknownError=Zet je DS uit en herstart
+ERRMSG2_UnknownError=
+
+; ----------------------------
+
+Setup_Help1=
+Setup_Help2=Initiële setup
+Setup_Help3=
+Setup_Help4=
+Setup_Help5=Om alle instellingen weer te geven, druk op start
+Setup_Help6=en druk op algemene instellingen
+Setup_Help7=
+Setup_Help8=
+Setup_Help9=Laatste keymap kan worden gevonden in
+Setup_Help10=manuals/KeyMap.txt
+Setup_Help11=
+
+Setup_BootCheckDisk=Voer een TFKaart test uit bij opstarten
+Setup_ClickSound=Activeer geluiseffecten
+Setup_FileListMode=Bestandsweergave
+Setup_FileListMode_Single=Geef namen weer op 1 regel
+Setup_FileListMode_Double=Geef lange namen weer op 2 regels
+Setup_SkipSetup=Start dit niet bij opstarten
+Setup_OKBtn=
+
+; ----------------------------
+
+Launch_FileInfo=Bestandsinfo:
+Launch_FileInfo_Relational=Savebestandsinfo:
+Launch_Size=Size : %dbyte (%dMbit)
+Launch_Create=Created: %s %d:%02d:%02d
+Launch_Update=Updated: %s %d:%02d:%02d
+Launch_NotFoundRelationalFile=Save bestand niet gevonden.
+
+; ----------------------------
+
+FL_Help0=
+FL_Help1=
+FL_Help2=X/Y : Volume wijzigen
+FL_Help3=START: Systeemopties
+FL_Help4=
+FL_Help5=L+A/B: volgende/vorige nummer
+FL_Help6=L+X/Y: Achtergrondlicht
+FL_Help7=
+FL_Help8=L of R en touch: Nieuwe memo
+FL_Help9=L/R inhouden: Zoeken in nummer
+FL_Help10=L/R dubbele touch: volgende/vorige nummer
+FL_Help11=R driedubbele touch: Standby modus
+
+; ----------------------------
+
+FL_Popup_Pause_Play=PLAY
+FL_Popup_Pause_Pause=PAUZE
+FL_Popup_PreviousFile=vorig bestand
+FL_Popup_NextFile=volgend bestand
+FL_Popup_Volume=Volume. %d%%
+FL_Popup_BacklightLevel=Level. %d
+FL_Popup_PlayMode_Repeat=Herhaal
+FL_Popup_PlayMode_AllRep=Herhaal alles
+FL_Popup_PlayMode_Shuffle=Random
+FL_Popup_Seek=Zoek %s
+FL_Popup_NotFoundMoonMemoFolder=Niet gevonden /moonmemo map.
+
+; ----------------------------
+
+FL_DeleteFileDialog_NotFoundDustBox_Title=Bestand verwijderen?
+FL_DeleteFileDialog_NotFoundDustBox_Line0=Geen prullenbakmap gevonden.
+FL_DeleteFileDialog_NotFoundDustBox_Line1=Kijk in
+FL_DeleteFileDialog_NotFoundDustBox_Line2=/manuals/DustBox.txt
+
+FL_DeleteFileDialog_DisabledDustBox_Title=Bestand verwijderen?
+FL_DeleteFileDialog_DisabledDustBox_Line0=Verwijder dit bestand
+FL_DeleteFileDialog_DisabledDustBox_Line1=in de prullenbak van windows
+FL_DeleteFileDialog_DisabledDustBox_Line2=
+
+FL_DeleteFileDialog_DisabledSystemFolder_Title=Bestand verwijderen?
+FL_DeleteFileDialog_DisabledSystemFolder_Line0=Toegang geweigerd
+FL_DeleteFileDialog_DisabledSystemFolder_Line1=
+FL_DeleteFileDialog_DisabledSystemFolder_Line2=
+
+FL_DeleteFileDialog_DisabledMoveFolder_Title=Bestand verwijderen?
+FL_DeleteFileDialog_DisabledMoveFolder_Line0=Niet toegestaan
+FL_DeleteFileDialog_DisabledMoveFolder_Line1=
+FL_DeleteFileDialog_DisabledMoveFolder_Line2=
+
+FL_DeleteFileDialog_Question_Title=Bestand verwijderen?
+FL_DeleteFileDialog_Question_Line0=Bestand verwijderen?
+FL_DeleteFileDialog_Question_Line1=L+R+A : Verwijderen
+FL_DeleteFileDialog_Question_Line2=B : Annuleren
+
+FL_DeleteFileDialog_Question_EasyDelete_Title=File Bestand verwijderen?
+FL_DeleteFileDialog_Question_EasyDelete_Line0=Bestand verwijderen?
+FL_DeleteFileDialog_Question_EasyDelete_Line1=X+A : Verwijderen
+FL_DeleteFileDialog_Question_EasyDelete_Line2=B : Annuleren
+
+FL_DeleteFileDialog_Success_Title=Bestand verwijderen
+FL_DeleteFileDialog_Success_Line0=
+FL_DeleteFileDialog_Success_Line1=Bestand is verwijderd
+FL_DeleteFileDialog_Success_Line2=
+
+; ----------------------------
+
+FL_HelpLeft_Count=12
+FL_HelpLeft_Line0=L knop-gebaseerde functies:
+FL_HelpLeft_Line1=
+FL_HelpLeft_Line2=L + Links: Geef weer/niet weer van audioties
+FL_HelpLeft_Line3=L + Rechts: Volgend Nummer
+FL_HelpLeft_Line4=L + Boven: Pauze
+FL_HelpLeft_Line5=L + Beneden: Verander afspeelopties
+FL_HelpLeft_Line6=L + A/B: volgende/vorige
+FL_HelpLeft_Line7=L + X/Y: Achtergrondlicht
+FL_HelpLeft_Line8=
+FL_HelpLeft_Line9=L + R: Pauze
+FL_HelpLeft_Line10=L inhouden: Terugzoeken in nummer
+FL_HelpLeft_Line11=L dubbele touch: Vorig nummer
+
+FL_HelpRight_Count=11
+FL_HelpRight_Line0=R knop-gebaseerde functies:
+FL_HelpRight_Line1=
+FL_HelpRight_Line2=R + Links/Rechts: 1% Voorwaarts/Achterwaarts zoeken
+FL_HelpRight_Line3=R + Boven/Beneden: 5% Voorwaarts/Achterwaarts zoeken
+FL_HelpRight_Line4=R + A: Alle nummers in een map afspelen
+FL_HelpRight_Line5=L + R + A: Alle nummers op geheugenkaart spelen
+FL_HelpRight_Line6=
+FL_HelpRight_Line7=L + R: Pauze
+FL_HelpRight_Line8=R inhouden: 1% Voorwaarts zoeken
+FL_HelpRight_Line9=R dubbele touch: Volgend nummer
+FL_HelpRight_Line10=R driedubbele touch: Standbymodus
+
+; ----------------------------
+
+SysMenu_MemoList=Open memolijst
+SysMenu_MemoList_NotFound=Kan %s niet vinden
+SysMenu_FileListMode=Wissel weergavemode
+SysMenu_Customize=Configuratie
+SysMenu_RestoreBG=Normale achtergrond
+SysMenu_Firmware=Verlaat moonshell
+SysMenu_Firmware_NotFound=bestand "%s" niet gevonden.
+
+; ----------------------------
+
+SubMenu_Title=Select menu
+SubMenu_AppLauncher=App launcher
+SubMenu_AudioPlayer=Audio player
+SubMenu_SystemMenu=System menu
+SubMenu_PowOffTimer_Set=POffTimer %dmin
+SubMenu_PowOffTimer_SetHelp=L/R to set.
+SubMenu_PowOffTimer_LastTime=LastTime %d:%02d
+SubMenu_BottomHelp=Both A and select button are the decisions.
+
+; ----------------------------
+
+CS_Help0=Algemene Instellingen
+CS_Help1=
+CS_Help2=
+CS_Help3=Om alle afbeelding/video/tekstopties in te kunnen stellen
+CS_Help4=open je het bepaalde bestand
+CS_Help5=en druk je op select
+CS_Help6=
+CS_Help7=
+CS_Help8=Nota:
+CS_Help9=Presets zijn in de map: /misctools/additional
+CS_Help10=
+CS_Help11=
+
+CS_Title=Algemene Instellingen
+
+CS_PageTab_Title=Category
+CS_PageTab_Global=Global
+CS_PageTab_FileList=FileList
+CS_PageTab_ScreenSaver=ScrSaver
+CS_PageTab_Music=Music
+
+CS_Cancel=Annuleren
+CS_Ok=Toepassen
+
+; ----------------------------
+
+CSG_SkipSetup=Geen setup bij starten
+CSG_BootCheckDisk=Geheugenkaart coctroleren bij opstarten
+
+CSG_ClickSound=Geluidseffecten
+CSG_EnableFadeEffect=Gebruik transitie tussen schermen
+CSG_AutoLastState=Start File Launcher at startup
+CSG_LRKeyLockTitle=L/R toets gebruik beperking.
+CSG_LRKeyLockAlwayOff=Altijd UIT
+CSG_LRKeyLockRelationalPanel=Relationeel paneel
+CSG_LRKeyLockAlwayOn=Altijd AAN
+CSG_EnableResumeFunction=Resume information is regularly preserved.
+CSG_EnableScreenCapture=DSi uses the screen capture.
+CSG_SpeakerPowerOffWhenPanelClosed=When the lid is shut, the speaker power supply is turned off.
+
+CSF_MoveFolderLocked=Geen mappen verkennen
+CSF_HiddenFilenameExt=Verberg bestandsextenties
+CSF_HiddenNotSupportFileType=Geen onbekende bestanden weergeven
+CSF_HiddenNDSROMFile=Verberg NDSROM bestanden.
+CSF_EnableFileInfo=geef info weer in bestandslijst
+CSF_ShowOnlineHelp_LRButton=Help of the L/R button is displayed.
+CSF_BButtonToFolderUp=The cursor goes out of the folder when B button.
+CSF_EasyDeleteKey=The deletion is executed with the X+A button.
+CSF_UseJpegExifThumbnail=The thumbnail image is displayed by using Jpeg EXIF.
+CSF_ShowCoverImage=The jacket images such as M4A and MP3 are displayed.
+CSF_HideAttribute_Title=Hide file attributes
+CSF_HideAttribute_Archive=Archive
+CSF_HideAttribute_Hidden=Hidden
+CSF_HideAttribute_System=System
+CSF_HideAttribute_ReadOnly=ReadOnly
+
+CSS_EnabledScreenSaver=Use screen saver.
+CSS_Use24hFormat=Time is 24 hour system.
+CSS_ScreenSaverTitle=Type:
+CSS_ScreenSaverNormal=Normaal
+CSS_ScreenSaverDigital=Digitaal
+CSS_ScreenSaverExtend=Verlengd
+CSS_ScreenSaverBGTitle=BG
+CSS_ScreenSaverBGSkinDefault=SkinDef
+CSS_ScreenSaverBGTopScreen=TopScherm
+CSS_ScreenSaverBGBottomScreen=onderScherm
+CSS_ScreenSaverTimeOutSecTitle=Inactieftijd
+CSS_ScreenSaverTimeOutSec5sec=5
+CSS_ScreenSaverTimeOutSec10sec=10
+CSS_ScreenSaverTimeOutSec30sec=30
+CSS_ScreenSaverTimeOutSec60sec=60
+CSS_ScreenSaverTimeOutSecOff=The backlight is turned off.
+CSS_ShowID3Tag=Toon ID3Tag tijdens afspelen
+
+CSM_PlayListEndTitle=Wanneer playlist eindigt.
+CSM_PlayListEndLoop=Loop
+CSM_PlayListEndStop=Stop
+CSM_PlayListEndPowerOff=Uitschakelen
+
+; ----------------------------
+
+ACS_Help0=Configuring music player settings
+ACS_Help1=
+ACS_Help2=
+ACS_Help3=
+ACS_Help4=
+ACS_Help5=
+ACS_Help6=
+ACS_Help7=
+ACS_Help8=
+ACS_Help9=
+ACS_Help10=
+ACS_Help11=
+
+ACS_Title=Music player settings
+
+ACS_AlwaysUsedAudioPlayer=The music player is always used.
+ACS_PauseWhenStopped=Returns to the file list after the pause is done.
+ACS_DrawPlayList=Show play list to the top screen.
+ACS_DrawSpectrumAnalyzer=A spectrum analyzer is displayed.
+
+; ----------------------------
+
+DCS_Help0=Video Afspeelopties
+DCS_Help1=
+DCS_Help2=
+DCS_Help3=
+DCS_Help4=
+DCS_Help5=
+DCS_Help6=
+DCS_Help7=
+DCS_Help8=
+DCS_Help9=
+DCS_Help10=
+DCS_Help11=
+
+DCS_Title=Video Afspeelopties
+
+DCS_EnabledFastStart=Sneller afspelen bij opstarten
+DCS_PauseWhenPanelClosed=Pauze bij gesloten DS
+DCS_EnableIndividualResume=Activeer individueel hervatten.
+DCS_ControlPowerLED=Stroom-LED is uitgeschakeld.
+DCS_InverseVisual_PlayPause=Change skin. Play vs pause icon.
+DCS_EverytimeStopOfEnd=The screen returns whenever the video ends.
+DCS_BacklightTimeOutTitle=Backlight timeout (sec)
+DCS_BacklightTimeOutOff=Off
+DCS_BacklightTimeOut5sec=5
+DCS_BacklightTimeOut10sec=10
+DCS_BacklightTimeOut15sec=15
+
+; ----------------------------
+
+DV_VolumeLabel=Vol.
+DV_VolumeValue=%d%%
+DV_VolumeMute=Stil
+DV_VolumeMax=max.
+
+; ----------------------------
+
+DV_Popup_Pause_Play=PLAY
+DV_Popup_Pause_Pause=PAUZE
+DV_Popup_PreviousFile=Vorig bestand
+DV_Popup_NextFile=Volgend bestand
+DV_Popup_Volume=Volume. %d%%
+DV_Popup_Seek=Zoek %ssec
+DV_Popup_BacklightLevel=Level. %d
+
+; ----------------------------
+
+ICS_Help0=Afbeeldingsopties
+ICS_Help1=
+ICS_Help2=
+ICS_Help3=
+ICS_Help4=
+ICS_Help5=Selecteer "Set Background To Default" in
+ICS_Help6=het startmenu om het standaardthema in te stellen
+ICS_Help7=
+ICS_Help8=
+ICS_Help9=
+ICS_Help10=
+ICS_Help11=
+
+ICS_Title=Afbeeldingsopties
+
+ICS_ShowInfomation=geef info weer
+ICS_ShowControlIcons=geef aanraakbesturingsiconen weer
+ICS_DoubleSpeedKey=Dubbele vierpuntsdruktoetsgevoeligheid
+ICS_DoubleSpeedTouch=Dubbele aanraakschermgevoeligheid
+ICS_MultipleResume=Onthoud Zoom
+ICS_AutoFitting=Automatisch verkleinen
+ICS_EnabledProgressiveJpeg=Enabled progressive jpeg format.
+ICS_StartPosTitle=Set initial image view
+ICS_StartPosLeftTop=linksboven
+ICS_StartPosRightTop=rechtsboven
+ICS_StartPosLeftBottom=linksonder
+ICS_StartPosRightBottom=rechtsonder
+ICS_AutoNextTimeSecTitle=Auto next
+ICS_AutoNextTimeSecOff=Off
+ICS_AutoNextTimeSec10sec=10
+ICS_AutoNextTimeSec30sec=30
+ICS_AutoNextTimeSec60sec=60
+ICS_ShowInfoTopScreen=Information is displayed to top screen.
+ICS_EffectTitle=Achtergrondinstellingen:
+ICS_EffectHeightPadding=Activeer hoogtepadding
+ICS_EffectPastelForTopBG=Bovenste scherm transparant
+ICS_EffectPastelForBottomBG=Onderste scherm transparant
+
+; ----------------------------
+
+IV_LoadMsg0=Afbeelding genereren
+IV_LoadMsg1=Even geduld...
+
+IV_Help1=Start: Achtergrond    Select: instellingen
+IV_Help2=Y: 50%   X: 200%   A: 100%   B: Origineel
+
+; ----------------------------
+
+IV_Popup_BacklightLevel=Level. %d
+IV_Popup_Zoom=Zoom %d%%
+IV_Popup_Pause_Play=PLAY
+IV_Popup_Pause_Pause=PAUZE
+IV_Popup_PreviousFile=vorig bestand
+IV_Popup_NextFile=volgend bestand
+IV_Popup_Seek=Zoek %s
+
+; ----------------------------
+
+TCS_Help0=Tekst weergave
+TCS_Help1=
+TCS_Help2=Nota:
+TCS_Help3=ClearType lettertypen kunnen
+TCS_Help4=wazig worden op de oude Nintendo DS
+TCS_Help5=
+TCS_Help6=
+TCS_Help7=Wanneer tekstencodering niet kan worden
+TCS_Help8=gedetecteert, houd dan A in of raak het
+TCS_Help9=aanraakscherm aan om zelf te kiezen
+TCS_Help10=
+TCS_Help11=
+
+TCS_Title=Tekst weergave
+
+TCS_TopScrModeTitle=Bovenste schermweergave
+TCS_TopScrModeLightOff=Uit
+TCS_TopScrModeText=geef tekst weer
+TCS_TopScrModeClock=Geef klok weer
+
+TCS_ScreenSaverTitle=Screensaver
+TCS_ScreenSaverNormal=Normaal
+TCS_ScreenSaverDigital=Digitaal
+TCS_ScreenSaverExtend=Verlengd
+
+TCS_LineSpaceTitle=Regelafstand
+TCS_LineSpaceSmall=Smal
+TCS_LineSpaceMiddle=Standaard
+TCS_LineSpaceLarge=breed
+
+TCS_FontSizeTitle=Lettertype
+TCS_FontSizeSmall=klein
+TCS_FontSizeMiddle=middel
+TCS_FontSizeLarge=groot
+
+TCS_ClearTypeFontTitle=ClearType
+TCS_ClearTypeFontNone=geen
+TCS_ClearTypeFontLite=Licht
+TCS_ClearTypeFontNormal=Standaard
+TCS_ClearTypeFontHeavy=Heavy
+
+TCS_UseSmoothScroll=Gebruik vlot scrollen.
+
+TCS_CPTitle=CodePage
+TCS_CP437=437
+TCS_CP850=850
+TCS_CP1252=1252
+
+TCS_DetectCharCodeTitle=Detecteer volgende coderingen automatisch:
+
+; ----------------------------
+
+TV_SelEnc_Title=Please choose the text encoding type.
+TV_SelEnc_Items_AutoDetect=Auto detect
+TV_SelEnc_Items_ANSI=ANSI 8bit
+TV_SelEnc_Items_EUC=EUC/S-JIS
+TV_SelEnc_Items_UTF16BE=UTF-16 (BE)
+TV_SelEnc_Items_UTF16LE=UTF-16 (LE)
+TV_SelEnc_Items_UTF8=UTF-8
+TV_SelEnc_Items_TextEdit=Boot text editor.
+TV_SelEnc_Help_Normal=Press A to OK, B to cancel.
+TV_SelEnc_Help_NoEdit0=The file that exceeds 128kbyte
+TV_SelEnc_Help_NoEdit1=cannot be edited.
+
+; ----------------------------
+
+TV_PRG_LoadExtendFont=Uitgebreid lettertype laden...
+TV_PRG_LoadTextFile=Tekstbestand laden...
+TV_PRG_DetectTextEncode=Detecteren van tekstcodering...
+TV_PRG_DetectReturnCode=Detecteren van ontvangen code...
+TV_PRG_ConvertToUnicode=Converteren naar Unicode...
+
+TV_UncertainFormat1=Onbekend formaat gedetecteert.
+TV_UncertainFormat2=Start door A in te houden.
+
+TV_Help1=A : Paginascroll / B : Terug
+TV_Help2=X/Y : Bookmark Save/Load menu.
+TV_Help3=SELECT : Instelling / Encodering : %s
+TV_Info=CurLine : %d / %d lijnen (%.2f%%)
+
+TV_BookmarkText_LoadTitle=Bookmark Load Menu
+TV_BookmarkText_SaveTitle=Bookmark Save Menu
+TV_BookmarkText_Empty=%d :  Niet opgeslagen.
+TV_BookmarkText_Info=%d :  %d lijnen  %s %s
+
+; ----------------------------
+
+TV_Popup_BacklightLevel=Level. %d
+TV_Popup_Bookmark_Load=
+TV_Popup_Bookmark_Empty=Geannuleerd.
+TV_Popup_Bookmark_Save=Opgeslagen.
+TV_Popup_Pause_Play=PLAY
+TV_Popup_Pause_Pause=PAUZE
+TV_Popup_PreviousFile=Vorig bestand
+TV_Popup_NextFile=Volgend bestand
+TV_Popup_Seek=Zoek %s
+TV_Popup_MoveToTop=Ga naar boven.
+TV_Popup_MoveToLast=Ga naar laatste.
+
+; ----------------------------
+
+ME_Help0=Memo Bewerker Modus
+ME_Help1=
+ME_Help2=Beneden/Links/Boven/Rechts: Zwart/Rood/Groen/Blauw
+ME_Help3=Y/X: Toggle pendikte
+ME_Help4=
+ME_Help5=A/B: Opslaan en afsluiten
+ME_Help6=
+ME_Help7=Je kan de stroom uitschakelen maar
+ME_Help8=wijzigingen worden niet opgeslagen
+ME_Help9=
+
+; ----------------------------
+
+MemoList_Title=Memo lijstmodus.
+
+MemoList_Help0=
+MemoList_Help1=
+MemoList_Help2=Aanraakscherm: Maak nieuwe pagina.
+MemoList_Help3=START-knop inhouden: Verwijder huidige pagina.
+
+; ----------------------------
+
+MemoEdit_FileInfo_Open=Een bestaand bestand werd geopend.
+MemoEdit_FileInfo_Edited=Bewerken, veranderingen bij sluiten
+MemoEdit_FileInfo_Create=Bestand maken:
+
+MemoEdit_SavingNow=Bitmapbestand maken ...
+
+; ----------------------------
+; for Text editor Ver1.5
+
+TE_File_SelectEncode_Title1=Can not judge automatically.
+TE_File_SelectEncode_Title2=Please select text encode type.
+
+TE_skk_DicSystem_PreloadDic=Preloading dictionary.
+
+TE_skk_ExitMenu_Title=EXIT MENU
+TE_skk_ExitMenu_Items_Cancel=Cancel.
+TE_skk_ExitMenu_Items_Overwrite=Overwrite save and exit.
+TE_skk_ExitMenu_Items_SaveAs=Save as name and exit.
+TE_skk_ExitMenu_Items_CreateNew=Create new.
+TE_skk_ExitMenu_Items_NoSaveExit=Exit without saving.
+TE_skk_ExitMenu_SavePrgMsg1=Save text file and reboot...
+TE_skk_ExitMenu_SavePrgMsg2=Please don't turn off power.
+
+TE_SysMsg_ClipBoard_Empty=Clipboard is empty.
+TE_SysMsg_ClipBoard_Pasted=Clipboard pasted.
+TE_SysMsg_ClipBoard_Copied=Selected text copy to clipboard.
+
+TE_OSKHW_Model_ModelResults_Selector_Title=Please choose a correct character.
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle1=May I register 
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle2=this handwriting data to 
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle3=the models dictionary?
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogRegist=REGIST
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogCancel=CANCEL
+
+; ----------------------------
+

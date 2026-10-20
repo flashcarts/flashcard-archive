@@ -1,0 +1,6 @@
+# this is an example search file, it is copied to 
+# search.cfg on start up - edit that file if you want
+# to add your own search engines.
+g http://www.google.com/search?q=%s&btnG=Google+Search
+y http://search.yahoo.com/search?p=%s&ei=UTF-8
+w http://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go

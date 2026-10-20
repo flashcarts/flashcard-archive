@@ -1,0 +1,8 @@
+# This is an example of the cookie allow list
+# It is copied to ckallow.lst on start up if
+# that file doesn't exist.
+# Add server names to that file. Only servers
+# in the allowed list will be allowed to set
+# cookies, all others are ignored.
+www.google.com
+www.google.es

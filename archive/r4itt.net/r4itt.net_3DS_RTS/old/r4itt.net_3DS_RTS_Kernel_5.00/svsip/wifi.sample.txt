@@ -1,0 +1,12 @@
+--config firmware
+
+#--config custom
+#--ssid [SSID]
+#--channel [X]
+#--wep-key [WEP KEY HEXA]
+
+#--ip XXX.XXX.XXX.XXX
+#--mask 255.255.255.0
+#--gateway XXX.XXX.XXX.XXX
+#--dns1 XXX.XXX.XXX.XXX.XXX
+#--dns2 XXX.XXX.XXX.XXX.XXX

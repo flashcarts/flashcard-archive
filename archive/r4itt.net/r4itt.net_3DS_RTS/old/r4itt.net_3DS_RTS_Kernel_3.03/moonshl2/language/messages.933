@@ -1,0 +1,611 @@
+
+; MoonShell2 language resource for 'CP933'.
+; Encoding format is UTF-8.
+
+Author=Moonlight
+Target=JPN / fixed 日本語 (固定幅フォント)
+
+; ----------------------------
+
+TextFontFolderName=tfontjpn
+
+; DateTimeFormat is YYYYMMDD or DDMMYYYY or MMDDYYYY.
+DateTimeFormat=YYYYMMDD
+
+; ----------------------------
+
+CD_CheckDisk_Start=簡易ディスク検査を開始しました。
+CD_CheckDisk_End=簡易ディスク検査を正常に終了しました。
+
+CD_FatalError_Title=!ディスクに致命的なエラーを発見しました。
+CD_FatalError_DuplicatedArea0=複数ファイルが同じ領域を使用しています。
+CD_FatalError_DuplicatedArea1=いくつかのファイルは既に破壊されています
+CD_FatalError_BrokenEntry0=ディレクトリエントリが異常です。
+CD_FatalError_BrokenEntry1=一つ以上のファイルが破損しています。
+CD_FatalError_IlligalClusterLink0=クラスタリンクが規格外で途切れました。
+CD_FatalError_IlligalClusterLink1=ファイルが破損している可能性があります。
+CD_FatalError_BrokenDirectoryLink0=ディレクトリエントリが異常です。
+CD_FatalError_BrokenDirectoryLink1=フォルダが破壊されています。
+CD_FatalError_BrokenUnicode0=ディレクトリエントリが異常です。
+CD_FatalError_BrokenUnicode1=長いファイル名が破壊されています。
+CD_FatalError_FileSizeError0=ディレクトリエントリが示すサイズと、
+CD_FatalError_FileSizeError1=実際のファイルサイズが違います。
+CD_FatalError_UnknownError=未定義エラー
+CD_FatalError_RecoveryMsg0=回復手段：
+CD_FatalError_RecoveryMsg1=全てのファイルをHDDにバックアップして、
+CD_FatalError_RecoveryMsg2=フォーマット後にコピーし直して下さい。
+CD_FatalError_StopApplication=アプリケーションを停止しました。
+
+CD_NotSupportDiskSize_Title=扱えないフォーマットのディスクです。
+CD_NotSupportDiskSize_Msg0=ディスクサイズが大きすぎるか、
+CD_NotSupportDiskSize_Msg1=クラスタサイズが小さすぎます。
+CD_NotSupportDiskSize_Msg2=
+CD_NotSupportDiskSize_RecoveryMsg0=回復手段：
+CD_NotSupportDiskSize_RecoveryMsg1=もっと大きなクラスタサイズで、
+CD_NotSupportDiskSize_RecoveryMsg2=フォーマットを試みて下さい。
+CD_NotSupportDiskSize_RecoveryMsg3=
+
+CD_CheckDuplicateCluster_Title=重複クラスタと断片化を調べています。
+
+CD_CheckFATType_Title=FATフォーマットを調査しています。
+
+CD_FATType_UnknownFATType=認識できないFATフォーマットです。
+
+CD_WriteTest_Title=ディスクの読み書きテストをしています。
+
+CD_WriteError_Title=ディスクアクセステストに失敗しました。
+CD_WriteError_Msg0=・ディスク空き容量が極端に少ない
+CD_WriteError_Msg1=・書き込みに対応していないDLDIドライバ
+CD_WriteError_Msg2=・CF/SDとアダプタの相性、接触不良
+CD_WriteError_Msg3=・ディスク管理エリアが破損している
+CD_WriteError_Msg4=
+CD_WriteError_Msg5=などの原因が考えられます。
+CD_WriteError_Msg6=
+CD_WriteError_Msg7=安全の為アプリケーションを停止しました。
+
+; ----------------------------
+
+ERRMSG0_MemoryOverflow_CanRecovery=メモリ不足エラーが発生したため、
+ERRMSG1_MemoryOverflow_CanRecovery=ファイルが開けませんでした。
+ERRMSG2_MemoryOverflow_CanRecovery=クリックするとウィンドウを閉じます。
+
+ERRMSG0_NotSupportFileFormat=サポートしていないフォーマットか、
+ERRMSG1_NotSupportFileFormat=壊れている可能性があります。
+ERRMSG2_NotSupportFileFormat=クリックするとウィンドウを閉じます。
+
+ERRMSG0_ProgressiveJpeg=プログレッシブJPEGファイルは、
+ERRMSG1_ProgressiveJpeg=対応していません。
+ERRMSG2_ProgressiveJpeg=クリックするとウィンドウを閉じます。
+
+ERRMSG0_Text0byte=空のテキストファイルです。
+ERRMSG1_Text0byte=0byteのファイルは開けません。
+ERRMSG2_Text0byte=クリックするとウィンドウを閉じます。
+
+ERRMSG0_OverflowLargeImage=画像ファイルが大きすぎます。
+ERRMSG1_OverflowLargeImage=約500万画素が最大サイズです。
+ERRMSG2_OverflowLargeImage=クリックするとウィンドウを閉じます。
+
+ERRMSG0_NotFoundMusicFile=指定フォルダに音楽ファイルが
+ERRMSG1_NotFoundMusicFile=ひとつも見つかりませんでした。
+ERRMSG2_NotFoundMusicFile=クリックするとウィンドウを閉じます。
+
+ERRMSG0_UnknownError=未定義エラーが発生しました。
+ERRMSG1_UnknownError=内部的な異常です。
+ERRMSG2_UnknownError=電源を切ってください。
+
+; ----------------------------
+
+Setup_Help1=
+Setup_Help2=
+Setup_Help3=確認が必要な項目のみ表示しています。
+Setup_Help4=
+Setup_Help5=すべてのオプションを表示するときは、
+Setup_Help6=ファイルリストでSTARTボタンを押して、
+Setup_Help7=環境設定を開いてください。
+Setup_Help8=
+Setup_Help9=キー操作などを大幅に変更しました。
+Setup_Help10=不明な点は取扱説明書をご覧下さい。
+Setup_Help11=
+
+Setup_BootCheckDisk=起動時に毎回ディスクチェックする。
+Setup_ClickSound=キークリック音を再生する。
+Setup_FileListMode=ファイルリスト表示モード
+Setup_FileListMode_Single=ファイル名を一行で表示する。
+Setup_FileListMode_Double=長いファイル名は二行に分ける。
+Setup_SkipSetup=次回起動時はこの画面を表示しない。
+Setup_OKBtn=
+
+; ----------------------------
+
+Launch_FileInfo=ファイル情報
+Launch_FileInfo_Relational=関連ファイル情報
+Launch_Size=サイズ： %dbyte (%dMbit)
+Launch_Create=作成日： %s %d:%02d:%02d
+Launch_Update=更新日： %s %d:%02d:%02d
+Launch_NotFoundRelationalFile=Not found relational file.
+
+; ----------------------------
+
+FL_Help0=
+FL_Help1=
+FL_Help2=X/Yボタン：ボリュームを下げる/上げる
+FL_Help3=STARTボタン：システムメニュー（環境設定）
+FL_Help4=
+FL_Help5=L+A/Bボタン：次/前の曲を再生
+FL_Help6=L+X/Yボタン：バックライト明度変更
+FL_Help7=
+FL_Help8=LまたはRを押しながらタッチ：メモ帳を新規作成
+FL_Help9=L/Rボタンクリック+長押し：前方/後方MP3シーク
+FL_Help10=L/Rボタンダブルクリック：前/次の曲を再生
+FL_Help11=Rボタントリプルクリック：スタンバイモード開始
+
+; ----------------------------
+
+FL_Popup_Pause_Play=PLAY
+FL_Popup_Pause_Pause=PAUSE
+FL_Popup_PreviousFile=前曲を再生
+FL_Popup_NextFile=次曲を再生
+FL_Popup_Volume=ボリューム： %d%%
+FL_Popup_BacklightLevel=バックライト明度： %d
+FL_Popup_PlayMode_Repeat=演奏モード： 一曲再生
+FL_Popup_PlayMode_AllRep=演奏モード： 全曲再生
+FL_Popup_PlayMode_Shuffle=演奏モード： シャッフル
+FL_Popup_Seek=シーク： %s
+FL_Popup_NotFoundMoonMemoFolder=/moonmemoフォルダ不在
+
+; ----------------------------
+
+FL_DeleteFileDialog_NotFoundDustBox_Title=ファイル削除 エラーダイアログ
+FL_DeleteFileDialog_NotFoundDustBox_Line0=ゴミ箱フォルダが見つかりません。
+FL_DeleteFileDialog_NotFoundDustBox_Line1=取扱説明書の「ゴミ箱について」を、
+FL_DeleteFileDialog_NotFoundDustBox_Line2=参照してください。
+
+FL_DeleteFileDialog_DisabledDustBox_Title=ファイル削除 エラーダイアログ
+FL_DeleteFileDialog_DisabledDustBox_Line0=ゴミ箱フォルダ内のファイル削除は、
+FL_DeleteFileDialog_DisabledDustBox_Line1=Windowsで行って下さい。
+FL_DeleteFileDialog_DisabledDustBox_Line2=
+
+FL_DeleteFileDialog_DisabledSystemFolder_Title=ファイル削除 エラーダイアログ
+FL_DeleteFileDialog_DisabledSystemFolder_Line0=システムフォルダ(moonshl2)内は、
+FL_DeleteFileDialog_DisabledSystemFolder_Line1=操作が禁止されています。
+FL_DeleteFileDialog_DisabledSystemFolder_Line2=
+
+FL_DeleteFileDialog_DisabledMoveFolder_Title=ファイル削除 エラーダイアログ
+FL_DeleteFileDialog_DisabledMoveFolder_Line0=フォルダの移動は禁止されています。
+FL_DeleteFileDialog_DisabledMoveFolder_Line1=
+FL_DeleteFileDialog_DisabledMoveFolder_Line2=
+
+FL_DeleteFileDialog_Question_Title=ファイル削除 確認ダイアログ
+FL_DeleteFileDialog_Question_Line0=本当にこのファイルを削除しますか？
+FL_DeleteFileDialog_Question_Line1=L+R+Aボタンを押すと実行します。
+FL_DeleteFileDialog_Question_Line2=Bボタンを押すとキャンセルします。
+
+FL_DeleteFileDialog_Question_EasyDelete_Title=ファイル削除 確認ダイアログ
+FL_DeleteFileDialog_Question_EasyDelete_Line0=本当にこのファイルを削除しますか？
+FL_DeleteFileDialog_Question_EasyDelete_Line1=X+Aボタンを押すと実行します。
+FL_DeleteFileDialog_Question_EasyDelete_Line2=Bボタンを押すとキャンセルします。
+
+FL_DeleteFileDialog_Success_Title=ファイル削除 完了ダイアログ
+FL_DeleteFileDialog_Success_Line0=削除（ゴミ箱に移動）が完了しました。
+FL_DeleteFileDialog_Success_Line1=ゴミ箱内のファイル削除は、
+FL_DeleteFileDialog_Success_Line2=Windowsで行って下さい。
+
+; ----------------------------
+
+FL_HelpLeft_Count=12
+FL_HelpLeft_Line0=オンラインヘルプ - L を押しながら…
+FL_HelpLeft_Line1=
+FL_HelpLeft_Line2=L + 左キー : MP3コントロールバー表示
+FL_HelpLeft_Line3=L + 右キー : 次の曲を再生
+FL_HelpLeft_Line4=L + 上キー : ポーズ
+FL_HelpLeft_Line5=L + 下キー : 再生モード変更
+FL_HelpLeft_Line6=L + A / Bボタン : 次 / 前の曲を再生
+FL_HelpLeft_Line7=L + X / Yボタン : バックライト明度変更
+FL_HelpLeft_Line8=
+FL_HelpLeft_Line9=L+R同時押し : ポーズ
+FL_HelpLeft_Line10=Lボタンシングル＋長押し : 1% 前方MP3シーク
+FL_HelpLeft_Line11=Lボタンダブルクリック : 前の曲を再生
+
+FL_HelpRight_Count=11
+FL_HelpRight_Line0=オンラインヘルプ - R を押しながら…
+FL_HelpRight_Line1=
+FL_HelpRight_Line2=R + 左右キー : 1% 前方/後方MP3シーク
+FL_HelpRight_Line3=R + 上下キー : 5% 前方/後方MP3シーク
+FL_HelpRight_Line4=R+Aボタン : フォルダ内全曲再生
+FL_HelpRight_Line5=L+R+Aボタン : ディスク内全曲再生
+FL_HelpRight_Line6=
+FL_HelpRight_Line7=L+R同時押し : ポーズ
+FL_HelpRight_Line8=Rボタンシングル＋長押し : 1% 後方MP3シーク
+FL_HelpRight_Line9=Rボタンダブルクリック : 次の曲を再生
+FL_HelpRight_Line10=Rボタントリプルクリック : スタンバイモード開始
+
+; ----------------------------
+
+SysMenu_MemoList=メモ帳を開く
+SysMenu_MemoList_NotFound=%sが見つかりません
+SysMenu_FileListMode=1行/2行モード切り替え
+SysMenu_Customize=環境設定
+SysMenu_RestoreBG=壁紙を元に戻す
+SysMenu_Firmware=ファームウェアに戻る
+SysMenu_Firmware_NotFound=%sが見つかりません
+
+; ----------------------------
+
+SubMenu_Title=サブメニュー
+SubMenu_AppLauncher=アプリランチャ
+SubMenu_AudioPlayer=音楽プレイヤ
+SubMenu_SystemMenu=システムメニュー
+SubMenu_PowOffTimer_Set=オフタイマー %d分
+SubMenu_PowOffTimer_SetHelp=左右キーで変更
+SubMenu_PowOffTimer_LastTime=残り時間: %d:%02d
+SubMenu_BottomHelp=AボタンかSELECTボタンを押すと実行します。
+
+; ----------------------------
+
+CS_Help0=全体と音楽関連の環境設定を行います。
+CS_Help1=
+CS_Help2=
+CS_Help3=画像、動画、テキストに関する設定は、
+CS_Help4=それぞれファイルを開いた/再生した状態で、
+CS_Help5=SELECTボタンを押してください。
+CS_Help6=
+CS_Help7=
+CS_Help8=/misctools/Additional フォルダ
+CS_Help9=の中にもいくつか設定項目があります。
+CS_Help10=
+CS_Help11=
+
+CS_Title=MoonShell2 環境設定
+
+CS_PageTab_Title=設定カテゴリ
+CS_PageTab_Global=全体
+CS_PageTab_FileList=ファイルリスト
+CS_PageTab_ScreenSaver=画面保護
+CS_PageTab_Music=音楽
+
+CS_Cancel=キャンセル
+CS_Ok=適用
+
+; ----------------------------
+
+CSG_SkipSetup=起動時にセットアップを表示しない。
+CSG_BootCheckDisk=起動時に毎回ディスクチェックする。
+
+CSG_ClickSound=キークリック音を再生する。
+CSG_EnableFadeEffect=切り替え時に画面効果を使う。
+CSG_AutoLastState=ファイルランチャーを自動選択する。
+CSG_LRKeyLockTitle=L/Rキー使用制限
+CSG_LRKeyLockAlwayOff=常に無効
+CSG_LRKeyLockRelationalPanel=パネル連動
+CSG_LRKeyLockAlwayOn=常に有効
+CSG_EnableResumeFunction=レジューム情報を定期保存する。
+CSG_EnableScreenCapture=画面キャプチャ機能を有効にする。(DSi)
+CSG_SpeakerPowerOffWhenPanelClosed=蓋を閉じたらスピーカ電源を切る。
+
+CSF_MoveFolderLocked=フォルダの移動を禁止する。
+CSF_HiddenFilenameExt=ファイルリストの拡張子を隠す。
+CSF_HiddenNotSupportFileType=未対応のファイルは表示しない。
+CSF_HiddenNDSROMFile=NDSファイルを表示しない。
+CSF_EnableFileInfo=ファイル情報を取得して右側に表示する。
+CSF_ShowOnlineHelp_LRButton=L/Rボタンのヘルプを表示する。
+CSF_BButtonToFolderUp=Bボタンでフォルダから出る。
+CSF_EasyDeleteKey=削除実行ボタンをX+Aボタンにする。
+CSF_UseJpegExifThumbnail=JpegExifからサムネイル画像を表示する。
+CSF_ShowCoverImage=M4AやMP3等のジャケット画像を表示する。
+CSF_HideAttribute_Title=非表示ファイル属性
+CSF_HideAttribute_Archive=アーカイブ
+CSF_HideAttribute_Hidden=隠し属性
+CSF_HideAttribute_System=システム
+CSF_HideAttribute_ReadOnly=読込専用
+
+CSS_EnabledScreenSaver=スクリーンセーバを使う。
+CSS_Use24hFormat=時刻を24時間系で表示する。
+CSS_ScreenSaverTitle=スキンタイプ
+CSS_ScreenSaverNormal=標準時計
+CSS_ScreenSaverDigital=デジタル時計
+CSS_ScreenSaverExtend=拡張スキン
+CSS_ScreenSaverBGTitle=背景画像
+CSS_ScreenSaverBGSkinDefault=スキン内蔵画像
+CSS_ScreenSaverBGTopScreen=上背景からコピー
+CSS_ScreenSaverBGBottomScreen=下背景からコピー
+CSS_ScreenSaverTimeOutSecTitle=時間(秒)
+CSS_ScreenSaverTimeOutSec5sec=5
+CSS_ScreenSaverTimeOutSec10sec=10
+CSS_ScreenSaverTimeOutSec30sec=30
+CSS_ScreenSaverTimeOutSec60sec=60
+CSS_ScreenSaverTimeOutSecOff=バックライトを消灯する。
+CSS_ShowID3Tag=MP3再生時にID3Tagを表示する。
+
+CSM_PlayListEndTitle=プレイリスト終了後
+CSM_PlayListEndLoop=ループ
+CSM_PlayListEndStop=演奏停止
+CSM_PlayListEndPowerOff=電源OFF
+
+; ----------------------------
+
+ACS_Help0=音楽プレイヤに関する環境設定を行います。
+ACS_Help1=
+ACS_Help2=
+ACS_Help3=
+ACS_Help4=スペクトルアナライザーを計算しながら、
+ACS_Help5=高負荷な音楽ファイルを再生すると、
+ACS_Help6=音飛びすることがあります。
+ACS_Help7=
+ACS_Help8=
+ACS_Help9=
+ACS_Help10=
+ACS_Help11=
+
+ACS_Title=音楽プレイヤ 環境設定
+
+ACS_AlwaysUsedAudioPlayer=常に音楽プレイヤを使う。
+ACS_PauseWhenStopped=一時停止してからファイルリストに戻る。
+ACS_DrawPlayList=プレイリストを表示する。
+ACS_DrawSpectrumAnalyzer=スペクトルアナライザーを表示する。
+
+; ----------------------------
+
+DCS_Help0=動画再生に関する環境設定を行います。
+DCS_Help1=
+DCS_Help2=
+DCS_Help3=再生開始処理を高速化すると、
+DCS_Help4=高フレーム、高ビットレートのファイルを
+DCS_Help5=再生した際に、もたつくことがあります。
+DCS_Help6=
+DCS_Help7=
+DCS_Help8=
+DCS_Help9=
+DCS_Help10=
+DCS_Help11=
+
+DCS_Title=動画再生モード 環境設定
+
+DCS_EnabledFastStart=再生開始処理を高速化する。
+DCS_PauseWhenPanelClosed=パネルを閉じるとポーズする。
+DCS_EnableIndividualResume=動画ファイル個別にレジュームを保存する。
+DCS_ControlPowerLED=再生中は電源LEDを消灯する。
+DCS_InverseVisual_PlayPause=再生中と一時停止ボタンの画像を入れ替える。
+DCS_EverytimeStopOfEnd=最後まで再生したら常に終了する。
+DCS_WhenLateDecodingWaitPause=動画が遅れたら一時停止して待つ。
+DCS_BacklightTimeOutTitle=バックライト消灯時間(秒)
+DCS_BacklightTimeOutOff=Off
+DCS_BacklightTimeOut5sec=5
+DCS_BacklightTimeOut10sec=10
+DCS_BacklightTimeOut15sec=15
+
+; ----------------------------
+
+DV_VolumeLabel=Vol.
+DV_VolumeValue=%d%%
+DV_VolumeMute=mute
+DV_VolumeMax=MAX
+
+; ----------------------------
+
+DV_Popup_Pause_Play=PLAY
+DV_Popup_Pause_Pause=PAUSE
+DV_Popup_PreviousFile=前のファイルを再生
+DV_Popup_NextFile=次のファイルを再生
+DV_Popup_Volume=ボリューム： %d%%
+DV_Popup_Seek=シーク： %s秒
+DV_Popup_BacklightLevel=バックライト明度： %d
+
+; ----------------------------
+
+ICS_Help0=画像表示に関する環境設定を行います。
+ICS_Help1=
+ICS_Help2=
+ICS_Help3=画像を表示している間にSTARTボタンを押すと、
+ICS_Help4=表示している画像を背景に設定できます。
+ICS_Help5=
+ICS_Help6=設定した背景を元に戻すときは、
+ICS_Help7=ファイルリストでSTARTボタンを押して、
+ICS_Help8=システムメニューの中の、
+ICS_Help9=「壁紙を元に戻す」を実行してください。
+ICS_Help10=
+ICS_Help11=
+
+ICS_Title=画像表示モード 環境設定
+
+ICS_ShowInfomation=ファイル情報とヘルプを表示する。
+ICS_ShowControlIcons=タッチパネル操作アイコンを表示する。
+ICS_DoubleSpeedKey=キー操作を過敏にする。
+ICS_DoubleSpeedTouch=タッチパネル操作を過敏にする。
+ICS_MultipleResume=拡大率を記憶して、次回復帰する。
+ICS_AutoFitting=大きすぎるJpeg画像は適切に縮小する。
+ICS_EnabledProgressiveJpeg=プログレッシブJpegに対応する。（遅い）
+ICS_StartPosTitle=表示開始位置
+ICS_StartPosLeftTop=左上
+ICS_StartPosRightTop=右上
+ICS_StartPosLeftBottom=左下
+ICS_StartPosRightBottom=右下
+ICS_AutoNextTimeSecTitle=自動次進(秒)
+ICS_AutoNextTimeSecOff=Off
+ICS_AutoNextTimeSec10sec=10
+ICS_AutoNextTimeSec30sec=30
+ICS_AutoNextTimeSec60sec=60
+ICS_ShowInfoTopScreen=上画面に情報を表示する。
+ICS_EffectTitle=壁紙変換時のエフェクト効果
+ICS_EffectHeightPadding=上下画面の隙間を考慮して変換する。
+ICS_EffectPastelForTopBG=上画面にパステル加工を適用する。
+ICS_EffectPastelForBottomBG=下画面にパステル加工を適用する。
+
+; ----------------------------
+
+IV_LoadMsg0=画像ファイルを読み込んでいます。
+IV_LoadMsg1=しばらくお待ち下さい。
+
+IV_Help1=START： 壁紙にする / SELECT： 環境設定
+IV_Help2=Ｙ：50% / Ｘ：200% / Ａ：100% / Ｂ：戻る
+
+; ----------------------------
+
+IV_Popup_BacklightLevel=バックライト明度： %d
+IV_Popup_Zoom=拡大率： %d%%
+IV_Popup_Pause_Play=PLAY
+IV_Popup_Pause_Pause=PAUSE
+IV_Popup_PreviousFile=前曲を再生
+IV_Popup_NextFile=次曲を再生
+IV_Popup_Seek=シーク： %s
+
+; ----------------------------
+
+TCS_Help0=テキスト表示に関する環境設定を行います。
+TCS_Help1=
+TCS_Help2=・クリアタイプフォント使用時の注意
+TCS_Help3=旧DSで、上画面もテキストにしたときに、
+TCS_Help4=上画面が非常にぼやけることがあります。
+TCS_Help5=
+TCS_Help6=・文字コードの自動判定に失敗した場合
+TCS_Help7=ファイル上でAボタンまたはタッチを長めに押すと、
+TCS_Help8=サブメニューが表示されますので、
+TCS_Help9=その中から目的のエンコードを選択してください。
+TCS_Help10=手動選択はテキストファイル毎に設定できます。
+TCS_Help11=
+
+TCS_Title=テキスト表示モード 環境設定
+
+TCS_TopScrModeTitle=上画面の表示モード選択
+TCS_TopScrModeLightOff=消灯
+TCS_TopScrModeText=テキスト
+TCS_TopScrModeClock=時計と情報
+
+TCS_ScreenSaverTitle=スクリーンセーバ
+TCS_ScreenSaverNormal=標準
+TCS_ScreenSaverDigital=デジタル
+TCS_ScreenSaverExtend=拡張
+
+TCS_LineSpaceTitle=行間スペース
+TCS_LineSpaceSmall=狭め
+TCS_LineSpaceMiddle=標準
+TCS_LineSpaceLarge=広め
+
+TCS_FontSizeTitle=文字サイズ
+TCS_FontSizeSmall=小(12pix)
+TCS_FontSizeMiddle=中(14pix)
+TCS_FontSizeLarge=大(16pix)
+
+TCS_ClearTypeFontTitle=クリアタイプ
+TCS_ClearTypeFontNone=無し
+TCS_ClearTypeFontLite=薄く
+TCS_ClearTypeFontNormal=標準
+TCS_ClearTypeFontHeavy=濃く
+
+TCS_UseSmoothScroll=スムーススクロールを使う。
+
+TCS_CPTitle=コードページ
+TCS_CP437=CP437 (US, AUS)
+TCS_CP850=CP850 (DOS)
+TCS_CP1252=CP1252 (Windows)
+
+TCS_DetectCharCodeTitle=自動検出する文字エンコードの種類
+
+; ----------------------------
+
+TV_SelEnc_Title=テキストの種類を選択してください。
+TV_SelEnc_Items_AutoDetect=自動検出
+TV_SelEnc_Items_ANSI=ANSI 8bit
+TV_SelEnc_Items_EUC=EUC/S-JIS
+TV_SelEnc_Items_UTF16BE=UTF-16 (BE)
+TV_SelEnc_Items_UTF16LE=UTF-16 (LE)
+TV_SelEnc_Items_UTF8=UTF-8
+TV_SelEnc_Items_TextEdit=テキストエディタ
+TV_SelEnc_Help_Normal=Aボタンで決定、Bボタンでキャンセルします。
+TV_SelEnc_Help_NoEdit0=128kbyteを超えるファイルは編集できません。
+TV_SelEnc_Help_NoEdit1=
+
+; ----------------------------
+
+TV_PRG_LoadExtendFont=拡張フォントを読み込み中…
+TV_PRG_LoadTextFile=テキストファイルを読み込み中…
+TV_PRG_DetectTextEncode=テキストエンコードを判定中…
+TV_PRG_DetectReturnCode=リターンコードを判定中…
+TV_PRG_ConvertToUnicode=UNICODEに変換中…
+
+TV_UncertainFormat1=自動検出に失敗した可能性があります。
+TV_UncertainFormat2=Aボタンを長く押して開くと手動設定になります。
+
+TV_Help1=Ａ：ページスクロール / Ｂ：戻る
+TV_Help2=Ｘ／Ｙ：ブックマーク セーブロードメニュー
+TV_Help3=SELECT：環境設定 / エンコード：%s
+TV_Info=現在行数：%d / %d 行 (%.2f%%)
+
+TV_BookmarkText_LoadTitle=ブックマークロードメニュー
+TV_BookmarkText_SaveTitle=ブックマークセーブメニュー
+TV_BookmarkText_Empty=%d： セーブされていません。
+TV_BookmarkText_Info=%d： %d行 %s %s
+
+; ----------------------------
+
+TV_Popup_BacklightLevel=バックライト明度： %d
+TV_Popup_Bookmark_Load=
+TV_Popup_Bookmark_Empty=読み込みをキャンセルしました。
+TV_Popup_Bookmark_Save=ブックマークを保存しました。
+TV_Popup_Pause_Play=PLAY
+TV_Popup_Pause_Pause=PAUSE
+TV_Popup_PreviousFile=前曲を再生
+TV_Popup_NextFile=次曲を再生
+TV_Popup_Seek=シーク： %s
+TV_Popup_MoveToTop=先頭に移動
+TV_Popup_MoveToLast=終端に移動
+
+; ----------------------------
+
+ME_Help0=メモ帳 編集モード
+ME_Help1=
+ME_Help2=下 / 左 / 上 / 右キー : 黒 / 赤 / 緑 / 青ペン
+ME_Help3=Y / Xボタン : 細い / 太いペンに持ち替える
+ME_Help4=A / Bボタン : 保存して閉じる
+ME_Help5=SELECTボタン：一手前に戻る
+ME_Help6=L/Rボタンを押しながらタッチで消しゴム
+ME_Help7=
+ME_Help8=保存しないで終了するときは、
+ME_Help9=このまま電源を切って下さい。
+
+; ----------------------------
+
+MemoList_Title=メモ帳リスト
+
+MemoList_Help0=
+MemoList_Help1=
+MemoList_Help2=画面タッチ： 新しいメモを作成
+MemoList_Help3=START長押し： カーソル位置のメモを削除
+
+; ----------------------------
+
+MemoEdit_FileInfo_Open=既存ファイルを開きました。
+MemoEdit_FileInfo_Edited=編集中です。終了と同時に自動保存されます。
+MemoEdit_FileInfo_Create=新規作成モードで開始しました。
+
+MemoEdit_SavingNow=変更されたBMPファイルを保存中です…
+
+; ----------------------------
+; for Text editor Ver1.5
+
+TE_File_SelectEncode_Title1=テキストの種類が自動判定できませんでした。
+TE_File_SelectEncode_Title2=目的のエンコードタイプを選択してください。
+
+TE_skk_DicSystem_PreloadDic=辞書データを読み込み中…
+
+TE_skk_ExitMenu_Title=終了メニュー
+TE_skk_ExitMenu_Items_Cancel=キャンセルしてエディタに戻る
+TE_skk_ExitMenu_Items_Overwrite=上書き保存して終了する
+TE_skk_ExitMenu_Items_SaveAs=別名保存して終了する
+TE_skk_ExitMenu_Items_CreateNew=新規ファイル名で保存して終了する
+TE_skk_ExitMenu_Items_NoSaveExit=保存しないで終了する
+TE_skk_ExitMenu_SavePrgMsg1=テキストファイルを保存しています…
+TE_skk_ExitMenu_SavePrgMsg2=電源を切らないでください。
+
+TE_SysMsg_ClipBoard_Empty=クリップボードが空です。
+TE_SysMsg_ClipBoard_Pasted=クリップボードから貼り付けました。
+TE_SysMsg_ClipBoard_Copied=クリップボードにコピーしました。
+
+TE_OSKHW_Model_ModelResults_Selector_Title=正しい文字を選択してください。
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle1=このモデルデータを
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle2=正しい文字と関連付けて
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogTitle3=辞書登録してもよろしいですか？
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogRegist=登録する
+TE_OSKHW_Model_ModelResults_Selector_RegistDialogCancel=キャンセル
+
+; ----------------------------
+

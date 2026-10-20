@@ -1,0 +1,104 @@
+Image Viewer Version 1.1
+
+gba_nds_fat by Chishm
+ZLIB (C) 1995-2004 Jean-loup Gailly and Mark Adler
+DevKitARMr20 + libnds-20070127
+
+~ Traducido por Boriar
+---------- 
+
+MakeNDSROM.exe 
+Crea un archivo NDSROM para su uso con flashcarts.
+
+imgview.ini 
+Este es el archivo de configuración. Si no cambia ninguno de los ajustes por defecto, no necesita este archivo.
+
+img2ipk.exe 
+Crea miniaturas, así como archivos con varias imágenes (.ipk).
+
+---------- 
+
+Ejecute MakeNDSROM.exe, copie el archivo NDSROM a la tarjeta y cárguelo.
+
+Los archivos de imagen deben ser convertidos.
+Mientras el tamaño máximo de la imagen sea hasta 10000 x 10000 pixeles, no debería haber problemas.
+Sin embargo, las imágenes muy grandes son difíciles de utilizar debido a que la pantalla de la NDS es pequeña, por lo que puede limitar el tamaño máximo.
+Editando el archivo img2ipk.ini, puede limitar el tamaño al tiempo que se preserva la relación de aspecto.
+
+Es válido cualquier número de colores (profundidad de color). Todos se convertirán a 15 bits/píxel.
+Si no está preocupado con la calidad de la imagen, cambie de "Modo CustomJpeg" a "Modo ZLIB". Los archivos puede aumentar a más del doble del tamaño.
+
+----------
+
+Memoria Cache 
+
+La versión 1.0 hace un uso más eficiente en la gestión de memoria, de modo que incluso sin la ampliación de memoria puede utilizar el modo de pantalla doble.
+Sin embargo, con grandes archivos de imagen (a partir de 1024x768) la transformación se hace lenta, por lo que se recomienda la ampliación de memoria.
+Las expansiones de memoria compatibles son: M3 para GBA, SC para GBA, EZ4 para GBA, el cartucho de memoria de DS Browser, y el EZFlash 3-en-1 Expansion Pack.
+El GBA M3/SC/EZ4 paquetes no se puede utilizar si arrancado desde una tarjeta SD. Debe configurar imgview.ini para la SC y EZ4.
+Si la operación se vuelve inestable, utilice la herramienta de test de memoria en la página 4 de las opciones de presentación de diapositivas.
+
+Adicional
+Si utiliza la PSRAM del EZ 3in1 Expansion Pack, no utilice reinicialización.
+El uso de reinicialización no daña nada, pero no será capaz de utilizar la expansión de memoria de nuevo hasta que apague y vuelva a encender.
+
+----------
+
+Puede ejecutar una herramienta para hacer una carátula añadiendo una carpeta a img2ipk.exe y haciendo clic con el botón derecho.
+Los archivos IPK con una imagen se muestran en la pantalla de selección de archivo IPK y en la presentación de diapositivas.
+
+----------
+
+Selector de archivo complementario 
+
+Sólo 9 archivos IPK pueden visualizarse al mismo tiempo, pero puede desplazarse usando el D-Pad.
+No puede desplazarse con la pantalla táctil.
+El número máximo de archivos IPK que puede cargar es de 512.
+Si desea ver el selector de archivo en modo de pantalla horizontal, edite imgview.ini y cambie "FileSelectVertical" a "0".
+
+----------
+
+Arriba/Abajo/Izquierda/Derecha y A/B/X/Y son iguales, así como L y R.
+Básicamente, todas las operaciones pueden realizarse a través de los iconos de las 4 esquinas y con la pantalla táctil.
+
+Modo selección de archivos
+
+Icono Arriba-Izquierda: Ajustar el brillo de fondo
+Botón Arriba/Abajo: Mover el cursor
+Botón L: Confirmar
+Botón START: Reinicialización/Iniciar presentación de diapositivas (ver más abajo)
+
+Modo miniaturas
+
+Icono Arriba-Izquierda: Ajustar el brillo de fondo
+Icono Arriba-Derecha: Regresar a modo de selección de archivos
+Icono Arriba-Centro: Cambiar orientación de la pantalla horizontal/vertical
+Icono Abajo-Centro: Configuración de diapositivas
+D-Pad: Mover el cursor
+Botón L: Confirmar
+Botón START: Reinicialización/Iniciar presentación de diapositivas (ver más abajo)
+Botón SELECT: Regresar a modo de selección de archivos
+
+Modo de presentación de diapositivas
+
+Botón START: Reinicialización/Iniciar presentación de diapositivas (ver más abajo)
+
+Modo de visualización
+
+Icono Arriba-Izquierda: Ajustar el brillo de fondo
+Icono Arriba-Derecha: Regresar a modo de miniaturas
+Icono Abajo-Izquierda: Volver a la imagen anterior
+Icono Abajo-Derecha: Ir a la imagen siguiente
+Icono Arriba-Centro: Cambiar horientación de la pantalla horizontal/vertical
+Icono Arriba-Centro (derecha): Cambiar modo "1-Pantalla a tamaño completo+Vista previa" o "2-Pantallas a tamaño completo"
+Icono Abajo-Centro: Cambiar Zoom
+D-Pad: Mover el cursor
+Botón START: Reinicialización/Iniciar presentación de diapositivas (ver más abajo)
+Botón L: Abrir menú Ampliación Comandos
+L + Arriba: Regresar a modo de miniaturas
+L + Envío: Regresar a la imagen anterior
+L + Derecha: Ir a la siguiente imagen
+L + SELECT: Abrir el menú Posición de Inicio
+
+El botón START se establece como Reinicialización en todos los modos por defecto.
+Si desea utilizarlo como un botón de acceso directo y no como Reinicialización, en la sección [sistema] de imgview.ini cambie el valor de "StartButtonFunction" a "0".
