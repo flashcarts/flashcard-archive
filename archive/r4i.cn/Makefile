@@ -15,3 +15,4 @@ r4i.cn_Kernel_1.60.zip: directory
 
 extdata: directory
 	cp README.txt $(OUT)/$(BASE)
+	cp -r r4i.cn_FWUpdate README.txt $(OUT)/$(BASE)
